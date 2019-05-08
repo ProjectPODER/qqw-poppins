@@ -1,0 +1,1936 @@
+html, body
+  height 100%
+
+#content
+  min-height 100%
+
+html, body
+  font-size 100%
+
+body
+  background-color #FFF
+  overflow-x hidden
+  margin: 0;
+
+#main
+  height 100%
+
+header .navbar, #footer
+  color #fff
+
+table.reactive-table
+  width 100%
+  tr td:first-child:hover
+    cursor pointer
+    color #337ab7
+
+a, .cursor-pointer
+  cursor pointer
+
+.bold
+  font-weight bold
+
+.antispam
+  display none
+
+a
+  color #2b00f7
+  text-decoration none
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  &:hover
+  &:focus
+    color #2d1c9d
+
+.text-center
+  text-align center
+
+nav.bar
+  position fixed
+  z-index 1999
+  top 0
+  height 5rem
+  width 100%
+  // background-color transparent
+  padding 1rem
+  transition all 0.3s ease
+  transition-delay initial
+  height 4rem
+
+.none
+  display none
+
+.navbar-collapse.in
+  background-color #110046
+
+.shrink
+.fixed-nav
+  display block
+  height 4rem !important
+  background-color #110046
+  img
+    &.logo-horizontal
+      width 10rem
+  form
+    &.nav-form
+      width 250px
+      text-align right
+      // display inline-block
+  .navbar-right
+    display inline-block
+    li.open a.dropdown-toggle
+      background-color #2b00f7 !important
+      border-color transparent
+
+  .navbar-toggle .icon-bar
+      background-color #fff
+
+.navbar-toggle
+    margin-top 0
+
+.navbar-header button
+    margin-right 0 !important
+
+#login-dropdown-list
+  color white
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  &:hover
+  &:focus
+    background-color #2b00f7 !important
+
+img
+  &.logo-horizontal
+    width 0
+    transition all .5s ease
+    background-color transparent
+  &.logo
+    width 714px
+    margin auto
+  &.name
+    width 25rem
+    vertical-align middle
+    margin-left 1rem
+  &.sources-icons
+    width 10rem
+
+.navbar-right
+    margin: -10px 0 0 0
+    display none
+    & a
+      color white
+      -webkit-transition all .35s
+      -moz-transition all .35s
+      transition all .35s
+      &:hover
+      &:focus
+        color #ffffff
+        background-color transparent !important
+
+.nav-link
+  display inline-block
+  vertical-align middle
+  -webkit-transform perspective(1px) translateZ(0)
+  transform perspective(1px) translateZ(0)
+  box-shadow 0 0 1px rgba(0, 0, 0, 0)
+  position relative
+  overflow hidden
+  &:before
+    content ""
+    position absolute
+    z-index -1
+    left 51%
+    right 51%
+    bottom 0
+    background #2b00f7
+    height 4px
+    -webkit-transition-property left, right
+    transition-property left, right
+    -webkit-transition-duration 0.3s
+    transition-duration 0.3s
+    -webkit-transition-timing-function ease-out
+    transition-timing-function ease-out
+
+.nav-link:hover:before, .nav-link:focus:before, .nav-link:active:before
+    left 0
+    right 0
+
+.filter-bar
+    input[type="text"]
+      padding 10px 5px
+      width 85%
+      margin-right 5px
+      margin-bottom: 3px
+      border-color #D3D3D3
+      border-style solid
+      border-width 1px
+
+    .multiple-control-container
+      &:not(:last-child)
+        .multiple-control
+          border-color transparent
+          background none
+
+          &:hover
+            border-color: black
+
+          &:focus
+            border-color #D3D3D3
+            background: white
+
+      .remove-field-control
+        display none
+        float right
+        margin-top 5px
+        cursor pointer
+
+    .add-field-control
+      float right
+      margin -2.4em 2.3em 0 0
+      cursor pointer
+
+    input[type="date"]
+      padding 5px 5px 5px 25px
+      width 85%
+      background-image url('../images/calendar.png')
+      background-repeat no-repeat
+      background-position 6px
+      border-width 1px
+      border-color #D3D3D3
+      border-style solid
+    input[type="text"].search-amount
+      width 30%
+      display inline-block
+      margin-top 1rem
+
+.filter-dropdown
+  padding 9px 12px
+
+.text-white
+  color #fff
+
+input[type=text].nav-search-inputtext
+  width 11rem
+  padding 10px 20px
+  border-color #2b00f7
+  box-sizing border-box
+  display inline-block
+  transition all .5s ease
+
+input[type=submit].nav-search-inputtext
+  width 7rem
+  padding 12px 20px
+  box-sizing border-box
+  display inline-block
+  background-color #2b00f7
+  border none
+  font-weight bold
+  color #fff
+  cursor pointer
+
+div
+  &.line-blue
+    border-top 5px solid #110046
+    position fixed
+    z-index 99999
+    width 100%
+  &.jumbotron-container
+    background-color white
+    overflow hidden
+    z-index 50
+    height 120vh
+  &.landing-jumbotron
+    background -webkit-gradient(linear, left top, left bottom, color-stop(88%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1))), url(../images/fondo-home.png) no-repeat top left #def /* safari4+,chrome */
+    height 100vh
+    width 100%
+    -webkit-background-size cover
+    -moz-background-size cover
+    -o-background-size cover
+    background-size cover
+    background-blend-mode lighten
+  &.landing-header-content
+    padding 4rem
+    width 75%
+    text-align center
+    margin auto
+    padding-top 7%
+    h1
+      display inline-block
+      margin-left 1rem
+      font-size 4rem
+    p
+      display inline-block
+      margin 7%
+      font-size 1.5rem
+      color #5c5c5c
+      text-align center
+  &.landing-search
+    text-align left
+    p
+      font-size 1rem
+      color #2d1c9d
+      margin 1rem auto 1rem auto
+      &:first-child
+        font-size 1.2rem
+        color #2d1c9d
+        margin .5rem auto 1rem auto
+  &.explore-card
+    height 28rem
+    width 22rem
+    margin auto
+  &.card-pad
+    h3 strong
+      font-size 2rem
+      margin-bottom .2rem
+    h3
+      font-size 1.5rem
+      margin-bottom .7rem
+  &.proyecto
+    background-color #fff
+    padding 1rem
+    width 100%
+    margin-bottom 2rem
+    position relative
+    img
+      width 90%
+    p
+      margin-right 1rem
+      margin-bottom 3rem
+      padding 1rem 1.5rem 0 0
+      font-size 1.3rem
+  &.investigaciones-card
+    width 100%
+    height 100%
+    position relative
+    img
+      height auto
+  &.tab
+    overflow hidden
+    border 2px dotted #3a32f9
+    background-color #f1f1f1
+    button
+      background-color inherit
+      float left
+      border none
+      outline none
+      cursor pointer
+      padding 14px 16px
+      transition 0.3s
+      font-size 17px
+      &:hover
+        background-color #ddd
+      &.active
+        background-color #ccc
+
+  &.document-header
+    display flex
+    align-items flex-end
+    margin-bottom 2rem
+    margin-top 6rem
+    padding 0 2rem 0  1rem
+
+  &.document-body
+    padding 0 2rem 2rem 2rem
+
+  &.search-card
+    border-bottom 1px dashed #4d29ff
+    padding 1.5rem 0
+  &.content
+    display block
+    margin auto
+    width 85%
+
+.card-h3
+  margin-top -10px
+
+input[type=text].landing-search-inputtext
+  width 100%
+  padding 12px 20px
+  box-sizing border-box
+  display inline-block
+  border-color #2b00f7
+
+input[type=submit].landing-search-inputtext
+  width 15%
+  float right
+  margin-right 2em
+  padding 14px 20px
+  box-sizing border-box
+  background-color #2b00f7
+  border none
+  font-weight bold
+  color #fff
+  cursor pointer
+
+div.card-pad h3
+  color #2b00f7
+  font-family monospace
+
+.serif-gray
+  font-family serif
+  color #5c5c5c
+
+section
+  padding-top 5rem
+  padding-bottom 5rem
+  &.data-sources
+    background-color #f7f7f7
+  &.proyectos
+    background-color #110046
+  &.investigaciones
+    background-color #f7f7f7
+    border-top 2px dotted #3a32f9
+    border-bottom 2px dotted #3a32f9
+  &.tabs
+    margin-top 2rem
+    min-height 100vh
+    h3
+      font-size 1.5rem
+      color #3a32f9
+      margin-bottom 2rem
+    h1
+      font-size 2rem
+      margin-bottom 2rem
+
+.data-sources
+  h2
+    color #150b58
+
+.triplet-wrapper
+  position relative
+  // height 24rem
+  padding 2rem
+
+.triplet
+  font-size 1.5rem
+  font-weight bold
+  text-align center
+  margin 1.5rem auto
+  color #150b58
+
+.triplet-text
+  text-align center
+  color #686868
+
+.triplet-last-update
+  font-size .7rem
+  color #808080
+  text-align left
+  // position absolute
+  bottom 0
+
+.proyectos
+  h2
+    color #fff
+
+.proyecto-info
+  margin-top 0
+
+.proyecto
+  button
+    bottom 30px
+    right 30px
+
+.contacto-text
+  text-align center
+  margin-bottom 1.5em
+  p
+    display inline-block
+    color #3a32f9
+    font-family monospace
+    font-size 2rem
+  button
+  a
+    vertical-align super
+    margin-top 1.5rem
+    margin-left 2rem
+    background-color #21018b
+
+.investigaciones.row
+  height 400px
+  h2
+    color #150b58
+  p
+    font-size 1.5rem
+
+.investigaciones-p
+  color #2d1c9d
+
+// @keyframes jump { 0% { top: 0; } 50% { top: 50px; } 100% { top: 0; } }
+
+.arrow-down
+  text-align center
+  /*position relative
+  margin 0 auto
+  animation jump 3s infinite*/
+  i
+    margin-top: 0px;
+    font-size: 3rem;
+    color #2d1c9d
+    opacity 0.5
+    position absolute
+
+footer
+  background-color #21018b
+  padding 3rem 0 3rem 5rem
+  clear both
+  p
+    color #fff
+    line-height 1.5rem
+    &:first-child
+      margin-top 2rem
+  a
+    color #fff
+    -webkit-transition all .35s
+    -moz-transition all .35s
+    transition all .35s
+    &:hover
+    &:focus
+      color #ccd
+      text-decoration none
+    img
+      margin-top 1rem
+      margin-right 1rem
+    .logofooter-ml
+      width 80px
+    .logofooter-pl
+      width 120px
+
+.owl-carousel
+  margin-left -30px
+  margin-bottom 20px
+  z-index 0 !important
+.owl-theme
+  .owl-controls
+    text-align left
+    margin-left 100px
+    .owl-nav
+      [class*='owl-']
+        color white
+        font-size 1rem
+        margin 5px
+        padding 4px 7px
+        background transparent
+        -webkit-transition all .35s
+        -moz-transition all .35s
+        transition all .35s
+        opacity 0.6
+        &:hover
+        &:focus
+          color #ccd
+          background-color transparent
+
+.logos-orgs
+  background-position center center
+  background-repeat no-repeat
+  background-size contain
+  margin 30px 20px 0
+  height 50px
+  width 200px
+.logo-wingu
+    background-image url('../images/wingu-blanco.png')
+    height 35px
+.logo-ojopublico
+    background-image url('../images/logo-ojopublico-blanco.png')
+    height 30px
+.logo-cargo
+    background-image url('../images/cargografias.png')
+.logo-ml
+    background-image url('../images/mexicoleaks.png')
+    height 35px
+
+.card
+  border-width 2px
+  border-style dotted
+  border-color #3a32f9
+  position relative
+
+.card-pad
+  overflow hidden
+  padding 1rem
+
+  .button-link
+    position: absolute
+    bottom 1em
+    right 1em
+
+.card-pad-ext
+  height 100%
+  padding 1rem 1rem 1rem 0
+
+.card-image-container
+  max-height 220px
+  overflow hidden
+
+.card-image
+  display inline-block
+  width 100%
+  height 11rem
+  overflow-y hidden
+  overflow-x hidden
+
+p
+  &.capitalize-style
+    text-transform uppercase
+    color #21018b
+    letter-spacing 2px
+    margin-bottom 5px
+  &.document-description
+    padding 1rem 0
+    font-size .9rem
+    color #585858
+  &.search-terms-text
+    font-size .9rem
+    font-weight bold
+    color #21018b
+    line-height 1.8rem
+    span
+      color #fff
+      background-color #21018b
+      border-radius 7px
+      font-weight 300
+      padding .2rem .5rem .2rem .7rem
+      margin 0.2rem .2rem 0 0
+      display: inline-block
+.delete-blob-filter
+  margin-left 5px
+  margin-right 5px
+  opacity 0.7
+  cursor pointer
+
+.search-order-form
+  float: right;
+  margin-top: -2em;
+  font-size .9rem
+  font-weight bold
+  color #21018b
+  line-height 1.8rem
+
+.search-order-form select.input-sm
+  display inline-block
+
+
+.box
+  margin-bottom 1rem
+
+.tabcontent
+  display none
+  padding 2rem 1rem
+  border 2px dotted #3a32f9
+  border-top none
+
+*
+  box-sizing border-box
+
+body
+  font-family 'Montserrat', sans-serif
+
+button
+  cursor pointer
+
+h2card-image-container
+  font-size 2.5rem
+  font-weight bold
+  padding 1rem 0
+  margin-bottom 3rem
+  &.document-title
+    color #21018b
+    font-size 2.3rem
+    margin 0
+
+#tipo-adquisicion
+  margin-bottom 10rem
+
+.filter-bar
+  position fixed
+  width 24%
+  height 93%
+  z-index 1
+  overflow-y scroll
+  top 4.05rem
+  left 0
+.filter-bar
+.addinfo-box
+  background-color #F7F7F7
+  border-color #9C9C9C
+  border-width 1px
+  border-style solid
+  margin 0 1rem 1rem 0
+  font-size .8rem
+  padding 1rem
+
+  img.form-control
+      width: auto;
+      padding: 0;
+      border: none;
+      background: transparent;
+      display: inline;
+      box-shadow: none;
+      margin-right 0
+
+.search-title
+  font-weight bold
+  text-transform uppercase
+  color #21018b
+  margin-top 1rem
+  margin-bottom .5rem
+  line-height 1.1rem
+
+input[type="date"]::placeholder
+  text-transform uppercase
+  color red
+
+::placeholder
+  text-transform uppercase
+
+select
+  &.search-select
+    padding 10px 5px
+    font-size .8rem
+    text-transform uppercase
+    color #808080
+    border-radius 0
+    border-style solid
+    border-width 1px
+    background-color white
+.form-control
+  height 25px
+  vertical-align middle
+
+img.icon
+  width 12px
+  margin-top -3px
+
+img.icon-lf
+  width 20px
+  margin-top -0.3rem
+  margin-right 0.8rem
+  &.icon-lf-person
+    width 25px
+  &.icon-lf-organization
+    width 15px
+  &.icon-lf-contract
+    width 14px
+
+.selected-block
+  margin-bottom .8rem
+
+.selected-form-text
+  color #9C9C9C
+  width 85%
+  display inline-block
+  margin-right 5px
+  p
+    display inline-block
+    word-wrap break-word
+    vertical-align middle
+
+.search-label
+  color #9C9C9C
+  // text-transform uppercase
+  margin-bottom .3rem
+  margin-top .8rem
+  line-height 1.2rem
+
+  &.selected
+  &:hover p
+  &:focus p
+    color #21018b
+    text-decoration none
+    font-weight bold
+
+fieldset
+  margin-bottom 1rem
+
+.fixed-filter-button
+  position: fixed
+  left 14px
+  bottom 5px
+  width 22%
+
+input[type="submit"].search-submit
+input[type="button"].search-submit
+  // width 100%
+  font-weight bold
+  font-size 1rem
+  margin-top -5px !important
+
+input[type="submit"].search-submit, .contact-submit
+input[type="button"].search-submit
+  background-color #21018b
+  border none
+  color white
+  padding 16px 32px
+  text-decoration none
+  margin 4px 2px
+  cursor pointer
+  box-shadow 2px 2px 7px grey
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  &:hover
+  &:focus
+    color #ffffff
+    background-color #2b00f7
+
+button[type="reset"]
+  padding 16px 32px
+  margin 4px 2px
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+
+button.reset-filters
+  width 100%
+
+.search-card
+    overflow hidden
+
+.search-results-header
+  display flex
+  align-items center
+
+.search-result-title
+  & a
+    color #4e4e4e
+.search-result-title
+.description-data-name h3
+.description-data-title h3
+  font-weight bold
+  color #4e4e4e
+  margin-bottom 0.7rem
+  font-size 1.5rem
+  text-transform uppercase
+
+
+.description-data-name h3
+.description-data-title h3
+  font-size 2rem
+  // display inline
+
+.search-result-emph
+  color #2900f5
+  font-family monospace
+  font-size 2.4rem
+
+.search-result-emph-complementary
+  color #2900f5
+  font-family monospace
+  font-size 1.3rem
+
+.search-result-mono-gray
+  font-family monospace
+  color #9b9b9b;
+  font-size 1rem
+  display inline-block
+
+.no-title .cardItemTitle
+    visibility hidden
+    height 0
+
+.inline-title .cardItemData,
+.inline-title .cardItemTitle
+    display inline
+
+#person-index_paginate
+#contract-index_paginate
+#organization-index_paginate
+  text-align center
+
+.pagination > .active > a
+.pagination > .active > span
+.pagination > .active > a:hover
+.pagination > .active > span:hover
+.pagination > .active > a:focus
+.pagination > .active > span:focus
+  background-color #21018b
+  border-color #21018b
+
+.pagination > li > a
+.pagination > li > span
+  padding 6px 12px
+  color #9b9b9b
+  background-color #fff
+  border 1px solid #ddd
+
+.pagination > li > a:hover
+  color #21018b
+
+// .paginate_button
+//   .previous
+//   .next
+//     border 2px solid #9c9c9c
+
+.js-amount
+    text-align right
+    padding 0 0.5em 0.2em 0
+    text-overflow ellipsis
+    overflow hidden
+
+.js-start-date
+    clear left
+
+.js-start-date
+.js-end-date
+    padding-left 20px
+    padding-bottom 2px
+    background url(images/calendar.png) no-repeat;
+
+    .cardItemData
+        font-weight bold
+        padding-left 5px
+
+.js-dependency
+    clear left
+    padding-right 0.5em
+    .cardItemTitle
+      padding-left 25px
+      background url(images/icons/dependencia-gray-light.svg) no-repeat;
+      background-size 16px
+.js-suppliers
+    .cardItemTitle
+      padding-left 25px
+      background url(images/icons/empresa-gray-light.svg) no-repeat;
+      background-size 16px
+
+.js-procedure
+    .cardItemTitle
+      padding-left 25px
+      background url(images/icons/procedimiento-gray-light.svg) no-repeat;
+      background-size 16px
+.js-procedure
+.js-dependency
+.js-suppliers
+    margin-top: 5px
+    color #9b9b9b
+    padding-right 1em
+
+.dependency-cell li a
+.suppliers-cell li a
+  color #2b00f7
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  &:hover
+    // text-decoration none
+    color #2d1c9d
+
+.js-ocid
+    float right!important
+    text-align right
+    margin 2em 1em 0 0
+
+.js-contract-count
+.js-company-count
+    color #2b00f7
+
+.js-person-type
+.js-foundation-date
+    color #9b9b9b
+
+.js-contract-count
+.js-company-count
+.js-person-type
+.js-foundation-date
+    font-family monospace
+    font-size 1rem
+    .cardItemData
+        padding-left 5px
+
+.js-title-data
+.js-data
+  text-transform uppercase
+
+.js-title-data
+  color #9b9b9b
+  margin-bottom 0
+
+.js-data
+.js-data-lf
+  color #4e4e4e
+  font-weight bold
+
+.js-data-lf
+  font-size 1.2rem
+
+.js-data-link
+  color #2b00f7
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  &:hover
+    color #21018b
+    text-decoration none
+
+
+.js-score.col-m-2
+  .cardItemData,.cardItemTitle
+    display inline
+    margin-right 0.2em
+
+.contract_currency
+  font-size 0.4em
+  color #9b9b9b
+  display block
+  line-height 0
+
+.dataTables_info
+.dataTables_length label
+  padding-top 0 !important
+  font-size .9rem
+  font-weight bold !important
+  color #21018b
+  line-height 1.8rem
+
+.dataTables_length
+  text-align right
+
+.dataTables_paginate
+  margin-top 2.5rem !important
+
+.viewWrapper
+  margin-top 4rem
+  .js-data
+  .js-data-lf
+    margin-bottom 2rem
+
+.org-type
+.person-type
+.contract-type
+  margin-bottom 3rem
+
+.org-type
+.person-type
+.contract-type
+.description-data-subtitle
+  color #2d1c9d
+  font-weight bold
+
+.if-address-org
+  margin-bottom 2rem
+
+.flex
+  overflow hidden
+  display -webkit-box
+  display -webkit-flex
+  display flex
+  -webkit-flex-flow row wrap
+  flex-flow row wrap
+
+.flex-item
+  display -webkit-grid
+  display grid
+     
+.description-data-subtitle
+  font-size 1.3rem
+  margin-bottom 2rem
+
+.description-data-subname
+  font-size 1.1rem
+  color #5c5c5c
+  font-weight bold
+
+.description-data-organization
+  width 30%
+
+.description-data-organization
+.description-data-rol
+.description-data-amount
+.description-data-contract
+.description-data-date
+  font-size 1.1rem
+  color #9b9b9b
+
+.description-data-subname
+.description-data-organization
+.description-data-contract
+  text-transform uppercase
+
+.party_flag_score
+  float left
+  width 20%
+  border 1px solid #ccc
+  border-right none
+  border-collapse collapse
+  text-align center
+  height 50px
+  overflow hidden
+  background #f7f7f7
+
+.party_flag_title
+  font-size 0.65em
+  padding-top 5px
+  color #666
+  text-transform uppercase
+  font-weight bold
+
+.party_flag_value
+  font-size 1.2em
+
+.d100
+  font-size 0.5em
+
+
+.party_flag_total_score
+  border 1px solid black
+  background #ffc
+
+  .party_flag_value
+    font-weight bold
+
+
+.amount-data
+  color #2900f5
+  font-size 2rem
+  font-weight bold
+  margin-top 1.5rem
+
+a
+  &.see-contract
+    padding .5rem 1rem
+    background-color #2900f5
+    color white
+    font-weight bold
+    text-decoration none
+
+.search-results-last-row
+  margin-top 1.5rem
+
+.block
+  display block
+  margin auto
+  content ""
+  width auto
+
+.button-link
+  background-color #2b00f7
+  color #fff
+  // font-weight bold
+  border none
+  padding 10px 12px
+  white-space nowrap
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  &:hover
+  &:focus
+    color #fff
+    background-color #2200c5
+    text-decoration none
+
+.btn-default
+    color #333
+    background-color #fff
+    border-color #ccc
+    padding 10px 12px
+    white-space nowrap
+    border-radius 0
+
+.btn-filter
+  background-color #9b9b9b
+  color #fff
+  border-radius 0
+  padding 10px 12px
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  margin-right 5px
+  margin-bottom 5px
+  &:hover
+  &:focus
+    background-color #2d1c9d
+    color #fff
+
+.contract-button
+  margin-top 3rem
+
+.centered
+  text-align center
+
+.left-align
+  text-align left
+
+.right-align
+  text-align right
+
+.mb-10
+  margin-bottom 10px
+
+.mb-0
+  margin-bottom 0
+
+.mb-1
+  margin-bottom 1rem
+
+.mb-3
+  margin-bottom 3rem
+
+.mb-2
+  margin-bottom 2rem
+  
+.mb-5
+  margin-bottom 5rem !important
+
+.mt-60
+  margin-top 60px
+
+.mt-2
+  margin-top 2rem
+
+.pr-1
+  padding-right 1rem
+
+
+hr
+  background-color #999
+  height 1px
+  border 0
+  margin-bottom 2rem
+
+.right-menu-contracts
+  list-style-type none
+  text-transform uppercase
+  font-size 1.1rem
+  line-height 2.5rem
+  & li
+    color #9b9b9b
+    text-decoration none
+    & a
+      color #9b9b9b
+      text-decoration none
+      &::before
+        content ''
+        display inline-block
+        height 30px
+        width 30px
+        background-size 20px
+        background-image url('../images/icons/hexagono-gray.png')
+        background-repeat no-repeat
+        margin-right 10px
+        background-position center center
+        vertical-align middle
+      &:hover:before
+      // &:active:before
+      // &:focus:before
+        background-image url('../images/icons/hexagono-blue.png')
+
+.rubro-list
+  &::before
+    content ''
+    display inline-block
+    height 30px
+    width 30px
+    background-size 10px
+    background-image url('../images/icons/hexagono-blue.png')
+    background-repeat no-repeat
+    margin-right 10px
+    background-position center center
+    vertical-align middle
+
+.rubro-list-data
+.rubro-list
+  color #9b9b9b
+  font-size 1.1rem
+
+.affix
+  top 70px
+  position fixed !important
+
+.tooltip
+    font-size 12px
+    font-family 'Montserrat', sans-serif
+
+    &.top
+        .tooltip-arrow
+            border-top-color #2d1c9d
+    &.right
+        .tooltip-arrow
+            border-right-color #2d1c9d
+    &.bottom
+        .tooltip-arrow
+            border-bottom-color #2d1c9d
+    &.left
+        .tooltip-arrow
+            border-left-color #2d1c9d
+    &.top-left
+        .tooltip-arrow
+            border-top-color #2d1c9d
+    &.top-right
+        .tooltip-arrow
+            border-top-color #2d1c9d
+    &.bottom-left
+        .tooltip-arrow
+            border-bottom-color #2d1c9d
+    &.bottom-right
+        .tooltip-arrow
+            border-bottom-color #2d1c9d
+
+.tooltip-inner
+    background-color #2d1c9d
+    white-space: pre-wrap
+    text-align left
+
+.link-lf-contracts
+  & a
+    text-decoration none
+    p
+      color #2b00f7 !important
+      font-size 1.2rem
+      -webkit-transition all .35s
+      -moz-transition all .35s
+      transition all .35s
+      &:hover
+        color #2d1c9d !important
+
+.other-dependency
+.principal-suppliers
+  & a
+    color #2b00f7
+    font-size 1.1rem
+    // text-decoration none
+    -webkit-transition all .35s
+    -moz-transition all .35s
+    transition all .35s
+    &:hover
+      color #2d1c9d
+
+.addinfo
+  margin-top 7rem
+  margin-bottom 4rem
+
+.addinfo-box
+  margin-right 0
+  margin 0 0 3rem 3rem
+  text-align center
+  font-size 100%
+  h4
+    font-weight bold
+    color #4e4e4e
+
+
+.addinfo-title
+  color #2d1c9d
+  font-weight bold
+  font-size 1.5rem
+  margin-bottom 3rem
+
+.addinfo-form
+.contact-template
+    textarea
+      padding 10px 5px
+    input[type="text"]
+      padding 20px 5px
+      margin-right 5px
+      border-color #D3D3D3
+      border-style solid
+      border-width 1px
+    label
+      color #4e4e4e
+      font-weight bold
+      font-size 18px
+
+.addinfo-box-logo
+  width 250px
+  padding 2rem 0
+  margin auto
+
+.about-template
+.apis-template
+.privacy-template
+.contact-template
+  margin-top 5rem
+  h1
+    color: #150b58;
+    font-size 2.5rem
+    font-weight bold
+    margin-bottom 2rem
+    img
+      width 50px
+  h2
+    color #2b00f7
+    font-family monospace
+    font-size 2rem
+    text-transform uppercase
+    margin-top 3rem
+  h3
+    color #150b58
+    font-weight bold
+    margin-top 2.5rem
+  h4
+    margin-top 1.5rem
+
+  a
+    color #21018b
+    text-decoration none
+    -webkit-transition all .35s
+    -moz-transition all .35s
+    transition all .35s
+    font-weight bold
+    &:hover
+      color #2b00f7
+
+.privacy-template
+  h3
+    font-weight: bold;
+    color: #4e4e4e;
+    text-transform: uppercase;
+
+.media
+  margin-bottom 2rem
+  .media-object
+    width 150px
+
+#contract_problemas_destacados
+  margin-top 2em
+  float left
+  width 100%
+
+
+
+#chart
+    svg
+        height 300px
+        width 100%
+
+.nvd3
+    .nv-axis
+        line
+            fill none
+            stroke #e5e5e5
+            shape-rendering crispEdges
+    .nv-y1
+        path
+            fill #71a7f2
+            stroke #71a7f2 !important
+            stroke-width 2
+    .nv-y2
+        path
+            fill #ff6e00
+            stroke #ff6e00 !important
+            stroke-width 2
+    &.nv-line
+        fill-opacity 0 !important
+        path
+          fill-opacity 0 !important
+        .nvd3
+            &.nv-scatter
+                .nv-groups
+                    .nv-point
+                        fill-opacity 1 !important
+                        stroke-opacity 1 !important
+    &.nv-line
+        fill-opacity 0 !important
+    // .nv-bars
+    //     transform translateX(50px)
+
+#piechart
+    svg
+        height 300px
+        width 100%
+
+#treemap
+  height 300px
+  width 100%
+  margin auto
+
+  svg
+    width 100%
+
+#graph-container, #graph-container svg
+    width 100%
+    height 600px
+
+#flags-graph
+  svg
+    width 100%
+    height 200px
+
+    .nv-background rect
+      fill white
+
+
+.links
+    line
+
+.node
+    .nodeBack
+        opacity 0.85
+    &.active
+        .nodeBack
+            opacity 0
+    circle
+        stroke #fff
+        stroke-width 1px
+    .bubble-label
+        // font-family 'Poppins'
+        font-weight bold
+        font-size 1rem
+        fill #000
+        // stroke #000
+        // stroke-width 1px
+        // stroke-linejoin round
+
+.foreign-tooltip
+    display flex
+    width 160px
+    position absolute
+    pointer-events none
+    .node-tooltip
+        background-color #222222
+        border-radius 3px
+        box-shadow 0 0 5px rgba(0,0,0,0.3)
+        position relative
+        text-align center
+        padding 7px 8px 2px
+        line-height 1em
+        display inline-table
+        margin 0 auto
+        &::before
+            position absolute
+            content ''
+            border 10px solid transparent
+            border-bottom-color #222222
+            top -20px
+            left calc(50% - 10px)
+        .name
+            font-family 'Poppins'
+            font-size 12px
+            margin-bottom 3px
+            color #FFF
+            font-weight 600
+
+#subscribe-popup
+#login-dropdown-list
+  .form-suscribe
+    margin-right 10px
+  .modal-dialog
+    margin 100px auto 30px
+  p
+    color #5b5b5b
+    font-size: 1.1rem;
+  ul
+    padding-left 0
+  li
+    list-style-type none
+    color #5b5b5b
+  h2
+    color: #2d1c9d;
+    font-weight bold
+  .modal-body
+    padding 40px 15px
+  label
+    color: #2d1c9d;
+    font-size: 1.1rem;
+    text-transform uppercase
+    font-weight bold
+  input
+    padding 20px
+  button
+    padding: 15px 25px;
+    font-weight bold
+    margin-bottom 10px
+    background-color #2b00f7
+    text-transform uppercase
+    color #fff
+    border none
+    white-space nowrap
+    -webkit-transition all .35s
+    -moz-transition all .35s
+    transition all .35s
+    &:hover
+    &:focus
+      color #fff
+      background-color #2200c5
+      text-decoration none
+  .modal-content
+    background-color #f6f6f6
+  .at-form
+    margin-top -35px
+    margin-bottom 0
+
+.contratos-content
+.orgs-content
+.personas-content
+  margin-left 25%
+
+.apis-template
+  h2
+    color: #150b58;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top 3rem
+    margin-bottom: 2rem;
+    font-family inherit
+    text-transform none
+  .card
+    margin-bottom 2rem
+    padding-bottom: 2.5rem;
+    .card-content
+      padding 1rem 1rem 2.5rem 1rem
+    p
+      padding-top 0.5rem
+      padding-bottom 1.5rem
+    h3
+      margin-top 1rem
+      margin-bottom 1rem
+      color #2B00F7
+    .button-link
+      color #fff
+      -webkit-transition all .35s
+      -moz-transition all .35s
+      transition all .35s
+      font-weight normal
+      margin-right 1rem
+      &:hover
+      &:focus
+        color #fff
+    .link
+      text-decoration underline !important
+  .card-list
+    position relative
+    img
+      width 90%
+    p
+      padding-bottom 0
+  .subtitle-apis
+    margin-top -20px
+    margin-bottom 40px
+  .apis-bg
+    background-image url('../images/apis-bg.png')
+    height 460px
+    background-size cover
+    background-repeat no-repeat
+    background-position center top
+  .hr-apis
+    background-color #bec8ff
+  .apis-kibana
+    height 150px
+    background-image url('../images/apis-tlc.png')
+    background-size cover
+    background-repeat no-repeat
+  hr
+    margin-bottom 20px
+  .button-link-apilist
+    margin-right 0 !important
+    position absolute
+    right 1rem
+    bottom 0
+  .card-software
+    padding-bottom 0
+  .card-post-blog
+    padding 0.5rem
+  .content-post-blog
+    text-align center !important
+    background-color #f7f7f7
+    border solid 1px rgba(222, 222, 222, 0.3)
+    padding 1rem
+    h4
+      margin 0
+  .button-link-status-container
+    text-align right
+    margin-top 40px
+    margin-bottom 40px
+    .button-link-status
+      font-weight: normal;
+      border solid 1px #2B00F7
+      color #2B00F7
+      background-color transparent
+      &:hover
+        color #ffffff
+        background-color #2B00F7
+.row
+  &::after
+    content ""
+    clear both
+    display table
+
+[class*="col-"]
+  width 100%
+  float left
+
+@media only screen and (min-width: 768px)
+  .col-m-1
+    width 8.33%
+  .col-m-2
+    width 16.66%
+  .col-m-3
+    width 25%
+  .col-m-4
+    width 33.33%
+  .col-m-5
+    width 41.66%
+  .col-m-6
+    width 50%
+  .col-m-7
+    width 58.33%
+  .col-m-8
+    width 66.66%
+  .col-m-9
+    width 75%
+  .col-m-10
+    width 83.33%
+  .col-m-11
+    width 91.66%
+  .col-m-12
+    width 100%
+
+@media only screen and (min-width: 1300px)
+  .col-1
+    width 8.33%
+  .col-2
+    width 16.66%
+  .col-3
+    width 25%
+  .col-4
+    width 33.33%
+  .col-5
+    width 41.66%
+  .col-6
+    width 50%
+  .col-7
+    width 58.33%
+  .col-8
+    width 66.66%
+  .col-9
+    width 75%
+  .col-10
+    width 83.33%
+  .col-11
+    width 91.66%
+  .col-12
+    width 100%
+
+@media only screen and (max-width: 1200px)
+  .apis-template .card 
+    h3 
+      margin-right 1rem
+    p
+      margin-right 1rem 
+     
+  
+@media only screen and (max-width: 1160px)
+  div
+    &.explore-card
+      width 100%
+      height 31rem
+  .proyecto-info
+    position relative
+  .proyecto
+    button
+    a
+      width 100%
+      bottom 0
+      right 0
+      display block
+      text-align center
+
+@media only screen and (max-width: 1042px)
+  input[type=text].landing-search-inputtext
+    width 100%
+  input[type=submit].landing-search-inputtext
+    width auto
+    margin 0
+  div
+    &.explore-card
+      height 22rem
+  .card-image
+    display none
+  .contacto
+    button
+      margin-left auto
+  .explore-card
+    button
+      width 85%
+  .investigaciones
+    .card
+      p
+        font-size 1.4rem
+
+@media only screen and (max-width: 992px)
+    .navbar-header
+        float none
+    .navbar-left,.navbar-right
+        float none !important
+    .navbar-toggle
+        display block
+    .navbar-collapse
+        border-top 1px solid transparent
+        box-shadow inset 0 1px 0 rgba(255,255,255,0.1)
+        &.collapse
+            display none!important
+    .navbar-fixed-top
+        top 0
+        border-width 0 0 1px
+    .navbar-nav
+        float none!important
+        margin-top 7.5px
+        & > li
+            float none
+            & > a
+                padding-top 10px
+                padding-bottom 10px
+    .collapse
+        &.in
+            display block !important
+    .card-pad
+      .button-link
+        font-size 0.8rem
+    .filter-bar
+      position relative
+      width 100%
+      height 100%
+      overflow-y hidden
+    .fixed-filter-button
+      position: relative
+      left 0
+      width 100%
+    .contratos-content
+    .orgs-content
+    .personas-content
+      margin-left 0
+      padding-left 15px
+    .apis-template .card .link
+        display block
+        margin-top 2rem
+
+@media only screen and (max-width: 870px)
+  .explore-card
+    &.button-link
+      padding 9px
+      font-size .7rem
+  div
+    &.landing-header-content
+      width 90%
+
+@media only screen and (max-width: 800px)
+  .explore-card
+    &.button-link
+      color #2b00f7
+      background-color #fff
+  div
+    &.investigaciones-card
+      height 100%
+
+
+@media only screen and (max-width: 768px)
+  .explore-card
+    height 10rem
+    &.button-link
+      color #fff
+      background-color #2b00f7
+      padding 14px 14px
+      font-size .9rem
+    button
+      width auto
+  div
+    &.proyecto
+      img
+        width 15rem
+        display block
+        margin auto
+  .card-pad
+    padding 1rem
+    .button-link
+      font-size 1rem
+  .shrink
+  .fixed-nav
+    .navbar-right
+      width 100%
+    form.nav-form, .fixed-nav form.nav-form
+      width 100%
+      text-align left
+      margin-bottom 10px
+  #right-menu-contracts
+    display none
+  .investigaciones.row
+    height 400px
+  .addinfo-box
+    margin 3rem 0 0 0
+  .investigaciones.row
+    height auto
+  .investigaciones-card
+    .card-pad
+      .button-link
+        position inherit
+        display block
+        width 100%
+  footer
+    a
+      .logofooter-ml
+      .logofooter-pl
+        margin-bottom 1rem
+  .js-ocid
+    margin-bottom 2rem
+  .button-link-apifirst
+    margin-bottom 3rem
+    
+@media only screen and (max-width: 767px)
+  .button-link-apilist
+    position relative !important
+    margin-top 1rem
+  .apis-template
+    .button-link-status-container
+      text-align center
+      margin-top 0
+    h1
+      font-size 2rem
+    .card 
+      p
+        margin-bottom 1.5rem
+    .card-list 
+      img
+        width 100%
+    .card-software
+      padding-bottom 0.5rem
+      p
+        margin-left 16px
+      h3
+        margin-left 16px
+    
+@media only screen and (max-width: 700px)
+  input[type=submit].landing-search-inputtext
+    float none
+    margin-top 5px
+    width 100%
+  .autosuggest
+    width 100% !important
+  div
+    &.explore-card
+      height 18rem
+  div
+    &.landing-header-content
+      padding 64px 0 0 0
+      p
+        font-size 1.2rem
+        text-align left
+    // &.content
+    //   width 95%
+    &.card-pad
+      h3 strong
+        font-size 2rem
+        -webkit-margin-before .2rem
+        -webkit-margin-after .2rem
+
+    &.investigaciones-card
+      height 100%
+      position relative
+
+  img
+    &.name
+      width 100%
+      margin-left 0
+  .shrink
+  .fixed-nav
+    img
+      &.logo-horizontal
+        width 7rem
+        margin-top 0.5rem
+  input[type=text].nav-search-inputtext
+    width 7rem
+    padding 10px 10px
+    border-color #2b00f7
+  input[type=submit].nav-search-inputtext
+    width 5rem
+    padding 11px 6px
