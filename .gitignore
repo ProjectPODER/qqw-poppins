@@ -4,3 +4,4 @@ node_modules/.bin/
 .yarn.lock
 .yarn-error.log
 .DS_Store
+npm-debug.log
