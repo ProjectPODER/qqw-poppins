@@ -20,3 +20,17 @@
     </div>
   </div>
 </div>
+
+
+
+<section class="investigaciones">
+  <div class="content">
+    <h2>Investigaciones</h2>
+      <p class="investigaciones-p">PODER realiza cada semana un reportaje de investigación que siempre complementa con los datos que encuentran en QuiénEsQuién.Wiki.</p>
+      <div class="investigaciones row">
+        {{#each feed}}
+           {{>entry_template entry=this}}
+        {{/each}}
+    </div>
+  </div>
+</section>

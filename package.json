@@ -13,6 +13,7 @@
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "stylus": "0.54.5"
+    "stylus": "0.54.5",
+    "rss-parser": "3.7.0"
   }
 }
