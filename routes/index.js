@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
-  let feed = await getFeed();
-  res.render('index', { feed: feed });
+router.get('/', function(req, res, next) {
+  res.render('home', { feed: feed });
 });
 
 async function getFeed() {

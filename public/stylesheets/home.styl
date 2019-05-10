@@ -8,3 +8,118 @@
       border-style solid
       border-width 1px
       margin-bottom 20px
+
+div
+  &.line-blue
+    border-top 5px solid #110046
+    position fixed
+    z-index 99999
+    width 100%
+  &.jumbotron-container
+    background-color white
+    overflow hidden
+    z-index 50
+    height 120vh
+  &.landing-jumbotron
+    background -webkit-gradient(linear, left top, left bottom, color-stop(88%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1))), url(../images/fondo-home.png) no-repeat top left #def /* safari4+,chrome */
+    height 100vh
+    width 100%
+    -webkit-background-size cover
+    -moz-background-size cover
+    -o-background-size cover
+    background-size cover
+    background-blend-mode lighten
+  &.landing-header-content
+    padding 4rem
+    width 75%
+    text-align center
+    margin auto
+    padding-top 7%
+    h1
+      display inline-block
+      margin-left 1rem
+      font-size 4rem
+    p
+      display inline-block
+      margin 7%
+      font-size 1.5rem
+      color #5c5c5c
+      text-align center
+  &.landing-search
+    text-align left
+    p
+      font-size 1rem
+      color #2d1c9d
+      margin 1rem auto 1rem auto
+      &:first-child
+        font-size 1.2rem
+        color #2d1c9d
+        margin .5rem auto 1rem auto
+  &.explore-card
+    height 28rem
+    width 22rem
+    margin auto
+  &.card-pad
+    h3 strong
+      font-size 2rem
+      margin-bottom .2rem
+    h3
+      font-size 1.5rem
+      margin-bottom .7rem
+  &.proyecto
+    background-color #fff
+    padding 1rem
+    width 100%
+    margin-bottom 2rem
+    position relative
+    img
+      width 90%
+    p
+      margin-right 1rem
+      margin-bottom 3rem
+      padding 1rem 1.5rem 0 0
+      font-size 1.3rem
+  &.investigaciones-card
+    width 100%
+    height 100%
+    position relative
+    img
+      height auto
+  &.tab
+    overflow hidden
+    border 2px dotted #3a32f9
+    background-color #f1f1f1
+    button
+      background-color inherit
+      float left
+      border none
+      outline none
+      cursor pointer
+      padding 14px 16px
+      transition 0.3s
+      font-size 17px
+      &:hover
+        background-color #ddd
+      &.active
+        background-color #ccc
+
+  &.document-header
+    display flex
+    align-items flex-end
+    margin-bottom 2rem
+    margin-top 6rem
+    padding 0 2rem 0  1rem
+
+  &.document-body
+    padding 0 2rem 2rem 2rem
+
+  &.search-card
+    border-bottom 1px dashed #4d29ff
+    padding 1.5rem 0
+  &.content
+    display block
+    margin auto
+    width 85%
+
+.card-h3
+  margin-top -10px
