@@ -1,0 +1,231 @@
+<div class="jumbotron-container scrollme">
+  <div class="line-blue"></div>
+  <div class="landing-jumbotron animateme" data-when="span" data-from="0" data-to="1" data-opacity="0.5" data-translatey="300" data-easing="linear" style="opacity: 1; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1);">
+    <div class="landing-header-content">
+      <img class="logo animateme img-responsive" src="images/single.png" alt="Logo" data-when="span" data-from="0" data-to="1" data-scale="0.75" data-translatey="100" data-easing="linear" style="opacity: 1; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1);">
+
+      <p>Una herramienta para explorar las <strong>conexiones y contratos entre empresarios, políticos, empresas y organizaciones.</strong> Facilita el acceso de investigadores, periodistas y ciudadanos a varias <a href="#fuentes">fuentes de datos abiertos</a>.</p>
+      <div class="landing-search">
+        <p>Puedes buscar nombres de empresarios y organizaciones.</p>
+        <div class="landing-search-form" method="get">
+          {{!-- {{> searchForm }} --}}
+        <input type="submit" value="Buscar" class="landing-search-inputtext" id="first-search">
+        </div>
+
+        <p>*Para encontrar contratos usa el <a href="/contracts">buscador avanzado de contratos públicos</a>.</p>
+      </div>
+    </div>
+    <div class="arrow-down">
+      <a href="#down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
+
+<section class="explore-data" id="down">
+  <div class="content row">
+    <div class="col-4 col-m-4 card-pad-ext">
+      <div class="card explore-card">
+        <a href="/persons"><img src="images/Consejo-Mexicano-de-Negocios.jpg" alt="Personas" class="card-image"></a>
+        <div class="card-pad">
+          <a href="/persons"><h3>
+           {{!--  <strong>
+              {{#if counter.persons }}
+                {{format_number counter.persons}}
+              {{else}}
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+              {{/if}}
+            </strong> --}}
+            <strong>
+              123456
+            </strong>
+          </h3>
+          <h3 class="card-h3">Personas</h3></a>
+          <p class="serif-gray">Funcionarios, empresarios y proveedores del Estado, qué negocios tienen, con quién se asocian y cómo consiguen sus contratos públicos.</p>
+          <a href="/persons" class="button-link">VER PERSONAS</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 col-m-4 card-pad-ext">
+      <div class="card explore-card">
+        <a href="/orgs"><img src="images/mercado.png" alt="Organizaciones" class="card-image"></a>
+        <div class="card-pad">
+          <a href="/orgs"><h3>
+            {{!-- <strong>
+              {{#if counter.orgs }}
+                {{format_number counter.orgs}}
+              {{else}}
+                <i class="fa fa-spinner fa-pulse fa-fw"></i>
+              {{/if}}
+            </strong> --}}
+            <strong>
+              123456
+            </strong>
+          </h3>
+          <h3 class="card-h3">Organizaciones</h3></a>
+          <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
+          <a href="/orgs" class="button-link">VER ORGANIZACIONES</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 col-m-4 card-pad-ext">
+      <div class="card explore-card">
+        <a href="/contracts"><img src="images/licitacion.png" alt="Contratos" class="card-image"></a>
+        <div class="card-pad">
+          <a href="/contracts"><h3>
+            {{!-- <strong>
+            {{#if counter.contracts_ocds }}
+              {{format_number counter.contracts_ocds}}
+            {{else}}
+              <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            {{/if}}
+            </strong> --}}
+            <strong>
+              123456
+            </strong>
+          </h3>
+          <h3 class="card-h3">Contratos</h3></a>
+          <p class="serif-gray">Explora los importes, años, dependencias, empresas proveedoras y otras características de más de un millón de contratos.</p>
+          <a href="/contracts" class="button-link">VER CONTRATOS</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="data-sources text-center" id="fuentes">
+  <div class="row content">
+    <h2 class="investigaciones"><a href="/about/#user-content-fuentes">¿Cuáles son nuestras fuentes de datos?</a></h2>
+    <p>QuiénEsQuién.Wiki mezcla fuentes de información pública e investigaciones propias con el objetivo de mostrar la captura del estado.</p>
+    <p>Puedes acceder a ellos en está plataforma, con <a href="https://kibana.quienesquien.wiki/">nuestra herramienta de análisis avanzado de datos</a> y a través de la <a href="https://api.quienesquien.wiki/v1/docs/">API</a>.</p>
+    <div class="col-4 col-m-4 centered triplet-wrapper">
+      <img src="images/market.svg" alt="Bolsa de Valores" class="sources-icons">
+      <h3 class="triplet"><a href="/about/#user-content-contratos">Contratos públicos</a></h3>
+      <p class="triplet-text">En los procesos de contratación pública se esconden casos flagrantes de captura del estado. Tenemos importadas las siguientes bases de datos: <a href="/about/#user-content--compranet-plus-mexico">CompraNet Plus, México</a></p>
+      <p class="triplet-last-update">Fecha de última actualización: {{!-- {{ moment_L currentDate.orgsDate}}  --}}</p>
+    </div>
+    <div class="col-4 col-m-4 centered triplet-wrapper">
+      <img src="images/compranet.svg" alt="Compranet" class="sources-icons">
+      <h3 class="triplet"><a href="/about/#user-content-beneficiarios-reales">Beneficiarios reales</a></h3>
+      <p class="triplet-text">La propietarios de la empresa y sus controladores es una de las informaciones más difíciles de acceder. Aquí la lista de datasets que usamos para vincular corporaciones y empresas: <a href="/about/#user-content--bolsa-de-valores-mexicana-mexico">Bolsa de Valores de México</a></p>
+      <p class="triplet-last-update">Fecha de última actualización: {{!-- {{ moment_L currentDate.contractsDate }} --}}</p>
+    </div>
+    <div class="col-4 col-m-4 centered triplet-wrapper">
+      <img src="images/research.svg" alt="Investigaciones propias" class="sources-icons">
+      <h3 class="triplet"><a href="/about/#user-content-investigaciones-propias">Investigaciones propias</a></h3>
+      <p class="triplet-text">Proyectos de distintas organizaciones de la sociedad civil que siguen el dinero y mapean una corporación o gobierno: <a href="/about/#user-content--torredecontrolorg">TorreDeControl.org, México</a> y <a href="/about/#user-content--cargografias">Cargografías, Argentina</a></p>
+      <!-- <p class="triplet-last-update">Fecha de última actualización: XX/XX/XXXX</p> -->
+    </div>
+  </div>
+</section>
+
+<section class="proyectos">
+  <div class="row">
+    <div class="content">
+      <h2>Proyectos</h2>
+      <p class="text-white">A partir de la investigación de los datos de QuiénEsQuién.Wiki, se han realizado proyectos de largo aliento, visualizaciones innovadoras y se han creado secciones de medios.</p>
+
+      <!--End mc_embed_signup-->
+
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <a href="https://vivirconvih.org/"><img src="images/vih-site.png" alt="VivirconVIH.org"></a>
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">A partir del análisis de la compras de antirretrovirales en Guatemala mostramos la situación en la que está el país y apuntamos acciones de incidencia para permitir mejorar la vida de las personas que viven con el virus.</p>
+            <a class="button-link" type="button" href="https://vivirconvih.org/" target="_blank">VER VIVIRCONVIH.ORG</a>
+        </div>
+      </div>
+
+      <div class="contacto-text">
+        <h3 class="text-white">Te avisamos cuando saquemos un nuevo proyecto</h3>
+        <div id="mc_embed_signup">
+          <form action="https://projectpoder.us15.list-manage.com/subscribe/post?u=2717e723ef63df492f38fc669&amp;id=62bed77118" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+              <input  type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Ingresa tu email" required>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2717e723ef63df492f38fc669_62bed77118" tabindex="-1" value=""></div>
+              <input type="submit" value="Recibir newsletter" name="suscribirse" id="mc-embedded-subscribe" class="button button-link">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <a href="https://conoceblackrock.projectpoder.org/"><img src="images/blackrock.png" alt="Proyecto BlackRock"></a>
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">Desde PODER, y con el apoyo de Connectas y el ICFJ, se mapearon todos los vínculos que la gestora de activos BlackRock tiene en México: acciones en la bolsa de valores, proyectos energéticos, gestión de inversión de pensiones y sus relaciones con el poder político.</p>
+            <a class="button-link" type="button" href="https://conoceblackrock.projectpoder.org/" target="_blank">VER BLACKROCK</a>
+
+        </div>
+      </div>
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <a href="https://torredecontrol.projectpoder.org/"><img src="images/TDC.png" alt="Proyecto Torre de Control"></a>
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">La construcción del Nuevo Aeropuerto Internacional del Ciudad de Mexico tiene una inversión prevista de 250 mil millones de pesos. Este proyecto de PODER y Wingu vincula y pone a disposición todos los contratos con los beneficiarios reales de las empresas ganadoras.</p>
+            <a class="button-link" type="button" href="https://torredecontrol.projectpoder.org/" target="_blank">VER TORRE DE CONTROL</a>
+        </div>
+      </div>
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <img src="images/contratistasdelpoder.png" alt="Proyecto Contratistas del Poder">
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">Análisis de las empresas más beneficiadas por la contratación pública en los tres primeros años del mandato del presidente Enrique Peña Nieto. Proyecto realizado por El Universal Data y PODER.</p>
+            <button class="btn btn-default" type="button" disabled>FUERA DE LÍNEA</button>
+
+        </div>
+      </div>
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <a href="http://ojo-publico.com/113/que-es-la-sala-del-poder"><img src="images/saladepoder.png" alt="Proyecto Sala de Poder"></a>
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">Ojo Público usó la información sobre la Bolsa de Valores de Lima que hay en QuiénEsQuién.Wiki para lanzar su sección "Sala del poder" que quiere "fiscalizar y conocer a los grupos económicos nos permite entender el Perú".</p>
+            <a class="button-link" type="button" href="http://ojo-publico.com/113/que-es-la-sala-del-poder" target="_blank">VER SALA DE PODER</a>
+        </div>
+      </div>
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <img src="images/LogoINCIDEALTARES.jpg" alt="Proyecto VigilanciaWiki">
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">Incide Social registró las votaciones de los consejeros del Instituto Nacional Electoral de México para mostrar si existía algún tipo de colusión entre ello. </p>
+            <button class="btn btn-default" type="button" disabled>FUERA DE LÍNEA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="investigaciones">
+  <div class="content">
+    <h2>Investigaciones</h2>
+    <p class="investigaciones-p">PODER realiza cada semana un reportaje de investigación que siempre complementa con los datos que encuentran en QuiénEsQuién.Wiki.</p>
+    <div class="investigaciones row">
+      <div class="col-4 col-m-4 card-pad-ext">
+        <div class="card explore-card investigaciones-card">
+          <div class="card-image-container">
+            <img src="https://www.rindecuentas.org/wp-content/uploads/2018/07/Unknown.jpeg" alt="" class="card-image">
+          </div>
+          <div class="card-pad">
+            <p class="serif-gray">Rocío Nahle baja la presión a Odebrecht en la primera junta de gabinete de AMLO</p>
+            <button class="button-link" type="button" name="leer" {{!-- onClick="window.open('{{entry.link}}','Leer')" --}}>LEER</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="contacto">
+    <div class="contacto-text">
+      <p>¿Quieres aprender a usar QQW para tus investigaciones?</p>
+      <a href="/contact" class="button-link" type="button" name="button">Contáctanos</a>
+    </div>
+  </div>
+</section>

@@ -12,6 +12,8 @@
     "express-handlebars": "^3.0.2",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
+    "jquery": "^3.4.1",
+    "jquery.easing": "^1.4.1",
     "morgan": "~1.9.1",
     "stylus": "0.54.5"
   }
