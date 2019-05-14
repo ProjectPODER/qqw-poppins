@@ -15,4 +15,9 @@ async function getFeed() {
   return feed.items.slice(0,3);
 }
 
+/* GET contratcs index. */
+router.get('/contracts', function(req, res, next) {
+  res.render('contracts');
+});
+
 module.exports = router;

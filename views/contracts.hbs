@@ -1,0 +1,197 @@
+<div class="row document-body">
+  <div class="col-3 col-m-3">
+    <div class="filter-bar">
+      <form>
+          <h4 class="search-title">Filtros Avanzados</h4>
+
+          <fieldset name="proveedores">
+            <p class="search-title">FILTRAR PROVEEDORES <a data-toggle="tooltip" data-placement="right" title="Nombre o Razón Social del Proveedor o Contratista ganador de la contratación."><i class="fa fa-question"></i></a></p>
+            <div class="multiple-controls-group">
+              <div class="multiple-control-container">
+                <input type="text" name="proveedor" placeholder="Nombre de proveedor" class="supplier_name_filter multiple-control">
+                <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control">
+              </div>
+
+            </div>
+            <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control">
+          </fieldset>
+
+          <fieldset name="dependencias">
+            <p class="search-title">FILTRAR DEPENDENCIAS <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
+            <div class="multiple-controls-group">
+              <div class="multiple-control-container">
+                <input type="text" name="dependencia" placeholder="Nombre de dependencia" class="dependency_name_filter multiple-control">
+                <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control">
+              </div>
+
+            </div>
+            <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control">
+          </fieldset>
+
+          <fieldset name="vigencia">
+            <p class="search-title">Vigencia de contrato <a data-toggle="tooltip" data-placement="right" title="Fecha de inicio y fecha de expiración del contrato reportado por la Unidad Compradora."><i class="fa fa-question"></i></a></p>
+            <p class="search-label">Fecha de Inicio (a partir de 2002)</p>
+            <input type="date" id="from_date_contracts_index" value="01/01/2002" min="2002-01-01">
+            <p class="search-label">Fecha de fin</p>
+            <input type="date" id="to_date_contracts_index" value="00/00/0000" min="2002-01-01">
+            <p>
+              <input type="checkbox" id="fecha-desconocido" checked="checked"> Incluir contratos con fecha desconocida
+            </p>
+          </fieldset>
+
+          <fieldset name="importe">
+            <p class="search-title">Importe del contrato <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><i class="fa fa-question"></i></a></p>
+            <a class="search-label importe-bucket" data-bucket="0-1000000"><p>Menor a 1 millón de pesos</p></a>
+            <a class="search-label importe-bucket" data-bucket="1000000-500000000"><p>Entre 1 millón y 500 millones</p></a>
+            <a class="search-label importe-bucket" data-bucket="500000000-1000000000"><p>Entre 500 millones a 1,000 millones</p></a>
+            <a class="search-label importe-bucket" data-bucket="1000000000-"><p>Más de mil millones</p></a>
+            <input type="text" id="importe-minimo" placeholder="Mínimo" class="search-amount">
+            <input type="text" id="importe-maximo" placeholder="Máximo" class="search-amount">
+            <p>
+              <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
+            </p>
+
+          </fieldset>
+
+          <fieldset name="tipo-adquisicion">
+            <p class="search-title">Procedimiento de contratación <a data-toggle="tooltip" data-placement="right" title="Refiere al tipo de procedimiento:
+
+            a) Licitación Pública.
+            - Procedimiento por regla general que debiera utilizarse para la adquisición de bienes y servicios.
+            b) Invitación a cuando menos tres proveedores o contratistas.
+            c) Adjudicación Directa.
+            - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><i class="fa fa-question"></i></a></p>
+            <select id="tipo-adquisicion" class="search-select">
+              <option value="">Todos</option>
+              <option value="Adjudicación Directa Federal">Adjudicación directa</option>
+              <option value="Invitación a Cuando Menos 3 Personas">Invitación a 3</option>
+              <option value="Licitación Pública|Licitación Pública con OSD">Licitación</option>
+            </select>
+          </fieldset>
+            <input type="button" class="search-submit fixed-filter-button" value="FILTRAR">
+          <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
+      </form>
+    </div>
+  </div>
+  <div class="col-9 col-m-9 contratos-content">
+    <div class="row document-header">
+      <div class="col-3 col-m-3">
+        <h2 class="document-title">Contratos</h2>
+      </div>
+      <div class="col-9 col-m-9">
+        <p class="document-description">Explora los importes, años, dependencias, empresas proveedoras y otras características de más de un millón de contratos de México.</p>
+      </div>
+    </div>
+
+      {{!--
+        //Comentado para ocultar puntaje
+      <div class="search-order-form">
+        <form class="form-inline">
+          <label for="search-order">Ordenar por</label>
+          <select class="form-control input-sm" name="search-order" id="search-order">
+            <option value="precio">Precio (de mayor a menor)</option>
+            <option value="puntaje">Puntaje (de mayor a menor)</option>
+          </select>
+        </form>
+      </div>
+      --}}
+
+      {{!-- {{> tabular table=TabularTables.Contracts_OCDS
+      id="contract-index"  selector=selector
+      class="" }} --}}
+
+      <div id="contract-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        <div>
+          <div class="col-m-6">
+            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de 911,970 resultados
+            </div>
+          </div>
+          <div class="col-m-6">
+            <div class="dataTables_length" id="contract-index_length">
+              <label>Mostrar 
+                <select name="contract-index_length" aria-controls="contract-index" class="form-control input-sm">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select> resultados
+              </label>
+            </div>
+          </div>
+          <div class="col-m-12">
+            <div id="contract-index_processing" class="dataTables_processing panel panel-default" style="display: none;">
+              <div class="loading-container">
+                <div class="loading">
+                  <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                </div>
+              </div>
+            </div>
+            <div id="contract-index" class="dataTable" aria-describedby="contract-index_info" role="grid">
+              <div class="dataCardBody">
+                <div role="row" class="search-card odd">
+                  <div class=" js-title no-title search-result-title col-m-8 col-8">
+                    <div class="cardItemTitle">Título</div>
+                    <div class="cardItemData"></div>
+                    <a href="/contracts/OCDS-0UD2Q6-LA-018TOQ003-T516-2012?supplier=cic corporativo industrial coahuila sa de cv">Carbón Mineral Termico No Coquizable Subbituminoso de Flama Larga</a>
+                  </div>
+                  <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
+                    <div class="cardItemTitle"></div>
+                    <div class="cardItemData"></div>$23,738,400,000.00<span class="contract_currency">Pesos mexicanos</span>
+                  </div>
+                  <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
+                    <div class="cardItemTitle"></div>
+                    <div class="cardItemData"></div>Vigente desde 31 de diciembre de 2012 hasta 30 de diciembre de 2018
+                  </div>
+                  <div class=" js-ocid no-title col-1 col-m-1">
+                    <div class="cardItemTitle">OCID</div>
+                    <div class="cardItemData"></div>
+                    <a href="/contracts/OCDS-0UD2Q6-LA-018TOQ003-T516-2012?supplier=cic corporativo industrial coahuila sa de cv" class="button-link">Ver contrato</a>
+                  </div>
+                  <div class=" js-dependency col-4 col-m-4">
+                    <div class="cardItemTitle">Dependencia</div>
+                    <div class="cardItemData"></div>
+                    <ul class="dependency-cell list-unstyled">
+                      <li>
+                        <a href="/orgs/comision federal de electricidad">Comisión Federal de Electricidad</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class=" js-suppliers col-3 col-m-3">
+                    <div class="cardItemTitle">Proveedores</div>
+                    <div class="cardItemData"></div>
+                    <ul class="suppliers-cell list-unstyled">
+                      <li>
+                        <a href="/orgs/cic corporativo industrial coahuila sa de cv">CIC CORPORATIVO INDUSTRIAL COAHUILA, S.A. de C.V.</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class=" js-procedure col-2 col-m-2">
+                    <div class="cardItemTitle">Procedimiento</div>
+                    <div class="cardItemData">Licitación Pública</div>
+                  </div>
+                  <div class=" js-score col-1 col-m-1 hidden">
+                    <div class="cardItemTitle">Puntaje</div>
+                    <div class="cardItemData"></div>47.62<span class="d100">/100</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dataTables_paginate paging_simple_numbers" id="contract-index_paginate">
+              <ul class="pagination">
+                <li class="paginate_button previous disabled" id="contract-index_previous"><a href="#" aria-controls="contract-index" data-dt-idx="0" tabindex="0">Anterior</a></li>
+                <li class="paginate_button active"><a href="#" aria-controls="contract-index" data-dt-idx="1" tabindex="0">1</a></li>
+                <li class="paginate_button "><a href="#" aria-controls="contract-index" data-dt-idx="2" tabindex="0">2</a></li>
+                <li class="paginate_button "><a href="#" aria-controls="contract-index" data-dt-idx="3" tabindex="0">3</a></li>
+                <li class="paginate_button "><a href="#" aria-controls="contract-index" data-dt-idx="4" tabindex="0">4</a></li>
+                <li class="paginate_button "><a href="#" aria-controls="contract-index" data-dt-idx="5" tabindex="0">5</a></li>
+                <li class="paginate_button disabled" id="contract-index_ellipsis"><a href="#" aria-controls="contract-index" data-dt-idx="6" tabindex="0">…</a></li>
+                <li class="paginate_button "><a href="#" aria-controls="contract-index" data-dt-idx="7" tabindex="0">36479</a></li>
+                <li class="paginate_button next" id="contract-index_next"><a href="#" aria-controls="contract-index" data-dt-idx="8" tabindex="0">Siguiente</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
