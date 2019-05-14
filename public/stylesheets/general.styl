@@ -1,17 +1,227 @@
 html, body
   height 100%
+  font-size 100%
 
 #content
   min-height 100%
 
-html, body
-  font-size 100%
-
 body
   background-color #FFF
   overflow-x hidden
-  margin: 0;
+  margin 0
+  font-family 'Montserrat', sans-serif
+  font-size 14
+  line-height 1.42857143
 
+*
+  -webkit-box-sizing border-box
+  box-sizing border-box
+
+*:before,
+*:after
+  -webkit-box-sizing border-box
+  box-sizing border-box
+
+input,
+button,
+select,
+textarea
+  font-family inherit
+  font-size inherit
+  line-height inherit
+
+a
+  color #337ab7
+  text-decoration none
+  &:focus
+    outline thin dotted
+    outline 5px auto -webkit-focus-ring-color
+    outline-offset -2px
+
+a:hover,
+a:focus
+  color #23527c
+  text-decoration underline
+
+figure
+  margin 0
+
+img
+  vertical-align middle
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img
+  display block
+  max-width 100%
+  height auto
+
+.img-rounded
+  border-radius 6px
+
+.img-thumbnail
+  display inline-block
+  max-width 100%
+  height auto
+  padding 4px
+  line-height 1.42857143
+  background-color #fff
+  border 1px solid #ddd
+  border-radius 4px
+  -webkit-transition all .2s ease-in-out
+  transition all .2s ease-in-out
+
+.img-circle
+  border-radius 50%
+
+hr
+  margin-top 20px
+  margin-bottom 20px
+  border 0
+  border-top 1px solid #eee
+
+.sr-only
+  position absolute
+  width 1px
+  height 1px
+  padding 0
+  margin -1px
+  overflow hidden
+  clip rect(0, 0, 0, 0)
+  border 0
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus
+  position static
+  width auto
+  height auto
+  margin 0
+  overflow visible
+  clip auto
+
+[role="button"]
+  cursor pointer
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6
+  font-family inherit
+  font-weight 500
+  line-height 1.1
+  color inherit
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small
+  font-weight normal
+  line-height 1
+  color #777
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3
+  margin-top 20px
+  margin-bottom 10px
+
+h1 small,
+.h1 small,
+h2 small,
+.h2 small,
+h3 small,
+.h3 small,
+h1 .small,
+.h1 .small,
+h2 .small,
+.h2 .small,
+h3 .small,
+.h3 .small
+  font-size 65%
+
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6
+  margin-top 10px
+  margin-bottom 10px
+
+h4 small,
+.h4 small,
+h5 small,
+.h5 small,
+h6 small,
+.h6 small,
+h4 .small,
+.h4 .small,
+h5 .small,
+.h5 .small,
+h6 .small,
+.h6 .small
+  font-size 75%
+
+h1,
+.h1
+  font-size 36px
+
+h2,
+.h2
+  font-size 30px
+
+h3,
+.h3
+  font-size 24px
+
+h4,
+.h4
+  font-size 18px
+
+h5,
+.h5
+  font-size 14px
+
+h6,
+.h6
+  font-size 12px
+
+p
+  margin 0 0 10px
+    
 #main
   height 100%
 
@@ -23,6 +233,10 @@ table.reactive-table
   tr td:first-child:hover
     cursor pointer
     color #337ab7
+
+ul, ol
+  margin-top 0
+  margin-bottom 10px
 
 a, .cursor-pointer
   cursor pointer
@@ -42,10 +256,9 @@ a
   &:hover
   &:focus
     color #2d1c9d
-
+    
 .text-center
   text-align center
-
 
 .filter-bar
     input[type="text"]
@@ -119,8 +332,6 @@ input[type=submit].nav-search-inputtext
   font-weight bold
   color #fff
   cursor pointer
-
-
 
 input[type=text].landing-search-inputtext
   width 100%
@@ -334,13 +545,10 @@ p
 *
   box-sizing border-box
 
-body
-  font-family 'Montserrat', sans-serif
-
 button
   cursor pointer
 
-h2card-image-container
+h2 card-image-container
   font-size 2.5rem
   font-weight bold
   padding 1rem 0
@@ -453,6 +661,10 @@ img.icon-lf
 
 fieldset
   margin-bottom 1rem
+  min-width 0
+  padding 0
+  margin 0
+  border 0
 
 .fixed-filter-button
   position: fixed
@@ -523,7 +735,7 @@ button.reset-filters
 .search-result-emph
   color #2900f5
   font-family monospace
-  font-size 2.4rem
+  font-size 2.7rem
 
 .search-result-emph-complementary
   color #2900f5
@@ -586,7 +798,7 @@ button.reset-filters
 .js-end-date
     padding-left 20px
     padding-bottom 2px
-    background url(images/calendar.png) no-repeat;
+    background url(/images/calendar.png) no-repeat;
 
     .cardItemData
         font-weight bold
@@ -597,18 +809,18 @@ button.reset-filters
     padding-right 0.5em
     .cardItemTitle
       padding-left 25px
-      background url(images/icons/dependencia-gray-light.svg) no-repeat;
+      background url(/images/icons/dependencia-gray-light.svg) no-repeat;
       background-size 16px
 .js-suppliers
     .cardItemTitle
       padding-left 25px
-      background url(images/icons/empresa-gray-light.svg) no-repeat;
+      background url(/images/icons/empresa-gray-light.svg) no-repeat;
       background-size 16px
 
 .js-procedure
     .cardItemTitle
       padding-left 25px
-      background url(images/icons/procedimiento-gray-light.svg) no-repeat;
+      background url(/images/icons/procedimiento-gray-light.svg) no-repeat;
       background-size 16px
 .js-procedure
 .js-dependency
@@ -1359,6 +1571,278 @@ hr
 [class*="col-"]
   width 100%
   float left
+  
+div
+  &.line-blue
+    border-top 5px solid #110046
+    position fixed
+    z-index 99999
+    width 100%
+  &.jumbotron-container
+    background-color white
+    overflow hidden
+    z-index 50
+    height 120vh
+  &.landing-jumbotron
+    background -webkit-gradient(linear, left top, left bottom, color-stop(88%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1))), url(../images/fondo-home.png) no-repeat top left #def /* safari4+,chrome */
+    height 100vh
+    width 100%
+    -webkit-background-size cover
+    -moz-background-size cover
+    -o-background-size cover
+    background-size cover
+    background-blend-mode lighten
+  &.landing-header-content
+    padding 4rem
+    width 75%
+    text-align center
+    margin auto
+    padding-top 7%
+    h1
+      display inline-block
+      margin-left 1rem
+      font-size 4rem
+    p
+      display inline-block
+      margin 7%
+      font-size 1.5rem
+      color #5c5c5c
+      text-align center
+  &.landing-search
+    text-align left
+    p
+      font-size 1rem
+      color #2d1c9d
+      margin 1rem auto 1rem auto
+      &:first-child
+        font-size 1.2rem
+        color #2d1c9d
+        margin .5rem auto 1rem auto
+  &.explore-card
+    height 28rem
+    width 22rem
+    margin auto
+  &.card-pad
+    h3 strong
+      font-size 2rem
+      margin-bottom .2rem
+    h3
+      font-size 1.5rem
+      margin-bottom .7rem
+  &.proyecto
+    background-color #fff
+    padding 1rem
+    width 100%
+    margin-bottom 2rem
+    position relative
+    img
+      width 90%
+    p
+      margin-right 1rem
+      margin-bottom 3rem
+      padding 1rem 1.5rem 0 0
+      font-size 1.3rem
+  &.investigaciones-card
+    width 100%
+    height 100%
+    position relative
+    img
+      height auto
+  &.tab
+    overflow hidden
+    border 2px dotted #3a32f9
+    background-color #f1f1f1
+    button
+      background-color inherit
+      float left
+      border none
+      outline none
+      cursor pointer
+      padding 14px 16px
+      transition 0.3s
+      font-size 17px
+      &:hover
+        background-color #ddd
+      &.active
+        background-color #ccc
+
+  &.document-header
+    display flex
+    align-items flex-end
+    margin-bottom 2rem
+    margin-top 6rem
+    padding 0 2rem 0 0
+
+  &.document-body
+    padding 0 2rem 2rem 2rem
+
+  &.search-card
+    border-bottom 1px dashed #4d29ff
+    padding 1.5rem 0
+  &.content
+    display block
+    margin auto
+    width 85%
+
+.card-h3
+  margin-top -10px
+  
+input[type="email"] 
+  padding 10px
+  margin-right 5px
+  border-color #d3d3d3
+  border-style solid
+  border-width 1px
+  margin-bottom 20px
+  
+/* data-table */
+.index-table
+  margin-top 3em
+  tr td:first-child
+    text-transform capitalize
+    cursor pointer
+  tr td:first-child:hover
+    color #337ab7
+
+#contract-index tbody
+  td.js-suppliers a
+    text-transform capitalize
+  td.js-ocid, td.js-dependency, td.js-title
+    cursor pointer
+    color #337ab7
+    &:hover
+      text-decoration underline
+      
+.list-unstyled
+  padding-left 0
+  list-style none
+  
+select
+  &.input-sm
+    height 30px
+    line-height 30px
+
+.form-control
+  height 25px
+  vertical-align middle
+  display block
+  width 100%
+  height 34px
+  padding 6px 12px
+  font-size 14px
+  line-height 1.42857143
+  color #555
+  background-color #fff
+  background-image none
+  border 1px solid #ccc
+  border-radius 4px
+  -webkit-box-shadow inset 0 1px 1px rgba(0, 0, 0, .075)
+  box-shadow inset 0 1px 1px rgba(0, 0, 0, .075)
+  -webkit-transition border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
+  transition border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
+  transition border-color ease-in-out .15s, box-shadow ease-in-out .15s
+  transition border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
+
+.input-sm
+  height 30px
+  padding 5px 10px
+  font-size 12px
+  line-height 1.5
+  border-radius 3px
+  
+// pagination
+
+#person-index_paginate, #contract-index_paginate, #organization-index_paginate
+  text-align center
+
+div
+  &.dataTables_wrapper
+    div
+      &.dataTables_paginate
+        margin 0
+        white-space nowrap
+        text-align right
+        ul
+          &.pagination
+            margin 2px 0
+            white-space nowrap
+
+.dataTables_paginate
+  margin-top 2.5rem !important
+
+.pagination
+  display inline-block
+  padding-left 0
+  margin 20px 0
+  border-radius 4px
+  & > li
+    display inline
+    
+div.dataTables_paginate li.first>a, div.dataTables_paginate li.previous>a
+  position relative
+  padding-left 24px
+
+.pagination>li:first-child>a, .pagination>li:first-child>span
+  margin-left 0
+  border-top-left-radius 4px
+  border-bottom-left-radius 4px
+
+.pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus
+  color #777
+  cursor not-allowed
+  background-color #fff
+  border-color #ddd
+
+.pagination>li>a, .pagination>li>span
+  padding 6px 12px
+  color #9b9b9b
+  background-color #fff
+  border 1px solid #ddd
+  position relative
+  float left
+  margin-left -1px
+  line-height 1.42857143
+  text-decoration none
+
+div
+  &.dataTables_paginate
+    li
+      &.previous
+        a
+          &:before
+            content "\f104"
+      &.next
+        a
+          &:after
+            content "\f105"
+
+div.dataTables_paginate li.first a:before, div.dataTables_paginate li.previous a:before
+  position absolute
+  top 6px
+  left 10px
+  display block
+  font-family FontAwesome
+
+div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
+  position absolute
+  top 6px
+  right 10px
+  display block
+  font-family FontAwesome
+
+@media (min-width: 768px)
+  .form-inline
+    .form-control
+      display inline-block
+      width auto
+      vertical-align middle
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus
+  background-color #21018b
+  border-color #21018b
+  z-index 2
+  color #fff
+  cursor default
 
 @media only screen and (min-width: 768px)
   .col-m-1
@@ -1424,7 +1908,7 @@ hr
   div
     &.explore-card
       width 100%
-      height 31rem
+      height 28rem
   .proyecto-info
     position relative
   .proyecto

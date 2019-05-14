@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  res.render('home', { feed: await getFeed() });
+  let feed = await getFeed();
+  res.render('home', { feed: feed });
 });
 
 async function getFeed() {
@@ -13,5 +14,10 @@ async function getFeed() {
   let feed = await parser.parseURL('https://www.rindecuentas.org/feed/');
   return feed.items.slice(0,3);
 }
+
+/* GET contratcs index. */
+router.get('/contracts', function(req, res, next) {
+  res.render('contracts');
+});
 
 module.exports = router;
