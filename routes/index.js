@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   let feed = await getFeed();
-  res.render('home', { feed: feed });
+  res.render('home', { feed: feed, title: 'home' });
 });
 
 async function getFeed() {
@@ -15,7 +15,7 @@ async function getFeed() {
   return feed.items.slice(0,3);
 }
 
-/* GET contratcs index. */
+/* GET contracts index. */
 router.get('/contracts', function(req, res, next) {
   res.render('contracts');
 });
