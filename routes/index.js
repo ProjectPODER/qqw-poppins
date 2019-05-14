@@ -4,13 +4,13 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   let feed = await getFeed();
-  res.render('home', { feed: feed, title: 'home' });
+  res.render('home', { feed: feed });
 });
 
 /* GET contratcs index. */
 router.get('/contracts', async function(req, res, next) {
   let filters = {};
-  result = await getAPI();
+  result = await getAPI("organizations",filters);
   console.log("contracts",result);
   res.render('contracts', {result: result});
 });
@@ -24,7 +24,7 @@ async function getFeed() {
   return feed.items.slice(0,3);
 }
 
-async function getAPI(filters) {
+async function getAPI(collection,filters) {
   let Qqw = require('qqw');
 
   var client = new Qqw();
@@ -35,8 +35,8 @@ async function getAPI(filters) {
     params[f] = filters[f];
   }
 
-  client.get('organizations', params, function(error, organizations, response) {
-    console.log("getAPI",organizations);
+  client.get(collection, params, function(error, result, response) {
+    console.log("getAPI",result);
   });
 
 }
