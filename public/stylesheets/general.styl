@@ -221,13 +221,16 @@ h6,
 
 p
   margin 0 0 10px
-    
+
 #main
   height 100%
 
+.nav>li>a
+  text-decoration none
+
 header .navbar, #footer
   color #fff
-
+      
 table.reactive-table
   width 100%
   tr td:first-child:hover
@@ -1810,25 +1813,23 @@ div
       &.previous
         a
           &:before
-            content "\f104"
+            content "<"
       &.next
         a
           &:after
-            content "\f105"
+            content ">"
 
 div.dataTables_paginate li.first a:before, div.dataTables_paginate li.previous a:before
   position absolute
-  top 6px
+  top 7px
   left 10px
   display block
-  font-family FontAwesome
 
 div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
   position absolute
-  top 6px
+  top 7px
   right 10px
   display block
-  font-family FontAwesome
 
 @media (min-width: 768px)
   .form-inline

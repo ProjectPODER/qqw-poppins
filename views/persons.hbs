@@ -1,0 +1,149 @@
+<div class="row document-body">
+  <div class="col-3 col-m-3">
+      <div class="filter-bar">
+        <form>
+          <h4 class="search-title">Filtrar</h4>
+          <fieldset name="proveedores">
+            <p class="search-title">Buscar personas</p>
+            <div class="multiple-controls-group">
+              <div class="multiple-control-container">
+                <input type="text" name="personas" placeholder="Nombre" class="persona_name_filter multiple-control">
+                <!-- <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control"> -->
+              </div>
+            </div>
+            <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
+          </fieldset>
+          <!-- <fieldset name="país">
+            <p class="search-title">POR PAÍS</p>
+            <a class="search-label"><p>México (15,560)</p></a>
+            <a class="search-label"><p>Colombia (129)</p></a>
+            <a class="search-label"><p>Argentina (88)</p></a>
+            <a class="search-label"><p>Brasil (220)</p></a>
+          </fieldset>
+          <fieldset name="tipo">
+            <p class="search-title">POR TIPO</p>
+            <a class="search-label"><p>Proveedor (7,230)</p></a>
+            <a class="search-label"><p>Propietario (230)</p></a>
+            <a class="search-label"><p>Funcionario Público (5,987)</p></a>
+          </fieldset>
+          <fieldset>
+              <p class="search-title">RELACIONADO CON</p>
+              <div class="input-group" id="">
+                  <div class="dropdown input-group-btn">
+                    <button class="btn btn-default dropdown-toggle filter-dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      FILTRO
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Dependency</a></li>
+                      <li><a class="dropdown-item" href="#">Supplier</a></li>
+                      <li><a class="dropdown-item" href="#">OCID</a></li>
+                    </ul>
+                  </div>
+                  <input type="text" name="filtros" placeholder="Buscar filtro">
+              </div>
+          </fieldset>
+          <fieldset name="cantidad-contratos">
+            <p class="search-title">Cantidad de contratos</p>
+            <input type="text" name="" placeholder="Mínimo" class="search-amount">
+            <input type="text" name="" placeholder="Máximo" class="search-amount">
+          </fieldset> -->
+          <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
+          <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
+        </form>
+      </div>
+  </div>
+
+  <div class="col-9 col-m-9 personas-content">
+    <div class="row document-header">
+      <div class="col-3 col-m-3">
+        <h2 class="document-title">Personas</h2>
+      </div>
+      <div class="col-9 col-m-9">
+        <p class="document-description">Conoce cómo se relacionan los personajes de las élites políticas y económicas en México.</p>
+      </div>
+    </div>
+    {{!-- {{#if filters }}
+
+      <p class="search-terms-text">
+        Búsqueda para:
+        {{#each filter in filters }}
+          {{#if filter.hidden = true }}
+            <span class="blob" data-field="{{filter.field}}">
+              {{filter.field_name}}: {{filter.string}}
+              <i class="fa fa-times delete-blob-filter" aria-hidden="true"></i>
+            </span>
+          {{/if}}
+        {{/each}}
+      </p>
+    {{/if}}
+    {{> tabular table=TabularTables.Persons
+    id="person-index"
+    class=""}} --}}
+    <div id="person-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+      <div>
+        <div class="col-m-6">
+          <div class="dataTables_info" id="person-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de 911,970 resultados
+          </div>
+        </div>
+        <div class="col-m-6">
+          <div class="dataTables_length" id="person-index_length">
+            <label>Mostrar 
+              <select name="person-index_length" aria-controls="person-index" class="form-control input-sm">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select> resultados
+            </label>
+          </div>
+        </div>
+        <div class="col-m-12">
+          <div id="person-index_processing" class="dataTables_processing panel panel-default" style="display: none;">
+            <div class="loading-container">
+              <div class="loading">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+              </div>
+            </div>
+          </div>
+          <div id="person-index" class="dataTable" aria-describedby="person-index_info" role="grid">
+            <div class="dataCardBody">
+              <div role="row" class="search-card odd">
+                <div class=" js-title no-title search-result-title col-m-8 col-8">
+                  <div class="cardItemTitle">Nombre</div>
+                  <div class="cardItemData">Marcas Nestle</div>
+                </div>
+                <div class=" js-ocid no-title col-2 col-m-2">
+                  <div class="cardItemTitle">enlace</div>
+                  <div class="cardItemData"></div>
+                  <a href="/persons/marcas nestle" class="button-link">Ver persona</a>
+                </div>
+                <div class=" js-person-type col-m-8 col-8">
+                  <div class="cardItemTitle"></div>
+                  <div class="cardItemData"></div>
+                  <p style="font-size: 1rem;">Proveedor 
+                    <span class="js-contract-count">1229 contrato(s)</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dataTables_paginate paging_simple_numbers" id="person-index_paginate">
+            <ul class="pagination">
+              <li class="paginate_button previous disabled" id="person-index_previous"><a href="#" aria-controls="person-index" data-dt-idx="0" tabindex="0">Anterior</a></li>
+              <li class="paginate_button active"><a href="#" aria-controls="person-index" data-dt-idx="1" tabindex="0">1</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="person-index" data-dt-idx="2" tabindex="0">2</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="person-index" data-dt-idx="3" tabindex="0">3</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="person-index" data-dt-idx="4" tabindex="0">4</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="person-index" data-dt-idx="5" tabindex="0">5</a></li>
+              <li class="paginate_button disabled" id="person-index_ellipsis"><a href="#" aria-controls="person-index" data-dt-idx="6" tabindex="0">…</a></li>
+              <li class="paginate_button "><a href="#" aria-controls="person-index" data-dt-idx="7" tabindex="0">36479</a></li>
+              <li class="paginate_button next" id="person-index_next"><a href="#" aria-controls="person-index" data-dt-idx="8" tabindex="0">Siguiente</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

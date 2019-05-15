@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   let feed = await getFeed();
-  res.render('home', { feed: feed });
+  res.render('home', { feed: feed, home: true });
 });
 
 /* GET contratcs index. */
@@ -15,6 +15,15 @@ router.get('/contracts', async function(req, res, next) {
   res.render('contracts', {result: result});
 });
 
+/* GET persons index. */
+router.get('/persons', async function(req, res, next) {
+  res.render('persons');
+});
+
+/* GET organizations index. */
+router.get('/organizations', async function(req, res, next) {
+  res.render('organizations');
+});
 
 async function getFeed() {
   let Parser = require('rss-parser');
