@@ -25,6 +25,11 @@ router.get('/organizations', async function(req, res, next) {
   res.render('organizations');
 });
 
+/* GET contract view. */
+router.get('/contract', async function(req, res, next) {
+  res.render('contract');
+});
+
 async function getFeed() {
   let Parser = require('rss-parser');
   let parser = new Parser();
