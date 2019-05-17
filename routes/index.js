@@ -3,29 +3,29 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  let feed = await getFeed();
-  res.render('home', { feed: feed, home: true });
+  let feed = await getFeed(req);
+  res.render('home', { feed: feed });
 });
 
 /* GET contratcs index. */
 router.get('/contracts', async function(req, res, next) {
   let filters = {};
-  result = await getAPI("organizations",filters);
+  result = await getAPI(req);
   console.log("contracts",result);
   res.render('contracts', {result: result});
 });
 
-/* GET persons index. */
+/* GET persons index */
 router.get('/persons', async function(req, res, next) {
   res.render('persons');
 });
 
-/* GET organizations index. */
+/* GET organizations index */
 router.get('/organizations', async function(req, res, next) {
   res.render('organizations');
 });
 
-/* GET contract view. */
+/* GET contract view */
 router.get('/contract', async function(req, res, next) {
   res.render('contract');
 });
@@ -60,18 +60,18 @@ router.get('/contact', async function(req, res, next) {
   res.render('contact');
 });
 
-async function getFeed() {
+async function getFeed(req) {
   let Parser = require('rss-parser');
   let parser = new Parser();
 
-  let feed = await parser.parseURL('https://www.rindecuentas.org/feed/');
+  let feed = await parser.parseURL(req.app.get("config").FEED_URL);
   return feed.items.slice(0,3);
 }
 
-async function getAPI(collection,filters) {
+async function getAPI(req,filters) {
   let Qqw = require('qqw');
 
-  var client = new Qqw();
+  var client = new Qqw({rest_base: req.app.get("config").API_DOMAIN});
 
   var params = {}; //params recibe fields para filtrar los campos que envia y text que no se que es
 
@@ -79,10 +79,11 @@ async function getAPI(collection,filters) {
     params[f] = filters[f];
   }
 
-  client.get(collection, params, function(error, result, response) {
-    console.log("getAPI",result);
+  client.get('organizations', params, function(error, organizations, response) {
+    console.log("getAPI",organizations);
   });
 
 }
+
 
 module.exports = router;
