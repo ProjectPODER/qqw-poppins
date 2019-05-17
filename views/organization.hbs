@@ -1,0 +1,340 @@
+<div class="container">
+  <div class='viewWrapper'>
+    <div class='datos-generales clearfix'>
+      <div class="gd-col-left-wrapper col-m-12 col-12">
+      {{!-- {{#if name }} --}}
+        <div class="description-data-name">
+          <h3><img src="../images/icons/organizacion-gray.svg" alt="organización" class="icon-lf">{{!-- {{ name }} --}}DIRECCIÓN DE COMERCIALIZACIÓN</h3>
+          <h4 class="org-type">{{!-- {{#if isPublic}} --}}Dependencia{{!-- {{else}} --}}{{!-- Empresa{{/if}} --}}</h4>
+        </div>
+        <hr>
+      {{!-- {{/if}} --}}
+
+      <div class="">
+        <div class="col-m-6 flex mt-2">
+            <div class="col-m-12">
+              <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
+            </div>
+            {{!-- {{#if company.sector }} --}}
+            <div class="col-m-6">
+                <p class="js-title-data">Sector</p>
+                <p class="js-data-lf">{{!-- {{company.sector}} --}}</p>
+            </div>
+            {{!-- {{/if}} --}}
+            {{!-- {{#if type }} --}}
+            <div class="col-m-6">
+                <p class="js-title-data">Tipo de organización</p>
+                <p class="js-data-lf">{{!-- {{type}} --}}Dependencia pública o empresa paraestatal</p>
+            </div>
+            {{!-- {{/if}} --}}
+            {{!-- {{#if company.classification }} --}}
+            <div class="col-m-6">
+                <p class="js-title-data">Industria</p>
+                <p class="js-data-lf">{{!-- {{company.classification}} --}}</p>
+            </div>
+            {{!-- {{/if}}
+            {{#if isPublic }} --}}
+            <div class="col-m-6">
+                <p class="js-title-data">Tipo de organización</p>
+                <p class="js-data-lf">Dependencia pública o empresa paraestatal</p>
+            </div>
+            {{!-- {{else}} --}}
+            <div class="col-m-6">
+                <p class="js-title-data">Cotiza en bolsa</p>
+                <p class="js-data-lf">{{!-- {{#if company.tickers }}Si, clave: {{company.tickers}}{{else}}No{{/if}} --}}</p>
+            </div>
+            {{!-- {{/if}} --}}
+            {{!-- {{#if company.status}} --}}
+            <div class="col-m-6">
+                <p class="js-title-data">Situación</p>
+                <p class="js-data-lf">{{!-- {{company.status}} --}}</p>
+            </div>
+            {{!-- {{/if}} --}}
+
+            {{!-- {{#if foundation_date }} --}}
+            <div class="col-m-6">
+                <p class="js-title-data">Fundación</p>
+                <p class="js-data-lf">{{!-- {{foundation_date}} --}}</p>
+            </div>
+            {{!-- {{/if}}
+            {{#if immediate_parent }} --}}
+            <div class="col-m-12">
+                <p class="js-title-data">Organización controlante directa</p>
+                <p class="js-data-lf"><a href="/orgs/{{!-- {{simpleName immediate_parent}} --}}">{{!-- {{immediate_parent}} --}}</a></p>
+            </div>
+            {{!-- {{/if}}
+            {{#if parent }} --}}
+            <div class="col-m-12">
+                <p class="js-title-data">Organización controlante final</p>
+                <p class="js-data-lf"><a href="/orgs/{{!-- {{simpleName parent}} --}}">{{!-- {{parent}} --}}</a></p>
+            </div>
+            {{!-- {{/if}} --}}
+
+        </div>
+        {{!-- {{#if address}} --}}
+          <div class="col-m-6 flex mt-2">
+            <div class="col-m-12">
+              <h4 class="description-data-subtitle">LOCALIZACIÓN Y CONTACTO</h4>
+            </div>
+            <div class="col-m-12">
+              <div class="if-address-org">
+                <p class="js-title-data">Dirección Fiscal</p>
+                <p class="mb-0">
+                  {{!-- {{#if address.street}}
+                    <span class="js-data-lf">{{address.street}}, </span>
+                  {{/if}}
+                  {{#if address.postal_code}}
+                    <span class="js-data-lf">C.P. {{address.postal_code}}</span>
+                  {{/if}} --}}
+                </p>
+                <p class="mb-0">
+                  {{!-- {{#if address.city}}
+                    <span class="js-data-lf">{{address.city}}, </span>
+                  {{/if}}
+                  {{#if address.state}}
+                    <span class="js-data-lf">{{address.state}}, </span>
+                  {{/if}}
+                  {{#if address.country}}
+                    <span class="js-data-lf">{{address.country}}</span>
+                  {{/if}} --}}
+                </p>
+              </div>
+
+            </div>
+            <div class="col-m-12">
+              {{!-- {{#if address.website}} --}}
+                <p class="js-title-data">Dirección web</p>
+                <a href="//{{!-- {{address.website}} --}}" target="_blank"><p class="js-data-lf js-data-link">{{!-- {{address.website}} --}}</p></a>
+              {{!-- {{/if}} --}}
+            </div>
+            <div class="col-m-12">
+            </div>
+            <div class="col-m-12">
+              {{!-- {{#if address.phones}} --}}
+                <p class="js-title-data">Teléfono</p>
+                <p class="js-data-lf">{{!-- {{address.phones}} --}}</p>
+              {{!-- {{/if}} --}}
+            </div>
+        </div>
+        {{!-- {{/if}} --}}
+        <div class="col-m-12 col-12" style="clear:both">
+          <hr>
+        </div>
+        {{!--
+          //Comentado para ocultar puntaje
+
+        <div class="col-m-12 col-12 {{#if showLoadingFlags }}{{else}}hidden{{/if}}">
+          Cargando banderas...
+        </div>
+
+        <div class="{{#if flags and isPublic }}{{else}}hidden{{/if}}">
+          <div  class="col-m-12 col-6 mt-2 party_flags">
+            <h4 class="description-data-subtitle">CALIDAD DE CONTRATACIONES</h4>
+            <div class="party_flag_score">
+              <div class="party_flag_title">
+                Competitividad
+              </div>
+              <div class="party_flag_value">
+                {{format_score flags.competitividad}}<span class="d100">/100</span>
+              </div>
+            </div>
+            <div class="party_flag_score">
+              <div class="party_flag_title">
+                Temporalidad
+              </div>
+              <div class="party_flag_value">
+                {{format_score flags.temporalidad}}<span class="d100">/100</span>
+              </div>
+            </div>
+            <div class="party_flag_score">
+              <div class="party_flag_title">
+                Transparencia
+              </div>
+              <div class="party_flag_value">
+                {{format_score flags.transparencia}}<span class="d100">/100</span>
+              </div>
+            </div>
+            <div class="party_flag_score">
+              <div class="party_flag_title">
+                Trazabilidad
+              </div>
+              <div class="party_flag_value">
+                {{format_score flags.trazabilidad}}<span class="d100">/100</span>
+              </div>
+            </div>
+            <div class="party_flag_score party_flag_total_score">
+              <div class="party_flag_title">
+                Total
+              </div>
+              <div class="party_flag_value">
+                {{format_score flags.total_score}}<span class="d100">/100</span>
+              </div>
+            </div>
+
+            <div id="flags-graph">
+            <svg>
+
+            </svg>
+
+          </div>
+          </div>
+          <div  class="col-m-12 col-6 mt-2 party_flags_recommendations">
+            <h4 class="description-data-subtitle">RECOMENDACIONES</h4>
+            <ul class="party_flags_recommendations_list">
+              {{# each recomendation in recomendations}}
+              <li class="party_flags_recommendations_item">{{{recomendation.text}}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-m-12 col-12">
+          <hr>
+        </div>
+
+        --}}
+
+        {{!-- <div class="col-m-12 col-12 {{#if contracts.length }}hidden{{else}}{{#if ocds_contract_count }}{{else}}hidden{{/if}}{{/if}}">
+          Cargando contratos...
+        </div> --}}
+        <div class="{{!-- {{#if contracts.length }}{{else}}hidden{{/if}} --}}">
+
+          <div  class="col-m-12 col-4 mt-2">
+
+
+            <h4 class="description-data-subtitle">EVOLUCIÓN DE CONTRATOS</h4>
+            <div id="chart">
+              <svg></svg>
+            </div>
+          </div>
+          <div class="col-m-12 col-4 mt-2">
+            <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
+            <div id="piechart">
+              <svg></svg>
+            </div>
+          </div>
+          <div class="col-m-12 col-4 mt-2">
+            <h4 class="description-data-subtitle">PRESUPUESTO POR RAMO</h4>
+            <div id="treemap">
+            </div>
+          </div>
+          <div class="col-m-12 col-12 mt-2">
+            <h4 class="description-data-subtitle">FLUJOS DE DINERO A PROVEEDORES</h4>
+            <div id="graph-container">
+            </div>
+          </div>
+          <div class="col-m-8 col-8">
+            <p>Los gráficos están limitados a 200 contratos (400 nodos y 1000 relaciones en total) por razones de performance. </p>
+            <hr>
+          </div>
+          {{!-- {{#if isPublic}} --}}
+          <div class="col-m-12 col-12 mt-2">
+            <h4 class="description-data-subtitle">PROVEEDORES PRINCIPALES</h4>
+            {{!-- {{# each supplier in supplierSummary }} --}}
+            <p class="principal-suppliers">
+              <a href="/orgs/{{!-- {{simpleName supplier}} --}}"><img src="../images/icons/empresa-gray.svg" alt="organización" class="icon-lf icon-lf-organization">
+                {{!-- {{supplier}} --}}
+              </a>
+            </p>
+            {{!-- {{/each}} --}}
+          </div>
+          {{!-- {{else}} --}}
+          <div class="col-m-12 col-12 mt-2">
+            <h4 class="description-data-subtitle">COMPRADORAS PRINCIPALES</h4>
+            {{!-- {{# each dependency in dependencySummary }} --}}
+            <p class="principal-suppliers"><a href="/orgs/{{!-- {{simpleName dependency}} --}}"><img src="../images/icons/dependencia-blue.svg" alt="organización" class="icon-lf icon-lf-organization">
+              {{!-- {{dependency}} --}}
+            </a></p>
+           {{!--  {{/each}} --}}
+          </div>
+          {{!-- {{/if}} --}}
+          <!-- <div class="col-m-7 col-7 mt-2">
+          <h4 class="description-data-subtitle">MAPA DE UNIDADES COMPRADORAS</h4>
+        </div> -->
+        <div class="col-m-8 col-8">
+          <hr>
+        </div>
+
+        <div class="col-m-12 col-12 mt-2">
+          <h4 class="description-data-subtitle">CONTRATOS</h4>
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th class="description-data-subname">Nombre</th>
+                <th class="description-data-subname">Importe</th>
+                <th class="description-data-subname">Periodo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{!-- {{# each contract in contracts }} --}}
+              <tr>
+                <td class="description-data-contract">
+                  <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+                  <a href="/contracts/{{!-- {{contract.ocid}}?supplier={{contract.awards.[0].suppliers.[0].id}} --}}">{{!-- {{contract.contracts.[0].title}} --}}</a>
+                </td>
+                <td class="description-data-amount">{{!-- {{ format_amount contract.contracts.[0].value.amount}} {{format_currency contract.contracts.[0].value.currency}} --}}</td>
+                <td class="description-data-date">{{!-- {{get_year contract.contracts.[0].period.startDate}} --}}</td>
+              </tr>
+              {{!-- {{/each}} --}}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-m-9 mb-3">
+          <p>Viendo hasta 3 de <strong>{{!-- {{ocds_contract_count}} --}} contrato(s) en total</strong>. </p>
+          <div class="col-m-3 centered contract-button">
+            <a href="/contracts?{{!-- {{# if public }} --}}filter_buyer.name={{!-- {{name}}{{else}} --}}filter_contracts.0.suppliers={{!-- {{simple}}{{/if}} --}}" class="button-link">Ver todos los contratos</a>
+          </div>
+        </div>
+
+        <!-- <div class="col-m-12 col-12 mt-2">
+        <h4 class="description-data-subtitle">OTRAS DEPENDENCIAS DEL MISMO RAMO</h4>
+        <p class="other-dependency"><a><img src="../images/icons/organizacion-blue.svg" alt="organización" class="icon-lf icon-lf-organization">Banamex SAB DE CV</a></p>
+        <p class="other-dependency"><a><img src="../images/icons/organizacion-blue.svg" alt="organización" class="icon-lf icon-lf-organization">Banorte SA DE CV</a></p>
+        <p class="other-dependency"><a><img src="../images/icons/organizacion-blue.svg" alt="organización" class="icon-lf icon-lf-organization">Banco Santander Serfín</a></p>
+        <p class="other-dependency"><a><img src="../images/icons/organizacion-blue.svg" alt="organización" class="icon-lf icon-lf-organization">Manco Mercantil del Norte</a></p>
+        <p class="other-dependency"><a><img src="../images/icons/organizacion-blue.svg" alt="organización" class="icon-lf icon-lf-organization">Banco del Bajío SAB</a></p>
+        <p class="other-dependency"><a><img src="../images/icons/organizacion-blue.svg" alt="organización" class="icon-lf icon-lf-organization">BanRegio SA de CV</a></p>
+      </div> -->
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{{!-- {{/with}} --}}
+<div class="container addinfo">
+  <div class="col-m-12 col-12">
+    <hr>
+  </div>
+  <div class="col-m-12">
+    <h4 class="addinfo-title ">¿Conoces más información? Puedes ayudarnos a completar este perfil.</h4>
+  </div>
+  <div class="col-m-8 col-8">
+    <form action="" class="addinfo-form">
+      <div class="form-group">
+        <label>SI TIENES INFORMACIÓN PARA APORTAR A ESTA PERSONA, AGRÉGALA AQUÍ.</label>
+        <textarea class="form-control" rows="6" placeholder="ESCRIBE LOS DATOS QUE DESEAS APORTAR"></textarea>
+      </div>
+      <div class="form-group">
+        <label>FUENTE</label>
+        <input class="form-control" type="text" placeholder="AGREGA LA FUENTE DE INFORMACIÓN">
+      </div>
+      <div class="mt-2">
+        <button type="button" class="button-link" data-toggle="modal" data-target="#subscribe-popup">ENVIAR</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-m-4 col-4">
+    <div class="addinfo-box">
+      <h4>SI DESESAS FILTRAR LOS DATOS ANÓNIMAMENTE, ACCEDE A</h4>
+      <img src="../images/mexicoleaks-negro.png" alt="Mexicoleaks Logo" class="addinfo-box-logo">
+      <p>Una plataforma de filtración de datos anónima y segura que verifica la información proporcionada.</p>
+      <div class="mt-2 mb-1">
+        <a href="https://mexicoleaks.mx/enviar-para.php?r=poder" class="button-link" target="_blank">ACCEDER</a>
+      </div>
+    </div>
+  </div>
+</div>

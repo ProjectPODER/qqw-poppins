@@ -1,0 +1,215 @@
+<div class="row document-body">
+    <div class="col-3 col-m-3">
+        <div class="filter-bar">
+          <form>
+            <h4 class="search-title">Filtrar</h4>
+            <fieldset name="organizaciones">
+              <p class="search-title">Buscar organización</p>
+              <div class="multiple-controls-group">
+                <div class="multiple-control-container">
+                  <input type="text" name="proveedor" placeholder="NOMBRE" class="org_name_filter multiple-control">
+                  <!-- <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control"> -->
+                </div>
+              </div>
+              <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
+            </fieldset>
+            <!-- <fieldset>
+                <p class="search-title">Por tipo de organización</p>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">ELIGE UN TIPO
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Estatal</a></li>
+                      <li><a href="#">Privada</a></li>
+                      <li><a href="#">Pública (bolsa)</a></li>
+                    </ul>
+                </div>
+            </fieldset>
+            <fieldset>
+                <p class="search-title">Matrices</p>
+                <input type="submit" class="btn btn-filter" value="SÓLO MATRICES">
+                <input type="submit" class="btn btn-filter" value="TODO">
+            </fieldset>
+            <fieldset>
+                <p class="search-title">País de origen</p>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">ELIGE UN PAÍS
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">México</a></li>
+                      <li><a href="#">México</a></li>
+                      <li><a href="#">México</a></li>
+                    </ul>
+                </div>
+            </fieldset>
+            <fieldset name="no-contratos">
+              <p class="search-title">Número de contratos</p>
+              <a class="search-label"><p>Sin contratos</p></a>
+              <a class="search-label"><p>1 a 10</p></a>
+              <a class="search-label"><p>10 a 50</p></a>
+              <a class="search-label"><p>52 a 200</p></a>
+              <a class="search-label"><p>Más de 200</p></a>
+              <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount">
+              <input type="text" name="cantidad-máxima" placeholder="Máximo" class="search-amount">
+            </fieldset>
+            <fieldset name="consejo">
+              <p class="search-title">Consejo consultivo</p>
+              <input type="text" name="proveedor" placeholder="BUSCA UN NOMBRE"> <img src="images/button-yes.png" alt="agregar" class="form-control">
+            </fieldset>
+            <fieldset name="accionistas">
+              <p class="search-title">Accionistas</p>
+              <input type="text" name="proveedor" placeholder="BUSCA UN NOMBRE"> <img src="images/button-yes.png" alt="agregar" class="form-control">
+            </fieldset>
+            <fieldset name="acciones">
+              <p class="search-title">Acciones</p>
+              <input type="text" name="proveedor" placeholder="ELIJE UN TIPO"> <img src="images/button-yes.png" alt="agregar" class="form-control">
+            </fieldset>
+            <fieldset>
+                <p class="search-title">Relacionado con</p>
+                <div class="input-group" id="">
+                    <div class="dropdown input-group-btn">
+                      <button class="btn btn-default dropdown-toggle filter-dropdown" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        FILTRO
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Dependency</a></li>
+                        <li><a class="dropdown-item" href="#">Supplier</a></li>
+                        <li><a class="dropdown-item" href="#">OCID</a></li>
+                      </ul>
+                    </div>
+                    <input type="text" name="filtros" placeholder="Buscar filtro">
+                </div>
+            </fieldset>
+            <fieldset style="margin-bottom: 10rem">
+                <p class="search-title">Buscar tipo de entidad</p>
+                <input type="submit" class="btn btn-filter mb-10" value="TODOS">
+                <input type="submit" class="btn btn-filter mb-10" value="PERSONAS">
+                <input type="submit" class="btn btn-filter" value="ORGANIZACIÓN">
+            </fieldset> -->
+            <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
+            <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
+          </form>
+        </div>
+    </div>
+    <div class="col-9 col-m-9 orgs-content">
+        <div class="row document-header">
+          <div class="col-3 col-m-3">
+            <h2 class="document-title">Organizaciones</h2>
+          </div>
+          <div class="col-9 col-m-9">
+            <p class="document-description">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
+          </div>
+        </div>
+        {{!-- {{#if filters }}
+
+          <p class="search-terms-text">
+            Búsqueda para:
+            {{#each filter in filters }}
+              {{#if filter.hidden = true }}
+                <span class="blob" data-field="{{filter.field}}">
+                  {{filter.field_name}}: {{filter.string}}
+                  <i class="fa fa-times delete-blob-filter" aria-hidden="true"></i>
+                </span>
+              {{/if}}
+            {{/each}}
+          </p>
+        {{/if}} --}}
+        {{!--
+          //Comentado para ocultar puntaje
+
+        <div class="search-order-form">
+          <form class="form-inline">
+            <label for="search-order">Ordenar por</label>
+            <select class="form-control input-sm" name="search-order" id="search-order">
+              <option value="cantidad">Cantidad de contratos (de mayor a menor)</option>
+              <option value="puntaje">Puntaje (de mayor a menor)</option>
+            </select>
+          </form>
+        </div>
+        --}}
+        
+        {{!-- {{> tabular table=TabularTables.Orgs
+        id="organization-index"
+        class=""}} --}}
+        <div id="organization-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <div>
+            <div class="col-m-6">
+              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de 911,970 resultados
+              </div>
+            </div>
+            <div class="col-m-6">
+              <div class="dataTables_length" id="organization-index_length">
+                <label>Mostrar 
+                  <select name="organization-index_length" aria-controls="organization-index" class="form-control input-sm">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select> resultados
+                </label>
+              </div>
+            </div>
+            <div class="col-m-12">
+              <div id="organization-index_processing" class="dataTables_processing panel panel-default" style="display: none;">
+                <div class="loading-container">
+                  <div class="loading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                  </div>
+                </div>
+              </div>
+              <div id="organization-index" class="dataTable" aria-describedby="organization-index_info" role="grid">
+                <div class="dataCardBody">
+                  <div role="row" class="search-card odd">
+                    <div class=" js-title no-title search-result-title col-m-8 col-8">
+                      <div class="cardItemTitle">Nombre</div>
+                      <div class="cardItemData">Dirección de Comercialización</div>
+                    </div>
+                    <div class=" js-ocid no-title col-2 col-m-2">
+                      <div class="cardItemTitle">enlace</div>
+                      <div class="cardItemData"></div>
+                      <a href="/orgs/direccion de comercializacion" class="button-link">Ver organización</a>
+                    </div>
+                    <div class=" col-m-8 col-8">
+                      <div class="cardItemTitle"></div>
+                      <div class="cardItemData"></div>
+                      <p class="js-person-type" style="font-size: 16px;">
+                        <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
+                        Empresa con
+                        <span class="js-contract-count">
+                          <!-- <i class="fa fa-file-text" aria-hidden="true"></i> -->
+                          <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+                          110250 contrato(s) 
+                        </span>
+                      </p>
+                    </div>
+                    {{!-- <div class=" js-score col-2 col-m-2 hidden">
+                      <div class="cardItemTitle">Puntaje</div>
+                      <div class="cardItemData"></div>51.19<span class="d100">/100</span>
+                    </div> --}}
+                    <div class=" col-m-8 col-8">
+                      <div class="cardItemTitle"></div>
+                      <div class="cardItemData"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="dataTables_paginate paging_simple_numbers" id="organization-index_paginate">
+                <ul class="pagination">
+                  <li class="paginate_button previous disabled" id="organization-index_previous"><a href="#" aria-controls="organization-index" data-dt-idx="0" tabindex="0">Anterior</a></li>
+                  <li class="paginate_button active"><a href="#" aria-controls="organization-index" data-dt-idx="1" tabindex="0">1</a></li>
+                  <li class="paginate_button "><a href="#" aria-controls="organization-index" data-dt-idx="2" tabindex="0">2</a></li>
+                  <li class="paginate_button "><a href="#" aria-controls="organization-index" data-dt-idx="3" tabindex="0">3</a></li>
+                  <li class="paginate_button "><a href="#" aria-controls="organization-index" data-dt-idx="4" tabindex="0">4</a></li>
+                  <li class="paginate_button "><a href="#" aria-controls="organization-index" data-dt-idx="5" tabindex="0">5</a></li>
+                  <li class="paginate_button disabled" id="organization-index_ellipsis"><a href="#" aria-controls="organization-index" data-dt-idx="6" tabindex="0">…</a></li>
+                  <li class="paginate_button "><a href="#" aria-controls="organization-index" data-dt-idx="7" tabindex="0">36479</a></li>
+                  <li class="paginate_button next" id="organization-index_next"><a href="#" aria-controls="organization-index" data-dt-idx="8" tabindex="0">Siguiente</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>

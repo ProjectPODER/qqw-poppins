@@ -221,13 +221,64 @@ h6,
 
 p
   margin 0 0 10px
+
+.table-responsive
+  min-height .01%
+  overflow-x auto
+
+.table
+  width 100%
+  max-width 100%
+  margin-bottom 20px
+
+table
+  background-color transparent
+  border-spacing 0
+  border-collapse collapse
+  text-align left
+  
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td
+    padding 8px
+    line-height 1.42857143
+    vertical-align top
+    border-top 1px solid #ddd
+
+.table
+    & > thead
+        & > tr
+            & > th
+                vertical-align bottom
+                border-bottom 2px solid #ddd
+                
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td
+    border-top 0
+
+.table
+    & > tbody
+        & + tbody
+            border-top 2px solid #ddd
+    .table
+        background-color #fff
     
 #main
   height 100%
 
+.nav>li>a
+  text-decoration none
+
 header .navbar, #footer
   color #fff
-
+      
 table.reactive-table
   width 100%
   tr td:first-child:hover
@@ -240,6 +291,24 @@ ul, ol
 
 a, .cursor-pointer
   cursor pointer
+  
+.container
+    padding-right 15px
+    padding-left 15px
+    margin-right auto
+    margin-left auto
+
+@media (min-width: 768px)
+    .container
+        width 750px
+
+@media (min-width: 992px)
+    .container
+        width 970px
+
+@media (min-width: 1200px)
+    .container
+        width 1170px
 
 .bold
   font-weight bold
@@ -1810,25 +1879,23 @@ div
       &.previous
         a
           &:before
-            content "\f104"
+            content "<"
       &.next
         a
           &:after
-            content "\f105"
+            content ">"
 
 div.dataTables_paginate li.first a:before, div.dataTables_paginate li.previous a:before
   position absolute
-  top 6px
+  top 7px
   left 10px
   display block
-  font-family FontAwesome
 
 div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
   position absolute
-  top 6px
+  top 7px
   right 10px
   display block
-  font-family FontAwesome
 
 @media (min-width: 768px)
   .form-inline

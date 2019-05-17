@@ -1,4 +1,8 @@
+{{#if home }}
 <nav class="nav bar" id='navbar'>
+{{else}}
+<nav class="nav bar fixed-nav" id='navbar'>
+{{/if}}
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex1-collapse">
@@ -16,7 +20,7 @@
         data-toggle="collapse" data-target=".navbar-collapse.in">
           <a href="/contracts" class="nav-link">
             <div class="contenedor_item_menu_top">
-              <i class="fa fa-file-text" aria-hidden="true"></i>
+              <img class="icon-navbar" src="/images/icons/contrato.svg" alt="Contratos">
               <span class="contracts_header_menu">{{!-- {{__ "Contracts" }} --}} Contracts</span>
             </div>
           </a>
@@ -24,20 +28,19 @@
         <li class="{{!-- {{isActiveRoute regex='persons|personShow|personsubmit' className='active'}} --}}" data-toggle="collapse" data-target=".navbar-collapse.in">
           <a href="/persons" class="nav-link">
             <div class="contenedor_item_menu_top">
-              <i class="fa fa-users" aria-hidden="true"></i>
+              <img class="icon-navbar icon-navbar-persons" src="/images/icons/personas.svg" alt="Personas">
               <span class="empresarios_header_menu">{{!-- {{__ "Persons" }} --}}Persons</span>
             </div>
           </a>
         </li>
         <li class="{{!-- {{isActiveRoute regex='orgs|orgShow|orgsubmit' className='active'}} --}}" data-toggle="collapse" data-target=".navbar-collapse.in">
-          <a href="/orgs" class="nav-link">
+          <a href="/organizations" class="nav-link">
             <div class="contenedor_item_menu_top">
-              <i class="fa fa-building" aria-hidden="true"></i>
+            <img class="icon-navbar" src="/images/icons/organizacion.svg" alt="Organización">
               <span class="empresas_header_menu">{{!-- {{__ "Organizations" }} --}}Organizations</span>
             </div>
           </a>
         </li>
-        
       </ul>
     </div>
   </div>
