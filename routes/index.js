@@ -40,6 +40,26 @@ router.get('/organization', async function(req, res, next) {
   res.render('organization');
 });
 
+/* GET about */
+router.get('/about', async function(req, res, next) {
+  res.render('about');
+});
+
+/* GET apis */
+router.get('/apis', async function(req, res, next) {
+  res.render('apis');
+});
+
+/* GET privacy */
+router.get('/privacy', async function(req, res, next) {
+  res.render('privacy');
+});
+
+/* GET contact */
+router.get('/contact', async function(req, res, next) {
+  res.render('contact');
+});
+
 async function getFeed() {
   let Parser = require('rss-parser');
   let parser = new Parser();
