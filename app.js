@@ -12,8 +12,20 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+
+//This should vary according to environment
 const API_DOMAIN = "http://localhost:10010";
 const AUTOCOMPLETE_URL = API_DOMAIN+"/v1/autocomplete";
+const FEED_URL = 'https://www.rindecuentas.org/feed/';
+
+let config = {
+  "API_DOMAIN": API_DOMAIN,
+  "AUTOCOMPLETE_URL": AUTOCOMPLETE_URL,
+  "FEED_URL": FEED_URL
+}
+
+app.set("config",config);
+
 
 // handlebars setup
 app.engine('.hbs', hbs({
@@ -25,8 +37,8 @@ app.engine('.hbs', hbs({
         path.join(__dirname, 'views/partials'),
     ],
     helpers: {
-      api_domain: function() { return API_DOMAIN; },
-      autocomplete_url: function() { return AUTOCOMPLETE_URL; }
+      api_domain: function() { return app.get("config").API_DOMAIN; },
+      autocomplete_url: function() { return app.get("config").AUTOCOMPLETE_URL; }
     }
 }));
 
