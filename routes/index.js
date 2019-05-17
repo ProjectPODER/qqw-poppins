@@ -30,6 +30,16 @@ router.get('/contract', async function(req, res, next) {
   res.render('contract');
 });
 
+/* GET person view. */
+router.get('/person', async function(req, res, next) {
+  res.render('person');
+});
+
+/* GET organization view. */
+router.get('/organization', async function(req, res, next) {
+  res.render('organization');
+});
+
 async function getFeed() {
   let Parser = require('rss-parser');
   let parser = new Parser();

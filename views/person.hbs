@@ -1,0 +1,164 @@
+<div class="container">
+  <div class='viewWrapper'>
+    <div class='datos-generales clearfix'>
+      <div class="gd-col-left-wrapper col-m-12">
+        {{!-- {{#if name }} --}}
+          <div class="description-data-name">
+            <h3><img src="../images/icons/persona-gray.svg" alt="Ícono persona" class="icon-lf icon-lf-person">{{!-- {{ name }} --}}GLORIA GARCIA GRIMALDO</h3>
+            <h4 class="person-type">
+
+
+              {{!-- {{#if gender }}
+                {{#if gender = "male" }} --}}
+                Empresario
+                /
+                Empresaria
+                {{!-- {{/if}}
+              {{else}}
+              Empresario(a)
+              {{/if}} --}}
+            </h4>
+          </div>
+          <hr>
+        {{!-- {{/if}} --}}
+      </div>
+
+      {{!-- {{#if memberships.length }}
+        <div class="col-m-12">
+          <h4 class="description-data-subtitle">EMPRESAS</h4>
+        </div>
+        <div class="col-m-12 mb-3">
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th class="description-data-subname">Nombre</th>
+                <th class="description-data-subname">Rol</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{# each membership in memberships }}
+              <tr>
+                <td class="description-data-organization">
+                  <img src="../images/icons/organizacion-blue.svg" alt="" class="icon-lf icon-lf-organization">
+                  <a href="/orgs/{{membership.sob_org}}">{{membership.sob_org}}</a>
+                </td>
+                <td class="description-data-rol">{{membership.role}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      {{/if}} --}}
+
+      {{!-- <div class="col-m-12 col-12 {{#if contracts.length }}hidden{{else}}{{#if ocds_contract_count }}{{else}}hidden{{/if}}{{/if}}">
+        Cargando contratos...
+      </div> --}}
+      {{!-- {{#if contracts.length }} --}}
+        <div class="col-m-12">
+          <h4 class="description-data-subtitle">CONTRATOS</h4>
+        </div>
+        <div class="col-m-12 mb-3">
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th class="description-data-subname">Nombre</th>
+                <th class="description-data-subname">Importe</th>
+                <th class="description-data-subname">Periodo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{!-- {{# each contract in contracts }} --}}
+              <tr>
+                <td class="description-data-contract">
+                  <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+                  <a href="{{!-- /contracts/{{contract.ocid}}?supplier={{contract.awards.[0].suppliers.[0].id}} --}}">{{!-- {{contract.contracts.[0].title}} --}} GLORIA GARCIA GRIMALDO D390313</a>
+                </td>
+                <td class="description-data-amount">{{!-- {{format_amount contract.contracts.[0].value.amount }} {{contract.contracts.[0].value.currency}} --}}$17,360.00 MXN</td>
+                <td class="description-data-date">{{!-- {{get_year contract.start_date}} --}}2019</td>
+              </tr>
+              {{!-- {{/each}} --}}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-m-9 mb-3">
+          <p>Viendo los 3 contratos más importantes de un total de <strong>{{!-- {{ocds_contract_count}} --}}429 contratos en total</strong>. </p>
+          <div class="col-m-3 centered contract-button">
+            <a href="{{!-- /contracts?filter_contracts.0.suppliers={{name}} --}}" class="button-link">Ver todos los contratos</a>
+          </div>
+          <!-- <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th class="description-data-subname">Cantidad</th>
+                <th class="description-data-subname">Importe total</th>
+                <th class="description-data-subname">Períodos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="description-data-contract">{{contract_count}}</td>
+                <td class="description-data-amount">{{total_contract_amount}}</td>
+                <td class="description-data-date">{{contract_periods}}</td>
+              </tr>
+            </tbody>
+          </table> -->
+        </div>
+      {{!-- {{/if}} --}}
+
+      <!-- <div class="col-m-12">
+        <h4 class="description-data-subtitle">GRÁFICO DE RELACIONES</h4>
+      </div> -->
+    </div>
+
+    {{!-- {{#if address }}
+      <div class="address clearfix">
+        <h3 class="detail_header">{{__ "address" }}</h3>
+        <table class="table">
+          <tbody>
+            {{#each arrayify address }}
+              <tr>
+                <td>{{__ name }}</td>
+                <td>{{value}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{/if}} --}}
+  </div>
+</div>
+{{!-- {{/with}} --}}
+
+<div class="container addinfo">
+  <div class="col-m-12 col-12">
+    <hr>
+  </div>
+  <div class="col-m-12">
+    <h4 class="addinfo-title ">¿Conoces más información? Puedes ayudarnos a completar este perfil.</h4>
+  </div>
+  <div class="col-m-8 col-8">
+    <form action="" class="addinfo-form">
+      <div class="form-group">
+        <label>SI TIENES INFORMACIÓN PARA APORTAR A ESTA PERSONA, AGRÉGALA AQUÍ.</label>
+        <textarea class="form-control" rows="6" placeholder="ESCRIBE LOS DATOS QUE DESEAS APORTAR"></textarea>
+      </div>
+      <div class="form-group">
+        <label>FUENTE</label>
+        <input class="form-control" type="text" placeholder="AGREGA LA FUENTE DE INFORMACIÓN">
+      </div>
+      <div class="mt-2">
+        <!-- <a href="" class="button-link" target="_blank">ENVIAR</a> -->
+        <button type="button" class="button-link" data-toggle="modal" data-target="#subscribe-popup">ENVIAR</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-m-4 col-4">
+    <div class="addinfo-box">
+      <h4>SI DESESAS FILTRAR LOS DATOS ANÓNIMAMENTE, ACCEDE A</h4>
+      <img src="../images/mexicoleaks-negro.png" alt="Mexicoleaks Logo" class="addinfo-box-logo img-responsive">
+      <p>Una plataforma de filtración de datos anónima y segura que verifica la información proporcionada.</p>
+      <div class="mt-2 mb-1">
+        <a href="https://mexicoleaks.mx/enviar-para.php?r=poder" class="button-link" target="_blank">ACCEDER</a>
+      </div>
+    </div>
+  </div>
+</div>
