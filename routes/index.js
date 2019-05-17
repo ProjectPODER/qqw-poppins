@@ -27,7 +27,7 @@ async function getFeed() {
 async function getAPI(filters) {
   let Qqw = require('qqw');
 
-  var client = new Qqw();
+  var client = new Qqw(API_DOMAIN);
 
   var params = {}; //params recibe fields para filtrar los campos que envia y text que no se que es
 
