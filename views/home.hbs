@@ -7,7 +7,10 @@
       <p>Una herramienta para explorar las <strong>conexiones y contratos entre empresarios, políticos, empresas y organizaciones.</strong> Facilita el acceso de investigadores, periodistas y ciudadanos a varias <a href="#fuentes">fuentes de datos abiertos</a>.</p>
       <div class="landing-search">
         <p>Puedes buscar nombres de empresarios y organizaciones.</p>
-        {{> main_search }}
+        <div class="landing-search-form" method="get">
+          {{> main_search }} 
+          <input type="submit" value="Buscar" class="landing-search-inputtext" id="first-search">
+        </div>
         <p>*Para encontrar contratos usa el <a href="/contracts">buscador avanzado de contratos públicos</a>.</p>
       </div>
     </div>

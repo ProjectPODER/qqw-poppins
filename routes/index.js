@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   let feed = await getFeed(req);
-  res.render('home', { feed: feed });
+  res.render('home', { feed: feed, home: true });
 });
 
 /* GET contratcs index. */
@@ -17,7 +17,13 @@ router.get('/contracts', async function(req, res, next) {
 
 /* GET persons index */
 router.get('/persons', async function(req, res, next) {
-  res.render('persons');
+  let filters = {
+    // name: name;
+  };
+  // ?name=/res/i
+  result = await getAPI(req, 'persons', filters);
+  console.log("persons",result);
+  res.render('persons', {result: result);
 });
 
 /* GET organizations index */
@@ -68,21 +74,26 @@ async function getFeed(req) {
   return feed.items.slice(0,3);
 }
 
-async function getAPI(req,filters) {
+async function getAPI(req, collection, filters) {
   let Qqw = require('qqw');
+  let results_return = {};
 
-  var client = new Qqw({rest_base: req.app.get("config").API_DOMAIN});
+  var client = new Qqw({rest_base: req.app.get("config").API_BASE});
 
   var params = {}; //params recibe fields para filtrar los campos que envia y text que no se que es
+
 
   for (f in filters) {
     params[f] = filters[f];
   }
 
-  client.get('organizations', params, function(error, organizations, response) {
-    console.log("getAPI",organizations);
+  client.get(collection,  params, async function(error, results, response) {
+    console.log("getAPI",results);
+    results_return = results;
+    return results;
   });
 
+  return results_return;
 }
 
 

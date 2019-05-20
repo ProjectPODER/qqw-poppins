@@ -41,6 +41,15 @@
             </div>
           </a>
         </li>
+        <li>
+          {{#if home }}
+
+          {{else}}
+              <form id="search-header" class="nav-form" role="search" method="get">
+                {{> main_search }}
+              </form>
+          {{/if}}
+        </li>
       </ul>
     </div>
   </div>

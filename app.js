@@ -14,14 +14,16 @@ var app = express();
 
 
 //This should vary according to environment
-const API_DOMAIN = "http://localhost:10010";
+const API_DOMAIN = "https://api.quienesquien.wiki/";
 const AUTOCOMPLETE_URL = API_DOMAIN+"/v1/autocomplete";
 const FEED_URL = 'https://www.rindecuentas.org/feed/';
+const API_BASE = API_DOMAIN+"/v1";
 
 let config = {
   "API_DOMAIN": API_DOMAIN,
   "AUTOCOMPLETE_URL": AUTOCOMPLETE_URL,
-  "FEED_URL": FEED_URL
+  "FEED_URL": FEED_URL,
+  "API_BASE": API_BASE
 }
 
 app.set("config",config);
