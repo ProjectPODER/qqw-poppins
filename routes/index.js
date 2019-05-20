@@ -10,7 +10,7 @@ router.get('/', async function(req, res, next) {
 /* GET contratcs index. */
 router.get('/contracts', async function(req, res, next) {
   let filters = {};
-  result = await getAPI(req);
+  result = await getAPI(req,"persons",filters);
   console.log("contracts",result);
   res.render('contracts', {result: result});
 });
@@ -60,6 +60,7 @@ router.get('/contact', async function(req, res, next) {
   res.render('contact');
 });
 
+
 async function getFeed(req) {
   let Parser = require('rss-parser');
   let parser = new Parser();
@@ -68,10 +69,10 @@ async function getFeed(req) {
   return feed.items.slice(0,3);
 }
 
-async function getAPI(req,filters) {
+async function getAPI(req,collection,filters) {
   let Qqw = require('qqw');
 
-  var client = new Qqw({rest_base: req.app.get("config").API_DOMAIN});
+  var client = new Qqw({rest_base: req.app.get("config").API_BASE});
 
   var params = {}; //params recibe fields para filtrar los campos que envia y text que no se que es
 
@@ -79,10 +80,8 @@ async function getAPI(req,filters) {
     params[f] = filters[f];
   }
 
-  client.get('organizations', params, function(error, organizations, response) {
-    console.log("getAPI",organizations);
-  });
-
+  result = await client.get_promise(collection, params);
+  return result.data;
 }
 
 
