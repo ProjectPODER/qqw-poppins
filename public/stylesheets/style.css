@@ -2407,7 +2407,6 @@ div.dataTables_paginate li.last a:after {
   .shrink img.logo-horizontal,
   .fixed-nav img.logo-horizontal {
     width: 7rem;
-    margin-top: 0.5rem;
   }
   input[type=text].nav-search-inputtext {
     width: 7rem;
@@ -2467,6 +2466,7 @@ nav.bar {
 .fixed-nav form.nav-form {
   width: 250px;
   text-align: right;
+  margin-top: -3px;
 }
 .shrink .navbar-right,
 .fixed-nav .navbar-right {
@@ -2666,6 +2666,7 @@ img.sources-icons {
   }
   .collapse.show {
     display: block !important;
+    width: 100%;
   }
   .navbar-collapse {
     border-top: 1px solid transparent;
@@ -2674,6 +2675,18 @@ img.sources-icons {
   }
   .navbar-nav > li {
     float: none;
+  }
+  .shrink .navbar-right,
+  .fixed-nav .navbar-right {
+    width: 100%;
+  }
+  .shrink form.nav-form,
+  .fixed-nav form.nav-form,
+  .shrink .fixed-nav form.nav-form,
+  .fixed-nav .fixed-nav form.nav-form {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
   }
 }
 .no-results,

@@ -17,7 +17,10 @@ router.get('/contracts', async function(req, res, next) {
 
 /* GET persons index */
 router.get('/persons', async function(req, res, next) {
-  res.render('persons');
+  let filters = {};
+  result = await getAPI(req,"persons",filters);
+  console.log("persons",result);
+  res.render('persons', {result: result});
 });
 
 /* GET organizations index */
