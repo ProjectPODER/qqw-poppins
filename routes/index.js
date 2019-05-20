@@ -17,8 +17,14 @@ router.get('/contracts', async function(req, res, next) {
 
 /* GET persons index */
 router.get('/persons', async function(req, res, next) {
-  let filters = {};
+  let filters = {
+    //name: req.query.//lo que viene de req de la url;
+  };
+
+  //https://api.quienesquien.wiki/v1/persons?name=/res/i
+
   result = await getAPI(req,"persons",filters);
+  // console.log(req.query.data);
   console.log("persons",result);
   res.render('persons', {result: result});
 });
@@ -35,7 +41,13 @@ router.get('/contract', async function(req, res, next) {
 
 /* GET person view. */
 router.get('/person', async function(req, res, next) {
-  res.render('person');
+  let filters = {
+    //simple: req.query. //lo que viene de req de la url;
+  };
+
+  result = await getAPI(req,"persons",filters);
+  console.log("persons",result);
+  res.render('person', {result: result});
 });
 
 /* GET organization view. */
