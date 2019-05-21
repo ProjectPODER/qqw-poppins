@@ -17,21 +17,20 @@ router.get('/contracts', async function(req, res, next) {
 
 /* GET persons index */
 router.get('/persons', async function(req, res, next) {
-  let filters = {
-    //name: req.query.//lo que viene de req de la url;
-  };
-
-  //https://api.quienesquien.wiki/v1/persons?name=/res/i
-
+  let filters = {}
+  if (req.query.filtername) {
+    filters.name = "/"+req.query.filtername+"/i"
+  }
   result = await getAPI(req,"persons",filters);
-  // console.log(req.query.data);
-  console.log("persons",result);
   res.render('persons', {result: result});
 });
 
 /* GET organizations index */
 router.get('/organizations', async function(req, res, next) {
-  res.render('organizations');
+  let filters = {};
+  result = await getAPI(req,"organizations",filters);
+  console.log("organizations",result);
+  res.render('organizations', {result: result});
 });
 
 /* GET contract view */
@@ -40,19 +39,27 @@ router.get('/contract', async function(req, res, next) {
 });
 
 /* GET person view. */
-router.get('/person', async function(req, res, next) {
+router.get('/person/:id', async function(req, res, next) {
   let filters = {
-    //simple: req.query. //lo que viene de req de la url;
+    simple: req.params.id //lo que viene de req de la url
   };
-
+  var id = req.params.id;
   result = await getAPI(req,"persons",filters);
-  console.log("persons",result);
-  res.render('person', {result: result});
+  // console.log("person",result);
+  // console.log(id);
+  res.render('person', {result: result.data[0]});
 });
 
 /* GET organization view. */
-router.get('/organization', async function(req, res, next) {
-  res.render('organization');
+router.get('/organization/:id', async function(req, res, next) {
+  let filters = {
+    simple: req.params.id
+  };
+  var id = req.params.id;
+  result = await getAPI(req, "organizations", filters);
+  console.log("organization",result);
+  console.log(id);
+  res.render('organization', {result: result.data[0]});
 });
 
 /* GET about */

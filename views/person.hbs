@@ -2,25 +2,23 @@
   <div class='viewWrapper'>
     <div class='datos-generales clearfix'>
       <div class="gd-col-left-wrapper col-m-12">
-        {{!-- {{#if name }} --}}
+        {{#if result.name }}
           <div class="description-data-name">
-            <h3><img src="../images/icons/persona-gray.svg" alt="Ícono persona" class="icon-lf icon-lf-person">{{!-- {{ name }} --}}GLORIA GARCIA GRIMALDO</h3>
+            <h3><img src="../images/icons/persona-gray.svg" alt="Ícono persona" class="icon-lf icon-lf-person">{{result.name}}</h3>
             <h4 class="person-type">
-
-
-              {{!-- {{#if gender }}
-                {{#if gender = "male" }} --}}
+              {{#if gender }}
+                {{#if gender = "male" }}
                 Empresario
-                /
+                {{else}}
                 Empresaria
-                {{!-- {{/if}}
+                {{/if}}
               {{else}}
               Empresario(a)
-              {{/if}} --}}
+              {{/if}}
             </h4>
           </div>
           <hr>
-        {{!-- {{/if}} --}}
+        {{/if}}
       </div>
 
       {{!-- {{#if memberships.length }}
@@ -81,7 +79,7 @@
           </table>
         </div>
         <div class="col-m-9 mb-3">
-          <p>Viendo los 3 contratos más importantes de un total de <strong>{{!-- {{ocds_contract_count}} --}}429 contratos en total</strong>. </p>
+          <p>Viendo los 3 contratos más importantes de <strong>{{result.ocds_contract_count}} contratos en total</strong>. </p>
           <div class="col-m-3 centered contract-button">
             <a href="{{!-- /contracts?filter_contracts.0.suppliers={{name}} --}}" class="button-link">Ver todos los contratos</a>
           </div>
@@ -162,3 +160,4 @@
     </div>
   </div>
 </div>
+{{!-- {{> suscribe_popup }} --}}

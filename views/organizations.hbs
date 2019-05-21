@@ -135,7 +135,7 @@
         <div id="organization-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
           <div>
             <div class="col-m-6">
-              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de 911,970 resultados
+              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de {{result.pages}} resultados
               </div>
             </div>
             <div class="col-m-6">
@@ -160,15 +160,14 @@
               </div>
               <div id="organization-index" class="dataTable" aria-describedby="organization-index_info" role="grid">
                 <div class="dataCardBody">
+                  {{#each result.data}}
                   <div role="row" class="search-card odd">
                     <div class=" js-title no-title search-result-title col-m-8 col-8">
                       <div class="cardItemTitle">Nombre</div>
-                      <div class="cardItemData">Dirección de Comercialización</div>
+                      <div class="cardItemData">{{name}}</div>
                     </div>
                     <div class=" js-ocid no-title col-2 col-m-2">
-                      <div class="cardItemTitle">enlace</div>
-                      <div class="cardItemData"></div>
-                      <a href="/orgs/direccion de comercializacion" class="button-link">Ver organización</a>
+                      <a href="/organization/{{simple}}" class="button-link">Ver organización</a>
                     </div>
                     <div class=" col-m-8 col-8">
                       <div class="cardItemTitle"></div>
@@ -192,6 +191,7 @@
                       <div class="cardItemData"></div>
                     </div>
                   </div>
+                  {{/each}}
                 </div>
               </div>
               <div class="dataTables_paginate paging_simple_numbers" id="organization-index_paginate">

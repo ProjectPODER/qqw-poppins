@@ -1348,6 +1348,9 @@ hr {
   padding: 2rem 0;
   margin: auto;
 }
+textarea.form-control {
+  height: auto;
+}
 .about-template,
 .apis-template,
 .privacy-template,
