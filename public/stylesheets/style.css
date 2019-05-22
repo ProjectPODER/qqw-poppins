@@ -2733,6 +2733,33 @@ header .navbar .autosuggest i,
 .autosuggest i {
   color: #ddd;
 }
+.tt-menu {
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,0.2);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.tt-menu,
+.gist {
+  text-align: left;
+}
+.tt-suggestion {
+  padding: 3px 0;
+  font-size: 18px;
+  line-height: 24px;
+}
+.tt-suggestion:hover {
+  background-color: #eaeaea;
+  cursor: pointer;
+}
 footer {
   background-color: #21018b;
   padding: 3rem 0 3rem 5rem;

@@ -27,9 +27,11 @@ router.get('/persons', async function(req, res, next) {
 
 /* GET organizations index */
 router.get('/organizations', async function(req, res, next) {
-  let filters = {};
+  let filters = {}
+  if (req.query.filtername) {
+    filters.name = "/"+req.query.filtername+"/i"
+  }
   result = await getAPI(req,"organizations",filters);
-  console.log("organizations",result);
   res.render('organizations', {result: result});
 });
 
@@ -57,8 +59,8 @@ router.get('/organization/:id', async function(req, res, next) {
   };
   var id = req.params.id;
   result = await getAPI(req, "organizations", filters);
-  console.log("organization",result);
-  console.log(id);
+  // console.log("organization",result);
+  // console.log(id);
   res.render('organization', {result: result.data[0]});
 });
 

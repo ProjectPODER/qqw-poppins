@@ -7,7 +7,7 @@
               <p class="search-title">Buscar organización</p>
               <div class="multiple-controls-group">
                 <div class="multiple-control-container">
-                  <input type="text" name="proveedor" placeholder="NOMBRE" class="org_name_filter multiple-control">
+                  <input type="text" name="filtername" placeholder="NOMBRE" class="org_name_filter multiple-control">
                   <!-- <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control"> -->
                 </div>
               </div>
@@ -174,12 +174,14 @@
                       <div class="cardItemData"></div>
                       <p class="js-person-type" style="font-size: 16px;">
                         <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
-                        Empresa con
+                        Empresa 
+                        {{#if ocds_contract_count}}
+                        con
                         <span class="js-contract-count">
-                          <!-- <i class="fa fa-file-text" aria-hidden="true"></i> -->
                           <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
-                          110250 contrato(s) 
+                          {{ocds_contract_count}} contrato(s) 
                         </span>
+                        {{/if}}
                       </p>
                     </div>
                     {{!-- <div class=" js-score col-2 col-m-2 hidden">

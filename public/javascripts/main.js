@@ -63,8 +63,16 @@ $('.easy-search-input').typeahead({
   minLength: 2
   }, {
   name: 'qqw',
-  display: 'data.name',
-  source: qqw_suggest
+  display: 'name',
+  source: qqw_suggest,
+  templates: {
+      empty: [
+        '<div class="empty-message">',
+          'No hay resultados para la búsqueda.',
+        '</div>'
+      ].join('\n'),
+      suggestion: Handlebars.compile('<div><strong>{{name}}</strong></div>')
+    }
 });
 
 $(".twitter-typeahead").css("width","100%");
@@ -74,6 +82,7 @@ $(".twitter-typeahead").css("width","100%");
   overflow-y: auto;
 }
 */
+
 
 
 // Tooltips

@@ -14,7 +14,7 @@ var app = express();
 
 
 //This should vary according to environment
-const API_DOMAIN = "http://api.quienesquien.wiki";
+const API_DOMAIN = "http://localhost:10010";
 const AUTOCOMPLETE_URL = API_DOMAIN+"/v1/autocomplete";
 const FEED_URL = 'https://www.rindecuentas.org/feed/';
 const API_BASE = API_DOMAIN+"/v1";
@@ -62,6 +62,12 @@ app.use('/users', usersRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 // error handler
