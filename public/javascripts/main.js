@@ -43,6 +43,7 @@ $('.owl-carousel').owlCarousel({
   }
 });
 
+// Autocomplete Typeahead
 var qqw_suggest = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -56,6 +57,7 @@ var qqw_suggest = new Bloodhound({
     }
   }
 });
+
 
 $('.easy-search-input').typeahead({
   hint: true,
@@ -71,7 +73,12 @@ $('.easy-search-input').typeahead({
           'No hay resultados para la búsqueda.',
         '</div>'
       ].join('\n'),
-      suggestion: Handlebars.compile('<div><strong>{{name}}</strong></div>')
+      suggestion: function(data){
+        return '<div>' + data.name + '</div>';
+      },
+      footer: function(data){
+        return '<hr><div class="tt-footer"><a class="button-link button-search">' + 'Buscar personas con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer orgs"><a class="button-link button-search">' + 'Buscar organizaciones con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer contracts"><a class="button-link button-search">' + 'Buscar contratos con '+ '"' + data.query + '"' + '</a></div>';
+      },
     }
 });
 
