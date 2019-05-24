@@ -74,7 +74,10 @@ $('.easy-search-input').typeahead({
         '</div>'
       ].join('\n'),
       suggestion: function(data){
-        return '<div>' + data.name + '</div>';
+        if (data.type == "contract") {
+          return '<div><a href="/' + data.type + '/' + data.simple + '">' + data.title + '</a></div>';
+        }
+        return '<div><a href="/' + data.type + '/' + data.simple + '">' + data.name + '</a></div>';
       },
       footer: function(data){
         return '<hr><div class="tt-footer"><a class="button-link button-search">' + 'Buscar personas con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer orgs"><a class="button-link button-search">' + 'Buscar organizaciones con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer contracts"><a class="button-link button-search">' + 'Buscar contratos con '+ '"' + data.query + '"' + '</a></div>';

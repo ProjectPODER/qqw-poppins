@@ -103,7 +103,7 @@
       <div id="contract-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
         <div>
           <div class="col-m-6">
-            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de 911,970 resultados
+            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de {{result.pages}} resultados
             </div>
           </div>
           <div class="col-m-6">
@@ -128,31 +128,32 @@
             </div>
             <div id="contract-index" class="dataTable" aria-describedby="contract-index_info" role="grid">
               <div class="dataCardBody">
+                {{#each result.data}}
                 <div role="row" class="search-card odd">
                   <div class=" js-title no-title search-result-title col-m-8 col-8">
                     <div class="cardItemTitle">Título</div>
                     <div class="cardItemData"></div>
-                    <a href="/contracts/OCDS-0UD2Q6-LA-018TOQ003-T516-2012?supplier=cic corporativo industrial coahuila sa de cv">Carbón Mineral Termico No Coquizable Subbituminoso de Flama Larga</a>
+                    <a href="/contract/">{{title}}</a>
                   </div>
                   <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>$23,738,400,000.00<span class="contract_currency">Pesos mexicanos</span>
+                    <div class="cardItemData"></div>{{amount}}<span class="contract_currency">{{currency}}</span>
                   </div>
                   <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>Vigente desde 31 de diciembre de 2012 hasta 30 de diciembre de 2018
+                    <div class="cardItemData"></div>Vigente desde {{start_date}} hasta {{end_date}}
                   </div>
                   <div class=" js-ocid no-title col-2 col-m-2">
                     <div class="cardItemTitle">OCID</div>
                     <div class="cardItemData"></div>
-                    <a href="/contracts/OCDS-0UD2Q6-LA-018TOQ003-T516-2012?supplier=cic corporativo industrial coahuila sa de cv" class="button-link">Ver contrato</a>
+                    <a href="/contract/{{ocid}}" class="button-link">Ver contrato</a>
                   </div>
                   <div class=" js-dependency col-4 col-m-4">
                     <div class="cardItemTitle">Dependencia</div>
                     <div class="cardItemData"></div>
                     <ul class="dependency-cell list-unstyled">
                       <li>
-                        <a href="/orgs/comision federal de electricidad">Comisión Federal de Electricidad</a>
+                        <a href="/orgs/comision federal de electricidad">{{dependency}}</a>
                       </li>
                     </ul>
                   </div>
@@ -161,19 +162,20 @@
                     <div class="cardItemData"></div>
                     <ul class="suppliers-cell list-unstyled">
                       <li>
-                        <a href="/orgs/cic corporativo industrial coahuila sa de cv">CIC CORPORATIVO INDUSTRIAL COAHUILA, S.A. de C.V.</a>
+                        <a href="/orgs/cic corporativo industrial coahuila sa de cv">{{suppliers_org}}</a>
                       </li>
                     </ul>
                   </div>
                   <div class=" js-procedure col-2 col-m-2">
                     <div class="cardItemTitle">Procedimiento</div>
-                    <div class="cardItemData">Licitación Pública</div>
+                    <div class="cardItemData">{{procedure_type}}</div>
                   </div>
                   {{!-- <div class=" js-score col-1 col-m-1 hidden">
                     <div class="cardItemTitle">Puntaje</div>
                     <div class="cardItemData"></div>47.62<span class="d100">/100</span>
                   </div> --}}
                 </div>
+                {{/each}}
               </div>
             </div>
             <div class="dataTables_paginate paging_simple_numbers" id="contract-index_paginate">

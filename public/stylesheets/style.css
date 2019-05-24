@@ -2768,10 +2768,12 @@ header .navbar .autosuggest i,
   margin-top: 18px;
   margin-bottom: 10px;
   display: inline-block;
+  margin-right: 10px;
 }
-.tt-footer >.orgs,
-.tt-footer >.contracts {
-  margin-left: 5px;
+@media only screen and (max-width: 1200px) {
+  .tt-footer {
+    display: block;
+  }
 }
 footer {
   background-color: #21018b;
