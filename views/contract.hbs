@@ -2,11 +2,11 @@
   <div class='viewWrapper'>
     <div class='datos-generales clearfix'>
       <div class="gd-col-left-wrapper col-m-12">
-        {{!-- {{#if getField object=contracts field="title" }} --}}
+        {{#if result.title }}
           <div class="description-data-title">
             <h3>
               <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
-              {{!-- {{ getField object=contracts field="title"}} --}}CARBÓN MINERAL TERMICO NO COQUIZABLE SUBBITUMINOSO DE FLAMA LARGA
+              {{ result.title}}
             </h3>
             <div class="col-m-6 col-6">
               <h4 class="contract-type">Contrato</h4>
@@ -14,14 +14,13 @@
             <div class="col-m-6 col-6 right-align">
               {{!-- {{#let value1=(getField object=contracts field="value")}} --}}
               <p class="amount-data">
-                  {{!-- {{format_amount value1.amount}} --}}
-                  $23,738,400,000.00
+                  {{!-- {{format_amount value1.amount}} --}}{{result.amount}}
               </p>
               {{!-- {{format_currency value1.currency}}
-              {{/let}} --}}Pesos mexicanos
+              {{/let}} --}}{{result.currency}}
             </div>
           </div>
-        {{!-- {{/if}} --}}
+        {{/if}}
       </div>
     </div>
     <div class="col-12 col-m-12">
@@ -36,32 +35,32 @@
         {{!-- {{#let period=(getField object=contracts field="period")}} --}}
         <div class="col-m-4 col-4">
             <p class="js-title-data">Fecha de inicio</p>
-            <p class="js-data">{{!-- {{moment_LL period.startDate}} --}}31 DE DICIEMBRE DE 2012</p>
+            <p class="js-data">{{!-- {{moment_LL period.startDate}} --}}{{result.start_date}}</p>
         </div>
         <div class="col-m-8 col-8">
             <p class="js-title-data">Fecha de fin</p>
-            <p class="js-data">{{!-- {{moment_LL period.endDate}} --}}30 DE DICIEMBRE DE 2018</p>
+            <p class="js-data">{{!-- {{moment_LL period.endDate}} --}}{{result.end_date}}</p>
         </div>
         {{!-- {{/let}} --}}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
-            <a href="/orgs/{{!-- {{simpleName (getField object=parties field="parent")}} --}}"><p class="js-data">COMISIÓN FEDERAL DE ELECTRICIDAD{{!-- {{getField object=parties field="parent"}} --}}</p></a>
+            <a href="/orgs/{{result.dependency}} {{!-- {{simpleName (getField object=parties field="parent")}} --}}"><p class="js-data">{{result.dependency}} {{!-- {{getField object=parties field="parent"}} --}}</p></a>
         </div>
         <div class="col-m-7 col-7">
             <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{buyer.name}} --}}GERENCIA DE ABASTECIMIENTOS</p>
+            <p class="js-data">{{!-- {{buyer.name}} --}}</p>
         </div>
         <div class="col-m-5 col-5">
             <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{buyer.id}} --}}GERENCIA DE ABASTECIMIENTOS</p>
+            <p class="js-data">{{!-- {{buyer.id}} --}}</p>
         </div>
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{getField object=parties field="contactPoint"}} --}}LUIS FERNANDO CASTRO VIEYRA</p>
+            <p class="js-data">{{!-- {{getField object=parties field="contactPoint"}} --}}</p>
         </div>
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Proveedor</p>
-            <a href="/orgs/{{!-- {{awards.[0].suppliers.[0].id}} --}}"><p class="js-data">{{!-- {{awards.[0].suppliers.[0].name}} --}}CIC CORPORATIVO INDUSTRIAL COAHUILA, S.A. DE C.V.</p></a>
+            <a href="/orgs/{{!-- {{awards.[0].suppliers.[0].id}} --}}"><p class="js-data">{{!-- {{awards.[0].suppliers.[0].name}} --}}{{result.suppliers_org}}</p></a>
         </div>
         <hr>
       </div>

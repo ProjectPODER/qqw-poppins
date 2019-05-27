@@ -35,17 +35,32 @@ nav.bar
       width 10rem
   form
     &.nav-form
-      width 250px
-      text-align right
       margin-top -3px
   .navbar-right
     display inline-block
     li.open a.dropdown-toggle
       background-color #2b00f7 !important
       border-color transparent
-
   .navbar-toggle .icon-bar
       background-color #fff
+
+.fixed-nav
+  form
+    &.nav-form
+       width 100%
+      .autosuggest
+        width 100%
+  .fix-search
+    position absolute
+    width 40%
+    right 480px
+  input[type=text].landing-search-inputtext
+    border-color transparent
+
+@media (max-width: 1210px)
+  .fixed-nav
+    .fix-search
+      width 30%
 
 .navbar-toggle
     margin-top 0
@@ -233,10 +248,17 @@ img
   .navbar-nav
     & > li
       float none
+  .fixed-nav
+    .fix-search
+      position sticky
+      width 100%
+      padding-left 17px
+      padding-right 14px
   .shrink
   .fixed-nav
     .navbar-right
       width 100%
+      padding 0
     form.nav-form, .fixed-nav form.nav-form
       width 100%
       text-align left

@@ -831,7 +831,7 @@ button.reset-filters {
 .search-result-mono-gray {
   font-family: monospace;
   color: #9b9b9b;
-  font-size: 1rem;
+  font-size: 1.2rem;
   display: inline-block;
 }
 .no-title .cardItemTitle {
@@ -2467,8 +2467,6 @@ nav.bar {
 }
 .shrink form.nav-form,
 .fixed-nav form.nav-form {
-  width: 250px;
-  text-align: right;
   margin-top: -3px;
 }
 .shrink .navbar-right,
@@ -2483,6 +2481,25 @@ nav.bar {
 .shrink .navbar-toggle .icon-bar,
 .fixed-nav .navbar-toggle .icon-bar {
   background-color: #fff;
+}
+.fixed-nav form.nav-form {
+  width: 100%;
+}
+.fixed-nav form .autosuggest {
+  width: 100%;
+}
+.fixed-nav .fix-search {
+  position: absolute;
+  width: 40%;
+  right: 480px;
+}
+.fixed-nav input[type=text].landing-search-inputtext {
+  border-color: transparent;
+}
+@media (max-width: 1210px) {
+  .fixed-nav .fix-search {
+    width: 30%;
+  }
 }
 .navbar-toggle {
   margin-top: 0;
@@ -2679,9 +2696,16 @@ img.sources-icons {
   .navbar-nav > li {
     float: none;
   }
+  .fixed-nav .fix-search {
+    position: sticky;
+    width: 100%;
+    padding-left: 17px;
+    padding-right: 14px;
+  }
   .shrink .navbar-right,
   .fixed-nav .navbar-right {
     width: 100%;
+    padding: 0;
   }
   .shrink form.nav-form,
   .fixed-nav form.nav-form,
@@ -2755,10 +2779,13 @@ header .navbar .autosuggest i,
   padding: 3px 0;
   font-size: 18px;
   line-height: 24px;
+  text-decoration: none !important;
+  color: #5c5c5c !important;
 }
-.tt-suggestion:hover {
+.tt-suggestion div:hover {
   background-color: #eaeaea;
   cursor: pointer;
+  color: #2b00f7;
 }
 .tt-dataset hr {
   background-color: #d2d2d2;
@@ -2769,6 +2796,9 @@ header .navbar .autosuggest i,
   margin-bottom: 10px;
   display: inline-block;
   margin-right: 10px;
+}
+.tt-footer a:hover {
+  background-color: #2200c5 !important;
 }
 @media only screen and (max-width: 1200px) {
   .tt-footer {

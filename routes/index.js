@@ -26,7 +26,7 @@ router.get('/persons', async function(req, res, next) {
 });
 
 /* GET organizations index */
-router.get('/organizations', async function(req, res, next) {
+router.get('/orgs', async function(req, res, next) {
   let filters = {}
   if (req.query.filtername) {
     filters.name = "/"+req.query.filtername+"/i"
@@ -36,19 +36,19 @@ router.get('/organizations', async function(req, res, next) {
 });
 
 /* GET contract view */
-router.get('/contract:id', async function(req, res, next) {
+router.get('/contracts/:id', async function(req, res, next) {
   let filters = {
-    simple: req.params.id //lo que viene de req de la url
+    ocid: req.params.id, //lo que viene de req de la url
+    suppliers_org: req.query.supplier //lo que viene de req de la url
   };
-  var id = req.params.id;
   result = await getAPI(req,"contracts",filters);
   console.log("contracts",result);
-  console.log(id);
+  console.log(filters.ocid);
   res.render('contract', {result: result.data[0]});
 });
 
 /* GET person view. */
-router.get('/person/:id', async function(req, res, next) {
+router.get('/persons/:id', async function(req, res, next) {
   let filters = {
     simple: req.params.id //lo que viene de req de la url
   };
@@ -60,7 +60,7 @@ router.get('/person/:id', async function(req, res, next) {
 });
 
 /* GET organization view. */
-router.get('/organization/:id', async function(req, res, next) {
+router.get('/orgs/:id', async function(req, res, next) {
   let filters = {
     simple: req.params.id
   };

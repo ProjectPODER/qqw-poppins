@@ -74,13 +74,13 @@ $('.easy-search-input').typeahead({
         '</div>'
       ].join('\n'),
       suggestion: function(data){
-        if (data.type == "contract") {
-          return '<div><a href="/' + data.type + '/' + data.simple + '">' + data.title + '</a></div>';
+        if (data.type == "contracts") {
+          return '<a href="/' + data.type + '/' + data.ocid + '?supplier=' + data.suppliers_org + '"><div>' + data.title + '</div></a>';
         }
-        return '<div><a href="/' + data.type + '/' + data.simple + '">' + data.name + '</a></div>';
+        return '<a href="/' + data.type + '/' + data.simple + '"><div>' + data.name + '</div></a>';
       },
       footer: function(data){
-        return '<hr><div class="tt-footer"><a class="button-link button-search">' + 'Buscar personas con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer orgs"><a class="button-link button-search">' + 'Buscar organizaciones con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer contracts"><a class="button-link button-search">' + 'Buscar contratos con '+ '"' + data.query + '"' + '</a></div>';
+        return '<hr><div class="tt-footer"><a href="/persons?filtername=' + data.query + '"' + ' class="button-link button-search">' + 'Buscar personas con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/orgs?filtername=' + data.query + '"' + 'class="button-link button-search">' + 'Buscar organizaciones con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer contracts"><a class="button-link button-search">' + 'Buscar contratos con '+ '"' + data.query + '"' + '</a></div>';
       },
     }
 });

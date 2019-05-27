@@ -16,7 +16,7 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
+        <li class="fix-search">
           {{#if home }}
           {{else}}
               <form id="search-header" class="nav-form" role="search" method="get">
@@ -24,8 +24,7 @@
               </form>
           {{/if}}
         </li>
-        <li class="{{!-- {{isActiveRoute regex='contracts|contractShow|contractsubmit' className='active'}} --}}"
-        data-toggle="collapse" data-target=".navbar-collapse.in">
+        <li data-toggle="collapse" data-target=".navbar-collapse.in">
           <a href="/contracts" class="nav-link">
             <div class="contenedor_item_menu_top">
               <img class="icon-navbar" src="/images/icons/contrato.svg" alt="Contratos">
@@ -33,7 +32,7 @@
             </div>
           </a>
         </li>
-        <li class="{{!-- {{isActiveRoute regex='persons|personShow|personsubmit' className='active'}} --}}" data-toggle="collapse" data-target=".navbar-collapse.in">
+        <li data-toggle="collapse" data-target=".navbar-collapse.in">
           <a href="/persons" class="nav-link">
             <div class="contenedor_item_menu_top">
               <img class="icon-navbar icon-navbar-persons" src="/images/icons/personas.svg" alt="Personas">
@@ -41,8 +40,8 @@
             </div>
           </a>
         </li>
-        <li class="{{!-- {{isActiveRoute regex='orgs|orgShow|orgsubmit' className='active'}} --}}" data-toggle="collapse" data-target=".navbar-collapse.in">
-          <a href="/organizations" class="nav-link">
+        <li data-toggle="collapse" data-target=".navbar-collapse.in">
+          <a href="/orgs" class="nav-link">
             <div class="contenedor_item_menu_top">
             <img class="icon-navbar" src="/images/icons/organizacion.svg" alt="Organización">
               <span class="empresas_header_menu">{{!-- {{__ "Organizations" }} --}}Organizations</span>
