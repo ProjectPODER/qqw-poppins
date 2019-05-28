@@ -80,7 +80,7 @@ $('.easy-search-input').typeahead({
         return '<a href="/' + data.type + '/' + data.simple + '"><div>' + data.name + '</div></a>';
       },
       footer: function(data){
-        return '<hr><div class="tt-footer"><a href="/persons?filtername=' + data.query + '"' + ' class="button-link button-search">' + 'Buscar personas con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/orgs?filtername=' + data.query + '"' + 'class="button-link button-search">' + 'Buscar organizaciones con '+ '"' + data.query + '"' + '</a></div>' + '<div class="tt-footer contracts"><a class="button-link button-search">' + 'Buscar contratos con '+ '"' + data.query + '"' + '</a></div>';
+        return '<hr><div class="tt-footer"><a href="/persons?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/orgs?filtername=' + data.query + '"' + '>' + 'Buscar organizaciones con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer contracts"><a>' + 'Buscar contratos con '+ '"<b>' + data.query + '</b>"' + '</a></div>';
       },
     }
 });

@@ -366,9 +366,13 @@ a:focus {
   margin: -2.4em 2.3em 0 0;
   cursor: pointer;
 }
+.filter-bar .term-contract {
+  width: 40%;
+  display: inline-block;
+}
 .filter-bar input[type="date"] {
   padding: 5px 5px 5px 25px;
-  width: 85%;
+  width: 100%;
   background-image: url("../images/calendar.png");
   background-repeat: no-repeat;
   background-position: 6px;
@@ -408,7 +412,7 @@ input[type=submit].nav-search-inputtext {
 }
 input[type=text].landing-search-inputtext {
   width: 100%;
-  padding: 12px 20px;
+  padding: 12px 10px;
   box-sizing: border-box;
   display: inline-block;
   border-color: #2b00f7;
@@ -637,7 +641,7 @@ h2 card-image-container.document-title {
   margin: 0;
 }
 #tipo-adquisicion {
-  margin-bottom: 10rem;
+  margin-bottom: 1rem;
 }
 .filter-bar {
   position: fixed;
@@ -831,7 +835,7 @@ button.reset-filters {
 .search-result-mono-gray {
   font-family: monospace;
   color: #9b9b9b;
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: inline-block;
 }
 .no-title .cardItemTitle {
@@ -2491,7 +2495,8 @@ nav.bar {
 .fixed-nav .fix-search {
   position: absolute;
   width: 40%;
-  right: 480px;
+  right: 0;
+  left: 24%;
 }
 .fixed-nav input[type=text].landing-search-inputtext {
   border-color: transparent;
@@ -2792,13 +2797,15 @@ header .navbar .autosuggest i,
   margin: 5px 0;
 }
 .tt-footer {
-  margin-top: 18px;
-  margin-bottom: 10px;
-  display: inline-block;
+  margin-top: 10px;
+  display: block;
   margin-right: 10px;
 }
+.tt-footer a {
+  color: #2b00f7;
+}
 .tt-footer a:hover {
-  background-color: #2200c5 !important;
+  color: #2200c5;
 }
 @media only screen and (max-width: 1200px) {
   .tt-footer {

@@ -30,27 +30,17 @@
 
           <fieldset name="vigencia">
             <p class="search-title">Vigencia de contrato <a data-toggle="tooltip" data-placement="right" title="Fecha de inicio y fecha de expiración del contrato reportado por la Unidad Compradora."><i class="fa fa-question"></i></a></p>
-            <p class="search-label">Fecha de Inicio (a partir de 2002)</p>
-            <input type="date" id="from_date_contracts_index" value="01/01/2002" min="2002-01-01">
-            <p class="search-label">Fecha de fin</p>
-            <input type="date" id="to_date_contracts_index" value="00/00/0000" min="2002-01-01">
+            <div class="term-contract">
+              <p class="search-label">Fecha de Inicio</p>
+              <input type="date" id="from_date_contracts_index" value="01/01/2002" min="2002-01-01">
+            </div>
+            <div class="term-contract">
+              <p class="search-label">Fecha de fin</p>
+              <input type="date" id="to_date_contracts_index" value="00/00/0000" min="2002-01-01">
+            </div>
             <p>
               <input type="checkbox" id="fecha-desconocido" checked="checked"> Incluir contratos con fecha desconocida
             </p>
-          </fieldset>
-
-          <fieldset name="importe">
-            <p class="search-title">Importe del contrato <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><i class="fa fa-question"></i></a></p>
-            <a class="search-label importe-bucket" data-bucket="0-1000000"><p>Menor a 1 millón de pesos</p></a>
-            <a class="search-label importe-bucket" data-bucket="1000000-500000000"><p>Entre 1 millón y 500 millones</p></a>
-            <a class="search-label importe-bucket" data-bucket="500000000-1000000000"><p>Entre 500 millones a 1,000 millones</p></a>
-            <a class="search-label importe-bucket" data-bucket="1000000000-"><p>Más de mil millones</p></a>
-            <input type="text" id="importe-minimo" placeholder="Mínimo" class="search-amount">
-            <input type="text" id="importe-maximo" placeholder="Máximo" class="search-amount">
-            <p>
-              <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
-            </p>
-
           </fieldset>
 
           <fieldset name="tipo-adquisicion">
@@ -68,6 +58,20 @@
               <option value="Licitación Pública|Licitación Pública con OSD">Licitación</option>
             </select>
           </fieldset>
+          <fieldset name="importe">
+            <p class="search-title">Importe del contrato <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><i class="fa fa-question"></i></a></p>
+            <a class="search-label importe-bucket" data-bucket="0-1000000"><p>Menor a 1 millón de pesos</p></a>
+            <a class="search-label importe-bucket" data-bucket="1000000-500000000"><p>Entre 1 millón y 500 millones</p></a>
+            <a class="search-label importe-bucket" data-bucket="500000000-1000000000"><p>Entre 500 millones a 1,000 millones</p></a>
+            <a class="search-label importe-bucket" data-bucket="1000000000-"><p>Más de mil millones</p></a>
+            <input type="text" id="importe-minimo" placeholder="Mínimo" class="search-amount">
+            <input type="text" id="importe-maximo" placeholder="Máximo" class="search-amount">
+            <p>
+              <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
+            </p>
+
+          </fieldset>
+
             <input type="button" class="search-submit fixed-filter-button" value="FILTRAR">
           <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
       </form>
