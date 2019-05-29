@@ -10,8 +10,12 @@ router.get('/', async function(req, res, next) {
 /* GET contratcs index. */
 router.get('/contracts', async function(req, res, next) {
   let filters = {};
+  if (req.query.proveedor) {
+    filters.suppliers_org = "/"+req.query.proveedor+"/i"
+  }
   result = await getAPI(req,"contracts",filters);
-  console.log("contracts",result);
+  // console.log("contracts",result);
+  console.log(req.query.proveedor)
   res.render('contracts', {result: result});
 });
 
