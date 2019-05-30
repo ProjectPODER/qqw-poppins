@@ -68,9 +68,21 @@
         <p class="document-description">Si quieres una búsqueda más avanzada, escríbenos a: info@quienequien.wiki</p>
       </div>
       <div class="col-3 col-m-3 right-align">
-        <button type="button" class="button-tools" data-toggle="modal" data-target="#myModal">Herramientas</button>
+        <div class="dropdown">
+          <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Herramientas
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu pull-right" aria-labelledby="dropdownTools">
+            <li class="dropdown-header">Compartir</li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Url de la API</li>
+            <li><a href="#">{{result.api_url}}</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
     {{!-- {{#if filters }}
 
       <p class="search-terms-text">
@@ -160,7 +172,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+{{!-- <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -179,4 +191,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
