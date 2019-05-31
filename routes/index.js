@@ -95,6 +95,39 @@ router.get('/contact', async function(req, res, next) {
   res.render('contact');
 });
 
+router.post('/send', function (req, res) {
+
+    var mailOptions = {
+        to: "info@quienesquien.wiki",
+        subject: 'Mensaje desde QuienesQuien.Wiki',
+        from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
+        html:  "From: " + req.params.name + "<br>" + "Subject: " + req.params.subject + "<br>" +
+               "User's email: " + req.params.email + "<br>" + "Message: " + req.params.text
+    }
+
+  let smtpTransport = nodemailer.createTransport({
+        host: process.env.EMAIL_SERVER || "",
+        port: process.env.EMAIL_PORT || "587",
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: process.env.EMAIL_USER || "", // generated ethereal user
+            pass: process.env.EMAIL_PASS || "" // generated ethereal password
+        }
+    });
+
+
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function (err, response) {
+        if (err) {
+            console.log(err);
+            res.end("error");
+        } else {
+            console.log("Message sent: " + response.message);
+            res.end("sent");
+        }
+    });
+
+});
 
 async function getFeed(req) {
   let Parser = require('rss-parser');

@@ -117,3 +117,30 @@ function copyClipboard() {
   document.execCommand("copy");
   // alert("Copied the text: " + copyText.value);
 } 
+
+// Contact form
+
+var email, to, subject, text;
+$("#send_email").click(function (e) {
+  e.preventDefault();
+  // enter your email account that you want to recieve emails at.
+  name = $("#name").val();
+  subject = $("#subject").val();
+  email = $("#email").val();
+  text = $("#text").val();
+  // $("#message").text("Sending E-mail...Please wait");
+  $.post("/send", {
+      to: to,
+      name: name,
+      subject: subject,
+      email: email,
+      text: text
+  }, function (data) {
+      if (data == "sent") {
+            console.log("Email sent");
+            $("#contactForm").hide()
+            $("#thanks-column").show().removeClass("hidden");
+      }
+  },"text");
+  return false;
+});
