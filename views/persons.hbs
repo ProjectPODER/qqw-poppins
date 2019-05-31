@@ -56,33 +56,38 @@
 
   <div class="col-9 col-m-9 personas-content">
     <div class="row document-header">
-      <div class="col-3 col-m-3">
+      <div class="col-3 col-m-12">
         <h2 class="document-title">Personas</h2>
       </div>
-      <div class="col-9 col-m-9">
+      <div class="col-9 col-m-12">
         <p class="document-description">Conoce cómo se relacionan los personajes de las élites políticas y económicas en México.</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-2 tools-section">
       <div class="col-9 col-m-9">
         <p class="document-description">Si quieres una búsqueda más avanzada, escríbenos a: info@quienequien.wiki</p>
       </div>
-      <div class="col-3 col-m-3 right-align">
+      <div class="col-3 col-m-3">
         <div class="dropdown">
-          <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../images/icons/settings.svg" alt="Ícono Herramientas">
             Herramientas
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu pull-right" aria-labelledby="dropdownTools">
             <li class="dropdown-header">Compartir</li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
+            <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://quienesquien.wiki/persons&t=QuienesQUienWiki" target="_blank"><img class="share-icons" src="../images/icons/facebook.svg" alt="Facebook">Facebook</a></li>
+            <li><a href="https://twitter.com/intent/tweet?text=Qui%c3%a9n+es+Qui%c3%a9n+Wiki+(QQW)+es+una+plataforma+sobre+empresarios%2c+pol%c3%adticos%2c+empresas+y+organizaciones+que+explica+las+conexiones+entre+estos+actores+y+las+pone+a+disposici%c3%b3n+de+investigadores%2c+periodistas+y+la+ciudadan%c3%ada+en+general.&url=https://quienesquien.wiki/persons&via=ProjectPODER" target="_blank"><img class="share-icons" src="../images/icons/twitter.svg" alt="Twitter">Twitter</a></li>
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Url de la API</li>
-            <li><a href="#">{{result.api_url}}</a></li>
+            <li class="dropdown-header">URL de la API</li>
+            <li class="copy-clip">
+              <input id="apiUrl" type="text" name="destinatario" value="{{result.api_url}}">
+              <button class="btn-copy" onclick="copyClipboard()">Copiar URL</button>
+            </li>
           </ul>
         </div>
       </div>
+    </div>
+    <div class="row">
     {{!-- {{#if filters }}
 
       <p class="search-terms-text">

@@ -108,3 +108,12 @@ $('a.page-scroll').bind('click', function(event) {
     }, 1250, 'easeInOutExpo');
     event.preventDefault();
 });
+
+// Copy clipboard
+
+function copyClipboard() {
+  var copyText = document.getElementById("apiUrl");
+  copyText.select();
+  document.execCommand("copy");
+  // alert("Copied the text: " + copyText.value);
+} 
