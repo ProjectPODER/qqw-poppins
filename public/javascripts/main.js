@@ -110,7 +110,6 @@ $('a.page-scroll').bind('click', function(event) {
 });
 
 // Copy clipboard
-
 function copyClipboard() {
   var copyText = document.getElementById("apiUrl");
   copyText.select();
@@ -119,20 +118,19 @@ function copyClipboard() {
 } 
 
 // Contact form
-
-var email, to, subject, text;
+var to, name, subjectMail, email, text;
 $("#send_email").click(function (e) {
   e.preventDefault();
   // enter your email account that you want to recieve emails at.
   name = $("#name").val();
-  subject = $("#subject").val();
+  subjectMail = $("#subject").val();
   email = $("#email").val();
   text = $("#text").val();
   // $("#message").text("Sending E-mail...Please wait");
   $.post("/send", {
       to: to,
       name: name,
-      subject: subject,
+      subjectMail: subjectMail,
       email: email,
       text: text
   }, function (data) {

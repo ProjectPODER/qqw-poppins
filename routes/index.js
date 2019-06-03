@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var nodemailer = require('nodemailer');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -101,7 +102,7 @@ router.post('/send', function (req, res) {
         to: "info@quienesquien.wiki",
         subject: 'Mensaje desde QuienesQuien.Wiki',
         from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
-        html:  "From: " + req.params.name + "<br>" + "Subject: " + req.params.subject + "<br>" +
+        html:  "From: " + req.params.name + "<br>" + "Subject: " + req.params.subjectMail + "<br>" +
                "User's email: " + req.params.email + "<br>" + "Message: " + req.params.text
     }
 

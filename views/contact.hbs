@@ -4,28 +4,25 @@
     <form id="contactForm" novalidate="novalidate">
       <fieldset>
         <div class="form-group" data-required="true">
-          <label for="B3Q777Xt6dW4XQuTb" class="control-label">Nombre</label>
-          <input type="text" name="contact_name" id="name" required="" data-schema-key="contact_name" maxlength="50" class="form-control" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+          <label for="contact_name" class="control-label">Nombre</label>
+          <input type="text" name="contact_name" id="name" required="" data-schema-key="contact_name" maxlength="50" class="form-control">
           <span class="help-block"></span>
         </div>
         <div class="form-group">
-          <label for="xhxndzAwbNQEByebZ" class="control-label">Asunto</label>
+          <label for="subject" class="control-label">Asunto</label>
           <input type="text" name="subject" id="subject" data-schema-key="subject" class="form-control">
           <span class="help-block"></span>
         </div>
         <div class="form-group" data-required="true">
-          <label for="fMZQDRTTRhTApDW5q" class="control-label">Correo electrónico</label>
+          <label for="email" class="control-label">Correo electrónico</label>
           <input type="text" name="email" id="email" required="" data-schema-key="email" class="form-control">
           <span class="help-block"></span>
         </div>
         <div class="form-group" data-required="true">
-          <label for="mq63YFKyETRNctr6r" class="control-label">Mensaje</label>
+          <label for="text" class="control-label">Mensaje</label>
           <textarea name="message" rows="10" id="text" required="" data-schema-key="message" maxlength="1000" class="form-control"></textarea>
           <span class="help-block"></span>
         </div>
-        {{!-- <div class="antispam">
-            {{> afQuickField name="antispam"}}
-        </div> --}}
         <div>
             <button id="send_email" type="submit" class="btn contact-submit">Enviar</button>
             <button type="reset" class="btn btn-default">Resetear</button>
