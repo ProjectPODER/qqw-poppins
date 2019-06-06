@@ -116,6 +116,35 @@ function copyClipboard() {
   // alert("Copied the text: " + copyText.value);
 } 
 
+ // function to set the height on fly
+ function autoHeight() {
+   $('div.document-body').css('min-height', 0);
+   $('div.document-body').css('min-height', (
+     $(document).height() 
+     - $('nav.bar').height() 
+     - $('footer').height()
+   ));
+ }
+function autoHeightb() {
+   $('div.contact-template').css('min-height', 0);
+   $('div.contact-template').css('min-height', (
+     $(document).height() 
+     - $('nav.bar').height() 
+     - $('footer').height()
+   ));
+ }
+ // onDocumentReady function bind
+ $(document).ready(function() {
+   autoHeight();
+   autoHeightb();
+ });
+
+ // onResize bind of the function
+ $(window).resize(function() {
+   autoHeight();
+   autoHeightb();
+ });
+
 // Contact form
 var to, name, subjectMail, email, text;
 $("#send_email").click(function (e) {
@@ -163,15 +192,19 @@ var testdata0 = [
     var chart;
     nv.addGraph(function() {
         chart = nv.models.linePlusBarChart()
-            .margin({top: 50, right: 80, bottom: 30, left: 80})
+            .margin({top: 50, right: 50, bottom: 30, left: 75})
             .legendRightAxisHint(' [Using Right Axis]')
             .color(d3.scale.category20().range().slice(1))
+            .focusEnable(false)
 
-        chart.xAxis.tickFormat(function(d) {
+        chart.xAxis
+        .tickFormat(function(d) {
             return d3.time.format('%x')(new Date(d))
         }).showMaxMin(false);
 
-        chart.y2Axis.tickFormat(function(d) { return '$' + d3.format(',f')(d) });
+        chart.y2Axis
+        .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
+        
         chart.bars.forceY([0]).padData(false);
 
         chart.x2Axis.tickFormat(function(d) {
@@ -429,33 +462,35 @@ let treemap = new d3plus.Treemap()
 
 
 //------ Piechart
-// function tipoDeContratos(typeSummary) {
-//   console.log("Piechart")
-//   return nv.addGraph(function() {
-//     var piechart = nv.models.pieChart()
-//     .x(function(d) { return d.label })
-//     .y(function(d) { return d.value })
-//     .color(d3.scale.category20().range().slice(1))
-//     .showLabels(true);
+/*function tipoDeContratos(typeSummary) {
+  console.log("Piechart")
+  nv.addGraph(function() {
+    var piechart = nv.models.pieChart()
+    .x(function(d) { return d.label })
+    .y(function(d) { return d.value })
+    .color(d3.scale.category20().range().slice(1))
+    .showLabels(true);
 
-//     var piedata = [];
-//     for (type in typeSummary) {
-//       piedata.push({
-//         "label": type+" ",
-//         "value": typeSummary[type]
-//       })
-//     }
+    var piedata = [];
+    for (type in typeSummary) {
+      piedata.push({
+        "label": type+" ",
+        "value": typeSummary[type]
+      })
+    }
 
-//     d3.select("#piechart svg")
-//     .datum(piedata)
-//     .transition().duration(1200)
-//     .call(piechart);
+    d3.select("#piechart svg")
+    .datum(piedata)
+    .transition().duration(1200)
+    .call(piechart);
 
-//     nv.utils.windowResize(piechart.update);
+    nv.utils.windowResize(piechart.update);
 
-//     return piechart;
-//   });
-// }
+    console.log(piedata);
+    return piechart;
+  });
+}
+tipoDeContratos();*/
 
 
 
