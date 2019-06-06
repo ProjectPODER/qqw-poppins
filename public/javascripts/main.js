@@ -162,12 +162,18 @@ $("#send_email").click(function (e) {
       email: email,
       text: text
   }, function (data) {
-      if (data == "sent") {
+      if (data.status == "sent") {
             console.log("Email sent");
             $("#contactForm").hide()
             $("#thanks-column").show().removeClass("hidden");
       }
-  },"text");
+      if (data.status == "error") {
+            console.log("No email sent");
+            alert("Le pedimos discupas, su correo no se ha podido enviar. Por favor intente de nuevo.")
+      }
+  },"json").fail(function(error) {
+    console.error(error);
+  })
   return false;
 });
 

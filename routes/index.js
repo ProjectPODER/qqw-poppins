@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
+var errorCatcher = require('async-error-catcher');
+
+let catchError = errorCatcher.default;
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
@@ -9,16 +12,20 @@ router.get('/', async function(req, res, next) {
 });
 
 /* GET contratcs index. */
-router.get('/contracts', async function(req, res, next) {
+router.get('/contracts', catchError(async function(req, res, next) {
   let filters = {};
   if (req.query.proveedor) {
     filters.suppliers_org = "/"+req.query.proveedor+"/i"
+  }
+  if (req.query.dependencia) {
+    filters["buyer.name"] = "/"+req.query.dependencia+"/i"
+    filters["parties.memberOf"] = "/"+req.query.dependencia+"/i"
   }
   result = await getAPI(req,"contracts",filters);
   // console.log("contracts",result);
   console.log(req.query.proveedor)
   res.render('contracts', {result: result});
-});
+}));
 
 /* GET persons index */
 router.get('/persons', async function(req, res, next) {
@@ -97,14 +104,17 @@ router.get('/contact', async function(req, res, next) {
 });
 
 router.post('/send', function (req, res) {
+  // CONTACT PAGE FORM
 
-    var mailOptions = {
-        to: "info@quienesquien.wiki",
-        subject: 'Mensaje desde QuienesQuien.Wiki',
-        from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
-        html:  "From: " + req.params.name + "<br>" + "Subject: " + req.params.subjectMail + "<br>" +
-               "User's email: " + req.params.email + "<br>" + "Message: " + req.params.text
-    }
+  //TODO: Validar parámetros y devolver error
+  //TODO: Protegernos del SPAM
+  var mailOptions = {
+      to: "info@quienesquien.wiki",
+      subject: 'Mensaje desde QuienesQuien.Wiki',
+      from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
+      html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
+             "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
+  }
 
   let smtpTransport = nodemailer.createTransport({
         host: process.env.EMAIL_SERVER || "",
@@ -114,19 +124,51 @@ router.post('/send', function (req, res) {
             user: process.env.EMAIL_USER || "", // generated ethereal user
             pass: process.env.EMAIL_PASS || "" // generated ethereal password
         }
-    });
+  });
 
 
-    console.log(mailOptions);
-    smtpTransport.sendMail(mailOptions, function (err, response) {
-        if (err) {
-            console.log(err);
-            res.end("error");
-        } else {
-            console.log("Message sent: " + response.message);
-            res.end("sent");
-        }
-    });
+  console.log(mailOptions);
+  smtpTransport.sendMail(mailOptions, function (err, response) {
+      if (err) {
+          console.log(err);
+          res.end('{"status": "error"}');
+      } else {
+          console.log("Message sent: " + response.message);
+          res.end('{"status": "sent"}');
+      }
+  });
+
+  // SEND INFORMATION FORM
+
+  // var mailSendInfo = {
+  //     to: "info@quienesquien.wiki",
+  //     subject: 'Informacion aportada a traves de QQW',
+  //     from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
+  //     html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
+  //            "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
+  // }
+
+  // let smtpTransport = nodemailer.createTransport({
+  //       host: process.env.EMAIL_SERVER || "",
+  //       port: process.env.EMAIL_PORT || "587",
+  //       secure: false, // true for 465, false for other ports
+  //       auth: {
+  //           user: process.env.EMAIL_USER || "", // generated ethereal user
+  //           pass: process.env.EMAIL_PASS || "" // generated ethereal password
+  //       }
+  // });
+
+
+  // console.log(mailSendInfo);
+  // smtpTransport.sendMail(mailSendInfo, function (err, response) {
+  //     if (err) {
+  //         console.log(err);
+  //         res.end('{"status": "error"}');
+  //     } else {
+  //         console.log("Message sent: " + response.message);
+  //         res.end('{"status": "sent"}');
+  //     }
+  // });
 
 });
 
