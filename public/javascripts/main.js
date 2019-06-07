@@ -177,6 +177,35 @@ $("#send_email").click(function (e) {
   return false;
 });
 
+// Send information form
+var to, message, source, email;
+$("#send_info_email").click(function (e) {
+  e.preventDefault();
+  // enter your email account that you want to recieve emails at.
+  message = $("#message").val();
+  source = $("#source").val();
+  email = $("#email").val();
+  $.post("/send", {
+      to: to,
+      message: message,
+      source: source,
+      email: email,
+  }, function (data) {
+      if (data.status == "sent") {
+            console.log("Email sent");
+            $(".addinfo-form").hide()
+            $("#thanks-column").show().removeClass("hidden");
+      }
+      if (data.status == "error") {
+            console.log("No email sent");
+            alert("Le pedimos discupas, su información no se ha podido enviar. Por favor intente de nuevo.")
+      }
+  },"json").fail(function(error) {
+    console.error(error);
+  })
+  return false;
+});
+
 // ------- GRAPHS --------
 
 // Bar Chart

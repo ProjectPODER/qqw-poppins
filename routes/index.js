@@ -126,7 +126,6 @@ router.post('/send', function (req, res) {
         }
   });
 
-
   console.log(mailOptions);
   smtpTransport.sendMail(mailOptions, function (err, response) {
       if (err) {
@@ -140,35 +139,34 @@ router.post('/send', function (req, res) {
 
   // SEND INFORMATION FORM
 
-  // var mailSendInfo = {
-  //     to: "info@quienesquien.wiki",
-  //     subject: 'Informacion aportada a traves de QQW',
-  //     from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
-  //     html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
-  //            "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
-  // }
+  var mailSendInfo = {
+      to: "info@quienesquien.wiki",
+      subject: 'Informacion aportada a traves de QQW',
+      from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
+      html:  "From: " + req.body.email + "<br>" +
+             "Information: " + req.body.message + "<br>" + "Source: " + req.body.source
+  }
 
-  // let smtpTransport = nodemailer.createTransport({
-  //       host: process.env.EMAIL_SERVER || "",
-  //       port: process.env.EMAIL_PORT || "587",
-  //       secure: false, // true for 465, false for other ports
-  //       auth: {
-  //           user: process.env.EMAIL_USER || "", // generated ethereal user
-  //           pass: process.env.EMAIL_PASS || "" // generated ethereal password
-  //       }
-  // });
+  let smtpTransport = nodemailer.createTransport({
+        host: process.env.EMAIL_SERVER || "",
+        port: process.env.EMAIL_PORT || "587",
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: process.env.EMAIL_USER || "", // generated ethereal user
+            pass: process.env.EMAIL_PASS || "" // generated ethereal password
+        }
+  });
 
-
-  // console.log(mailSendInfo);
-  // smtpTransport.sendMail(mailSendInfo, function (err, response) {
-  //     if (err) {
-  //         console.log(err);
-  //         res.end('{"status": "error"}');
-  //     } else {
-  //         console.log("Message sent: " + response.message);
-  //         res.end('{"status": "sent"}');
-  //     }
-  // });
+  console.log(mailSendInfo);
+  smtpTransport.sendMail(mailSendInfo, function (err, response) {
+      if (err) {
+          console.log(err);
+          res.end('{"status": "error"}');
+      } else {
+          console.log("Message sent: " + response.message);
+          res.end('{"status": "sent"}');
+      }
+  });
 
 });
 

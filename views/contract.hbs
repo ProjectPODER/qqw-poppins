@@ -33,35 +33,49 @@
           <h4 class="description-data-subtitle">DATOS GENERALES</h4>
         </div>
         {{!-- {{#let period=(getField object=contracts field="period")}} --}}
+        {{#if result.start_date }}
         <div class="col-m-4 col-4">
             <p class="js-title-data">Fecha de inicio</p>
             <p class="js-data">{{!-- {{moment_LL period.startDate}} --}}{{result.start_date}}</p>
         </div>
+        {{/if}}
+        {{#if result.end_date }}
         <div class="col-m-8 col-8">
             <p class="js-title-data">Fecha de fin</p>
             <p class="js-data">{{!-- {{moment_LL period.endDate}} --}}{{result.end_date}}</p>
         </div>
+        {{/if}}
         {{!-- {{/let}} --}}
+        {{#if result.dependency }}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
             <a href="/orgs/{{result.dependency}} {{!-- {{simpleName (getField object=parties field="parent")}} --}}"><p class="js-data">{{result.dependency}} {{!-- {{getField object=parties field="parent"}} --}}</p></a>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-7 col-7">
             <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{buyer.name}} --}}</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-5 col-5">
             <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{buyer.id}} --}}</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{getField object=parties field="contactPoint"}} --}}</p>
         </div>
+        {{/if}}
+        {{#if result.suppliers_org }}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Proveedor</p>
             <a href="/orgs/{{!-- {{awards.[0].suppliers.[0].id}} --}}"><p class="js-data">{{!-- {{awards.[0].suppliers.[0].name}} --}}{{result.suppliers_org}}</p></a>
         </div>
+        {{/if}}
         <hr>
       </div>
       <div class="col-m-3 col-3">
@@ -175,7 +189,7 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">PLANEACIÓN</h4>
         </div>
-        {{!-- {{#if planning.budget.budgetBreakdown.length}}
+        {{#if planning.budget.budgetBreakdown.length}}
         Si ves esto avisanos a info@quiensquien.wiki porque falta mostrar algo de información aquí.
         <div class="col-m-12 col-12">
             <p class="js-data mt-2">PRESUPUESTO</p>
@@ -214,7 +228,7 @@
           No hay datos
         </div>
         {{else}}
-        {{/if}} --}}
+        {{/if}}
       </div>
       <div class="col-m-8 col-8">
         <hr>
@@ -223,6 +237,7 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">CONVOCATORIA</h4>
         </div>
+        {{#if result }}
         <div class="col-m-12 col-12">
             <p class="js-title-data">Tipo de procedimiento <a data-toggle="tooltip" data-placement="right" title="Refiere al tipo de procedimiento:
             a) Licitación Pública.
@@ -232,6 +247,8 @@
             - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{tender.procurementMethodMxCnet}} --}}LICITACIÓN PÚBLICA</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Tipo de contratación <a data-toggle="tooltip" data-placement="right" title="Muestra el tipo de contratación:
 
@@ -239,21 +256,31 @@
             b) Obra Pública incluye: obras públicas y los servicios relacionados con las mismas."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{tender.additionalProcurmentCategory}} --}}ADQUISICIONES</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-12 col-12">
             <p class="js-title-data">Fecha de licitación</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-4">
             <span class="js-title-data">Inicio: </span>
             <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.startDate}} --}}10 DE OCTUBRE DE 2012</span>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-8">
             <span class="js-title-data">Fin: </span>
             <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.endDate}} --}}21 DE NOVIEMBRE DE 2012</span>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-4 mt-2">
             <p class="js-title-data">Estatus de la licitación</p>
             <p class="js-data">{{!-- {{tender.status}} --}}COMPLETE</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-8 mt-2">
             <p class="js-title-data">Carácter <a data-toggle="tooltip" data-placement="right" title="Indica si el procedimiento es I) Nacional, II) Internacional o III) Internacional bajo TLC
 
@@ -263,6 +290,7 @@
             Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público"><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{tender.procurementMethodCharacterMxCnet}} --}}INTERNACIONAL</p>
         </div>
+        {{/if}}
       </div>
       <div class="col-m-8 col-8">
         <hr>
@@ -271,10 +299,13 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
         </div>
+        {{#if result }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Estatus de la adjudicación</p>
             <p class="js-data">{{!-- {{getField object=awards field="status"}} --}}ACTIVE</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Monto adjudicado</p>
             <p class="js-data">
@@ -283,10 +314,13 @@
               {{value3.currency}} --}}$23,738,400,000.00 MXN
               {{!-- {{/let}} --}}</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-8">
             <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{moment_LL (getField object=awards field="date")}} --}}27 DE NOVIEMBRE DE 2012</p>
         </div>
+        {{/if}}
       </div>
       <div class="col-m-8 col-8">
         <hr>
@@ -295,20 +329,26 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">CONTRATOS</h4>
         </div>
+        {{#if result }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Importe</p>
             <p class="js-data">{{!-- {{#let value2=(getField object=contracts field="value")}}{{format_amount value2.amount}} {{value2.currency}}{{/let}} --}}$23,738,400,000.00 MXN</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Estatus</p>
             <p class="js-data">{{!-- {{getField object=contracts field="statusMxCnet"}} --}}</p>
         </div>
+        {{/if}}
+        {{#if result }}
         <div class="col-m-6 col-8">
             <p class="js-title-data">Período</p>
             <p class="js-data">{{!-- {{#let period=(getField object=contracts field="period")}}
                 {{moment_LL period.startDate}} - {{moment_LL period.endDate}}
               {{/let}} --}}31 DE DICIEMBRE DE 2012 - 30 DE DICIEMBRE DE 2018</p>
         </div>
+        {{/if}}
       </div>
       <div class="col-m-8 col-8">
         <hr>
@@ -334,40 +374,4 @@
   </div>
 </div>
 {{!-- {{/with}} --}}
-<div class="container addinfo">
-  <div class="col-m-12 col-12">
-    <hr>
-  </div>
-  <div class="col-m-12">
-    <h4 class="addinfo-title ">¿Conoces más información? Puedes ayudarnos a completar este perfil.</h4>
-  </div>
-  <div class="col-m-8 col-8 mb-2">
-    <form action="" class="addinfo-form">
-      <div class="form-group">
-        <label>SI TIENES INFORMACIÓN PARA APORTAR A ESTA PERSONA, AGRÉGALA AQUÍ.</label>
-        <textarea id="message" class="form-control" rows="6" placeholder="ESCRIBE LOS DATOS QUE DESEAS APORTAR"></textarea>
-      </div>
-      <div class="form-group">
-        <label>FUENTE</label>
-        <input id="source" class="form-control" type="text" placeholder="AGREGA LA FUENTE DE INFORMACIÓN">
-      </div>
-      <div class="form-group">
-        <label>EMAIL</label>
-        <input id="email" class="form-control" type="email" placeholder="AGREGA TU EMAIL">
-      </div>
-      <div class="mt-2">
-        <button type="button" class="button-link" data-toggle="modal" data-target="#subscribe-popup">ENVIAR</button>
-      </div>
-    </form>
-  </div>
-  <div class="col-m-4 col-4 mb-2">
-    <div class="addinfo-box">
-      <h4>SI DESESAS FILTRAR LOS DATOS ANÓNIMAMENTE, ACCEDE A</h4>
-      <img src="../images/mexicoleaks-negro.png" alt="Mexicoleaks Logo" class="addinfo-box-logo">
-      <p>Una plataforma de filtración de datos anónima y segura que verifica la información proporcionada.</p>
-      <div class="mt-2 mb-1">
-        <a href="https://mexicoleaks.mx/enviar-para.php?r=poder" class="button-link" target="_blank">ACCEDER</a>
-      </div>
-    </div>
-  </div>
-</div>
+{{> send_info_form}}

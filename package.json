@@ -6,19 +6,21 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async-error-catcher": "1.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-handlebars": "^3.0.2",
     "hbs": "~4.0.4",
+    "helper-moment": "^0.2.0",
     "http-errors": "~1.6.3",
     "jquery": "^3.4.1",
     "jquery.easing": "^1.4.1",
+    "moment": "^2.24.0",
     "morgan": "~1.9.1",
     "nodemailer": "^6.2.1",
     "qqw": "git+http://gitlab.rindecuentas.org/equipo-qqw/node-qqw.git#master",
     "rss-parser": "3.7.0",
-    "stylus": "0.54.5",
-    "async-error-catcher": "1.2.0"
+    "stylus": "0.54.5"
   }
 }

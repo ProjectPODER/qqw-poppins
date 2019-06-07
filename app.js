@@ -6,12 +6,14 @@ var logger = require('morgan');
 var stylus = require('stylus');
 var hbs = require('express-handlebars');
 var jquery = require('jquery');
+var moment = require('moment');
+// handlebars.registerHelper('moment', require('helper-moment'));
+// console.log(moment());
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
 
 //This should vary according to environment
 const API_DOMAIN = "http://localhost:10010";
