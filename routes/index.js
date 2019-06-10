@@ -116,7 +116,7 @@ router.post('/send', function (req, res) {
              "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
   }
 
-  if (req.body.send_info_form == "true") {
+  if (req.body.send_info_form = "true") {
   // SEND INFORMATION FORM
     mailOptions.subject = 'Información aportada a través de QQW',
     mailOptions.html=  "From: " + req.body.email + "<br>" +
