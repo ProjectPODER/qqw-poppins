@@ -152,7 +152,7 @@ $("#send_email").click(function (e) {
   // enter your email account that you want to recieve emails at.
   name = $("#name").val();
   subjectMail = $("#subject").val();
-  email = $("#email").val();
+  email = $("#contactEmail").val();
   text = $("#text").val();
   // $("#message").text("Sending E-mail...Please wait");
   $.post("/send", {

@@ -163,11 +163,11 @@
                   </div>
                   <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>{{amount}}<span class="contract_currency">{{currency}}</span>
+                    <div class="cardItemData"></div>{{format_amount amount}}<span class="contract_currency">{{format_currency currency}}</span>
                   </div>
                   <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>Vigente desde {{start_date}} hasta {{end_date}}
+                    <div class="cardItemData"></div>Vigente desde {{moment start_date date lang="es" format="LL"}} hasta {{moment end_date date lang="es" format="LL"}}
                   </div>
                   <div class=" js-ocid no-title col-2 col-m-2">
                     <div class="cardItemTitle">OCID</div>

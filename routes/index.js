@@ -54,8 +54,8 @@ router.get('/contracts/:id', async function(req, res, next) {
     suppliers_org: req.query.supplier //lo que viene de req de la url
   };
   result = await getAPI(req,"contracts",filters);
-  console.log("contracts",result);
-  console.log(filters.ocid);
+  // console.log("contracts",result);
+  // console.log(filters.ocid);
   res.render('contract', {result: result.data[0]});
 });
 
@@ -116,35 +116,12 @@ router.post('/send', function (req, res) {
              "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
   }
 
-  let smtpTransport = nodemailer.createTransport({
-        host: process.env.EMAIL_SERVER || "",
-        port: process.env.EMAIL_PORT || "587",
-        secure: false, // true for 465, false for other ports
-        auth: {
-            user: process.env.EMAIL_USER || "", // generated ethereal user
-            pass: process.env.EMAIL_PASS || "" // generated ethereal password
-        }
-  });
-
-  console.log(mailOptions);
-  smtpTransport.sendMail(mailOptions, function (err, response) {
-      if (err) {
-          console.log(err);
-          res.end('{"status": "error"}');
-      } else {
-          console.log("Message sent: " + response.message);
-          res.end('{"status": "sent"}');
-      }
-  });
-
+  if (req.body.send_info_form == "true") {
   // SEND INFORMATION FORM
-
-  var mailSendInfo = {
-      to: "info@quienesquien.wiki",
-      subject: 'Informacion aportada a traves de QQW',
-      from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
-      html:  "From: " + req.body.email + "<br>" +
-             "Information: " + req.body.message + "<br>" + "Source: " + req.body.source
+    mailOptions.subject = 'Información aportada a través de QQW',
+    mailOptions.html=  "From: " + req.body.email + "<br>" +
+               "Information: " + req.body.message + "<br>" + "Source: " + req.body.source
+    
   }
 
   let smtpTransport = nodemailer.createTransport({
@@ -157,8 +134,8 @@ router.post('/send', function (req, res) {
         }
   });
 
-  console.log(mailSendInfo);
-  smtpTransport.sendMail(mailSendInfo, function (err, response) {
+  console.log(mailOptions);
+  smtpTransport.sendMail(mailOptions, function (err, response) {
       if (err) {
           console.log(err);
           res.end('{"status": "error"}');

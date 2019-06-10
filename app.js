@@ -6,9 +6,8 @@ var logger = require('morgan');
 var stylus = require('stylus');
 var hbs = require('express-handlebars');
 var jquery = require('jquery');
-var moment = require('moment');
-// handlebars.registerHelper('moment', require('helper-moment'));
-// console.log(moment());
+var moment = require('helper-moment');
+console.log(moment());
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -40,11 +39,38 @@ app.engine('.hbs', hbs({
         //  path to your partials
         path.join(__dirname, 'views/partials'),
     ],
+    // helpers: require("./public/javascripts/helpers.js").helpers
     helpers: {
       api_domain: function() { return app.get("config").API_DOMAIN; },
-      autocomplete_url: function() { return app.get("config").AUTOCOMPLETE_URL; }
+      autocomplete_url: function() { return app.get("config").AUTOCOMPLETE_URL; },
+      moment: require('helper-moment'),
+      format_amount: function(value) {
+        if (value) {
+          return value.toLocaleString('es-MX',
+            {
+              style: 'currency',
+              currency: "MXN",
+              currencyDisplay: 'symbol',
+              maximumFractionDigits: 2
+            });
+        }
+        return 'Importe desconocido';
+      },
+      format_currency: function(value) {
+        if (value == "MXN") {
+          return "Pesos mexicanos"
+        }
+        else if (value == "USD") {
+          return "Dólares estadounidenses"
+        }
+        else if (value == "EUR") {
+          return "Euros"
+        }
+        return value;
+      }
     }
 }));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

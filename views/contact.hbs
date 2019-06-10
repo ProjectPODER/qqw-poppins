@@ -5,26 +5,27 @@
       <fieldset>
         <div class="form-group" data-required="true">
           <label for="contact_name" class="control-label">Nombre</label>
-          <input type="text" name="contact_name" id="name" required="" data-schema-key="contact_name" maxlength="50" class="form-control">
+          <input type="text" name="contact_name" id="name" maxlength="50" class="form-control">
           <span class="help-block"></span>
         </div>
         <div class="form-group">
           <label for="subject" class="control-label">Asunto</label>
-          <input type="text" name="subject" id="subject" data-schema-key="subject" class="form-control">
+          <input type="text" name="subject" id="subject" class="form-control">
           <span class="help-block"></span>
         </div>
         <div class="form-group" data-required="true">
           <label for="email" class="control-label">Correo electrónico</label>
-          <input type="text" name="email" id="email" required="" data-schema-key="email" class="form-control">
+          <input id="contactEmail" type="email" name="contact-email" class="form-control">
           <span class="help-block"></span>
         </div>
         <div class="form-group" data-required="true">
           <label for="text" class="control-label">Mensaje</label>
-          <textarea name="message" rows="10" id="text" required="" data-schema-key="message" maxlength="1000" class="form-control"></textarea>
+          <textarea name="message" rows="10" id="text" maxlength="1000" class="form-control"></textarea>
           <span class="help-block"></span>
         </div>
         <div>
             <button id="send_email" type="submit" class="btn contact-submit">Enviar</button>
+            <input id="send_email" type="hidden" name="contact_form">
             <button type="reset" class="btn btn-default">Resetear</button>
         </div>
       </fieldset>
