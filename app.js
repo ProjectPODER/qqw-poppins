@@ -50,7 +50,7 @@ app.engine('.hbs', hbs({
             {
               style: 'currency',
               currency: "MXN",
-              currencyDisplay: 'symbol',
+              currencyDisplay: 'none',
               maximumFractionDigits: 2
             });
         }

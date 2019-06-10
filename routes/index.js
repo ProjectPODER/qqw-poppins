@@ -104,24 +104,24 @@ router.get('/contact', async function(req, res, next) {
 });
 
 router.post('/send', function (req, res) {
-  // CONTACT PAGE FORM
 
   //TODO: Validar parámetros y devolver error
   //TODO: Protegernos del SPAM
-  var mailOptions = {
-      to: "info@quienesquien.wiki",
-      subject: 'Mensaje desde QuienesQuien.Wiki',
-      from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
-      html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
-             "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
-  }
+  if (req.body.contact_form = "true") {
 
-  if (req.body.send_info_form = "true") {
+  // CONTACT PAGE FORM
+    var mailOptions = {
+        to: "info@quienesquien.wiki",
+        subject: 'Mensaje desde QuienesQuien.Wiki',
+        from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
+        html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
+               "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
+    }
+  } else if (req.body.send_info_form = "true") {
   // SEND INFORMATION FORM
     mailOptions.subject = 'Información aportada a través de QQW',
     mailOptions.html=  "From: " + req.body.email + "<br>" +
-               "Information: " + req.body.message + "<br>" + "Source: " + req.body.source
-    
+                       "Information: " + req.body.message + "<br>" + "Source: " + req.body.source
   }
 
   let smtpTransport = nodemailer.createTransport({
@@ -135,6 +135,8 @@ router.post('/send', function (req, res) {
   });
 
   console.log(mailOptions);
+  console.log(req.body.contact_form);
+  console.log(req.body.send_info_form);
   smtpTransport.sendMail(mailOptions, function (err, response) {
       if (err) {
           console.log(err);
