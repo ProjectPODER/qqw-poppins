@@ -50,7 +50,7 @@ app.engine('.hbs', hbs({
             {
               style: 'currency',
               currency: "MXN",
-              currencyDisplay: 'none',
+              currencyDisplay: 'symbol',
               maximumFractionDigits: 2
             });
         }
@@ -67,6 +67,11 @@ app.engine('.hbs', hbs({
           return "Euros"
         }
         return value;
+      },
+      limit: function (arr, limit) {
+        if (!Array.isArray(arr)) { 
+          return []; }
+        return arr.slice(0, limit);
       }
     }
 }));

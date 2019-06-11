@@ -65,11 +65,11 @@
               </tr>
             </thead>
             <tbody>
-              {{#each result.suppliesContracts }}
+              {{#each (limit result.suppliesContracts 3) }}
               <tr>
                 <td class="description-data-contract">
                   <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
-                  <a href="{{!-- /contracts/{{contract.ocid}}?supplier={{contract.awards.[0].suppliers.[0].id}} --}}">{{title}}</a>
+                  <a href="/contracts/{{ocid}}?supplier={{title}}">{{title}}</a>
                 </td>
                 <td class="description-data-amount">{{format_amount amount }} {{currency}}</td>
                 <td class="description-data-date">{{moment start_date date format="YYYY"}}</td>

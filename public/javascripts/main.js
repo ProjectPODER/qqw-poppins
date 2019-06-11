@@ -43,6 +43,9 @@ $('.owl-carousel').owlCarousel({
   }
 });
 
+//Tooltips
+$('[data-toggle="tooltip"]').tooltip({placement: 'top'});
+
 // Autocomplete Typeahead
 var qqw_suggest = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
