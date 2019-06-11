@@ -104,20 +104,19 @@ router.get('/contact', async function(req, res, next) {
 });
 
 router.post('/send', function (req, res) {
-
   //TODO: Validar parámetros y devolver error
   //TODO: Protegernos del SPAM
-  if (req.body.contact_form = "true") {
 
   // CONTACT PAGE FORM
-    var mailOptions = {
-        to: "info@quienesquien.wiki",
-        subject: 'Mensaje desde QuienesQuien.Wiki',
-        from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
-        html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
-               "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
-    }
-  } else if (req.body.send_info_form = "true") {
+  var mailOptions = {
+      to: "info@quienesquien.wiki",
+      subject: 'Mensaje desde QuienesQuien.Wiki',
+      from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
+      html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
+             "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
+  }
+  
+  if (req.body.type == "info") {
   // SEND INFORMATION FORM
     mailOptions.subject = 'Información aportada a través de QQW',
     mailOptions.html=  "From: " + req.body.email + "<br>" +
@@ -134,9 +133,6 @@ router.post('/send', function (req, res) {
         }
   });
 
-  console.log(mailOptions);
-  console.log(req.body.contact_form);
-  console.log(req.body.send_info_form);
   smtpTransport.sendMail(mailOptions, function (err, response) {
       if (err) {
           console.log(err);
@@ -162,10 +158,17 @@ async function getAPI(req,collection,filters) {
 
   var client = new Qqw({rest_base: req.app.get("config").API_BASE});
 
-  var params = {}; //params recibe fields para filtrar los campos que envia y text que no se que es
+  var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
 
   for (f in filters) {
     params[f] = filters[f];
+  }
+
+  if (collection=="contracts") {
+    params.sort="-amount";
+  }
+  if (collection=="persons" || collection=="organizations") {
+    params.sort="-ocds_contract_count";
   }
 
   result = await client.get_promise(collection, params);

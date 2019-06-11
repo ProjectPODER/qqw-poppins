@@ -69,7 +69,7 @@
               <tr>
                 <td class="description-data-contract">
                   <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
-                  <a href="/contracts/{{ocid}}?supplier={{title}}">{{title}}</a>
+                  <a href="/contracts/{{ocid}}?supplier={{suppliers_person}}">{{title}}</a>
                 </td>
                 <td class="description-data-amount">{{format_amount amount }} {{currency}}</td>
                 <td class="description-data-date">{{moment start_date date format="YYYY"}}</td>
@@ -81,7 +81,7 @@
         <div class="col-m-9 mb-3">
           <p>Viendo los 3 contratos más importantes de <strong>{{result.ocds_contract_count}} contratos en total</strong>. </p>
           <div class="col-m-3 centered contract-button">
-            <a href="{{!-- /contracts?filter_contracts.0.suppliers={{name}} --}}" class="button-link">Ver todos los contratos</a>
+            <a href="/contracts?supplier={{result.simple}}" class="button-link">Ver todos los contratos</a>
           </div>
           <!-- <table class="table table-responsive">
             <thead>

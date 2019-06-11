@@ -46,11 +46,9 @@ app.engine('.hbs', hbs({
       moment: require('helper-moment'),
       format_amount: function(value) {
         if (value) {
-          return value.toLocaleString('es-MX',
+          return "$"+value.toLocaleString('es-MX',
             {
-              style: 'currency',
-              currency: "MXN",
-              currencyDisplay: 'symbol',
+              style: 'decimal',
               maximumFractionDigits: 2
             });
         }
@@ -72,6 +70,9 @@ app.engine('.hbs', hbs({
         if (!Array.isArray(arr)) { 
           return []; }
         return arr.slice(0, limit);
+      },
+      'var': function(name, value, context){
+        this[name] = value;
       }
     }
 }));

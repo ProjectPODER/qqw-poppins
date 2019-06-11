@@ -137,7 +137,9 @@
               <div role="row" class="search-card odd">
                 <div class=" js-title no-title search-result-title col-m-8 col-8">
                   <div class="cardItemTitle">Nombre</div>
-                  <div class="cardItemData">{{name}}</div>
+                  <a href="/persons/{{simple}}">
+                    <div class="cardItemData">{{name}}</div>
+                  </a>
                 </div>
                 <div class=" js-ocid no-title col-2 col-m-2">
                   {{!-- <div class="cardItemTitle">enlace</div>
@@ -148,8 +150,8 @@
                   {{!-- <div class="cardItemTitle"></div>
                   <div class="cardItemData"></div> --}}
                   <p style="font-size: 1rem;">Proveedor 
-                    {{#if contract_count}}
-                      <span class="js-contract-count">{{contract_count}} contrato(s)</span>
+                    {{#if ocds_contract_count}}
+                      <span class="js-contract-count">{{ocds_contract_count}} contrato(s)</span>
                     {{/if}}
                   </p>
                 </div>
