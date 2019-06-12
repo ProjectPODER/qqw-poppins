@@ -1,3 +1,14 @@
-<h1>{{message}}</h1>
-<h2>{{error.status}}</h2>
-<pre>{{error.stack}}</pre>
+<div class="container error-template">
+  <h1>Error {{error.status}} - Nos vamos a recuperar de esta.</h1>
+  <p>Por favor intente de nuevo, refresque la página con F5 o vuelva atrás y reintente. </p>
+  <p>Si el error persiste por favor contáctenos con los detalles del error.</p>
+  <p>
+<a href="#" onclick="$('#detalles-del-error').toggle()">Ver detalles del error</a>
+  </p>
+  <div id="detalles-del-error" style="display:none">
+
+    <h2>Detalles del error</h2>
+    <h3>{{message}}</h3>
+    <pre>{{error.stack}}</pre>
+  </div>
+</div>
