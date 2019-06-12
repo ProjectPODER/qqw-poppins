@@ -5,7 +5,7 @@
       {{#if result.name }}
         <div class="description-data-name">
           <h3><img src="../images/icons/organizacion-gray.svg" alt="organización" class="icon-lf">{{ result.name }}</h3>
-          <h4 class="org-type">{{!-- {{#if isPublic}} --}}Dependencia{{!-- {{else}} --}}{{!-- Empresa{{/if}} --}}</h4>
+          <h4 class="org-type">{{#if result.public}}Dependencia{{else}}Empresa{{/if}}</h4>
         </div>
         <hr>
       {{/if}}
@@ -15,63 +15,63 @@
             <div class="col-m-12">
               <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
             </div>
-            {{!-- {{#if company.sector }} --}}
+            {{#if result.company.sector }}
             <div class="col-m-6">
                 <p class="js-title-data">Sector</p>
-                <p class="js-data-lf">{{!-- {{company.sector}} --}}</p>
+                <p class="js-data-lf">{{result.company.sector}}</p>
             </div>
-            {{!-- {{/if}} --}}
-            {{!-- {{#if type }} --}}
+            {{/if}}
+            {{#if result.type }}
             <div class="col-m-6">
                 <p class="js-title-data">Tipo de organización</p>
-                <p class="js-data-lf">{{!-- {{type}} --}}Dependencia pública o empresa paraestatal</p>
+                <p class="js-data-lf">{{result.type}}Dependencia pública o empresa paraestatal</p>
             </div>
-            {{!-- {{/if}} --}}
-            {{!-- {{#if company.classification }} --}}
+            {{/if}}
+            {{#if result.company.classification }}
             <div class="col-m-6">
                 <p class="js-title-data">Industria</p>
-                <p class="js-data-lf">{{!-- {{company.classification}} --}}</p>
+                <p class="js-data-lf">{{result.company.classification}}</p>
             </div>
-            {{!-- {{/if}}
-            {{#if isPublic }} --}}
+            {{/if}}
+            {{#if result.public }}
             <div class="col-m-6">
                 <p class="js-title-data">Tipo de organización</p>
                 <p class="js-data-lf">Dependencia pública o empresa paraestatal</p>
             </div>
-            {{!-- {{else}} --}}
+            {{else}}
             <div class="col-m-6">
                 <p class="js-title-data">Cotiza en bolsa</p>
-                <p class="js-data-lf">{{!-- {{#if company.tickers }}Si, clave: {{company.tickers}}{{else}}No{{/if}} --}}</p>
+                <p class="js-data-lf">{{#if result.company.tickers }}Si, clave: {{result.company.tickers}}{{else}}No{{/if}}</p>
             </div>
-            {{!-- {{/if}} --}}
-            {{!-- {{#if company.status}} --}}
+            {{/if}}
+            {{#if result.company.status}}
             <div class="col-m-6">
                 <p class="js-title-data">Situación</p>
-                <p class="js-data-lf">{{!-- {{company.status}} --}}</p>
+                <p class="js-data-lf">{{result.company.status}}</p>
             </div>
-            {{!-- {{/if}} --}}
+            {{/if}}
 
-            {{!-- {{#if foundation_date }} --}}
+            {{#if result.foundation_date }}
             <div class="col-m-6">
                 <p class="js-title-data">Fundación</p>
-                <p class="js-data-lf">{{!-- {{foundation_date}} --}}</p>
+                <p class="js-data-lf">{{result.foundation_date}}</p>
             </div>
-            {{!-- {{/if}}
-            {{#if immediate_parent }} --}}
+            {{/if}}
+            {{#if result.immediate_parent }}
             <div class="col-m-12">
                 <p class="js-title-data">Organización controlante directa</p>
-                <p class="js-data-lf"><a href="/orgs/{{!-- {{simpleName immediate_parent}} --}}">{{!-- {{immediate_parent}} --}}</a></p>
+                <p class="js-data-lf"><a href="/orgs/{{!-- {{ simpleName result.immediate_parent}} --}}">{{result.immediate_parent}}</a></p>
             </div>
-            {{!-- {{/if}}
-            {{#if parent }} --}}
+            {{/if}}
+            {{#if result.parent }}
             <div class="col-m-12">
                 <p class="js-title-data">Organización controlante final</p>
-                <p class="js-data-lf"><a href="/orgs/{{!-- {{simpleName parent}} --}}">{{!-- {{parent}} --}}</a></p>
+                <p class="js-data-lf"><a href="/orgs/{{!-- {{simpleName result.parent}} --}}">{{result.parent}}</a></p>
             </div>
-            {{!-- {{/if}} --}}
+            {{/if}}
 
         </div>
-        {{!-- {{#if address}} --}}
+        {{#if result.address}}
           <div class="col-m-6 flex mt-2">
             <div class="col-m-12">
               <h4 class="description-data-subtitle">LOCALIZACIÓN Y CONTACTO</h4>
@@ -80,43 +80,43 @@
               <div class="if-address-org">
                 <p class="js-title-data">Dirección Fiscal</p>
                 <p class="mb-0">
-                  {{!-- {{#if address.street}}
-                    <span class="js-data-lf">{{address.street}}, </span>
+                  {{#if result.address.street}}
+                    <span class="js-data-lf">{{result.address.street}}, </span>
                   {{/if}}
-                  {{#if address.postal_code}}
-                    <span class="js-data-lf">C.P. {{address.postal_code}}</span>
-                  {{/if}} --}}
+                  {{#if result.address.postal_code}}
+                    <span class="js-data-lf">C.P. {{result.address.postal_code}}</span>
+                  {{/if}}
                 </p>
                 <p class="mb-0">
-                  {{!-- {{#if address.city}}
-                    <span class="js-data-lf">{{address.city}}, </span>
+                  {{#if result.address.city}}
+                    <span class="js-data-lf">{{result.address.city}}, </span>
                   {{/if}}
-                  {{#if address.state}}
-                    <span class="js-data-lf">{{address.state}}, </span>
+                  {{#if result.address.state}}
+                    <span class="js-data-lf">{{result.address.state}}, </span>
                   {{/if}}
-                  {{#if address.country}}
-                    <span class="js-data-lf">{{address.country}}</span>
-                  {{/if}} --}}
+                  {{#if result.address.country}}
+                    <span class="js-data-lf">{{result.address.country}}</span>
+                  {{/if}}
                 </p>
               </div>
 
             </div>
             <div class="col-m-12">
-              {{!-- {{#if address.website}} --}}
+              {{#if result.address.website}}
                 <p class="js-title-data">Dirección web</p>
-                <a href="//{{!-- {{address.website}} --}}" target="_blank"><p class="js-data-lf js-data-link">{{!-- {{address.website}} --}}</p></a>
-              {{!-- {{/if}} --}}
+                <a href="//{{result.address.website}}" target="_blank"><p class="js-data-lf js-data-link">{{result.address.website}}</p></a>
+              {{/if}}
             </div>
             <div class="col-m-12">
             </div>
             <div class="col-m-12">
-              {{!-- {{#if address.phones}} --}}
+              {{#if result.address.phones}}
                 <p class="js-title-data">Teléfono</p>
-                <p class="js-data-lf">{{!-- {{address.phones}} --}}</p>
-              {{!-- {{/if}} --}}
+                <p class="js-data-lf">{{result.address.phones}}</p>
+              {{/if}}
             </div>
         </div>
-        {{!-- {{/if}} --}}
+        {{/if}}
         <div class="col-m-12 col-12" style="clear:both">
           <hr>
         </div>
@@ -227,18 +227,18 @@
             <p>Los gráficos están limitados a 200 contratos (400 nodos y 1000 relaciones en total) por razones de performance. </p>
             <hr>
           </div>
-          {{!-- {{#if isPublic}} --}}
+          {{#if result.public}}
           <div class="col-m-12 col-12 mt-2">
             <h4 class="description-data-subtitle">PROVEEDORES PRINCIPALES</h4>
-            {{!-- {{# each supplier in supplierSummary }} --}}
+            {{#each result.supplier }}
             <p class="principal-suppliers">
               <a href="/orgs/{{!-- {{simpleName supplier}} --}}"><img src="../images/icons/empresa-gray.svg" alt="organización" class="icon-lf icon-lf-organization">
-                {{!-- {{supplier}} --}}
+                {{supplier}}
               </a>
             </p>
-            {{!-- {{/each}} --}}
+            {{/each}}
           </div>
-          {{!-- {{else}} --}}
+          {{else}}
           <div class="col-m-12 col-12 mt-2">
             <h4 class="description-data-subtitle">COMPRADORAS PRINCIPALES</h4>
             {{!-- {{# each dependency in dependencySummary }} --}}
@@ -247,7 +247,7 @@
             </a></p>
            {{!--  {{/each}} --}}
           </div>
-          {{!-- {{/if}} --}}
+          {{/if}}
           <!-- <div class="col-m-7 col-7 mt-2">
           <h4 class="description-data-subtitle">MAPA DE UNIDADES COMPRADORAS</h4>
         </div> -->
