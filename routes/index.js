@@ -104,8 +104,25 @@ router.get('/contact', async function(req, res, next) {
 });
 
 router.post('/send', function (req, res) {
-  //TODO: Validar parámetros y devolver error
+
   //TODO: Protegernos del SPAM
+
+  let fieldsWidthError = []
+  if (!req.body.email || req.body.email.indexOf("@") == -1) {
+      fieldsWidthError.push("email");
+  }
+  if (!req.body.text) {
+      fieldsWidthError.push("text");
+  }
+  if (fieldsWidthError.length>0) {
+    let result = {
+      "status": "error",
+      "message": "Some fields have errors",
+      "fieldsWidhError": fieldsWidthError
+    }
+    res.end(JSON.stringify(result));
+    return false;
+  }
 
   // CONTACT PAGE FORM
   var mailOptions = {
