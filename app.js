@@ -7,28 +7,15 @@ var stylus = require('stylus');
 var hbs = require('express-handlebars');
 var jquery = require('jquery');
 var moment = require('helper-moment');
-console.log(moment());
+var dotenv = require('dotenv')
+var dotenvExpand = require('dotenv-expand')
+var myEnv = dotenv.config()
+dotenvExpand(myEnv)
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
-//This should vary according to environment
-const API_DOMAIN = "http://localhost:10010";
-const AUTOCOMPLETE_URL = API_DOMAIN+"/v1/autocomplete";
-const FEED_URL = 'https://www.rindecuentas.org/feed/';
-const API_BASE = API_DOMAIN+"/v1";
-
-let config = {
-  "API_DOMAIN": API_DOMAIN,
-  "AUTOCOMPLETE_URL": AUTOCOMPLETE_URL,
-  "API_BASE": API_BASE,
-  "FEED_URL": FEED_URL
-}
-
-app.set("config",config);
-
 
 // handlebars setup
 app.engine('.hbs', hbs({
@@ -41,8 +28,8 @@ app.engine('.hbs', hbs({
     ],
     // helpers: require("./public/javascripts/helpers.js").helpers
     helpers: {
-      api_domain: function() { return app.get("config").API_DOMAIN; },
-      autocomplete_url: function() { return app.get("config").AUTOCOMPLETE_URL; },
+      api_domain: function() { return process.env.API_DOMAIN; },
+      autocomplete_url: function() { return process.env.AUTOCOMPLETE_URL; },
       moment: require('helper-moment'),
       format_amount: function(value) {
         if (value) {
@@ -67,7 +54,7 @@ app.engine('.hbs', hbs({
         return value;
       },
       limit: function (arr, limit) {
-        if (!Array.isArray(arr)) { 
+        if (!Array.isArray(arr)) {
           return []; }
         return arr.slice(0, limit);
       },

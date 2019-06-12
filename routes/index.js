@@ -115,7 +115,7 @@ router.post('/send', function (req, res) {
       html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
              "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
   }
-  
+
   if (req.body.type == "info") {
   // SEND INFORMATION FORM
     mailOptions.subject = 'Información aportada a través de QQW',
@@ -149,14 +149,16 @@ async function getFeed(req) {
   let Parser = require('rss-parser');
   let parser = new Parser();
 
-  let feed = await parser.parseURL(req.app.get("config").FEED_URL);
+  console.log(process.env);
+
+  let feed = await parser.parseURL(process.env.FEED_URL);
   return feed.items.slice(0,3);
 }
 
 async function getAPI(req,collection,filters) {
   let Qqw = require('qqw');
 
-  var client = new Qqw({rest_base: req.app.get("config").API_BASE});
+  var client = new Qqw({rest_base: process.env.API_BASE});
 
   var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
 
