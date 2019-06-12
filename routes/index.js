@@ -111,8 +111,8 @@ router.post('/send', function (req, res) {
   if (!req.body.email || req.body.email.indexOf("@") == -1) {
       fieldsWidthError.push("email");
   }
-  if (!req.body.text) {
-      fieldsWidthError.push("text");
+  if (!req.body.message) {
+      fieldsWidthError.push("message");
   }
   if (fieldsWidthError.length>0) {
     let result = {
@@ -130,7 +130,7 @@ router.post('/send', function (req, res) {
       subject: 'Mensaje desde QuienesQuien.Wiki',
       from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
       html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
-             "User's email: " + req.body.email + "<br>" + "Message: " + req.body.text
+             "User's email: " + req.body.email + "<br>" + "Message: " + req.body.message
   }
 
   if (req.body.type == "info") {
