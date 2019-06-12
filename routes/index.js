@@ -190,7 +190,12 @@ async function getAPI(req,collection,filters) {
     params.sort="-ocds_contract_count";
   }
 
-  result = await client.get_promise(collection, params);
+  try() {
+    result = await client.get_promise(collection, params);
+  }
+  catch(e) {
+    console.error(e);
+  }
   return result.data;
 }
 
