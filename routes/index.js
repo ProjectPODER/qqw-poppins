@@ -56,6 +56,11 @@ router.get('/contracts/:id', catchError(async function(req, res, next) {
   result = await getAPI(req,"contracts",filters);
   // console.log("contracts",result);
   // console.log(filters.ocid);
+  if (!result.data[0]) {
+    let err = new Error("Contrato no encontrado");
+    err.status = 404;
+    throw(err);
+  }
   res.render('contract', {result: result.data[0]});
 }));
 
@@ -67,7 +72,12 @@ router.get('/persons/:id', catchError(async function(req, res, next) {
   var id = req.params.id;
   result = await getAPI(req,"persons",filters);
   // console.log("person",result);
-  console.log(id);
+  // console.log(id);
+  if (!result.data[0]) {
+    let err = new Error("Persona no encontrada");
+    err.status = 404;
+    throw(err);
+  }
   res.render('person', {result: result.data[0]});
 }));
 
@@ -79,7 +89,12 @@ router.get('/orgs/:id', catchError(async function(req, res, next) {
   var id = req.params.id;
   result = await getAPI(req, "organizations", filters);
   // console.log("organization",result);
-  console.log(id);
+  // console.log(id);
+  if (!result.data[0]) {
+    let err = new Error("Organización no encontrada");
+    err.status = 404;
+    throw(err);
+  }
   res.render('organization', {result: result.data[0]});
 }));
 
