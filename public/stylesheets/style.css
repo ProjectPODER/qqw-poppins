@@ -1467,12 +1467,14 @@ hr {
 textarea.form-control {
   height: auto;
 }
+.error-template,
 .about-template,
 .apis-template,
 .privacy-template,
 .contact-template {
   margin-top: 5rem;
 }
+.error-template h1,
 .about-template h1,
 .apis-template h1,
 .privacy-template h1,
@@ -1482,12 +1484,14 @@ textarea.form-control {
   font-weight: bold;
   margin-bottom: 2rem;
 }
+.error-template h1 img,
 .about-template h1 img,
 .apis-template h1 img,
 .privacy-template h1 img,
 .contact-template h1 img {
   width: 50px;
 }
+.error-template h2,
 .about-template h2,
 .apis-template h2,
 .privacy-template h2,
@@ -1498,6 +1502,7 @@ textarea.form-control {
   text-transform: uppercase;
   margin-top: 3rem;
 }
+.error-template h3,
 .about-template h3,
 .apis-template h3,
 .privacy-template h3,
@@ -1506,12 +1511,14 @@ textarea.form-control {
   font-weight: bold;
   margin-top: 2.5rem;
 }
+.error-template h4,
 .about-template h4,
 .apis-template h4,
 .privacy-template h4,
 .contact-template h4 {
   margin-top: 1.5rem;
 }
+.error-template a,
 .about-template a,
 .apis-template a,
 .privacy-template a,
@@ -1523,6 +1530,7 @@ textarea.form-control {
   transition: all 0.35s;
   font-weight: bold;
 }
+.error-template a:hover,
 .about-template a:hover,
 .apis-template a:hover,
 .privacy-template a:hover,
