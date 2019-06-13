@@ -2,14 +2,14 @@
   <ul class="pagination">
     <li class="paginate_button previous disabled" id="organization-index_previous"><a href="#" aria-controls="organization-index" data-dt-idx="0" tabindex="0">Anterior</a></li>
     {{#ifCond result.pages '<=' 5 }}
-        {{!-- {{#each result.pages}} --}}
-            <li class="paginate_button active"><a href="#" aria-controls="organization-index">{{!-- {{ math offset '*' 25 }} --}}{{result.pages}}</a></li>
-        {{!-- {{/each}} --}}
+        {{#each result.pages}}
+            <li class="paginate_button active"><a href="#" aria-controls="organization-index">{{!-- {{ math offset '*' 25 }} --}}{{this}}</a></li>
+        {{/each}}
     {{/ifCond }}
     {{#ifCond result.pages '>=' 5 }}
-        {{#each (limit result.pages 5)}}
+        {{!-- {{#each (limit result.pages 5)}} --}}
             <li class="paginate_button active"><a href="#" aria-controls="organization-index">{{!-- {{ math pages '*' 25 }} --}}{{result.pages}}</a></li>
-        {{/each}}
+        {{!-- {{/each}} --}}
             <li class="paginate_button disabled" id="organization-index_ellipsis"><a href="#" aria-controls="organization-index">…</a></li>
             <li class="paginate_button "><a href="#" aria-controls="organization-index">{{result.pages}}</a></li>
     {{/ifCond }}

@@ -7,11 +7,11 @@
             <h3><img src="../images/icons/persona-gray.svg" alt="Ícono persona" class="icon-lf icon-lf-person">{{result.name}}</h3>
             <h4 class="person-type">
               {{#if result.gender }}
-                {{#if gender = "male" }}
+                {{#ifCond result.gender '==' "Male" }}
                 Empresario
                 {{else}}
                 Empresaria
-                {{/if}}
+                {{/ifCond}}
               {{else}}
               Empresario(a)
               {{/if}}
@@ -51,7 +51,7 @@
       {{!-- <div class="col-m-12 col-12 {{#if contracts.length }}hidden{{else}}{{#if ocds_contract_count }}{{else}}hidden{{/if}}{{/if}}">
         Cargando contratos...
       </div> --}}
-      {{!-- {{#if contracts.length }} --}}
+      {{#if result.suppliesContracts }}
         <div class="col-m-12">
           <h4 class="description-data-subtitle">CONTRATOS</h4>
         </div>
@@ -100,7 +100,13 @@
             </tbody>
           </table> -->
         </div>
-      {{!-- {{/if}} --}}
+        {{else}}
+        <div class="col-m-9">
+          <p>
+            No hay contratos para mostrar.
+          </p>
+        </div>
+      {{/if}}
 
       <!-- <div class="col-m-12">
         <h4 class="description-data-subtitle">GRÁFICO DE RELACIONES</h4>

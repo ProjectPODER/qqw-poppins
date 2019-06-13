@@ -96,7 +96,7 @@ app.engine('.hbs', hbs({
             default:
                 return options.inverse(this);
         }
-      }
+      },
     }
 }));
 

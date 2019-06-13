@@ -30,7 +30,6 @@
         <div class="col-m-12">
           <h4 class="description-data-subtitle">DATOS GENERALES</h4>
         </div>
-        {{!-- {{#let period=(getField object=contracts field="period")}} --}}
         {{#if result.start_date }}
         <div class="col-m-4 col-4">
             <p class="js-title-data">Fecha de inicio</p>
@@ -43,26 +42,25 @@
             <p class="js-data">{{moment result.end_date date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
-        {{!-- {{/let}} --}}
         {{#if result.dependency }}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
             <a href="/orgs/{{result.dependency}} {{!-- {{simpleName (getField object=parties field="parent")}} --}}"><p class="js-data">{{result.dependency}} {{!-- {{getField object=parties field="parent"}} --}}</p></a>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if buyer.name }}
         <div class="col-m-7 col-7">
             <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{buyer.name}} --}}</p>
+            <p class="js-data">{{buyer.name}}</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if buyer.id }}
         <div class="col-m-5 col-5">
             <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{buyer.id}} --}}</p>
+            <p class="js-data">{{buyer.id}}</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if contactPoint }}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{getField object=parties field="contactPoint"}} --}}</p>
@@ -187,7 +185,7 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">PLANEACIÓN</h4>
         </div>
-        {{#if planning.budget.budgetBreakdown.length}}
+        {{!-- {{#if planning.budget.budgetBreakdown.length}} --}}
         Si ves esto avisanos a info@quiensquien.wiki porque falta mostrar algo de información aquí.
         <div class="col-m-12 col-12">
             <p class="js-data mt-2">PRESUPUESTO</p>
@@ -225,8 +223,8 @@
           </table> -->
           No hay datos
         </div>
-        {{else}}
-        {{/if}}
+        {{!-- {{else}}
+        {{/if}} --}}
       </div>
       <div class="col-m-8 col-8">
         <hr>
@@ -235,7 +233,7 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">CONVOCATORIA</h4>
         </div>
-        {{#if result }}
+        {{#if result.procedimiento }}
         <div class="col-m-12 col-12">
             <p class="js-title-data">Tipo de procedimiento <a data-toggle="tooltip" data-placement="right" title="Refiere al tipo de procedimiento:
             a) Licitación Pública.
@@ -246,7 +244,7 @@
             <p class="js-data">{{!-- {{tender.procurementMethodMxCnet}} --}}LICITACIÓN PÚBLICA</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.contratacion }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Tipo de contratación <a data-toggle="tooltip" data-placement="right" title="Muestra el tipo de contratación:
 
@@ -255,30 +253,30 @@
             <p class="js-data">{{!-- {{tender.additionalProcurmentCategory}} --}}ADQUISICIONES</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if resultfecha }}
         <div class="col-m-12 col-12">
             <p class="js-title-data">Fecha de licitación</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.fecha }}
         <div class="col-m-6 col-4">
             <span class="js-title-data">Inicio: </span>
             <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.startDate}} --}}10 DE OCTUBRE DE 2012</span>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.fecha }}
         <div class="col-m-6 col-8">
             <span class="js-title-data">Fin: </span>
             <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.endDate}} --}}21 DE NOVIEMBRE DE 2012</span>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.estatus }}
         <div class="col-m-6 col-4 mt-2">
             <p class="js-title-data">Estatus de la licitación</p>
             <p class="js-data">{{!-- {{tender.status}} --}}COMPLETE</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.caracter }}
         <div class="col-m-6 col-8 mt-2">
             <p class="js-title-data">Carácter <a data-toggle="tooltip" data-placement="right" title="Indica si el procedimiento es I) Nacional, II) Internacional o III) Internacional bajo TLC
 
@@ -297,13 +295,13 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
         </div>
-        {{#if result }}
+        {{#if result.estatus }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Estatus de la adjudicación</p>
             <p class="js-data">{{!-- {{getField object=awards field="status"}} --}}ACTIVE</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.monto }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Monto adjudicado</p>
             <p class="js-data">
@@ -313,7 +311,7 @@
               {{!-- {{/let}} --}}</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.fechafallo }}
         <div class="col-m-6 col-8">
             <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><i class="fa fa-question"></i></a></p>
             <p class="js-data">{{!-- {{moment_LL (getField object=awards field="date")}} --}}27 DE NOVIEMBRE DE 2012</p>
@@ -327,19 +325,19 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">CONTRATOS</h4>
         </div>
-        {{#if result }}
+        {{#if result.importe }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Importe</p>
             <p class="js-data">{{!-- {{#let value2=(getField object=contracts field="value")}}{{format_amount value2.amount}} {{value2.currency}}{{/let}} --}}$23,738,400,000.00 MXN</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.estatus }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Estatus</p>
             <p class="js-data">{{!-- {{getField object=contracts field="statusMxCnet"}} --}}</p>
         </div>
         {{/if}}
-        {{#if result }}
+        {{#if result.periodo }}
         <div class="col-m-6 col-8">
             <p class="js-title-data">Período</p>
             <p class="js-data">{{!-- {{#let period=(getField object=contracts field="period")}}

@@ -119,7 +119,7 @@ function copyClipboard() {
   // alert("Copied the text: " + copyText.value);
 } 
 
- // function to set the height on fly
+ // Function to set the height
  function autoHeight() {
    $('div.document-body').css('min-height', 0);
    $('div.document-body').css('min-height', (
@@ -128,9 +128,17 @@ function copyClipboard() {
      - $('footer').height()
    ));
  }
-function autoHeightb() {
+function autoHeightContact() {
    $('div.contact-template').css('min-height', 0);
    $('div.contact-template').css('min-height', (
+     $(document).height() 
+     - $('nav.bar').height() 
+     - $('footer').height()
+   ));
+ }
+ function autoHeightError() {
+   $('div.error-template').css('min-height', 0);
+   $('div.error-template').css('min-height', (
      $(document).height() 
      - $('nav.bar').height() 
      - $('footer').height()
@@ -139,13 +147,15 @@ function autoHeightb() {
  // onDocumentReady function bind
  $(document).ready(function() {
    autoHeight();
-   autoHeightb();
+   autoHeightContact();
+   autoHeightError();
  });
 
  // onResize bind of the function
  $(window).resize(function() {
    autoHeight();
-   autoHeightb();
+   autoHeightContact();
+   autoHeightError();
  });
 
 // Contact form
