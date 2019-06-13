@@ -43,9 +43,19 @@ router.get('/orgs', catchError(async function(req, res, next) {
   if (req.query.filtername) {
     filters.name = "/"+req.query.filtername+"/i"
   }
+
+  let current_page = req.query.page || 0;
+  filters.offset = current_page*25;
+
+  let url_without_page = removePage(req.originalUrl);
+
   result = await getAPI(req,"organizations",filters);
-  res.render('organizations', {result: result});
+  res.render('organizations', {result: result,pagesArray:[1,2,3,4,5],current_url:url_without_page,current_page:current_page});
 }));
+
+function removePage(url) {
+  return url.replace(/&page=[0-9]+/,"");
+}
 
 /* GET contract view */
 router.get('/contracts/:id', catchError(async function(req, res, next) {
@@ -204,6 +214,8 @@ async function getAPI(req,collection,filters) {
   if (collection=="persons" || collection=="organizations") {
     params.sort="-ocds_contract_count";
   }
+
+
 
   try {
     result = await client.get_promise(collection, params);

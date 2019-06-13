@@ -1,19 +1,19 @@
 <div class="dataTables_paginate paging_simple_numbers" id="organization-index_paginate">
   <ul class="pagination">
-    <li class="paginate_button previous disabled" id="organization-index_previous"><a href="#" aria-controls="organization-index" data-dt-idx="0" tabindex="0">Anterior</a></li>
+    <li class="paginate_button previous disabled" id="organization-index_previous"><a href="{{current_url}}&page={{math current_page "-" 1}}" aria-controls="organization-index">Anterior</a></li>
     {{#ifCond result.pages '<=' 5 }}
-        {{#each result.pages}}
+        {{#each pagesArray}}
             <li class="paginate_button active"><a href="#" aria-controls="organization-index">{{!-- {{ math offset '*' 25 }} --}}{{this}}</a></li>
         {{/each}}
-    {{/ifCond }}
-    {{#ifCond result.pages '>=' 5 }}
-        {{!-- {{#each (limit result.pages 5)}} --}}
-            <li class="paginate_button active"><a href="#" aria-controls="organization-index">{{!-- {{ math pages '*' 25 }} --}}{{result.pages}}</a></li>
-        {{!-- {{/each}} --}}
+    {{/ifCond}}
+    {{#ifCond result.pages '>' 5 }}
+        {{#each pagesArray as |i pageNum|}}
+            <li class="paginate_button active"><a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="organization-index">{{!-- {{ math pages '*' 25 }} --}}{{math ../current_page "+" pageNum}} </a></li>
+        {{/each}}
             <li class="paginate_button disabled" id="organization-index_ellipsis"><a href="#" aria-controls="organization-index">…</a></li>
-            <li class="paginate_button "><a href="#" aria-controls="organization-index">{{result.pages}}</a></li>
-    {{/ifCond }}
+            <li class="paginate_button "><a href="{{current_url}}&page={{result.pages}}" aria-controls="organization-index">{{result.pages}}</a></li>
+    {{/ifCond}}
     
-    <li class="paginate_button next" id="organization-index_next"><a href="#" aria-controls="organization-index" data-dt-idx="8" tabindex="0">Siguiente</a></li>
+    <li class="paginate_button next" id="organization-index_next"><a href="{{current_url}}&page={{math current_page "+" 1}}" aria-controls="organization-index" data-dt-idx="8" tabindex="0">Siguiente</a></li>
   </ul>
 </div>
