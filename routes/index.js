@@ -32,7 +32,7 @@ router.get('/contracts', catchError(async function(req, res, next) {
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
   // console.log("contracts",result);
-  console.log(req.query.proveedor)
+  console.log(filters)
   res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page});
 }));
 
@@ -51,8 +51,8 @@ router.get('/persons',catchError(async function(req, res, next) {
   result = await getAPI(req,"persons",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-
-  res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page});
+  console.log(filters)
+  res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:filters.name});
 }));
 
 /* GET organizations index */

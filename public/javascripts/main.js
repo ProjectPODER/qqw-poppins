@@ -220,3 +220,4 @@ $("#send_info_email").click(function (e) {
   })
   return false;
 });
+

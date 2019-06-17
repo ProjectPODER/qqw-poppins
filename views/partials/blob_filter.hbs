@@ -1,0 +1,13 @@
+{{#if filters }}
+  <p class="search-terms-text">
+    Búsqueda para:
+    {{!-- {{#each filters }} --}}
+      {{!-- {{#ifCond filter.hidden '=' true }} --}}
+        <span class="blob" data-field="{{filter.field}}">
+          {{filters.name}}: {{filters.name}}
+          <i class="fa fa-times delete-blob-filter" aria-hidden="true"></i>
+        </span>
+      {{!-- {{/ifCond}} --}}
+    {{!-- {{/each}} --}}
+  </p>
+{{/if}}

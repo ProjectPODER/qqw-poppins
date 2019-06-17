@@ -88,23 +88,8 @@
       </div>
     </div>
     <div class="row">
-    {{!-- {{#if filters }}
-
-      <p class="search-terms-text">
-        Búsqueda para:
-        {{#each filter in filters }}
-          {{#if filter.hidden = true }}
-            <span class="blob" data-field="{{filter.field}}">
-              {{filter.field_name}}: {{filter.string}}
-              <i class="fa fa-times delete-blob-filter" aria-hidden="true"></i>
-            </span>
-          {{/if}}
-        {{/each}}
-      </p>
-    {{/if}}
-    {{> tabular table=TabularTables.Persons
-    id="person-index"
-    class=""}} --}}
+    {{> blob_filter}}
+    
     <div id="person-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
       <div>
         <div class="col-m-6">

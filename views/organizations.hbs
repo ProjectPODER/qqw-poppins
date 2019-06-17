@@ -61,20 +61,7 @@
             </div>
           </div>
         </div>
-        {{!-- {{#if filters }}
-
-          <p class="search-terms-text">
-            Búsqueda para:
-            {{#each filter in filters }}
-              {{#if filter.hidden = true }}
-                <span class="blob" data-field="{{filter.field}}">
-                  {{filter.field_name}}: {{filter.string}}
-                  <i class="fa fa-times delete-blob-filter" aria-hidden="true"></i>
-                </span>
-              {{/if}}
-            {{/each}}
-          </p>
-        {{/if}} --}}
+        {{> blob_filter}}
         {{!--
           //Comentado para ocultar puntaje
 
