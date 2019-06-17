@@ -6,24 +6,37 @@
         <li class="paginate_button previous" id="organization-index_previous"><a href="{{current_url}}&page={{math current_page "-" 1}}" aria-controls="organization-index">Anterior</a></li>
     {{/ifCond}}
     {{#ifCond result.pages '<=' 5 }}
-        {{#each pagesArray}}
-            <li class="paginate_button active"><a href="#" aria-controls="organization-index">{{!-- {{ math offset '*' 25 }} --}}{{this}}</a></li>
+        {{#each pagesArray as |i pageNum|}}
+            <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
+                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="organization-index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
+            </li>
         {{/each}}
     {{/ifCond}}
     {{#ifCond result.pages '>' 5 }}
+        {{#ifCond current_page '>=' 2}}
+            <li class="paginate_button">
+                <a href="{{current_url}}&page=0" aria-controls="organization-index">1</a>
+            </li>
+            <li class="paginate_button disabled" id="organization-index_ellipsis">
+                <a href="#" aria-controls="organization-index">…</a>
+            </li>
+        {{/ifCond}}
         {{#each pagesArray as |i pageNum|}}
             <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
-                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="organization-index">{{math ../current_page "+" pageNum}} </a>
+                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="organization-index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
             </li>
         {{/each}}
             <li class="paginate_button disabled" id="organization-index_ellipsis">
                 <a href="#" aria-controls="organization-index">…</a>
             </li>
             <li class="paginate_button ">
-                <a href="{{current_url}}&page={{result.pages}}" aria-controls="organization-index">{{result.pages}}</a>
+                <a href="{{current_url}}&page={{math result.pages '-' 1}}" aria-controls="organization-index">{{result.pages}}</a>
             </li>
     {{/ifCond}}
-    
-    <li class="paginate_button next" id="organization-index_next"><a href="{{current_url}}&page={{math current_page "+" 1}}" aria-controls="organization-index" data-dt-idx="8" tabindex="0">Siguiente</a></li>
+    {{#ifCond current_page '==' (math result.pages '-' 1)}}
+        <li class="paginate_button next disabled" id="organization-index_next"><a>Siguiente</a></li>
+    {{else}}
+        <li class="paginate_button next" id="organization-index_next"><a href="{{current_url}}&page={{math current_page "+" 1}}" aria-controls="organization-index">Siguiente</a></li>
+    {{/ifCond}}
   </ul>
 </div>

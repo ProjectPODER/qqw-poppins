@@ -28,9 +28,12 @@ router.get('/contracts', catchError(async function(req, res, next) {
   let url_without_page = removePage(req.originalUrl);
 
   result = await getAPI(req,"contracts",filters);
+
+  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
+
   // console.log("contracts",result);
   console.log(req.query.proveedor)
-  res.render('contracts', {result: result, pagesArray:[1,2,3,4,5],current_url:url_without_page,current_page:current_page});
+  res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page});
 }));
 
 /* GET persons index */
@@ -46,7 +49,10 @@ router.get('/persons',catchError(async function(req, res, next) {
   let url_without_page = removePage(req.originalUrl);
 
   result = await getAPI(req,"persons",filters);
-  res.render('persons', {result: result, pagesArray:[1,2,3,4,5],current_url:url_without_page,current_page:current_page});
+
+  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
+
+  res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page});
 }));
 
 /* GET organizations index */
@@ -59,10 +65,14 @@ router.get('/orgs', catchError(async function(req, res, next) {
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
 
+
   let url_without_page = removePage(req.originalUrl);
 
   result = await getAPI(req,"organizations",filters);
-  res.render('organizations', {result: result,pagesArray:[1,2,3,4,5],current_url:url_without_page,current_page:current_page});
+
+  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
+  
+  res.render('organizations', {result: result,pagesArray:arrayNum,current_url:url_without_page,current_page:current_page});
 }));
 
 function removePage(url) {
