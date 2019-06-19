@@ -221,3 +221,11 @@ $("#send_info_email").click(function (e) {
   return false;
 });
 
+
+$('.delete-blob-filter').click(function(event, instance) {
+  let field = $(event.target).parent(".blob").data("field");
+  console.log("delete blob filter",field)
+  re = new RegExp(field+"=.*([&#])");
+  location.href = location.href.replace(re,"$1")
+  console.log(location.href,field,re);
+})

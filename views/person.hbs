@@ -21,7 +21,7 @@
         {{/if}}
       </div>
 
-      {{!-- {{#if memberships.length }}
+      {{#if result.memberships }}
         <div class="col-m-12">
           <h4 class="description-data-subtitle">EMPRESAS</h4>
         </div>
@@ -34,19 +34,19 @@
               </tr>
             </thead>
             <tbody>
-              {{# each membership in memberships }}
+              {{#each result.memberships }}
               <tr>
                 <td class="description-data-organization">
                   <img src="../images/icons/organizacion-blue.svg" alt="" class="icon-lf icon-lf-organization">
-                  <a href="/orgs/{{membership.sob_org}}">{{membership.sob_org}}</a>
+                  <a href="/orgs/{{sob_org}}">{{sob_org}}</a>
                 </td>
-                <td class="description-data-rol">{{membership.role}}</td>
+                <td class="description-data-rol">{{role}}</td>
               </tr>
               {{/each}}
             </tbody>
           </table>
         </div>
-      {{/if}} --}}
+      {{/if}}
 
       {{!-- <div class="col-m-12 col-12 {{#if contracts.length }}hidden{{else}}{{#if ocds_contract_count }}{{else}}hidden{{/if}}{{/if}}">
         Cargando contratos...
@@ -79,10 +79,14 @@
           </table>
         </div>
         <div class="col-m-9 mb-3">
-          <p>Viendo los 3 contratos más importantes de <strong>{{result.ocds_contract_count}} contratos en total</strong>. </p>
-          <div class="col-m-3 centered contract-button">
-            <a href="/contracts?supplier={{result.simple}}" class="button-link">Ver todos los contratos</a>
-          </div>
+          {{#ifCond result.ocds_contract_count '>' 3}}
+            <p>Viendo los 3 contratos más importantes de <strong>{{result.ocds_contract_count}} contratos en total</strong>. </p>
+            <div class="col-m-3 centered contract-button">
+              <a href="/contracts?supplier={{result.simple}}" class="button-link">Ver todos los contratos</a>
+            </div>
+          {{else}}
+            <p>Viendo <strong>{{result.ocds_contract_count}} contrato(s) en total</strong>. </p>
+          {{/ifCond}}
           <!-- <table class="table table-responsive">
             <thead>
               <tr>
@@ -100,12 +104,12 @@
             </tbody>
           </table> -->
         </div>
-        {{else}}
+        {{!-- {{else}}
         <div class="col-m-9">
           <p>
             No hay contratos para mostrar.
           </p>
-        </div>
+        </div> --}}
       {{/if}}
 
       <!-- <div class="col-m-12">
@@ -113,21 +117,21 @@
       </div> -->
     </div>
 
-    {{!-- {{#if address }}
+    {{#if address }}
       <div class="address clearfix">
-        <h3 class="detail_header">{{__ "address" }}</h3>
+        <h3 class="detail_header">Dirección</h3>
         <table class="table">
           <tbody>
-            {{#each arrayify address }}
+            {{#each address }}
               <tr>
-                <td>{{__ name }}</td>
+                <td>{{name }}</td>
                 <td>{{value}}</td>
               </tr>
             {{/each}}
           </tbody>
         </table>
       </div>
-    {{/if}} --}}
+    {{/if}}
   </div>
 </div>
 {{!-- {{/with}} --}}

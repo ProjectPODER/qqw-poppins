@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var errorCatcher = require('async-error-catcher');
+var lib = require('../lib.js');
 
 let catchError = errorCatcher.default;
 
@@ -13,19 +14,12 @@ router.get('/', catchError(async function(req, res, next) {
 
 /* GET contratcs index. */
 router.get('/contracts', catchError(async function(req, res, next) {
-  let filters = {};
-  if (req.query.proveedor) {
-    filters.suppliers_org = "/"+req.query.proveedor+"/i"
-  }
-  if (req.query.dependencia) {
-    filters["buyer.name"] = "/"+req.query.dependencia+"/i"
-    filters["parties.memberOf"] = "/"+req.query.dependencia+"/i"
-  }
+  let filters = lib.getFilters(req.query);
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
 
-  let url_without_page = removePage(req.originalUrl);
+  let url_without_page = lib.cleanURL(req.originalUrl);
 
   result = await getAPI(req,"contracts",filters);
 
@@ -33,54 +27,39 @@ router.get('/contracts', catchError(async function(req, res, next) {
 
   // console.log("contracts",result);
   console.log(filters)
-  res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page});
+  res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
 /* GET persons index */
 router.get('/persons',catchError(async function(req, res, next) {
-  let filters = {}
-  if (req.query.filtername) {
-    filters.name = "/"+req.query.filtername+"/i"
-  }
+  let filters = lib.getFilters(req.query);
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
 
-  let url_without_page = removePage(req.originalUrl);
+  let url_without_page = lib.cleanURL(req.originalUrl);
 
-  result = await getAPI(req,"persons",filters);
+  result = await lib.getAPI(req,"persons",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-  console.log(filters)
-  res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:filters.name});
+
+  res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
+
 
 /* GET organizations index */
 router.get('/orgs', catchError(async function(req, res, next) {
-  let filters = {}
-  if (req.query.filtername) {
-    filters.name = "/"+req.query.filtername+"/i"
-  }
+  let filters = lib.getFilters(req.query);
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
 
-
-  let url_without_page = removePage(req.originalUrl);
-
-  result = await getAPI(req,"organizations",filters);
+  result = await lib.getAPI(req,"organizations",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
   
-  res.render('organizations', {result: result,pagesArray:arrayNum,current_url:url_without_page,current_page:current_page});
+  res.render('organizations', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
-
-function removePage(url) {
-  if (url.indexOf("?") == -1) {
-    url+="?";
-  }
-  return url.replace(/&page=[0-9]+/,"");
-}
 
 /* GET contract view */
 router.get('/contracts/:id', catchError(async function(req, res, next) {
@@ -88,7 +67,7 @@ router.get('/contracts/:id', catchError(async function(req, res, next) {
     ocid: req.params.id, //lo que viene de req de la url
     suppliers_org: req.query.supplier //lo que viene de req de la url
   };
-  result = await getAPI(req,"contracts",filters);
+  result = await lib.getAPI(req,"contracts",filters);
   // console.log("contracts",result);
   // console.log(filters.ocid);
   if (!result.data[0]) {
@@ -105,7 +84,7 @@ router.get('/persons/:id', catchError(async function(req, res, next) {
     simple: req.params.id //lo que viene de req de la url
   };
   var id = req.params.id;
-  result = await getAPI(req,"persons",filters);
+  result = await lib.getAPI(req,"persons",filters);
   // console.log("person",result);
   // console.log(id);
   if (!result.data[0]) {
@@ -122,7 +101,7 @@ router.get('/orgs/:id', catchError(async function(req, res, next) {
     simple: req.params.id
   };
   var id = req.params.id;
-  result = await getAPI(req, "organizations", filters);
+  result = await lib.getAPI(req, "organizations", filters);
   // console.log("organization",result);
   // console.log(id);
   if (!result.data[0]) {
@@ -174,33 +153,8 @@ router.post('/send', function (req, res) {
     return false;
   }
 
-  // CONTACT PAGE FORM
-  var mailOptions = {
-      to: "info@quienesquien.wiki",
-      subject: 'Mensaje desde QuienesQuien.Wiki',
-      from: "QuienesQuien.Wiki <info@quienesquien.wiki>",
-      html:  "From: " + req.body.name + "<br>" + "Subject: " + req.body.subjectMail + "<br>" +
-             "User's email: " + req.body.email + "<br>" + "Message: " + req.body.message
-  }
 
-  if (req.body.type == "info") {
-  // SEND INFORMATION FORM
-    mailOptions.subject = 'Información aportada a través de QQW',
-    mailOptions.html=  "From: " + req.body.email + "<br>" +
-                       "Information: " + req.body.message + "<br>" + "Source: " + req.body.source
-  }
-
-  let smtpTransport = nodemailer.createTransport({
-        host: process.env.EMAIL_SERVER || "",
-        port: process.env.EMAIL_PORT || "587",
-        secure: false, // true for 465, false for other ports
-        auth: {
-            user: process.env.EMAIL_USER || "", // generated ethereal user
-            pass: process.env.EMAIL_PASS || "" // generated ethereal password
-        }
-  });
-
-  smtpTransport.sendMail(mailOptions, function (err, response) {
+  lib.sendMail(mailOptions, function (err, response) {
       if (err) {
           console.log(err);
           res.end('{"status": "error"}');
@@ -212,51 +166,6 @@ router.post('/send', function (req, res) {
 
 });
 
-async function getFeed(req) {
-  let Parser = require('rss-parser');
-  let parser = new Parser();
-
-  console.log(process.env);
-
-  let feed = await parser.parseURL(process.env.FEED_URL);
-  return feed.items.slice(0,3);
-}
-
-async function getAPI(req,collection,filters) {
-  let Qqw = require('qqw');
-
-  var client = new Qqw({rest_base: process.env.API_BASE});
-
-  var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
-
-  for (f in filters) {
-    params[f] = filters[f];
-  }
-
-  if (collection=="contracts") {
-    params.sort="-amount";
-  }
-  if (collection=="persons" || collection=="organizations") {
-    params.sort="-ocds_contract_count";
-  }
-
-
-
-  try {
-    result = await client.get_promise(collection, params);
-  }
-  catch(e) {
-    throw(new Error(e));
-  }
-
-  if (result.error) {
-    err = new Error(result.error);
-    err.status=500;
-    throw(err);
-  }
-  // console.log("result",result);
-  return result.data;
-}
 
 
 module.exports = router;

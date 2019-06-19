@@ -7,7 +7,7 @@
             <p class="search-title">Buscar personas</p>
             <div class="multiple-controls-group">
               <div class="multiple-control-container">
-                <input type="text" name="filtername" placeholder="Nombre" class="persona_name_filter multiple-control">
+                <input type="text" name="filtername" placeholder="Nombre" class="persona_name_filter multiple-control" value="{{filters.Nombre}}">
                 <!-- <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control"> -->
               </div>
             </div>
@@ -89,7 +89,7 @@
     </div>
     <div class="row">
     {{> blob_filter}}
-    
+
     <div id="person-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
       <div>
         <div class="col-m-6">
