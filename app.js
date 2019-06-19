@@ -97,6 +97,12 @@ app.engine('.hbs', hbs({
                 return options.inverse(this);
         }
       },
+      format_number: function(value) {
+        if (value) {
+          return value.toLocaleString('es-MX');
+        }
+        return 'Valor desconocido';
+      }
     }
 }));
 

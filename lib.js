@@ -5,6 +5,7 @@ function cleanURL(url) {
   return url.replace(/&page=[0-9]+/,"");
 }
 
+// Feed Home
 async function getFeed(req) {
   let Parser = require('rss-parser');
   let parser = new Parser();
@@ -15,6 +16,7 @@ async function getFeed(req) {
   return feed.items.slice(0,3);
 }
 
+// API
 async function getAPI(req,collection,filters) {
   let Qqw = require('qqw');
 
@@ -51,7 +53,7 @@ async function getAPI(req,collection,filters) {
   return result.data;
 }
 
-
+// Contact and Send Information Form
 function sendMail(req) {
   // CONTACT PAGE FORM
   var mailOptions = {
@@ -82,10 +84,11 @@ function sendMail(req) {
   return smtpTransport.sendMail
 }
 
+// Filters
 const filterElements = [
 	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre" },
 	{ htmlFieldName: "proveedor", apiFieldNames:["suppliers_org"], fieldLabel:"Proveedor" },
-	{ htmlFieldName: "dependencia", apiFieldNames:["buyer.name","parties.memberOf"], fieldLabel:"Comprador" },
+	{ htmlFieldName: "dependencia", apiFieldNames:["buyer.name","parties.memberOf"], fieldLabel:"Dependencia" },
 ]
 
 

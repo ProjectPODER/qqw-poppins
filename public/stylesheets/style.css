@@ -990,8 +990,7 @@ button.reset-filters {
   display: block;
   line-height: 0;
 }
-.dataTables_info,
-.dataTables_length label {
+.dataTables_info {
   padding-top: 0 !important;
   font-size: 0.9rem;
   font-weight: bold !important;
@@ -999,7 +998,15 @@ button.reset-filters {
   line-height: 1.8rem;
 }
 .dataTables_length {
-  text-align: right;
+  text-align: center;
+  padding-top: 0.65rem;
+  font-weight: normal !important;
+  font-size: 0.9rem;
+  color: #585858;
+}
+.dataTables_length select {
+  width: 75px;
+  display: inline-block;
 }
 .dataTables_paginate {
   margin-top: 2.5rem !important;
@@ -2103,9 +2110,7 @@ select.input-sm {
   line-height: 1.5;
   border-radius: 3px;
 }
-#person-index_paginate,
-#contract-index_paginate,
-#organization-index_paginate {
+#index_paginate {
   text-align: center;
 }
 div.dataTables_wrapper div.dataTables_paginate {

@@ -1,42 +1,42 @@
-<div class="dataTables_paginate paging_simple_numbers" id="organization-index_paginate">
+<div class="dataTables_paginate paging_simple_numbers" id="index_paginate">
   <ul class="pagination">
     {{#ifCond current_page '==' 0}}
-        <li class="paginate_button previous disabled" id="organization-index_previous"><a>Anterior</a></li>
+        <li class="paginate_button previous disabled" id="index_previous"><a>Anterior</a></li>
     {{else}}
-        <li class="paginate_button previous" id="organization-index_previous"><a href="{{current_url}}&page={{math current_page "-" 1}}" aria-controls="organization-index">Anterior</a></li>
+        <li class="paginate_button previous" id="index_previous"><a href="{{current_url}}&page={{math current_page "-" 1}}" aria-controls="index">Anterior</a></li>
     {{/ifCond}}
     {{#ifCond result.pages '<=' 5 }}
         {{#each pagesArray as |i pageNum|}}
             <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
-                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="organization-index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
+                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
             </li>
         {{/each}}
     {{/ifCond}}
     {{#ifCond result.pages '>' 5 }}
         {{#ifCond current_page '>=' 2}}
             <li class="paginate_button">
-                <a href="{{current_url}}&page=0" aria-controls="organization-index">1</a>
+                <a href="{{current_url}}&page=0" aria-controls="index">1</a>
             </li>
-            <li class="paginate_button disabled" id="organization-index_ellipsis">
-                <a href="#" aria-controls="organization-index">…</a>
+            <li class="paginate_button disabled" id="index_ellipsis">
+                <a href="#" aria-controls="index">…</a>
             </li>
         {{/ifCond}}
         {{#each pagesArray as |i pageNum|}}
             <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
-                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="organization-index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
+                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
             </li>
         {{/each}}
-            <li class="paginate_button disabled" id="organization-index_ellipsis">
-                <a href="#" aria-controls="organization-index">…</a>
+            <li class="paginate_button disabled" id="index_ellipsis">
+                <a href="#" aria-controls="index">…</a>
             </li>
             <li class="paginate_button ">
-                <a href="{{current_url}}&page={{math result.pages '-' 1}}" aria-controls="organization-index">{{result.pages}}</a>
+                <a href="{{current_url}}&page={{math result.pages '-' 1}}" aria-controls="index">{{result.pages}}</a>
             </li>
     {{/ifCond}}
     {{#ifCond current_page '==' (math result.pages '-' 1)}}
-        <li class="paginate_button next disabled" id="organization-index_next"><a>Siguiente</a></li>
+        <li class="paginate_button next disabled" id="index_next"><a>Siguiente</a></li>
     {{else}}
-        <li class="paginate_button next" id="organization-index_next"><a href="{{current_url}}&page={{math current_page "+" 1}}" aria-controls="organization-index">Siguiente</a></li>
+        <li class="paginate_button next" id="index_next"><a href="{{current_url}}&page={{math current_page "+" 1}}" aria-controls="index">Siguiente</a></li>
     {{/ifCond}}
   </ul>
 </div>

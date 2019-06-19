@@ -26,19 +26,14 @@
       <div class="card explore-card">
         <a href="/persons"><img src="images/Consejo-Mexicano-de-Negocios.jpg" alt="Personas" class="card-image"></a>
         <div class="card-pad">
-          <a href="/persons"><h3>
-           {{!--  <strong>
-              {{#if counter.persons }}
-                {{format_number counter.persons}}
-              {{else}}
-                <i class="fa fa-spinner fa-pulse fa-fw"></i>
-              {{/if}}
-            </strong> --}}
-            <strong>
-              123456
-            </strong>
-          </h3>
-          <h3 class="card-h3">Personas</h3></a>
+          <a href="/persons">
+            <h3>
+              <strong>
+                {{format_number (math resultPersons.pages '*' 25)}}
+              </strong>
+            </h3>
+            <h3 class="card-h3">Personas</h3>
+          </a>
           <p class="serif-gray">Funcionarios, empresarios y proveedores del Estado, qué negocios tienen, con quién se asocian y cómo consiguen sus contratos públicos.</p>
           <a href="/persons" class="button-link">VER PERSONAS</a>
         </div>
@@ -48,19 +43,14 @@
       <div class="card explore-card">
         <a href="/orgs"><img src="images/mercado.png" alt="Organizaciones" class="card-image"></a>
         <div class="card-pad">
-          <a href="/orgs"><h3>
-            {{!-- <strong>
-              {{#if counter.orgs }}
-                {{format_number counter.orgs}}
-              {{else}}
-                <i class="fa fa-spinner fa-pulse fa-fw"></i>
-              {{/if}}
-            </strong> --}}
-            <strong>
-              123456
-            </strong>
-          </h3>
-          <h3 class="card-h3">Organizaciones</h3></a>
+          <a href="/orgs">
+            <h3>
+              <strong>
+                {{format_number (math resultOrgs.pages '*' 25)}}
+              </strong>
+            </h3>
+            <h3 class="card-h3">Organizaciones</h3>
+          </a>
           <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
           <a href="/orgs" class="button-link">VER ORGANIZACIONES</a>
         </div>
@@ -70,19 +60,14 @@
       <div class="card explore-card">
         <a href="/contracts"><img src="images/licitacion.png" alt="Contratos" class="card-image"></a>
         <div class="card-pad">
-          <a href="/contracts"><h3>
-            {{!-- <strong>
-            {{#if counter.contracts_ocds }}
-              {{format_number counter.contracts_ocds}}
-            {{else}}
-              <i class="fa fa-spinner fa-pulse fa-fw"></i>
-            {{/if}}
-            </strong> --}}
-            <strong>
-              123456
-            </strong>
-          </h3>
-          <h3 class="card-h3">Contratos</h3></a>
+          <a href="/contracts">
+            <h3>
+              <strong>
+                {{format_number (math resultContracts.pages '*' 25)}}
+              </strong>
+            </h3>
+            <h3 class="card-h3">Contratos</h3>
+          </a>
           <p class="serif-gray">Explora los importes, años, dependencias, empresas proveedoras y otras características de más de un millón de contratos.</p>
           <a href="/contracts" class="button-link">VER CONTRATOS</a>
         </div>

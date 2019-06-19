@@ -130,14 +130,13 @@
       <div id="contract-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
         <div>
           <div class="col-m-6">
-            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite">Mostrando del 1 al 25  de {{result.pages}} resultados
+            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
             </div>
           </div>
           <div class="col-m-6">
             <div class="dataTables_length" id="contract-index_length">
-              <label>Mostrar 
+              <label>Mostrar
                 <select name="contract-index_length" aria-controls="contract-index" class="form-control input-sm">
-                  <option value="10">10</option>
                   <option value="25">25</option>
                   <option value="50">50</option>
                   <option value="100">100</option>

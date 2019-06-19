@@ -13,7 +13,7 @@
               </div>
               <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
             </fieldset>
-            <fieldset name="no-contratos">
+           {{!--  <fieldset name="no-contratos">
               <p class="search-title">Número de contratos</p>
               <a class="search-label"><p>Sin contratos</p></a>
               <a class="search-label"><p>1 a 10</p></a>
@@ -22,7 +22,7 @@
               <a class="search-label"><p>Más de 200</p></a>
               <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount">
               <input type="text" name="cantidad-máxima" placeholder="Máximo" class="search-amount">
-            </fieldset>
+            </fieldset> --}}
             <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
             <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
           </form>
@@ -82,14 +82,13 @@
         <div id="organization-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
           <div>
             <div class="col-m-6">
-              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite">Mostrando 1 de {{result.pages}} páginas
+              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
               </div>
             </div>
             <div class="col-m-6">
               <div class="dataTables_length" id="organization-index_length">
                 <label>Mostrar 
                   <select name="organization-index_length" aria-controls="organization-index" class="form-control input-sm">
-                    <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
                     <option value="100">100</option>

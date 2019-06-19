@@ -8,8 +8,9 @@ let catchError = errorCatcher.default;
 
 /* GET home page. */
 router.get('/', catchError(async function(req, res, next) {
-  let feed = await getFeed(req);
-  res.render('home', { feed: feed, home: true });
+  let feed = await lib.getFeed(req);
+ 
+  res.render('home', { feed: feed, home: true,  });
 }));
 
 /* GET contratcs index. */
@@ -21,7 +22,7 @@ router.get('/contracts', catchError(async function(req, res, next) {
 
   let url_without_page = lib.cleanURL(req.originalUrl);
 
-  result = await getAPI(req,"contracts",filters);
+  result = await lib.getAPI(req,"contracts",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
@@ -43,6 +44,7 @@ router.get('/persons',catchError(async function(req, res, next) {
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
+  console.log(filters.offset);
   res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
