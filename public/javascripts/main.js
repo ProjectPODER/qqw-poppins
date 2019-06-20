@@ -223,9 +223,10 @@ $("#send_info_email").click(function (e) {
 
 
 $('.delete-blob-filter').click(function(event, instance) {
-  let field = $(event.target).parent(".blob").data("field");
+  let field = $(event.target).parents(".blob").data("field");
   console.log("delete blob filter",field)
+  //TODO: we need better management of URL parameters
   re = new RegExp(field+"=.*([&#])");
-  location.href = location.href.replace(re,"$1")
+  location.href = (location.href+"#").replace(re,"$1")
   console.log(location.href,field,re);
 })

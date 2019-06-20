@@ -25,7 +25,7 @@ async function getAPI(req,collection,filters) {
   var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
 
   for (f in filters) {
-    params[f] = filters[f].value;
+    params[f] = filters[f];
   }
 
   if (collection=="contracts") {
@@ -34,8 +34,6 @@ async function getAPI(req,collection,filters) {
   if (collection=="persons" || collection=="organizations") {
     params.sort="-ocds_contract_count";
   }
-
-
 
   try {
     result = await client.get_promise(collection, params);
@@ -97,6 +95,7 @@ function getFilters(query) {
   for (filterElement in filterElements) {
   	if (query[filterElements[filterElement].htmlFieldName]) {
 		for (apiField in filterElements[filterElement].apiFieldNames) {
+			console.log(filterElements[filterElement].apiFieldNames[apiField],filterElements[filterElement].htmlFieldName);
   			filters[filterElements[filterElement].apiFieldNames[apiField]] = "/"+query[filterElements[filterElement].htmlFieldName]+"/i";
   		}
   	}
@@ -106,16 +105,16 @@ function getFilters(query) {
 }
 
 function cleanFilters(filters) {
-  cleanFilters = [];
+  cleanFilters = {};
   for (filterElement in filterElements) {
 	for (apiField in filterElements[filterElement].apiFieldNames) {
 	  	if (filters[filterElements[filterElement].apiFieldNames[apiField]]) {
-		    cleanFilters.push({
+		    cleanFilters[filterElements[filterElement].htmlFieldName] = {
 		    	fieldLabel:  filterElements[filterElement].fieldLabel,
 		    	apiField: filterElements[filterElement].apiFieldNames[apiField],
 		    	htmlField: filterElements[filterElement].htmlFieldName,
 		    	value: filters[filterElements[filterElement].apiFieldNames[apiField]].slice(1,-2)
-		    })
+		    }
 	  	}
 	}
   }

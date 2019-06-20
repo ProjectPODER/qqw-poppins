@@ -44,7 +44,7 @@ router.get('/persons',catchError(async function(req, res, next) {
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
-  console.log(filters.offset);
+  console.log(filters);
   res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
