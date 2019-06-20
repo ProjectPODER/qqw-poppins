@@ -38,10 +38,21 @@
           </div>
         </div>
         <div class="row mb-2 tools-section">
-          <div class="col-9 col-m-9">
+          <div class="col-4 col-m-4">
             <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contact">contáctanos.</a></p>
           </div>
-          <div class="col-3 col-m-3">
+          <div class="col-m-4">
+            <div class="dataTables_length" id="organization-index_length">
+              <label>Mostrar 
+                <select name="organization-index_length" aria-controls="organization-index" class="form-control input-sm">
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select> resultados
+              </label>
+            </div>
+          </div>
+          <div class="col-4 col-m-4">
             <div class="dropdown">
               <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../images/icons/settings.svg" alt="Ícono Herramientas">
                 Herramientas
@@ -61,7 +72,6 @@
             </div>
           </div>
         </div>
-        {{> blob_filter}}
         {{!--
           //Comentado para ocultar puntaje
 
@@ -81,19 +91,11 @@
         class=""}} --}}
         <div id="organization-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
           <div>
-            <div class="col-m-6">
-              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
-              </div>
+            <div class="col-m-8">
+              {{> blob_filter}}
             </div>
-            <div class="col-m-6">
-              <div class="dataTables_length" id="organization-index_length">
-                <label>Mostrar 
-                  <select name="organization-index_length" aria-controls="organization-index" class="form-control input-sm">
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                  </select> resultados
-                </label>
+            <div class="col-m-4" style="float: right; text-align: right;">
+              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite" style="margin-top: 5px; margin-bottom: 10px;">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
               </div>
             </div>
             <div class="col-m-12">

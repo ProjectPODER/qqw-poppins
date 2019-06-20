@@ -99,24 +99,13 @@
       </div>
     </div>
     <div class="row">
-    {{> blob_filter}}
-
-    <div id="person-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-      <div>
-        <div class="col-m-6">
-          <div class="dataTables_info" id="person-index_info" role="status" aria-live="polite">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
-          </div>
+      <div id="person-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        <div class="col-m-8">
+          {{> blob_filter}}
         </div>
-        <div class="col-m-6">
-          {{!-- <div class="dataTables_length" id="person-index_length">
-            <label>Mostrar 
-              <select name="person-index_length" aria-controls="person-index" class="form-control input-sm">
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select> resultados
-            </label>
-          </div> --}}
+        <div class="col-m-4" style="float: right; text-align: right;">
+          <div class="dataTables_info" id="person-index_info" role="status" aria-live="polite" style="margin-top: 5px; margin-bottom: 10px;">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
+          </div>
         </div>
         <div class="col-m-12">
           <div id="person-index_processing" class="dataTables_processing panel panel-default" style="display: none;">
@@ -157,7 +146,6 @@
           {{> pagination}}
         </div>
       </div>
-    </div>
     </div>
   </div>
 </div>
