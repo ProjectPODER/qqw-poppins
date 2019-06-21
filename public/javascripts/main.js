@@ -225,8 +225,17 @@ $("#send_info_email").click(function (e) {
 $('.delete-blob-filter').click(function(event, instance) {
   let field = $(event.target).parents(".blob").data("field");
   console.log("delete blob filter",field)
-  //TODO: we need better management of URL parameters
-  re = new RegExp(field+"=.*([&#])");
-  location.href = (location.href+"#").replace(re,"$1")
-  console.log(location.href,field,re);
+  location.search = removeQueryField(field);
+  console.log(location.search,field,re);
 })
+
+$("#index_length").change(function(){
+ var selected = $('#index_length').val(); 
+    location.search= removeQueryField("size") + "&size="+selected;
+});
+
+//TODO: we need better management of URL parameters
+function removeQueryField(field) {
+  re = new RegExp('([\?&])' + field+"=[^&]*([&#]*)");
+  return location.search.replace(re,"$1$2")
+}

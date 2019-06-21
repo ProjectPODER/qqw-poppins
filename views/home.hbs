@@ -29,7 +29,7 @@
           <a href="/persons">
             <h3>
               <strong>
-                {{format_number (math resultPersons.pages '*' 25)}}
+                {{format_number stats.persons.count }}
               </strong>
             </h3>
             <h3 class="card-h3">Personas</h3>
@@ -46,7 +46,7 @@
           <a href="/orgs">
             <h3>
               <strong>
-                {{format_number (math resultOrgs.pages '*' 25)}}
+                {{format_number stats.organizations.count}}
               </strong>
             </h3>
             <h3 class="card-h3">Organizaciones</h3>
@@ -63,7 +63,7 @@
           <a href="/contracts">
             <h3>
               <strong>
-                {{format_number (math resultContracts.pages '*' 25)}}
+                {{format_number stats.contracts.count}}
               </strong>
             </h3>
             <h3 class="card-h3">Contratos</h3>
@@ -85,19 +85,19 @@
       <img src="images/market.svg" alt="Bolsa de Valores" class="sources-icons">
       <h3 class="triplet"><a href="/about/#user-content-contratos">Contratos públicos</a></h3>
       <p class="triplet-text">En los procesos de contratación pública se esconden casos flagrantes de captura del estado. Tenemos importadas las siguientes bases de datos: <a href="/about/#user-content--compranet-plus-mexico">CompraNet Plus, México</a></p>
-      <p class="triplet-last-update">Fecha de última actualización: {{!-- {{ moment_L currentDate.orgsDate}}  --}}</p>
+      <p class="triplet-last-update">Fecha de última actualización: {{ moment stats.organizations.lastModified date lang="es" format="LL"}} </p>
     </div>
     <div class="col-4 col-m-4 centered triplet-wrapper">
       <img src="images/compranet.svg" alt="Compranet" class="sources-icons">
       <h3 class="triplet"><a href="/about/#user-content-beneficiarios-reales">Beneficiarios reales</a></h3>
       <p class="triplet-text">La propietarios de la empresa y sus controladores es una de las informaciones más difíciles de acceder. Aquí la lista de datasets que usamos para vincular corporaciones y empresas: <a href="/about/#user-content--bolsa-de-valores-mexicana-mexico">Bolsa de Valores de México</a></p>
-      <p class="triplet-last-update">Fecha de última actualización: {{!-- {{ moment_L currentDate.contractsDate }} --}}</p>
+      <p class="triplet-last-update">Fecha de última actualización: {{ moment stats.contracts.lastModified date lang="es" format="LL" }}</p>
     </div>
     <div class="col-4 col-m-4 centered triplet-wrapper">
       <img src="images/research.svg" alt="Investigaciones propias" class="sources-icons">
       <h3 class="triplet"><a href="/about/#user-content-investigaciones-propias">Investigaciones propias</a></h3>
       <p class="triplet-text">Proyectos de distintas organizaciones de la sociedad civil que siguen el dinero y mapean una corporación o gobierno: <a href="/about/#user-content--torredecontrolorg">TorreDeControl.org, México</a> y <a href="/about/#user-content--cargografias">Cargografías, Argentina</a></p>
-      <!-- <p class="triplet-last-update">Fecha de última actualización: XX/XX/XXXX</p> -->
+      <p class="triplet-last-update">Fecha de última actualización:  {{ moment stats.persons.lastModified date lang="es" format="LL" }}</p>
     </div>
   </div>
 </section>
@@ -109,17 +109,15 @@
       <p class="text-white">A partir de la investigación de los datos de QuiénEsQuién.Wiki, se han realizado proyectos de largo aliento, visualizaciones innovadoras y se han creado secciones de medios.</p>
 
       <!--End mc_embed_signup-->
-
       <div class="proyecto row">
         <div class="col-4 col-m-5 proyecto-info-img">
-          <a href="https://vivirconvih.org/"><img src="images/vih-site.png" alt="VivirconVIH.org"></a>
+          <a href="https://mujeresenlabolsa.org/"><img src="images/mujeres-site.png" alt="MujeresEnLaBolsa.org"></a>
         </div>
         <div class="col-8 col-m-7">
-            <p class="serif-gray proyecto-info">A partir del análisis de la compras de antirretrovirales en Guatemala mostramos la situación en la que está el país y apuntamos acciones de incidencia para permitir mejorar la vida de las personas que viven con el virus.</p>
-            <a class="button-link" type="button" href="https://vivirconvih.org/" target="_blank">VER VIVIRCONVIH.ORG</a>
+            <p class="serif-gray proyecto-info">El 8 de marzo lanzamos un proyecto con perspectiva de género en colaboración con 15 medios de comunicación de América Latina y España. Analizamos la proporción de consejeras y consejeros en las juntas directivas de las empresas que cotizan en 15 bolsas de valores hispanas y Brasil. Descubrimos que en promedio hay 7 hombres por cada mujer. México es el peor país en equidad de género en esta materia y lidera el ranking Costa Rica con un 22.43% de los asientos en los consejos de administración ocupados por mujeres, y aún mucho trabajo por hacer.</p>
+            <a class="button-link" type="button" href="https://mujeresenlabolsa.org/" target="_blank">VER MUJERESENLABOLSA.ORG</a>
         </div>
       </div>
-
       <div class="contacto-text">
         <h3 class="text-white">Te avisamos cuando saquemos un nuevo proyecto</h3>
         <div id="mc_embed_signup">
@@ -133,7 +131,24 @@
           </form>
         </div>
       </div>
-
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <a href="http://contratosdeldesastre.com/"><img src="images/desastre-site.png" alt="ContratosDelDesastre.org"></a>
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">Siguiendo con nuestra línea de trabajo de vincular contratos con derechos humanos realizamos una investigación para saber cómo se gastan los recursos públicos en situaciones de desastre. Es una colaboración entre PODER y El Intercambio, apoyada por Hivos, para la que se ha desarrollado una metodología de análisis que otros grupos ya están estudiando replicar.</p>
+            <a class="button-link" type="button" href="http://contratosdeldesastre.com/" target="_blank">VER CONTRATOSDELDESASTRE.COM</a>
+        </div>
+      </div>
+      <div class="proyecto row">
+        <div class="col-4 col-m-5 proyecto-info-img">
+          <a href="https://vivirconvih.org/"><img src="images/vih-site.png" alt="VivirconVIH.org"></a>
+        </div>
+        <div class="col-8 col-m-7">
+            <p class="serif-gray proyecto-info">A partir del análisis de la compras de antirretrovirales en Guatemala mostramos la situación en la que está el país y apuntamos acciones de incidencia para permitir mejorar la vida de las personas que viven con el virus.</p>
+            <a class="button-link" type="button" href="https://vivirconvih.org/" target="_blank">VER VIVIRCONVIH.ORG</a>
+        </div>
+      </div>
       <div class="proyecto row">
         <div class="col-4 col-m-5 proyecto-info-img">
           <a href="https://conoceblackrock.projectpoder.org/"><img src="images/blackrock.png" alt="Proyecto BlackRock"></a>

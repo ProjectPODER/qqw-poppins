@@ -24,16 +24,17 @@ async function getAPI(req,collection,filters) {
 
   var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
 
-  for (f in filters) {
-    params[f] = filters[f];
-  }
-
   if (collection=="contracts") {
     params.sort="-amount";
   }
   if (collection=="persons" || collection=="organizations") {
     params.sort="-ocds_contract_count";
   }
+
+  for (f in filters) {
+    params[f] = filters[f];
+  }
+
 
   try {
     result = await client.get_promise(collection, params);
@@ -84,9 +85,10 @@ function sendMail(req) {
 
 // Filters
 const filterElements = [
-	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre" },
-	{ htmlFieldName: "proveedor", apiFieldNames:["suppliers_org"], fieldLabel:"Proveedor" },
-	{ htmlFieldName: "dependencia", apiFieldNames:["buyer.name","parties.memberOf"], fieldLabel:"Dependencia" },
+	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre", type:"string" },
+	{ htmlFieldName: "proveedor", apiFieldNames:["suppliers_org"], fieldLabel:"Proveedor", type:"string" },
+	{ htmlFieldName: "dependencia", apiFieldNames:["buyer.name","parties.memberOf"], fieldLabel:"Dependencia", type:"string" },
+	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true },
 ]
 
 
@@ -96,7 +98,11 @@ function getFilters(query) {
   	if (query[filterElements[filterElement].htmlFieldName]) {
 		for (apiField in filterElements[filterElement].apiFieldNames) {
 			console.log(filterElements[filterElement].apiFieldNames[apiField],filterElements[filterElement].htmlFieldName);
-  			filters[filterElements[filterElement].apiFieldNames[apiField]] = "/"+query[filterElements[filterElement].htmlFieldName]+"/i";
+			let value = query[filterElements[filterElement].htmlFieldName];
+			if (filterElements[filterElement].type == "string") {
+				value = "/"+value+"/i"
+			}
+  			filters[filterElements[filterElement].apiFieldNames[apiField]] = value;
   		}
   	}
   }
@@ -109,16 +115,20 @@ function cleanFilters(filters) {
   for (filterElement in filterElements) {
 	for (apiField in filterElements[filterElement].apiFieldNames) {
 	  	if (filters[filterElements[filterElement].apiFieldNames[apiField]]) {
-		    cleanFilters[filterElements[filterElement].htmlFieldName] = {
-		    	fieldLabel:  filterElements[filterElement].fieldLabel,
-		    	apiField: filterElements[filterElement].apiFieldNames[apiField],
-		    	htmlField: filterElements[filterElement].htmlFieldName,
-		    	value: filters[filterElements[filterElement].apiFieldNames[apiField]].slice(1,-2)
-		    }
+	  		cleanField = filterElements[filterElement];
+		    cleanField.apiField = filterElements[filterElement].apiFieldNames[apiField];
+		    cleanField.value = filters[filterElements[filterElement].apiFieldNames[apiField]]
+
+			if (cleanField.type == "string") {
+				cleanField.value = cleanField.value.slice(1,-2);
+			}
+		    
+		    
+		    cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField;
 	  	}
 	}
   }
-
+  // console.log("cleanFilters",cleanFilters);
   return cleanFilters;
 }
 

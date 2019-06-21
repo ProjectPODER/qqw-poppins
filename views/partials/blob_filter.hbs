@@ -2,12 +2,12 @@
   <p class="search-terms-text">
     Búsqueda para:
     {{#each filters }}
-      {{!-- {{#ifCond filter.hidden '=' true }} --}}
-        <span class="blob" data-field="{{this.htmlField}}">
+      {{#ifCond this.hidden '!=' true }}
+        <span class="blob" data-field="{{this.htmlFieldName}}">
           {{this.fieldLabel}}: {{this.value}}
           <i class="fa fa-times delete-blob-filter" aria-hidden="true"><b>x</b></i>
         </span>
-      {{!-- {{/ifCond}} --}}
+      {{/ifCond}}
     {{/each}}
   </p>
 {{/if}}

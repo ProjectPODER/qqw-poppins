@@ -8,7 +8,7 @@
             <p class="search-title">FILTRAR PROVEEDORES <a data-toggle="tooltip" data-placement="right" title="Nombre o Razón Social del Proveedor o Contratista ganador de la contratación."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
             <div class="multiple-controls-group">
               <div class="multiple-control-container">
-                <input type="text" name="proveedor" placeholder="Nombre de proveedor" class="supplier_name_filter multiple-control">
+                <input type="text" name="proveedor" placeholder="Nombre de proveedor" class="supplier_name_filter multiple-control"value="{{filters.proveedor.value }}">
                 <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control">
               </div>
 
@@ -20,7 +20,7 @@
             <p class="search-title">FILTRAR DEPENDENCIAS <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
             <div class="multiple-controls-group">
               <div class="multiple-control-container">
-                <input type="text" name="dependencia" placeholder="Nombre de dependencia" class="dependency_name_filter multiple-control">
+                <input type="text" name="dependencia" placeholder="Nombre de dependencia" class="dependency_name_filter multiple-control" value="{{filters.dependencia.value }}">
                 <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control">
               </div>
 
@@ -69,7 +69,7 @@
               <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
             </p>
           </fieldset>
-
+            <input type="hidden" name="size" value="{{ filters.size.value }}">
             <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
           <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
       </form>
@@ -89,15 +89,7 @@
         <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contact">contáctanos.</a></p>
       </div>
       <div class="col-m-4">
-        <div class="dataTables_length" id="contract-index_length">
-          <label>Mostrar
-            <select name="contract-index_length" aria-controls="contract-index" class="form-control input-sm">
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select> resultados
-          </label>
-        </div>
+        {{> table_lenght}}
       </div>
       <div class="col-2 col-m-2">
         <div class="dropdown">

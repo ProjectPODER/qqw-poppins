@@ -13,6 +13,7 @@
             </div>
             <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
           </fieldset>
+          <input type="hidden" name="size" value="{{ filters.size.value }}">
           <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
           <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
         </form>
@@ -33,15 +34,7 @@
         <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contact">contáctanos.</a></p>
       </div>
       <div class="col-m-4">
-        <div class="dataTables_length" id="person-index_length">
-          <label>Mostrar 
-            <select name="person-index_length" aria-controls="person-index" class="form-control input-sm">
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select> resultados
-          </label>
-        </div>
+        {{> table_lenght}}
       </div>
       <div class="col-2 col-m-2">
         <div class="dropdown">

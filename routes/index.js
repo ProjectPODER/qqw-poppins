@@ -9,8 +9,26 @@ let catchError = errorCatcher.default;
 /* GET home page. */
 router.get('/', catchError(async function(req, res, next) {
   let feed = await lib.getFeed(req);
+  persons = await lib.getAPI(req,"persons",{limit:1, sort:"-lastModified"});
+  organizations = await lib.getAPI(req,"organizations",{limit:1, sort:"-lastModified"});
+  contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-start_date"});
+
+  let stats = {
+    persons: {
+      count: persons.pages,
+      lastModified: persons.data[0].lastModified
+    },
+    organizations: {
+      count: organizations.pages,
+      lastModified: organizations.data[0].lastModified
+    },
+    contracts: {
+      count: contracts.pages,
+      lastModified: contracts.data[0].start_date
+    }
+  }
  
-  res.render('home', { feed: feed, home: true,  });
+  res.render('home', { feed: feed, home: true, stats:stats  });
 }));
 
 /* GET contratcs index. */
@@ -43,8 +61,9 @@ router.get('/persons',catchError(async function(req, res, next) {
   result = await lib.getAPI(req,"persons",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-
-  console.log(filters);
+  console.log(current_page);
+  console.log(filters.offset);
+  console.log(req.body.person_index_length)
   res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 

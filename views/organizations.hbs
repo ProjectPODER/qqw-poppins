@@ -7,7 +7,7 @@
               <p class="search-title">Buscar organización</p>
               <div class="multiple-controls-group">
                 <div class="multiple-control-container">
-                  <input type="text" name="filtername" placeholder="NOMBRE" class="org_name_filter multiple-control">
+                  <input type="text" name="filtername" placeholder="NOMBRE" class="org_name_filter multiple-control" value="{{filters.filtername.value }}">
                   <!-- <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control"> -->
                 </div>
               </div>
@@ -23,6 +23,7 @@
               <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount">
               <input type="text" name="cantidad-máxima" placeholder="Máximo" class="search-amount">
             </fieldset> --}}
+            <input type="hidden" name="size" value="{{ filters.size.value }}">
             <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
             <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
           </form>
@@ -42,15 +43,7 @@
             <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contact">contáctanos.</a></p>
           </div>
           <div class="col-m-4">
-            <div class="dataTables_length" id="organization-index_length">
-              <label>Mostrar 
-                <select name="organization-index_length" aria-controls="organization-index" class="form-control input-sm">
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                </select> resultados
-              </label>
-            </div>
+            {{> table_lenght}}
           </div>
           <div class="col-2 col-m-2">
             <div class="dropdown">
