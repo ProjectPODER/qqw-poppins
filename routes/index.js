@@ -24,10 +24,10 @@ router.get('/', catchError(async function(req, res, next) {
     },
     contracts: {
       count: contracts.pages,
-      lastModified: contracts.data[0].start_date
+      lastModified: contracts.data[0] ? contracts.data[0].start_date : "Error de API"
     }
   }
- 
+
   res.render('home', { feed: feed, home: true, stats:stats  });
 }));
 
@@ -78,7 +78,7 @@ router.get('/orgs', catchError(async function(req, res, next) {
   result = await lib.getAPI(req,"organizations",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-  
+
   res.render('organizations', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
