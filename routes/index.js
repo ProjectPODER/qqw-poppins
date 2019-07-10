@@ -10,21 +10,21 @@ let catchError = errorCatcher.default;
 router.get('/', catchError(async function(req, res, next) {
   let feed = await lib.getFeed(req);
   persons = await lib.getAPI(req,"persons",{limit:1, sort:"-lastModified"});
-  organizations = await lib.getAPI(req,"organizations",{limit:1, sort:"-lastModified"});
-  contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-start_date"});
+  organizations = await lib.getAPI(req,"institutions",{limit:1, sort:"-lastModified"});
+  contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-publishedDate"});
 
   let stats = {
     persons: {
       count: persons.pages,
-      lastModified: persons.data[0].lastModified
+      lastModified: persons.data[0] ? persons.data[0].lastModified : "API ERROR"
     },
     organizations: {
       count: organizations.pages,
-      lastModified: organizations.data[0].lastModified
+      lastModified: organizations.data[0] ?  organizations.data[0].lastModified : "API ERROR"
     },
     contracts: {
       count: contracts.pages,
-      lastModified: contracts.data[0] ? contracts.data[0].start_date : "Error de API"
+      lastModified: contracts.data[0] ? contracts.data[0].publishedDate : "Error de API"
     }
   }
 

@@ -25,7 +25,7 @@ async function getAPI(req,collection,filters) {
   var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
 
   if (collection=="contracts") {
-    params.sort="-amount";
+    params.sort="-records.compiledRelease.contracts.value.amount";
   }
   if (collection=="persons" || collection=="organizations") {
     params.sort="-ocds_contract_count";
@@ -35,6 +35,7 @@ async function getAPI(req,collection,filters) {
     params[f] = filters[f];
   }
 
+  console.log("getApi",collection,params);
 
   try {
     result = await client.get_promise(collection, params);
@@ -122,8 +123,8 @@ function cleanFilters(filters) {
 			if (cleanField.type == "string") {
 				cleanField.value = cleanField.value.slice(1,-2);
 			}
-		    
-		    
+
+
 		    cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField;
 	  	}
 	}

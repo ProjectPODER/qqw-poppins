@@ -128,7 +128,7 @@
       {{!-- {{> tabular table=TabularTables.Contracts_OCDS
       id="contract-index"  selector=selector
       class="" }} --}}
-      
+
       <div id="contract-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
         <div>
           <div class="col-m-8">
@@ -153,27 +153,27 @@
                   <div class=" js-title no-title search-result-title col-m-8 col-8">
                     <div class="cardItemTitle">Título</div>
                     <div class="cardItemData"></div>
-                    <a href="/contracts/{{ocid}}?supplier={{suppliers_org}}">{{title}}</a>
+                    <a href="/contracts/{{records.compiledRelease.ocid}}?supplier={{records.compiledRelease.parties.1.id}}">{{records.compiledRelease.contracts.0.title}}</a>
                   </div>
                   <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>{{format_amount amount}}<span class="contract_currency">{{format_currency currency}}</span>
+                    <div class="cardItemData"></div>{{format_amount records.compiledRelease.contracts.0.value.amount}}<span class="contract_currency">{{format_currency records.compiledRelease.contracts.0.value.currency}}</span>
                   </div>
                   <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>Vigente desde {{moment start_date date lang="es" format="LL"}} hasta {{moment end_date date lang="es" format="LL"}}
+                    <div class="cardItemData"></div>Vigente desde {{moment records.compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment records.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
                   </div>
                   <div class=" js-ocid no-title col-2 col-m-2">
                     <div class="cardItemTitle">OCID</div>
                     <div class="cardItemData"></div>
-                    <a href="/contracts/{{ocid}}?supplier={{suppliers_org}}" class="button-link">Ver contrato</a>
+                    <a href="/contracts/{{records.compiledRelease.ocid}}?supplier={{records.compiledRelease.parties.1.id}}" class="button-link">Ver contrato</a>
                   </div>
                   <div class=" js-dependency col-4 col-m-4">
                     <div class="cardItemTitle">Dependencia</div>
                     <div class="cardItemData"></div>
                     <ul class="dependency-cell list-unstyled">
                       <li>
-                        <a href="/orgs/{{dependency}}">{{dependency}}</a>
+                        <a href="/orgs/{{records.compiledRelease.parties.0.memberOf.id}}">{{records.compiledRelease.parties.0.memberOf.name}}</a>
                       </li>
                     </ul>
                   </div>
@@ -181,14 +181,18 @@
                     <div class="cardItemTitle">Proveedores</div>
                     <div class="cardItemData"></div>
                     <ul class="suppliers-cell list-unstyled">
-                      <li>
-                        <a href="/orgs/{{suppliers_org}}">{{suppliers_org}}</a>
-                      </li>
+                      {{#each records.compiledRelease.awards}}
+                        {{#each suppliers}}
+                        <li>
+                          <a href="/orgs/{{id}}">{{name}}</a>
+                        </li>
+                        {{/each}}
+                      {{/each}}
                     </ul>
                   </div>
                   <div class=" js-procedure col-2 col-m-2">
                     <div class="cardItemTitle">Procedimiento</div>
-                    <div class="cardItemData">{{procedure_type}}</div>
+                    <div class="cardItemData">{{records.compiledRelease.tender.procurementMethod}}</div>
                   </div>
                   {{!-- <div class=" js-score col-1 col-m-1 hidden">
                     <div class="cardItemTitle">Puntaje</div>
