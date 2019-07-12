@@ -3015,9 +3015,9 @@ img.sources-icons {
   }
 }
 .alert-bar {
-  background: #ee0;
+  background: rgba(242,242,103,0.761);
   padding: 0.5em;
-  margin: 0.5em;
+  margin: 2em 0.5em;
   position: relative;
   line-height: 2em;
 }

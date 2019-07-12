@@ -33,12 +33,12 @@ router.get('/', catchError(async function(req, res, next) {
     }
   }
   catch(e) {
-    message = "No se pudieron recuperar algunas fuentes de datos, por favor contáctenos si este error le afecta.";
+    alert = "No se pudieron recuperar algunas fuentes de datos, por favor contáctenos si este error le afecta.";
     console.log(e);
   }
 
 
-  res.render('home', { feed: feed, home: true, stats:stats, message: message  });
+  res.render('home', { feed: feed, home: true, stats:stats, alert: alert  });
 }));
 
 /* GET contratcs index. */
