@@ -8,27 +8,37 @@ let catchError = errorCatcher.default;
 
 /* GET home page. */
 router.get('/', catchError(async function(req, res, next) {
-  let feed = await lib.getFeed(req);
-  persons = await lib.getAPI(req,"persons",{limit:1, sort:"-lastModified"});
-  organizations = await lib.getAPI(req,"institutions",{limit:1, sort:"-lastModified"});
-  contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-publishedDate"});
+  let feed, stats, message;
 
-  let stats = {
-    persons: {
-      count: persons.pages,
-      lastModified: persons.data[0] ? persons.data[0].lastModified : "API ERROR"
-    },
-    organizations: {
-      count: organizations.pages,
-      lastModified: organizations.data[0] ?  organizations.data[0].lastModified : "API ERROR"
-    },
-    contracts: {
-      count: contracts.pages,
-      lastModified: contracts.data[0] ? contracts.data[0].publishedDate : "Error de API"
+  // Always render home even without API
+  try {
+    feed = await lib.getFeed(req);
+    persons = await lib.getAPI(req,"persons",{limit:1, sort:"-lastModified"});
+    organizations = await lib.getAPI(req,"institutions",{limit:1, sort:"-lastModified"});
+    contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-publishedDate"});
+
+    stats = {
+      persons: {
+        count: persons.pages,
+        lastModified: persons.data[0] ? persons.data[0].lastModified : "API ERROR"
+      },
+      organizations: {
+        count: organizations.pages,
+        lastModified: organizations.data[0] ?  organizations.data[0].lastModified : "API ERROR"
+      },
+      contracts: {
+        count: contracts.pages,
+        lastModified: contracts.data[0] ? contracts.data[0].publishedDate : "Error de API"
+      }
     }
   }
+  catch(e) {
+    message = "No se pudieron recuperar algunas fuentes de datos, por favor contáctenos si este error le afecta.";
+    console.log(e);
+  }
 
-  res.render('home', { feed: feed, home: true, stats:stats  });
+
+  res.render('home', { feed: feed, home: true, stats:stats, message: message  });
 }));
 
 /* GET contratcs index. */

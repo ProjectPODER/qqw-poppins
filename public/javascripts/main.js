@@ -117,30 +117,30 @@ function copyClipboard() {
   copyText.select();
   document.execCommand("copy");
   // alert("Copied the text: " + copyText.value);
-} 
+}
 
  // Function to set the height
  function autoHeight() {
    $('div.document-body').css('min-height', 0);
    $('div.document-body').css('min-height', (
-     $(document).height() 
-     - $('nav.bar').height() 
+     $(document).height()
+     - $('nav.bar').height()
      - $('footer').height()
    ));
  }
 function autoHeightContact() {
    $('div.contact-template').css('min-height', 0);
    $('div.contact-template').css('min-height', (
-     $(document).height() 
-     - $('nav.bar').height() 
+     $(document).height()
+     - $('nav.bar').height()
      - $('footer').height()
    ));
  }
  function autoHeightError() {
    $('div.error-template').css('min-height', 0);
    $('div.error-template').css('min-height', (
-     $(document).height() 
-     - $('nav.bar').height() 
+     $(document).height()
+     - $('nav.bar').height()
      - $('footer').height()
    ));
  }
@@ -230,7 +230,7 @@ $('.delete-blob-filter').click(function(event, instance) {
 })
 
 $("#index_length").change(function(){
- var selected = $('#index_length').val(); 
+ var selected = $('#index_length').val();
     location.search= removeQueryField("size") + "&size="+selected;
 });
 
@@ -239,3 +239,8 @@ function removeQueryField(field) {
   re = new RegExp('([\?&])' + field+"=[^&]*([&#]*)");
   return location.search.replace(re,"$1$2")
 }
+
+
+$(document).on("click",".hide-alert-bar",{},function(e) {
+  $(e.target).parent(".alert-bar").fadeOut()
+});
