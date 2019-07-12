@@ -102,6 +102,13 @@ app.engine('.hbs', hbs({
           return value.toLocaleString('es-MX');
         }
         return 'Valor desconocido';
+      },
+      total_contract_amount: function(contracts) {
+        let total = 0;
+        for (c in contracts) {
+          total += contracts[c].value.amount;
+        }
+        return total;
       }
     }
 }));
