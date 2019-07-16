@@ -30,7 +30,13 @@ app.engine('.hbs', hbs({
     helpers: {
       api_domain: function() { return process.env.API_DOMAIN; },
       autocomplete_url: function() { return process.env.AUTOCOMPLETE_URL; },
-      moment: require('helper-moment'),
+      moment: function(date) {
+        if (date) {
+          moment_helper = require('helper-moment');
+          return moment_helper(date);
+        }
+        return "Fecha desconocida";
+      },
       format_amount: function(value) {
         if (value) {
           return "$"+value.toLocaleString('es-MX',
@@ -140,7 +146,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.locals.message = err.message;
 
-  console.log("/!\\ QuienEsQuien.Wiki APP Error",err);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error",err);
 
   // render the error page
   res.status(err.status || 500);

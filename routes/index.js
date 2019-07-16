@@ -8,7 +8,7 @@ let catchError = errorCatcher.default;
 
 /* GET home page. */
 router.get('/', catchError(async function(req, res, next) {
-  let feed, stats, message;
+  let feed, stats, alert;
 
   // Always render home even without API
   try {
@@ -34,7 +34,7 @@ router.get('/', catchError(async function(req, res, next) {
   }
   catch(e) {
     alert = "No se pudieron recuperar algunas fuentes de datos, por favor contáctenos si este error le afecta.";
-    console.log(e);
+    console.error("Error",e);
   }
 
 
@@ -55,7 +55,7 @@ router.get('/contracts', catchError(async function(req, res, next) {
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
   // console.log("contracts",result);
-  console.log(filters)
+  // console.log(filters)
   res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
@@ -71,9 +71,9 @@ router.get('/persons',catchError(async function(req, res, next) {
   result = await lib.getAPI(req,"persons",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-  console.log(current_page);
-  console.log(filters.offset);
-  console.log(req.body.person_index_length)
+  // console.log(current_page);
+  // console.log(filters.offset);
+  // console.log(req.body.person_index_length)
   res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 

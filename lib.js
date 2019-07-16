@@ -10,7 +10,7 @@ async function getFeed(req) {
   let Parser = require('rss-parser');
   let parser = new Parser();
 
-  console.log(process.env);
+  // console.log(process.env);
 
   let feed = await parser.parseURL(process.env.FEED_URL);
   return feed.items.slice(0,3);
@@ -87,8 +87,10 @@ function sendMail(req) {
 // Filters
 const filterElements = [
 	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre", type:"string" },
-	{ htmlFieldName: "proveedor", apiFieldNames:["suppliers_org"], fieldLabel:"Proveedor", type:"string" },
-	{ htmlFieldName: "dependencia", apiFieldNames:["buyer.name","parties.memberOf"], fieldLabel:"Dependencia", type:"string" },
+	{ htmlFieldName: "proveedor", apiFieldNames:["records.compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string" },
+  { htmlFieldName: "dependencia", apiFieldNames:["records.compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string" },
+  { htmlFieldName: "from_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">" },
+  { htmlFieldName: "to_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<" },
 	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true },
 ]
 
@@ -98,10 +100,13 @@ function getFilters(query) {
   for (filterElement in filterElements) {
   	if (query[filterElements[filterElement].htmlFieldName]) {
 		for (apiField in filterElements[filterElement].apiFieldNames) {
-			console.log(filterElements[filterElement].apiFieldNames[apiField],filterElements[filterElement].htmlFieldName);
+			// console.log(filterElements[filterElement].apiFieldNames[apiField],filterElements[filterElement].htmlFieldName);
 			let value = query[filterElements[filterElement].htmlFieldName];
-			if (filterElements[filterElement].type == "string") {
+      if (filterElements[filterElement].type == "string") {
 				value = "/"+value+"/i"
+			}
+      if (filterElements[filterElement].type == "date") {
+				value = filterElements[filterElement].modifier + (new Date(value).toISOString());
 			}
   			filters[filterElements[filterElement].apiFieldNames[apiField]] = value;
   		}
@@ -122,6 +127,10 @@ function cleanFilters(filters) {
 
 			if (cleanField.type == "string") {
 				cleanField.value = cleanField.value.slice(1,-2);
+			}
+      if (cleanField.type == "date") {
+        moment = require('moment');
+				cleanField.value = moment(cleanField.value.substr(1)).format("YYYY-MM-DD");
 			}
 
 

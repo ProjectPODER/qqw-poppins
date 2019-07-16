@@ -32,11 +32,11 @@
             <p class="search-title">Vigencia de contrato <a data-toggle="tooltip" data-placement="right" title="Fecha de inicio y fecha de expiración del contrato reportado por la Unidad Compradora."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
             <div class="term-contract">
               <p class="search-label">Fecha de Inicio</p>
-              <input type="date" id="from_date_contracts_index" value="01/01/2002" min="2002-01-01">
+              <input type="date" id="from_date_contracts_index" name="from_date_contracts_index" value="{{filters.from_date_contracts_index.value}}" min="2002-01-01">
             </div>
             <div class="term-contract">
               <p class="search-label">Fecha de fin</p>
-              <input type="date" id="to_date_contracts_index" value="00/00/0000" min="2002-01-01">
+              <input type="date" id="to_date_contracts_index" name="to_date_contracts_index" value="{{filters.to_date_contracts_index.value}}" min="2002-01-01">
             </div>
             <p>
               <input type="checkbox" id="fecha-desconocido" checked="checked"> Incluir contratos con fecha desconocida
