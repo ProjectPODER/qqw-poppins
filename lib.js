@@ -91,6 +91,9 @@ const filterElements = [
   { htmlFieldName: "dependencia", apiFieldNames:["records.compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string" },
   { htmlFieldName: "from_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">" },
   { htmlFieldName: "to_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<" },
+  { htmlFieldName: "importe-minimo", apiFieldNames:["records.compiledRelease.contracts.value.amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">" },
+  { htmlFieldName: "importe-maximo", apiFieldNames:["records.compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<" },
+  { htmlFieldName: "tipo-adquisicion", apiFieldNames:["records.compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string" },
 	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true },
 ]
 
@@ -106,9 +109,12 @@ function getFilters(query) {
 				value = "/"+value+"/i"
 			}
       if (filterElements[filterElement].type == "date") {
-				value = filterElements[filterElement].modifier + (new Date(value).toISOString());
+				value = (new Date(value).toISOString());
 			}
-  			filters[filterElements[filterElement].apiFieldNames[apiField]] = value;
+      if (filterElements[filterElement].modifier) {
+        value = filterElements[filterElement].modifier+value;
+      }
+			filters[filterElements[filterElement].apiFieldNames[apiField]] = value;
   		}
   	}
   }
@@ -119,24 +125,28 @@ function getFilters(query) {
 function cleanFilters(filters) {
   cleanFilters = {};
   for (filterElement in filterElements) {
-	for (apiField in filterElements[filterElement].apiFieldNames) {
-	  	if (filters[filterElements[filterElement].apiFieldNames[apiField]]) {
-	  		cleanField = filterElements[filterElement];
-		    cleanField.apiField = filterElements[filterElement].apiFieldNames[apiField];
-		    cleanField.value = filters[filterElements[filterElement].apiFieldNames[apiField]]
+  	for (apiField in filterElements[filterElement].apiFieldNames) {
+    	if (filters[filterElements[filterElement].apiFieldNames[apiField]]) {
+    		cleanField = filterElements[filterElement];
+  	    cleanField.apiField = filterElements[filterElement].apiFieldNames[apiField];
+  	    cleanField.value = filters[filterElements[filterElement].apiFieldNames[apiField]]
 
-			if (cleanField.type == "string") {
-				cleanField.value = cleanField.value.slice(1,-2);
-			}
-      if (cleanField.type == "date") {
-        moment = require('moment');
-				cleanField.value = moment(cleanField.value.substr(1)).format("YYYY-MM-DD");
-			}
+        if (cleanField.modifier) {
+          cleanField.value = cleanField.value.substr(cleanField.modifier.length);
+        }
+
+  			if (cleanField.type == "string") {
+  				cleanField.value = cleanField.value.slice(1,-2);
+  			}
+        if (cleanField.type == "date") {
+          moment = require('moment');
+  				cleanField.value = moment(cleanField.value).format("YYYY-MM-DD");
+  			}
 
 
-		    cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField;
-	  	}
-	}
+  	    cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField;
+    	}
+  	}
   }
   // console.log("cleanFilters",cleanFilters);
   return cleanFilters;

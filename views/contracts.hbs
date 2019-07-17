@@ -50,11 +50,11 @@
             b) Invitación a cuando menos tres proveedores o contratistas.
             c) Adjudicación Directa.
             - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
-            <select id="tipo-adquisicion" class="search-select">
+            <select id="tipo-adquisicion" name="tipo-adquisicion" class="search-select">
               <option value="">Todos</option>
-              <option value="Adjudicación Directa Federal">Adjudicación directa</option>
-              <option value="Invitación a Cuando Menos 3 Personas">Invitación a 3</option>
-              <option value="Licitación Pública|Licitación Pública con OSD">Licitación</option>
+              <option value="Adjudicación Directa Federal" {{#ifCond filters.tipo-adquisicion.value "==" "Adjudicación Directa Federal" }}selected="selected"{{/ifCond}}>Adjudicación directa</option>
+              <option value="Invitación a Cuando Menos 3 Personas" {{#ifCond filters.tipo-adquisicion.value "==" "Invitación a Cuando Menos 3 Personas" }}selected="selected"{{/ifCond}}>Invitación a 3</option>
+              <option value="Licitación Pública|Licitación Pública con OSD" {{#ifCond filters.tipo-adquisicion.value "==" "Licitación Pública|Licitación Pública con OSD" }}selected="selected"{{/ifCond}}>Licitación</option>
             </select>
           </fieldset>
           <fieldset name="importe" style="margin-bottom: 7rem;">
@@ -63,8 +63,8 @@
             <a class="search-label importe-bucket" data-bucket="1000000-500000000"><p>Entre 1 millón y 500 millones</p></a>
             <a class="search-label importe-bucket" data-bucket="500000000-1000000000"><p>Entre 500 millones a 1,000 millones</p></a>
             <a class="search-label importe-bucket" data-bucket="1000000000-"><p>Más de mil millones</p></a>
-            <input type="text" id="importe-minimo" placeholder="Mínimo" class="search-amount">
-            <input type="text" id="importe-maximo" placeholder="Máximo" class="search-amount">
+            <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
+            <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
             <p>
               <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
             </p>
@@ -194,7 +194,7 @@
                   </div>
                   <div class=" js-procedure col-2 col-m-2">
                     <div class="cardItemTitle">Procedimiento</div>
-                    <div class="cardItemData">{{records.compiledRelease.tender.procurementMethod}}</div>
+                    <div class="cardItemData">{{records.compiledRelease.tender.procurementMethodMxCnet}}</div>
                   </div>
                   {{!-- <div class=" js-score col-1 col-m-1 hidden">
                     <div class="cardItemTitle">Puntaje</div>
