@@ -7,6 +7,7 @@ var stylus = require('stylus');
 var hbs = require('express-handlebars');
 var jquery = require('jquery');
 var moment = require('helper-moment');
+var _ = require('lodash')
 var dotenv = require('dotenv')
 var dotenvExpand = require('dotenv-expand')
 var myEnv = dotenv.config()
@@ -109,12 +110,26 @@ app.engine('.hbs', hbs({
         }
         return 'Valor desconocido';
       },
-      total_contract_amount: function(contracts) {
-        let total = 0;
-        for (c in contracts) {
-          total += contracts[c].value.amount;
+      get_party_type: function(records,party_id) {
+        let party;
+        if (records) {
+          party = _.find(records[0].compiledRelease.parties,party_id);
+          if (!party) {
+            party = _.find(records[0].compiledRelease.parties,(party_id,i,parties) => { if (parties[i].memberOf) { return parties[i].memberOf.id == party_id } })
+          }
+          if (party && party.details) {
+            return party.details.type;
+          }
+          else {
+            console.log("get_party_type not found",party_id,records[0].compiledRelease.parties);
+            return "unknown";
+          }
         }
-        return total;
+        else {
+          console.log("get_party_type no record",party_id);
+          return "unknown";
+
+        }
       }
     }
 }));

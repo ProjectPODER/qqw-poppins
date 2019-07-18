@@ -25,10 +25,10 @@ async function getAPI(req,collection,filters) {
   var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
 
   if (collection=="contracts") {
-    params.sort="-records.compiledRelease.contracts.value.amount";
+    params.sort="-records.compiledRelease.total_amount";
   }
   if (collection=="persons" || collection=="organizations") {
-    params.sort="-ocds_contract_count";
+    params.sort="-contract_count";
   }
 
   for (f in filters) {

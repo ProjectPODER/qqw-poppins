@@ -95,8 +95,8 @@ router.get('/orgs', catchError(async function(req, res, next) {
 /* GET contract view */
 router.get('/contracts/:id', catchError(async function(req, res, next) {
   let filters = {
-    ocid: req.params.id, //lo que viene de req de la url
-    suppliers_org: req.query.supplier //lo que viene de req de la url
+    records_compiledRelease_ocid: req.params.id, //lo que viene de req de la url
+    sort: ""
   };
   result = await lib.getAPI(req,"contracts",filters);
   // console.log("contracts",result);
@@ -112,7 +112,7 @@ router.get('/contracts/:id', catchError(async function(req, res, next) {
 /* GET person view. */
 router.get('/persons/:id', catchError(async function(req, res, next) {
   let filters = {
-    simple: req.params.id //lo que viene de req de la url
+    id: req.params.id //lo que viene de req de la url
   };
   var id = req.params.id;
   result = await lib.getAPI(req,"persons",filters);
