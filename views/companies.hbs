@@ -4,7 +4,7 @@
           <form>
             <h4 class="search-title">Filtrar</h4>
             <fieldset name="organizaciones">
-              <p class="search-title">Buscar organización</p>
+              <p class="search-title">Buscar empresa</p>
               <div class="multiple-controls-group">
                 <div class="multiple-control-container">
                   <input type="text" name="filtername" placeholder="NOMBRE" class="org_name_filter multiple-control" value="{{filters.filtername.value }}">
@@ -13,16 +13,26 @@
               </div>
               <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
             </fieldset>
-           {{!--  <fieldset name="no-contratos">
-              <p class="search-title">Número de contratos</p>
-              <a class="search-label"><p>Sin contratos</p></a>
-              <a class="search-label"><p>1 a 10</p></a>
-              <a class="search-label"><p>10 a 50</p></a>
-              <a class="search-label"><p>52 a 200</p></a>
-              <a class="search-label"><p>Más de 200</p></a>
-              <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount">
-              <input type="text" name="cantidad-máxima" placeholder="Máximo" class="search-amount">
-            </fieldset> --}}
+            <fieldset name="no-contratos">
+               <p class="search-title">Número de contratos</p>
+               <a class="search-label"><p>Sin contratos</p></a>
+               <a class="search-label"><p>1 a 10</p></a>
+               <a class="search-label"><p>10 a 50</p></a>
+               <a class="search-label"><p>52 a 200</p></a>
+               <a class="search-label"><p>Más de 200</p></a>
+               <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount">
+               <input type="text" name="cantidad-máxima" placeholder="Máximo" class="search-amount">
+             </fieldset>
+             <fieldset name="importe-contratos">
+                <p class="search-title">Importe de contratos</p>
+                <a class="search-label"><p>Sin contratos</p></a>
+                <a class="search-label"><p>1 a 10</p></a>
+                <a class="search-label"><p>10 a 50</p></a>
+                <a class="search-label"><p>52 a 200</p></a>
+                <a class="search-label"><p>Más de 200</p></a>
+                <input type="text" name="importe-minimo" placeholder="Mínimo" class="search-amount">
+                <input type="text" name="importe-maximo" placeholder="Máximo" class="search-amount">
+              </fieldset>
             <input type="hidden" name="size" value="{{ filters.size.value }}">
             <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
             <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
@@ -32,10 +42,10 @@
     <div class="col-9 col-m-9 orgs-content">
         <div class="row document-header">
           <div class="col-3 col-m-12">
-            <h2 class="document-title">Organizaciones</h2>
+            <h2 class="document-title">Empresas</h2>
           </div>
           <div class="col-9 col-m-12">
-            <p class="document-description">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
+            <p class="document-description">Empresas proveedoras del estado, titulares de marcas y cotizando en la bolsa.</p>
           </div>
         </div>
         <div class="row mb-2 tools-section">
@@ -78,7 +88,7 @@
           </form>
         </div>
         --}}
-        
+
         {{!-- {{> tabular table=TabularTables.Orgs
         id="organization-index"
         class=""}} --}}
@@ -105,24 +115,28 @@
                   <div role="row" class="search-card odd">
                     <div class=" js-title no-title search-result-title col-m-8 col-8">
                       <div class="cardItemTitle">Nombre</div>
-                      <a href="/orgs/{{simple}}">
+                      <a href="/empresas/{{id}}">
                         <div class="cardItemData">{{name}}</div>
                       </a>
                     </div>
                     <div class=" js-ocid no-title col-2 col-m-2">
-                      <a href="/orgs/{{simple}}" class="button-link">Ver organización</a>
+                      <a href="/empresas/{{id}}" class="button-link">Ver empresa</a>
                     </div>
                     <div class=" col-m-8 col-8">
                       <div class="cardItemTitle"></div>
                       <div class="cardItemData"></div>
                       <p class="js-person-type" style="font-size: 16px;">
                         <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
-                        Empresa 
-                        {{#if ocds_contract_count}}
+                        Institución
+                        {{#if contract_count}}
                         con
                         <span class="js-contract-count">
                           <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
-                          {{ocds_contract_count}} contrato(s) 
+                          {{contract_count}} contrato(s)
+                        </span>
+                        por
+                        <span class="js-contract-amount">
+                          {{contract_amount}} pesos mexicanos.
                         </span>
                         {{/if}}
                       </p>

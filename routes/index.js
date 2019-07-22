@@ -13,18 +13,23 @@ router.get('/', catchError(async function(req, res, next) {
   // Always render home even without API
   try {
     feed = await lib.getFeed(req);
-    persons = await lib.getAPI(req,"persons",{limit:1, sort:"-lastModified"});
-    organizations = await lib.getAPI(req,"institutions",{limit:1, sort:"-lastModified"});
+    persons = await lib.getAPI(req,"persons",{limit:1, sort:"-date"});
+    institutions = await lib.getAPI(req,"institutions",{limit:1, sort:"-date"});
+    companies = await lib.getAPI(req,"companies",{limit:1, sort:"-date"});
     contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-publishedDate"});
 
     stats = {
       persons: {
         count: persons.pages,
-        lastModified: persons.data[0] ? persons.data[0].lastModified : "API ERROR"
+        lastModified: persons.data[0] ? persons.data[0].date : "API ERROR"
       },
-      organizations: {
-        count: organizations.pages,
-        lastModified: organizations.data[0] ?  organizations.data[0].lastModified : "API ERROR"
+      institutions: {
+        count: institutions.pages,
+        lastModified: institutions.data[0] ?  institutions.data[0].date : "API ERROR"
+      },
+      companies: {
+        count: companies.pages,
+        lastModified: companies.data[0] ?  companies.data[0].date : "API ERROR"
       },
       contracts: {
         count: contracts.pages,
@@ -78,18 +83,34 @@ router.get('/persons',catchError(async function(req, res, next) {
 }));
 
 
-/* GET organizations index */
-router.get('/orgs', catchError(async function(req, res, next) {
+/* GET institutions index */
+router.get('/instituciones', catchError(async function(req, res, next) {
   let filters = lib.getFilters(req.query);
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
+  filters.sort = "-contract_amount";
 
-  result = await lib.getAPI(req,"organizations",filters);
+  result = await lib.getAPI(req,"institutions",filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
-  res.render('organizations', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
+  res.render('institutions', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
+}));
+
+/* GET institutions index */
+router.get('/empresas', catchError(async function(req, res, next) {
+  let filters = lib.getFilters(req.query);
+
+  let current_page = req.query.page || 0;
+  filters.offset = current_page*25;
+  filters.sort = "-contract_amount";
+
+  result = await lib.getAPI(req,"companies",filters);
+
+  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
+
+  res.render('companies', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
 /* GET contract view */
@@ -127,20 +148,34 @@ router.get('/persons/:id', catchError(async function(req, res, next) {
 }));
 
 /* GET organization view. */
-router.get('/orgs/:id', catchError(async function(req, res, next) {
+router.get('/instituciones/:id', catchError(async function(req, res, next) {
   let filters = {
-    simple: req.params.id
+    id: req.params.id
   };
-  var id = req.params.id;
-  result = await lib.getAPI(req, "organizations", filters);
+  result = await lib.getAPI(req, "institutions", filters);
   // console.log("organization",result);
   // console.log(id);
   if (!result.data[0]) {
-    let err = new Error("Organización no encontrada");
+    let err = new Error("Institución no encontrada");
     err.status = 404;
     throw(err);
   }
-  res.render('organization', {result: result.data[0]});
+  res.render('institution', {result: result.data[0]});
+}));
+
+router.get('/empresas/:id', catchError(async function(req, res, next) {
+  let filters = {
+    id: req.params.id
+  };
+  result = await lib.getAPI(req, "companies", filters);
+  // console.log("organization",result);
+  // console.log(id);
+  if (!result.data[0]) {
+    let err = new Error("Empresa no encontrada");
+    err.status = 404;
+    throw(err);
+  }
+  res.render('company', {result: result.data[0]});
 }));
 
 /* GET about */
