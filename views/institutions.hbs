@@ -20,8 +20,8 @@
                <a class="search-label"><p>10 a 50</p></a>
                <a class="search-label"><p>52 a 200</p></a>
                <a class="search-label"><p>Más de 200</p></a>
-               <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount">
-               <input type="text" name="cantidad-máxima" placeholder="Máximo" class="search-amount">
+               <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
+               <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
              </fieldset>
              <fieldset name="importe-contratos">
                 <p class="search-title">Importe de contratos</p>
@@ -30,8 +30,8 @@
                 <a class="search-label"><p>10 a 50</p></a>
                 <a class="search-label"><p>52 a 200</p></a>
                 <a class="search-label"><p>Más de 200</p></a>
-                <input type="text" name="importe-minimo" placeholder="Mínimo" class="search-amount">
-                <input type="text" name="importe-maximo" placeholder="Máximo" class="search-amount">
+                <input type="text" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value }}">
+                <input type="text" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value }}">
               </fieldset>
             <input type="hidden" name="size" value="{{ filters.size.value }}">
             <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">

@@ -104,6 +104,9 @@ app.engine('.hbs', hbs({
                 return options.inverse(this);
         }
       },
+      isArray: function(obj) {
+        return typeof obj == "object";
+      },
       format_number: function(value) {
         if (value) {
           return value.toLocaleString('es-MX');

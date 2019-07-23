@@ -86,35 +86,49 @@ function sendMail(req) {
 
 // Filters
 const filterElements = [
-	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre", type:"string" },
-	{ htmlFieldName: "proveedor", apiFieldNames:["records.compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string" },
-  { htmlFieldName: "dependencia", apiFieldNames:["records.compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string" },
-  { htmlFieldName: "from_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">" },
-  { htmlFieldName: "to_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<" },
-  { htmlFieldName: "importe-minimo", apiFieldNames:["records.compiledRelease.contracts.value.amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">" },
-  { htmlFieldName: "importe-maximo", apiFieldNames:["records.compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<" },
-  { htmlFieldName: "tipo-adquisicion", apiFieldNames:["records.compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string" },
-	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true },
+	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre", type:"string", collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "importe-minimo", apiFieldNames:["contract_amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "importe-maximo", apiFieldNames:["contract_amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "cantidad-minima", apiFieldNames:["contract_count"], fieldLabel:"Cantidad mínima", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "cantidad-maxima", apiFieldNames:["contract_count"], fieldLabel:"Cantidad máxima", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
+	{ htmlFieldName: "proveedor", apiFieldNames:["records.compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
+  { htmlFieldName: "dependencia", apiFieldNames:["records.compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
+  { htmlFieldName: "from_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">", collections: ["contracts"] },
+  { htmlFieldName: "to_date_contracts_index", apiFieldNames:["records.compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<", collections: ["contracts"] },
+  { htmlFieldName: "importe-minimo", apiFieldNames:["records.compiledRelease.contracts.value.amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["contracts"] },
+  { htmlFieldName: "importe-maximo", apiFieldNames:["records.compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["contracts"] },
+  { htmlFieldName: "tipo-adquisicion", apiFieldNames:["records.compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string", collections: ["contracts"] },
+	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true, collections: ["all"] },
 ]
 
 
-function getFilters(query) {
+function getFilters(collection,query) {
   let filters = {};
   for (filterElement in filterElements) {
-  	if (query[filterElements[filterElement].htmlFieldName]) {
-		for (apiField in filterElements[filterElement].apiFieldNames) {
-			// console.log(filterElements[filterElement].apiFieldNames[apiField],filterElements[filterElement].htmlFieldName);
-			let value = query[filterElements[filterElement].htmlFieldName];
-      if (filterElements[filterElement].type == "string") {
-				value = "/"+value+"/i"
-			}
-      if (filterElements[filterElement].type == "date") {
-				value = (new Date(value).toISOString());
-			}
-      if (filterElements[filterElement].modifier) {
-        value = filterElements[filterElement].modifier+value;
-      }
-			filters[filterElements[filterElement].apiFieldNames[apiField]] = value;
+  	if (query[filterElements[filterElement].htmlFieldName] && (filterElements[filterElement].collections.includes(collection) || filterElements[filterElement].collections == ["all"]) ) {
+  		for (apiField in filterElements[filterElement].apiFieldNames) {
+  			// console.log(filterElements[filterElement].apiFieldNames[apiField],filterElements[filterElement].htmlFieldName);
+  			let value = query[filterElements[filterElement].htmlFieldName];
+        if (filterElements[filterElement].type == "string") {
+  				value = "/"+value+"/i"
+  			}
+        if (filterElements[filterElement].type == "date") {
+  				value = (new Date(value).toISOString());
+  			}
+        if (filterElements[filterElement].modifier) {
+          value = filterElements[filterElement].modifier+value;
+        }
+        const apiFieldName = filterElements[filterElement].apiFieldNames[apiField];
+        if (filterElements[filterElement].repeated) {
+          if (!filters[apiFieldName]) {
+            filters[apiFieldName] = [];
+          }
+          filters[apiFieldName].push(value);
+        }
+        else {
+          filters[apiFieldName] = value;
+        }
+        console.log(apiFieldName,value);
   		}
   	}
   }
@@ -122,33 +136,53 @@ function getFilters(query) {
   return filters;
 }
 
+function cleanField(value) {
+  let cleanField = filterElements[filterElement];
+  cleanField.apiField = filterElements[filterElement].apiFieldNames[apiField];
+  cleanField.value = value;
+
+  if (cleanField.modifier) {
+    cleanField.value = cleanField.value.substr(cleanField.modifier.length);
+  }
+
+  if (cleanField.type == "string") {
+    cleanField.value = cleanField.value.slice(1,-2);
+  }
+  if (cleanField.type == "date") {
+    moment = require('moment');
+    cleanField.value = moment(cleanField.value).format("YYYY-MM-DD");
+  }
+  return cleanField;
+}
+
+
 function cleanFilters(filters) {
   cleanFilters = {};
   for (filterElement in filterElements) {
   	for (apiField in filterElements[filterElement].apiFieldNames) {
-    	if (filters[filterElements[filterElement].apiFieldNames[apiField]]) {
-    		cleanField = filterElements[filterElement];
-  	    cleanField.apiField = filterElements[filterElement].apiFieldNames[apiField];
-  	    cleanField.value = filters[filterElements[filterElement].apiFieldNames[apiField]]
-
-        if (cleanField.modifier) {
-          cleanField.value = cleanField.value.substr(cleanField.modifier.length);
+      const value = filters[filterElements[filterElement].apiFieldNames[apiField]];
+    	if (value) {
+        if (typeof value == "object") {
+          console.log("cleanFilters array",filterElements[filterElement],value);
+          for (valueItem in value) {
+            console.log("cleanFilters",filterElements[filterElement].htmlFieldName,value[valueItem],filterElements[filterElement].modifier);
+            if (filterElements[filterElement].modifier) {
+              if (value[valueItem].indexOf(filterElements[filterElement].modifier) == 0) {
+                cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField(value[valueItem]);
+              }
+            }
+            else {
+              cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField(value[valueItem]);
+            }
+          }
         }
-
-  			if (cleanField.type == "string") {
-  				cleanField.value = cleanField.value.slice(1,-2);
-  			}
-        if (cleanField.type == "date") {
-          moment = require('moment');
-  				cleanField.value = moment(cleanField.value).format("YYYY-MM-DD");
-  			}
-
-
-  	    cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField;
+        else {
+    	    cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField(value);
+        }
     	}
   	}
   }
-  // console.log("cleanFilters",cleanFilters);
+  console.log("cleanFilters",cleanFilters);
   return cleanFilters;
 }
 

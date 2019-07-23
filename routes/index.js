@@ -48,7 +48,7 @@ router.get('/', catchError(async function(req, res, next) {
 
 /* GET contratcs index. */
 router.get('/contracts', catchError(async function(req, res, next) {
-  let filters = lib.getFilters(req.query);
+  let filters = lib.getFilters("contracts",req.query);
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
@@ -66,7 +66,7 @@ router.get('/contracts', catchError(async function(req, res, next) {
 
 /* GET persons index */
 router.get('/persons',catchError(async function(req, res, next) {
-  let filters = lib.getFilters(req.query);
+  let filters = lib.getFilters("persons",req.query);
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
@@ -85,7 +85,10 @@ router.get('/persons',catchError(async function(req, res, next) {
 
 /* GET institutions index */
 router.get('/instituciones', catchError(async function(req, res, next) {
-  let filters = lib.getFilters(req.query);
+  let filters = lib.getFilters("institutions",req.query);
+
+  //Don't bring UCs, only institutions without parent_id
+  filters["!parent_id"] = null;
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
@@ -100,7 +103,7 @@ router.get('/instituciones', catchError(async function(req, res, next) {
 
 /* GET institutions index */
 router.get('/empresas', catchError(async function(req, res, next) {
-  let filters = lib.getFilters(req.query);
+  let filters = lib.getFilters("companies",req.query);
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
@@ -116,7 +119,7 @@ router.get('/empresas', catchError(async function(req, res, next) {
 /* GET contract view */
 router.get('/contracts/:id', catchError(async function(req, res, next) {
   let filters = {
-    records_compiledRelease_ocid: req.params.id, //lo que viene de req de la url
+    "records.compiledRelease.ocid": req.params.id, //lo que viene de req de la url
     sort: ""
   };
   result = await lib.getAPI(req,"contracts",filters);
