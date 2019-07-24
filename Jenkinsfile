@@ -8,8 +8,8 @@ pipeline {
     stage ('Checkout and Clean') {
       steps {
         script {
-          URL='https://gitlab.com/kronops/QuienEsQuienApi.git'
-          BRANCH='*/dev'
+          URL='https://gitlab.com/kronops/qqw-popppins.git'
+          BRANCH='*/master'
           CREDENTIALS='c992e8db-63b4-449d-8df4-85f7f084ddab'
         }
           dir('new-dir') { sh 'pwd' }
