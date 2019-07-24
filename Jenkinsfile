@@ -49,12 +49,12 @@ pipeline {
         }
       }
     }
-    stage ('Deploy') {
+    stage ('Release') {
       agent { label 'swarm' }
       steps {
         script {
-          echo "Push to dockerhub container"
-          sh 'make deploy'
+          echo "Release to dockerhub registry"
+          sh 'make release'
         }
       }
     }
