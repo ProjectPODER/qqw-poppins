@@ -48,6 +48,31 @@ app.engine('.hbs', hbs({
         }
         return 'Importe desconocido';
       },
+      j: function(obj) {
+        return JSON.stringify(obj);
+      },
+      get_year: function(date) {
+        //TODO
+        return date;
+      },
+      filter_array: function(haystack,property,needle) {
+        const search = {};
+        search[property] = needle;
+        const item = _.find(haystack,search);
+        console.log("filter_array",search,item);
+        return item;
+      },
+      format_score: function(value) {
+        //TODO
+        if (value) {
+          return value.toLocaleString('es-MX',
+            {
+              style: 'decimal',
+              maximumFractionDigits: 2
+            });
+        }
+        return 'Importe desconocido';
+      },
       format_currency: function(value) {
         if (value == "MXN") {
           return "Pesos mexicanos"
