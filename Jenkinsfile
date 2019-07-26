@@ -8,9 +8,9 @@ pipeline {
     stage ('Checkout and Clean') {
       steps {
         script {
-          URL='https://gitlab.com/kronops/qqw-popppins.git'
+          URL='http://gitlab.rindecuentas.org/equipo-qqw/qqw-popppins.git'
           BRANCH='*/master'
-          CREDENTIALS='c992e8db-63b4-449d-8df4-85f7f084ddab'
+          CREDENTIALS='CHANGEME'
         }
           dir('new-dir') { sh 'pwd' }
           ansiColor('xterm') {
@@ -44,7 +44,7 @@ pipeline {
       agent { label 'swarm' }
       steps {
         script {
-          echo "Run container"
+          echo "Test container"
           sh 'make test'
         }
       }
@@ -53,7 +53,7 @@ pipeline {
       agent { label 'swarm' }
       steps {
         script {
-          echo "Release to dockerhub registry"
+          echo "Release image container to dockerhub registry"
           sh 'make release'
         }
       }
