@@ -7,10 +7,10 @@ var stylus = require('stylus');
 var hbs = require('express-handlebars');
 var jquery = require('jquery');
 var moment = require('helper-moment');
-var dotenv = require('dotenv')
-var dotenvExpand = require('dotenv-expand')
-var myEnv = dotenv.config()
-dotenvExpand(myEnv)
+var dotenv = require('dotenv');
+var dotenvExpand = require('dotenv-expand');
+var myEnv = dotenv.config();
+dotenvExpand(myEnv);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
