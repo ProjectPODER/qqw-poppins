@@ -1,5 +1,5 @@
 // Navbar animations
-$(window).scroll(function() {
+/*$(window).scroll(function() {
     if ($(document).scrollTop() > 500) {
     $('#navbar').addClass('shrink');
   } else {
@@ -13,7 +13,7 @@ $(window).scroll(function() {
   } else {
     $('logo').removeClass('shrink');
   }
-});
+});*/
 
 // Footer carousel
 $('.owl-carousel').owlCarousel({
@@ -243,4 +243,9 @@ function removeQueryField(field) {
 
 $(document).on("click",".hide-alert-bar",{},function(e) {
   $(e.target).parent(".alert-bar").fadeOut()
+});
+
+$('#toggle').click(function() {
+ $(this).toggleClass('active');
+ $('#overlay').toggleClass('open');
 });

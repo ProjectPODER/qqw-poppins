@@ -1,8 +1,4 @@
-{{#if home }}
-<nav class="nav bar" id='navbar'>
-{{else}}
-<nav class="nav bar fixed-nav" id='navbar'>
-{{/if}}
+<nav class="nav bar {{#if home }}{{else}}fixed-nav{{/if}}" id='navbar'>
 
   <div class="container-fluid">
     <div class="navbar-header">
@@ -11,9 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-        <a href="/"><img class="logo-horizontal" src="../../../images/logo-h.png" alt="Logo QuiénEsQuién.wiki"></a>
-
+      <a href="/"><img class="logo-horizontal" src="../../../images/logo-h.png" alt="Logo QuiénEsQuién.wiki"></a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
