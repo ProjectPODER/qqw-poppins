@@ -64,22 +64,27 @@ router.get('/contracts', catchError(async function(req, res, next) {
   res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
-/* GET persons index */
-router.get('/persons',catchError(async function(req, res, next) {
-  let filters = lib.getFilters("persons",req.query);
+async function entityPage(entity,req,res,next) {
+  let filters = lib.getFilters(entity,req.query);
+  let recommendations = [];
 
   let current_page = req.query.page || 0;
   filters.offset = current_page*25;
 
   let url_without_page = lib.cleanURL(req.originalUrl);
 
-  result = await lib.getAPI(req,"persons",filters);
+  result = await lib.getAPI(req,entity,filters);
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
   // console.log(current_page);
   // console.log(filters.offset);
   // console.log(req.body.person_index_length)
-  res.render('persons', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
+  res.render(entity, {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters), "recommendations": recommendations});
+}
+
+/* GET persons index */
+router.get('/persons',catchError(async function(req, res, next) {
+  entityPage("persons",req,res,next);
 }));
 
 
@@ -152,18 +157,20 @@ router.get('/persons/:id', catchError(async function(req, res, next) {
 
 /* GET organization view. */
 router.get('/instituciones/:id', catchError(async function(req, res, next) {
-  let filters = {
+  const filters = {
     id: req.params.id
   };
-  result = await lib.getAPI(req, "institutions", filters);
-  // console.log("organization",result);
+
+  const result = await lib.getAPI(req, "institutions", filters);
+  console.log("organization",result);
   // console.log(id);
   if (!result.data[0]) {
     let err = new Error("Institución no encontrada");
     err.status = 404;
     throw(err);
   }
-  res.render('institution', {result: result.data[0]});
+
+  res.render('institution', {result: result.data[0] });
 }));
 
 router.get('/empresas/:id', catchError(async function(req, res, next) {

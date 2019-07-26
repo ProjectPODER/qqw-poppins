@@ -5,68 +5,27 @@
       {{#if result.name }}
         <div class="description-data-name">
           <h3><img src="../images/icons/organizacion-gray.svg" alt="organización" class="icon-lf">{{ result.name }}</h3>
-          <h4 class="org-type">{{#if result.public}}Dependencia{{else}}Empresa{{/if}}</h4>
+          <h4 class="org-type">Institución pública o empresa productiva del estado</h4>
         </div>
         <hr>
       {{/if}}
+
 
       <div class="">
         <div class="col-m-6 flex mt-2">
             <div class="col-m-12">
               <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
             </div>
+            Cantidad de contratos: {{result.contract_count}}
+            Importe total de contratos: {{result.contract_amount}}
+            Fuente: {{result.source}}
+            Fecha de última actualización: {{result.date}}
+            Cantida de contratos comprados: {{contractsBought}}
+            Cantida de contratos vendidos: {{contractsSupplied.length }}
             {{#if result.company.sector }}
             <div class="col-m-6">
                 <p class="js-title-data">Sector</p>
                 <p class="js-data-lf">{{result.company.sector}}</p>
-            </div>
-            {{/if}}
-            {{#if result.type }}
-            <div class="col-m-6">
-                <p class="js-title-data">Tipo de organización</p>
-                <p class="js-data-lf">{{result.type}}Dependencia pública o empresa paraestatal</p>
-            </div>
-            {{/if}}
-            {{#if result.company.classification }}
-            <div class="col-m-6">
-                <p class="js-title-data">Industria</p>
-                <p class="js-data-lf">{{result.company.classification}}</p>
-            </div>
-            {{/if}}
-            {{#if result.public }}
-            <div class="col-m-6">
-                <p class="js-title-data">Tipo de organización</p>
-                <p class="js-data-lf">Dependencia pública o empresa paraestatal</p>
-            </div>
-            {{else}}
-            <div class="col-m-6">
-                <p class="js-title-data">Cotiza en bolsa</p>
-                <p class="js-data-lf">{{#if result.company.tickers }}Si, clave: {{result.company.tickers}}{{else}}No{{/if}}</p>
-            </div>
-            {{/if}}
-            {{#if result.company.status}}
-            <div class="col-m-6">
-                <p class="js-title-data">Situación</p>
-                <p class="js-data-lf">{{result.company.status}}</p>
-            </div>
-            {{/if}}
-
-            {{#if result.foundation_date }}
-            <div class="col-m-6">
-                <p class="js-title-data">Fundación</p>
-                <p class="js-data-lf">{{result.foundation_date}}</p>
-            </div>
-            {{/if}}
-            {{#if result.immediate_parent }}
-            <div class="col-m-12">
-                <p class="js-title-data">Organización controlante directa</p>
-                <p class="js-data-lf"><a href="/orgs/{{!-- {{ simpleName result.immediate_parent}} --}}">{{result.immediate_parent}}</a></p>
-            </div>
-            {{/if}}
-            {{#if result.parent }}
-            <div class="col-m-12">
-                <p class="js-title-data">Organización controlante final</p>
-                <p class="js-data-lf"><a href="/orgs/{{!-- {{simpleName result.parent}} --}}">{{result.parent}}</a></p>
             </div>
             {{/if}}
 
@@ -120,14 +79,8 @@
         <div class="col-m-12 col-12" style="clear:both">
           <hr>
         </div>
-        {{!--
-          //Comentado para ocultar puntaje
 
-        <div class="col-m-12 col-12 {{#if showLoadingFlags }}{{else}}hidden{{/if}}">
-          Cargando banderas...
-        </div>
-
-        <div class="{{#if flags and isPublic }}{{else}}hidden{{/if}}">
+        <div class="">
           <div  class="col-m-12 col-6 mt-2 party_flags">
             <h4 class="description-data-subtitle">CALIDAD DE CONTRATACIONES</h4>
             <div class="party_flag_score">
@@ -135,7 +88,7 @@
                 Competitividad
               </div>
               <div class="party_flag_value">
-                {{format_score flags.competitividad}}<span class="d100">/100</span>
+                {{format_score result.flags.competitividad}}<span class="d100">/100</span>
               </div>
             </div>
             <div class="party_flag_score">
@@ -143,7 +96,7 @@
                 Temporalidad
               </div>
               <div class="party_flag_value">
-                {{format_score flags.temporalidad}}<span class="d100">/100</span>
+                {{format_score result.flags.temporalidad}}<span class="d100">/100</span>
               </div>
             </div>
             <div class="party_flag_score">
@@ -151,7 +104,7 @@
                 Transparencia
               </div>
               <div class="party_flag_value">
-                {{format_score flags.transparencia}}<span class="d100">/100</span>
+                {{format_score result.flags.transparencia}}<span class="d100">/100</span>
               </div>
             </div>
             <div class="party_flag_score">
@@ -159,7 +112,7 @@
                 Trazabilidad
               </div>
               <div class="party_flag_value">
-                {{format_score flags.trazabilidad}}<span class="d100">/100</span>
+                {{format_score result.flags.trazabilidad}}<span class="d100">/100</span>
               </div>
             </div>
             <div class="party_flag_score party_flag_total_score">
@@ -167,7 +120,7 @@
                 Total
               </div>
               <div class="party_flag_value">
-                {{format_score flags.total_score}}<span class="d100">/100</span>
+                {{format_score result.flags.total_score}}<span class="d100">/100</span>
               </div>
             </div>
 
@@ -181,8 +134,19 @@
           <div  class="col-m-12 col-6 mt-2 party_flags_recommendations">
             <h4 class="description-data-subtitle">RECOMENDACIONES</h4>
             <ul class="party_flags_recommendations_list">
-              {{# each recomendation in recomendations}}
-              <li class="party_flags_recommendations_item">{{{recomendation.text}}}</li>
+              {{# each recomendations}}
+              <li class="party_flags_recommendations_item">{{this.text}}</li>
+              {{/each }}
+            </ul>
+          </div>
+          <div  class="col-m-12 col-6 mt-2 party_flags_recommendations">
+            <h4 class="description-data-subtitle">memberships</h4>
+            <ul class="meberships_list">
+              {{# each result.memberships.parent}}
+              <li class="party_flags_recommendations_item">Es una {{this.role}} de {{j filter_array ../result.memberships.parent_expanded id this.id}} </li>
+              {{/each}}
+              {{# each result.memberships.child}}
+              <li class="party_flags_recommendations_item">Tiene un {{this.role}} llamado {{j filter_array ../result.memberships.child_expanded id this.organization_id}} </li>
               {{/each}}
             </ul>
           </div>
@@ -192,12 +156,7 @@
           <hr>
         </div>
 
-        --}}
-
-        {{!-- <div class="col-m-12 col-12 {{#if contracts.length }}hidden{{else}}{{#if ocds_contract_count }}{{else}}hidden{{/if}}{{/if}}">
-          Cargando contratos...
-        </div> --}}
-        <div class="{{!-- {{#if contracts.length }}{{else}}hidden{{/if}} --}}">
+        <div class="">
 
           <div  class="col-m-12 col-4 mt-2">
 
@@ -255,8 +214,9 @@
           <hr>
         </div>
 
+        {{# if result.contracts.supplier.length }}
         <div class="col-m-12 col-12 mt-2">
-          <h4 class="description-data-subtitle">CONTRATOS</h4>
+          <h4 class="description-data-subtitle">CONTRATOS VENDEDOR</h4>
           <table class="table table-responsive">
             <thead>
               <tr>
@@ -266,11 +226,11 @@
               </tr>
             </thead>
             <tbody>
-              {{#each result.contracts }}
+              {{#each result.contracts.supplier }}
               <tr>
                 <td class="description-data-contract">
                   <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
-                  <a href="/contracts/{{ocid}}?supplier={{awards.[0].suppliers.[0].id}}">{{title}}</a>
+                  <a href="/contracts/{{ocid}}">{{title}}</a>
                 </td>
                 <td class="description-data-amount">{{ format_amount amount}} {{format_currency currency}}</td>
                 <td class="description-data-date">{{get_year contract.contracts.[0].period.startDate}}</td>
@@ -285,7 +245,40 @@
             <a href="/contracts?{{#if result.public }}filter_buyer.name={{result.name}}{{else}}filter_contracts.0.suppliers={{result.simple}}{{/if}}" class="button-link">Ver todos los contratos</a>
           </div>
         </div>
+        {{/if}}
 
+        {{# if result.contracts.buyer.length }}
+        <div class="col-m-12 col-12 mt-2">
+          <h4 class="description-data-subtitle">CONTRATOS COMPRADOR</h4>
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th class="description-data-subname">Nombre</th>
+                <th class="description-data-subname">Importe</th>
+                <th class="description-data-subname">Periodo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each result.contracts.buyer }}
+              <tr>
+                <td class="description-data-contract">
+                  <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+                  <a href="/contracts/{{ocid}}">{{title}}</a>
+                </td>
+                <td class="description-data-amount">{{ format_amount amount}} {{format_currency currency}}</td>
+                <td class="description-data-date">{{get_year contract.contracts.[0].period.startDate}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-m-9 mb-3">
+          <p>Viendo hasta 3 de <strong>{{result.ocds_contract_count}} contrato(s) en total</strong>. </p>
+          <div class="col-m-3 centered contract-button">
+            <a href="/contracts?{{#if result.public }}filter_buyer.name={{result.name}}{{else}}filter_contracts.0.suppliers={{result.simple}}{{/if}}" class="button-link">Ver todos los contratos</a>
+          </div>
+        </div>
+        {{/if}}
         <!-- <div class="col-m-12 col-12 mt-2">
         <h4 class="description-data-subtitle">OTRAS DEPENDENCIAS DEL MISMO RAMO</h4>
         <p class="other-dependency"><a><img src="../images/icons/organizacion-blue.svg" alt="organización" class="icon-lf icon-lf-organization">Banamex SAB DE CV</a></p>

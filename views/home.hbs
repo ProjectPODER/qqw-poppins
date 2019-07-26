@@ -16,6 +16,7 @@
     </div>
     <div class="arrow-down">
       <a href="#down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+      <img src="" alt="">
     </div>
   </div>
 </div>
@@ -46,10 +47,16 @@
           <a href="/orgs">
             <h3>
               <strong>
-                {{format_number stats.organizations.count}}
+                {{format_number stats.institutions.count}}
               </strong>
             </h3>
-            <h3 class="card-h3">Organizaciones</h3>
+            <h3 class="card-h3">Instituciones</h3>
+            <h3>
+              <strong>
+                {{format_number stats.companies.count}}
+              </strong>
+            </h3>
+            <h3 class="card-h3">Empresas</h3>
           </a>
           <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
           <a href="/orgs" class="button-link">VER ORGANIZACIONES</a>
@@ -97,7 +104,7 @@
       <img src="images/research.svg" alt="Investigaciones propias" class="sources-icons">
       <h3 class="triplet"><a href="#proyectos">Investigaciones propias</a></h3>
       <p class="triplet-text">Proyectos de distintas organizaciones de la sociedad civil que siguen el dinero y mapean una corporación o gobierno: <a href="https://contratosdeldesastre.com">ContratosDelDesastre.com</a>, <a href="https://www.cargografias.org">Cargografías, Argentina</a> y <a href="#proyectos">otras</a>.</p>
-      <p class="triplet-last-update">Fecha de última actualización:  {{ moment stats.organizactions.lastModified date lang="es" format="LL" }}</p>
+      <p class="triplet-last-update">Fecha de última actualización:  {{ moment stats.institutions.lastModified date lang="es" format="LL" }}</p>
     </div>
   </div>
 </section>
