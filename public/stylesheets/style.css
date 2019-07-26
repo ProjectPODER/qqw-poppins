@@ -3014,6 +3014,21 @@ img.sources-icons {
     margin-bottom: 10px;
   }
 }
+.alert-bar {
+  background: rgba(242,242,103,0.761);
+  padding: 0.5em;
+  margin: 2em 0.5em;
+  position: relative;
+  line-height: 2em;
+}
+.alert-bar .hide-alert-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  line-height: 3em;
+  padding: 0 1em;
+}
 .no-results,
 .autosuggest {
   position: relative;

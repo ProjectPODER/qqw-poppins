@@ -19,7 +19,14 @@ var register = function(Handlebars) {
     // put all of your helpers inside this object
     api_domain: function() { return app.get("config").API_DOMAIN; },
     autocomplete_url: function() { return app.get("config").AUTOCOMPLETE_URL; },
-    moment: require('helper-moment'),
+    moment: function(date) {
+      console.log("moment",date);
+      if (date) {
+        moment_helper = require('helper-moment');
+        return moment_helper(date);
+      }
+      return "Fecha desconocida";
+    },
     format_amount: function(value) {
       if (value) {
         return value.toLocaleString('es-MX',
@@ -58,4 +65,4 @@ var register = function(Handlebars) {
 };
 
 module.exports.register = register;
-module.exports.helpers = register(null); 
+module.exports.helpers = register(null);

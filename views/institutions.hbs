@@ -1,0 +1,162 @@
+<div class="row document-body">
+    <div class="col-3 col-m-3">
+        <div class="filter-bar">
+          <form>
+            <h4 class="search-title">Filtrar</h4>
+            <fieldset name="organizaciones">
+              <p class="search-title">Buscar institución</p>
+              <div class="multiple-controls-group">
+                <div class="multiple-control-container">
+                  <input type="text" name="filtername" placeholder="NOMBRE" class="org_name_filter multiple-control" value="{{filters.filtername.value }}">
+                  <!-- <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control"> -->
+                </div>
+              </div>
+              <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
+            </fieldset>
+            <fieldset name="no-contratos">
+               <p class="search-title">Número de contratos</p>
+               <a class="search-label"><p>Sin contratos</p></a>
+               <a class="search-label"><p>1 a 10</p></a>
+               <a class="search-label"><p>10 a 50</p></a>
+               <a class="search-label"><p>52 a 200</p></a>
+               <a class="search-label"><p>Más de 200</p></a>
+               <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
+               <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
+             </fieldset>
+             <fieldset name="importe-contratos">
+                <p class="search-title">Importe de contratos</p>
+                <a class="search-label"><p>Sin contratos</p></a>
+                <a class="search-label"><p>1 a 10</p></a>
+                <a class="search-label"><p>10 a 50</p></a>
+                <a class="search-label"><p>52 a 200</p></a>
+                <a class="search-label"><p>Más de 200</p></a>
+                <input type="text" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value }}">
+                <input type="text" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value }}">
+              </fieldset>
+            <input type="hidden" name="size" value="{{ filters.size.value }}">
+            <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
+            <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
+          </form>
+        </div>
+    </div>
+    <div class="col-9 col-m-9 orgs-content">
+        <div class="row document-header">
+          <div class="col-3 col-m-12">
+            <h2 class="document-title">Instituciones</h2>
+          </div>
+          <div class="col-9 col-m-12">
+            <p class="document-description">Entidades y dependencias del gobierno, incluyendo empresas productivas del estado.</p>
+          </div>
+        </div>
+        <div class="row mb-2 tools-section">
+          <div class="col-6 col-m-6">
+            <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contact">contáctanos.</a></p>
+          </div>
+          <div class="col-m-4">
+            {{> table_lenght}}
+          </div>
+          <div class="col-2 col-m-2">
+            <div class="dropdown">
+              <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../images/icons/settings.svg" alt="Ícono Herramientas">
+                Herramientas
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu pull-right" aria-labelledby="dropdownTools">
+                <li class="dropdown-header">Compartir</li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://quienesquien.wiki/orgs&t=QuienesQUienWiki" target="_blank"><img class="share-icons" src="../images/icons/facebook.svg" alt="Facebook">Facebook</a></li>
+                <li><a href="https://twitter.com/intent/tweet?text=Qui%c3%a9n+es+Qui%c3%a9n+Wiki+(QQW)+es+una+plataforma+sobre+empresarios%2c+pol%c3%adticos%2c+empresas+y+organizaciones+que+explica+las+conexiones+entre+estos+actores+y+las+pone+a+disposici%c3%b3n+de+investigadores%2c+periodistas+y+la+ciudadan%c3%ada+en+general.&url=https://quienesquien.wiki/orgs&via=ProjectPODER" target="_blank"><img class="share-icons" src="../images/icons/twitter.svg" alt="Twitter">Twitter</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">URL de la API</li>
+                <li class="copy-clip">
+                  <input id="apiUrl" type="text" name="destinatario" value="{{result.api_url}}">
+                  <button class="btn-copy" onclick="copyClipboard()">Copiar URL</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {{!--
+          //Comentado para ocultar puntaje
+
+        <div class="search-order-form">
+          <form class="form-inline">
+            <label for="search-order">Ordenar por</label>
+            <select class="form-control input-sm" name="search-order" id="search-order">
+              <option value="cantidad">Cantidad de contratos (de mayor a menor)</option>
+              <option value="puntaje">Puntaje (de mayor a menor)</option>
+            </select>
+          </form>
+        </div>
+        --}}
+
+        {{!-- {{> tabular table=TabularTables.Orgs
+        id="organization-index"
+        class=""}} --}}
+        <div id="organization-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <div>
+            <div class="col-m-8">
+              {{> blob_filter}}
+            </div>
+            <div class="col-m-4" style="float: right; text-align: right;">
+              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite" style="margin-top: 5px; margin-bottom: 10px;">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
+              </div>
+            </div>
+            <div class="col-m-12">
+              <div id="organization-index_processing" class="dataTables_processing panel panel-default" style="display: none;">
+                <div class="loading-container">
+                  <div class="loading">
+                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                  </div>
+                </div>
+              </div>
+              <div id="organization-index" class="dataTable" aria-describedby="organization-index_info" role="grid">
+                <div class="dataCardBody">
+                  {{#each result.data}}
+                  <div role="row" class="search-card odd">
+                    <div class=" js-title no-title search-result-title col-m-8 col-8">
+                      <div class="cardItemTitle">Nombre</div>
+                      <a href="/instituciones/{{id}}">
+                        <div class="cardItemData">{{name}}</div>
+                      </a>
+                    </div>
+                    <div class=" js-ocid no-title col-2 col-m-2">
+                      <a href="/instituciones/{{id}}" class="button-link">Ver institución</a>
+                    </div>
+                    <div class=" col-m-8 col-8">
+                      <div class="cardItemTitle"></div>
+                      <div class="cardItemData"></div>
+                      <p class="js-person-type" style="font-size: 16px;">
+                        <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
+                        Institución
+                        {{#if contract_count}}
+                        con
+                        <span class="js-contract-count">
+                          <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+                          {{contract_count}} contrato(s)
+                        </span>
+                        por
+                        <span class="js-contract-amount">
+                          {{contract_amount}} pesos mexicanos.
+                        </span>
+                        {{/if}}
+                      </p>
+                    </div>
+                    {{!-- <div class=" js-score col-2 col-m-2 hidden">
+                      <div class="cardItemTitle">Puntaje</div>
+                      <div class="cardItemData"></div>51.19<span class="d100">/100</span>
+                    </div> --}}
+                    <div class=" col-m-8 col-8">
+                      <div class="cardItemTitle"></div>
+                      <div class="cardItemData"></div>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+              {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>

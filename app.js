@@ -7,10 +7,11 @@ var stylus = require('stylus');
 var hbs = require('express-handlebars');
 var jquery = require('jquery');
 var moment = require('helper-moment');
-var dotenv = require('dotenv');
-var dotenvExpand = require('dotenv-expand');
-var myEnv = dotenv.config();
-dotenvExpand(myEnv);
+var _ = require('lodash')
+var dotenv = require('dotenv')
+var dotenvExpand = require('dotenv-expand')
+var myEnv = dotenv.config()
+dotenvExpand(myEnv)
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,10 +31,41 @@ app.engine('.hbs', hbs({
     helpers: {
       api_domain: function() { return process.env.API_DOMAIN; },
       autocomplete_url: function() { return process.env.AUTOCOMPLETE_URL; },
-      moment: require('helper-moment'),
+      moment: function(date) {
+        if (date) {
+          moment_helper = require('helper-moment');
+          return moment_helper(date);
+        }
+        return "Fecha desconocida";
+      },
       format_amount: function(value) {
         if (value) {
           return "$"+value.toLocaleString('es-MX',
+            {
+              style: 'decimal',
+              maximumFractionDigits: 2
+            });
+        }
+        return 'Importe desconocido';
+      },
+      j: function(obj) {
+        return JSON.stringify(obj);
+      },
+      get_year: function(date) {
+        //TODO
+        return date;
+      },
+      filter_array: function(haystack,property,needle) {
+        const search = {};
+        search[property] = needle;
+        const item = _.find(haystack,search);
+        console.log("filter_array",search,item);
+        return item;
+      },
+      format_score: function(value) {
+        //TODO
+        if (value) {
+          return value.toLocaleString('es-MX',
             {
               style: 'decimal',
               maximumFractionDigits: 2
@@ -97,11 +129,35 @@ app.engine('.hbs', hbs({
                 return options.inverse(this);
         }
       },
+      isArray: function(obj) {
+        return typeof obj == "object";
+      },
       format_number: function(value) {
         if (value) {
           return value.toLocaleString('es-MX');
         }
         return 'Valor desconocido';
+      },
+      get_party_type: function(records,party_id) {
+        let party;
+        if (records) {
+          party = _.find(records[0].compiledRelease.parties,party_id);
+          if (!party) {
+            party = _.find(records[0].compiledRelease.parties,(party_id,i,parties) => { if (parties[i].memberOf) { return parties[i].memberOf.id == party_id } })
+          }
+          if (party && party.details) {
+            return party.details.type;
+          }
+          else {
+            console.log("get_party_type not found",party_id,records[0].compiledRelease.parties);
+            return "unknown";
+          }
+        }
+        else {
+          console.log("get_party_type no record",party_id);
+          return "unknown";
+
+        }
       }
     }
 }));
@@ -130,10 +186,10 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.message = err.message;
 
-  console.log("error",err);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error",err);
 
   // render the error page
   res.status(err.status || 500);

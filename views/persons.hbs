@@ -13,6 +13,27 @@
             </div>
             <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
           </fieldset>
+
+          <fieldset name="no-contratos">
+             <p class="search-title">Número de contratos</p>
+             <a class="search-label"><p>Sin contratos</p></a>
+             <a class="search-label"><p>1 a 10</p></a>
+             <a class="search-label"><p>10 a 50</p></a>
+             <a class="search-label"><p>52 a 200</p></a>
+             <a class="search-label"><p>Más de 200</p></a>
+             <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
+             <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
+           </fieldset>
+           <fieldset name="importe-contratos">
+              <p class="search-title">Importe de contratos</p>
+              <a class="search-label"><p>Sin contratos</p></a>
+              <a class="search-label"><p>1 a 10</p></a>
+              <a class="search-label"><p>10 a 50</p></a>
+              <a class="search-label"><p>52 a 200</p></a>
+              <a class="search-label"><p>Más de 200</p></a>
+              <input type="text" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value }}">
+              <input type="text" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value }}">
+            </fieldset>        
           <input type="hidden" name="size" value="{{ filters.size.value }}">
           <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
           <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
@@ -86,14 +107,17 @@
                 <div class=" js-ocid no-title col-2 col-m-2">
                   {{!-- <div class="cardItemTitle">enlace</div>
                   <div class="cardItemData"></div> --}}
-                  <a href="/persons/{{simple}}" class="button-link">Ver persona</a>
+                  <a href="/persons/{{id}}" class="button-link">Ver persona</a>
                 </div>
                 <div class=" js-person-type col-m-8 col-8">
                   {{!-- <div class="cardItemTitle"></div>
                   <div class="cardItemData"></div> --}}
-                  <p style="font-size: 1rem;">Proveedor 
-                    {{#if ocds_contract_count}}
-                      <span class="js-contract-count">{{ocds_contract_count}} contrato(s)</span>
+                  <p style="font-size: 1rem;">Proveedor
+                    {{#if contract_count}}
+                      <span class="js-contract-count">{{contract_count}} contrato(s)</span>
+                    {{/if}}
+                    {{#if contract_amount}}
+                      <span class="js-contract-amount">{{contract_amount}} pesos</span>
                     {{/if}}
                   </p>
                 </div>

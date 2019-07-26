@@ -15,7 +15,7 @@ nav.bar
 
 .navbar-collapse.show
   background-color #110046
-  
+
 .navbar-collapse
   padding-right 15px
   padding-left 15px
@@ -133,16 +133,16 @@ img
 .nav-link:hover:before, .nav-link:focus:before, .nav-link:active:before
     left 0
     right 0
-    
+
 .collapse
   display none
-  
+
 .collapse.show
   display block
-  
+
 .navbar-collapse.show
   overflow-y auto
-    
+
 .nav>li
   position relative
   display block
@@ -169,10 +169,10 @@ img
 
 .navbar-toggle
   margin-top 0
-  
-.navbar-toggle:focus 
+
+.navbar-toggle:focus
   outline 0
-  
+
 .icon-navbar
   width 14px
   margin-right 2px
@@ -181,23 +181,23 @@ img
   width 24px
 
 @media (min-width: 768px)
-  .navbar-nav>li 
+  .navbar-nav>li
     float left
-    
+
   // .navbar-nav>li>a
   //   padding-top 15px
   //   padding-bottom 15px
 
-  .navbar-right 
+  .navbar-right
     float right !important
-  
-  .navbar-toggle 
+
+  .navbar-toggle
     display none
-    
+
   .container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse
     margin-right 0
     margin-left 0
-    
+
   .navbar-collapse
     &.collapse
       display block !important
@@ -209,13 +209,13 @@ img
     border-top 0
     -webkit-box-shadow none
     box-shadow none
-    
 
-.shrink .navbar-right, 
-.fixed-nav .navbar-right 
+
+.shrink .navbar-right,
+.fixed-nav .navbar-right
   display inline-block
-  
-.shrink .navbar-toggle .icon-bar, 
+
+.shrink .navbar-toggle .icon-bar,
 .fixed-nav .navbar-toggle .icon-bar
   background-color #fff
 
@@ -225,17 +225,17 @@ img
     width 22px
     height 2px
     border-radius 1px
-    
+
 .navbar-toggle
   .icon-bar
     & + .icon-bar
       margin-top 4px
-        
+
 @media only screen and (max-width: 992px)
   .navbar-nav
     float none !important
     margin-top 7.5px
-  .navbar-toggle 
+  .navbar-toggle
     display block
   .navbar-collapse.collapse
     display none !important
@@ -266,4 +266,18 @@ img
       margin-bottom 10px
 
 // @media only screen and (max-width: 768px)
-  
+
+.alert-bar
+  background: #f2f267c2;
+  padding: 0.5em;
+  margin: 2em 0.5em;
+  position: relative;
+  line-height: 2em;
+
+  .hide-alert-bar
+    position absolute
+    top 0
+    right 0
+    cursor pointer
+    line-height 3em
+    padding 0 1em

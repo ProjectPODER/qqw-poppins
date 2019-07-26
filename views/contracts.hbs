@@ -32,11 +32,11 @@
             <p class="search-title">Vigencia de contrato <a data-toggle="tooltip" data-placement="right" title="Fecha de inicio y fecha de expiración del contrato reportado por la Unidad Compradora."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
             <div class="term-contract">
               <p class="search-label">Fecha de Inicio</p>
-              <input type="date" id="from_date_contracts_index" value="01/01/2002" min="2002-01-01">
+              <input type="date" id="from_date_contracts_index" name="from_date_contracts_index" value="{{filters.from_date_contracts_index.value}}" min="2002-01-01">
             </div>
             <div class="term-contract">
               <p class="search-label">Fecha de fin</p>
-              <input type="date" id="to_date_contracts_index" value="00/00/0000" min="2002-01-01">
+              <input type="date" id="to_date_contracts_index" name="to_date_contracts_index" value="{{filters.to_date_contracts_index.value}}" min="2002-01-01">
             </div>
             <p>
               <input type="checkbox" id="fecha-desconocido" checked="checked"> Incluir contratos con fecha desconocida
@@ -50,11 +50,11 @@
             b) Invitación a cuando menos tres proveedores o contratistas.
             c) Adjudicación Directa.
             - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
-            <select id="tipo-adquisicion" class="search-select">
+            <select id="tipo-adquisicion" name="tipo-adquisicion" class="search-select">
               <option value="">Todos</option>
-              <option value="Adjudicación Directa Federal">Adjudicación directa</option>
-              <option value="Invitación a Cuando Menos 3 Personas">Invitación a 3</option>
-              <option value="Licitación Pública|Licitación Pública con OSD">Licitación</option>
+              <option value="Adjudicación Directa Federal" {{#ifCond filters.tipo-adquisicion.value "==" "Adjudicación Directa Federal" }}selected="selected"{{/ifCond}}>Adjudicación directa</option>
+              <option value="Invitación a Cuando Menos 3 Personas" {{#ifCond filters.tipo-adquisicion.value "==" "Invitación a Cuando Menos 3 Personas" }}selected="selected"{{/ifCond}}>Invitación a 3</option>
+              <option value="Licitación Pública|Licitación Pública con OSD" {{#ifCond filters.tipo-adquisicion.value "==" "Licitación Pública|Licitación Pública con OSD" }}selected="selected"{{/ifCond}}>Licitación</option>
             </select>
           </fieldset>
           <fieldset name="importe" style="margin-bottom: 7rem;">
@@ -63,8 +63,8 @@
             <a class="search-label importe-bucket" data-bucket="1000000-500000000"><p>Entre 1 millón y 500 millones</p></a>
             <a class="search-label importe-bucket" data-bucket="500000000-1000000000"><p>Entre 500 millones a 1,000 millones</p></a>
             <a class="search-label importe-bucket" data-bucket="1000000000-"><p>Más de mil millones</p></a>
-            <input type="text" id="importe-minimo" placeholder="Mínimo" class="search-amount">
-            <input type="text" id="importe-maximo" placeholder="Máximo" class="search-amount">
+            <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
+            <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
             <p>
               <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
             </p>
@@ -128,7 +128,7 @@
       {{!-- {{> tabular table=TabularTables.Contracts_OCDS
       id="contract-index"  selector=selector
       class="" }} --}}
-      
+
       <div id="contract-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
         <div>
           <div class="col-m-8">
@@ -153,27 +153,29 @@
                   <div class=" js-title no-title search-result-title col-m-8 col-8">
                     <div class="cardItemTitle">Título</div>
                     <div class="cardItemData"></div>
-                    <a href="/contracts/{{ocid}}?supplier={{suppliers_org}}">{{title}}</a>
+                    <a href="/contracts/{{records.0.compiledRelease.ocid}}">{{records.0.compiledRelease.contracts.0.title}}</a>
                   </div>
                   <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>{{format_amount amount}}<span class="contract_currency">{{format_currency currency}}</span>
+                    <div class="cardItemData"></div>
+                    {{ format_amount records.0.compiledRelease.total_amount}}
+                    <span class="contract_currency">{{format_currency records.0.compiledRelease.contracts.0.value.currency}}</span>
                   </div>
                   <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
                     <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>Vigente desde {{moment start_date date lang="es" format="LL"}} hasta {{moment end_date date lang="es" format="LL"}}
+                    <div class="cardItemData"></div>Vigente desde {{moment records.0.compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment records.0.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
                   </div>
                   <div class=" js-ocid no-title col-2 col-m-2">
                     <div class="cardItemTitle">OCID</div>
                     <div class="cardItemData"></div>
-                    <a href="/contracts/{{ocid}}?supplier={{suppliers_org}}" class="button-link">Ver contrato</a>
+                    <a href="/contracts/{{records.0.compiledRelease.ocid}}" class="button-link">Ver contrato</a>
                   </div>
                   <div class=" js-dependency col-4 col-m-4">
                     <div class="cardItemTitle">Dependencia</div>
                     <div class="cardItemData"></div>
                     <ul class="dependency-cell list-unstyled">
                       <li>
-                        <a href="/orgs/{{dependency}}">{{dependency}}</a>
+                        <a href="/{{get_party_type records records.0.compiledRelease.parties.0.memberOf.0.id }}/{{records.0.compiledRelease.parties.0.memberOf.0.id}}">{{records.0.compiledRelease.parties.0.memberOf.0.name}}</a>
                       </li>
                     </ul>
                   </div>
@@ -181,14 +183,18 @@
                     <div class="cardItemTitle">Proveedores</div>
                     <div class="cardItemData"></div>
                     <ul class="suppliers-cell list-unstyled">
-                      <li>
-                        <a href="/orgs/{{suppliers_org}}">{{suppliers_org}}</a>
-                      </li>
+                      {{#each records.0.compiledRelease.awards}}
+                        {{#each suppliers}}
+                        <li>
+                          <a href="/{{get_party_type ../../records id }}/{{id}}">{{name}}</a>
+                        </li>
+                        {{/each}}
+                      {{/each}}
                     </ul>
                   </div>
                   <div class=" js-procedure col-2 col-m-2">
                     <div class="cardItemTitle">Procedimiento</div>
-                    <div class="cardItemData">{{procedure_type}}</div>
+                    <div class="cardItemData">{{records.0.compiledRelease.tender.procurementMethodMxCnet}}</div>
                   </div>
                   {{!-- <div class=" js-score col-1 col-m-1 hidden">
                     <div class="cardItemTitle">Puntaje</div>

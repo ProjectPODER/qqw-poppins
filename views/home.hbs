@@ -8,7 +8,7 @@
       <div class="landing-search">
         <p>Puedes buscar nombres de empresarios y organizaciones.</p>
         <div class="landing-search-form" method="get">
-          {{> main_search }} 
+          {{> main_search }}
           <input type="submit" value="Buscar" class="landing-search-inputtext" id="first-search">
         </div>
         <p>*Para encontrar contratos usa el <a href="/contracts">buscador avanzado de contratos públicos</a>.</p>
@@ -47,10 +47,16 @@
           <a href="/orgs">
             <h3>
               <strong>
-                {{format_number stats.organizations.count}}
+                {{format_number stats.institutions.count}}
               </strong>
             </h3>
-            <h3 class="card-h3">Organizaciones</h3>
+            <h3 class="card-h3">Instituciones</h3>
+            <h3>
+              <strong>
+                {{format_number stats.companies.count}}
+              </strong>
+            </h3>
+            <h3 class="card-h3">Empresas</h3>
           </a>
           <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
           <a href="/orgs" class="button-link">VER ORGANIZACIONES</a>
@@ -81,32 +87,32 @@
   <div class="row content">
     <h2 class="investigaciones"><a href="/about/#user-content-fuentes">¿Cuáles son nuestras fuentes de datos?</a></h2>
     <p>QuiénEsQuién.Wiki mezcla fuentes de información pública e investigaciones propias con el objetivo de mostrar la captura del estado.</p>
-    <p>Puedes acceder a ellos en está plataforma, con <a href="https://kibana.quienesquien.wiki/">nuestra herramienta de análisis avanzado de datos</a> y a través de la <a href="https://api.quienesquien.wiki/v1/docs/">API</a>.</p>
+    <p>Puedes acceder a ellos en está plataforma, con <a href="https://kibana.quienesquien.wiki/">nuestra herramienta de análisis avanzado de datos</a> y a través nuestra nueva <a href="https://api.quienesquien.wiki/v2/docs/">API version 2</a>.</p>
     <div class="col-4 col-m-4 centered triplet-wrapper">
       <img src="images/market.svg" alt="Bolsa de Valores" class="sources-icons">
-      <h3 class="triplet"><a href="/about/#user-content-contratos">Contratos públicos</a></h3>
-      <p class="triplet-text">En los procesos de contratación pública se esconden casos flagrantes de captura del estado. Tenemos importadas las siguientes bases de datos: <a href="/about/#user-content--compranet-plus-mexico">CompraNet Plus, México</a></p>
-      <p class="triplet-last-update">Fecha de última actualización: {{ moment stats.organizations.lastModified date lang="es" format="LL"}} </p>
+      <h3 class="triplet"><a href="/contracts">Contratos públicos</a></h3>
+      <p class="triplet-text">En los procesos de contratación pública se esconden casos flagrantes de captura del estado. Tenemos importadas las siguientes bases de datos: <a href="https://compranet.hacienda.gob.mx/web/login.html">CompraNet y CompraNet Plus, México</a>, <a href="http://www.portaltransparencia.gob.mx">Contratos del POT, México</a>.</p>
+      <p class="triplet-last-update">Fecha de última actualización: {{ moment stats.contracts.lastModified date lang="es" format="LL"}} </p>
     </div>
     <div class="col-4 col-m-4 centered triplet-wrapper">
       <img src="images/compranet.svg" alt="Compranet" class="sources-icons">
-      <h3 class="triplet"><a href="/about/#user-content-beneficiarios-reales">Beneficiarios reales</a></h3>
-      <p class="triplet-text">La propietarios de la empresa y sus controladores es una de las informaciones más difíciles de acceder. Aquí la lista de datasets que usamos para vincular corporaciones y empresas: <a href="/about/#user-content--bolsa-de-valores-mexicana-mexico">Bolsa de Valores de México</a></p>
-      <p class="triplet-last-update">Fecha de última actualización: {{ moment stats.contracts.lastModified date lang="es" format="LL" }}</p>
+      <h3 class="triplet"><a href="/persons">Beneficiarios reales</a></h3>
+      <p class="triplet-text">La propietarios de la empresa y sus controladores es una de las informaciones más difíciles de acceder. Aquí la lista de datasets que usamos para vincular corporaciones y empresas: <a href="https://www.bmv.com.mx/">Bolsa de Valores de México</a> y Proveedores del estado.</p>
+      <p class="triplet-last-update">Fecha de última actualización: {{ moment stats.persons.lastModified date lang="es" format="LL" }}</p>
     </div>
     <div class="col-4 col-m-4 centered triplet-wrapper">
       <img src="images/research.svg" alt="Investigaciones propias" class="sources-icons">
-      <h3 class="triplet"><a href="/about/#user-content-investigaciones-propias">Investigaciones propias</a></h3>
-      <p class="triplet-text">Proyectos de distintas organizaciones de la sociedad civil que siguen el dinero y mapean una corporación o gobierno: <a href="/about/#user-content--torredecontrolorg">TorreDeControl.org, México</a> y <a href="/about/#user-content--cargografias">Cargografías, Argentina</a></p>
-      <p class="triplet-last-update">Fecha de última actualización:  {{ moment stats.persons.lastModified date lang="es" format="LL" }}</p>
+      <h3 class="triplet"><a href="#proyectos">Investigaciones propias</a></h3>
+      <p class="triplet-text">Proyectos de distintas organizaciones de la sociedad civil que siguen el dinero y mapean una corporación o gobierno: <a href="https://contratosdeldesastre.com">ContratosDelDesastre.com</a>, <a href="https://www.cargografias.org">Cargografías, Argentina</a> y <a href="#proyectos">otras</a>.</p>
+      <p class="triplet-last-update">Fecha de última actualización:  {{ moment stats.institutions.lastModified date lang="es" format="LL" }}</p>
     </div>
   </div>
 </section>
 
-<section class="proyectos">
+<section class="proyectos" id="proyectos">
   <div class="row">
     <div class="content">
-      <h2>Proyectos</h2>
+      <h2>Proyectos destacados</h2>
       <p class="text-white">A partir de la investigación de los datos de QuiénEsQuién.Wiki, se han realizado proyectos de largo aliento, visualizaciones innovadoras y se han creado secciones de medios.</p>
 
       <!--End mc_embed_signup-->
@@ -203,7 +209,7 @@
 
 <section class="investigaciones">
   <div class="content">
-    <h2>Investigaciones</h2>
+    <h2>Últimas investigaciones</h2>
       <p class="investigaciones-p">PODER realiza cada semana un reportaje de investigación que siempre complementa con los datos que encuentran en QuiénEsQuién.Wiki.</p>
       <div class="investigaciones row">
         {{#each feed}}

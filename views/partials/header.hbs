@@ -3,16 +3,17 @@
 {{else}}
 <nav class="nav bar fixed-nav" id='navbar'>
 {{/if}}
+
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex1-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>
       </button>
 
         <a href="/"><img class="logo-horizontal" src="../../../images/logo-h.png" alt="Logo QuiénEsQuién.wiki"></a>
-      
+
     </div>
     <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -28,7 +29,7 @@
           <a href="/contracts" class="nav-link">
             <div class="contenedor_item_menu_top">
               <img class="icon-navbar" src="/images/icons/contrato.svg" alt="Contratos">
-              <span class="contracts_header_menu">{{!-- {{__ "Contracts" }} --}} Contracts</span>
+              <span class="contracts_header_menu">{{!-- {{__ "Contracts" }} --}} Contratos</span>
             </div>
           </a>
         </li>
@@ -36,19 +37,37 @@
           <a href="/persons" class="nav-link">
             <div class="contenedor_item_menu_top">
               <img class="icon-navbar icon-navbar-persons" src="/images/icons/personas.svg" alt="Personas">
-              <span class="empresarios_header_menu">{{!-- {{__ "Persons" }} --}}Persons</span>
+              <span class="empresarios_header_menu">{{!-- {{__ "Persons" }} --}}Personas</span>
             </div>
           </a>
         </li>
         <li data-toggle="collapse" data-target=".navbar-collapse.in">
-          <a href="/orgs" class="nav-link">
+          <a href="/empresas" class="nav-link">
             <div class="contenedor_item_menu_top">
             <img class="icon-navbar" src="/images/icons/organizacion.svg" alt="Organización">
-              <span class="empresas_header_menu">{{!-- {{__ "Organizations" }} --}}Organizations</span>
+              <span class="empresas_header_menu">{{!-- {{__ "Organizations" }} --}}Empresas</span>
+            </div>
+          </a>
+        </li>
+        <li data-toggle="collapse" data-target=".navbar-collapse.in">
+          <a href="/instituciones" class="nav-link">
+            <div class="contenedor_item_menu_top">
+            <img class="icon-navbar" src="/images/icons/organizacion.svg" alt="Organización">
+              <span class="empresas_header_menu">{{!-- {{__ "Organizations" }} --}}Instituciones</span>
             </div>
           </a>
         </li>
       </ul>
     </div>
   </div>
+
+  {{#if alert }}
+  <div class="alert-bar">
+     {{alert}}
+     <span class="hide-alert-bar button-link">
+       x
+     </span>
+  </div>
+  {{/if}}
+
 </nav>
