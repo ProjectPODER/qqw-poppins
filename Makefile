@@ -8,8 +8,8 @@ include /var/lib/jenkins/.env
 
 ORG_NAME = poder
 APP_NAME = qqw-popppins
-APP_PORT = 8085:8080
-APP_VERSION = 0.0.0
+APP_PORT = 8086:8080
+APP_VERSION = 0.1.0
 IMAGE_NAME = ${ORG_NAME}/${APP_NAME}:${APP_VERSION}
 
 .PHONY: all build test release clean help
@@ -19,6 +19,8 @@ all: help
 build:
 	@echo "Building ${IMAGE_NAME} image."
 	docker build -t ${IMAGE_NAME} .
+	@echo "Listing ${IMAGE_NAME} image."
+	docker images
 
 test:
 	@echo "Run ${IMAGE_NAME} image."
@@ -32,8 +34,6 @@ release:
 	cat ${DOCKER_PWD} | docker login --username ${DOCKER_USER} --password-stdin
 	docker tag  ${IMAGE_NAME} ${DOCKER_REPO}:${APP_NAME}-${APP_VERSION}
 	docker push ${DOCKER_REPO}:${APP_NAME}-${APP_VERSION}
-	@echo "Listing ${IMAGE_NAME} image."
-	docker images
 
 clean:
 	@echo ""
@@ -42,6 +42,7 @@ clean:
 	docker stop ${APP_NAME} 2>/dev/null; true
 	docker rm ${APP_NAME}  2>/dev/null; true
 	@echo ""
+	@echo "Purging local images."
 	docker rmi ${IMAGE_NAME} 2>/dev/null; true
 
 help:
