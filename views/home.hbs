@@ -1,7 +1,7 @@
-<div class="jumbotron-container scrollme">
-  <div class="landing-jumbotron animateme" data-when="span" data-from="0" data-to="1" data-opacity="0.5" data-translatey="300" data-easing="linear" style="opacity: 1; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1);">
+<div class="header-container">
+  <div class="landing-header">
     <div class="landing-header-content">
-      <img class="logo animateme img-responsive" src="images/single.png" alt="Logo" data-when="span" data-from="0" data-to="1" data-scale="0.75" data-translatey="100" data-easing="linear" style="opacity: 1; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3d(1, 1, 1);">
+      <img class="logo img-responsive" src="images/single.png" alt="Logo">
 
       <p>Una herramienta para explorar las <strong>conexiones y contratos entre empresarios, políticos, empresas y organizaciones.</strong> Facilita el acceso de investigadores, periodistas y ciudadanos a varias <a href="#fuentes">fuentes de datos abiertos</a>.</p>
       <div class="landing-search">
@@ -13,76 +13,129 @@
         <p>*Para encontrar contratos usa el <a href="/contracts">buscador avanzado de contratos públicos</a>.</p>
       </div>
     </div>
-    <div class="arrow-down">
-      <a href="#down"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-      <img src="" alt="">
-    </div>
   </div>
 </div>
 
 <section class="explore-data" id="down">
   <div class="content row">
-    <div class="col-4 col-m-4 card-pad-ext">
-      <div class="card explore-card">
-        <a href="/persons"><img src="images/Consejo-Mexicano-de-Negocios.jpg" alt="Personas" class="card-image"></a>
-        <div class="card-pad">
-          <a href="/persons">
-            <h3>
-              <strong>
-                {{format_number stats.persons.count }}
-              </strong>
-            </h3>
-            <h3 class="card-h3">Personas</h3>
-          </a>
-          <p class="serif-gray">Funcionarios, empresarios y proveedores del Estado, qué negocios tienen, con quién se asocian y cómo consiguen sus contratos públicos.</p>
-          <a href="/persons" class="button-link">VER PERSONAS</a>
+    <h2 class="investigaciones text-center">¿Cuáles son nuestras fuentes de datos?</h2>
+    <p class="text-center">QuiénEsQuién.Wiki mezcla fuentes de información pública e investigaciones propias con el objetivo de mostrar la captura del estado.</p>
+    <div class="col-6 col-m-12 mt-60">
+      <div class="col-6 col-m-6 card-pad-ext">
+        <div class="card explore-card">
+          <div class="card-pad">
+            <a href="/persons">
+              <h3>
+                <strong>
+                  {{format_number stats.persons.count }}
+                </strong>
+              </h3>
+              <h3 class="card-h3">Personas</h3>
+            </a>
+            {{!-- <p class="serif-gray">Funcionarios, empresarios y proveedores del Estado, qué negocios tienen, con quién se asocian y cómo consiguen sus contratos públicos.</p>
+            <a href="/persons" class="button-link">VER PERSONAS</a> --}}
+            <p class="triplet-last-update">Actualización: {{ moment stats.persons.lastModified date lang="es" format="LL" }} </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-m-6 card-pad-ext">
+        <div class="card explore-card">
+          <div class="card-pad">
+            <a href="/contracts">
+              <h3>
+                <strong>
+                  {{format_number stats.contracts.count}}
+                </strong>
+              </h3>
+              <h3 class="card-h3">Contratos</h3>
+            </a>
+            {{!-- <p class="serif-gray">Explora los importes, años, dependencias, empresas proveedoras y otras características de más de un millón de contratos.</p>
+            <a href="/contracts" class="button-link">VER CONTRATOS</a> --}}
+            <p class="triplet-last-update">Actualización: {{ moment stats.contracts.lastModified date lang="es" format="LL"}} </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-m-6 card-pad-ext">
+        <div class="card explore-card">
+          <div class="card-pad">
+            <a href="/instituciones">
+              <h3>
+                <strong>
+                  {{format_number stats.institutions.count}}
+                </strong>
+              </h3>
+              <h3 class="card-h3">Instituciones</h3>
+            </a>
+           {{!--  <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
+            <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
+            <p class="triplet-last-update">Actualización: {{ moment stats.institutions.lastModified date lang="es" format="LL" }} </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-m-6 card-pad-ext">
+        <div class="card explore-card">
+          <div class="card-pad">
+            <a href="/empresas">
+              <h3>
+                <strong>
+                  {{format_number stats.companies.count}}
+                </strong>
+              </h3>
+              <h3 class="card-h3">Empresas</h3>
+            </a>
+            {{!-- <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
+            <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
+            <p class="triplet-last-update">Actualización: {{ moment stats.contracts.lastModified date lang="es" format="LL"}} </p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-4 col-m-4 card-pad-ext">
-      <div class="card explore-card">
-        <a href="/orgs"><img src="images/mercado.png" alt="Organizaciones" class="card-image"></a>
-        <div class="card-pad">
-          <a href="/orgs">
-            <h3>
-              <strong>
-                {{format_number stats.institutions.count}}
-              </strong>
-            </h3>
-            <h3 class="card-h3">Instituciones</h3>
-            <h3>
-              <strong>
-                {{format_number stats.companies.count}}
-              </strong>
-            </h3>
-            <h3 class="card-h3">Empresas</h3>
-          </a>
-          <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
-          <a href="/orgs" class="button-link">VER ORGANIZACIONES</a>
+    <div class="col-6 col-m-12 mt-60">
+      <div class="media">
+        <div class="media-left media-middle">
+          <img src="images/market.svg" alt="Bolsa de Valores" class="sources-icons">
+        </div>
+        <div class="media-body">
+          <h3>Contratos públicos</h3>
+          <p class="triplet-text">En los procesos de contratación pública se esconden casos flagrantes de captura del estado. Tenemos importadas las siguientes bases de datos: CompraNet y CompraNet Plus, México, Contratos del POT, México.</p>
+        </div>
+      </div>
+      <div class="media">
+        <div class="media-left media-middle">
+          <img src="images/compranet.svg" alt="Compranet" class="sources-icons">
+        </div>
+        <div class="media-body">
+          <h3>Beneficiarios reales</a></h3>
+          <p class="triplet-text">La propietarios de la empresa y sus controladores es una de las informaciones más difíciles de acceder. Aquí la lista de datasets que usamos para vincular corporaciones y empresas: Bolsa de Valores de México y Proveedores del estado.</p>
+        </div>
+      </div>
+      <div class="media">
+        <div class="media-left media-middle">
+          <img src="images/research.svg" alt="Investigaciones propias" class="sources-icons">
+        </div>
+        <div class="media-body">
+          <h3>Investigaciones propias</a></h3>
+          <p class="triplet-text">Proyectos de distintas organizaciones de la sociedad civil que siguen el dinero y mapean una corporación o gobierno: ContratosDelDesastre.com, Cargografías, Argentina y otras.</p>
         </div>
       </div>
     </div>
-    <div class="col-4 col-m-4 card-pad-ext">
-      <div class="card explore-card">
-        <a href="/contracts"><img src="images/licitacion.png" alt="Contratos" class="card-image"></a>
-        <div class="card-pad">
-          <a href="/contracts">
-            <h3>
-              <strong>
-                {{format_number stats.contracts.count}}
-              </strong>
-            </h3>
-            <h3 class="card-h3">Contratos</h3>
-          </a>
-          <p class="serif-gray">Explora los importes, años, dependencias, empresas proveedoras y otras características de más de un millón de contratos.</p>
-          <a href="/contracts" class="button-link">VER CONTRATOS</a>
-        </div>
+    <div class="col-12 col-m-12 text-center mt-2">
+      <a class="button-link important-button-link" type="button" href="" target="_blank">VER ENTIDADES Y FUENTES</a>
+    </div>
+  </div>
+</section>
+<section class="bg-gray">
+  <div class="row">
+    <div class="content text-center">
+      <h2 class="text-darkblue">Cómo investigar</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta officia consequatur, totam facere aut delectus quidem sequi architecto accusantium fugit? Nihil, natus, asperiores! Dolorum assumenda autem qui eveniet, asperiores quidem!</p>
+      <div class="col-12 col-m-12 text-center mt-2">
+        <a class="button-link important-button-link" type="button" href="" target="_blank">VER MANUAL</a>
       </div>
     </div>
   </div>
 </section>
-
-<section class="data-sources text-center" id="fuentes">
+{{!-- <section class="data-sources text-center" id="fuentes">
   <div class="row content">
     <h2 class="investigaciones"><a href="/about/#user-content-fuentes">¿Cuáles son nuestras fuentes de datos?</a></h2>
     <p>QuiénEsQuién.Wiki mezcla fuentes de información pública e investigaciones propias con el objetivo de mostrar la captura del estado.</p>
@@ -106,12 +159,12 @@
       <p class="triplet-last-update">Fecha de última actualización:  {{ moment stats.institutions.lastModified date lang="es" format="LL" }}</p>
     </div>
   </div>
-</section>
+</section> --}}
 
 <section class="proyectos" id="proyectos">
   <div class="row">
     <div class="content">
-      <h2>Proyectos destacados</h2>
+      <h2>Investigaciones</h2>
       <p class="text-white">A partir de la investigación de los datos de QuiénEsQuién.Wiki, se han realizado proyectos de largo aliento, visualizaciones innovadoras y se han creado secciones de medios.</p>
 
       <!--End mc_embed_signup-->
@@ -155,7 +208,7 @@
             <a class="button-link" type="button" href="https://vivirconvih.org/" target="_blank">VER VIVIRCONVIH.ORG</a>
         </div>
       </div>
-      <div class="proyecto row">
+      {{!-- <div class="proyecto row">
         <div class="col-4 col-m-5 proyecto-info-img">
           <a href="https://conoceblackrock.projectpoder.org/"><img src="images/blackrock.png" alt="Proyecto BlackRock"></a>
         </div>
@@ -201,6 +254,9 @@
             <p class="serif-gray proyecto-info">Incide Social registró las votaciones de los consejeros del Instituto Nacional Electoral de México para mostrar si existía algún tipo de colusión entre ello. </p>
             <button class="btn btn-default" type="button" disabled>FUERA DE LÍNEA</button>
         </div>
+      </div> --}}
+      <div class="col-12 col-m-12 text-center mt-2">
+        <a class="button-link important-button-link" type="button" href="" target="_blank">VER TODAS LAS INVESTIGACIONES</a>
       </div>
     </div>
   </div>
@@ -208,7 +264,7 @@
 
 <section class="investigaciones">
   <div class="content">
-    <h2>Últimas investigaciones</h2>
+    <h2>Últimos reportajes</h2>
       <p class="investigaciones-p">PODER realiza cada semana un reportaje de investigación que siempre complementa con los datos que encuentran en QuiénEsQuién.Wiki.</p>
       <div class="investigaciones row">
         {{#each feed}}
@@ -217,12 +273,52 @@
     </div>
   </div>
 </section>
-
 <section>
+  <div class="row">
+    <div class="content">
+      <div class="col-12 col-m-12">
+        <h2>Herramientas</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi similique accusamus ullam rerum perspiciatis quas, quod sit ex eaque magnam nobis dolorem debitis quaerat fugiat velit natus voluptas. Porro, vitae.</p>
+      </div>
+      <div class="col-6 col-m-12">
+        <div class="media">
+          <div class="media-left media-middle">
+            <img class="img-responsive" src="images/apis-tb.png" alt="Tower Builder">
+          </div>
+          <div class="media-body">
+            <h3>Tower Builder</h3>
+            <p class="triplet-text">TowerBuilder es un sistema que no requiere programación para generar sitios web con visualizaciones de datos de contrataciones, especialmente orientado a grandes obras públicas, inspirado por www.torredecontrol.org.</p>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left media-middle">
+            <img class="img-responsive" src="images/apis-tlc.png" alt="Todos los contratos">
+          </div>
+          <div class="media-body">
+            <h3>Todos los contratos</h3>
+            <p class="triplet-text">Sitio web para mostrar rankings basados en evaluaciones de contratos, buscar y consultar los contratos públicos, evaluar la transparencia de cada dependencia y ver cómo puede mejorar la contratación en México.</p>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-left media-middle">
+            <img class="img-responsive" src="images/apis-kibana.png" alt="Kibana">
+          </div>
+          <div class="media-body">
+            <h3>Kibana</h3>
+            <p class="triplet-text">Herramienta de análisis de datos que permite cruces, visualizaciones y gráficos de contrataciones públicas, relaciones entre personas y organizaciones. Analizar la captura del estado y la calidad de las contrataciones públicas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-m-12">
+      </div>
+    </div>
+  </div> 
+</section>
+{{!-- <section>
   <div class="contacto">
     <div class="contacto-text">
       <p>¿Quieres aprender a usar QQW para tus investigaciones?</p>
       <a href="/contact" class="button-link" type="button" name="button">Contáctanos</a>
     </div>
   </div>
-</section>
+</section> --}}
