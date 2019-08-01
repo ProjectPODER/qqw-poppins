@@ -11,6 +11,8 @@ var _ = require('lodash')
 var dotenv = require('dotenv')
 var dotenvExpand = require('dotenv-expand')
 var myEnv = dotenv.config()
+const util = require('util');
+
 dotenvExpand(myEnv)
 
 var indexRouter = require('./routes/index');
@@ -49,7 +51,7 @@ app.engine('.hbs', hbs({
         return 'Importe desconocido';
       },
       j: function(obj) {
-        return JSON.stringify(obj);
+        return util.inspect(obj,{ depth: 5, maxArrayLength: 1000 }).replace(RegExp("&#x27;","g"),"\"");
       },
       get_year: function(date) {
         //TODO
@@ -141,9 +143,13 @@ app.engine('.hbs', hbs({
       get_party_type: function(records,party_id) {
         let party;
         if (records) {
-          party = _.find(records[0].compiledRelease.parties,party_id);
+          party = _.find(records[0].compiledRelease.parties,{id: party_id});
           if (!party) {
-            party = _.find(records[0].compiledRelease.parties,(party_id,i,parties) => { if (parties[i].memberOf) { return parties[i].memberOf.id == party_id } })
+            //TODO: I think this never happens
+            party = _.find(records[0].compiledRelease.parties,(party,i,parties) => {
+              if (party.memberOf) { return party.memberOf.id == party_id }
+              // console.log("get_party_type memberOf",party);
+            })
           }
           if (party && party.details) {
             return party.details.type;

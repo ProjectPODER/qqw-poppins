@@ -132,11 +132,11 @@
                         con
                         <span class="js-contract-count">
                           <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
-                          {{contract_count}} contrato(s)
+                          {{format_number contract_count.supplier}} contrato(s)
                         </span>
                         por
                         <span class="js-contract-amount">
-                          {{contract_amount}} pesos mexicanos.
+                          {{format_amount contract_amount.supplier}} pesos mexicanos.
                         </span>
                         {{/if}}
                       </p>

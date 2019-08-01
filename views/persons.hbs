@@ -33,7 +33,7 @@
               <a class="search-label"><p>Más de 200</p></a>
               <input type="text" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value }}">
               <input type="text" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value }}">
-            </fieldset>        
+            </fieldset>
           <input type="hidden" name="size" value="{{ filters.size.value }}">
           <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
           <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
@@ -100,7 +100,7 @@
               <div role="row" class="search-card odd">
                 <div class=" js-title no-title search-result-title col-m-8 col-8">
                   <div class="cardItemTitle">Nombre</div>
-                  <a href="/persons/{{simple}}">
+                  <a href="/persons/{{id}}">
                     <div class="cardItemData">{{name}}</div>
                   </a>
                 </div>
@@ -114,10 +114,10 @@
                   <div class="cardItemData"></div> --}}
                   <p style="font-size: 1rem;">Proveedor
                     {{#if contract_count}}
-                      <span class="js-contract-count">{{contract_count}} contrato(s)</span>
+                      <span class="js-contract-count">{{format_number contract_count.supplier}} contrato(s)</span>
                     {{/if}}
                     {{#if contract_amount}}
-                      <span class="js-contract-amount">{{contract_amount}} pesos</span>
+                      <span class="js-contract-amount">{{format_amount contract_amount.supplier}} pesos</span>
                     {{/if}}
                   </p>
                 </div>
