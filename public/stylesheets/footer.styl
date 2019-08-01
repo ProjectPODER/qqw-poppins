@@ -1,6 +1,6 @@
 footer
   background-color #21018b
-  padding 3rem 0 3rem 5rem
+  padding 1rem
   clear both
   // flex-shrink 0
   // position absolute
@@ -12,7 +12,7 @@ footer
     color #fff
     line-height 1.5rem
     &:first-child
-      margin-top 2rem
+      margin-top 1rem
   a
     color #fff
     -webkit-transition all .35s
@@ -28,10 +28,16 @@ footer
     .logofooter-ml
       width 80px
       margin-left 1.5rem
-      margin-bottom 2rem
+      // margin-bottom 2rem
     .logofooter-pl
       width 120px
-      margin-bottom 2rem
+      // margin-bottom 2rem
+  .text-link
+    margin-top 3rem !important
+  .left
+    float left
+  .right
+    float right
 
 .owl-carousel
   margin-left -30px
@@ -74,3 +80,11 @@ footer
 .logo-ml
     background-image url('../images/mexicoleaks.png')
     height 35px
+    
+@media only screen and (max-width: 767px)
+  footer
+    .left
+    .right
+      float none
+    .text-link
+      margin-top 2rem !important

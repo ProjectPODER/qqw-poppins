@@ -36,6 +36,10 @@ textarea
 a
   color #337ab7
   text-decoration none
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  // font-weight bold
   &:focus
     outline thin dotted
     outline 5px auto -webkit-focus-ring-color
@@ -273,6 +277,12 @@ table
     .table
         background-color #fff
 
+.flex-center
+  display flex !important
+  justify-content center
+  align-items center
+  flex-flow row wrap
+
 #main
   height 100%
 
@@ -332,14 +342,29 @@ a
 .text-center
   text-align center
 
+.text-right
+  text-align right
+  
 .bg-gray 
   background-color #f7f7f7
+  
+.bg-darkblue
+  background-color #110046
+
+.text-darkgray
+  color #5c5c5c !important
 
 .text-white
   color #fff
 
 .text-darkblue
   color #2d1c9d
+  
+.pr-5
+  padding-right 5rem
+  
+.pl-5
+  padding-left 5rem
   
 .filter-bar
     input[type="text"]
@@ -449,9 +474,15 @@ section
   &.proyectos
     background-color #110046
   &.investigaciones
-    background-color #f7f7f7
+    // background-color #f7f7f7
     border-top 2px dotted #3a32f9
     border-bottom 2px dotted #3a32f9
+    .center-button
+      position absolute
+      margin 0.8rem auto
+      bottom 0
+      left: 0;
+      right: 0;
   &.tabs
     margin-top 2rem
     min-height 100vh
@@ -508,10 +539,8 @@ section
 
 .contacto-text
   text-align center
-  margin-bottom 1.5em
   p
     display inline-block
-    color #3a32f9
     font-family monospace
     font-size 2rem
   button
@@ -519,7 +548,6 @@ section
     vertical-align super
     margin-top 1.5rem
     margin-left 2rem
-    background-color #21018b
 
 .investigaciones.row
   height 400px
@@ -556,11 +584,6 @@ section
 .card-pad
   overflow hidden
   padding 1rem
-
-  .button-link
-    position: absolute
-    bottom 1em
-    right 1em
 
 .card-pad-ext
   height 100%
@@ -1465,39 +1488,28 @@ textarea.form-control
 
 .error-template
 .about-template
-.apis-template
 .privacy-template
-.contact-template
   padding-top 5rem
   h1
-    color: #150b58;
+    color #150b58
     font-size 2.5rem
     font-weight bold
     margin-bottom 2rem
     img
       width 50px
   h2
-    color #2b00f7
+    color #150b58
     font-family monospace
     font-size 2.5rem
     text-transform uppercase
     margin-top 3rem
+    margin-bottom 1.5rem
   h3
     color #150b58
     font-weight bold
     margin-top 2.5rem
   h4
     margin-top 1.5rem
-
-  a
-    color #21018b
-    text-decoration none
-    -webkit-transition all .35s
-    -moz-transition all .35s
-    transition all .35s
-    font-weight bold
-    &:hover
-      color #2b00f7
 
 .privacy-template
   h3
@@ -1509,7 +1521,9 @@ textarea.form-control
     margin-top 15px
     &:first-child
         margin-top 0
-
+    .media-object
+      width 150px
+            
 .media,
 .media-body
     overflow hidden
@@ -1549,12 +1563,7 @@ textarea.form-control
 
 .media-list
     padding-left 0
-    list-style none
-
-.media
-  margin-bottom 2rem
-  .media-object
-    width 150px
+    list-style none  
 
 #contract_problemas_destacados
   margin-top 2em
@@ -1731,14 +1740,6 @@ textarea.form-control
   margin-left 25%
 
 .apis-template
-  h2
-    color: #150b58;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top 3rem
-    margin-bottom: 2rem;
-    font-family inherit
-    text-transform none
   .card
     margin-bottom 2rem
     padding-bottom: 2.5rem;
@@ -1770,7 +1771,7 @@ textarea.form-control
     p
       padding-bottom 0
   .subtitle-apis
-    margin-top -20px
+    // margin-top -20px
     margin-bottom 40px
   .apis-bg
     background-image url('../images/apis-bg.png')
@@ -1877,15 +1878,31 @@ div
   &.proyecto
     background-color #fff
     padding 1rem
-    width 100%
+    margin 1rem 1rem 1rem 0
     margin-bottom 2rem
+    border 1px solid #2b00f7
     position relative
+    -ms-flex 1 1 auto
+    flex 1 1 auto
+    .center-button
+      // width 100%
+      position absolute
+      margin 0.8rem auto
+      bottom 0
+      left: 0;
+      right: 0;
+  .proyecto-info-img
+    display -ms-flexbox
+    display flex
+    -ms-flex 1 0 0%
+    flex 1 0 0%
+    -ms-flex-direction column
+    flex-direction column
     img
-      width 90%
+      width 100%
     p
-      margin-right 1rem
       margin-bottom 3rem
-      padding 1rem 1.5rem 0 0
+      padding-top 1rem
       font-size 1.1rem
   &.investigaciones-card
     width 100%
@@ -1930,6 +1947,51 @@ div
     margin auto
     width 85%
 
+.about-template
+  div
+    &.proyecto
+      background-color #f7f7f7
+      padding 1rem
+      width 100%
+      margin-bottom 2rem
+      position relative
+      img
+        width 90%
+      p
+        margin-right 1rem
+        margin-bottom 3rem
+        padding 1rem 1.5rem 0 0
+        font-size 1.1rem
+
+.about-sidebar
+  position fixed
+  left 9%
+  
+  right auto
+  margin-top 20px
+  background-color #f7f7f7
+  ul
+    padding 1rem 2rem
+    margin 0
+    a 
+      text-decoration none !important
+      font-weight bold
+      li
+        list-style none
+        padding 0.5rem 1rem
+        -webkit-transition all .25s
+        -moz-transition all .25s
+        transition all .25s
+        &:hover
+        &:focus
+        &.active
+          background-color #2b00f7
+          color #ffffff
+
+.partners
+  .media
+    margin-bottom 3rem
+      
 .card-h3
   margin-top -10px
 
@@ -2157,11 +2219,12 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
   .proyecto
     button
     a
-      width 100%
+      width 85%
       bottom 0
       right 0
       display block
       text-align center
+      margin auto
 
 @media only screen and (max-width: 1042px)
   input[type=text].landing-search-inputtext
@@ -2528,3 +2591,12 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
     .dropdown
       text-align center
       margin-bottom 10px
+
+@media only screen and (max-width: 1300px)
+  div
+    .m-noflex
+      display block
+    .proyecto
+      img
+        width 100%
+        margin auto

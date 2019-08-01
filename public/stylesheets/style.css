@@ -34,6 +34,9 @@ textarea {
 a {
   color: #337ab7;
   text-decoration: none;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
 }
 a:focus {
   outline: thin dotted;
@@ -268,6 +271,12 @@ table {
 .table .table {
   background-color: #fff;
 }
+.flex-center {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
 #main {
   height: 100%;
 }
@@ -335,14 +344,29 @@ a:focus {
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 .bg-gray {
   background-color: #f7f7f7;
+}
+.bg-darkblue {
+  background-color: #110046;
+}
+.text-darkgray {
+  color: #5c5c5c !important;
 }
 .text-white {
   color: #fff;
 }
 .text-darkblue {
   color: #2d1c9d;
+}
+.pr-5 {
+  padding-right: 5rem;
+}
+.pl-5 {
+  padding-left: 5rem;
 }
 .filter-bar input[type="text"] {
   padding: 10px 5px;
@@ -453,9 +477,15 @@ section.proyectos {
   background-color: #110046;
 }
 section.investigaciones {
-  background-color: #f7f7f7;
   border-top: 2px dotted #3a32f9;
   border-bottom: 2px dotted #3a32f9;
+}
+section.investigaciones .center-button {
+  position: absolute;
+  margin: 0.8rem auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 section.tabs {
   margin-top: 2rem;
@@ -508,11 +538,9 @@ section.tabs h1 {
 }
 .contacto-text {
   text-align: center;
-  margin-bottom: 1.5em;
 }
 .contacto-text p {
   display: inline-block;
-  color: #3a32f9;
   font-family: monospace;
   font-size: 2rem;
 }
@@ -521,7 +549,6 @@ section.tabs h1 {
   vertical-align: super;
   margin-top: 1.5rem;
   margin-left: 2rem;
-  background-color: #21018b;
 }
 .investigaciones.row {
   height: 400px;
@@ -557,11 +584,6 @@ section.tabs h1 {
 .card-pad {
   overflow: hidden;
   padding: 1rem;
-}
-.card-pad .button-link {
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
 }
 .card-pad-ext {
   height: 100%;
@@ -1488,16 +1510,12 @@ textarea.form-control {
 }
 .error-template,
 .about-template,
-.apis-template,
-.privacy-template,
-.contact-template {
+.privacy-template {
   padding-top: 5rem;
 }
 .error-template h1,
 .about-template h1,
-.apis-template h1,
-.privacy-template h1,
-.contact-template h1 {
+.privacy-template h1 {
   color: #150b58;
   font-size: 2.5rem;
   font-weight: bold;
@@ -1505,56 +1523,30 @@ textarea.form-control {
 }
 .error-template h1 img,
 .about-template h1 img,
-.apis-template h1 img,
-.privacy-template h1 img,
-.contact-template h1 img {
+.privacy-template h1 img {
   width: 50px;
 }
 .error-template h2,
 .about-template h2,
-.apis-template h2,
-.privacy-template h2,
-.contact-template h2 {
-  color: #2b00f7;
+.privacy-template h2 {
+  color: #150b58;
   font-family: monospace;
   font-size: 2.5rem;
   text-transform: uppercase;
   margin-top: 3rem;
+  margin-bottom: 1.5rem;
 }
 .error-template h3,
 .about-template h3,
-.apis-template h3,
-.privacy-template h3,
-.contact-template h3 {
+.privacy-template h3 {
   color: #150b58;
   font-weight: bold;
   margin-top: 2.5rem;
 }
 .error-template h4,
 .about-template h4,
-.apis-template h4,
-.privacy-template h4,
-.contact-template h4 {
+.privacy-template h4 {
   margin-top: 1.5rem;
-}
-.error-template a,
-.about-template a,
-.apis-template a,
-.privacy-template a,
-.contact-template a {
-  color: #21018b;
-  text-decoration: none;
-  -webkit-transition: all 0.35s;
-  -moz-transition: all 0.35s;
-  transition: all 0.35s;
-  font-weight: bold;
-}
-.error-template a:hover,
-.about-template a:hover,
-.apis-template a:hover,
-.privacy-template a:hover,
-.contact-template a:hover {
-  color: #2b00f7;
 }
 .privacy-template h3 {
   font-weight: bold;
@@ -1566,6 +1558,9 @@ textarea.form-control {
 }
 .media:first-child {
   margin-top: 0;
+}
+.media .media-object {
+  width: 150px;
 }
 .media,
 .media-body {
@@ -1608,12 +1603,6 @@ textarea.form-control {
 .media-list {
   padding-left: 0;
   list-style: none;
-}
-.media {
-  margin-bottom: 2rem;
-}
-.media .media-object {
-  width: 150px;
 }
 #contract_problemas_destacados {
   margin-top: 2em;
@@ -1804,15 +1793,6 @@ textarea.form-control {
 .personas-content {
   margin-left: 25%;
 }
-.apis-template h2 {
-  color: #150b58;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  font-family: inherit;
-  text-transform: none;
-}
 .apis-template .card {
   margin-bottom: 2rem;
   padding-bottom: 2.5rem;
@@ -1854,7 +1834,6 @@ textarea.form-control {
   padding-bottom: 0;
 }
 .apis-template .subtitle-apis {
-  margin-top: -20px;
   margin-bottom: 40px;
 }
 .apis-template .apis-bg {
@@ -1980,17 +1959,34 @@ div.card-pad h3 {
 div.proyecto {
   background-color: #fff;
   padding: 1rem;
-  width: 100%;
+  margin: 1rem 1rem 1rem 0;
   margin-bottom: 2rem;
+  border: 1px solid #2b00f7;
   position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
-div.proyecto img {
-  width: 90%;
+div.proyecto .center-button {
+  position: absolute;
+  margin: 0.8rem auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-div.proyecto p {
-  margin-right: 1rem;
+div .proyecto-info-img {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 1 0 0%;
+  flex: 1 0 0%;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+div .proyecto-info-img img {
+  width: 100%;
+}
+div .proyecto-info-img p {
   margin-bottom: 3rem;
-  padding: 1rem 1.5rem 0 0;
+  padding-top: 1rem;
   font-size: 1.1rem;
 }
 div.investigaciones-card {
@@ -2039,6 +2035,53 @@ div.content {
   display: block;
   margin: auto;
   width: 85%;
+}
+.about-template div.proyecto {
+  background-color: #f7f7f7;
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.about-template div.proyecto img {
+  width: 90%;
+}
+.about-template div.proyecto p {
+  margin-right: 1rem;
+  margin-bottom: 3rem;
+  padding: 1rem 1.5rem 0 0;
+  font-size: 1.1rem;
+}
+.about-sidebar {
+  position: fixed;
+  left: 9%;
+  right: auto;
+  margin-top: 20px;
+  background-color: #f7f7f7;
+}
+.about-sidebar ul {
+  padding: 1rem 2rem;
+  margin: 0;
+}
+.about-sidebar ul a {
+  text-decoration: none !important;
+  font-weight: bold;
+}
+.about-sidebar ul a li {
+  list-style: none;
+  padding: 0.5rem 1rem;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.about-sidebar ul a li:hover,
+.about-sidebar ul a li:focus,
+.about-sidebar ul a li.active {
+  background-color: #2b00f7;
+  color: #fff;
+}
+.partners .media {
+  margin-bottom: 3rem;
 }
 .card-h3 {
   margin-top: -10px;
@@ -2301,11 +2344,12 @@ div.dataTables_paginate li.last a:after {
   }
   .proyecto button,
   .proyecto a {
-    width: 100%;
+    width: 85%;
     bottom: 0;
     right: 0;
     display: block;
     text-align: center;
+    margin: auto;
   }
 }
 @media only screen and (max-width: 1042px) {
@@ -2706,6 +2750,15 @@ div.dataTables_paginate li.last a:after {
   .tools-section .dropdown {
     text-align: center;
     margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  div .m-noflex {
+    display: block;
+  }
+  div .proyecto img {
+    width: 100%;
+    margin: auto;
   }
 }
 .home article margin-top 10% input[type="email"] {
@@ -3129,7 +3182,7 @@ header .navbar .autosuggest i,
 }
 footer {
   background-color: #21018b;
-  padding: 3rem 0 3rem 5rem;
+  padding: 1rem;
   clear: both;
 }
 footer p {
@@ -3137,7 +3190,7 @@ footer p {
   line-height: 1.5rem;
 }
 footer p:first-child {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 footer a {
   color: #fff;
@@ -3156,11 +3209,18 @@ footer a img {
 footer a .logofooter-ml {
   width: 80px;
   margin-left: 1.5rem;
-  margin-bottom: 2rem;
 }
 footer a .logofooter-pl {
   width: 120px;
-  margin-bottom: 2rem;
+}
+footer .text-link {
+  margin-top: 3rem !important;
+}
+footer .left {
+  float: left;
+}
+footer .right {
+  float: right;
 }
 .owl-carousel {
   margin-left: -30px;
@@ -3210,6 +3270,15 @@ footer a .logofooter-pl {
 .logo-ml {
   background-image: url("../images/mexicoleaks.png");
   height: 35px;
+}
+@media only screen and (max-width: 767px) {
+  footer .left,
+  footer .right {
+    float: none;
+  }
+  footer .text-link {
+    margin-top: 2rem !important;
+  }
 }
 .menu-bar {
   background: #110046;

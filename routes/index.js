@@ -47,7 +47,7 @@ router.get('/', catchError(async function(req, res, next) {
 }));
 
 /* GET contratcs index. */
-router.get('/contracts', catchError(async function(req, res, next) {
+router.get('/contratos', catchError(async function(req, res, next) {
   let filters = lib.getFilters("contracts",req.query);
 
   let current_page = req.query.page || 0;
@@ -83,7 +83,7 @@ async function entityPage(entity,req,res,next) {
 }
 
 /* GET persons index */
-router.get('/persons',catchError(async function(req, res, next) {
+router.get('/personas',catchError(async function(req, res, next) {
   entityPage("persons",req,res,next);
 }));
 
@@ -122,7 +122,7 @@ router.get('/empresas', catchError(async function(req, res, next) {
 }));
 
 /* GET contract view */
-router.get('/contracts/:id', catchError(async function(req, res, next) {
+router.get('/contratos/:id', catchError(async function(req, res, next) {
   let filters = {
     "records.compiledRelease.ocid": req.params.id, //lo que viene de req de la url
     sort: ""
@@ -135,11 +135,11 @@ router.get('/contracts/:id', catchError(async function(req, res, next) {
     err.status = 404;
     throw(err);
   }
-  res.render('contract', {result: result.data[0]});
+  res.render('contratos', {result: result.data[0]});
 }));
 
 /* GET person view. */
-router.get('/persons/:id', catchError(async function(req, res, next) {
+router.get('/personas/:id', catchError(async function(req, res, next) {
   let filters = {
     id: req.params.id //lo que viene de req de la url
   };
@@ -189,23 +189,43 @@ router.get('/empresas/:id', catchError(async function(req, res, next) {
 }));
 
 /* GET about */
-router.get('/about', catchError(async function(req, res, next) {
-  res.render('about');
+router.get('/sobre-qqw', catchError(async function(req, res, next) {
+  res.render('about', { about: true });
+}));
+
+/* GET about/sources */
+router.get('/entidades-y-fuentes', catchError(async function(req, res, next) {
+  res.render('sources' , { sources: true });
 }));
 
 /* GET apis */
-router.get('/apis', catchError(async function(req, res, next) {
-  res.render('apis');
+router.get('/herramientas', catchError(async function(req, res, next) {
+  res.render('apis' , { apis: true });
+}));
+
+/* GET about/investigations */
+router.get('/investigaciones', catchError(async function(req, res, next) {
+  res.render('investigations' , { investigations: true });
+}));
+
+/* GET about/manual */
+router.get('/manual', catchError(async function(req, res, next) {
+  res.render('manual' , { manual: true });
+}));
+
+/* GET about/partners */
+router.get('/aliados', catchError(async function(req, res, next) {
+  res.render('partners' , { partners: true });
 }));
 
 /* GET privacy */
-router.get('/privacy', catchError(async function(req, res, next) {
+router.get('/privacidad', catchError(async function(req, res, next) {
   res.render('privacy');
 }));
 
 /* GET contact */
-router.get('/contact', catchError(async function(req, res, next) {
-  res.render('contact');
+router.get('/contacto', catchError(async function(req, res, next) {
+  res.render('contact' , { contact: true });
 }));
 
 router.post('/send', function (req, res) {

@@ -31,13 +31,14 @@ app.engine('.hbs', hbs({
     helpers: {
       api_domain: function() { return process.env.API_DOMAIN; },
       autocomplete_url: function() { return process.env.AUTOCOMPLETE_URL; },
-      moment: function(date) {
-        if (date) {
-          moment_helper = require('helper-moment');
-          return moment_helper(date);
-        }
-        return "Fecha desconocida";
-      },
+      // moment: function(date) {
+      //   if (date) {
+      //     moment_helper = require('helper-moment');
+      //     return moment_helper(date);
+      //   }
+      //   return "Fecha desconocida";
+      // },
+      moment: require('helper-moment'),
       format_amount: function(value) {
         if (value) {
           return "$"+value.toLocaleString('es-MX',
