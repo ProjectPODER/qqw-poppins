@@ -1042,7 +1042,7 @@ button.reset-filters {
   margin-top: 2.5rem !important;
 }
 .viewWrapper {
-  margin-top: 4rem;
+  padding-top: 4rem;
 }
 .viewWrapper .js-data,
 .viewWrapper .js-data-lf {
@@ -1255,21 +1255,6 @@ hr {
 .right-menu-contracts li a {
   color: #9b9b9b;
   text-decoration: none;
-}
-.right-menu-contracts li a::before {
-  content: '';
-  display: inline-block;
-  height: 30px;
-  width: 30px;
-  background-size: 20px;
-  background-image: url("../images/icons/hexagono-gray.png");
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  background-position: center center;
-  vertical-align: middle;
-}
-.right-menu-contracts li a:hover:before {
-  background-image: url("../images/icons/hexagono-blue.png");
 }
 .rubro-list::before {
   content: '';
@@ -2761,6 +2746,9 @@ div.dataTables_paginate li.last a:after {
     margin: auto;
   }
 }
+#profile-menu .button-link {
+  margin: 0 0.25rem 0.5rem !important;
+}
 .home article margin-top 10% input[type="email"] {
   padding: 10px;
   margin-right: 5px;
@@ -3414,7 +3402,7 @@ footer .right {
 .overlay ul li a:hover:after,
 .overlay ul li a:focus:after,
 .overlay ul li a:active:after {
-  width: 100%;
+  width: 40%;
 }
 img.logo-horizontal {
   width: 10rem;

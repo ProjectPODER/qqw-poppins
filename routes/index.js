@@ -89,7 +89,7 @@ router.get('/personas',catchError(async function(req, res, next) {
 
 
 /* GET institutions index */
-router.get('/instituciones', catchError(async function(req, res, next) {
+router.get('/instituciones-publicas', catchError(async function(req, res, next) {
   let filters = lib.getFilters("institutions",req.query);
 
   //Don't bring UCs, only institutions without parent_id
@@ -156,7 +156,7 @@ router.get('/personas/:id', catchError(async function(req, res, next) {
 }));
 
 /* GET organization view. */
-router.get('/instituciones/:id', catchError(async function(req, res, next) {
+router.get('/instituciones-publicas/:id', catchError(async function(req, res, next) {
   const filters = {
     id: req.params.id
   };
@@ -226,6 +226,11 @@ router.get('/privacidad', catchError(async function(req, res, next) {
 /* GET contact */
 router.get('/contacto', catchError(async function(req, res, next) {
   res.render('contact' , { contact: true });
+}));
+
+/* GET  */
+router.get('/perfil', catchError(async function(req, res, next) {
+  res.render('perfil');
 }));
 
 router.post('/send', function (req, res) {

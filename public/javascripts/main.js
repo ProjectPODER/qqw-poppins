@@ -101,7 +101,7 @@ $(".twitter-typeahead").css("width","100%");
 $('[data-toggle="tooltip"]').tooltip({placement: 'right'});
 
 // Right menu Contract page
-$('.right-menu-contracts').affix({offset: {top: 280, bottom:950} });
+// $('.right-menu-contracts').affix({offset: {top: 280, bottom:950} });
 
 $('a.page-scroll').bind('click', function(event) {
     var $anchor = $(this);

@@ -1,0 +1,38 @@
+<div class="contact-template">
+  <div class="col-m-12 col-12 mb-1">
+    <h1>Contacto</h1>
+    <form id="contactForm" novalidate="novalidate">
+      <fieldset>
+        <div class="form-group" data-required="true">
+          <label for="contact_name" class="control-label">Nombre</label>
+          <input type="text" name="contact_name" id="name" maxlength="50" class="form-control">
+          <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+          <label for="subject" class="control-label">Asunto</label>
+          <input type="text" name="subject" id="subject" class="form-control">
+          <span class="help-block"></span>
+        </div>
+        <div class="form-group" data-required="true">
+          <label for="email" class="control-label">Correo electrónico</label>
+          <input id="contactEmail" type="email" name="contact-email" class="form-control">
+          <span class="help-block"></span>
+        </div>
+        <div class="form-group" data-required="true">
+          <label for="text" class="control-label">Mensaje</label>
+          <textarea name="message" rows="10" id="message" maxlength="1000" class="form-control"></textarea>
+          <span class="help-block"></span>
+        </div>
+        <div>
+            <button id="send_email" type="submit" class="btn contact-submit">Enviar</button>
+            <input id="send_email" type="hidden" name="contact_form" value="true">
+            <button type="reset" class="btn btn-default">Resetear</button>
+        </div>
+      </fieldset>
+    </form>
+    <div id="thanks-column" style="display: none;">
+      <h3>Mensaje enviado</h3>
+      <p>Muchas gracias, su mensaje nos llegará y responderemos si lo creemos pertinente.</p>
+    </div>
+  </div>
+</div>
