@@ -1135,7 +1135,7 @@ button.reset-filters {
   color: #2900f5;
   font-size: 2rem;
   font-weight: bold;
-  margin-top: 1.5rem;
+  margin: 10px 0 5px;
 }
 a.see-contract {
   padding: 0.5rem 1rem;
@@ -2747,7 +2747,7 @@ div.dataTables_paginate li.last a:after {
   }
 }
 #profile-menu .button-link {
-  margin: 0 0.25rem 0.5rem !important;
+  margin: 0 0.3rem 0.5rem 0 !important;
 }
 .home article margin-top 10% input[type="email"] {
   padding: 10px;

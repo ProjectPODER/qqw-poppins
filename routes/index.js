@@ -135,7 +135,7 @@ router.get('/contratos/:id', catchError(async function(req, res, next) {
     err.status = 404;
     throw(err);
   }
-  res.render('contratos', {result: result.data[0]});
+  res.render('contract', {result: result.data[0]});
 }));
 
 /* GET person view. */

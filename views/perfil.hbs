@@ -10,12 +10,6 @@
               Nombre
               <h4 class="contract-type">Contrato</h4>
             </h3>
-            {{!-- <div class="col-m-6 col-6 right-align">
-              <p class="amount-data">
-                {{format_amount result.amount}}
-              </p>
-              {{format_currency result.currency}}
-            </div> --}}
           </div>
         {{!-- {{/if}} --}}
       </div>
@@ -48,317 +42,124 @@
         </button>
       </div>
     </div>
-    <div class="contract_detail clearfix">
 
-      <div class="col-m-9  col-9flex mt-2" id="datosgenerales">
-        <div class="col-m-12">
-          <h4 class="description-data-subtitle">DATOS GENERALES</h4>
+    <div id="informaciongeneral">
+      <div class="col-12 col-m-12 mt-60 mb-5">
+        <div class="col-6 col-m-6">
+          <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
         </div>
-        {{#if result.start_date }}
+        <div class="col-m-6 col-6 right-align">
+          <h4 class="amount-data">
+            {{!-- {{format_amount result.amount}} --}}
+            $234,234
+          </h4>
+          {{!-- {{format_currency result.currency}} --}}
+          pesos mexicanos
+        </div>
+      </div>
+      <div class="col-12 col-m-12">
+        {{!-- {{#if result.start_date }} --}}
         <div class="col-m-4 col-4">
             <p class="js-title-data">Fecha de inicio</p>
-            <p class="js-data">{{moment result.start_date date lang="es" format="LL"}}</p>
-        </div>
-        {{/if}}
-        {{#if result.end_date }}
-        <div class="col-m-8 col-8">
-            <p class="js-title-data">Fecha de fin</p>
-            <p class="js-data">{{moment result.end_date date lang="es" format="LL"}}</p>
-        </div>
-        {{/if}}
-        {{#if result.dependency }}
-        <div class="col-m-12 col-12 link-lf-contracts">
-            <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
-            <a href="/orgs/{{result.dependency}} {{!-- {{simpleName (getField object=parties field="parent")}} --}}"><p class="js-data">{{result.dependency}} {{!-- {{getField object=parties field="parent"}} --}}</p></a>
-        </div>
-        {{/if}}
-        {{#if buyer.name }}
-        <div class="col-m-7 col-7">
-            <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{buyer.name}}</p>
-        </div>
-        {{/if}}
-        {{#if buyer.id }}
-        <div class="col-m-5 col-5">
-            <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{buyer.id}}</p>
-        </div>
-        {{/if}}
-        {{#if contactPoint }}
-        <div class="col-m-12 col-12 link-lf-contracts">
-            <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{getField object=parties field="contactPoint"}} --}}</p>
-        </div>
-        {{/if}}
-        {{#if result.suppliers_org }}
-        <div class="col-m-12 col-12 link-lf-contracts">
-            <p class="js-title-data">Proveedor</p>
-            <a href="/orgs/{{!-- {{awards.[0].suppliers.[0].id}} --}}"><p class="js-data">{{!-- {{awards.[0].suppliers.[0].name}} --}}{{result.suppliers_org}}</p></a>
-        </div>
-        {{/if}}
-        <hr>
-      </div>
-      
-
-
-      <div class="col-m-8 col-8">
-        <hr>
-      </div>
-
-      {{!--
-        //Comentado para ocultar puntaje
-
-      <div class="col-m-8 col-8 {{#if flags }}hidden{{else}}{{#if isPublic }}{{else}}hidden{{/if}}{{/if}}">
-        Cargando banderas...
-      </div>
-
-      <div class="{{#if flags and isPublic }}{{else}}hidden{{/if}}">
-        <div  class="col-m-12 col-6 mt-2 party_flags" id="calidad">
-          <h4 class="description-data-subtitle">CALIDAD DE CONTRATO</h4>
-          <p>Evaluado por QuienEsQuien.wiki y TodosLosContratos.mx</p>
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Competitividad
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.competitividad}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Temporalidad
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.temporalidad}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Transparencia
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.transparencia}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Trazabilidad
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.trazabilidad}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score party_flag_total_score">
-            <div class="party_flag_title">
-              Total
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.total_score}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <h4 class="description-data-subtitle" id="contract_problemas_destacados">PROBLEMAS DESTACADOS</h4>
-          <ul class="party_flags_recommendations_list">
-            {{# each rule in rules}}
-                <li class="party_flags_recommendations_item">{{{ rule.text }}}</li>
-            {{/each}}
-          </ul>
-
-        </div>
-      </div>
-
-      <div class="col-m-8 col-8">
-        <hr>
-      </div>
-      --}}
-
-
-      <div class="col-m-9 col-9 flex mt-2" id="planeacion">
-        <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">PLANEACIÓN</h4>
-        </div>
-        {{!-- {{#if planning.budget.budgetBreakdown.length}} --}}
-        Si ves esto avisanos a info@quiensquien.wiki porque falta mostrar algo de información aquí.
-        <div class="col-m-12 col-12">
-            <p class="js-data mt-2">PRESUPUESTO</p>
-        </div>
-        <div class="col-m-12 col-9">
-          <!-- <table class="table table-responsive">
-            <tr>
-              <th class="js-data">Rubro</th>
-              <th class="js-data">Dato</th>
-            </tr>
-            <tr>
-              <td class="rubro-list">RAMO</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">CLAVE DE CARTERA</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">CLAVE DEL PROGRAMA</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">CRÉDITO EXTERNO</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">ORGANISMO INTERNACIONAL FINANCIERO</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">APORTACIÓN GENERAL</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-          </table> -->
-          No hay datos
-        </div>
-        {{!-- {{else}}
-        {{/if}} --}}
-      </div>
-      <div class="col-m-8 col-8">
-        <hr>
-      </div>
-      <div class="col-m-9 col-9 flex mt-2" id="licitacion">
-        <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">CONVOCATORIA</h4>
-        </div>
-        {{#if result.procedimiento }}
-        <div class="col-m-12 col-12">
-            <p class="js-title-data">Tipo de procedimiento <a data-toggle="tooltip" data-placement="right" title="Refiere al tipo de procedimiento:
-            a) Licitación Pública.
-            - Procedimiento por regla general que debiera utilizarse para la adquisición de bienes y servicios.
-            b) Invitación a cuando menos tres proveedores o contratistas.
-            c) Adjudicación Directa.
-            - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{tender.procurementMethodMxCnet}} --}}LICITACIÓN PÚBLICA</p>
-        </div>
-        {{/if}}
-        {{#if result.contratacion }}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">Tipo de contratación <a data-toggle="tooltip" data-placement="right" title="Muestra el tipo de contratación:
-
-            a) Adquisiciones incluye: adquisiciones, arrendamientos y servicios.
-            b) Obra Pública incluye: obras públicas y los servicios relacionados con las mismas."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{tender.additionalProcurmentCategory}} --}}ADQUISICIONES</p>
-        </div>
-        {{/if}}
-        {{#if resultfecha }}
-        <div class="col-m-12 col-12">
-            <p class="js-title-data">Fecha de licitación</p>
-        </div>
-        {{/if}}
-        {{#if result.fecha }}
-        <div class="col-m-6 col-4">
-            <span class="js-title-data">Inicio: </span>
-            <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.startDate}} --}}10 DE OCTUBRE DE 2012</span>
-        </div>
-        {{/if}}
-        {{#if result.fecha }}
-        <div class="col-m-6 col-8">
-            <span class="js-title-data">Fin: </span>
-            <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.endDate}} --}}21 DE NOVIEMBRE DE 2012</span>
-        </div>
-        {{/if}}
-        {{#if result.estatus }}
-        <div class="col-m-6 col-4 mt-2">
-            <p class="js-title-data">Estatus de la licitación</p>
-            <p class="js-data">{{!-- {{tender.status}} --}}COMPLETE</p>
-        </div>
-        {{/if}}
-        {{#if result.caracter }}
-        <div class="col-m-6 col-8 mt-2">
-            <p class="js-title-data">Carácter <a data-toggle="tooltip" data-placement="right" title="Indica si el procedimiento es I) Nacional, II) Internacional o III) Internacional bajo TLC
-
-            - Nacional: sólo pueden participar personas de nacionalidad mexicana y los bienes a adquirir sean productos del país y cuenten, por lo menos, con un 50% de contenido nacional.
-            - Internacional abiertas: podrán participar licitantes mexicanos y extranjeros, cualquiera que sea el origen de los bienes a adquirir.
-            - Internacional bajo cobertura de tratados (TLC): sólo podrán participar licitantes mexicanos y extranjeros de países con los que nuestro país tenga celebrado un tratado de libre comercio con capítulo de compras gubernamentales.
-            Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público"><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{tender.procurementMethodCharacterMxCnet}} --}}INTERNACIONAL</p>
-        </div>
-        {{/if}}
-      </div>
-      <div class="col-m-8 col-8">
-        <hr>
-      </div>
-      <div class="col-m-9 col-9 flex mt-2" id="adjudicaciones">
-        <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
-        </div>
-        {{#if result.estatus }}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">Estatus de la adjudicación</p>
-            <p class="js-data">{{!-- {{getField object=awards field="status"}} --}}ACTIVE</p>
-        </div>
-        {{/if}}
-        {{#if result.monto }}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">Monto adjudicado</p>
-            <p class="js-data">
-              {{!-- {{#let value3=(getField object=awards field="value")}}
-              {{format_amount value3.amount}}
-              {{value3.currency}} --}}$23,738,400,000.00 MXN
-              {{!-- {{/let}} --}}</p>
-        </div>
-        {{/if}}
-        {{#if result.fechafallo }}
-        <div class="col-m-6 col-8">
-            <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{moment_LL (getField object=awards field="date")}} --}}27 DE NOVIEMBRE DE 2012</p>
-        </div>
-        {{/if}}
-      </div>
-      <div class="col-m-8 col-8">
-        <hr>
-      </div>
-      <div class="col-m-9 col-9 flex mt-2"  id="contratos">
-        <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">CONTRATOS</h4>
-        </div>
-        {{#if result.importe }}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">Importe</p>
-            <p class="js-data">{{!-- {{#let value2=(getField object=contracts field="value")}}{{format_amount value2.amount}} {{value2.currency}}{{/let}} --}}$23,738,400,000.00 MXN</p>
-        </div>
-        {{/if}}
-        {{#if result.estatus }}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">Estatus</p>
-            <p class="js-data">{{!-- {{getField object=contracts field="statusMxCnet"}} --}}</p>
-        </div>
-        {{/if}}
-        {{#if result.periodo }}
-        <div class="col-m-6 col-8">
-            <p class="js-title-data">Período</p>
-            <p class="js-data">{{!-- {{#let period=(getField object=contracts field="period")}}
-                {{moment_LL period.startDate}} - {{moment_LL period.endDate}}
-              {{/let}} --}}31 DE DICIEMBRE DE 2012 - 30 DE DICIEMBRE DE 2018</p>
-        </div>
-        {{/if}}
-      </div>
-      <div class="col-m-8 col-8">
-        <hr>
-      </div>
-      <div class="col-m-9 col-9 flex mt-2" id="implementacion">
-        <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">IMPLEMENTACIÓN</h4>
-        </div>
-        {{!-- {{#if implementation}}
-        Este es un maravilloso contrato con datos de implementación. Si ves este mensaje por favor avisanos a info@quienesquien.wiki.
-        {{else}} --}}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">No hay datos</p>
+            <p class="js-data">{{!-- {{moment result.start_date date lang="es" format="LL"}} --}}1 de julio, 2019</p>
         </div>
         {{!-- {{/if}} --}}
+        {{!-- {{#if result.end_date }} --}}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Fecha de fin</p>
+            <p class="js-data">{{!-- {{moment result.end_date date lang="es" format="LL"}} --}}1 de julio, 2019</p>
+        </div>
+        {{!-- {{/if}} --}}
+        {{!-- {{#if result.dependency }} --}}
+        <div class="col-m-4 col-4 link-lf-contracts">
+            <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
+            <a href="/orgs/{{!-- {{result.dependency}} --}} {{!-- {{simpleName (getField object=parties field="parent")}} --}}"><p class="js-data">{{!-- {{result.dependency}} --}} {{!-- {{getField object=parties field="parent"}} --}}Comisión Federal de Electricidad</p></a>
+        </div>
+        {{!-- {{/if}} --}}
+        {{!-- {{#if buyer.name }} --}}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><i class="fa fa-question"></i></a></p>
+            <p class="js-data">{{!-- {{buyer.name}} --}}Unidad</p>
+        </div>
+        {{!-- {{/if}} --}}
+        {{!-- {{#if buyer.id }} --}}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><i class="fa fa-question"></i></a></p>
+            <p class="js-data">{{!-- {{buyer.id}} --}}clave</p>
+        </div>
+        {{!-- {{/if}} --}}
+        {{!-- {{#if contactPoint }} --}}
+        <div class="col-m-4 col-4 link-lf-contracts">
+            <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><i class="fa fa-question"></i></a></p>
+            <p class="js-data">{{!-- {{getField object=parties field="contactPoint"}} --}}Responsable</p>
+        </div>
+        {{!-- {{/if}} --}}
+        {{!-- {{#if result.suppliers_org }} --}}
+        <div class="col-m-4 col-4 link-lf-contracts">
+            <p class="js-title-data">Proveedor</p>
+            <a href="/orgs/{{!-- {{awards.[0].suppliers.[0].id}} --}}"><p class="js-data">{{!-- {{awards.[0].suppliers.[0].name}} --}}{{!-- {{result.suppliers_org}} --}}CIC CORPORATIVO INDUSTRIAL COAHUILA, S.A. de C.V.</p></a>
+        </div>
       </div>
+      {{!-- {{/if}} --}}
+      <div class="col-12 col-m-12">
+        <hr>
+      </div>
+    </div>
 
+    <div id="graphs">
+      <div  class="col-m-12 col-6 mt-60">
+        <h4 class="description-data-subtitle">EVOLUCIÓN DE CONTRATOS</h4>
+        <div id="chart">
+          <svg></svg>
+        </div>
+      </div>
+      <div class="col-m-12 col-6 mt-60">
+        <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
+        <div id="piechart">
+          <svg></svg>
+        </div>
+      </div>
+      <div class="col-m-12 col-12 mt-60">
+        <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
+        <div id="graph-container">
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-m-12">
+        <hr>
+      </div>
+    <div>
+      {{#if result.public}}
+      <div class="col-m-12 col-12 mt-2">
+        <h4 class="description-data-subtitle">PROVEEDORES PRINCIPALES</h4>
+        {{#each result.supplierSummary }}
+        <p class="principal-suppliers">
+          <a href="/orgs/{{!-- {{simpleName supplier}} --}}"><img src="../images/icons/empresa-gray.svg" alt="organización" class="icon-lf icon-lf-organization">
+            {{supplierSummary}}
+          </a>
+        </p>
+        {{/each}}
+      </div>
+      {{else}}
+      <div class="col-m-12 col-12 mt-2">
+        <h4 class="description-data-subtitle">COMPRADORAS PRINCIPALES</h4>
+        {{#each dependencySummary }}
+        <p class="principal-suppliers"><a href="/orgs/{{!-- {{simpleName dependency}} --}}"><img src="../images/icons/dependencia-blue.svg" alt="organización" class="icon-lf icon-lf-organization">
+          {{dependency}}
+        </a></p>
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+    
 
-
-
-     
     </div>
   </div>
 </div>
 {{!-- {{/with}} --}}
 {{> send_info_form}}
+
+<script src="/javascripts/d3.v3.js"></script>
+<script src="/javascripts/d3plus.full.js"></script>
+<script src="/javascripts/nvd3.js"></script>
+<script src="/javascripts/graphics.js"></script>
