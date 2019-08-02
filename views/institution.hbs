@@ -16,12 +16,12 @@
             <div class="col-m-12">
               <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
             </div>
-            Cantidad de contratos: {{result.contract_count}}
-            Importe total de contratos: {{result.contract_amount}}
+            Cantidad de contratos como comprador: {{result.contract_count.buyer}}
+            Cantidad de contratos como proveedor: {{result.contract_count.supplier}}
+            Importe total de contratos como comprador: {{result.contract_amount.buyer}}
+            Importe total de contratos como proveedor: {{result.contract_amount.supplier}}
             Fuente: {{result.source}}
             Fecha de última actualización: {{result.date}}
-            Cantida de contratos comprados: {{contractsBought}}
-            Cantida de contratos vendidos: {{contractsSupplied.length }}
             {{#if result.company.sector }}
             <div class="col-m-6">
                 <p class="js-title-data">Sector</p>
@@ -143,10 +143,10 @@
             <h4 class="description-data-subtitle">memberships</h4>
             <ul class="meberships_list">
               {{# each result.memberships.parent}}
-              <li class="party_flags_recommendations_item">Es una {{this.role}} de {{j filter_array ../result.memberships.parent_expanded id this.id}} </li>
+              <li class="party_flags_recommendations_item">Es una {{this.role}} de  <a href="/{{this.type}}/{{this.id}}">{{this.id}}</a> </li>
               {{/each}}
               {{# each result.memberships.child}}
-              <li class="party_flags_recommendations_item">Tiene un {{this.role}} llamado {{j filter_array ../result.memberships.child_expanded id this.organization_id}} </li>
+              <li class="party_flags_recommendations_item">Tiene un {{this.role}} llamado <a href="/{{this.organization_type}}/{{this.organization_id}}">{{this.organization_id}}</a> </li>
               {{/each}}
             </ul>
           </div>
@@ -300,7 +300,82 @@
 {{!-- {{/with}} --}}
 {{> send_info_form}}
 
-<script src="/javascripts/d3.v3.js"></script>
+<script type="text/javascript">
+  const summaries = {{{j result.summaries }}};
+</script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<script type="text/javascript">
+//Get SVG
+//Put Data
+var margin = {top: 40, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".0%");
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(formatPercent);
+
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.tsv("data.tsv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Frequency");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); })
+      // .on('mouseover', tip.show)
+      // .on('mouseout', tip.hide)
+
+});
+
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
+
+</script>
+
+<!-- <script src="/javascripts/d3.v3.js"></script>
 <script src="/javascripts/d3plus.full.js"></script>
 <script src="/javascripts/nvd3.js"></script>
-<script src="/javascripts/graphics.js"></script>
+<script src="/javascripts/graphics.js"></script> -->

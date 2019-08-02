@@ -20,19 +20,19 @@ router.get('/', catchError(async function(req, res, next) {
 
     stats = {
       persons: {
-        count: persons.pages,
+        count: persons.count,
         lastModified: persons.data[0] ? persons.data[0].date : "API ERROR"
       },
       institutions: {
-        count: institutions.pages,
+        count: institutions.count,
         lastModified: institutions.data[0] ?  institutions.data[0].date : "API ERROR"
       },
       companies: {
-        count: companies.pages,
+        count: companies.count,
         lastModified: companies.data[0] ?  companies.data[0].date : "API ERROR"
       },
       contracts: {
-        count: contracts.pages,
+        count: contracts.count,
         lastModified: contracts.data[0] ? contracts.data[0].publishedDate : "Error de API"
       }
     }
@@ -124,7 +124,7 @@ router.get('/empresas', catchError(async function(req, res, next) {
 /* GET contract view */
 router.get('/contratos/:id', catchError(async function(req, res, next) {
   let filters = {
-    "records.compiledRelease.ocid": req.params.id, //lo que viene de req de la url
+    "records.0.ocid": req.params.id, //lo que viene de req de la url
     sort: ""
   };
   result = await lib.getAPI(req,"contracts",filters);
@@ -141,7 +141,9 @@ router.get('/contratos/:id', catchError(async function(req, res, next) {
 /* GET person view. */
 router.get('/personas/:id', catchError(async function(req, res, next) {
   let filters = {
-    id: req.params.id //lo que viene de req de la url
+    id: req.params.id, //lo que viene de req de la url
+    limit: 1,
+    sort: null
   };
   var id = req.params.id;
   result = await lib.getAPI(req,"persons",filters);
