@@ -151,6 +151,41 @@
       </div>
       {{/if}}
     </div>
+
+    <div>
+      {{# if result.contracts.buyer.length }}
+      <div class="col-m-12 col-12 mt-2">
+        <h4 class="description-data-subtitle">CONTRATOS COMPRADOR</h4>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="description-data-subname">Nombre</th>
+              <th class="description-data-subname">Importe</th>
+              <th class="description-data-subname">Periodo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each result.contracts.buyer }}
+            <tr>
+              <td class="description-data-contract">
+                <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+                <a href="/contracts/{{ocid}}">{{title}}</a>
+              </td>
+              <td class="description-data-amount">{{ format_amount amount}} {{format_currency currency}}</td>
+              <td class="description-data-date">{{get_year contract.contracts.[0].period.startDate}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-m-9 mb-3">
+        <p>Viendo hasta 3 de <strong>{{result.ocds_contract_count}} contrato(s) en total</strong>. </p>
+        <div class="col-m-3 centered contract-button">
+          <a href="/contracts?{{#if result.public }}filter_buyer.name={{result.name}}{{else}}filter_contracts.0.suppliers={{result.simple}}{{/if}}" class="button-link">Ver todos los contratos</a>
+        </div>
+      </div>
+      {{/if}}
+    </div>
     
 
     </div>

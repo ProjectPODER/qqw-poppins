@@ -58,11 +58,24 @@
             </select>
           </fieldset>
           <fieldset name="importe" style="margin-bottom: 7rem;">
-            <p class="search-title">Importe del contrato <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
-            <a class="search-label importe-bucket" data-bucket="0-1000000"><p>Menor a 1 millón de pesos</p></a>
-            <a class="search-label importe-bucket" data-bucket="1000000-500000000"><p>Entre 1 millón y 500 millones</p></a>
-            <a class="search-label importe-bucket" data-bucket="500000000-1000000000"><p>Entre 500 millones a 1,000 millones</p></a>
-            <a class="search-label importe-bucket" data-bucket="1000000000-"><p>Más de mil millones</p></a>
+            <p class="search-title">Importe del contrato 
+              <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+            </p>
+            <a class="search-label importe-bucket" data-bucket="0-50000">
+              <p>Menor a $50,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="50000-200000">
+              <p>Entre $50,000 y $200,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="200000-500000">
+              <p>Entre $200,000 y $500,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="500000-10000000">
+              <p>Entre $500,000 y $10,000,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="10000000-100000000000">
+              <p>Entre $10,000,000 y $100,000,000,000</p>
+            </a>
             <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
             <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
             <p>
