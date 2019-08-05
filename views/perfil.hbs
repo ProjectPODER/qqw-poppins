@@ -1,50 +1,72 @@
-<div class="container">
-  <div class='viewWrapper'>
-    <div class='datos-generales clearfix'>
-      <div class="gd-col-left-wrapper col-m-12">
-        {{!-- {{#if result.title }} --}}
-          <div class="description-data-title">
-            <h3>
-              <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
-              {{!-- {{ result.title}} --}}
-              Nombre
-              <h4 class="contract-type">Contrato</h4>
-            </h3>
-          </div>
-        {{!-- {{/if}} --}}
+<section class="profile">
+  <div class="row">
+    <div class="container mt-2">
+      <div class='datos-generales clearfix'>
+        <div class="gd-col-left-wrapper col-m-12">
+          {{!-- {{#if result.title }} --}}
+            <div class="description-data-title">
+              <h3>
+                <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
+                {{!-- {{ result.title}} --}}
+                Nombre
+                <h4 class="contract-type">Contrato</h4>
+              </h3>
+            </div>
+          {{!-- {{/if}} --}}
+        </div>
+      </div>
+      <div class="col-12 col-m-12 ">
+        <hr>
+      </div>
+      <div class="col-12 col-m-12 text-center">
+        <div id="profile-menu">
+          <ul>
+            <li>
+              <a href="#informacion-general" class="page-scroll button-link">
+                Información General
+              </a>
+            </li>
+            <li>
+              <a href="#evolucion-contratos" class="page-scroll button-link">
+                Evolución de contratos
+              </a>
+              
+            </li>
+            <li>
+              <a href="#compradores" class="page-scroll button-link">
+                Compradores
+              </a>
+            </li>
+            {{!-- <li>
+              <a href="#vendedores" class="page-scroll button-link">
+                Vendedores
+              </a>
+            </li> --}}
+            <li>
+              <a href="#contratos" class="page-scroll button-link">
+                Contratos
+              </a>
+            </li>
+            <li>
+              <a href="#uc" class="page-scroll button-link">
+                Unidades Compradoras
+              </a>
+            </li>
+            <li>
+              <a href="#evaluacion" class="page-scroll button-link evaluacion">
+                <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación y recomendaciones
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="col-12 col-m-12">
-      <hr>
-    </div>
-    <div class="col-12 col-m-12">
-      <div id="profile-menu">
-        <button href="#informaciongeneral" class="page-scroll button-link">
-          Información General
-        </button>
-        <button href="#visualizaciones" class="page-scroll button-link">
-          Visualizaciones
-        </button>
-        <button href="#compradores" class="page-scroll button-link">
-          Compradores
-        </button>
-        <button href="#vendedores" class="page-scroll button-link">
-          Vendedores
-        </button>
-        <button href="#contratos" class="page-scroll button-link">
-          Contratos
-        </button>
-        <button href="#uc" class="page-scroll button-link">
-          Unidades Compradoras
-        </button>
-        <button href="#evaluacion" class="page-scroll button-link">
-          Evaluación y recomendaciones
-        </button>
-      </div>
-    </div>
-
-    <div id="informaciongeneral">
-      <div class="col-12 col-m-12 mt-60 mb-5">
+  </div>
+</section>
+<section class="profile" id="informacion-general">
+  <div class="row">
+    <div class="container">
+      <div class="col-12 col-m-12 mb-3">
         <div class="col-6 col-m-6">
           <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
         </div>
@@ -101,36 +123,43 @@
         </div>
       </div>
       {{!-- {{/if}} --}}
-      <div class="col-12 col-m-12">
+      <div class="col-12 col-m-12 mt-2">
         <hr>
       </div>
     </div>
-
-    <div id="graphs">
-      <div  class="col-m-12 col-6 mt-60">
-        <h4 class="description-data-subtitle">EVOLUCIÓN DE CONTRATOS</h4>
-        <div id="chart">
-          <svg></svg>
+  </div>
+</section>
+<section class="profile" id="evolucion-contratos">
+  <div class="row">
+    <div class="container">
+        <div  class="col-m-12 col-6">
+          <h4 class="description-data-subtitle">EVOLUCIÓN DE CONTRATOS</h4>
+          <div id="chart">
+            <svg></svg>
+          </div>
         </div>
-      </div>
-      <div class="col-m-12 col-6 mt-60">
-        <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
-        <div id="piechart">
-          <svg></svg>
+        <div class="col-m-12 col-6">
+          <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
+          <div id="piechart">
+            <svg></svg>
+          </div>
         </div>
-      </div>
-      <div class="col-m-12 col-12 mt-60">
-        <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
-        <div id="graph-container">
+        <div class="col-m-12 col-12 mt-60">
+          <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
+          <div id="graph-container">
+          </div>
         </div>
-      </div>
+        <div class="col-12 col-m-12 mt-2">
+          <hr>
+        </div>
     </div>
-    <div class="col-12 col-m-12">
-        <hr>
-      </div>
-    <div>
+  </div>
+</section>
+<section class="profile" id="compradores">
+  <div class="row">
+    <div class="container">
       {{#if result.public}}
-      <div class="col-m-12 col-12 mt-2">
+      <div class="col-m-12 col-12">
         <h4 class="description-data-subtitle">PROVEEDORES PRINCIPALES</h4>
         {{#each result.supplierSummary }}
         <p class="principal-suppliers">
@@ -141,7 +170,7 @@
         {{/each}}
       </div>
       {{else}}
-      <div class="col-m-12 col-12 mt-2">
+      <div class="col-m-12 col-12">
         <h4 class="description-data-subtitle">COMPRADORAS PRINCIPALES</h4>
         {{#each dependencySummary }}
         <p class="principal-suppliers"><a href="/orgs/{{!-- {{simpleName dependency}} --}}"><img src="../images/icons/dependencia-blue.svg" alt="organización" class="icon-lf icon-lf-organization">
@@ -150,9 +179,15 @@
         {{/each}}
       </div>
       {{/if}}
+      <div class="col-12 col-m-12 mt-2">
+        <hr>
+      </div>
     </div>
-
-    <div>
+  </div>
+</section>
+<section class="profile" id="contratos">
+  <div class="row">
+    <div class="container">
       {{# if result.contracts.buyer.length }}
       <div class="col-m-12 col-12 mt-2">
         <h4 class="description-data-subtitle">CONTRATOS COMPRADOR</h4>
@@ -178,20 +213,75 @@
           </tbody>
         </table>
       </div>
-      <div class="col-m-9 mb-3">
+      <div class="col-m-12 mb-12">
         <p>Viendo hasta 3 de <strong>{{result.ocds_contract_count}} contrato(s) en total</strong>. </p>
         <div class="col-m-3 centered contract-button">
           <a href="/contracts?{{#if result.public }}filter_buyer.name={{result.name}}{{else}}filter_contracts.0.suppliers={{result.simple}}{{/if}}" class="button-link">Ver todos los contratos</a>
         </div>
       </div>
       {{/if}}
-    </div>
-    
-
+      <div class="col-12 col-m-12 mt-2">
+        <hr>
+      </div>
     </div>
   </div>
-</div>
-{{!-- {{/with}} --}}
+</section>
+<section class="profile" id="uc">
+  <div class="row">
+    <div class="container">
+      <div  class="col-m-12 col-12">
+        <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
+        <ul>
+          <li><a href="">Unidad Compradora</a></li>
+        </ul>
+      </div>
+      {{!-- <div class="col-12 col-m-12 mt-2">
+        <hr>
+      </div> --}}
+    </div>
+  </div>
+</section>
+<section class="profile bg-gray" id="evaluacion">
+  <div class="row">
+    <div class="container">
+      <div class="col-12 col-m-12">
+        <div class="col-6 col-m-6">
+          <h4 class="description-data-subtitle">EVALUACIÓN Y RECOMENDACIONES</h4>
+        </div>
+        <div class="col-m-6 col-6 right-align">
+          <h4 class="amount-data">
+            {{!-- {{format_amount result.amount}} --}}
+            TOTAL SCORE: 0.3
+          </h4>
+        </div>
+      </div>
+      <div class="col-12-col-m-12">
+        <h3>Gráfico de puntajes de cada categoría</h3>
+      </div>
+      <div class="col-12-col-m-12 mt-60">
+        <div class="col-4 col-m-12 category-profile">
+          <p><b>Categoría:</b> Texto</p>
+          <p><b>Nombre:</b> Texto</p>
+          <p><b>Puntaje:</b> Texto</p>
+          <p><b>Recomendación:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo.</p>
+        </div>
+        <div class="col-4 col-m-12 category-profile">
+          <p><b>Categoría:</b> Texto</p>
+          <p><b>Nombre:</b> Texto</p>
+          <p><b>Puntaje:</b> Texto</p>
+          <p><b>Recomendación:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo.</p>
+        </div>
+        <div class="col-4 col-m-12 category-profile">
+          <p><b>Categoría:</b> Texto</p>
+          <p><b>Nombre:</b> Texto</p>
+          <p><b>Puntaje:</b> Texto</p>
+          <p><b>Recomendación:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 {{> send_info_form}}
 
 <script src="/javascripts/d3.v3.js"></script>

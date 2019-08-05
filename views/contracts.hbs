@@ -164,35 +164,54 @@
                 {{#each result.data}}
                 <div role="row" class="search-card odd">
                   <div class=" js-title no-title search-result-title col-m-8 col-8">
-                    <div class="cardItemTitle">Título</div>
-                    <div class="cardItemData"></div>
+                    {{!-- <div class="cardItemTitle">Título</div>
+                    <div class="cardItemData"></div> --}}
                     <a href="/contracts/{{records.0.compiledRelease.ocid}}">{{records.0.compiledRelease.contracts.0.title}}</a>
                   </div>
                   <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
-                    <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>
+                    {{!-- <div class="cardItemTitle"></div>
+                    <div class="cardItemData"></div> --}}
                     {{ format_amount records.0.compiledRelease.total_amount}}
                     <span class="contract_currency">{{format_currency records.0.compiledRelease.contracts.0.value.currency}}</span>
                   </div>
                   <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
-                    <div class="cardItemTitle"></div>
+                    {{!-- <div class="cardItemTitle"></div> --}}
                     <div class="cardItemData"></div>Vigente desde {{moment records.0.compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment records.0.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
                   </div>
                   <div class=" js-ocid no-title col-2 col-m-2">
-                    <div class="cardItemTitle">OCID</div>
-                    <div class="cardItemData"></div>
+                    {{!-- <div class="cardItemTitle">OCID</div>
+                    <div class="cardItemData"></div> --}}
                     <a href="/contratos/{{records.0.compiledRelease.ocid}}" class="button-link">Ver contrato</a>
                   </div>
-                  <div class=" js-dependency col-4 col-m-4">
+                  <div class=" js-dependency col-3 col-m-3">
                     <div class="cardItemTitle">Dependencia</div>
-                    <div class="cardItemData"></div>
+                    {{!-- <div class="cardItemData"></div> --}}
                     <ul class="dependency-cell list-unstyled">
                       <li>
                         <a href="/{{get_party_type records records.0.compiledRelease.parties.0.id }}/{{records.0.compiledRelease.parties.0.memberOf.0.id}}">{{records.0.compiledRelease.parties.0.memberOf.0.name}}</a>
                       </li>
                     </ul>
                   </div>
-                  <div class=" js-suppliers col-3 col-m-3">
+                  <div class=" js-suppliers col-4 col-m-4">
+                    <div class="cardItemTitle">Proveedores ({{records.0.compiledRelease.awards.length }})</div>
+                    <table class="suppliers-table">
+                      {{#each (limit records.0.compiledRelease.awards 3)}}
+                          <tr>
+                            <td>
+                            {{#each suppliers}}
+                              <p><a href="/{{get_party_type ../../records id }}/{{id}}">{{name}}</a></p>
+                            {{/each}}
+                            </td>
+                            <td style="text-align: right">{{format_amount value.amount}}</td>
+                          </tr>
+                      {{/each}}
+                    </table>
+                    {{#ifCond records.0.compiledRelease.awards '>' 3}}
+                      <a href="" class="button-link">Ver todos</a>
+                    {{/ifCond}}
+                  </div>
+
+                  {{!-- <div class=" js-suppliers col-4 col-m-4">
                     <div class="cardItemTitle">Proveedores</div>
                     <div class="cardItemData"></div>
                     <ul class="suppliers-cell list-unstyled">
@@ -204,10 +223,11 @@
                         {{/each}}
                       {{/each}}
                     </ul>
-                  </div>
+                  </div> --}}
+
                   <div class=" js-procedure col-2 col-m-2">
                     <div class="cardItemTitle">Procedimiento</div>
-                    <div class="cardItemData">{{records.0.compiledRelease.tender.procurementMethodMxCnet}}</div>
+                    <div class="cardItemData">{{records.0.compiledRelease.tender.procurementMethodCharacterMxCnet}}</div>
                   </div>
                   {{!-- <div class=" js-score col-1 col-m-1 hidden">
                     <div class="cardItemTitle">Puntaje</div>
