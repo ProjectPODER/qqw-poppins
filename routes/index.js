@@ -16,7 +16,7 @@ router.get('/', catchError(async function(req, res, next) {
     persons = await lib.getAPI(req,"persons",{limit:1, sort:"-date"});
     institutions = await lib.getAPI(req,"institutions",{limit:1, sort:"-date"});
     companies = await lib.getAPI(req,"companies",{limit:1, sort:"-date"});
-    contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-publishedDate"});
+    contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-compiledRelease.date"});
 
     stats = {
       persons: {
@@ -33,7 +33,7 @@ router.get('/', catchError(async function(req, res, next) {
       },
       contracts: {
         count: contracts.count,
-        lastModified: contracts.data[0] ? contracts.data[0].publishedDate : "Error de API"
+        lastModified: contracts.data ? contracts.data.records[0].compiledRelease.date : "Error de API"
       }
     }
   }
@@ -124,13 +124,13 @@ router.get('/empresas', catchError(async function(req, res, next) {
 /* GET contract view */
 router.get('/contratos/:id', catchError(async function(req, res, next) {
   let filters = {
-    "records.0.ocid": req.params.id, //lo que viene de req de la url
+    "ocid": req.params.id, //lo que viene de req de la url
     sort: ""
   };
   result = await lib.getAPI(req,"contracts",filters);
   // console.log("contracts",result);
   // console.log(filters.ocid);
-  if (!result.data[0]) {
+  if (!result.data.records) {
     let err = new Error("Contrato no encontrado");
     err.status = 404;
     throw(err);
