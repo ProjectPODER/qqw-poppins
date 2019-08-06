@@ -33,7 +33,7 @@ router.get('/', catchError(async function(req, res, next) {
       },
       contracts: {
         count: contracts.count,
-        lastModified: contracts.data[0] ? contracts.data[0].publishedDate : "Error de API"
+        lastModified: contracts.data ? contracts.data.records[0].compiledRelease.date : "Error de API"
       }
     }
   }
@@ -130,7 +130,7 @@ router.get('/contratos/:id', catchError(async function(req, res, next) {
   result = await lib.getAPI(req,"contracts",filters);
   // console.log("contracts",result);
   // console.log(filters.ocid);
-  if (!result.data[0]) {
+  if (!result.data.records) {
     let err = new Error("Contrato no encontrado");
     err.status = 404;
     throw(err);
