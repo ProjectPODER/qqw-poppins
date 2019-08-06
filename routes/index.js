@@ -154,7 +154,7 @@ router.get('/personas/:id', catchError(async function(req, res, next) {
     err.status = 404;
     throw(err);
   }
-  res.render('person', {result: result.data[0]});
+  res.render('perfil', {result: result.data[0], type: 'person'});
 }));
 
 /* GET organization view. */
@@ -172,7 +172,7 @@ router.get('/instituciones-publicas/:id', catchError(async function(req, res, ne
     throw(err);
   }
 
-  res.render('institution', {result: result.data[0] });
+  res.render('perfil', {result: result.data[0], type: 'institution' });
 }));
 
 router.get('/empresas/:id', catchError(async function(req, res, next) {
@@ -187,7 +187,7 @@ router.get('/empresas/:id', catchError(async function(req, res, next) {
     err.status = 404;
     throw(err);
   }
-  res.render('company', {result: result.data[0]});
+  res.render('perfil', {result: result.data[0], type: 'company'});
 }));
 
 /* GET about */

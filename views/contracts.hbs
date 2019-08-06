@@ -166,7 +166,7 @@
                   <div class=" js-title no-title search-result-title col-m-8 col-8">
                     {{!-- <div class="cardItemTitle">Título</div>
                     <div class="cardItemData"></div> --}}
-                    <a href="/contracts/{{records.0.compiledRelease.ocid}}">{{records.0.compiledRelease.contracts.0.title}}</a>
+                    <a href="/contracts/{{records.0.compiledRelease.ocid}}" title="{{records.0.compiledRelease.contracts.0.title}}"><p class="text-overflow">{{records.0.compiledRelease.contracts.0.title}}</p></a>
                   </div>
                   <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
                     {{!-- <div class="cardItemTitle"></div>
@@ -206,8 +206,10 @@
                           </tr>
                       {{/each}}
                     </table>
-                    {{#ifCond records.0.compiledRelease.awards '>' 3}}
+                    {{#ifCond records.0.compiledRelease.awards.length '>' 3}}
+                    <div class="text-center" style="margin-top: 1rem;">
                       <a href="" class="button-link">Ver todos</a>
+                    </div>
                     {{/ifCond}}
                   </div>
 

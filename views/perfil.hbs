@@ -6,10 +6,19 @@
           {{!-- {{#if result.title }} --}}
             <div class="description-data-title">
               <h3>
-                <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
-                {{!-- {{ result.title}} --}}
-                Nombre
-                <h4 class="contract-type">Contrato</h4>
+                <img src="../images/icons/{{#ifCond type '==' 'person'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institution'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'company'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
+                {{ result.name}}
+                <h4 class="contract-type">
+                  {{#ifCond type '==' 'person'}}
+                    Proveedor(a)
+                  {{/ifCond}}
+                  {{#ifCond type '==' 'institution'}}
+                    Institución pública o empresa productiva del estado
+                  {{/ifCond}}
+                  {{#ifCond type '==' 'company'}}
+                    Empresa o asociación civil
+                  {{/ifCond}}
+                </h4>
               </h3>
             </div>
           {{!-- {{/if}} --}}
@@ -52,11 +61,13 @@
                 Unidades Compradoras
               </a>
             </li>
+            {{#ifCond type '!=' 'company'}}
             <li>
               <a href="#evaluacion" class="page-scroll button-link evaluacion">
                 <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación y recomendaciones
               </a>
             </li>
+            {{/ifCond}}
           </ul>
         </div>
       </div>
@@ -72,55 +83,59 @@
         </div>
         <div class="col-m-6 col-6 right-align">
           <h4 class="amount-data">
-            {{!-- {{format_amount result.amount}} --}}
-            $234,234
+            {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
+            {{else}}
+              {{#if result.contract_amount.supplier}}
+                {{format_amount result.contract_amount.supplier}}
+              {{/if}}
+              {{#if result.contract_amount.buyer}}
+                {{format_amount result.contract_amount.buyer}}
+              {{/if}}
+            {{/ifCond}}
+            
           </h4>
           {{!-- {{format_currency result.currency}} --}}
-          pesos mexicanos
         </div>
       </div>
       <div class="col-12 col-m-12">
-        {{!-- {{#if result.start_date }} --}}
-        <div class="col-m-4 col-4">
-            <p class="js-title-data">Fecha de inicio</p>
-            <p class="js-data">{{!-- {{moment result.start_date date lang="es" format="LL"}} --}}1 de julio, 2019</p>
-        </div>
-        {{!-- {{/if}} --}}
-        {{!-- {{#if result.end_date }} --}}
-        <div class="col-m-4 col-4">
-            <p class="js-title-data">Fecha de fin</p>
-            <p class="js-data">{{!-- {{moment result.end_date date lang="es" format="LL"}} --}}1 de julio, 2019</p>
-        </div>
-        {{!-- {{/if}} --}}
-        {{!-- {{#if result.dependency }} --}}
-        <div class="col-m-4 col-4 link-lf-contracts">
-            <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
-            <a href="/orgs/{{!-- {{result.dependency}} --}} {{!-- {{simpleName (getField object=parties field="parent")}} --}}"><p class="js-data">{{!-- {{result.dependency}} --}} {{!-- {{getField object=parties field="parent"}} --}}Comisión Federal de Electricidad</p></a>
-        </div>
-        {{!-- {{/if}} --}}
-        {{!-- {{#if buyer.name }} --}}
-        <div class="col-m-4 col-4">
-            <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{buyer.name}} --}}Unidad</p>
-        </div>
-        {{!-- {{/if}} --}}
-        {{!-- {{#if buyer.id }} --}}
-        <div class="col-m-4 col-4">
-            <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{buyer.id}} --}}clave</p>
-        </div>
-        {{!-- {{/if}} --}}
-        {{!-- {{#if contactPoint }} --}}
-        <div class="col-m-4 col-4 link-lf-contracts">
-            <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{getField object=parties field="contactPoint"}} --}}Responsable</p>
-        </div>
-        {{!-- {{/if}} --}}
-        {{!-- {{#if result.suppliers_org }} --}}
-        <div class="col-m-4 col-4 link-lf-contracts">
-            <p class="js-title-data">Proveedor</p>
-            <a href="/orgs/{{!-- {{awards.[0].suppliers.[0].id}} --}}"><p class="js-data">{{!-- {{awards.[0].suppliers.[0].name}} --}}{{!-- {{result.suppliers_org}} --}}CIC CORPORATIVO INDUSTRIAL COAHUILA, S.A. de C.V.</p></a>
-        </div>
+        {{#ifCond type '==' 'company'}}
+          {{#if result.contract_count.supplier}}
+            <div class="col-m-4 col-4">
+              <p class="js-title-data">Número de contratos como proveedor</p>
+              <p class="js-data">{{result.contract_count.supplier}}</p>
+            </div>
+          {{/if}}
+          {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
+            <div class="col-m-4 col-4">
+              <p class="js-title-data">Suma de contratos como comprador</p>
+              <p class="js-data">{{format_amount result.contract_amount.buyer}}</p>
+            </div>
+            <div class="col-m-4 col-4">
+              <p class="js-title-data">Suma de contratos como proveedor</p>
+              <p class="js-data">{{format_amount result.contract_amount.supplier}}</p>
+            </div>
+          {{/ifCond}}
+
+          {{#if result.contract_count.buyer}}
+            <div class="col-m-4 col-4">
+              <p class="js-title-data">Número de contratos como comprador</p>
+              <p class="js-data">{{result.contract_count.buyer}}</p>
+            </div>
+          {{/if}}
+          {{#if result.contract_count.supplier}}
+            <div class="col-m-4 col-4">
+              <p class="js-title-data">Número de contratos como comprador</p>
+              <p class="js-data">{{result.contract_count.supplier}}</p>
+            </div>
+          {{/if}}
+          {{#if result.date}}
+            <div class="col-m-4 col-4">
+              <p class="js-title-data">Fecha de actualización</p>
+              <p class="js-data">{{result.date}}</p>
+            </div>
+          {{/if}}
+        {{/ifCond}}
+        
       </div>
       {{!-- {{/if}} --}}
       <div class="col-12 col-m-12 mt-2">
