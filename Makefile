@@ -9,7 +9,7 @@ include /var/lib/jenkins/.env
 ORG_NAME = poder
 APP_NAME = qqw-poppins
 APP_PORT = 8086:8080
-APP_VERSION = 0.2.0
+APP_VERSION = 0.2.1
 IMAGE_NAME = ${ORG_NAME}/${APP_NAME}:${APP_VERSION}
 
 .PHONY: all build test release clean help
@@ -55,4 +55,3 @@ help:
 	@echo "  clean		Cleans local images."
 	@echo ""
 	@echo ""
-
