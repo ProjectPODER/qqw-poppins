@@ -96,7 +96,6 @@
         </div>
       </div>
       <div class="col-12 col-m-12 flex">
-        {{#ifCond type '==' 'company'}}
           {{#if result.contract_count.supplier}}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Número de contratos como proveedor</p>
@@ -109,26 +108,29 @@
               <p class="js-data">{{result.contract_count.buyer}}</p>
             </div>
           {{/if}}
-          {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
-            <div class="col-m-4 col-4 pd-nonleft">
-              <p class="js-title-data">Suma de contratos como comprador</p>
-              <p class="js-data">{{format_amount result.contract_amount.buyer}}</p>
-            </div>
-            <div class="col-m-4 col- pd-nonleft4">
-              <p class="js-title-data">Suma de contratos como proveedor</p>
-              <p class="js-data">{{format_amount result.contract_amount.supplier}}</p>
-            </div>
-          {{/ifCond}}
           {{#if result.date}}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Fecha de actualización</p>
               <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
-        {{/ifCond}}
-        
+          {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
+            <div class="col-m-4 col-4 pd-nonleft">
+              <p class="js-title-data">Suma de contratos como proveedor</p>
+              <p class="js-data">{{format_amount result.contract_amount.supplier}}</p>
+            </div>
+            <div class="col-m-4 col-4 pd-nonleft">
+              <p class="js-title-data">Suma de contratos como comprador</p>
+              <p class="js-data">{{format_amount result.contract_amount.buyer}}</p>
+            </div>
+          {{/ifCond}}
+          {{#if result.source}}
+            <div class="col-m-4 col-4 pd-nonleft">
+              <p class="js-title-data">Fuente</p>
+              <p class="js-data">{{result.source}}</p>
+            </div>
+          {{/if}}
       </div>
-      {{!-- {{/if}} --}}
       <div class="col-12 col-m-12 mt-2">
         <hr>
       </div>
@@ -241,12 +243,21 @@
           <li><a href="">Unidad Compradora</a></li>
         </ul>
       </div>
-      {{!-- <div class="col-12 col-m-12 mt-2">
-        <hr>
-      </div> --}}
+      <div  class="col-m-12 col-6 mt-2 party_flags_recommendations">
+        <h4 class="description-data-subtitle">{{result.role}}</h4>
+        <ul class="meberships_list">
+          {{# each result.memberships.parent}}
+          <li class="party_flags_recommendations_item">Es una {{this.role}} de  <a href="/{{this.type}}/{{this.id}}">{{this.id}}</a> </li>
+          {{/each}}
+          {{# each result.memberships.child}}
+          <li class="party_flags_recommendations_item">Tiene un {{this.role}} llamado <a href="/{{this.organization_type}}/{{this.organization_id}}">{{this.organization_id}}</a> </li>
+          {{/each}}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
+{{#ifCond type '!=' 'company'}}
 <section class="profile bg-gray" id="evaluacion">
   <div class="row">
     <div class="container">
@@ -287,6 +298,7 @@
     </div>
   </div>
 </section>
+{{/ifCond}}
 
 {{> send_info_form}}
 
