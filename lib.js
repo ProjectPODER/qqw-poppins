@@ -25,7 +25,7 @@ async function getAPI(req,collection,filters) {
   var params = []; //params recibe fields para filtrar los campos que envia y text que no se que es
 
   if (collection=="contracts") {
-    params.sort="-records.0.compiledRelease.total_amount";
+    params.sort="-compiledRelease.total_amount";
   }
   if (collection=="persons" || collection=="organizations" || collection=="companies") {
     params.sort="-contract_amount.supplier";
@@ -94,13 +94,13 @@ const filterElements = [
   { htmlFieldName: "importe-maximo", apiFieldNames:["contract_amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
   { htmlFieldName: "cantidad-minima", apiFieldNames:["contract_count"], fieldLabel:"Cantidad mínima", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
   { htmlFieldName: "cantidad-maxima", apiFieldNames:["contract_count"], fieldLabel:"Cantidad máxima", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
-	{ htmlFieldName: "proveedor", apiFieldNames:["records.0.compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
-  { htmlFieldName: "dependencia", apiFieldNames:["records.0.compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
-  { htmlFieldName: "from_date_contracts_index", apiFieldNames:["records.0.compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">", collections: ["contracts"] },
-  { htmlFieldName: "to_date_contracts_index", apiFieldNames:["records.0.compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<", collections: ["contracts"] },
-  { htmlFieldName: "importe-minimo", apiFieldNames:["records.0.compiledRelease.contracts.value.amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["contracts"] },
-  { htmlFieldName: "importe-maximo", apiFieldNames:["records.0.compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["contracts"] },
-  { htmlFieldName: "tipo-adquisicion", apiFieldNames:["records.0.compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string", collections: ["contracts"] },
+	{ htmlFieldName: "proveedor", apiFieldNames:["compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
+  { htmlFieldName: "dependencia", apiFieldNames:["compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
+  { htmlFieldName: "from_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">", collections: ["contracts"] },
+  { htmlFieldName: "to_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<", collections: ["contracts"] },
+  { htmlFieldName: "importe-minimo", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["contracts"] },
+  { htmlFieldName: "importe-maximo", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["contracts"] },
+  { htmlFieldName: "tipo-adquisicion", apiFieldNames:["compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string", collections: ["contracts"] },
 	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true, collections: ["all"] },
 ]
 

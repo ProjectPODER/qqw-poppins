@@ -16,7 +16,7 @@ router.get('/', catchError(async function(req, res, next) {
     persons = await lib.getAPI(req,"persons",{limit:1, sort:"-date"});
     institutions = await lib.getAPI(req,"institutions",{limit:1, sort:"-date"});
     companies = await lib.getAPI(req,"companies",{limit:1, sort:"-date"});
-    contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-publishedDate"});
+    contracts = await lib.getAPI(req,"contracts",{limit:1, sort:"-compiledRelease.date"});
 
     stats = {
       persons: {
@@ -124,7 +124,7 @@ router.get('/empresas', catchError(async function(req, res, next) {
 /* GET contract view */
 router.get('/contratos/:id', catchError(async function(req, res, next) {
   let filters = {
-    "records.0.ocid": req.params.id, //lo que viene de req de la url
+    "ocid": req.params.id, //lo que viene de req de la url
     sort: ""
   };
   result = await lib.getAPI(req,"contracts",filters);
