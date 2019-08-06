@@ -227,6 +227,11 @@ h6,
 p {
   margin: 0 0 10px;
 }
+.text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .table-responsive {
   min-height: 0.01%;
   overflow-x: auto;
@@ -470,6 +475,10 @@ section {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+section.profile {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 section.data-sources {
   background-color: #f7f7f7;
 }
@@ -499,6 +508,9 @@ section.tabs h3 {
 section.tabs h1 {
   font-size: 2rem;
   margin-bottom: 2rem;
+}
+.category-profile {
+  padding: 1rem 1.5rem 0 0;
 }
 .data-sources h2 {
   color: #150b58;
@@ -855,7 +867,7 @@ button.reset-filters {
 .search-result-emph {
   color: #2900f5;
   font-family: monospace;
-  font-size: 2.7rem;
+  font-size: 2.1rem;
 }
 .search-result-emph-complementary {
   color: #2900f5;
@@ -1135,7 +1147,7 @@ button.reset-filters {
   color: #2900f5;
   font-size: 2rem;
   font-weight: bold;
-  margin-top: 1.5rem;
+  margin: 10px 0 5px;
 }
 a.see-contract {
   padding: 0.5rem 1rem;
@@ -1448,7 +1460,7 @@ hr {
   color: #2d1c9d;
 }
 .addinfo {
-  margin-top: 7rem;
+  margin-top: 6rem;
   margin-bottom: 4rem;
 }
 .addinfo-box {
@@ -2746,8 +2758,30 @@ div.dataTables_paginate li.last a:after {
     margin: auto;
   }
 }
-#profile-menu .button-link {
-  margin: 0 0.25rem 0.5rem !important;
+#profile-menu ul {
+  padding: 0;
+}
+#profile-menu ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 0.3rem 1.5rem 0 !important;
+}
+#profile-menu ul .evaluacion {
+  background-color: #110046;
+}
+#profile-menu ul .evaluacion:hover {
+  background-color: #2d1c9d;
+}
+#profile-menu ul .evaluacion img {
+  margin-right: 5px;
+  width: 20px;
+}
+.suppliers-table {
+  width: 100%;
+}
+.suppliers-table td {
+  vertical-align: top;
+  padding-bottom: 12px;
 }
 .home article margin-top 10% input[type="email"] {
   padding: 10px;

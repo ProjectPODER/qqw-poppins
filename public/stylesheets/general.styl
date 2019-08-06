@@ -229,6 +229,11 @@ h6,
 p
   margin 0 0 10px
 
+.text-overflow
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+  
 .table-responsive
   min-height .01%
   overflow-x auto
@@ -469,6 +474,9 @@ div.card-pad h3
 section
   padding-top 5rem
   padding-bottom 5rem
+  &.profile
+    padding-top 3rem
+    padding-bottom 3rem
   &.data-sources
     background-color #f7f7f7
   &.proyectos
@@ -493,7 +501,10 @@ section
     h1
       font-size 2rem
       margin-bottom 2rem
-
+      
+.category-profile
+  padding 1rem 1.5rem 0 0
+  
 .data-sources
   h2
     color #150b58
@@ -844,7 +855,7 @@ button.reset-filters
 .search-result-emph
   color #2900f5
   font-family monospace
-  font-size 2.7rem
+  font-size 2.1rem
 
 .search-result-emph-complementary
   color #2900f5
@@ -1124,7 +1135,8 @@ button.reset-filters
   color #2900f5
   font-size 2rem
   font-weight bold
-  margin-top 1.5rem
+  margin 10px 0 5px
+  
 
 a
   &.see-contract
@@ -1444,7 +1456,7 @@ hr
       color #2d1c9d
 
 .addinfo
-  margin-top 7rem
+  margin-top 6rem
   margin-bottom 4rem
 
 .addinfo-box
@@ -2602,5 +2614,22 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
         margin auto
         
 #profile-menu
-  .button-link
-    margin 0 0.25rem 0.5rem !important
+  ul
+    padding 0
+    li
+      list-style none
+      display inline-block
+      margin 0 0.3rem 1.5rem 0 !important
+    .evaluacion
+      background-color #110046
+      &:hover
+        background-color #2D1C9D
+      img
+        margin-right 5px
+        width 20px
+  
+.suppliers-table
+  width 100%
+  td
+    vertical-align top
+    padding-bottom 12px

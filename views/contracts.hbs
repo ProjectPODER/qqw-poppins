@@ -58,11 +58,24 @@
             </select>
           </fieldset>
           <fieldset name="importe" style="margin-bottom: 7rem;">
-            <p class="search-title">Importe del contrato <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
-            <a class="search-label importe-bucket" data-bucket="0-1000000"><p>Menor a 1 millón de pesos</p></a>
-            <a class="search-label importe-bucket" data-bucket="1000000-500000000"><p>Entre 1 millón y 500 millones</p></a>
-            <a class="search-label importe-bucket" data-bucket="500000000-1000000000"><p>Entre 500 millones a 1,000 millones</p></a>
-            <a class="search-label importe-bucket" data-bucket="1000000000-"><p>Más de mil millones</p></a>
+            <p class="search-title">Importe del contrato 
+              <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+            </p>
+            <a class="search-label importe-bucket" data-bucket="0-50000">
+              <p>Menor a $50,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="50000-200000">
+              <p>Entre $50,000 y $200,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="200000-500000">
+              <p>Entre $200,000 y $500,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="500000-10000000">
+              <p>Entre $500,000 y $10,000,000</p>
+            </a>
+            <a class="search-label importe-bucket" data-bucket="10000000-100000000000">
+              <p>Entre $10,000,000 y $100,000,000,000</p>
+            </a>
             <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
             <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
             <p>
@@ -151,35 +164,56 @@
                 {{#each result.data}}
                 <div role="row" class="search-card odd">
                   <div class=" js-title no-title search-result-title col-m-8 col-8">
-                    <div class="cardItemTitle">Título</div>
-                    <div class="cardItemData"></div>
-                    <a href="/contracts/{{records.0.compiledRelease.ocid}}">{{records.0.compiledRelease.contracts.0.title}}</a>
+                    {{!-- <div class="cardItemTitle">Título</div>
+                    <div class="cardItemData"></div> --}}
+                    <a href="/contracts/{{records.0.compiledRelease.ocid}}" title="{{records.0.compiledRelease.contracts.0.title}}"><p class="text-overflow">{{records.0.compiledRelease.contracts.0.title}}</p></a>
                   </div>
                   <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
-                    <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div>
+                    {{!-- <div class="cardItemTitle"></div>
+                    <div class="cardItemData"></div> --}}
                     {{ format_amount records.0.compiledRelease.total_amount}}
                     <span class="contract_currency">{{format_currency records.0.compiledRelease.contracts.0.value.currency}}</span>
                   </div>
                   <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
-                    <div class="cardItemTitle"></div>
+                    {{!-- <div class="cardItemTitle"></div> --}}
                     <div class="cardItemData"></div>Vigente desde {{moment records.0.compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment records.0.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
                   </div>
                   <div class=" js-ocid no-title col-2 col-m-2">
-                    <div class="cardItemTitle">OCID</div>
-                    <div class="cardItemData"></div>
-                    <a href="/contracts/{{records.0.compiledRelease.ocid}}" class="button-link">Ver contrato</a>
+                    {{!-- <div class="cardItemTitle">OCID</div>
+                    <div class="cardItemData"></div> --}}
+                    <a href="/contratos/{{records.0.compiledRelease.ocid}}" class="button-link">Ver contrato</a>
                   </div>
-                  <div class=" js-dependency col-4 col-m-4">
+                  <div class=" js-dependency col-3 col-m-3">
                     <div class="cardItemTitle">Dependencia</div>
-                    <div class="cardItemData"></div>
+                    {{!-- <div class="cardItemData"></div> --}}
                     <ul class="dependency-cell list-unstyled">
                       <li>
                         <a href="/{{get_party_type records records.0.compiledRelease.parties.0.id }}/{{records.0.compiledRelease.parties.0.memberOf.0.id}}">{{records.0.compiledRelease.parties.0.memberOf.0.name}}</a>
                       </li>
                     </ul>
                   </div>
-                  <div class=" js-suppliers col-3 col-m-3">
+                  <div class=" js-suppliers col-4 col-m-4">
+                    <div class="cardItemTitle">Proveedores ({{records.0.compiledRelease.awards.length }})</div>
+                    <table class="suppliers-table">
+                      {{#each (limit records.0.compiledRelease.awards 3)}}
+                          <tr>
+                            <td>
+                            {{#each suppliers}}
+                              <p><a href="/{{get_party_type ../../records id }}/{{id}}">{{name}}</a></p>
+                            {{/each}}
+                            </td>
+                            <td style="text-align: right">{{format_amount value.amount}}</td>
+                          </tr>
+                      {{/each}}
+                    </table>
+                    {{#ifCond records.0.compiledRelease.awards.length '>' 3}}
+                    <div class="text-center" style="margin-top: 1rem;">
+                      <a href="" class="button-link">Ver todos</a>
+                    </div>
+                    {{/ifCond}}
+                  </div>
+
+                  {{!-- <div class=" js-suppliers col-4 col-m-4">
                     <div class="cardItemTitle">Proveedores</div>
                     <div class="cardItemData"></div>
                     <ul class="suppliers-cell list-unstyled">
@@ -191,10 +225,11 @@
                         {{/each}}
                       {{/each}}
                     </ul>
-                  </div>
+                  </div> --}}
+
                   <div class=" js-procedure col-2 col-m-2">
                     <div class="cardItemTitle">Procedimiento</div>
-                    <div class="cardItemData">{{records.0.compiledRelease.tender.procurementMethodMxCnet}}</div>
+                    <div class="cardItemData">{{records.0.compiledRelease.tender.procurementMethodCharacterMxCnet}}</div>
                   </div>
                   {{!-- <div class=" js-score col-1 col-m-1 hidden">
                     <div class="cardItemTitle">Puntaje</div>
