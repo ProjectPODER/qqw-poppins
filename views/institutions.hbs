@@ -14,25 +14,75 @@
               <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
             </fieldset>
             <fieldset name="no-contratos">
-               <p class="search-title">Número de contratos</p>
-               <a class="search-label"><p>Sin contratos</p></a>
-               <a class="search-label"><p>1 a 10</p></a>
-               <a class="search-label"><p>10 a 50</p></a>
-               <a class="search-label"><p>52 a 200</p></a>
-               <a class="search-label"><p>Más de 200</p></a>
+               <p class="search-title">Número de contratos por comprador</p>
+               <a class="search-label"><p>Hasta 2</p></a>
+               <a class="search-label"><p>2 a 10</p></a>
+               <a class="search-label"><p>10 a 100</p></a>
+               <a class="search-label"><p>100 a 1,000</p></a>
+               <a class="search-label"><p>Más de 100mil</p></a>
                <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
                <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
              </fieldset>
-             <fieldset name="importe-contratos">
-                <p class="search-title">Importe de contratos</p>
-                <a class="search-label"><p>Sin contratos</p></a>
-                <a class="search-label"><p>1 a 10</p></a>
-                <a class="search-label"><p>10 a 50</p></a>
-                <a class="search-label"><p>52 a 200</p></a>
-                <a class="search-label"><p>Más de 200</p></a>
-                <input type="text" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value }}">
-                <input type="text" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value }}">
+              <fieldset name="importe" style="margin-bottom: 7rem;">
+                <p class="search-title">Importe del contrato por comprador
+                  <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+                </p>
+                <a class="search-label importe-bucket" data-bucket="0-1000000">
+                  <p>Menor a 1 millón</p>
+                </a>
+                <a class="search-label importe-bucket" data-bucket="1000000-10000000">
+                  <p>Entre 1 millón y 10 millones</p>
+                </a>
+                <a class="search-label importe-bucket" data-bucket="10000000-100000000">
+                  <p>Entre 10 millones y 100 millones</p>
+                </a>
+                <a class="search-label importe-bucket" data-bucket="100000000-100000000000">
+                  <p>Entre 100 millones y 100 mil millones</p>
+                </a>
+                <a class="search-label importe-bucket" data-bucket="100000000000-">
+                  <p>Más de 100 mil millones</p>
+                </a>
+                <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
+                <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
+                <p>
+                  <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
+                </p>
               </fieldset>
+              <fieldset name="no-contratos">
+                 <p class="search-title">Número de contratos por vendedor</p>
+                 <a class="search-label"><p>Hasta 2</p></a>
+                 <a class="search-label"><p>2 a 5</p></a>
+                 <a class="search-label"><p>5 a 10</p></a>
+                 <a class="search-label"><p>10 a 100</p></a>
+                 <a class="search-label"><p>Más de 1000</p></a>
+                 <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
+                 <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
+               </fieldset>
+                <fieldset name="importe" style="margin-bottom: 7rem;">
+                  <p class="search-title">Importe del contrato por vendedor
+                    <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+                  </p>
+                  <a class="search-label importe-bucket" data-bucket="0-1000">
+                    <p>Menor a mil</p>
+                  </a>
+                  <a class="search-label importe-bucket" data-bucket="1000-10000">
+                    <p>Entre mil y 10 mil</p>
+                  </a>
+                  <a class="search-label importe-bucket" data-bucket="10000-100000">
+                    <p>Entre 10 mil y 100 mil</p>
+                  </a>
+                  <a class="search-label importe-bucket" data-bucket="100000-1000000">
+                    <p>Entre 100 mil y 1 millón</p>
+                  </a>
+                  <a class="search-label importe-bucket" data-bucket="1000000-">
+                    <p>Más de 1 millón</p>
+                  </a>
+                  <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
+                  <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
+                  <p>
+                    <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
+                  </p>
+                </fieldset>
             <input type="hidden" name="size" value="{{ filters.size.value }}">
             <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
             <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->

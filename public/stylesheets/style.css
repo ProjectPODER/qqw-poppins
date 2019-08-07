@@ -869,16 +869,13 @@ button.reset-filters {
 }
 .search-result-emph {
   color: #2900f5;
-  font-family: monospace;
   font-size: 2.1rem;
 }
 .search-result-emph-complementary {
   color: #2900f5;
-  font-family: monospace;
   font-size: 1.3rem;
 }
 .search-result-mono-gray {
-  font-family: monospace;
   color: #9b9b9b;
   font-size: 1rem;
   display: inline-block;
@@ -920,6 +917,8 @@ button.reset-filters {
   padding: 0 0.5em 0.2em 0;
   text-overflow: ellipsis;
   overflow: hidden;
+  font-weight: bold;
+  margin-top: -5px;
 }
 .js-start-date {
   clear: left;
@@ -2516,6 +2515,9 @@ div.dataTables_paginate li.last a:after {
     margin-bottom: 3rem;
   }
 }
+.amount-index-contracts {
+  text-align: right;
+}
 @media only screen and (max-width: 767px) {
   .button-link-apilist {
     position: relative !important;
@@ -2542,6 +2544,12 @@ div.dataTables_paginate li.last a:after {
   }
   .apis-template .card-software h3 {
     margin-left: 16px;
+  }
+  .ml-25 {
+    margin-left: 0;
+  }
+  .amount-index-contracts {
+    text-align: left;
   }
 }
 @media only screen and (max-width: 700px) {
@@ -2781,13 +2789,6 @@ div.dataTables_paginate li.last a:after {
 #profile-menu ul .evaluacion img {
   margin-right: 5px;
   width: 20px;
-}
-.suppliers-table {
-  width: 100%;
-}
-.suppliers-table td {
-  vertical-align: top;
-  padding-bottom: 12px;
 }
 .home article margin-top 10% input[type="email"] {
   padding: 10px;

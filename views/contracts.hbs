@@ -62,19 +62,19 @@
               <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
             </p>
             <a class="search-label importe-bucket" data-bucket="0-50000">
-              <p>Menor a $50,000</p>
+              <p>Menor a 50 mil</p>
             </a>
             <a class="search-label importe-bucket" data-bucket="50000-200000">
-              <p>Entre $50,000 y $200,000</p>
+              <p>Entre 50 mil y 200 mil</p>
             </a>
             <a class="search-label importe-bucket" data-bucket="200000-500000">
-              <p>Entre $200,000 y $500,000</p>
+              <p>Entre 200 mil y 500 mil</p>
             </a>
             <a class="search-label importe-bucket" data-bucket="500000-10000000">
-              <p>Entre $500,000 y $10,000,000</p>
+              <p>Entre 500 mil y 10 millones</p>
             </a>
-            <a class="search-label importe-bucket" data-bucket="10000000-100000000000">
-              <p>Entre $10,000,000 y $100,000,000,000</p>
+            <a class="search-label importe-bucket" data-bucket="10000000">
+              <p>Más de 10 millones</p>
             </a>
             <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
             <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
@@ -168,7 +168,7 @@
                     <div class="cardItemData"></div> --}}
                     <a href="/contratos/{{compiledRelease.ocid}}" title="{{compiledRelease.contracts.0.title}}"><p class="text-overflow">{{compiledRelease.contracts.0.title}}</p></a>
                   </div>
-                  <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1">
+                  <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1" title="{{ format_amount compiledRelease.total_amount}}">
                     {{!-- <div class="cardItemTitle"></div>
                     <div class="cardItemData"></div> --}}
                     {{ format_amount compiledRelease.total_amount}}
@@ -194,21 +194,21 @@
                   </div>
                   <div class=" js-suppliers col-4 col-m-4">
                     <div class="cardItemTitle">Proveedores ({{compiledRelease.awards.length }})</div>
-                    <table class="suppliers-table">
+                    <div class="col-12 col-m-12 flex">
                       {{#each (limit compiledRelease.awards 3)}}
-                          <tr>
-                            <td>
-                            {{#each suppliers}}
-                              <p><a href="/{{get_party_type ../../records id }}/{{id}}">{{name}}</a></p>
-                            {{/each}}
-                            </td>
-                            <td style="text-align: right">{{format_amount value.amount}}</td>
-                          </tr>
+                        <div class="col-7 col-m-7">
+                          {{#each suppliers}}
+                            <p class="text-overflow" title="{{name}}"><a href="/{{get_party_type ../../records id }}/{{id}}"><b>&bull;</b>{{name}}</a></p>
+                          {{/each}}
+                        </div>
+                        <div class="col-5 col-m-5">
+                          <p class="amount-index-contracts text-overflow" title="{{format_amount value.amount}}">{{format_amount value.amount}}</p>
+                        </div>
                       {{/each}}
-                    </table>
+                    </div>
                     {{#ifCond compiledRelease.awards.length '>' 3}}
-                    <div class="text-center" style="margin-top: 1rem;">
-                      <a href="" class="button-link">Ver todos</a>
+                    <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                      <a href="" class="">Ver todos</a>
                     </div>
                     {{/ifCond}}
                   </div>

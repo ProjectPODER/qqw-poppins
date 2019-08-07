@@ -124,38 +124,35 @@ function copyClipboard() {
    $('div.document-body').css('min-height', 0);
    $('div.document-body').css('min-height', (
      $(document).height()
-     - $('nav.bar').height()
      - $('footer').height()
    ));
  }
-function autoHeightContact() {
-   $('div.contact-template').css('min-height', 0);
-   $('div.contact-template').css('min-height', (
-     $(document).height()
-     - $('nav.bar').height()
-     - $('footer').height()
-   ));
- }
- function autoHeightError() {
-   $('div.error-template').css('min-height', 0);
-   $('div.error-template').css('min-height', (
-     $(document).height()
-     - $('nav.bar').height()
-     - $('footer').height()
-   ));
- }
+// function autoHeightAbout() {
+//    $('div.about-template').css('min-height', 0);
+//    $('div.about-template').css('min-height', (
+//      $(document).height()
+//      - $('footer').height()
+//    ));
+//  }
+//  function autoHeightError() {
+//    $('div.error-template').css('min-height', 0);
+//    $('div.error-template').css('min-height', (
+//      $(document).height()
+//      - $('footer').height()
+//    ));
+//  }
  // onDocumentReady function bind
  $(document).ready(function() {
    autoHeight();
-   autoHeightContact();
-   autoHeightError();
+   // autoHeightAbout();
+   // autoHeightError();
  });
 
  // onResize bind of the function
  $(window).resize(function() {
    autoHeight();
-   autoHeightContact();
-   autoHeightError();
+   // autoHeightAbout();
+   // autoHeightError();
  });
 
 // Contact form

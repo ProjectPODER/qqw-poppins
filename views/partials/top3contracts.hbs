@@ -1,0 +1,73 @@
+{{#if result.top3contracts.buyer }}
+<div class="col-m-12 col-12">
+  <h4 class="description-data-subtitle">CONTRATOS COMO COMPRADOR</h4>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th class="description-data-subname">Nombre</th>
+        <th class="description-data-subname">Importe</th>
+        <th class="description-data-subname">Periodo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each result.top3contracts.buyer }}
+      <tr>
+        <td class="description-data-contract">
+          <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+          <a href="/contratos/{{compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
+        </td>
+        <td class="description-data-amount">{{format_amount compiledRelease.total_amount}} {{format_currency compiledRelease.contracts.0.value.currency}}</td>
+        <td class="description-data-date">{{moment compiledRelease.contracts.0.period.startDate date lang="es" format="YYYY"}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<div class="col-m-12 mb-12 mb-5">
+  {{#ifCond result.contract_count.supplier '>' 3}}
+  <p>Viendo hasta 3 de <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>.</p>
+  <div class="centered contract-button">
+    <a href="/contratos?compiledRelease.parties.memberOf.id={{result.id}}" class="button-link">Ver todos los contratos</a>
+  </div>
+  {{else}}
+    <p>Viendo <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>. </p>
+  {{/ifCond}}
+</div>
+{{/if}}
+
+{{#if result.top3contracts.supplier }}
+<div class="col-m-12 col-12">
+  <h4 class="description-data-subtitle">CONTRATOS COMO VENDEDOR</h4>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th class="description-data-subname">Nombre</th>
+        <th class="description-data-subname">Importe</th>
+        <th class="description-data-subname">Periodo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each result.top3contracts.supplier }}
+      <tr>
+        <td class="description-data-contract">
+          <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+          <a href="/contratos/{{compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
+        </td>
+        <td class="description-data-amount">{{format_amount compiledRelease.total_amount}} {{format_currency compiledRelease.contracts.0.value.currency}}</td>
+        <td class="description-data-date">{{moment compiledRelease.contracts.0.period.startDate date lang="es" format="YYYY"}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<div class="col-m-12 mb-12 mb-5">
+  {{#ifCond result.contract_count.supplier '>' 3}}
+  <p>Viendo hasta 3 de <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>.</p>
+  <div class="centered contract-button">
+    <a href="/contratos?compiledRelease.awards.suppliers.id={{result.id}}" class="button-link">Ver todos los contratos</a>
+  </div>
+  {{else}}
+    <p>Viendo <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>. </p>
+  {{/ifCond}}
+</div>
+{{/if}}
