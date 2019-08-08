@@ -46,7 +46,7 @@ app.engine('.hbs', hbs({
           return "$"+value.toLocaleString('es-MX',
             {
               style: 'decimal',
-              maximumFractionDigits: 2
+              maximumFractionDigits: 0
             });
         }
         return 'Importe desconocido';
@@ -202,7 +202,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { error: true });
 });
 
 module.exports = app;

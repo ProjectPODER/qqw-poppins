@@ -61,7 +61,7 @@ router.get('/contratos', catchError(async function(req, res, next) {
 
   // console.log("contracts",result);
   // console.log(filters)
-  res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
+  res.render('contracts', {contracts: true, result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
 async function entityPage(entity,req,res,next) {
@@ -79,7 +79,7 @@ async function entityPage(entity,req,res,next) {
   // console.log(current_page);
   // console.log(filters.offset);
   // console.log(req.body.person_index_length)
-  res.render(entity, {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters), "recommendations": recommendations});
+  res.render(entity, {persons: true, result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters), "recommendations": recommendations});
 }
 
 /* GET persons index */
@@ -103,7 +103,7 @@ router.get('/instituciones-publicas', catchError(async function(req, res, next) 
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
-  res.render('institutions', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
+  res.render('institutions', {instituciones: true, result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
 /* GET institutions index */
@@ -118,7 +118,7 @@ router.get('/empresas', catchError(async function(req, res, next) {
 
   var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
-  res.render('companies', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
+  res.render('companies', {empresas: true, result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
 }));
 
 /* GET contract view */

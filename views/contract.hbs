@@ -2,11 +2,11 @@
   <div class='viewWrapper'>
     <div class='datos-generales clearfix'>
       <div class="gd-col-left-wrapper col-m-12">
-        {{#if result.title }}
+        {{!-- {{#if result.data.records.0.compileRelease.contracts.0.title}} --}}
           <div class="description-data-title">
             <h3>
               <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
-              {{ result.title}}
+              {{ result.data.records.compiledRelease.contracts.0.title}}
             </h3>
             <div class="col-m-6 col-6">
               <h4 class="contract-type">Contrato</h4>
@@ -18,7 +18,7 @@
               {{format_currency result.currency}}
             </div>
           </div>
-        {{/if}}
+        {{!-- {{/if}} --}}
       </div>
     </div>
     <div class="col-12 col-m-12">

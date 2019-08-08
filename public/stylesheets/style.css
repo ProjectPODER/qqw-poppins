@@ -556,7 +556,6 @@ section.tabs h1 {
 }
 .contacto-text p {
   display: inline-block;
-  font-family: monospace;
   font-size: 2rem;
 }
 .contacto-text button,
@@ -988,7 +987,6 @@ button.reset-filters {
 .js-company-count,
 .js-person-type,
 .js-foundation-date {
-  font-family: monospace;
   font-size: 1rem;
 }
 .js-contract-count .cardItemData,
