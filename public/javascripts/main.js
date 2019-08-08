@@ -62,11 +62,13 @@ var qqw_suggest = new Bloodhound({
 });
 
 //Search
-$('.easy-search-input').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 2
-  }, {
+$('.easy-search-input').typeahead(
+  {
+    hint: true,
+    highlight: true,
+    minLength: 2
+  },
+  {
   name: 'qqw',
   display: 'name',
   source: qqw_suggest,
@@ -86,7 +88,8 @@ $('.easy-search-input').typeahead({
         return '<hr><div class="tt-footer"><a href="/personas?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/instituciones-publicas?filtername=' + data.query + '"' + '>' + 'Buscar instituciones con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/empresas?filtername=' + data.query + '"' + '>' + 'Buscar empresas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer contracts"><a>' + 'Buscar contratos con '+ '"<b>' + data.query + '</b>"' + '</a></div>';
       },
     }
-});
+  }
+);
 
 $(".twitter-typeahead").css("width","100%");
 
@@ -140,14 +143,14 @@ $("#send_email").click(function (e) {
   name = $("#name").val();
   subjectMail = $("#subject").val();
   email = $("#contactEmail").val();
-  text = $("#text").val();
+  text = $("#message").val();
   // $("#message").text("Sending E-mail...Please wait");
   $.post("/send", {
       to: to,
       name: name,
       subjectMail: subjectMail,
       email: email,
-      text: text,
+      message: text,
       type: "contact"
   }, function (data) {
       if (data.status == "sent") {

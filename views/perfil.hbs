@@ -6,16 +6,16 @@
           {{!-- {{#if result.title }} --}}
             <div class="description-data-title">
               <h3>
-                <img src="../images/icons/{{#ifCond type '==' 'person'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institution'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'company'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
+                <img src="../images/icons/{{#ifCond type '==' 'persons'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institutions'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'companies'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
                 {{ result.name}}
                 <h4 class="contract-type">
-                  {{#ifCond type '==' 'person'}}
+                  {{#ifCond type '==' 'persons'}}
                     Proveedor(a)
                   {{/ifCond}}
-                  {{#ifCond type '==' 'institution'}}
+                  {{#ifCond type '==' 'institutions'}}
                     Institución pública o empresa productiva del estado
                   {{/ifCond}}
-                  {{#ifCond type '==' 'company'}}
+                  {{#ifCond type '==' 'companies'}}
                     Empresa o asociación civil
                   {{/ifCond}}
                 </h4>
@@ -39,7 +39,7 @@
               <a href="#evolucion-contratos" class="page-scroll button-link">
                 Evolución de contratos
               </a>
-              
+
             </li>
             {{#if result.top3contracts.buyer}}
             <li>
@@ -225,12 +225,12 @@
         <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
         {{#if result.memberships.parent}}
         <p>
-          Esta institución tiene como {{result.memberships.parent.0.role}} a: {{#each result.memberships.parent}}<a href="/{{this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}} 
+          Esta institución tiene como {{result.memberships.parent.0.role}} a: {{#each result.memberships.parent}}<a href="/{{this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
         </p>
         {{/if}}
         {{#if result.memberships.child}}
         <p>
-          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}} 
+          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}}
         </p>
         {{/if}}
       </div>

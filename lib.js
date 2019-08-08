@@ -1,5 +1,6 @@
-var errorCatcher = require('async-error-catcher');
-let catchError = errorCatcher.default;
+const nodemailer = require('nodemailer');
+const errorCatcher = require('async-error-catcher');
+const catchError = errorCatcher.default;
 
 function cleanURL(url) {
   if (url.indexOf("?") == -1) {
@@ -60,7 +61,7 @@ async function getAPI(req,collection,filters) {
 }
 
 // Contact and Send Information Form
-function sendMail(req) {
+function sendMail(req, callback) {
   // CONTACT PAGE FORM
   var mailOptions = {
       to: "info@quienesquien.wiki",
@@ -87,7 +88,7 @@ function sendMail(req) {
         }
   });
 
-  return smtpTransport.sendMail
+  return smtpTransport.sendMail(mailOptions,callback)
 }
 
 // Filters
@@ -163,7 +164,7 @@ function cleanField(value) {
 
 
 function cleanFilters(filters) {
-  cleanFilters = {};
+  const cleanFilters = {};
   for (filterElement in filterElements) {
   	for (apiField in filterElements[filterElement].apiFieldNames) {
       const value = filters[filterElements[filterElement].apiFieldNames[apiField]];
@@ -207,11 +208,112 @@ function searchPage(collectionName,defaultFilters) {
  })
 }
 
+
+function entityPage(collection,templateName,idFieldName) {
+  return catchError(async function(req, res, next) {
+    let filters = {
+      limit: 1,
+      sort: ""
+    };
+    filters[idFieldName] = req.params.id;
+
+    result = await getAPI(req,collection,filters);
+    if (!result.data[0]) {
+      let err = new Error("No encontrado: "+collection);
+      err.status = 404;
+      throw(err);
+    }
+    res.render(templateName, {result: result.data[0], type: collection});
+  })
+}
+
+function homePage() {
+  return catchError(async function(req, res, next) {
+    let feed, stats, alert;
+
+    // Always render home even without API
+    try {
+      feed = await getFeed(req);
+      persons = await getAPI(req,"persons",{limit:1, sort:"-date"});
+      institutions = await getAPI(req,"institutions",{limit:1, sort:"-date"});
+      companies = await getAPI(req,"companies",{limit:1, sort:"-date"});
+      contracts = await getAPI(req,"contracts",{limit:1, sort:"-compiledRelease.date"});
+
+      stats = {
+        persons: {
+          count: persons.count,
+          lastModified: persons.data[0] ? persons.data[0].date : "API ERROR"
+        },
+        institutions: {
+          count: institutions.count,
+          lastModified: institutions.data[0] ?  institutions.data[0].date : "API ERROR"
+        },
+        companies: {
+          count: companies.count,
+          lastModified: companies.data[0] ?  companies.data[0].date : "API ERROR"
+        },
+        contracts: {
+          count: contracts.count,
+          lastModified: contracts.data[0] ? contracts.data[0].records[0].compiledRelease.date : "Error de API"
+        }
+      }
+    }
+    catch(e) {
+      alert = "No se pudieron recuperar algunas fuentes de datos, por favor contáctenos si este error le afecta.";
+      console.error("Error",e);
+    }
+
+
+    res.render('home', { feed: feed, home: true, stats:stats, alert: alert  });
+  })
+}
+
+function staticPage(templateName) {
+  return catchError(async function(req, res, next) {
+   res.render(templateName , { currentSection: templateName });
+ })
+}
+
+function sendMailPage() {
+  return function (req, res) {
+
+    //TODO: Protegernos del SPAM
+
+    let fieldsWidthError = []
+    if (!req.body.email || req.body.email.indexOf("@") == -1) {
+        fieldsWidthError.push("email");
+    }
+    if (!req.body.message) {
+        fieldsWidthError.push("message");
+    }
+    if (fieldsWidthError.length>0) {
+      let result = {
+        "status": "error",
+        "message": "Some fields have errors",
+        "fieldsWidhError": fieldsWidthError
+      }
+      res.end(JSON.stringify(result));
+      return false;
+    }
+
+
+    sendMail(req, function (err, response) {
+        if (err) {
+            console.log(err);
+            res.end('{"status": "error"}');
+        } else {
+            console.log("Message sent: " + response.message);
+            res.end('{"status": "sent"}');
+        }
+    });
+
+  }
+}
+
 module.exports = {
-	getAPI:getAPI,
-	getFeed:getFeed,
-	sendMail:sendMail,
-	cleanURL:cleanURL,
-	getFilters:getFilters,
   searchPage:searchPage,
+  homePage:homePage,
+  entityPage:entityPage,
+  staticPage:staticPage,
+  sendMailPage:sendMailPage,
 }
