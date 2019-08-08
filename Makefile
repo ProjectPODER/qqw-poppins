@@ -8,29 +8,28 @@ include /var/lib/jenkins/.env
 include /var/lib/jenkins/apps_data
 
 APP_PORT = 8086:8080
-WEB_IMG = ${WEB_ORG_NAME}/${WEB_APP_NAME}:${WEB_VERSION}
 
 .PHONY: all build test release clean help
 
 all: help
 
 build:
-	@echo "Building ${WEB_IMG} image."
-	docker build -t ${WEB_IMG} .
-	@echo "Listing ${WEB_IMG} image."
+	@echo "Building ${WEB_DOCKER_REPO} image."
+	docker build -t ${WEB_DOCKER_REPO} .
+	@echo "Listing ${WEB_DOCKER_REPO} image."
 	docker images
 
 test:
-	@echo "Run ${WEB_IMG} image."
-	docker run --name ${WEB_APP_NAME} -p ${APP_PORT} -d ${WEB_IMG} &
-	@echo "Wait until ${WEB_APP_NAME} is fully started."
+	@echo "Run ${WEB_DOCKER_REPO} image."
+	docker run --name ${WEB_APP_NAME} -p ${APP_PORT} -d ${WEB_DOCKER_REPO} &
+	@echo "Wait until ${WEB_DOCKER_REPO} is fully started."
 	sleep 10
 	docker logs ${WEB_APP_NAME}
 
 release:
 	@echo "Release ${WEB_IMG} image."
 	cat ${DOCKER_PWD} | docker login --username ${DOCKER_USER} --password-stdin
-	docker tag  ${WEB_IMG} ${WEB_DOCKER_REPO}
+	docker tag  ${WEB_DOCKER_REPO} ${WEB_DOCKER_REPO}
 	docker push ${WEB_DOCKER_REPO}
 
 clean:
@@ -41,7 +40,7 @@ clean:
 	docker rm ${WEB_APP_NAME}  2>/dev/null; true
 	@echo ""
 	@echo "Purging local images."
-	docker rmi ${WEB_IMG} 2>/dev/null; true
+	docker rmi ${WEB_DOCKER_REPO} 2>/dev/null; true
 
 help:
 	@echo ""
