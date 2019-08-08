@@ -194,8 +194,9 @@ function cleanFilters(filters) {
 }
 
 
-function searchPage(collectionName,defaultFilters) {
+function searchPage(collectionName,defaultFilters, templateName) {
   return catchError(async function(req, res, next) {
+   if (!templateName) { templateName == collectionName }
    const filters = getFilters(collectionName, req.query,defaultFilters);
    const current_page = req.query.page || 0;
    const recommendations = []; //TODO
@@ -204,7 +205,7 @@ function searchPage(collectionName,defaultFilters) {
 
    filters.offset = current_page * 25;
 
-   res.render(collectionName, {result: result, pagesArray:arrayNum, current_url: cleanURL(req.originalUrl), current_page: current_page, filters: cleanFilters(filters), "recommendations": recommendations});
+   res.render(templateName, {result: result, pagesArray:arrayNum, current_url: cleanURL(req.originalUrl), current_page: current_page, filters: cleanFilters(filters), "recommendations": recommendations});
  })
 }
 
