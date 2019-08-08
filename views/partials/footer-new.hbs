@@ -1,4 +1,4 @@
-<footer {{#ifCond about '||' error}}style="position: absolute; right: 0; left: 0; bottom: 0; width: 100%;"{{/ifCond}}>
+<footer {{#ifCond currentSection "==" "about"}}style="position: absolute; right: 0; left: 0; bottom: 0; width: 100%;"{{/ifCond}}{{#if error}}style="position: absolute; right: 0; left: 0; bottom: 0; width: 100%;"{{/if}}>
   <div class="row block text-center">
     <div class="content">
       <div class="col-5 col-m-5">
