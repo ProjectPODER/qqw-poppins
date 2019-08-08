@@ -9,6 +9,7 @@ include /var/lib/jenkins/apps_data
 
 APP_PORT = 8086:8080
 WEB_IMG = ${WEB_ORG_NAME}/${WEB_IMG_NAME}:${WEB_VERSION}
+DOCKER_REPO_TEST = poderqqwdeploy/${WEB_ORG_NAME}
 
 .PHONY: all build test release clean help
 
@@ -30,8 +31,8 @@ test:
 release:
 	@echo "Release ${WEB_IMG} image."
 	cat ${DOCKER_PWD} | docker login --username ${DOCKER_USER} --password-stdin
-	docker tag  ${WEB_IMG} ${DOCKER_REPO}:${WEB_IMG_NAME}-${WEB_VERSION}
-	docker push ${DOCKER_REPO}:${WEB_IMG_NAME}-${WEB_VERSION}
+	docker tag  ${WEB_IMG} ${DOCKER_REPO_TEST}:${WEB_IMG_NAME}-${WEB_VERSION}
+	docker push ${DOCKER_REPO_TEST}:${WEB_IMG_NAME}-${WEB_VERSION}
 
 clean:
 	@echo ""
