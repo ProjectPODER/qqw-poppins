@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /var/lib/jekins/.env
+source /var/lib/jenkins/.env
 
 WEB_ORG_NAME=qqw-poppins
 WEB_APP_NAME=quienesquienweb
