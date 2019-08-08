@@ -1,3 +1,6 @@
+var errorCatcher = require('async-error-catcher');
+let catchError = errorCatcher.default;
+
 function cleanURL(url) {
   if (url.indexOf("?") == -1) {
     url+="?";
@@ -105,8 +108,8 @@ const filterElements = [
 ]
 
 
-function getFilters(collection,query) {
-  let filters = {};
+function getFilters(collection,query,defaultFilters) {
+  let filters = defaultFilters || {};
   for (filterElement in filterElements) {
   	if (query[filterElements[filterElement].htmlFieldName] && (filterElements[filterElement].collections.includes(collection) || filterElements[filterElement].collections == ["all"]) ) {
   		for (apiField in filterElements[filterElement].apiFieldNames) {
@@ -190,12 +193,25 @@ function cleanFilters(filters) {
 }
 
 
+function searchPage(collectionName,defaultFilters) {
+  return catchError(async function(req, res, next) {
+   const filters = getFilters(collectionName, req.query,defaultFilters);
+   const current_page = req.query.page || 0;
+   const recommendations = []; //TODO
+   const result = await getAPI(req, collectionName, filters);
+   const arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
+
+   filters.offset = current_page * 25;
+
+   res.render(collectionName, {result: result, pagesArray:arrayNum, current_url: cleanURL(req.originalUrl), current_page: current_page, filters: cleanFilters(filters), "recommendations": recommendations});
+ })
+}
 
 module.exports = {
 	getAPI:getAPI,
 	getFeed:getFeed,
-	cleanFilters:cleanFilters,
 	sendMail:sendMail,
 	cleanURL:cleanURL,
-	getFilters:getFilters
+	getFilters:getFilters,
+  searchPage:searchPage,
 }

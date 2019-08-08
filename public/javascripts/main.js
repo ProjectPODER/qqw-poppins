@@ -61,7 +61,7 @@ var qqw_suggest = new Bloodhound({
   }
 });
 
-
+//Search
 $('.easy-search-input').typeahead({
   hint: true,
   highlight: true,
@@ -78,23 +78,17 @@ $('.easy-search-input').typeahead({
       ].join('\n'),
       suggestion: function(data){
         if (data.type == "contracts") {
-          return '<a href="/' + data.type + '/' + data.ocid + '?supplier=' + data.suppliers_org + '"><div>' + data.title + '</div></a>';
+          return '<a href="/' + data.type + '/' + data.compiledRelease.ocid + '?supplier=' + data.suppliers_org + '"><div>' + data.title + '</div></a>';
         }
-        return '<a href="/' + data.type + '/' + data.simple + '"><div>' + data.name + '</div></a>';
+        return '<a href="/' + data.type + '/' + data.id + '"><div>' + data.name + '</div></a>';
       },
       footer: function(data){
-        return '<hr><div class="tt-footer"><a href="/persons?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/orgs?filtername=' + data.query + '"' + '>' + 'Buscar organizaciones con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer contracts"><a>' + 'Buscar contratos con '+ '"<b>' + data.query + '</b>"' + '</a></div>';
+        return '<hr><div class="tt-footer"><a href="/personas?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/instituciones-publicas?filtername=' + data.query + '"' + '>' + 'Buscar instituciones con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/empresas?filtername=' + data.query + '"' + '>' + 'Buscar empresas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer contracts"><a>' + 'Buscar contratos con '+ '"<b>' + data.query + '</b>"' + '</a></div>';
       },
     }
 });
 
 $(".twitter-typeahead").css("width","100%");
-/*
-#scrollable-dropdown-menu .tt-dropdown-menu {
-  max-height: 150px;
-  overflow-y: auto;
-}
-*/
 
 
 // Tooltips
@@ -127,32 +121,15 @@ function copyClipboard() {
      - $('footer').height()
    ));
  }
-// function autoHeightAbout() {
-//    $('div.about-template').css('min-height', 0);
-//    $('div.about-template').css('min-height', (
-//      $(document).height()
-//      - $('footer').height()
-//    ));
-//  }
-//  function autoHeightError() {
-//    $('div.error-template').css('min-height', 0);
-//    $('div.error-template').css('min-height', (
-//      $(document).height()
-//      - $('footer').height()
-//    ));
-//  }
+
  // onDocumentReady function bind
  $(document).ready(function() {
    autoHeight();
-   // autoHeightAbout();
-   // autoHeightError();
  });
 
  // onResize bind of the function
  $(window).resize(function() {
    autoHeight();
-   // autoHeightAbout();
-   // autoHeightError();
  });
 
 // Contact form

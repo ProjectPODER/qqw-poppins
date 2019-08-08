@@ -178,15 +178,38 @@
                       <p class="js-person-type" style="font-size: 16px;">
                         <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
                         Institución
-                        {{#if contract_count}}
-                        con
+                      </p>
+                      {{#if contract_count.supplier}}
+                      <p class="js-person-type" style="font-size: 16px;">
                         <span class="js-contract-count">
                           <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
-                          {{contract_count}} contrato(s)
+                          {{contract_count.supplier}} contrato(s) como proveedor
+                        </span>
+                        <span class="js-contract-amount">
+                          {{#ifCond contract_amount.supplier '==' '0'}}
+                          {{else}}
+                            por {{format_amount contract_amount.supplier}} pesos mexicanos.
+                          {{/ifCond}}
+                        </span>
+                        {{else}}
+                          <span class="js-person-type">
+                            Sin contratos como proveedor.
+                          </span> 
+                        {{/if}}
+                      </p>
+                      <p class="js-person-type" style="font-size: 16px;">
+                        {{#if contract_count.buyer}}
+                        <span class="js-contract-count">
+                          <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+                          {{contract_count.buyer}} contrato(s) como comprador
                         </span>
                         por
                         <span class="js-contract-amount">
-                          {{contract_amount}} pesos mexicanos.
+                          {{format_amount contract_amount.buyer}} pesos mexicanos.
+                        </span>
+                        {{else}}
+                        <span class="js-person-type">
+                          Sin contratos como comprador.
                         </span>
                         {{/if}}
                       </p>

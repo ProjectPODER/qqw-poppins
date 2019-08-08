@@ -226,11 +226,12 @@
                       {{/each}}
                     </ul>
                   </div> --}}
-
+                  {{#if compiledRelease.tender.procurementMethodDetails}}
                   <div class=" js-procedure col-2 col-m-2 ml-25">
                     <div class="cardItemTitle">Procedimiento</div>
                     <div class="cardItemData">{{compiledRelease.tender.procurementMethodDetails}}</div>
                   </div>
+                  {{/if}}
                   {{!-- <div class=" js-score col-1 col-m-1 hidden">
                     <div class="cardItemTitle">Puntaje</div>
                     <div class="cardItemData"></div>47.62<span class="d100">/100</span>
