@@ -8,7 +8,7 @@ include /var/lib/jenkins/.env
 include /var/lib/jenkins/apps_data
 
 APP_PORT = 8086:8080
-WEB_IMG = ${WEB_VERSION}
+WEB_IMG = ${WEB_ORG_NAME}/${WEB_APP_NAME}:${WEB_VERSION}
 
 .PHONY: all build test release clean help
 
