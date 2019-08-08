@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
-var errorCatcher = require('async-error-catcher');
 var lib = require('../lib.js');
 
+var errorCatcher = require('async-error-catcher');
 let catchError = errorCatcher.default;
 
 /* GET home page. */
@@ -33,7 +33,7 @@ router.get('/', catchError(async function(req, res, next) {
       },
       contracts: {
         count: contracts.count,
-        lastModified: contracts.data ? contracts.data.records[0].compiledRelease.date : "Error de API"
+        lastModified: contracts.data[0] ? contracts.data[0].records[0].compiledRelease.date : "Error de API"
       }
     }
   }
@@ -47,148 +47,49 @@ router.get('/', catchError(async function(req, res, next) {
 }));
 
 /* GET contratcs index. */
-router.get('/contratos', catchError(async function(req, res, next) {
-  let filters = lib.getFilters("contracts",req.query);
-
-  let current_page = req.query.page || 0;
-  filters.offset = current_page*25;
-
-  let url_without_page = lib.cleanURL(req.originalUrl);
-
-  result = await lib.getAPI(req,"contracts",filters);
-
-  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-
-  // console.log("contracts",result);
-  // console.log(filters)
-  res.render('contracts', {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters)});
-}));
-
-async function entityPage(entity,req,res,next) {
-  let filters = lib.getFilters(entity,req.query);
-  let recommendations = [];
-
-  let current_page = req.query.page || 0;
-  filters.offset = current_page*25;
-
-  let url_without_page = lib.cleanURL(req.originalUrl);
-
-  result = await lib.getAPI(req,entity,filters);
-
-  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-  // console.log(current_page);
-  // console.log(filters.offset);
-  // console.log(req.body.person_index_length)
-  res.render(entity, {result: result, pagesArray:arrayNum,current_url:url_without_page,current_page:current_page, filters:lib.cleanFilters(filters), "recommendations": recommendations});
-}
+router.get('/contratos', lib.searchPage("contracts"));
 
 /* GET persons index */
-router.get('/personas',catchError(async function(req, res, next) {
-  entityPage("persons",req,res,next);
-}));
-
+//TODO: Default filters
+router.get('/personas', lib.searchPage("persons"));
 
 /* GET institutions index */
-router.get('/instituciones-publicas', catchError(async function(req, res, next) {
-  let filters = lib.getFilters("institutions",req.query);
+//Don't bring UCs
+router.get('/instituciones-publicas', lib.searchPage("institutions",{"subclassification": "!unidad-compradora", "sort": "-contract_amount"}));
 
-  //Don't bring UCs, only institutions without parent_id
-  filters["!parent_id"] = null;
+router.get('/unidades-compradoras', lib.searchPage("institutions",{"subclassification": "unidad-compradora", "sort": "-contract_amount"}));
 
-  let current_page = req.query.page || 0;
-  filters.offset = current_page*25;
-  filters.sort = "-contract_amount";
+/* GET companies index */
+router.get('/empresas', lib.searchPage("companies",{sort: "-contract_amount"}));
 
-  result = await lib.getAPI(req,"institutions",filters);
+function entityPage(collection,templateName,idFieldName) {
+  return catchError(async function(req, res, next) {
+    let filters = {
+      limit: 1,
+      sort: ""
+    };
+    filters[idFieldName] = req.params.id;
 
-  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-
-  res.render('institutions', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
-}));
-
-/* GET institutions index */
-router.get('/empresas', catchError(async function(req, res, next) {
-  let filters = lib.getFilters("companies",req.query);
-
-  let current_page = req.query.page || 0;
-  filters.offset = current_page*25;
-  filters.sort = "-contract_amount";
-
-  result = await lib.getAPI(req,"companies",filters);
-
-  var arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
-
-  res.render('companies', {result: result,pagesArray:arrayNum,current_url:lib.cleanURL(req.originalUrl),current_page:current_page, filters:lib.cleanFilters(filters)});
-}));
+    result = await lib.getAPI(req,collection,filters);
+    if (!result.data[0]) {
+      let err = new Error("No encontrado: "+collection);
+      err.status = 404;
+      throw(err);
+    }
+    res.render(templateName, {result: result.data[0], type: collection});
+  })
+}
 
 /* GET contract view */
-router.get('/contratos/:id', catchError(async function(req, res, next) {
-  let filters = {
-    "ocid": req.params.id, //lo que viene de req de la url
-    sort: ""
-  };
-  result = await lib.getAPI(req,"contracts",filters);
-  // console.log("contracts",result);
-  // console.log(filters.ocid);
-  if (!result.data.records) {
-    let err = new Error("Contrato no encontrado");
-    err.status = 404;
-    throw(err);
-  }
-  res.render('contract', {result: result.data[0]});
-}));
+router.get('/contratos/:id', entityPage("contracts","contract","ocid"));
 
 /* GET person view. */
-router.get('/personas/:id', catchError(async function(req, res, next) {
-  let filters = {
-    id: req.params.id, //lo que viene de req de la url
-    limit: 1,
-    sort: null
-  };
-  var id = req.params.id;
-  result = await lib.getAPI(req,"persons",filters);
-  // console.log("person",result);
-  // console.log(id);
-  if (!result.data[0]) {
-    let err = new Error("Persona no encontrada");
-    err.status = 404;
-    throw(err);
-  }
-  res.render('perfil', {result: result.data[0], type: 'person'});
-}));
+router.get('/personas/:id', entityPage("persons","perfil","id"));
 
 /* GET organization view. */
-router.get('/instituciones-publicas/:id', catchError(async function(req, res, next) {
-  const filters = {
-    id: req.params.id
-  };
+router.get('/instituciones-publicas/:id', entityPage("institutions","perfil","id"));
 
-  const result = await lib.getAPI(req, "institutions", filters);
-  console.log("organization",result);
-  // console.log(id);
-  if (!result.data[0]) {
-    let err = new Error("Institución no encontrada");
-    err.status = 404;
-    throw(err);
-  }
-
-  res.render('perfil', {result: result.data[0], type: 'institution' });
-}));
-
-router.get('/empresas/:id', catchError(async function(req, res, next) {
-  let filters = {
-    id: req.params.id
-  };
-  result = await lib.getAPI(req, "companies", filters);
-  // console.log("organization",result);
-  // console.log(id);
-  if (!result.data[0]) {
-    let err = new Error("Empresa no encontrada");
-    err.status = 404;
-    throw(err);
-  }
-  res.render('perfil', {result: result.data[0], type: 'company'});
-}));
+router.get('/empresas/:id', entityPage("company","perfil", "id"));
 
 /* GET about */
 router.get('/sobre-qqw', catchError(async function(req, res, next) {
