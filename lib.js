@@ -196,7 +196,7 @@ function cleanFilters(filters) {
 
 function searchPage(collectionName,defaultFilters, templateName) {
   return catchError(async function(req, res, next) {
-   if (!templateName) { templateName == collectionName }
+   if (!templateName) { templateName = collectionName }
    const filters = getFilters(collectionName, req.query,defaultFilters);
    const current_page = req.query.page || 0;
    const recommendations = []; //TODO
