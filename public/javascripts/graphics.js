@@ -3,52 +3,51 @@
 
 // Bar Chart
 const yearData = [
-    {
-        "key" : "Importe comprador" ,
-        "bar": true,
-        "values" : []
-    },
-    {
-        "key" : "Cantidad comprador" ,
-        "values" : []
-    },
-    {
-        "key" : "Importe vendedor" ,
-        "bar": true,
-        "values" : []
-    },
-    {
-        "key" : "Cantidad vendedor" ,
-        "values" : []
-    }
+  {
+      "key" : "Importe vendedor" ,
+      "bar": true,
+      "values" : []
+  },
+  {
+      "key" : "Cantidad vendedor" ,
+      "values" : []
+  },
+  {
+      "key" : "Importe comprador" ,
+      "bar": true,
+      "values" : []
+  },
+  {
+      "key" : "Cantidad comprador" ,
+      "values" : []
+  },
 ]
 
 for (y in summaries.year) {
-  yearData[2].values.push({
-    x: new Date(y+"-01-02").getTime(),
-    y: summaries.year[y].buyer.value
-  })
-  yearData[1].values.push({
-    x: new Date(y+"-01-02").getTime(),
-    y: summaries.year[y].buyer.count
-  })
   yearData[0].values.push({
-    x: new Date(y+"-01-02").getTime(),
+    x: y,
     y: summaries.year[y].supplier.value
   })
-  yearData[3].values.push({
-    x: new Date(y+"-01-02").getTime(),
+  yearData[1].values.push({
+    x: y,
     y: summaries.year[y].supplier.count
   })
+  yearData[2].values.push({
+    x: y,
+    y: summaries.year[y].buyer.value
+  })
+  yearData[3].values.push({
+    x: y,
+    y: summaries.year[y].buyer.count
+  })
 }
-
 
 var chart;
 nv.addGraph(function() {
 
   chart = nv.models.linePlusBarChart()
-      .margin({top: 50, right: 50, bottom: 30, left: 75})
-      .x(function(d,i) { return i })
+      .margin({top: 0, right: 30, bottom: 10, left: 100})
+      // .x(function(d,i) { return i })
       // .y(function(d,i) {return d[1] })
       .legendRightAxisHint(' [Eje derecho]')
       .legendLeftAxisHint(' [Eje izquierdo]')
@@ -56,19 +55,19 @@ nv.addGraph(function() {
       .focusEnable(false)
 
 
-  chart.xAxis.tickFormat(function(d) {
-    var dx = yearData[0].values[d] && yearData[0].values[d].x || 0;
-    return d3.time.format('%Y')(new Date(dx))
-  });
+  // chart.xAxis.tickFormat(function(d) {
+  //   var dx = yearData[0].values[d] && yearData[0].values[d].x || 0;
+  //   return d3.time.format('%Y')(new Date(dx))
+  // });
 
   chart.y1Axis
-  .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
-  
-  chart.bars.forceY([0]).padData(false);
+  .tickFormat(function(d) { return 'Importe $' + d3.format(',f')(d) });
 
-  chart.x2Axis.tickFormat(function(d) {
-      return d3.time.format('%x')(new Date(d))
-  }).showMaxMin(false);
+  // chart.bars.forceY([0]).padData(false);
+
+  // chart.x2Axis.tickFormat(function(d) {
+  //     return d3.time.format('%Y')(new Date(yearData[0].values[d].x))
+  // }).showMaxMin(false);
 
   d3.select('#chart svg')
       .datum(yearData)

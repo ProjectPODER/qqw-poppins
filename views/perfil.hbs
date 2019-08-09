@@ -65,7 +65,7 @@
                 Unidades Compradoras
               </a>
             </li>
-            {{#ifCond type '!=' 'company'}}
+            {{#ifCond type '!=' 'companies'}}
             <li>
               <a href="#evaluacion" class="page-scroll button-link evaluacion">
                 <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación y recomendaciones
@@ -286,10 +286,10 @@
 
 {{> send_info_form}}
 <script>
-  const summaries = {{{j result.summaries}}}  
+  const summaries = {{{j result.summaries}}}
 </script>
 <script src="/javascripts/d3.v4.js"></script>
-<script> 
+<script>
   let d4 = d3;
 </script>
 <script src="/javascripts/d3.v3.js"></script>
