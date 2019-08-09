@@ -198,6 +198,58 @@ $("#send_info_email").click(function (e) {
   return false;
 });
 
+//set amount and count filters
+$('.importe-bucket').click(function(event) {
+  let item = $(event.target).parent(".importe-bucket");
+  var bucket;
+
+  // Si ya estaba seleccionado, borrar
+  if (item.hasClass("selected")) {
+    $(".importe-bucket").removeClass("selected");
+    bucket = ["",""]
+  }
+  else {
+    bucket = item.data("bucket").split("-");
+    $(".importe-bucket").removeClass("selected");
+    item.addClass("selected");
+  }
+  $("#importe-minimo").val(bucket[0]);
+  $("#importe-maximo").val(bucket[1]);
+});
+
+$('.count-bucket').click(function(event) {
+  let item = $(event.target).parent(".count-bucket");
+  var bucket;
+
+  // Si ya estaba seleccionado, borrar
+  if (item.hasClass("selected")) {
+    $(".count-bucket").removeClass("selected");
+    bucket = ["",""]
+  }
+  else {
+    bucket = item.data("bucket").split("-");
+    $(".count-bucket").removeClass("selected");
+    item.addClass("selected");
+  }
+  $("#cantidad-minima").val(bucket[0]);
+  $("#cantidad-maxima").val(bucket[1]);
+});
+
+//set bool filters
+$(".bool-filter").click(function(e) {
+  const target = $(e.currentTarget);
+  const realFieldId = target.data("realFieldId")
+  const realField = $("#"+realFieldId);
+  const realFieldValue = realField.val();
+
+  if (realFieldValue == "true") {
+    realField.val("false");
+  }
+  else {
+    realField.val("true");
+  }
+  // console.log(target.data(),realFieldId,realField);
+})
 
 $('.delete-blob-filter').click(function(event, instance) {
   let field = $(event.target).parents(".blob").data("field");

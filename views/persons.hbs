@@ -16,16 +16,16 @@
 
           <fieldset name="no-contratos">
              <p class="search-title">Número de contratos</p>
-             <a class="search-label"><p>Sin contratos</p></a>
-             <a class="search-label"><p>2 a 10</p></a>
-             <a class="search-label"><p>10 a 100</p></a>
-             <a class="search-label"><p>100 a 1,000</p></a>
-             <a class="search-label"><p>1,000 a 10,000</p></a>
-             <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
-             <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
+             <a class="search-label count-bucket" data-bucket="-0"><p>Sin contratos</p></a>
+             <a class="search-label count-bucket" data-bucket="1-10"><p>1 a 10</p></a>
+             <a class="search-label count-bucket" data-bucket="10-100"><p>10 a 100</p></a>
+             <a class="search-label count-bucket" data-bucket="100-1000"><p>100 a 1,000</p></a>
+             <a class="search-label count-bucket" data-bucket="1000-10000"><p>1,000 a 10,000</p></a>
+             <input type="text" name="cantidad-minima" id="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
+             <input type="text" name="cantidad-maxima" id="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
            </fieldset>
            <fieldset name="importe" style="margin-bottom: 7rem;">
-            <p class="search-title">Importe del contrato 
+            <p class="search-title">Importe del contrato
               <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
             </p>
             <a class="search-label importe-bucket" data-bucket="0-50000">
@@ -80,8 +80,8 @@
           </button>
           <ul class="dropdown-menu pull-right" aria-labelledby="dropdownTools">
             <li class="dropdown-header">Compartir</li>
-            <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://quienesquien.wiki/persons&t=QuienesQUienWiki" target="_blank"><img class="share-icons" src="../images/icons/facebook.svg" alt="Facebook">Facebook</a></li>
-            <li><a href="https://twitter.com/intent/tweet?text=Qui%c3%a9n+es+Qui%c3%a9n+Wiki+(QQW)+es+una+plataforma+sobre+empresarios%2c+pol%c3%adticos%2c+empresas+y+organizaciones+que+explica+las+conexiones+entre+estos+actores+y+las+pone+a+disposici%c3%b3n+de+investigadores%2c+periodistas+y+la+ciudadan%c3%ada+en+general.&url=https://quienesquien.wiki/persons&via=ProjectPODER" target="_blank"><img class="share-icons" src="../images/icons/twitter.svg" alt="Twitter">Twitter</a></li>
+            <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://quienesquien.wiki/personas&t=QuienesQUienWiki" target="_blank"><img class="share-icons" src="../images/icons/facebook.svg" alt="Facebook">Facebook</a></li>
+            <li><a href="https://twitter.com/intent/tweet?text=Qui%c3%a9n+es+Qui%c3%a9n+Wiki+(QQW)+es+una+plataforma+sobre+empresarios%2c+pol%c3%adticos%2c+empresas+y+organizaciones+que+explica+las+conexiones+entre+estos+actores+y+las+pone+a+disposici%c3%b3n+de+investigadores%2c+periodistas+y+la+ciudadan%c3%ada+en+general.&url=https://quienesquien.wiki/personas&via=ProjectPODER" target="_blank"><img class="share-icons" src="../images/icons/twitter.svg" alt="Twitter">Twitter</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">URL de la API</li>
             <li class="copy-clip">
@@ -115,7 +115,7 @@
               <div role="row" class="search-card odd">
                 <div class=" js-title no-title search-result-title col-m-8 col-8">
                   <div class="cardItemTitle">Nombre</div>
-                  <a href="/persons/{{id}}">
+                  <a href="/personas/{{id}}">
                     <div class="cardItemData">{{name}}</div>
                   </a>
                 </div>

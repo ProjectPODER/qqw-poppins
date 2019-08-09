@@ -50,11 +50,11 @@
               </fieldset>
               <fieldset name="no-contratos">
                  <p class="search-title">Número de contratos por vendedor</p>
-                 <a class="search-label"><p>Hasta 2</p></a>
-                 <a class="search-label"><p>2 a 5</p></a>
-                 <a class="search-label"><p>5 a 10</p></a>
-                 <a class="search-label"><p>10 a 100</p></a>
-                 <a class="search-label"><p>Más de 1000</p></a>
+                 <a class="search-label count-bucket" data-bucket="-2"><p>Hasta 2</p></a>
+                 <a class="search-label count-bucket" data-bucket="2-5"><p>2 a 5</p></a>
+                 <a class="search-label count-bucket" data-bucket="5-10"><p>5 a 10</p></a>
+                 <a class="search-label count-bucket" data-bucket="10-100"><p>10 a 100</p></a>
+                 <a class="search-label count-bucket" data-bucket="1000-"><p>Más de 1000</p></a>
                  <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
                  <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
                </fieldset>
@@ -165,7 +165,7 @@
                   <div role="row" class="search-card odd">
                     <div class=" js-title no-title search-result-title col-m-8 col-8">
                       <div class="cardItemTitle">Nombre</div>
-                      <a href="/instituciones/{{id}}">
+                      <a href="/instituciones-publicas/{{id}}">
                         <div class="cardItemData">{{name}}</div>
                       </a>
                     </div>
@@ -194,7 +194,7 @@
                         {{else}}
                           <span class="js-person-type">
                             Sin contratos como proveedor.
-                          </span> 
+                          </span>
                         {{/if}}
                       </p>
                       <p class="js-person-type" style="font-size: 16px;">
