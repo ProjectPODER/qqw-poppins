@@ -199,40 +199,26 @@ $("#send_info_email").click(function (e) {
 });
 
 //set amount and count filters
-$('.importe-bucket').click(function(event) {
-  let item = $(event.target).parent(".importe-bucket");
-  var bucket;
+$('.bucket').click(function(event) {
+  const item = $(event.target).parent(".bucket");
+  const bucketName = $(item).data("bucketName")
+  const bucketType = $(item).data("bucketType")
+  const bucketId = bucketName + "-" + bucketType;
+  let bucketData;
 
   // Si ya estaba seleccionado, borrar
   if (item.hasClass("selected")) {
-    $(".importe-bucket").removeClass("selected");
-    bucket = ["",""]
+    item.removeClass("selected");
+    bucketData = ["",""]
   }
   else {
-    bucket = item.data("bucket").split("-");
-    $(".importe-bucket").removeClass("selected");
+    bucketData = $(item).data("bucket").split("-");
+    item.parent().find(".bucket").removeClass("selected");
     item.addClass("selected");
   }
-  $("#importe-minimo").val(bucket[0]);
-  $("#importe-maximo").val(bucket[1]);
-});
-
-$('.count-bucket').click(function(event) {
-  let item = $(event.target).parent(".count-bucket");
-  var bucket;
-
-  // Si ya estaba seleccionado, borrar
-  if (item.hasClass("selected")) {
-    $(".count-bucket").removeClass("selected");
-    bucket = ["",""]
-  }
-  else {
-    bucket = item.data("bucket").split("-");
-    $(".count-bucket").removeClass("selected");
-    item.addClass("selected");
-  }
-  $("#cantidad-minima").val(bucket[0]);
-  $("#cantidad-maxima").val(bucket[1]);
+  console.log(bucketId,bucketData,$("#minimo-"+bucketId));
+  $("#minimo-"+bucketId).val(bucketData[0]);
+  $("#maximo-"+bucketId).val(bucketData[1]);
 });
 
 //set bool filters

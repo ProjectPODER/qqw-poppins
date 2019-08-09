@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const errorCatcher = require('async-error-catcher');
 const catchError = errorCatcher.default;
+const clone = require('lodash/clone')
 
 function cleanURL(url) {
   if (url.indexOf("?") == -1) {
@@ -94,25 +95,30 @@ function sendMail(req, callback) {
 // Filters
 const filterElements = [
 	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre", type:"string", collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "importe-minimo", apiFieldNames:["contract_amount.supplier","contract_amount.buyer"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "importe-maximo", apiFieldNames:["contract_amount.supplier","contract_amount.buyer"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "cantidad-minima", apiFieldNames:["contract_count.supplier","contract_count.buyer"], fieldLabel:"Cantidad mínima", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "cantidad-maxima", apiFieldNames:["contract_count.supplier","contract_count.buyer"], fieldLabel:"Cantidad máxima", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "minimo-importe-proveedor", apiFieldNames:["contract_amount.supplier"], fieldLabel:"Importe mínimo proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "maximo-importe-proveedor", apiFieldNames:["contract_amount.supplier"], fieldLabel:"Importe máximo proveedor", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "minimo-cantidad-proveedor", apiFieldNames:["contract_count.supplier"], fieldLabel:"Cantidad mínima proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "maximo-cantidad-proveedor", apiFieldNames:["contract_count.supplier"], fieldLabel:"Cantidad máxima proveedor", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "minimo-importe-comprador", apiFieldNames:["contract_amount.buyer"], fieldLabel:"Importe mínimo comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
+  { htmlFieldName: "maximo-importe-comprador", apiFieldNames:["contract_amount.buyer"], fieldLabel:"Importe máximo comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
+  { htmlFieldName: "minimo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad mínima comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
+  { htmlFieldName: "maximo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad máxima comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
 	{ htmlFieldName: "proveedor", apiFieldNames:["compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
   { htmlFieldName: "dependencia", apiFieldNames:["compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
   { htmlFieldName: "from_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">", collections: ["contracts"] },
   { htmlFieldName: "to_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<", collections: ["contracts"] },
   { htmlFieldName: "solo-fecha-conocida", apiFieldNames:["compiledRelease.contracts.period.endDate","compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha desconocida", type:"bool", collections: ["contracts"] },
-  { htmlFieldName: "importe-minimo", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["contracts"] },
-  { htmlFieldName: "importe-maximo", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["contracts"] },
+  { htmlFieldName: "minimo-importe-contrato", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["contracts"] },
+  { htmlFieldName: "maximo-importe-contrato", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["contracts"] },
   { htmlFieldName: "solo-importe-conocido", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe desconocido", type:"bool", collections: ["contracts"] },
   { htmlFieldName: "tipo-adquisicion", apiFieldNames:["compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string", collections: ["contracts"] },
 	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true, collections: ["all"] },
 ]
 
 
-function getFilters(collection,query,defaultFilters) {
-  let filters = defaultFilters || {};
+function getFilters(collection, query, defaultFilters) {
+  // console.log("getFilters", collection, query, defaultFilters);
+  let filters = clone(defaultFilters) || {};
   for (filterElement in filterElements) {
   	if ((query[filterElements[filterElement].htmlFieldName] || filterElements[filterElement].type === "bool") && (filterElements[filterElement].collections.includes(collection) || filterElements[filterElement].collections == ["all"]) ) {
   		for (apiField in filterElements[filterElement].apiFieldNames) {
@@ -184,9 +190,9 @@ function cleanFilters(filters) {
       const hasValue = filters.hasOwnProperty(filterElements[filterElement].apiFieldNames[apiField]);
     	if (value || (filterElements[filterElement].type == "bool" && hasValue)) {
         if (typeof value == "object") {
-          console.log("cleanFilters array",filterElements[filterElement],value);
+          // console.log("cleanFilters array",filterElements[filterElement],value);
           for (valueItem in value) {
-            console.log("cleanFilters",filterElements[filterElement].htmlFieldName,value[valueItem],filterElements[filterElement].modifier);
+            // console.log("cleanFilters",filterElements[filterElement].htmlFieldName,value[valueItem],filterElements[filterElement].modifier);
             if (filterElements[filterElement].modifier) {
               if (value[valueItem].indexOf(filterElements[filterElement].modifier) == 0) {
                 cleanFilters[filterElements[filterElement].htmlFieldName] = cleanField(value[valueItem]);
@@ -208,10 +214,11 @@ function cleanFilters(filters) {
 }
 
 
-function searchPage(collectionName,defaultFilters, templateName) {
+function searchPage(collectionName, defaultFilters, templateName) {
   return catchError(async function(req, res, next) {
    if (!templateName) { templateName = collectionName }
-   const filters = getFilters(collectionName, req.query,defaultFilters);
+   // console.log("searchPage",defaultFilters);
+   const filters = getFilters(collectionName, req.query, defaultFilters);
    const current_page = req.query.page || 0;
    const recommendations = []; //TODO
    const result = await getAPI(req, collectionName, filters);
