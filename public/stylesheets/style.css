@@ -1610,7 +1610,7 @@ textarea.form-control {
   width: 100%;
 }
 #chart svg {
-  height: 300px;
+  height: 500px;
   width: 100%;
 }
 .nvd3 .nv-axis line {
@@ -1641,7 +1641,8 @@ textarea.form-control {
 .nvd3.nv-line {
   fill-opacity: 0 !important;
 }
-#piechart svg {
+#piechartSupplier svg,
+#piechartBuyer svg {
   height: 300px;
   width: 100%;
 }
