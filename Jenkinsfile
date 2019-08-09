@@ -9,7 +9,7 @@ pipeline {
       steps {
         script {
           URL='http://gitlab.rindecuentas.org/equipo-qqw/qqw-popppins.git'
-          BRANCH='*/hotfix/pipeline_env'
+          BRANCH='*/master'
           CREDENTIALS='f28cf2d5-ce55-4f0b-9bad-c84376ce401d'
         }
           dir('new-dir') { sh 'pwd' }
