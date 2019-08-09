@@ -152,7 +152,10 @@
         </div>
         <div class="col-m-12 col-6">
           <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
-          <div id="piechart">
+          <div id="piechartBuyer">
+            <svg></svg>
+          </div>
+          <div id="piechartSupplier">
             <svg></svg>
           </div>
         </div>
@@ -282,8 +285,13 @@
 {{/ifCond}}
 
 {{> send_info_form}}
-
+<script>
+  const summaries = {{{j result.summaries}}}  
+</script>
+<script src="/javascripts/d3.v4.js"></script>
+<script> 
+  let d4 = d3;
+</script>
 <script src="/javascripts/d3.v3.js"></script>
-<script src="/javascripts/d3plus.full.js"></script>
 <script src="/javascripts/nvd3.js"></script>
 <script src="/javascripts/graphics.js"></script>
