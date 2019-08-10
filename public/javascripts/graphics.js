@@ -54,16 +54,16 @@ nv.addGraph(function() {
       .color(d3.scale.category20().range().slice(1))
       .focusEnable(false)
 
-
   // chart.xAxis.tickFormat(function(d) {
   //   var dx = yearData[0].values[d] && yearData[0].values[d].x || 0;
   //   return d3.time.format('%Y')(new Date(dx))
   // });
 
   chart.y1Axis
-  .tickFormat(function(d) { return 'Importe $' + d3.format(',f')(d) });
+  .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
 
   // chart.bars.forceY([0]).padData(false);
+  // chart.lines.forceY([0,2]);
 
   // chart.x2Axis.tickFormat(function(d) {
   //     return d3.time.format('%Y')(new Date(yearData[0].values[d].x))
@@ -79,7 +79,6 @@ nv.addGraph(function() {
 
   return chart;
 });
-
 
 // console.log(summaries.type)
 
@@ -109,6 +108,7 @@ for (t in summaries.type) {
 }
 
 // console.log(typeData);
+
 // Pie Chart
 if (isSupplierType) {
   nv.addGraph(function() {
@@ -118,7 +118,8 @@ if (isSupplierType) {
         .color(d3.scale.category20().range().slice(1))
         .showLabels(true);
 
-      d3.select("#piechartSupplier svg")
+      d3.select("#piechartSupplier")
+          .append("svg")
           .datum(typeData.supplier)
           .transition().duration(350)
           .call(chart);
@@ -135,91 +136,21 @@ if (isBuyerType) {
         .color(d3.scale.category20().range().slice(1))
         .showLabels(true);
 
-      d3.select("#piechartBuyer svg")
+      // d3.select("#piechartBuyer")
+      //     .append("svg")
+      //     .append("text")
+      //     .attr("x", 200)             
+      //     .attr("y", 100)
+      //     .attr("text-anchor", "middle")  
+      //     .text("Sample Charts")
+      //     .call(chart);
+
+      d3.select("#piechartBuyer")
+          .append("svg")
           .datum(typeData.buyer)
           .transition().duration(350)
           .call(chart);
 
-    return chart;
-  });
-}
-
-
-
-
-
-// ---- Evolución de contratos chart
-function evolucionDeContratos(summary) {
-  console.log("Evolución de contratos chart")
-  return nv.addGraph(function() {
-    var chart = nv.models.linePlusBarChart()
-    .margin({top: 50, right: 50, bottom: 30, left: 75})
-    .x(function(d, i) { return i })
-    .y(function(d) { return d[1] })
-    .color(d3.scale.category20().range().slice(1))
-    .showLabels(true)
-    .showLegend(true)
-    .focusEnable(false)
-    ;
-
-    // chart.bars.showValues(true);
-
-    let importeValues = []
-    let cantidadValues = []
-    let lastYear;
-    for (year in summary) {
-      if (lastYear) {
-        while(parseInt(year)>parseInt(lastYear)+1) {
-          lastYear = parseInt(lastYear)+1;
-          let lastUnixYear = new Date((lastYear+1).toString()).getTime();
-          importeValues.push([new Date(lastUnixYear).getFullYear(),0])
-          cantidadValues.push([new Date(lastUnixYear).getFullYear(),0])
-        }
-      }
-
-      let unixYear = new Date((parseInt(year)+1).toString()).getTime();
-      importeValues.push([new Date(unixYear).getFullYear(),summary[year].value])
-      cantidadValues.push([new Date(unixYear).getFullYear(),summary[year].count])
-
-      lastYear = year;
-    }
-
-
-    var data = [{
-      "key": "Importe",
-      "bar": true,
-      values: importeValues
-    },{
-      "key": "Cantidad",
-      values: cantidadValues
-    }];
-
-    chart.xAxis
-    .showMaxMin(true)
-    .tickFormat(function(d) {
-      return data[0].values[d] && data[0].values[d][0] || d
-    });
-
-    chart.y1Axis
-    .tickFormat(d3.format('$,f'));
-
-
-    chart.y2Axis
-    .tickFormat(d3.format(',f'));
-
-    chart.bars.forceY([0,1000]);
-
-    // chart.bars.forceX([0]);
-
-    chart.lines.forceY([0,2]);
-
-    d3.select('#chart svg')
-    .datum(data)
-    .transition().duration(500)
-    .call(chart)
-    ;
-
-    nv.utils.windowResize(chart.update);
 
     return chart;
   });
@@ -231,65 +162,7 @@ function evolucionDeContratos(summary) {
 
 
 
-
-//------ Evolución chart
-function flagsGraph(summary) {
-  console.log("Gráficos de banderas")
-  return nv.addGraph(function() {
-    var chart = nv.models.lineChart()
-    .margin({top: 30, right: 15, bottom: 30, left: 30})
-    .x(function(d, i) { return i })
-    .y(function(d) { return d[1] })
-    .color(d3.scale.category20().range().slice(1))
-    // .showLabels(true)
-    // .showLegend(true)
-    .focusEnable(false)
-    .useInteractiveGuideline(true)
-    ;
-
-    let puntajeValues = []
-
-    for (year in summary[0].years) {
-      let unixYear = new Date((parseInt(summary[0].years[year].year)+1).toString()).getTime();
-      let yearDisplay = new Date(unixYear).getFullYear();
-      let valueDisplay = (Number(summary[0].years[year].criteria_score.total_score)*100).toFixed(2);
-      puntajeValues.push([yearDisplay,valueDisplay])
-    }
-    puntajeValues = reverse(puntajeValues);
-
-    var data = [{
-      "key": "Puntaje",
-      values: puntajeValues
-    }];
-    console.log("calidad graph",data)
-
-    chart.xAxis
-    .showMaxMin(true)
-    .tickFormat(function(d) {
-      return data[0].values[d] && data[0].values[d][0] || d
-    });
-
-    chart.yAxis
-    .tickFormat(d3.format(',f'));
-
-
-    chart.lines.forceY([0,100]);
-
-    d3.select('#flags-graph svg')
-    .datum(data)
-    .transition().duration(500)
-    .call(chart)
-    ;
-
-    nv.utils.windowResize(chart.update);
-
-    return chart;
-  });
-}
-
-
-
-
+// 
 
 
 
@@ -427,6 +300,7 @@ function flujosProveedores(relationSummary) {
   // links: org-contrato, contrato-department, department-dependency
 
   data = summaries.relation;
+  console.log(summaries.relation);
 
   var dOver = [];
 
@@ -570,7 +444,9 @@ function flujosProveedores(relationSummary) {
       .attr("stroke-width", function(d) {
         var sw;
         // console.log(activeNodes.indexOf(d.id));
-        sw = d.weight;
+        // sw = d.weight;
+        sw = 2;
+
         // if(activeLinks.indexOf(d.id) != -1) {
         // } else {
         //   sw = 1;
@@ -631,6 +507,137 @@ function flujosProveedores(relationSummary) {
 
   update();
   return chart;
+}
+
+function addLink (relationSummary,link) {
+  if (relationSummary.links.length > 1000) return false;
+
+  var source = _.findWhere(relationSummary.nodes,{"label": link.source});
+  var target = _.findWhere(relationSummary.nodes,{"label": link.target});
+
+  if (source&&target) {
+
+    // console.log("addLink",link,sourceId,target.id);
+    if (!source.fixedWeight){
+      source.weight = source.weight + 0.5;
+    }
+    if (!_.findWhere(relationSummary.links,{source: source.id,target: target.id})) {
+      // console.log("addLink",link);
+      relationSummary.links.push({id:relationSummary.links.length,source:source.id,target:target.id})
+    }
+  }
+  else {
+    console.error("Faltó agregar algún nodo",link);
+  }
+}
+function addNode(relationSummary,node) {
+  if (relationSummary.nodes.length > 400) return false;
+
+  if (!_.findWhere(relationSummary.nodes,{label: node.label})) {
+    // console.log("addNode",node);
+    node.id = relationSummary.nodes.length;
+    relationSummary.nodes.push(node);
+  }
+  return true;
+}
+
+function maxContractAmount(contracts) {
+  return contracts[0].contracts[0].value.amount;
+}
+
+function drawGraphs(drawn,org) {
+  var oc = Session.get("orgContracts");
+  console.log("drawGraphs",drawn);
+  drawn[0] = true;
+
+  if (oc && oc.length > 0) {
+    console.log("orgContracts",oc,drawn);
+
+    //Esto es para que corra una sola vez
+
+    var orgName = org.name;
+
+    //Generar los objetos para cada gráfico
+    let summary = {}
+    let typeSummary = {}
+    let ramoSummary = {}
+    let relationSummary = {nodes: [], links: []}
+
+    let nodeNumber = 1;
+    let linkNumber = 1;
+
+    //organización 1
+    addNode(relationSummary,{"label":orgName,"weight":50,"color":"#b22200","cluster":1},nodeNumber);
+
+    for (c in oc) {
+      let cc = oc[c];
+      let year = new Date(cc.contracts[0].period.startDate).getFullYear();
+      if (!summary[year]) {
+        summary[year] = {value: 0, count: 0}
+      }
+      //TODO: sumar los amounts en MXN siempre
+
+      summary[year].value += cc.contracts[0].value.amount;
+      summary[year].count += 1;
+
+      if (!typeSummary[cc.tender.procurementMethodMxCnet]) {
+        typeSummary[cc.tender.procurementMethodMxCnet] = 0;
+      }
+      typeSummary[cc.tender.procurementMethodMxCnet]++;
+
+      var buyer = cc.parties[0];
+      var ramo = buyer.id.toString().substr(0,3);
+      if (!ramoSummary[ramo]) {
+        ramoSummary[ramo] = {};
+      }
+      if (!ramoSummary[ramo][buyer.memberOf.name]) {
+        ramoSummary[ramo][buyer.memberOf.name] = 0;
+      }
+      //TODO: sumar los amounts en MXN siempre
+      ramoSummary[ramo][buyer.memberOf.name] += cc.contracts[0].value.amount;
+
+      // Nodos dependencia: org, unidadesCompradoras, contratos, proveedores
+      // Nodos empresa: org, contratos, department, dependency
+      // links: org-contrato, contrato-department, department-dependency
+
+      //adjudicación 2
+      addNode(relationSummary,{"label":cc.tender.procurementMethodMxCnet,"weight":10,"color":"#282ffb","cluster":1})
+      addLink(relationSummary,{source:orgName,target:cc.tender.procurementMethodMxCnet});
+      //contratos 3
+      addNode(relationSummary,{"label":cc.contracts[0].title,"weight":(cc.contracts[0].value.amount/maxContractAmount(oc))*25,fixedWeight: true, "color":"#282f6bcc","cluster":2})
+      addLink(relationSummary,{source:cc.tender.procurementMethodMxCnet,target:cc.contracts[0].title});
+      //departamento 4
+      addNode(relationSummary,{"label":cc.buyer.name,"weight":10,"color":"#aec7e8","cluster":3})
+      addLink(relationSummary,{source:cc.contracts[0].title,target:cc.buyer.name});
+
+      if (org.isPublic()) {
+        // proveedor 5
+        let added = addNode(relationSummary,{"label":cc.parties[1].name,"weight":15,"color":"#ff7f0e","cluster":4})
+        if (added) {
+          addLink(relationSummary,{source:cc.parties[1].name,target:cc.buyer.name});
+        }
+
+      }
+      else {
+        // dependencia 5
+        // console.log(1,cc.parties[0].memberOf.name);
+        let added = addNode(relationSummary,{"label":cc.parties[0].memberOf.name,"weight":15,"color":"#ff7f0e","cluster":4})
+        // console.log(2,added,cc.buyer.name);
+        if (added == true) {
+          addLink(relationSummary,{source:cc.parties[0].memberOf.name,target:cc.buyer.name});
+          // console.log(3);
+        }
+        else {
+          // console.log("4")
+        }
+      }
+
+    }
+    // console.log("relationSummary",relationSummary);
+
+
+  }
+  return drawn;
 }
 
 

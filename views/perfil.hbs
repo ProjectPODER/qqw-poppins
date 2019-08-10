@@ -153,12 +153,27 @@
         <div class="col-m-12 col-6">
           <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
           <div id="piechartBuyer">
-            <svg></svg>
+            {{#if svg}}
+            Comprador
+            {{/if}}
           </div>
           <div id="piechartSupplier">
-            <svg></svg>
+            {{#if svg}}
+            Vendedor
+            {{/if}}
           </div>
         </div>
+        {{!-- <div class="col-m-12 col-6">
+          <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
+          <div class="col-m-6 col-6">
+            <div id="piechartBuyer">
+            </div>
+          </div>
+          <div class="col-m-6 col-6">
+            <div id="piechartSupplier">
+            </div>
+          </div>
+        </div> --}}
         <div class="col-m-12 col-12 mt-60">
           <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
           <div id="graph-container">
