@@ -67,14 +67,15 @@ app.engine('.hbs', hbs({
       },
       format_score: function(value) {
         //TODO
-        if (value) {
-          return value.toLocaleString('es-MX',
+        if (value || value === 0) {
+          return (value*100).toLocaleString('es-MX',
             {
               style: 'decimal',
+              minimumFractionDigits: 2,
               maximumFractionDigits: 2
             });
         }
-        return 'Importe desconocido';
+        return '(no evaluado)';
       },
       format_currency: function(value) {
         if (value == "MXN") {

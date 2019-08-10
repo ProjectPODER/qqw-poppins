@@ -8,7 +8,7 @@
           <form>
             <h4 class="search-title">Filtrar</h4>
             <fieldset name="organizaciones">
-              <p class="search-title">Buscar institución</p>
+              <p class="search-title">Buscar unidad compradora</p>
               <div class="multiple-controls-group">
                 <div class="multiple-control-container">
                   <input type="text" name="filtername" placeholder="NOMBRE" class="org_name_filter multiple-control" value="{{filters.filtername.value }}">
@@ -17,89 +17,16 @@
               </div>
               <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
             </fieldset>
-            <fieldset name="no-contratos">
-               <p class="search-title">Número de contratos por comprador</p>
-               <a class="search-label count-bucket" data-bucket="0-2"><p>Hasta 2</p></a>
-               <a class="search-label count-bucket" data-bucket="2-10"><p>2 a 10</p></a>
-               <a class="search-label count-bucket" data-bucket="10-100"><p>10 a 100</p></a>
-               <a class="search-label count-bucket" data-bucket="100-1000"><p>100 a 1,000</p></a>
-               <a class="search-label count-bucket" data-bucket="1000-"><p>Más de mil</p></a>
-               <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
-               <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
-             </fieldset>
-              <fieldset name="importe" style="margin-bottom: 7rem;">
-                <p class="search-title">Importe del contrato por comprador
-                  <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
-                </p>
-                <a class="search-label importe-bucket" data-bucket="0-1000000">
-                  <p>Menor a 1 millón</p>
-                </a>
-                <a class="search-label importe-bucket" data-bucket="1000000-10000000">
-                  <p>Entre 1 millón y 10 millones</p>
-                </a>
-                <a class="search-label importe-bucket" data-bucket="10000000-100000000">
-                  <p>Entre 10 millones y 100 millones</p>
-                </a>
-                <a class="search-label importe-bucket" data-bucket="100000000-100000000000">
-                  <p>Entre 100 millones y 100 mil millones</p>
-                </a>
-                <a class="search-label importe-bucket" data-bucket="100000000000-">
-                  <p>Más de 100 mil millones</p>
-                </a>
-                <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
-                <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
-                <p>
-                  <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
-                </p>
-              </fieldset>
-              <fieldset name="no-contratos">
-                 <p class="search-title">Número de contratos por vendedor</p>
-                 <a class="search-label"><p>Hasta 2</p></a>
-                 <a class="search-label"><p>2 a 5</p></a>
-                 <a class="search-label"><p>5 a 10</p></a>
-                 <a class="search-label"><p>10 a 100</p></a>
-                 <a class="search-label"><p>Más de 1000</p></a>
-                 <input type="text" name="cantidad-minima" placeholder="Mínimo" class="search-amount" value="{{filters.cantidad-minima.value }}">
-                 <input type="text" name="cantidad-maxima" placeholder="Máximo" class="search-amount" value="{{filters.cantidad-maxima.value }}">
-               </fieldset>
-                <fieldset name="importe" style="margin-bottom: 7rem;">
-                  <p class="search-title">Importe del contrato por vendedor
-                    <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
-                  </p>
-                  <a class="search-label importe-bucket" data-bucket="0-1000">
-                    <p>Menor a mil</p>
-                  </a>
-                  <a class="search-label importe-bucket" data-bucket="1000-10000">
-                    <p>Entre mil y 10 mil</p>
-                  </a>
-                  <a class="search-label importe-bucket" data-bucket="10000-100000">
-                    <p>Entre 10 mil y 100 mil</p>
-                  </a>
-                  <a class="search-label importe-bucket" data-bucket="100000-1000000">
-                    <p>Entre 100 mil y 1 millón</p>
-                  </a>
-                  <a class="search-label importe-bucket" data-bucket="1000000-">
-                    <p>Más de 1 millón</p>
-                  </a>
-                  <input type="text" id="importe-minimo" name="importe-minimo" placeholder="Mínimo" class="search-amount" value="{{filters.importe-minimo.value}}">
-                  <input type="text" id="importe-maximo" name="importe-maximo" placeholder="Máximo" class="search-amount" value="{{filters.importe-maximo.value}}">
-                  <p>
-                    <input type="checkbox" id="importe-desconocido" checked="checked"> Incluir contratos con importe desconocido
-                  </p>
-                </fieldset>
-            <input type="hidden" name="size" value="{{ filters.size.value }}">
-            <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
-            <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
           </form>
         </div>
     </div>
     <div class="col-9 col-m-9 orgs-content">
         <div class="row document-header">
           <div class="col-3 col-m-12">
-            <h2 class="document-title">Instituciones</h2>
+            <h2 class="document-title">Unidaes compradoras</h2>
           </div>
           <div class="col-9 col-m-12">
-            <p class="document-description">Entidades y dependencias del gobierno, incluyendo empresas productivas del estado.</p>
+            <p class="document-description">Listado de unidades compradoras ordenadas de acuerdo a su calificación en TodosLosContratos.mx.</p>
           </div>
         </div>
         <div class="row mb-2 tools-section">
@@ -174,14 +101,15 @@
                       </a>
                     </div>
                     <div class=" js-ocid no-title col-2 col-m-2">
-                      <a href="/instituciones-publicas/{{id}}" class="button-link">Ver institución</a>
+                      <a href="/instituciones-publicas/{{id}}" class="button-link">Ver detalles</a>
+                      <a href="/instituciones-publicas/{{id}}" class="button-link">Solicitar informe</a>
                     </div>
                     <div class=" col-m-8 col-8">
                       <div class="cardItemTitle"></div>
                       <div class="cardItemData"></div>
                       <p class="js-person-type" style="font-size: 16px;">
                         <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
-                        Institución
+                        Unidad compradora de {{ memberships.parent.0.parent_name }}
                       </p>
                       {{#if contract_count.supplier}}
                       <p class="js-person-type" style="font-size: 16px;">
@@ -195,17 +123,13 @@
                             por {{format_amount contract_amount.supplier}} pesos mexicanos.
                           {{/ifCond}}
                         </span>
-                        {{else}}
-                          <span class="js-person-type">
-                            Sin contratos como proveedor.
-                          </span>
                         {{/if}}
                       </p>
                       <p class="js-person-type" style="font-size: 16px;">
                         {{#if contract_count.buyer}}
                         <span class="js-contract-count">
                           <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
-                          {{contract_count.buyer}} contrato(s) como comprador
+                          {{contract_count.buyer}} contrato(s)
                         </span>
                         por
                         <span class="js-contract-amount">
@@ -216,6 +140,15 @@
                           Sin contratos como comprador.
                         </span>
                         {{/if}}
+                      </p>
+                      <p class="js-flags">
+                        Puntaje: {{ format_score flags.0.criteria_score.total_score }}
+                        Trazabilidad: {{ format_score flags.0.criteria_score.traz }}
+                        Transparencia: {{ format_score flags.0.criteria_score.trans }}
+                        Competitividad: {{ format_score flags.0.criteria_score.comp }}
+                        Temporalidad: {{ format_score flags.0.criteria_score.trans }}
+                        Confiabilidad: {{ format_score flags.0.criteria_score.conf }}
+
                       </p>
                     </div>
                     {{!-- <div class=" js-score col-2 col-m-2 hidden">
