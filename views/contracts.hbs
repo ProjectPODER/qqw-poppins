@@ -5,7 +5,7 @@
           <h4 class="search-title">Filtros Avanzados</h4>
 
           <fieldset name="proveedores">
-            <p class="search-title">FILTRAR PROVEEDORES <a data-toggle="tooltip" data-placement="right" title="Nombre o Razón Social del Proveedor o Contratista ganador de la contratación."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
+            <p class="search-title">FILTRAR PROVEEDORES <a data-toggle="tooltip" data-placement="right" title="Nombre o Razón Social del Proveedor o Contratista ganador de la contratación."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-2px;"></a></p>
             <div class="multiple-controls-group">
               <div class="multiple-control-container">
                 <input type="text" name="proveedor" placeholder="Nombre de proveedor" class="supplier_name_filter multiple-control"value="{{filters.proveedor.value }}">
@@ -17,7 +17,7 @@
           </fieldset>
 
           <fieldset name="dependencias">
-            <p class="search-title">FILTRAR DEPENDENCIAS <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
+            <p class="search-title">FILTRAR DEPENDENCIAS <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-3px;"></a></p>
             <div class="multiple-controls-group">
               <div class="multiple-control-container">
                 <input type="text" name="dependencia" placeholder="Nombre de dependencia" class="dependency_name_filter multiple-control" value="{{filters.dependencia.value }}">
@@ -29,7 +29,7 @@
           </fieldset>
 
           <fieldset name="vigencia">
-            <p class="search-title">Vigencia de contrato <a data-toggle="tooltip" data-placement="right" title="Fecha de inicio y fecha de expiración del contrato reportado por la Unidad Compradora."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
+            <p class="search-title">Vigencia de contrato <a data-toggle="tooltip" data-placement="right" title="Fecha de inicio y fecha de expiración del contrato reportado por la Unidad Compradora."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-2px;"></a></p>
             <div class="term-contract">
               <p class="search-label">Fecha de Inicio</p>
               <input type="date" id="from_date_contracts_index" name="from_date_contracts_index" value="{{filters.from_date_contracts_index.value}}" min="2002-01-01">
@@ -50,7 +50,7 @@
             - Procedimiento por regla general que debiera utilizarse para la adquisición de bienes y servicios.
             b) Invitación a cuando menos tres proveedores o contratistas.
             c) Adjudicación Directa.
-            - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a></p>
+            - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-3px;"></a></p>
             <select id="tipo-adquisicion" name="tipo-adquisicion" class="search-select">
               <option value="">Todos</option>
               <option value="Adjudicación Directa Federal" {{#ifCond filters.tipo-adquisicion.value "==" "Adjudicación Directa Federal" }}selected="selected"{{/ifCond}}>Adjudicación directa</option>
@@ -60,7 +60,7 @@
           </fieldset>
           <fieldset name="importe" style="margin-bottom: 7rem;">
             <p class="search-title">Importe del contrato
-              <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+              <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-2px;"></a>
             </p>
             <a class="search-label importe-bucket bucket" data-bucket="0-50000" data-bucket-name="importe" data-bucket-type="contrato">
               <p>Menor a 50 mil</p>
