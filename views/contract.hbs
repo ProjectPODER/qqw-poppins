@@ -48,7 +48,7 @@
          {{/each}}
         {{#if result.records.0.compiledRelease.parties.length }}
         <div class="col-m-12 col-12 link-lf-contracts">
-            <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><i class="fa fa-question"></i></a></p>
+            <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
             {{!-- {{#each result.records.0.compiledRelease.parties.0.memberOf.0.name}} --}}
               <a href="/{{get_party_type records compiledRelease.parties.0.id }}/{{result.records.0.compiledRelease.parties.0.memberOf.0.id}}"><p class="js-data">{{result.records.0.compiledRelease.parties.0.memberOf.0.name}}</p></a>
             {{!-- {{/each}} --}}
@@ -56,19 +56,19 @@
         {{/if}}
         {{#if result.records.0.compiledRelease.buyer }}
         <div class="col-m-7 col-7">
-            <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><i class="fa fa-question"></i></a></p>
+            <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
             <p class="js-data">{{result.records.0.compiledRelease.buyer.name}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.parties.0.identifier.id }}
         <div class="col-m-5 col-5">
-            <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><i class="fa fa-question"></i></a></p>
+            <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
             <p class="js-data">{{result.records.0.compiledRelease.parties.0.identifier.id}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.parties.contactPoint }}
         <div class="col-m-12 col-12 link-lf-contracts">
-            <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><i class="fa fa-question"></i></a></p>
+            <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><img src="../images/icons/info.svg" alt="icon" class="info-icon">i class="fa fa-question"></i></a></p>
             <p class="js-data">{{result.records.0.compiledRelease.parties.contactPoint.name}}</p>
         </div>
         {{/if}}
