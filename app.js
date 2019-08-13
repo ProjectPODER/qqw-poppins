@@ -33,14 +33,14 @@ app.engine('.hbs', hbs({
     helpers: {
       api_domain: function() { return process.env.API_DOMAIN; },
       autocomplete_url: function() { return process.env.AUTOCOMPLETE_URL; },
-      // moment: function(date) {
-      //   if (date) {
-      //     moment_helper = require('helper-moment');
-      //     return moment_helper(date);
-      //   }
-      //   return "Fecha desconocida";
-      // },
-      moment: require('helper-moment'),
+      moment: function(date,a,b,c) {
+        if (date) {
+          moment_helper = require('helper-moment');
+          return moment_helper(date,a,b,c);
+        }
+        return "Fecha desconocida";
+      },
+      // moment: require('helper-moment'),
       format_amount: function(value) {
         if (value) {
           return "$"+value.toLocaleString('es-MX',
@@ -71,6 +71,7 @@ app.engine('.hbs', hbs({
       },
       flag_recommendations: function (org, count) {
         // console.log(org);
+        //TODo: Elegir cuales mostrar
 
         const recommendations = [
           {category: "Confiabilidad", name:"Una bandera de confiabilidad", score: 0.342342, text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo."},
@@ -165,13 +166,29 @@ app.engine('.hbs', hbs({
         }
         return 'Valor desconocido';
       },
+      hilight: function(needle, haystack) {
+        const r = new RegExp("("+needle+")","i");
+        console.log(r,haystack);
+        return haystack.replace(r, "<span class='hilight'>$1</span>");
+      },
+      match: function(needle, haystack) {
+        if (haystack.toString().match(needle)) {
+          return true;
+        }
+        for (e in haystack) {
+          if (haystack[e].toString().match(needle)) {
+            return true;
+          }
+        }
+        return false;
+      },
       get_party_type: function(records,party_id) {
         let party;
         if (records) {
-          party = _.find(records[0].compiledRelease.parties,{id: party_id});
+          party = _.find(records.compiledRelease.parties,{id: party_id});
           if (!party) {
             //TODO: I think this never happens
-            party = _.find(records[0].compiledRelease.parties,(party,i,parties) => {
+            party = _.find(records.compiledRelease.parties,(party,i,parties) => {
               if (party.memberOf) { return party.memberOf.id == party_id }
               // console.log("get_party_type memberOf",party);
             })
