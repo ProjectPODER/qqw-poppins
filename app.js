@@ -71,6 +71,7 @@ app.engine('.hbs', hbs({
       },
       flag_recommendations: function (org, count) {
         // console.log(org);
+        //TODo: Elegir cuales mostrar
 
         const recommendations = [
           {category: "Confiabilidad", name:"Una bandera de confiabilidad", score: 0.342342, text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo."},
