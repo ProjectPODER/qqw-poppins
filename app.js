@@ -169,10 +169,10 @@ app.engine('.hbs', hbs({
       get_party_type: function(records,party_id) {
         let party;
         if (records) {
-          party = _.find(records[0].compiledRelease.parties,{id: party_id});
+          party = _.find(records.compiledRelease.parties,{id: party_id});
           if (!party) {
             //TODO: I think this never happens
-            party = _.find(records[0].compiledRelease.parties,(party,i,parties) => {
+            party = _.find(records.compiledRelease.parties,(party,i,parties) => {
               if (party.memberOf) { return party.memberOf.id == party_id }
               // console.log("get_party_type memberOf",party);
             })

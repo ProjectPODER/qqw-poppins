@@ -3212,6 +3212,9 @@ header .navbar .autosuggest i,
     display: block;
   }
 }
+.supplier-hidden {
+  display: none;
+}
 footer {
   background-color: #21018b;
   padding: 1rem;

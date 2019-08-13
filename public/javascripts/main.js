@@ -242,6 +242,13 @@ $('.delete-blob-filter').click(function(event, instance) {
   console.log(location.search,field,re);
 })
 
+$('.supplier-list-toggle').click(function(event, instance) {
+  let parent = $(event.target).parents(".js-suppliers");
+  // console.log("supplier toggle",parent);
+  parent.find(".supplier-hidden").toggle();
+})
+
+
 $("#index_length").change(function(){
  var selected = $('#index_length').val();
     location.search= removeQueryField("size") + "&size="+selected;

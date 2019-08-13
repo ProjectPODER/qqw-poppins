@@ -189,28 +189,28 @@
                     <div class="cardItemTitle">Dependencia</div>
                     {{!-- <div class="cardItemData"></div> --}}
                     <ul class="dependency-cell list-unstyled">
-                      <li>
-                        <a href="/{{get_party_type records compiledRelease.parties.0.id }}/{{compiledRelease.parties.0.memberOf.0.id}}">{{compiledRelease.parties.0.memberOf.0.name}}</a>
+                      <li class="text-overflow">
+                        <a href="/{{get_party_type this compiledRelease.parties.0.id }}/{{compiledRelease.parties.0.memberOf.0.id}}" title="{{compiledRelease.parties.0.memberOf.0.name}}">{{compiledRelease.parties.0.memberOf.0.name}}</a>
                       </li>
                     </ul>
                   </div>
                   <div class=" js-suppliers col-4 col-m-4">
                     <div class="cardItemTitle">Proveedores ({{compiledRelease.awards.length }})</div>
                     <div class="col-12 col-m-12 flex">
-                      {{#each (limit compiledRelease.awards 3)}}
-                        <div class="col-7 col-m-7">
+                      {{#each compiledRelease.awards }}
+                        <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
                           {{#each suppliers}}
-                            <p class="text-overflow" title="{{name}}"><a href="/{{get_party_type ../../records.id }}/{{id}}"><b>&bull;</b>{{name}}</a></p>
+                            <p class="text-overflow" title="{{name}}"><a href="/{{get_party_type ../../this id }}/{{id}}"><b>&bull;</b>{{name}}</a></p>
                           {{/each}}
                         </div>
-                        <div class="col-5 col-m-5">
+                        <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
                           <p class="amount-index-contracts text-overflow" title="{{format_amount value.amount}}">{{format_amount value.amount}}</p>
                         </div>
                       {{/each}}
                     </div>
                     {{#ifCond compiledRelease.awards.length '>' 3}}
                     <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-                      <a href="" class="">Ver todos</a>
+                      <a class="supplier-list-toggle">Ver todos</a>
                     </div>
                     {{/ifCond}}
                   </div>
