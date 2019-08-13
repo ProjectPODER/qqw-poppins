@@ -58,6 +58,27 @@ app.engine('.hbs', hbs({
         //TODO
         return date;
       },
+      flag_name: function (flag_id) {
+        const flag_names = {
+          conf: "Confiabilidad",
+          traz: "Trazabilidad",
+          trans: "Transparencia",
+          comp: "Competitividad",
+          temp: "Temporalidad",
+          total_score: "Puntaje total"
+        }
+        return flag_names[flag_id];
+      },
+      flag_recommendations: function (org, count) {
+        // console.log(org);
+
+        const recommendations = [
+          {category: "Confiabilidad", name:"Una bandera de confiabilidad", score: 0.342342, text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo."},
+          {category: "Trazabilidad", name:"Una bandera de trazabilidad", score: 0.342342, text: "Recomendaciones  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo. Confiabilidad"},
+          {category: "Transparencia", name:"Una bandera de transparencia", score: 0.342342, text: count+"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo."},
+        ]
+        return recommendations;
+      },
       filter_array: function(haystack,property,needle) {
         const search = {};
         search[property] = needle;
@@ -73,7 +94,7 @@ app.engine('.hbs', hbs({
               style: 'decimal',
               minimumFractionDigits: 2,
               maximumFractionDigits: 2
-            });
+            })+"%";
         }
         return '(no evaluado)';
       },

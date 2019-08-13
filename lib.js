@@ -243,6 +243,7 @@ function entityPage(collection,templateName,idFieldName) {
       limit: 1,
       sort: ""
     };
+    const flag_count = req.query.flag_count || 3;
     filters[idFieldName] = req.params.id;
 
     result = await getAPI(req,collection,filters);
@@ -251,7 +252,7 @@ function entityPage(collection,templateName,idFieldName) {
       err.status = 404;
       throw(err);
     }
-    res.render(templateName, {result: result.data[0], type: collection});
+    res.render(templateName, {result: result.data[0], type: collection, flag_count: flag_count});
   })
 }
 
