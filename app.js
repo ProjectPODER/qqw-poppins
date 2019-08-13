@@ -33,14 +33,14 @@ app.engine('.hbs', hbs({
     helpers: {
       api_domain: function() { return process.env.API_DOMAIN; },
       autocomplete_url: function() { return process.env.AUTOCOMPLETE_URL; },
-      // moment: function(date) {
-      //   if (date) {
-      //     moment_helper = require('helper-moment');
-      //     return moment_helper(date);
-      //   }
-      //   return "Fecha desconocida";
-      // },
-      moment: require('helper-moment'),
+      moment: function(date,a,b,c) {
+        if (date) {
+          moment_helper = require('helper-moment');
+          return moment_helper(date,a,b,c);
+        }
+        return "Fecha desconocida";
+      },
+      // moment: require('helper-moment'),
       format_amount: function(value) {
         if (value) {
           return "$"+value.toLocaleString('es-MX',
@@ -165,6 +165,22 @@ app.engine('.hbs', hbs({
           return value.toLocaleString('es-MX');
         }
         return 'Valor desconocido';
+      },
+      hilight: function(needle, haystack) {
+        const r = new RegExp("("+needle+")","i");
+        console.log(r,haystack);
+        return haystack.replace(r, "<span class='hilight'>$1</span>");
+      },
+      match: function(needle, haystack) {
+        if (haystack.toString().match(needle)) {
+          return true;
+        }
+        for (e in haystack) {
+          if (haystack[e].toString().match(needle)) {
+            return true;
+          }
+        }
+        return false;
       },
       get_party_type: function(records,party_id) {
         let party;

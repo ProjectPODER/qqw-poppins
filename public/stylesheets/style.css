@@ -3215,6 +3215,9 @@ header .navbar .autosuggest i,
 .supplier-hidden {
   display: none;
 }
+.hilight {
+  background: #ec0;
+}
 footer {
   background-color: #21018b;
   padding: 1rem;

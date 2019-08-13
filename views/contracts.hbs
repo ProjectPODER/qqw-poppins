@@ -13,7 +13,6 @@
               </div>
 
             </div>
-            <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control">
           </fieldset>
 
           <fieldset name="dependencias">
@@ -25,7 +24,6 @@
               </div>
 
             </div>
-            <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control">
           </fieldset>
 
           <fieldset name="vigencia">
@@ -190,7 +188,7 @@
                     {{!-- <div class="cardItemData"></div> --}}
                     <ul class="dependency-cell list-unstyled">
                       <li class="text-overflow">
-                        <a href="/{{get_party_type this compiledRelease.parties.0.id }}/{{compiledRelease.parties.0.memberOf.0.id}}" title="{{compiledRelease.parties.0.memberOf.0.name}}">{{compiledRelease.parties.0.memberOf.0.name}}</a>
+                        <a href="/{{get_party_type this compiledRelease.parties.0.id }}/{{compiledRelease.parties.0.memberOf.0.id}}" title="{{compiledRelease.parties.0.memberOf.0.name}}">{{{hilight ../filters.dependencia.value compiledRelease.parties.0.memberOf.0.name}}}</a>
                       </li>
                     </ul>
                   </div>
@@ -200,7 +198,7 @@
                       {{#each compiledRelease.awards }}
                         <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
                           {{#each suppliers}}
-                            <p class="text-overflow" title="{{name}}"><a href="/{{get_party_type ../../this id }}/{{id}}"><b>&bull;</b>{{name}}</a></p>
+                            <p class="text-overflow" title="{{name}}"><a href="/{{get_party_type ../../this id }}/{{id}}"><b>&bull;</b>{{{hilight ../../../filters.proveedor.value name}}}</a></p>
                           {{/each}}
                         </div>
                         <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
