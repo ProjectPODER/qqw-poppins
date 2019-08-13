@@ -5,20 +5,25 @@
         <div class="gd-col-left-wrapper col-m-12">
           {{!-- {{#if result.title }} --}}
             <div class="description-data-title">
+              <h4 class="contract-type">
+                  <a href="/">Inicio</a> >
+                  {{#ifCond type '==' 'persons'}}
+                    <a href="/personas">Personas y proveedores</a>
+                  {{/ifCond}}
+                  {{#ifCond type '==' 'institutions'}}
+                    <a href="/instituciones-publicas">
+                      Instituciones públicas o empresas productivas del estado
+                    </a>
+                  {{/ifCond}}
+                  {{#ifCond type '==' 'companies'}}
+                  <a href="/empresas">
+                    Empresas o asociaciones civiles
+                  </a>
+                  {{/ifCond}}
+              </h4>
               <h3>
                 <img src="../images/icons/{{#ifCond type '==' 'persons'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institutions'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'companies'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
                 {{ result.name}}
-                <h4 class="contract-type">
-                  {{#ifCond type '==' 'persons'}}
-                    Proveedor(a)
-                  {{/ifCond}}
-                  {{#ifCond type '==' 'institutions'}}
-                    Institución pública o empresa productiva del estado
-                  {{/ifCond}}
-                  {{#ifCond type '==' 'companies'}}
-                    Empresa o asociación civil
-                  {{/ifCond}}
-                </h4>
               </h3>
             </div>
           {{!-- {{/if}} --}}
@@ -41,14 +46,14 @@
               </a>
 
             </li>
-            {{#if result.top3contracts.buyer}}
+            {{#if result.summaries.top_buyers }}
             <li>
               <a href="#compradores" class="page-scroll button-link">
                 Compradores
               </a>
             </li>
             {{/if}}
-            {{#if result.top3contracts.supplier}}
+            {{#if result.summaries.top_suppliers }}
             <li>
               <a href="#proveedores" class="page-scroll button-link">
                 Proveedores
@@ -60,17 +65,22 @@
                 Contratos
               </a>
             </li>
+            {{#ifCond result.memberships.parent.length "||" result.memberships.child.length }}
             <li>
               <a href="#uc" class="page-scroll button-link">
                 Unidades Compradoras
               </a>
             </li>
+            {{/ifCond}}
             {{#ifCond type '!=' 'companies'}}
+            {{#if result.flags }}
+
             <li>
               <a href="#evaluacion" class="page-scroll button-link evaluacion">
                 <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación y recomendaciones
               </a>
             </li>
+            {{/if}}
             {{/ifCond}}
           </ul>
         </div>
@@ -185,15 +195,15 @@
     </div>
   </div>
 </section>
-{{#if result.top3contracts.buyer}}
+{{#if result.summaries.top_buyers }}
 <section class="profile" id="compradores">
   <div class="row">
     <div class="container">
       <div class="col-m-12 col-12">
         <h4 class="description-data-subtitle">COMPRADORES PRINCIPALES</h4>
-        {{#each result.top3contracts.buyer }}
-        <p class="principal-suppliers"><a href="/orgs/{{!-- {{simpleName dependency}} --}}"><img src="../images/icons/dependencia-gray.svg" alt="organización" class="icon-lf icon-lf-organization">
-          {{dependency}}
+        {{#each result.summaries.top_buyers }}
+        <p class="principal-suppliers"><a href="/{{this.details.type}}/{{this.memberOf.0.id}}"><img src="../images/icons/dependencia-gray.svg" alt="Institución pública" class="icon-lf icon-lf-organization">
+          {{this.memberOf.0.name}} ({{this.name}}) - <span>{{format_amount contract_amount_top_buyer}} pesos mexicanos</span>
         </a></p>
         {{/each}}
       </div>
@@ -204,18 +214,16 @@
   </div>
 </section>
 {{/if}}
-{{#if result.top3contracts.supplier}}
+{{#if result.summaries.top_suppliers }}
 <section class="profile" id="proveedores">
   <div class="row">
     <div class="container">
       <div class="col-m-12 col-12">
         <h4 class="description-data-subtitle">PROVEEDORES PRINCIPALES</h4>
-        {{#each result.top3contracts.supplier }}
-        <p class="principal-suppliers">
-          <a href="/orgs/{{!-- {{simpleName supplier}} --}}"><img src="../images/icons/empresa-gray.png" alt="organización" class="icon-lf icon-lf-organization">
-            {{supplier}}
-          </a>
-        </p>
+        {{#each result.summaries.top_suppliers }}
+        <p class="principal-suppliers"><a href="/{{this.details.type}}/{{this.id}}"><img src="../images/icons/empresa-gray.svg" alt="Empresa" class="icon-lf icon-lf-organization">
+          {{this.name}} - <span>{{format_amount contract_amount_top_supplier}} pesos mexicanos</span>
+        </a></p>
         {{/each}}
       </div>
       <div class="col-12 col-m-12 mt-2">
@@ -235,7 +243,7 @@
     </div>
   </div>
 </section>
-{{!-- {{#if result.memberships.length}} --}}
+{{#ifCond result.memberships.parent.length "||" result.memberships.child.length }}
 <section class="profile" id="uc">
   <div class="row">
     <div class="container">
@@ -255,8 +263,9 @@
     </div>
   </div>
 </section>
-{{!-- {{/if}} --}}
-{{#ifCond type '!=' 'company'}}
+{{/ifCond}}
+{{#ifCond type '!=' 'companies'}}
+{{#if result.flags }}
 <section class="profile bg-gray" id="evaluacion">
   <div class="row">
     <div class="container">
@@ -267,36 +276,98 @@
         <div class="col-m-6 col-6 right-align">
           <h4 class="amount-data">
             {{!-- {{format_amount result.amount}} --}}
-            TOTAL SCORE: 0.3
+            Puntaje total: {{ format_score result.flags.0.criteria_score.total_score }}
           </h4>
         </div>
       </div>
+      <style media="screen">
+      .flags_graph_bar {
+      }
+      .flag_name {
+        float: left;
+        line-height: 2em;
+      }
+      .flag_pole {
+        position: relative;
+        height: 2em;
+        margin: 2em 2em 2em 9em;
+      }
+      .flag_marker {
+        position: absolute;
+        background: inherit;
+        border: 3px solid black;
+        color: black;
+        margin-top: -1.2em;
+        padding: 0.5em;
+        border-radius: 3em;
+        width: 4.5em;
+        height: 4.5em;
+        line-height: 3.5em;
+        text-align: center;
+        margin-left: -2.7em;
+      }
+      .flag_total_score {
+        background: hsl(100,100%,50%);
+      }
+      .flag_trans {
+        background: hsl(20,80%,70%);
+      }
+      .flag_temp {
+        background: hsl(30,80%,70%);
+      }
+      .flag_comp {
+        background: hsl(40,80%,70%);
+      }
+      .flag_traz {
+        background: hsl(50,80%,70%);
+      }
+      .flag_conf {
+        background: hsl(60,80%,70%);
+      }
+      .flag_pole_min,
+      .flag_pole_max {
+        background: rgba(0,0,0,0.5);
+        height: 2em;
+        float: left;
+      }
+      </style>
       <div class="col-12-col-m-12">
         <h3>Gráfico de puntajes de cada categoría</h3>
+        {{#each result.flags.0.criteria_score }}
+        <div class="flags_graph_bar">
+          <div class="flag_name">
+            {{flag_name @key}}
+          </div>
+          <div class="flag_pole flag_{{@key}}">
+            <div class="flag_pole_min" style="width: {{format_score this}}">
+
+            </div>
+
+            <div class="flag_pole_max" style="width: {{format_score (100-this)}}">
+
+            </div>
+            <div class="flag_marker" style="left: {{format_score this}}">
+              {{format_score this}}
+            </div>
+          </div>
+        </div>
+
+        {{/each}}
       </div>
       <div class="col-12-col-m-12 mt-60">
+        {{# each (flag_recommendations result.flags flag_count) }}
         <div class="col-4 col-m-12 category-profile">
-          <p><b>Categoría:</b> Texto</p>
-          <p><b>Nombre:</b> Texto</p>
-          <p><b>Puntaje:</b> Texto</p>
-          <p><b>Recomendación:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo.</p>
+          <p><b>Categoría:</b> {{category}}</p>
+          <p><b>Nombre:</b> {{name}}</p>
+          <p><b>Puntaje:</b> {{format_score score }}</p>
+          <p><b>Recomendación:</b> {{text}}</p>
         </div>
-        <div class="col-4 col-m-12 category-profile">
-          <p><b>Categoría:</b> Texto</p>
-          <p><b>Nombre:</b> Texto</p>
-          <p><b>Puntaje:</b> Texto</p>
-          <p><b>Recomendación:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo.</p>
-        </div>
-        <div class="col-4 col-m-12 category-profile">
-          <p><b>Categoría:</b> Texto</p>
-          <p><b>Nombre:</b> Texto</p>
-          <p><b>Puntaje:</b> Texto</p>
-          <p><b>Recomendación:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod libero quam corporis, omnis id, tenetur totam ipsam sed debitis, eos, repudiandae! Eius facere repellendus, reprehenderit voluptate obcaecati at odit illo.</p>
-        </div>
+        {{/each}}
       </div>
     </div>
   </div>
 </section>
+{{/if}}
 {{/ifCond}}
 
 {{> send_info_form}}

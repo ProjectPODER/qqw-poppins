@@ -112,18 +112,22 @@ const filterElements = [
   { htmlFieldName: "maximo-importe-contrato", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["contracts"] },
   { htmlFieldName: "solo-importe-conocido", apiFieldNames:["compiledRelease.contracts.value.amount"], fieldLabel:"Importe desconocido", type:"bool", collections: ["contracts"] },
   { htmlFieldName: "tipo-adquisicion", apiFieldNames:["compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string", collections: ["contracts"] },
-	{ htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true, collections: ["all"] },
+  { htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true, collections: ["all"] },
+  { htmlFieldName: "page", apiFieldNames:["offset"], fieldLabel:"Página", type:"integer", hidden: true, collections: ["all"] },
 ]
 
 
 function getFilters(collection, query, defaultFilters) {
-  // console.log("getFilters", collection, query, defaultFilters);
+  // console.log("getFilters 1", collection, query, defaultFilters);
   let filters = clone(defaultFilters) || {};
   for (filterElement in filterElements) {
-  	if ((query[filterElements[filterElement].htmlFieldName] || filterElements[filterElement].type === "bool") && (filterElements[filterElement].collections.includes(collection) || filterElements[filterElement].collections == ["all"]) ) {
+    // console.log("getFilters 2",filterElements[filterElement].htmlFieldName,query[filterElements[filterElement].htmlFieldName],filterElements[filterElement].collections);
+  	if ((query[filterElements[filterElement].htmlFieldName] || filterElements[filterElement].type === "bool") && (filterElements[filterElement].collections.includes(collection) || filterElements[filterElement].collections.includes("all")) ) {
   		for (apiField in filterElements[filterElement].apiFieldNames) {
   			// console.log(filterElements[filterElement].apiFieldNames[apiField],filterElements[filterElement].htmlFieldName);
+        const apiFieldName = filterElements[filterElement].apiFieldNames[apiField];
   			let value = query[filterElements[filterElement].htmlFieldName];
+
         if (filterElements[filterElement].type == "string") {
   				value = "/"+value+"/i"
   			}
@@ -138,10 +142,12 @@ function getFilters(collection, query, defaultFilters) {
             continue;
           }
   			}
+        if (apiFieldName == "offset") {
+          value = value*25;
+        }
         if (filterElements[filterElement].modifier) {
           value = filterElements[filterElement].modifier+value;
         }
-        const apiFieldName = filterElements[filterElement].apiFieldNames[apiField];
         if (filterElements[filterElement].repeated) {
           if (!filters[apiFieldName]) {
             filters[apiFieldName] = [];
@@ -151,7 +157,7 @@ function getFilters(collection, query, defaultFilters) {
         else {
           filters[apiFieldName] = value;
         }
-        console.log(apiFieldName,value);
+        // console.log(apiFieldName,value);
   		}
   	}
   }
@@ -209,7 +215,7 @@ function cleanFilters(filters) {
     	}
   	}
   }
-  console.log("cleanFilters",cleanFilters);
+  // console.log("cleanFilters",cleanFilters);
   return cleanFilters;
 }
 
@@ -237,6 +243,7 @@ function entityPage(collection,templateName,idFieldName) {
       limit: 1,
       sort: ""
     };
+    const flag_count = req.query.flag_count || 3;
     filters[idFieldName] = req.params.id;
 
     result = await getAPI(req,collection,filters);
@@ -245,7 +252,7 @@ function entityPage(collection,templateName,idFieldName) {
       err.status = 404;
       throw(err);
     }
-    res.render(templateName, {result: result.data[0], type: collection});
+    res.render(templateName, {result: result.data[0], type: collection, flag_count: flag_count});
   })
 }
 

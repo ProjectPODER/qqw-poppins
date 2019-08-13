@@ -51,13 +51,39 @@ $('.easy-search-input').typeahead(
         '</div>'
       ].join('\n'),
       suggestion: function(data){
-        if (data.type == "contracts") {
-          return '<a href="/' + data.type + '/' + data.compiledRelease.ocid + '?supplier=' + data.suppliers_org + '"><div>' + data.title + '</div></a>';
+        let type = "";
+        let id = "";
+        let text = "";
+        switch (data.type) {
+            case "contract":
+              type = "contratos";
+              id = data.compiledRelease.ocid;
+              text = data.title;
+            break;
+            case "person":
+              type = "personas";
+              id = data.id;
+              text = data.name;
+              break;
+            case "institution":
+              type = "instituciones-publicas";
+              id = data.id;
+              text = data.name;
+              break;
+            case "company":
+              type = "empresas";
+              id = data.id;
+              text = data.name;
+              break;
         }
-        return '<a href="/' + data.type + '/' + data.id + '"><div>' + data.name + '</div></a>';
+        return '<a href="/' + type + '/' + id + '"><div>' + text + '</div></a>';
       },
       footer: function(data){
-        return '<hr><div class="tt-footer"><a href="/personas?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/instituciones-publicas?filtername=' + data.query + '"' + '>' + 'Buscar instituciones con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer orgs"><a href="/empresas?filtername=' + data.query + '"' + '>' + 'Buscar empresas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' + '<div class="tt-footer contracts"><a>' + 'Buscar contratos con '+ '"<b>' + data.query + '</b>"' + '</a></div>';
+        return '<hr><div class="tt-footer"><a href="/personas?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
+        '<div class="tt-footer orgs"><a href="/instituciones-publicas?filtername=' + data.query + '"' + '>' + 'Buscar instituciones con '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
+        '<div class="tt-footer orgs"><a href="/empresas?filtername=' + data.query + '"' + '>' + 'Buscar empresas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
+        '<div class="tt-footer contracts"><a href="/contratos?proveedor=' + data.query + '">' + 'Buscar contratos comprados por '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
+        '<div class="tt-footer contracts"><a href="/contratos?dependencia=' + data.query + '">' + 'Buscar contratos provistos por '+ '"<b>' + data.query + '</b>"' + '</a></div>';
       },
     }
   }

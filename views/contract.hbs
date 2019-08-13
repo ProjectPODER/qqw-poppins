@@ -4,10 +4,10 @@
       <div class="gd-col-left-wrapper col-m-12">
         {{!-- {{#if result.data.records.0.compileRelease.contracts.0.title}} --}}
           <div class="description-data-title">
-              <h3>
-                <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
-                {{result.records.0.compiledRelease.contracts.0.title}}
-              </h3>
+            <h3>
+              <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
+              {{result.records.0.compiledRelease.contracts.0.title}}
+            </h3>
             <div class="col-m-6 col-6">
               <h4 class="contract-type">Contrato</h4>
             </div>
@@ -252,59 +252,57 @@
           <h4 class="description-data-subtitle">CONVOCATORIA</h4>
         </div>
         {{#if result.records.0.compiledRelease.tender.procurementMethodDetails }}
-        <div class="col-m-12 col-12">
+        <div class="col-m-6 col-6">
             <p class="js-title-data">Tipo de procedimiento <a data-toggle="tooltip" data-placement="right" title="Refiere al tipo de procedimiento:
             a) Licitación Pública.
             - Procedimiento por regla general que debiera utilizarse para la adquisición de bienes y servicios.
             b) Invitación a cuando menos tres proveedores o contratistas.
             c) Adjudicación Directa.
-            - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><i class="fa fa-question"></i></a></p>
+            - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
             <p class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodDetails}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.additionalProcurementCategories }}
-        <div class="col-m-6 col-4">
+        <div class="col-m-6 col-6">
             <p class="js-title-data">Tipo de contratación <a data-toggle="tooltip" data-placement="right" title="Muestra el tipo de contratación:
 
             a) Adquisiciones incluye: adquisiciones, arrendamientos y servicios.
-            b) Obra Pública incluye: obras públicas y los servicios relacionados con las mismas."><i class="fa fa-question"></i></a></p>
-            {{#each result.records.0.compiledRelease.tender.additionalProcurementCategories}}
-              <p class="js-data">{{this}}</p>
-            {{/each}}
+            b) Obra Pública incluye: obras públicas y los servicios relacionados con las mismas."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
+            <p class="js-data">{{result.records.0.compiledRelease.tender.additionalProcurementCategories}}</p>
         </div>
         {{/if}}
-        {{#if resultfecha }}
-        <div class="col-m-12 col-12">
-            <p class="js-title-data">Fecha de licitación</p>
-        </div>
+        {{#if result.records.0.compiledRelease.tender.period }}
+          <div class="col-m-12 col-12">
+              <p class="js-title-data mb-1">Fecha de licitación</p>
+          </div>
+          {{#if result.records.0.compiledRelease.tender.period.startDate }}
+          <div class="col-m-6 col-6 mb-2">
+              <span class="js-title-data">Inicio: </span>
+              <span class="js-data">{{moment result.records.0.compiledRelease.tender.period.startDate date lang="es" format="LL"}}</span>
+          </div>
+          {{/if}}
+          {{#if result.records.0.compiledRelease.tender.period.endDate }}
+          <div class="col-m-6 col-6 mb-2">
+              <span class="js-title-data">Fin: </span>
+              <span class="js-data">{{moment result.records.0.compiledRelease.tender.period.endDate date lang="es" format="LL"}}</span>
+          </div>
+          {{/if}}
         {{/if}}
-        {{#if result.fecha }}
-        <div class="col-m-6 col-4">
-            <span class="js-title-data">Inicio: </span>
-            <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.startDate}} --}}10 DE OCTUBRE DE 2012</span>
-        </div>
-        {{/if}}
-        {{#if result.fecha }}
-        <div class="col-m-6 col-8">
-            <span class="js-title-data">Fin: </span>
-            <span class="js-data">{{!-- {{moment_LL tender.tenderPeriod.endDate}} --}}21 DE NOVIEMBRE DE 2012</span>
-        </div>
-        {{/if}}
-        {{#if result.estatus }}
-        <div class="col-m-6 col-4 mt-2">
+        {{#if result.records.0.compiledRelease.tender.status }}
+        <div class="col-m-6 col-6">
             <p class="js-title-data">Estatus de la licitación</p>
-            <p class="js-data">{{!-- {{tender.status}} --}}COMPLETE</p>
+            <p class="js-data">{{result.records.0.compiledRelease.tender.status}}</p>
         </div>
         {{/if}}
-        {{#if result.caracter }}
-        <div class="col-m-6 col-8 mt-2">
+        {{#if result.records.0.compiledRelease.tender.procurementMethodCharacterMxCnet }}
+        <div class="col-m-6 col-6">
             <p class="js-title-data">Carácter <a data-toggle="tooltip" data-placement="right" title="Indica si el procedimiento es I) Nacional, II) Internacional o III) Internacional bajo TLC
 
             - Nacional: sólo pueden participar personas de nacionalidad mexicana y los bienes a adquirir sean productos del país y cuenten, por lo menos, con un 50% de contenido nacional.
             - Internacional abiertas: podrán participar licitantes mexicanos y extranjeros, cualquiera que sea el origen de los bienes a adquirir.
             - Internacional bajo cobertura de tratados (TLC): sólo podrán participar licitantes mexicanos y extranjeros de países con los que nuestro país tenga celebrado un tratado de libre comercio con capítulo de compras gubernamentales.
-            Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público"><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{tender.procurementMethodCharacterMxCnet}} --}}INTERNACIONAL</p>
+            Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
+            <p class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodCharacterMxCnet}}</p>
         </div>
         {{/if}}
       </div>
@@ -315,26 +313,22 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
         </div>
-        {{#if result.estatus }}
+        {{#if result.records.0.compiledRelease.awards.0.status }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Estatus de la adjudicación</p>
-            <p class="js-data">{{!-- {{getField object=awards field="status"}} --}}ACTIVE</p>
+            <p class="js-data">{{ result.records.0.compiledRelease.awards.0.status}}</p>
         </div>
         {{/if}}
-        {{#if result.monto }}
+        {{#if result.records.0.compiledRelease.awards.0.value }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Monto adjudicado</p>
-            <p class="js-data">
-              {{!-- {{#let value3=(getField object=awards field="value")}}
-              {{format_amount value3.amount}}
-              {{value3.currency}} --}}$23,738,400,000.00 MXN
-              {{!-- {{/let}} --}}</p>
+            <p class="js-data">{{format_amount result.records.0.compiledRelease.awards.0.value.amount}} {{ result.records.0.compiledRelease.awards.0.value.currency}}</p>
         </div>
         {{/if}}
-        {{#if result.fechafallo }}
+        {{#if result.records.0.compiledRelease.awards.0.date }}
         <div class="col-m-6 col-8">
-            <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><i class="fa fa-question"></i></a></p>
-            <p class="js-data">{{!-- {{moment_LL (getField object=awards field="date")}} --}}27 DE NOVIEMBRE DE 2012</p>
+            <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
+            <p class="js-data">{{moment result.records.0.compiledRelease.awards.0.date date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
       </div>
@@ -345,24 +339,22 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">CONTRATOS</h4>
         </div>
-        {{#if result.importe }}
+        {{#if result.records.0.compiledRelease.contracts.0.value }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Importe</p>
-            <p class="js-data">{{!-- {{#let value2=(getField object=contracts field="value")}}{{format_amount value2.amount}} {{value2.currency}}{{/let}} --}}$23,738,400,000.00 MXN</p>
+            <p class="js-data">{{format_amount result.records.0.compiledRelease.contracts.0.value.amount}} {{ result.records.0.compiledRelease.contracts.0.value.currency}}</p>
         </div>
         {{/if}}
-        {{#if result.estatus }}
+        {{#if result.records.0.compiledRelease.contracts.0.status }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Estatus</p>
-            <p class="js-data">{{!-- {{getField object=contracts field="statusMxCnet"}} --}}</p>
+            <p class="js-data">{{result.records.0.compiledRelease.contracts.0.status}}</p>
         </div>
         {{/if}}
-        {{#if result.periodo }}
+        {{#if result.records.0.compiledRelease.contracts.0.period }}
         <div class="col-m-6 col-8">
             <p class="js-title-data">Período</p>
-            <p class="js-data">{{!-- {{#let period=(getField object=contracts field="period")}}
-                {{moment_LL period.startDate}} - {{moment_LL period.endDate}}
-              {{/let}} --}}31 DE DICIEMBRE DE 2012 - 30 DE DICIEMBRE DE 2018</p>
+            <p class="js-data">{{moment result.records.0.compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} {{#if result.records.0.compiledRelease.contracts.0.period.endDate }} - {{moment result.records.0.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}{{/if}}</p>
         </div>
         {{/if}}
       </div>
@@ -381,11 +373,6 @@
         </div>
         {{!-- {{/if}} --}}
       </div>
-
-
-
-
-     
     </div>
   </div>
 </div>
