@@ -196,13 +196,13 @@
                     <div class="cardItemTitle">Proveedores ({{compiledRelease.awards.length }})</div>
                     <div class="col-12 col-m-12 flex">
                       {{#each compiledRelease.awards }}
-                        <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
+                        <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
                           {{#each suppliers}}
-                            <p class="text-overflow" title="{{name}}"><a href="/{{get_party_type ../../this id }}/{{id}}"><b>&bull;</b>{{{hilight ../../../filters.proveedor.value name}}}</a></p>
+                            <p class="text-overflow supplier-list-item" title="{{name}}"><a href="/{{get_party_type ../../this id }}/{{id}}"><b>&bull;</b> {{{hilight ../../../filters.proveedor.value name}}}</a></p>
                           {{/each}}
                         </div>
                         <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
-                          <p class="amount-index-contracts text-overflow" title="{{format_amount value.amount}}">{{format_amount value.amount}}</p>
+                          <p class="amount-index-contracts text-overflow supplier-list-item" title="{{format_amount value.amount}}">{{format_amount value.amount}}</p>
                         </div>
                       {{/each}}
                     </div>

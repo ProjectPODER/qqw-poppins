@@ -3218,6 +3218,9 @@ header .navbar .autosuggest i,
 .hilight {
   background: #ec0;
 }
+.supplier-list-item {
+  margin-bottom: 0.1em;
+}
 footer {
   background-color: #21018b;
   padding: 1rem;

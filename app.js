@@ -40,7 +40,6 @@ app.engine('.hbs', hbs({
         }
         return "Fecha desconocida";
       },
-      // moment: require('helper-moment'),
       format_amount: function(value) {
         if (value) {
           return "$"+value.toLocaleString('es-MX',
@@ -172,11 +171,14 @@ app.engine('.hbs', hbs({
         return haystack.replace(r, "<span class='hilight'>$1</span>");
       },
       match: function(needle, haystack) {
-        if (haystack.toString().match(needle)) {
+        const r = new RegExp("("+needle+")","i");
+        // console.log(r,haystack);
+        if (haystack.toString().match(r)) {
           return true;
         }
         for (e in haystack) {
-          if (haystack[e].toString().match(needle)) {
+          // console.log(haystack[e],haystack[e].name.toString(),r);
+          if (haystack[e].name.toString().match(r)) {
             return true;
           }
         }
