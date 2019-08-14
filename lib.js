@@ -22,7 +22,7 @@ async function getFeed(req) {
 }
 
 // API
-async function getAPI(req,collection,filters) {
+async function getAPI(req,collection,filters,debug) {
   let Qqw = require('qqw');
 
   var client = new Qqw({rest_base: process.env.API_BASE});
@@ -43,7 +43,11 @@ async function getAPI(req,collection,filters) {
     params[f] = filters[f];
   }
 
-  console.log("getApi",collection,params);
+  if (debug) {
+    params.debug="true";
+    console.log("getApi",collection,params);
+  }
+
 
   try {
     result = await client.get_promise(collection, params);
@@ -226,8 +230,9 @@ function searchPage(collectionName, defaultFilters, templateName) {
    // console.log("searchPage",defaultFilters);
    const filters = getFilters(collectionName, req.query, defaultFilters);
    const current_page = req.query.page || 0;
+   const debug = req.query.debug || false;
    const recommendations = []; //TODO
-   const result = await getAPI(req, collectionName, filters);
+   const result = await getAPI(req, collectionName, filters, debug);
    const arrayNum = [1,2,3,4,5].slice(0, (result.pages < 5 ? result.pages: 5));
 
    filters.offset = current_page * 25;
@@ -245,9 +250,10 @@ function entityPage(collection,templateName,idFieldName) {
       embed: true
     };
     const flag_count = req.query.flag_count || 3;
+    const debug = req.query.debug || false;
     filters[idFieldName] = req.params.id;
 
-    result = await getAPI(req,collection,filters);
+    result = await getAPI(req,collection,filters,debug);
     if (!result.data[0]) {
       let err = new Error("No encontrado: "+collection);
       err.status = 404;
@@ -261,13 +267,15 @@ function homePage() {
   return catchError(async function(req, res, next) {
     let feed, stats, alert;
 
+    const debug = req.query.debug || false;
+
     // Always render home even without API
     try {
       feed = await getFeed(req);
-      persons = await getAPI(req,"persons",{limit:1, sort:"-date"});
-      institutions = await getAPI(req,"institutions",{limit:1, sort:"-date"});
-      companies = await getAPI(req,"companies",{limit:1, sort:"-date"});
-      contracts = await getAPI(req,"contracts",{limit:1, sort:"-compiledRelease.date"});
+      persons = await getAPI(req,"persons",{limit:1, sort:"-date"}, debug);
+      institutions = await getAPI(req,"institutions",{limit:1, sort:"-date"}, debug);
+      companies = await getAPI(req,"companies",{limit:1, sort:"-date"}, debug);
+      contracts = await getAPI(req,"contracts",{limit:1, sort:"-compiledRelease.date"}, debug);
 
       stats = {
         persons: {
