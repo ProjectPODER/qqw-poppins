@@ -184,27 +184,81 @@ app.engine('.hbs', hbs({
         }
         return false;
       },
+      get_record_flags: function(contract_flags) {
+        // console.log("get_record_flags 1",contract_flags);
+        const record_flags = {
+          total_score: 0,
+          transparencia: 0,
+          temporalidad: 0,
+          competitividad: 0,
+          trazabilidad: 0,
+          rules: []
+        }
+        const rules = {};
+
+        for (contract in contract_flags) {
+          record_flags.total_score += contract_flags[contract].criteria_score.total_score;
+          record_flags.transparencia += contract_flags[contract].criteria_score.trans;
+          record_flags.temporalidad += contract_flags[contract].criteria_score.temp;
+          record_flags.competitividad += contract_flags[contract].criteria_score.comp;
+          record_flags.trazabilidad += contract_flags[contract].criteria_score.traz;
+
+          for (category in contract_flags[contract].rules_score) {
+            for (rule in contract_flags[contract].rules_score[category]) {
+              if (contract_flags[contract].rules_score[category][rule] === 0) {
+                if (!rules[rule]) {
+                  rules[rule] = 1;
+                }
+                else {
+                  rules[rule]++;
+                }
+              }
+            }
+          }
+        }
+        record_flags.total_score = record_flags.total_score/contract_flags.length
+        record_flags.transparencia = record_flags.transparencia/contract_flags.length;
+        record_flags.temporalidad = record_flags.temporalidad/contract_flags.length;
+        record_flags.competitividad = record_flags.competitividad/contract_flags.length;
+        record_flags.trazabilidad = record_flags.trazabilidad/contract_flags.length;
+        for (rule in rules) {
+          let rule_obj = {
+            name: rule,
+            count: rules[rule]
+          };
+          record_flags.rules.push(rule_obj);
+        }
+
+        // console.log("get_record_flags 2",record_flags);
+
+        return {flags: record_flags};
+      },
       get_party_type: function(records,party_id) {
         let party;
         if (records) {
           party = _.find(records.compiledRelease.parties,{id: party_id});
+          // console.log("get_party_type not", party);
           if (!party) {
-            //TODO: I think this never happens
             party = _.find(records.compiledRelease.parties,(party,i,parties) => {
-              if (party.memberOf) { return party.memberOf.id == party_id }
+              // console.log(party.memberOf,party_id);
+              if (party.memberOf) { return party.memberOf[0].id == party_id }
               // console.log("get_party_type memberOf",party);
             })
+            // console.log("get_party_type",party)
+            if (party) {
+              return party.details.type;
+            }
           }
           if (party && party.details) {
             return party.details.type;
           }
           else {
-            console.log("get_party_type not found",party_id,records[0].compiledRelease.parties);
+            console.log("get_party_type not found",party_id);
             return "unknown";
           }
         }
         else {
-          console.log("get_party_type no record",party_id);
+          console.log("get_party_type no record");
           return "unknown";
 
         }
