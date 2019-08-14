@@ -233,6 +233,14 @@ app.engine('.hbs', hbs({
 
         return {flags: record_flags};
       },
+      get_type_url: function(type) {
+        switch(type) {
+          case "institution": return "instituciones-publicas"; break;
+          case "company": return "empresas"; break;
+          case "contract": return "contratos"; break;
+          case "persons": return "personas"; break;
+        }
+      },
       get_party_type: function(records,party_id) {
         let party;
         if (records) {

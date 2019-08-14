@@ -241,7 +241,8 @@ function entityPage(collection,templateName,idFieldName) {
   return catchError(async function(req, res, next) {
     let filters = {
       limit: 1,
-      sort: ""
+      sort: "",
+      embed: true
     };
     const flag_count = req.query.flag_count || 3;
     filters[idFieldName] = req.params.id;

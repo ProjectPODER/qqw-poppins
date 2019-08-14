@@ -251,12 +251,12 @@
         <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
         {{#if result.memberships.parent}}
         <p>
-          Esta institución tiene como {{result.memberships.parent.0.role}} a: {{#each result.memberships.parent}}<a href="/{{this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
+          Esta institución tiene como {{result.memberships.parent.0.role}} a: {{#each result.memberships.parent}}<a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
         </p>
         {{/if}}
         {{#if result.memberships.child}}
         <p>
-          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}}
+          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}}
         </p>
         {{/if}}
       </div>
