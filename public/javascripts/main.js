@@ -76,7 +76,7 @@ $('.easy-search-input').typeahead(
               text = data.name;
               break;
         }
-        return '<a href="/' + type + '/' + id + '"><div>' + text + '</div></a>';
+        return '<a class="suggestion" href="/' + type + '/' + id + '"><div>' + text + '</div></a>';
       },
       footer: function(data){
         return '<hr><div class="tt-footer"><a href="/personas?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
@@ -91,6 +91,18 @@ $('.easy-search-input').typeahead(
 
 $(".twitter-typeahead").css("width","100%");
 
+$('.easy-search-input').keypress(function(e) {
+  var keycode = (e.keyCode ? e.keyCode : e.which);
+  // console.log("esi keypress", keycode)
+  if (keycode == 13 || keycode === undefined) {
+    console.log("esi keypress 13",$(".easy-search-input.landing-search-inputtext.tt-input").val(),$("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')"))
+    location.href= $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
+  }
+})
+
+$("#first-search").click(function() {
+  $('.easy-search-input').trigger("keypress",13);
+})
 
 // Tooltips
 $('[data-toggle="tooltip"]').tooltip({placement: 'right'});
