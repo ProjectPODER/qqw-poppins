@@ -1,32 +1,32 @@
 <section class="profile">
   <div class="row">
-    <div class="container mt-2">
+    <div class="container mt-1">
+      <div class="breadcrumb">
+        <h4>
+            <a href="/">Inicio</a> >
+            {{#ifCond type '==' 'persons'}}
+              <a href="/personas">Personas y proveedores</a>
+            {{/ifCond}}
+            {{#ifCond type '==' 'institutions'}}
+              <a href="/instituciones-publicas">
+                Instituciones públicas o empresas productivas del estado
+              </a>
+            {{/ifCond}}
+            {{#ifCond type '==' 'companies'}}
+            <a href="/empresas">
+              Empresas o asociaciones civiles
+            </a>
+            {{/ifCond}}
+        </h4>
+      </div>
       <div class='datos-generales clearfix'>
         <div class="gd-col-left-wrapper col-m-12">
-          {{!-- {{#if result.title }} --}}
             <div class="description-data-title">
-              <h4 class="contract-type">
-                  <a href="/">Inicio</a> >
-                  {{#ifCond type '==' 'persons'}}
-                    <a href="/personas">Personas y proveedores</a>
-                  {{/ifCond}}
-                  {{#ifCond type '==' 'institutions'}}
-                    <a href="/instituciones-publicas">
-                      Instituciones públicas o empresas productivas del estado
-                    </a>
-                  {{/ifCond}}
-                  {{#ifCond type '==' 'companies'}}
-                  <a href="/empresas">
-                    Empresas o asociaciones civiles
-                  </a>
-                  {{/ifCond}}
-              </h4>
               <h3>
                 <img src="../images/icons/{{#ifCond type '==' 'persons'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institutions'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'companies'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
                 {{ result.name}}
               </h3>
             </div>
-          {{!-- {{/if}} --}}
         </div>
       </div>
       <div class="col-12 col-m-12 ">
@@ -202,9 +202,8 @@
       <div class="col-m-12 col-12">
         <h4 class="description-data-subtitle">COMPRADORES PRINCIPALES</h4>
         {{#each result.summaries.top_buyers }}
-        <p class="principal-suppliers"><a href="/{{this.details.type}}/{{this.memberOf.0.id}}"><img src="../images/icons/dependencia-gray.svg" alt="Institución pública" class="icon-lf icon-lf-organization">
-          {{this.memberOf.0.name}} ({{this.name}}) - <span>{{format_amount contract_amount_top_buyer}} pesos mexicanos</span>
-        </a></p>
+        <p class="description-data-amount"><a href="/{{this.details.type}}/{{this.memberOf.0.id}}"><img src="../images/icons/dependencia-gray.svg" alt="Institución pública" class="icon-lf icon-lf-organization">
+          {{this.memberOf.0.name}} ({{this.name}})</a> - {{format_amount contract_amount_top_buyer}} pesos mexicanos</p>
         {{/each}}
       </div>
       <div class="col-12 col-m-12 mt-2">
@@ -221,9 +220,8 @@
       <div class="col-m-12 col-12">
         <h4 class="description-data-subtitle">PROVEEDORES PRINCIPALES</h4>
         {{#each result.summaries.top_suppliers }}
-        <p class="principal-suppliers"><a href="/{{this.details.type}}/{{this.id}}"><img src="../images/icons/empresa-gray.svg" alt="Empresa" class="icon-lf icon-lf-organization">
-          {{this.name}} - <span>{{format_amount contract_amount_top_supplier}} pesos mexicanos</span>
-        </a></p>
+        <p class="description-data-amount"><a href="/{{this.details.type}}/{{this.id}}"><img src="../images/icons/empresa-gray.svg" alt="Empresa" class="icon-lf icon-lf-organization">
+          {{this.name}}</a> - {{format_amount contract_amount_top_supplier}} pesos mexicanos</p>
         {{/each}}
       </div>
       <div class="col-12 col-m-12 mt-2">

@@ -23,9 +23,9 @@
                <input type="text" name="minimo-cantidad-comprador" id="minimo-cantidad-comprador" placeholder="Mínimo" class="search-amount" value="{{filters.minimo-cantidad-comprador.value }}">
                <input type="text" name="maximo-cantidad-comprador" id="maximo-cantidad-comprador" placeholder="Máximo" class="search-amount" value="{{filters.maximo-cantidad-comprador.value }}">
              </fieldset>
-              <fieldset name="importe" style="margin-bottom: 7rem;">
+              <fieldset name="importe">
                 <p class="search-title">Importe del contrato como comprador
-                  <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+                  <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
                 </p>
                 <a class="search-label importe-bucket bucket" data-bucket="0-1000000" data-bucket-name="importe" data-bucket-type="comprador">
                   <p>Menor a 1 millón</p>
@@ -58,7 +58,7 @@
                </fieldset>
                 <fieldset name="importe" style="margin-bottom: 7rem;">
                   <p class="search-title">Importe del contrato como proveedor
-                    <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+                    <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
                   </p>
                   <a class="search-label importe-bucket bucket" data-bucket="0-1000" data-bucket-name="importe" data-bucket-type="proveedor">
                     <p>Menor a mil</p>
@@ -184,8 +184,9 @@
                         </span>
                         por
                         <span class="js-contract-amount">
-                          {{format_amount contract_amount.buyer}} pesos mexicanos.
+                          {{format_amount contract_amount.buyer}} 
                         </span>
+                        pesos mexicanos.
                         {{else}}
                         <span class="js-person-type">
                           Sin contratos como comprador.
@@ -198,12 +199,14 @@
                           <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
                           {{contract_count.supplier}} contrato(s) como proveedor
                         </span>
+                        por
                         <span class="js-contract-amount">
                           {{#ifCond contract_amount.supplier '==' '0'}}
                           {{else}}
-                            por {{format_amount contract_amount.supplier}} pesos mexicanos.
+                            {{format_amount contract_amount.supplier}} 
                           {{/ifCond}}
                         </span>
+                        pesos mexicanos.
                         {{else}}
                           <span class="js-person-type">
                             Sin contratos como proveedor.
