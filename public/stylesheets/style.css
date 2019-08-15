@@ -227,6 +227,17 @@ h6,
 p {
   margin: 0 0 10px;
 }
+.flexbox-container-modal {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+.flexbox-container-modal > .column-50 {
+  width: 50%;
+}
+.flexbox-container-modal > .column-50:first-child {
+  margin-right: 20px;
+}
 .text-overflow {
   overflow: hidden;
   white-space: nowrap;
@@ -1301,7 +1312,7 @@ a.see-contract {
   font-size: 1.1rem;
 }
 .affix {
-  top: 124px;
+  top: 197px;
   position: fixed !important;
 }
 .tooltip {
