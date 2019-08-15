@@ -590,7 +590,6 @@ section.tabs h1 {
 .triplet-last-update {
   font-size: 0.7rem;
   color: #808080;
-  text-align: right;
   bottom: 0;
 }
 .sources-icons {
@@ -2906,6 +2905,24 @@ div.dataTables_paginate li.last a:after {
   width: 50px;
   height: 50px;
   overflow: scroll;
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.close {
+  float: right;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
 }
 @media (min-width: 768px) {
   .modal-dialog {
