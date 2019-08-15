@@ -376,8 +376,14 @@ a:focus {
 .mt-60 {
   margin-top: 60px;
 }
+.mt-1 {
+  margin-top: 1rem;
+}
 .mt-2 {
   margin-top: 2rem;
+}
+.mt-4 {
+  margin-top: 4rem;
 }
 .ml-25 {
   margin-left: 25px;
@@ -584,7 +590,7 @@ section.tabs h1 {
 .triplet-last-update {
   font-size: 0.7rem;
   color: #808080;
-  text-align: left;
+  text-align: right;
   bottom: 0;
 }
 .sources-icons {
@@ -1025,11 +1031,13 @@ button.reset-filters {
   margin: 2em 1em 0 0;
 }
 .js-contract-count,
-.js-company-count {
+.js-company-count,
+.js-contract-amount {
   color: #2b00f7;
 }
 .js-person-type,
-.js-foundation-date {
+.js-foundation-date,
+.js-flags {
   color: #9b9b9b;
 }
 .js-contract-count,
@@ -1113,17 +1121,14 @@ button.reset-filters {
 .viewWrapper .js-data-lf {
   margin-bottom: 2rem;
 }
-.org-type,
-.person-type,
-.contract-type {
-  margin-bottom: 3rem;
-}
-.org-type,
-.person-type,
-.contract-type,
+.type,
 .description-data-subtitle {
   color: #2d1c9d;
   font-weight: bold;
+}
+.breadcrumb {
+  padding-top: 2rem;
+  margin-bottom: 20px;
 }
 .if-address-org {
   margin-bottom: 2rem;
@@ -2796,6 +2801,125 @@ div.dataTables_paginate li.last a:after {
 #profile-menu ul .evaluacion img {
   margin-right: 5px;
   width: 20px;
+}
+.modal-open {
+  overflow: hidden;
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  -o-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+  box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+}
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.modal-backdrop.in {
+  opacity: 0.5;
+}
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-header .close {
+  margin-top: -2px;
+}
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
 }
 .home article margin-top 10% input[type="email"] {
   padding: 10px;

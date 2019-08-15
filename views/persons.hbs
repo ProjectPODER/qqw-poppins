@@ -26,7 +26,7 @@
            </fieldset>
            <fieldset name="importe" style="margin-bottom: 7rem;">
             <p class="search-title">Importe del contratos como proveedor
-              <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="images/icons/question.svg" alt="Question icon" style="width:7.5px; margin-top:-2px;"></a>
+              <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
             </p>
             <a class="search-label importe-bucket bucket" data-bucket="0-50000" data-bucket-name="importe" data-bucket-type="proveedor">
               <p>Menor a 50 mil</p>
@@ -129,7 +129,7 @@
                       con <span class="js-contract-count">{{format_number contract_count.supplier}} contrato(s)</span>
                     {{/if}}
                     {{#if contract_amount}}
-                      por <span class="js-contract-amount">{{format_amount contract_amount.supplier}} pesos</span>
+                      por <span class="js-contract-amount">{{format_amount contract_amount.supplier}} </span>pesos mexicanos
                     {{/if}}
                   </p>
                 </div>
