@@ -175,10 +175,10 @@ function flujosProveedores(summaries) {
   const nodes = summaries.relation.nodes;
   const links = summaries.relation.links;
   const node_colors = {
-    "institution": "#88C",
-    "company": "#a55",
-    "person": "#550",
-    "dependency": "#119",
+    "institution": "#aec7e8",
+    "company": "#ff7f0e",
+    "person": "#ffbb78",
+    "dependency": "#2ca02c",
   }
   const node_radius = {
     "institution": 6,
@@ -187,10 +187,10 @@ function flujosProveedores(summaries) {
     "dependency": 10,
   }
   const link_colors = {
-    "open": "#8a2",
-    "limited": "#bba",
-    "direct": "#f00",
-    regular: "#333"
+    "open": "#98df8a",
+    "limited": "#d62728",
+    "direct": "#ff9896",
+    regular: "#9467bd"
   }
 
   var chartDiv = document.getElementById("graph-container");

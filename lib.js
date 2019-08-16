@@ -83,6 +83,13 @@ function sendMail(req, callback) {
                        "Information: " + req.body.message + "<br>" + "Source: " + req.body.source
   }
 
+  if (req.body.type == "info-uc") {
+  // SEND INFORMATION UC
+    mailOptions.subject = 'Información aportada a través de QQW',
+    mailOptions.html=  "From: " + req.body.email + "<br>" +
+                       "Institution: " + req.body.institution + "<br>" + "Name: " + req.body.name
+  }
+
   let smtpTransport = nodemailer.createTransport({
         host: process.env.EMAIL_SERVER || "",
         port: process.env.EMAIL_PORT || "587",

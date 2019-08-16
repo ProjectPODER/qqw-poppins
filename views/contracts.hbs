@@ -105,6 +105,18 @@
         {{> table_lenght}}
       </div>
       <div class="col-2 col-m-2">
+
+        {{!-- <div class="dropdown">
+          <button class="button-tools dropdown-toggle" type="button" id="dropdownCsv" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <img class="info-icon" src="../images/icons/question-circle.svg" alt="?">
+          </button>
+          <ul class="dropdown-menu pull-right" aria-labelledby="dropdownCsv">
+            <li>descarga csv, limitada a 1000 filas.</li>
+            <li><a href="">Ver documentación.</a></li>
+          </ul>
+        </div> --}}
+
+
         <div class="dropdown">
           <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../images/icons/settings.svg" alt="Ícono Herramientas">
             Herramientas
@@ -120,6 +132,12 @@
               <input id="apiUrl" type="text" name="destinatario" value="{{result.api_url}}">
               <button class="btn-copy" onclick="copyClipboard()">Copiar URL</button>
             </li>
+            <li role="separator" class="divider"></li>
+            {{!-- <li class="dropdown-header">Descarga CSV</li> --}}
+            <li class="copy-clip">
+              <a class="btn-csv" href="{{url_csv result.api_url}}" download="datos-QQW.csv" target="_blank">Descargar CSV *</a>
+            </li>
+            <li style="padding: 3px 20px; text-align: center;">* Descarga csv, limitada a 1000 filas. <a href="">Ver documentación.</a></li>
           </ul>
         </div>
       </div>

@@ -92,8 +92,8 @@ app.engine('.hbs', hbs({
           return (value*100).toLocaleString('es-MX',
             {
               style: 'decimal',
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0
             })+"%";
         }
         return '(no evaluado)';
@@ -269,6 +269,11 @@ app.engine('.hbs', hbs({
           console.log("get_party_type no record");
           return "unknown";
 
+        }
+      },
+      url_csv: function(url) {
+        if (url) {
+          return url.replace("v2/","v2/csv/"); 
         }
       }
     }

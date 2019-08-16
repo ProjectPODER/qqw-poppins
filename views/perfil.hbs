@@ -287,15 +287,15 @@
       }
       .flag_pole {
         position: relative;
-        height: 2em;
-        margin: 2em 2em 2em 9em;
+        height: 1.5em;
+        margin: 2em 2em 2em 10em;
       }
       .flag_marker {
         position: absolute;
         background: inherit;
-        border: 3px solid black;
-        color: black;
-        margin-top: -1.2em;
+        border: 2px solid grey;
+        color: #222222;
+        margin-top: -1.55em;
         padding: 0.5em;
         border-radius: 3em;
         width: 4.5em;
@@ -303,29 +303,50 @@
         line-height: 3.5em;
         text-align: center;
         margin-left: -2.7em;
+        font-weight: bold;
       }
       .flag_total_score {
-        background: hsl(100,100%,50%);
+        background: hsl(1, 100%, 79%);
       }
       .flag_trans {
-        background: hsl(20,80%,70%);
+        background: hsl(214, 56%, 80%);
       }
       .flag_temp {
-        background: hsl(30,80%,70%);
+        background: hsl(30, 100%, 74%);
       }
       .flag_comp {
-        background: hsl(40,80%,70%);
+        background: hsl(110, 57%, 71%);
       }
       .flag_traz {
-        background: hsl(50,80%,70%);
+        background: hsl(274, 31%, 76%);
       }
       .flag_conf {
-        background: hsl(60,80%,70%);
+        background: hsl(10, 29%, 67%);
       }
+
+      /*.flag_total_score {
+        background: hsl(1, 100%, 79%);
+      }
+      .flag_trans {
+        background: hsl(214, 56%, 80%);
+      }
+      .flag_temp {
+        background: hsl(196, 89%, 75%);
+      }
+      .flag_comp {
+        background: hsl(183, 83%, 66%);
+      }
+      .flag_traz {
+        background: hsl(161, 89%, 71%);
+      }
+      .flag_conf {
+        background: hsl(30, 100%, 74%);
+      }*/
+
       .flag_pole_min,
       .flag_pole_max {
         background: rgba(0,0,0,0.5);
-        height: 2em;
+        height: 1.5em;
         float: left;
       }
       </style>
@@ -361,6 +382,46 @@
           <p><b>Recomendación:</b> {{text}}</p>
         </div>
         {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div  class="col-m-12 col-12 mt-2">
+        <h3>Solicitar más información</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <form class="sendinfo-form mt-2">
+          <fieldset>
+            <div class="form-group" data-required="true">
+              <label for="name" class="control-label"><b>Nombre</b></label>
+              <input type="text" name="name" id="name" maxlength="50" class="form-control">
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <label for="institution" class="control-label"><b>Institución</b></label>
+              <input type="text" name="subject" id="institution" class="form-control">
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group" data-required="true">
+              <label for="email" class="control-label"><b>Correo electrónico</b></label>
+              <input id="email" type="email" name="contact-email" class="form-control">
+              <span class="help-block"></span>
+            </div>
+          </fieldset>
+          <input id="perfil_id_message" type="hidden" name="message" value="{{result.id}}">
+          <div class="centered">
+              <button id="send_info_uc" type="submit" class="btn contact-submit">Enviar</button>
+          </div>
+        </form>
+        <div id="thanks-column" style="display: none;" class="mt-2">
+          <h4>Mensaje enviado</h4>
+          <p>Muchas gracias, pronto le enviaremos la información correspondiente.</p>
+        </div>
       </div>
     </div>
   </div>

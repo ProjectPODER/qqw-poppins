@@ -52,6 +52,12 @@
                   <input id="apiUrl" type="text" name="destinatario" value="{{result.api_url}}">
                   <button class="btn-copy" onclick="copyClipboard()">Copiar URL</button>
                 </li>
+                <li role="separator" class="divider"></li>
+                {{!-- <li class="dropdown-header">Descarga CSV</li> --}}
+                <li class="copy-clip">
+                  <a class="btn-csv" href="{{url_csv result.api_url}}" download="datos-QQW.csv" target="_blank">Descargar CSV *</a>
+                </li>
+                <li style="padding: 3px 20px; text-align: center;">* Descarga csv, limitada a 1000 filas. <a href="">Ver documentación.</a></li>
               </ul>
             </div>
           </div>
@@ -101,9 +107,9 @@
                       </a>
                     </div>
                     <div class=" js-ocid no-title col-2 col-m-2">
-                      <a href="/instituciones-publicas/{{id}}" class="button-link">Ver detalles</a>
+                      <a href="/instituciones-publicas/{{id}}" class="uc-href button-link">Ver detalles</a>
                       <div class="mt-4">
-                        <a type="button" data-toggle="modal" data-target="#myModal">Solicitar informe</a>
+                        <a type="button" class="solicitar_info" data-toggle="modal" data-target="#myModal">Solicitar informe</a>
                       </div>
                     </div>
                     <div class=" col-m-8 col-8">
@@ -170,54 +176,7 @@
             </div>
           </div>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog modal-lg">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Solicita información</h4>
-              </div>
-              <div class="modal-body">
-                {{!-- <div class="col-m-12 col-12 mb-1"> --}}
-                  <form id="infoReq" novalidate="novalidate">
-                    <fieldset>
-                      <div class="form-group" data-required="true">
-                        <label for="contact_name" class="control-label">Nombre</label>
-                        <input type="text" name="contact_name" id="name" maxlength="50" class="form-control">
-                        <span class="help-block"></span>
-                      </div>
-                      <div class="form-group">
-                        <label for="subject" class="control-label">Institución</label>
-                        <input type="text" name="subject" id="subject" class="form-control">
-                        <span class="help-block"></span>
-                      </div>
-                      <div class="form-group" data-required="true">
-                        <label for="email" class="control-label">Correo electrónico</label>
-                        <input id="contactEmail" type="email" name="contact-email" class="form-control">
-                        <span class="help-block"></span>
-                      </div>
-                      <div>
-                          <button id="send_email" type="submit" class="btn contact-submit">Enviar</button>
-                          <input id="send_email" type="hidden" name="contact_form" value="true">
-                          <button type="reset" class="btn btn-default">Resetear</button>
-                      </div>
-                    </fieldset>
-                  </form>
-                  <div id="thanks-column" style="display: none;">
-                    <h3>Mensaje enviado</h3>
-                    <p>Muchas gracias, su mensaje nos llegará y responderemos si lo creemos pertinente.</p>
-                  </div>
-                {{!-- </div> --}}
-              </div>
-              {{!-- <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div> --}}
-            </div>
-          </div>
-        </div> 
-
+        {{> modal-form}}
     </div>
 </div>
 

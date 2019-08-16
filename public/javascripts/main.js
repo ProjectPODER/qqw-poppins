@@ -1,20 +1,3 @@
-// Navbar animations
-/*$(window).scroll(function() {
-    if ($(document).scrollTop() > 500) {
-    $('#navbar').addClass('shrink');
-  } else {
-    $('#navbar').removeClass('shrink');
-  }
-});
-
-$(window).scroll(function() {
-  if ($(document).scrollTop() > 10) {
-    $('logo').addClass('shrink');
-  } else {
-    $('logo').removeClass('shrink');
-  }
-});*/
-
 //Tooltips
 $('[data-toggle="tooltip"]').tooltip({placement: 'top'});
 
@@ -104,9 +87,6 @@ $("#first-search").click(function() {
   $('.easy-search-input').trigger("keypress",13);
 })
 
-// Tooltips
-$('[data-toggle="tooltip"]').tooltip({placement: 'right'});
-
 // Right menu Contract page
 $('.right-menu-contracts').affix({offset: {top: 280, bottom:950} });
 
@@ -146,8 +126,8 @@ function copyClipboard() {
  });
 
 // Contact form
-var to, name, subjectMail, email, text;
 $("#send_email").click(function (e) {
+  var to, name, subjectMail, email, text;
   e.preventDefault();
   // enter your email account that you want to recieve emails at.
   name = $("#name").val();
@@ -178,9 +158,9 @@ $("#send_email").click(function (e) {
   return false;
 });
 
-// Send information form
-var to, message, source, email;
+// Add information form
 $("#send_info_email").click(function (e) {
+  var to, message, source, email;
   e.preventDefault();
   // enter your email account that you want to recieve emails at.
   message = $("#message").val();
@@ -196,6 +176,45 @@ $("#send_info_email").click(function (e) {
       if (data.status == "sent") {
             console.log("Email sent");
             $(".addinfo-form").hide()
+            $("#thanks-column").show().removeClass("hidden");
+      }
+      if (data.status == "error") {
+            console.log("No email sent");
+            alert("Le pedimos discupas, su información no se ha podido enviar. Por favor intente de nuevo.")
+      }
+  },"json").fail(function(error) {
+    console.error(error);
+  })
+  return false;
+});
+
+// Send information UC
+$(".solicitar_info").click(function(e) {
+  let value = $(e.currentTarget).parents(".js-ocid").find(".uc-href").attr("href");
+  // console.log($(e.currentTarget),$(e.currentTarget).parents(".js-ocid"),$(e.currentTarget).parents(".js-ocid").find(".uc-href"),value);
+  $("#uc_id_message").val(value);
+})
+
+$("#send_info_uc").click(function (e) {
+  var to, name, institution, email;
+  e.preventDefault();
+  
+  // enter your email account that you want to recieve emails at.
+  name = $("#name").val();
+  institution = $("#institution").val();
+  message = $("#uc_id_message").val();
+  email = $("#email").val();
+  $.post("/send", {
+      to: to,
+      name: name,
+      institution: institution,
+      email: email,
+      message: message,
+      type: "info-uc"
+  }, function (data) {
+      if (data.status == "sent") {
+            console.log("Email sent");
+            $(".sendinfo-form").hide()
             $("#thanks-column").show().removeClass("hidden");
       }
       if (data.status == "error") {

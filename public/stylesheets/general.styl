@@ -228,7 +228,18 @@ h6,
 
 p
   margin 0 0 10px
-
+  
+.flexbox-container-modal
+  display -ms-flex
+  display -webkit-flex
+  display flex
+  & > .column-50
+    width 50%
+    // padding 10px
+    &:first-child 
+      margin-right 20px
+      
+  
 .text-overflow
   overflow hidden
   white-space nowrap
@@ -586,7 +597,7 @@ section
 .triplet-last-update
   font-size .7rem
   color #808080
-  text-align right
+  // text-align right
   // position absolute
   bottom 0
 
@@ -1307,7 +1318,7 @@ a
   font-size 1.1rem
 
 .affix
-  top 124px
+  top 197px
   position fixed !important
 
 .tooltip
@@ -2608,8 +2619,14 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
   display inline-block
 
 .btn-copy
+.btn-csv
   width 100%
   display inline-block
+  border 1px solid grey
+  background-color #f0f0f0
+  text-align center
+  border-radius 5px 
+  padding 6px 8px !important
 
 .tools-section
   background #f0f0f0
@@ -2748,6 +2765,27 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
   width 50px
   height 50px
   overflow scroll
+  
+button 
+  &.close 
+    padding 0
+    cursor pointer
+    background 0 0
+    border 0
+    -webkit-appearance none
+    -moz-appearance none
+    appearance none
+.close 
+  float right
+  font-size 31px
+  font-weight 700
+  line-height 1
+  color #000
+  text-shadow 0 1px 0 #fff
+  // filter alpha(opacity=20)
+  opacity .2
+  
+
 @media (min-width: 768px) 
   .modal-dialog 
     width 600px
