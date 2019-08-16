@@ -158,7 +158,7 @@ $("#send_email").click(function (e) {
   return false;
 });
 
-// Send information form
+// Add information form
 $("#send_info_email").click(function (e) {
   var to, message, source, email;
   e.preventDefault();
@@ -189,7 +189,6 @@ $("#send_info_email").click(function (e) {
 });
 
 // Send information UC
-
 $(".solicitar_info").click(function(e) {
   let value = $(e.currentTarget).parents(".js-ocid").find(".uc-href").attr("href");
   // console.log($(e.currentTarget),$(e.currentTarget).parents(".js-ocid"),$(e.currentTarget).parents(".js-ocid").find(".uc-href"),value);
@@ -215,7 +214,7 @@ $("#send_info_uc").click(function (e) {
   }, function (data) {
       if (data.status == "sent") {
             console.log("Email sent");
-            $(".addinfo-form").hide()
+            $(".sendinfo-form").hide()
             $("#thanks-column").show().removeClass("hidden");
       }
       if (data.status == "error") {

@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body flexbox-container-modal">
         <div class="column-50 column-left">
-          <form>
+          <form class="sendinfo-form">
             <fieldset>
               <div class="form-group" data-required="true">
                 <label for="name" class="control-label"><b>Nombre</b></label>
@@ -28,9 +28,12 @@
               </div>
             </fieldset>
             <input id="uc_id_message" type="hidden" name="message" value="true">
+            <div class="centered">
+                <button id="send_info_uc" type="submit" class="btn contact-submit">Enviar</button>
+            </div>
           </form>
           <div id="thanks-column" style="display: none;">
-            <h3>Mensaje enviado</h3>
+            <h4>Mensaje enviado</h4>
             <p>Muchas gracias, pronto le enviaremos la información correspondiente.</p>
           </div>
         </div>
@@ -38,13 +41,6 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse aspernatur provident praesentium perspiciatis cumque inventore deleniti dolorum voluptatum ipsam reprehenderit et aperiam ab corporis, veniam, corrupti, ipsa repellat adipisci nobis.</p>
         </div>
       </div>
-
-      <div class="modal-footer">
-        <div class="centered">
-            <button id="send_info_uc" type="submit" class="btn contact-submit">Enviar</button>
-        </div>
-      </div>
-
     </div>
   </div>
 </div> 
