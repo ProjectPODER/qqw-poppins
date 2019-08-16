@@ -270,6 +270,11 @@ app.engine('.hbs', hbs({
           return "unknown";
 
         }
+      },
+      url_csv: function(url) {
+        if (url) {
+          return url.replace("v2/","v2/csv/"); 
+        }
       }
     }
 }));

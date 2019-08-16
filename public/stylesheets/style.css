@@ -2760,9 +2760,15 @@ div.dataTables_paginate li.last a:after {
   border: 1px solid #d3d3d3;
   display: inline-block;
 }
-.btn-copy {
+.btn-copy,
+.btn-csv {
   width: 100%;
   display: inline-block;
+  border: 1px solid #808080;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 5px;
+  padding: 6px 8px !important;
 }
 .tools-section {
   background: #f0f0f0;
