@@ -86,11 +86,11 @@
               <button class="btn-copy" onclick="copyClipboard()">Copiar URL</button>
             </li>
             <li role="separator" class="divider"></li>
-            {{!-- <li class="dropdown-header">Descarga CSV</li> --}}
             <li class="copy-clip">
-              <a class="btn-csv" href="{{url_csv result.api_url}}" download="datos-QQW.csv" target="_blank">Descargar CSV *</a>
+              <a class="btn-csv" href="{{url_csv result.api_url}}" download="datos-QQW.csv" target="_blank">Descargar CSV <img src="../images/icons/info.svg" alt="icon" class="info-icon" data-toggle="tooltip" data-placement="right" title="Descarga CSV, limitada a 1000 filas."></a>
+              <a href="https://quienesquienapi.readthedocs.io/es/latest/" class="doc-download-link">Ver documentación</a>
             </li>
-            <li style="padding: 3px 20px; text-align: center;">* Descarga csv, limitada a 1000 filas. <a href="">Ver documentación.</a></li>
+            {{!-- <li style="padding: 3px 20px; text-align: center;">* Descarga csv, limitada a 1000 filas. <a href="">Ver documentación.</a></li> --}}
           </ul>
         </div>
       </div>

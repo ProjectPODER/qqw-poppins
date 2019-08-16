@@ -2955,6 +2955,48 @@ button.close {
     width: 900px;
   }
 }
+.tooltip-download {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #000;
+}
+.tooltip-download .tooltiptext {
+  width: 220px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip-download .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.tooltip-download:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.doc-download-link {
+  font-size: 12px;
+  color: #2b00f7 !important;
+}
+.doc-download-link:hover {
+  color: #21018b !important;
+  background: transparent !important;
+}
 .home article margin-top 10% input[type="email"] {
   padding: 10px;
   margin-right: 5px;
