@@ -85,7 +85,7 @@ function sendMail(req, callback) {
 
   if (req.body.type == "info-uc") {
   // SEND INFORMATION UC
-    mailOptions.subject = 'Información aportada a través de QQW',
+    mailOptions.subject = 'Solicitud de informe a través de QQW',
     mailOptions.html=  "From: " + req.body.email + "<br>" +
                        "Institution: " + req.body.institution + "<br>" + "Name: " + req.body.name
   }
@@ -345,9 +345,9 @@ function sendMailPage() {
     sendMail(req, function (err, response) {
         if (err) {
             console.log(err);
-            res.end('{"status": "error"}');
+            res.end('{"status": "error"}',response);
         } else {
-            console.log("Message sent: " + response.message);
+            console.log("Message sent: ",response);
             res.end('{"status": "sent"}');
         }
     });
