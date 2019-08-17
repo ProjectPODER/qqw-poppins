@@ -167,12 +167,12 @@ app.engine('.hbs', hbs({
       },
       hilight: function(needle, haystack) {
         const r = new RegExp("("+needle+")","i");
-        console.log(r,haystack);
+        // console.log("hilight",r,haystack);
         return haystack.replace(r, "<span class='hilight'>$1</span>");
       },
       match: function(needle, haystack) {
         const r = new RegExp("("+needle+")","i");
-        // console.log(r,haystack);
+        // console.log("match",r,haystack);
         if (haystack.toString().match(r)) {
           return true;
         }
@@ -238,7 +238,8 @@ app.engine('.hbs', hbs({
           case "institution": return "instituciones-publicas"; break;
           case "company": return "empresas"; break;
           case "contract": return "contratos"; break;
-          case "persons": return "personas"; break;
+          case "person": return "personas"; break;
+          default: console.log("get_type_url",type); return "unknown"; break;
         }
       },
       get_party_type: function(records,party_id) {
@@ -273,7 +274,7 @@ app.engine('.hbs', hbs({
       },
       url_csv: function(url) {
         if (url) {
-          return url.replace("v2/","v2/csv/"); 
+          return url.replace("v2/","v2/csv/");
         }
       }
     }
