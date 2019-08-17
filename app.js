@@ -160,8 +160,10 @@ app.engine('.hbs', hbs({
         return typeof obj == "object";
       },
       format_number: function(value) {
-        if (value) {
-          return value.toLocaleString('es-MX');
+        if (value || value === 0) {
+           const formatted = value.toLocaleString('es-MX', {style: "decimal"});
+           // console.log("format_number", formatted);
+           return formatted;
         }
         return 'Valor desconocido';
       },

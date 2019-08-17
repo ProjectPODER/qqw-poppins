@@ -4,7 +4,12 @@
     {{#each filters }}
       {{#ifCond this.hidden '!=' true }}
         <span class="blob" data-field="{{this.htmlFieldName}}">
-          {{this.fieldLabel}}: {{this.value}}
+          {{this.fieldLabel}}:
+          {{# ifCond this.type "==" "number" }}
+           {{format_number this.value}}
+           {{else}}
+           {{this.value}}
+           {{/ifCond}}
           <i class="fa fa-times delete-blob-filter" aria-hidden="true"><b>x</b></i>
         </span>
       {{/ifCond}}

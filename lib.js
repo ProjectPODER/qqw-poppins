@@ -118,10 +118,8 @@ const filterElements = [
   { htmlFieldName: "dependencia", apiFieldNames:["compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
   { htmlFieldName: "from_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">", collections: ["contracts"] },
   { htmlFieldName: "to_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<", collections: ["contracts"] },
-  { htmlFieldName: "solo-fecha-conocida", apiFieldNames:["compiledRelease.contracts.period.endDate","compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha desconocida", type:"bool", collections: ["contracts"] },
-  { htmlFieldName: "minimo-importe-contrato", apiFieldNames:["compiledRelease.total_amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">", repeated: true, collections: ["contracts"] },
-  { htmlFieldName: "maximo-importe-contrato", apiFieldNames:["compiledRelease.total_amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<", repeated: true, collections: ["contracts"] },
-  { htmlFieldName: "solo-importe-conocido", apiFieldNames:["compiledRelease.total_amount"], fieldLabel:"Importe desconocido", type:"bool", collections: ["contracts"] },
+  { htmlFieldName: "minimo-importe-contrato", apiFieldNames:["compiledRelease.total_amount"], fieldLabel:"Importe mínimo", type:"number",modifier:">=", repeated: true, collections: ["contracts"] },
+  { htmlFieldName: "maximo-importe-contrato", apiFieldNames:["compiledRelease.total_amount"], fieldLabel:"Importe máximo", type:"number",modifier:"<=", repeated: true, collections: ["contracts"] },
   { htmlFieldName: "tipo-adquisicion", apiFieldNames:["compiledRelease.tender.procurementMethodMxCnet"], fieldLabel:"Tipo de procedimiento", type:"string", collections: ["contracts"] },
   { htmlFieldName: "size", apiFieldNames:["limit"], fieldLabel:"Resultados por página", type:"integer", hidden: true, collections: ["all"] },
   { htmlFieldName: "page", apiFieldNames:["offset"], fieldLabel:"Página", type:"integer", hidden: true, collections: ["all"] },
@@ -143,7 +141,7 @@ function getFilters(collection, query, defaultFilters) {
   				value = "/"+value+"/i"
   			}
         if (filterElements[filterElement].type == "date") {
-  				value = (new Date(value).toISOString());
+  				value = (new Date(value).toISOString()).replace("Z","");
   			}
         if (filterElements[filterElement].type == "bool") {
           if (value == "true") {
