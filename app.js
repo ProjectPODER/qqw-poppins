@@ -86,6 +86,10 @@ app.engine('.hbs', hbs({
         console.log("filter_array",search,item);
         return item;
       },
+      fix_compranet_url: function(url) {
+        const fixed = url.replace("funcionpublica.gob.mx","hacienda.gob.mx");
+        return fixed;
+      },
       format_score: function(value) {
         //TODO
         if (value || value === 0) {

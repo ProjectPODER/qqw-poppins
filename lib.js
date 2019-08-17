@@ -251,14 +251,14 @@ function entityPage(collection,templateName,idFieldName) {
   return catchError(async function(req, res, next) {
     let filters = {
       limit: 1,
-      sort: "",
+      sort: null,
       embed: true
     };
     const flag_count = req.query.flag_count || 3;
     const debug = req.query.debug || false;
     filters[idFieldName] = req.params.id;
 
-    result = await getAPI(req,collection,filters,debug);
+    const result = await getAPI(req,collection,filters,debug);
     if (!result.data[0]) {
       let err = new Error("No encontrado: "+collection);
       err.status = 404;
