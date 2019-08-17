@@ -24,13 +24,13 @@
   </table>
 </div>
 <div class="col-m-12 mb-12 mb-5">
-  {{#ifCond result.contract_count.supplier '>' 3}}
+  {{#ifCond result.contract_count.buyer '>' 3}}
   <p>Viendo hasta 3 de <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>.</p>
   <div class="centered contract-button">
     <a href="/contratos?compiledRelease.parties.memberOf.id={{result.id}}" class="button-link">Ver todos los contratos</a>
   </div>
   {{else}}
-    <p>Viendo <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>. </p>
+    <p>Viendo <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>. </p>
   {{/ifCond}}
 </div>
 {{/if}}

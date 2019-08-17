@@ -65,13 +65,20 @@
                 Contratos
               </a>
             </li>
-            {{#ifCond result.memberships.parent.length "||" result.memberships.child.length }}
+            {{#if result.memberships.parent }}
+            <li>
+              <a href="#parents" class="page-scroll button-link">
+                Dependencias
+              </a>
+            </li>
+            {{/if}}
+            {{#if result.memberships.child }}
             <li>
               <a href="#uc" class="page-scroll button-link">
                 Unidades Compradoras
               </a>
             </li>
-            {{/ifCond}}
+            {{/if}}
             {{#ifCond type '!=' 'companies'}}
             {{#if result.flags }}
 
@@ -96,54 +103,58 @@
           <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
         </div>
         <div class="col-m-6 col-6 right-align">
-          <h4 class="amount-data">
             {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
             {{else}}
-              {{#if result.contract_amount.supplier}}
-                {{format_amount result.contract_amount.supplier}}
-              {{/if}}
               {{#if result.contract_amount.buyer}}
+              <h4 class="amount-data">
                 {{format_amount result.contract_amount.buyer}}
+              </h4>
+                Pesos mexicanos como comprador
+              {{/if}}
+              {{#if result.contract_amount.supplier}}
+              <h4 class="amount-data">
+                {{format_amount result.contract_amount.supplier}}
+              </h4>
+                Pesos mexicanos como comprador
               {{/if}}
             {{/ifCond}}
-          </h4>
         </div>
       </div>
       <div class="col-12 col-m-12 flex">
-          {{#if result.contract_count.supplier}}
-            <div class="col-m-4 col-4 pd-nonleft">
-              <p class="js-title-data">Número de contratos como proveedor</p>
-              <p class="js-data">{{result.contract_count.supplier}}</p>
-            </div>
-          {{/if}}
-          {{#if result.contract_count.buyer}}
-            <div class="col-m-4 col-4 pd-nonleft">
-              <p class="js-title-data">Número de contratos como comprador</p>
-              <p class="js-data">{{result.contract_count.buyer}}</p>
-            </div>
-          {{/if}}
-          {{#if result.date}}
-            <div class="col-m-4 col-4 pd-nonleft">
-              <p class="js-title-data">Fecha de actualización</p>
-              <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
-            </div>
-          {{/if}}
-          {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
-            <div class="col-m-4 col-4 pd-nonleft">
-              <p class="js-title-data">Suma de contratos como proveedor</p>
-              <p class="js-data">{{format_amount result.contract_amount.supplier}}</p>
-            </div>
-            <div class="col-m-4 col-4 pd-nonleft">
-              <p class="js-title-data">Suma de contratos como comprador</p>
-              <p class="js-data">{{format_amount result.contract_amount.buyer}}</p>
-            </div>
-          {{/ifCond}}
-          {{#if result.source}}
-            <div class="col-m-4 col-4 pd-nonleft">
-              <p class="js-title-data">Fuente(s)</p>
-              <p class="js-data">{{#each result.source}}{{this}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
-            </div>
-          {{/if}}
+        {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
+          <div class="col-m-4 col-4 pd-nonleft">
+            <p class="js-title-data">Suma de contratos como comprador</p>
+            <p class="js-data">{{format_amount result.contract_amount.buyer}}</p>
+          </div>
+          <div class="col-m-4 col-4 pd-nonleft">
+            <p class="js-title-data">Suma de contratos como proveedor</p>
+            <p class="js-data">{{format_amount result.contract_amount.supplier}}</p>
+          </div>
+        {{/ifCond}}
+        {{#if result.contract_count.buyer}}
+          <div class="col-m-4 col-4 pd-nonleft">
+            <p class="js-title-data">Número de contratos como comprador</p>
+            <p class="js-data">{{result.contract_count.buyer}}</p>
+          </div>
+        {{/if}}
+        {{#if result.contract_count.supplier}}
+          <div class="col-m-4 col-4 pd-nonleft">
+            <p class="js-title-data">Número de contratos como proveedor</p>
+            <p class="js-data">{{result.contract_count.supplier}}</p>
+          </div>
+        {{/if}}
+        {{#if result.date}}
+          <div class="col-m-4 col-4 pd-nonleft">
+            <p class="js-title-data">Fecha de actualización</p>
+            <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
+          </div>
+        {{/if}}
+        {{#if result.source}}
+          <div class="col-m-4 col-4 pd-nonleft">
+            <p class="js-title-data">Fuente(s)</p>
+            <p class="js-data">{{#each result.source}}{{this}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+          </div>
+        {{/if}}
       </div>
       <div class="col-12 col-m-12 mt-2">
         <hr>
@@ -241,27 +252,37 @@
     </div>
   </div>
 </section>
-{{#ifCond result.memberships.parent.length "||" result.memberships.child.length }}
+{{#if result.memberships.parent}}
+<section class="profile" id="parents">
+  <div class="row">
+    <div class="container">
+      <div  class="col-m-12 col-12">
+        <h4 class="description-data-subtitle">Dependencia de la que forma parte</h4>
+        <p>
+          Esta institución es una {{result.memberships.parent.0.role}} de: {{#each result.memberships.parent}}<a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{{/if}}
+{{#if result.memberships.child}}
 <section class="profile" id="uc">
   <div class="row">
     <div class="container">
       <div  class="col-m-12 col-12">
         <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
-        {{#if result.memberships.parent}}
-        <p>
-          Esta institución tiene como {{result.memberships.parent.0.role}} a: {{#each result.memberships.parent}}<a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
-        </p>
-        {{/if}}
-        {{#if result.memberships.child}}
         <p>
           Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}}
         </p>
-        {{/if}}
       </div>
     </div>
   </div>
 </section>
-{{/ifCond}}
+{{/if}}
+
+
+
 {{#ifCond type '!=' 'companies'}}
 {{#if result.flags }}
 <section class="profile bg-gray" id="evaluacion">
