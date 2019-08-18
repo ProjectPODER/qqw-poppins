@@ -194,20 +194,20 @@ app.engine('.hbs', hbs({
         // console.log("get_record_flags 1",contract_flags);
         const record_flags = {
           total_score: 0,
-          transparencia: 0,
-          temporalidad: 0,
-          competitividad: 0,
-          trazabilidad: 0,
+          trans: 0,
+          temp: 0,
+          comp: 0,
+          traz: 0,
           rules: []
         }
         const rules = {};
 
         for (contract in contract_flags) {
-          record_flags.total_score += contract_flags[contract].criteria_score.total_score;
-          record_flags.transparencia += contract_flags[contract].criteria_score.trans;
-          record_flags.temporalidad += contract_flags[contract].criteria_score.temp;
-          record_flags.competitividad += contract_flags[contract].criteria_score.comp;
-          record_flags.trazabilidad += contract_flags[contract].criteria_score.traz;
+          record_flags.total_score += contract_flags[contract].contract_score.total_score;
+          record_flags.trans += contract_flags[contract].contract_score.trans;
+          record_flags.temp += contract_flags[contract].contract_score.temp;
+          record_flags.comp += contract_flags[contract].contract_score.comp;
+          record_flags.traz += contract_flags[contract].contract_score.traz;
 
           for (category in contract_flags[contract].rules_score) {
             for (rule in contract_flags[contract].rules_score[category]) {
@@ -223,10 +223,10 @@ app.engine('.hbs', hbs({
           }
         }
         record_flags.total_score = record_flags.total_score/contract_flags.length
-        record_flags.transparencia = record_flags.transparencia/contract_flags.length;
-        record_flags.temporalidad = record_flags.temporalidad/contract_flags.length;
-        record_flags.competitividad = record_flags.competitividad/contract_flags.length;
-        record_flags.trazabilidad = record_flags.trazabilidad/contract_flags.length;
+        record_flags.trans = record_flags.trans/contract_flags.length;
+        record_flags.temp = record_flags.temp/contract_flags.length;
+        record_flags.comp = record_flags.comp/contract_flags.length;
+        record_flags.traz = record_flags.traz/contract_flags.length;
         for (rule in rules) {
           let rule_obj = {
             name: rule,
@@ -237,7 +237,7 @@ app.engine('.hbs', hbs({
 
         // console.log("get_record_flags 2",record_flags);
 
-        return {flags: record_flags};
+        return record_flags;
       },
       get_type_url: function(type) {
         switch(type) {
@@ -245,6 +245,7 @@ app.engine('.hbs', hbs({
           case "company": return "empresas"; break;
           case "contract": return "contratos"; break;
           case "person": return "personas"; break;
+          case "funder": return "instituciones-publicas"; break;
           default: console.log("get_type_url",type); return "unknown"; break;
         }
       },
@@ -275,6 +276,24 @@ app.engine('.hbs', hbs({
         else {
           console.log("get_party_type no record");
           return "unknown";
+
+        }
+      },
+      get_record_funder: function(records) {
+        let party;
+        if (records) {
+          party = _.find(records.compiledRelease.parties,{roles: ["funder"]});
+          if (party) {
+            return party;
+          }
+          else {
+            console.log("get_record_funder not found");
+            return null;
+          }
+        }
+        else {
+          console.log("get_record_funder no record");
+          return null;
 
         }
       },

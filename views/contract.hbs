@@ -88,6 +88,9 @@
           {{!-- {{#each result.records.0.compiledRelease.dataSource}} --}}
             <p class="js-data">{{result.records.0.compiledRelease.dataSource}}</p>
           {{!-- {{/each}} --}}
+          {{# each result.records.0.compiledRelease.source}}
+          <a href="{{fix_compranet_url url}}" class="">Ver fuente</a>
+          {{/each}}
         </div>
         {{/if}}
         <hr>
@@ -98,13 +101,9 @@
                   <li>
                       <a class="page-scroll" href="#datosgenerales">Datos generales</a>
                   </li>
-                  {{!--
-                    //Comentado para ocultar puntaje
-
                   <li>
                       <a class="page-scroll" href="#calidad">Calidad</a>
                   </li>
-                  --}}
                   <li>
                       <a class="page-scroll" href="#planeacion">Planeación</a>
                   </li>
@@ -120,11 +119,6 @@
                   <li>
                       <a class="page-scroll" href="#implementacion">Implementación</a>
                   </li>
-                  <div class="mt-2">
-                    {{# each result.records.0.compiledRelease.source}}
-                    <a href="{{fix_compranet_url url}}" class="button-link">VER FUENTE</a>
-                    {{/each}}
-                  </div>
               </ul>
           </div>
       </div>
@@ -138,50 +132,37 @@
         <div  class="col-m-12 col-6 mt-2 party_flags" id="calidad">
           <h4 class="description-data-subtitle">CALIDAD DE CONTRATO</h4>
           <p>Evaluado por QuienEsQuien.wiki y TodosLosContratos.mx</p>
+
+          <div class="col-12-col-m-12">
+            <h3>Gráfico de puntajes de cada categoría</h3>
+            {{#each (get_record_flags result.records.0.flags) }}
+            {{#ifCond @key "!=" "rules" }}
+            <div class="flags_graph_bar">
+              <div class="flag_name">
+                {{flag_name @key}}
+              </div>
+              <div class="flag_pole flag_{{@key}}">
+                <div class="flag_pole_min" style="width: {{format_score this}}">
+
+                </div>
+
+                <div class="flag_pole_max" style="width: {{format_score (100-this)}}">
+
+                </div>
+                <div class="flag_marker" style="left: {{format_score this}}">
+                  {{format_score this}}
+                </div>
+              </div>
+            </div>
+            {{/ifCond}}
+
+            {{/each}}
+          </div>
+
           {{# with (get_record_flags result.records.0.flags)}}
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Competitividad
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.competitividad}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Temporalidad
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.temporalidad}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Transparencia
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.transparencia}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score">
-            <div class="party_flag_title">
-              Trazabilidad
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.trazabilidad}}<span class="d100">/100</span>
-            </div>
-          </div>
-          <div class="party_flag_score party_flag_total_score">
-            <div class="party_flag_title">
-              Total
-            </div>
-            <div class="party_flag_value">
-              {{format_score flags.total_score}}<span class="d100">/100</span>
-            </div>
-          </div>
           <h4 class="description-data-subtitle" id="contract_problemas_destacados">PROBLEMAS DESTACADOS</h4>
           <ul class="party_flags_recommendations_list">
-            {{# each flags.rules}}
+            {{# each this.rules}}
                 <li class="party_flags_recommendations_item">{{name}} {{count}}</li>
             {{/each}}
           </ul>
@@ -199,45 +180,49 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">PLANEACIÓN</h4>
         </div>
-        {{#if records.0.compiledRelease.planning.budget.budgetBreakdown.length}}
-        Si ves esto, avísanos a info@quiensquien.wiki porque falta mostrar algo de información aquí.
-        <div class="col-m-12 col-12">
-            <p class="js-data mt-2">PRESUPUESTO</p>
-        </div>
-        <div class="col-m-12 col-9">
-          <!-- <table class="table table-responsive">
-            <tr>
-              <th class="js-data">Rubro</th>
-              <th class="js-data">Dato</th>
-            </tr>
-            <tr>
-              <td class="rubro-list">RAMO</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">CLAVE DE CARTERA</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">CLAVE DEL PROGRAMA</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">CRÉDITO EXTERNO</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">ORGANISMO INTERNACIONAL FINANCIERO</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-            <tr>
-              <td class="rubro-list">APORTACIÓN GENERAL</td>
-              <td class="rubro-list-data">Sin dato</td>
-            </tr>
-          </table> -->
-        </div>
+        <!-- agregar aca el funder si hay -->
+        {{# if (get_record_funder result.records.[0]) }}
+          {{# with (get_record_funder result.records.[0]) }}
+          <div class="col-m-12 col-12 mb-2">
+            <span class="js-title-data">Financiador: </span>
+            <span class="js-data"><a href="/{{get_type_url (get_party_type ../result.records.[0] id)}}/{{id}}">{{name}}</a>
+            </span>
+          </div>
+          {{/with}}
+        {{/if}}
+        {{#if result.records.0.compiledRelease.planning }}
+          <div class="col-m-12 col-12">
+              <p class="js-data mt-2">PRESUPUESTO</p>
+          </div>
+          {{# if result.records.0.compiledRelease.planning.budget.budgetBreakdown.description }}
+          <div class="col-m-12 col-12 mb-2">
+            <span class="js-title-data">Descripción de los fondos: </span>
+            <span class="js-data">          {{ result.records.0.compiledRelease.planning.budget.budgetBreakdown.description }}
+          </div>
+          {{/if}}
+          {{# if result.records.0.compiledRelease.planning.budget.projectID }}
+          <div class="col-m-6 col-6 mb-2">
+              <span class="js-title-data">Proyecto: </span>
+              <span class="js-data">          {{ result.records.0.compiledRelease.planning.budget.projectID }} ({{ result.records.0.compiledRelease.planning.budget.project }})
+              </span>
+          </div>
+          {{/if}}
+          {{# if result.records.0.compiledRelease.planning.budget.budgetBreakdown.budgetClassifications.origin }}
+          <div class="col-m-6 col-6 mb-2">
+            <span class="js-title-data">Orígen de los fondos: </span>
+            <span class="js-data">          {{ result.records.0.compiledRelease.planning.budget.budgetBreakdown.budgetClassifications.origin }}
+            </span>
+          </div>
+          {{/if}}
+          {{# if result.records.0.compiledRelease.planning.budget.budgetBreakdown.amount.amount }}
+          <div class="col-m-12 col-12 mb-2">
+            <span class="js-title-data">Importe: </span>
+            <span class="js-data">          {{ format_amount result.records.0.compiledRelease.planning.budget.budgetBreakdown.amount.amount }} {{ result.records.0.compiledRelease.planning.budget.budgetBreakdown.amount.currency }}
+            </span>
+          </div>
+          {{/if}}
         {{else}}
-        No hay datos
+          No hay datos
         {{/if}}
       </div>
       <div class="col-m-8 col-8">
@@ -255,7 +240,44 @@
             b) Invitación a cuando menos tres proveedores o contratistas.
             c) Adjudicación Directa.
             - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
-            <p class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodDetails}}</p>
+            procurementMethodDetails<p class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodDetails}}</p>
+        </div>
+        {{/if}}
+        {{#if result.records.0.compiledRelease.tender.procurementMethod }}
+        <div class="col-m-6 col-6 mb-2">
+            <span class="js-title-data">Forma de convocatoria: </span>
+            <span class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodMxCnet}}</span>
+            (<span class="js-data">{{result.records.0.compiledRelease.tender.procurementMethod}}</span>)
+        </div>
+        {{/if}}
+        {{#if result.records.0.compiledRelease.tender.mainProcurementCategory }}
+        <div class="col-m-6 col-6 mb-2">
+            <span class="js-title-data">Tipo de compra: </span>
+            <span class="js-data">{{result.records.0.compiledRelease.tender.mainProcurementCategory}}</span>
+        </div>
+        {{/if}}
+        {{#if result.records.0.compiledRelease.tender.procurementMethod }}
+        <div class="col-m-6 col-6 mb-2">
+          <span class="js-title-data">Formato del pliego: </span>
+          <span class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodDetailsTemplateMxCnet}}</span>
+        </div>
+        {{/if}}
+        {{#if result.records.0.compiledRelease.tender.submissionMethod }}
+        <div class="col-m-6 col-6 mb-2">
+            <span class="js-title-data">Presentación de pliegos: </span>
+            <span class="js-data">{{result.records.0.compiledRelease.tender.submissionMethod}}</span>
+        </div>
+        {{/if}}
+        {{#if result.records.0.compiledRelease.tender.tenderPeriod.startDate }}
+        <div class="col-m-6 col-6 mb-2">
+            <span class="js-title-data">Período de convocatoria: </span>
+            <span class="js-data">{{moment result.records.0.compiledRelease.tender.tenderPeriod.startDate  date lang="es" format="LL"}} - {{moment result.records.0.compiledRelease.tender.tenderPeriod.endDate date lang="es" format="LL"}}</span>
+        </div>
+        {{/if}}
+        {{#if result.records.0.compiledRelease.tender.contractPeriod.multiyearContractMxCnet }}
+        <div class="col-m-6 col-6 mb-2">
+            <span class="js-title-data">Contrato plurianual: </span>
+            <span class="js-data">{{result.records.0.compiledRelease.tender.contractPeriod.multiyearContractMxCnet}}</span>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.additionalProcurementCategories }}
@@ -309,25 +331,60 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
         </div>
-        {{#if result.records.0.compiledRelease.awards.0.status }}
+        <!-- poner toda la info de cada award
+        "awards": [
+
+            {
+                "title": "Construcción de cisterna de 10,000 M3 para abastecimiento de agua potable (obra civil), en planta potabilizadora comisión Río Fuerte, Los Mochis, Mpio de Ahome",
+                "suppliers": [
+                    {
+                        "name": "ZERO DEL PACIFICO SA DE CV",
+                        "id": "zero-del-pacifico-sa-de-cv"
+                    }
+                ],
+                "status": null,
+                "id": "661603",
+                "value": {
+                    "amount": 15990544.03,
+                    "currency": "MXN"
+                }
+            }
+
+        ],
+
+       -->
+       {{#each result.records.0.compiledRelease.awards }}
+       <div class="col-m-12 col-12">
+           <p class="js-data mt-2">Adjudicación {{id}}</p>
+       </div>
+        {{#if status }}
         <div class="col-m-6 col-4">
             <p class="js-title-data">Estatus de la adjudicación</p>
-            <p class="js-data">{{ result.records.0.compiledRelease.awards.0.status}}</p>
+            <p class="js-data">{{ status}}</p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.awards.0.value }}
+        {{#if value }}
         <div class="col-m-6 col-4">
-            <p class="js-title-data">Monto adjudicado</p>
-            <p class="js-data">{{format_amount result.records.0.compiledRelease.awards.0.value.amount}} {{ result.records.0.compiledRelease.awards.0.value.currency}}</p>
+            <p class="js-title-data">Monto</p>
+            <p class="js-data">{{format_amount value.amount}} {{ value.currency}}</p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.awards.0.date }}
+        {{#if date }}
         <div class="col-m-6 col-8">
             <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
-            <p class="js-data">{{moment result.records.0.compiledRelease.awards.0.date date lang="es" format="LL"}}</p>
+            <p class="js-data">{{moment date date lang="es" format="LL"}}</p>
+        </div>
+        {{/if}}
+        {{#if suppliers }}
+        <div class="col-m-6 col-4">
+            <p class="js-title-data">Proveedores</p>
+            {{#each suppliers }}
+            <p class="js-data"><a href="{{id}}"></a> {{ name}}</p>
+            {{/each}}
         </div>
         {{/if}}
       </div>
+      {{/each}}
       <div class="col-m-8 col-8">
         <hr>
       </div>
@@ -335,24 +392,60 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">CONTRATOS</h4>
         </div>
-        {{#if result.records.0.compiledRelease.contracts.0.value }}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">Importe</p>
-            <p class="js-data">{{format_amount result.records.0.compiledRelease.contracts.0.value.amount}} {{ result.records.0.compiledRelease.contracts.0.value.currency}}</p>
+      {{#each result.records.0.compiledRelease.contracts }}
+        <div class="col-m-12 col-12">
+            <p class="js-data mt-2">Contrato {{id}}</p>
+        </div>
+        {{#if title }}
+        <div class="col-m-9 col-9">
+            <p class="js-title-data">Título del contrato</p>
+            <p class="js-data">{{title}}</p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.contracts.0.status }}
-        <div class="col-m-6 col-4">
-            <p class="js-title-data">Estatus</p>
-            <p class="js-data">{{result.records.0.compiledRelease.contracts.0.status}}</p>
+        {{#if dateSigned }}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Fecha de firma de contrato</p>
+            <p class="js-data">{{moment dateSigned date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.contracts.0.period }}
+        {{#if period }}
         <div class="col-m-6 col-8">
-            <p class="js-title-data">Período</p>
-            <p class="js-data">{{moment result.records.0.compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} {{#if result.records.0.compiledRelease.contracts.0.period.endDate }} - {{moment result.records.0.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}{{/if}}</p>
+            <p class="js-title-data">Período de ejecución</p>
+            <p class="js-data">{{moment period.startDate date lang="es" format="LL"}} {{#if period.endDate }} - {{moment period.endDate date lang="es" format="LL"}}{{/if}}</p>
         </div>
         {{/if}}
+
+        {{#if value }}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Importe</p>
+            <p class="js-data">{{format_amount value.amount}} {{ value.currency}}</p>
+        </div>
+        {{/if}}
+        {{#if status }}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Estado</p>
+            <p class="js-data">{{statusMxCnet}} ({{status}})</p>
+        </div>
+        {{/if}}
+        {{#if period.multiyearContractMxCnet }}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Contrato plurianual</p>
+            <p class="js-data">{{ period.multiyearContractMxCnet }}</p>
+        </div>
+        {{/if}}
+        {{#if hasFramework }}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Contrato marco</p>
+            <p class="js-data">{{ hasFramework }}</p>
+        </div>
+        {{/if}}
+        {{#if filedMxCnet }}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Archivado</p>
+            <p class="js-data">{{ filedMxCnet }}</p>
+        </div>
+        {{/if}}
+      {{/each }}
       </div>
       <div class="col-m-8 col-8">
         <hr>

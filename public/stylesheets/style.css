@@ -2997,6 +2997,54 @@ button.close {
   color: #21018b !important;
   background: transparent !important;
 }
+.flag_name {
+  float: left;
+  line-height: 2em;
+}
+.flag_pole {
+  position: relative;
+  height: 1.5em;
+  margin: 2em 2em 2em 10em;
+}
+.flag_marker {
+  position: absolute;
+  background: inherit;
+  border: 2px solid #808080;
+  color: #222;
+  margin-top: -1.55em;
+  padding: 0.5em;
+  border-radius: 3em;
+  width: 4.5em;
+  height: 4.5em;
+  line-height: 3.5em;
+  text-align: center;
+  margin-left: -2.7em;
+  font-weight: bold;
+}
+.flag_total_score {
+  background: #ff9694;
+}
+.flag_trans {
+  background: #afc8e9;
+}
+.flag_temp {
+  background: #ffbd7a;
+}
+.flag_comp {
+  background: #99df8b;
+}
+.flag_traz {
+  background: #c4afd5;
+}
+.flag_conf {
+  background: #c39b92;
+}
+.flag_pole_min,
+.flag_pole_max {
+  background: rgba(0,0,0,0.5);
+  height: 1.5em;
+  float: left;
+}
 .home article margin-top 10% input[type="email"] {
   padding: 10px;
   margin-right: 5px;
