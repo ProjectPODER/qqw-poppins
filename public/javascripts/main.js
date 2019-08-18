@@ -198,7 +198,7 @@ $(".solicitar_info").click(function(e) {
 $("#send_info_uc").click(function (e) {
   var to, name, institution, email;
   e.preventDefault();
-  
+
   // enter your email account that you want to recieve emails at.
   name = $("#name").val();
   institution = $("#institution").val();
@@ -249,6 +249,19 @@ $('.bucket').click(function(event) {
   $("#minimo-"+bucketId).val(bucketData[0]);
   $("#maximo-"+bucketId).val(bucketData[1]);
 });
+
+//Hilight selected option for amount filters
+let dataFilter = "";
+$(".search-amount").each(function(i,element) {
+  if (dataFilter == "") {
+  dataFilter = element.value + "-";
+  }
+  else {
+    dataFilter += element.value;
+    $(".bucket[data-bucket="+dataFilter+"]").addClass("selected");
+    dataFilter = "";
+  }
+})
 
 //set bool filters
 $(".bool-filter").click(function(e) {
