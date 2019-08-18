@@ -21,11 +21,21 @@
                 <a href="#" aria-controls="index">…</a>
             </li>
         {{/ifCond}}
-        {{#each pagesArray as |i pageNum|}}
-            <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
-                <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
-            </li>
-        {{/each}}
+        {{#ifCond current_page '==' (math result.pages '-' 1)}}
+          {{#each pagesArray as |i pageNum|}}
+              <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
+                <a href="{{../current_url}}&page={{math ../current_page "-" pageNum}}" aria-controls="index">{{math (math ../current_page "-" pageNum) '+' 1}} </a>
+              </li>
+          {{/each}}
+        {{else}}
+          {{#each pagesArray as |i pageNum|}}
+            {{#ifCond (math ../current_page "+" pageNum) '<' (math ../result.pages "-" 1) }}
+              <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
+                  <a href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
+              </li>
+            {{/ifCond}}
+          {{/each}}
+        {{/ifCond}}
             <li class="paginate_button disabled" id="index_ellipsis">
                 <a href="#" aria-controls="index">…</a>
             </li>

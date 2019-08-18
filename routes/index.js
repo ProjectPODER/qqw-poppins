@@ -19,7 +19,7 @@ router.get('/instituciones-publicas', lib.searchPage("institutions",{"subclassif
 router.get('/unidades-compradoras', lib.searchPage("institutions",{"subclassification": "unidad-compradora", "sort": "-flags.criteria_score.total_score", "embed": true},"institutions-uc"));
 
 /* GET companies index */
-router.get('/empresas', lib.searchPage("companies",{sort: "-contract_amount"}));
+router.get('/empresas', lib.searchPage("companies",{sort: "-contract_amount.supplier"}));
 
 
 /* GET contract view */
