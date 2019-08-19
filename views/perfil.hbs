@@ -46,14 +46,14 @@
               </a>
 
             </li>
-            {{#ifCond result.top3contracts.buyer '||' result.summaries.top_suppliers}}
+            {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
             <li>
               <a href="#compras" class="page-scroll button-link">
                 Compras
               </a>
             </li>
             {{/ifCond}}
-            {{#ifCond result.top3contracts.supplier '||' result.summaries.top_buyers}}
+            {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
             <li>
               <a href="#proveedor" class="page-scroll button-link">
                 Proveedor
@@ -199,7 +199,7 @@
     </div>
   </div>
 </section>
-{{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers}}
+{{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
 <section class="profile" id="compras">
   <div class="row">
     <div class="container">
@@ -262,7 +262,7 @@
 </section>
 {{/ifCond}}
 
-{{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers}}
+{{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
 <section class="profile" id="proveedor">
   <div class="row">
     <div class="container">
@@ -359,10 +359,14 @@
       </div>
       <div class="col-12-col-m-12">
         {{!-- <h3>Gráfico de puntajes de cada categoría</h3> --}}
-        {{#each result.flags.0.criteria_score }}
+        {{#each result.flags.0.contract_score }}
         <div class="flags_graph_bar">
           <div class="flag_name">
-            {{flag_name @key}}
+            {{flag_name @key}} {{result.flags.0.contract_score.total_score}}
+            {{#if result.flags.0.contract_score.total_score}}
+            {{else}}
+            <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
+            {{/if}}
           </div>
           <div class="flag_pole flag_{{@key}}">
             <div class="flag_pole_min" style="width: {{format_score this}}">
