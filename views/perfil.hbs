@@ -41,30 +41,25 @@
               </a>
             </li>
             <li>
-              <a href="#evolucion-contratos" class="page-scroll button-link">
+              <a href="#graficas" class="page-scroll button-link">
                 Gráficas
               </a>
 
             </li>
-            {{#if result.summaries.top_buyers }}
+            {{#ifCond result.top3contracts.buyer '||' result.summaries.top_suppliers}}
             <li>
-              <a href="#compradores" class="page-scroll button-link">
-                Compradores
+              <a href="#compras" class="page-scroll button-link">
+                Compras
               </a>
             </li>
-            {{/if}}
-            {{#if result.summaries.top_suppliers }}
+            {{/ifCond}}
+            {{#ifCond result.top3contracts.supplier '||' result.summaries.top_buyers}}
             <li>
-              <a href="#proveedores" class="page-scroll button-link">
-                Proveedores
+              <a href="#proveedor" class="page-scroll button-link">
+                Proveedor
               </a>
             </li>
-            {{/if}}
-            <li>
-              <a href="#contratos" class="page-scroll button-link">
-                Contratos
-              </a>
-            </li>
+            {{/ifCond}}
             {{#if result.memberships.parent }}
             <li>
               <a href="#parents" class="page-scroll button-link">
@@ -72,16 +67,8 @@
               </a>
             </li>
             {{/if}}
-            {{#if result.memberships.child }}
-            <li>
-              <a href="#uc" class="page-scroll button-link">
-                Unidades Compradoras
-              </a>
-            </li>
-            {{/if}}
             {{#ifCond type '!=' 'companies'}}
             {{#if result.flags }}
-
             <li>
               <a href="#evaluacion" class="page-scroll button-link evaluacion">
                 <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación
@@ -89,6 +76,13 @@
             </li>
             {{/if}}
             {{/ifCond}}
+            {{#if result.memberships.child }}
+            <li>
+              <a href="#uc" class="page-scroll button-link">
+                Unidades Compradoras
+              </a>
+            </li>
+            {{/if}}
           </ul>
         </div>
       </div>
@@ -106,12 +100,12 @@
             {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
             {{else}}
               {{#if result.contract_amount.buyer}}
-              <h4 class="amount-data">
+              <h4 class="amount-data red-text">
                 {{format_amount result.contract_amount.buyer}}
               </h4>
               {{/if}}
               {{#if result.contract_amount.supplier}}
-              <h4 class="amount-data">
+              <h4 class="amount-data green-text">
                 {{format_amount result.contract_amount.supplier}}
               </h4>
               {{/if}}
@@ -122,13 +116,13 @@
         {{#if result.contract_count.buyer}}
           <div class="col-m-6 col-6 pd-nonleft">
             <p class="js-title-data">Contratos como comprador</p>
-            <p class="js-data">Cantidad: {{result.contract_count.buyer}}. Importe: {{format_amount result.contract_amount.buyer}} MXN</p>
+            <p class="js-data">Cantidad: {{result.contract_count.buyer}}. Importe: <span class="red-text">{{format_amount result.contract_amount.buyer}}</span> MXN</p>
           </div>
         {{/if}}
         {{#if result.contract_count.supplier}}
           <div class="col-m-6 col-6 pd-nonleft">
             <p class="js-title-data">Contratos como proveedor</p>
-            <p class="js-data">Cantidad: {{result.contract_count.supplier}}. Importe: {{format_amount result.contract_amount.supplier}} MXN</p>
+            <p class="js-data">Cantidad: {{result.contract_count.supplier}}. Importe: <span class="green-text">{{format_amount result.contract_amount.supplier}}</span> MXN</p>
           </div>
         {{/if}}
         {{#if result.date}}
@@ -149,6 +143,22 @@
             <p class="js-data">{{#each result.source}}{{this}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
           </div>
         {{/if}}
+        {{#ifCond type '==' 'persons'}}
+          <div class="col-12 col-m-12">
+            <p class="description-data-amount">Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.</p>
+          </div>
+        {{/ifCond}}
+        {{#ifCond result.subclassification '==' 'banco'}}
+          {{#if result.source}}
+            <div class="col-m-2 col-2">
+              <p class="js-title-data">Tipo de entidad</p>
+              <p class="js-data">{{result.subclassification}}</p>
+            </div>
+          {{/if}}
+          <div class="col-12 col-m-12 mt-1">
+            <p class="description-data-amount">Los bancos de inversión no realizan compras públicas en en México, los importes que tiene como comprador son de aquellos contratos en los que aportó capital para su realización.</p>
+          </div>
+        {{/ifCond}}
       </div>
       <div class="col-12 col-m-12 mt-2">
         <hr>
@@ -156,7 +166,7 @@
     </div>
   </div>
 </section>
-<section class="profile" id="evolucion-contratos">
+<section class="profile" id="graficas">
   <div class="row">
     <div class="container">
         <div  class="col-m-12 col-6">
@@ -178,17 +188,6 @@
             {{/if}}
           </div>
         </div>
-        {{!-- <div class="col-m-12 col-6">
-          <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
-          <div class="col-m-6 col-6">
-            <div id="piechartBuyer">
-            </div>
-          </div>
-          <div class="col-m-6 col-6">
-            <div id="piechartSupplier">
-            </div>
-          </div>
-        </div> --}}
         <div class="col-m-12 col-12 mt-60">
           <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
           <div id="graph-container">
@@ -200,30 +199,55 @@
     </div>
   </div>
 </section>
-{{#if result.summaries.top_buyers }}
-<section class="profile" id="compradores">
+{{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers}}
+<section class="profile" id="compras">
   <div class="row">
     <div class="container">
+      <h4 class="description-data-subtitle red-text">COMPRAS</h4>
+      {{#if result.top3contracts.buyer}}
       <div class="col-m-12 col-12">
-        <h4 class="description-data-subtitle">COMPRADORES PRINCIPALES</h4>
-        {{#each result.summaries.top_buyers }}
-        <p class="description-data-amount"><a href="/{{this.details.type}}/{{this.memberOf.0.id}}"><img src="../images/icons/dependencia-gray.svg" alt="Institución pública" class="icon-lf icon-lf-organization">
-          {{this.memberOf.0.name}} ({{this.name}})</a> - {{format_amount contract_amount_top_buyer}} pesos mexicanos</p>
-        {{/each}}
+        <h5 class="description-data-subtitle">Contratos de compra</h5>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="description-data-subname">Nombre</th>
+              <th class="description-data-subname">Importe</th>
+              <th class="description-data-subname">Periodo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each result.top3contracts.buyer }}
+            <tr>
+              <td class="description-data-contract">
+                <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+                <a href="/contratos/{{compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
+              </td>
+              <td class="description-data-amount">{{format_amount compiledRelease.total_amount}} {{format_currency compiledRelease.contracts.0.value.currency}}</td>
+              <td class="description-data-date">{{moment compiledRelease.contracts.0.period.startDate date lang="es" format="YYYY"}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
       </div>
-      <div class="col-12 col-m-12 mt-2">
-        <hr>
+      <div class="col-m-12 mb-12 mb-5">
+        {{#ifCond result.contract_count.buyer '>' 3}}
+        <p>Viendo hasta 3 de <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>.</p>
+        <div class="contract-button">
+          <a href="/contratos?filter_name={{result.name}}" class="button-link buyer-button">Ver todos los contratos</a>
+        </div>
+        {{else}}
+          <p>Viendo <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>. </p>
+        {{/ifCond}}
       </div>
+      {{/if}}
     </div>
   </div>
-</section>
-{{/if}}
+
 {{#if result.summaries.top_suppliers }}
-<section class="profile" id="proveedores">
   <div class="row">
     <div class="container">
       <div class="col-m-12 col-12">
-        <h4 class="description-data-subtitle">PROVEEDORES PRINCIPALES</h4>
+        <h5 class="description-data-subtitle">Proveedores principales</h5>
         {{#each result.summaries.top_suppliers }}
         <p class="description-data-amount"><a href="/{{this.details.type}}/{{this.id}}"><img src="../images/icons/empresa-gray.svg" alt="Empresa" class="icon-lf icon-lf-organization">
           {{this.name}}</a> - {{format_amount contract_amount_top_supplier}} pesos mexicanos</p>
@@ -234,18 +258,72 @@
       </div>
     </div>
   </div>
-</section>
 {{/if}}
-<section class="profile" id="contratos">
+</section>
+{{/ifCond}}
+
+{{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers}}
+<section class="profile" id="proveedor">
   <div class="row">
     <div class="container">
-      {{> top3contracts}}
-      <div class="col-12 col-m-12">
+      <h4 class="description-data-subtitle green-text">PROVEEDOR</h4>
+      {{#if result.top3contracts.supplier }}
+      <div class="col-m-12 col-12">
+        <h4 class="description-data-subtitle">Contratos como proveedor</h4>
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th class="description-data-subname">Nombre</th>
+              <th class="description-data-subname">Importe</th>
+              <th class="description-data-subname">Periodo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each result.top3contracts.supplier }}
+            <tr>
+              <td class="description-data-contract">
+                <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
+                <a href="/contratos/{{compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
+              </td>
+              <td class="description-data-amount">{{format_amount compiledRelease.total_amount}} {{format_currency compiledRelease.contracts.0.value.currency}}</td>
+              <td class="description-data-date">{{moment compiledRelease.contracts.0.period.startDate date lang="es" format="YYYY"}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-m-12 mb-12 mb-5">
+        {{#ifCond result.contract_count.supplier '>' 3}}
+        <p>Viendo hasta 3 de <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>.</p>
+        <div class="contract-button">
+          <a href="/contratos?filter_name={{result.name}}" class="button-link supplier-button">Ver todos los contratos</a>
+        </div>
+        {{else}}
+          <p>Viendo <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>. </p>
+        {{/ifCond}}
+      </div>
+      {{/if}}
+    </div>
+  </div>
+{{#if result.summaries.top_buyers }}
+  <div class="row">
+    <div class="container">
+      <div class="col-m-12 col-12">
+        <h4 class="description-data-subtitle">Principales dependencias a las que provee</h4>
+        {{#each result.summaries.top_buyers }}
+        <p class="description-data-amount"><a href="/{{this.details.type}}/{{this.memberOf.0.id}}"><img src="../images/icons/dependencia-gray.svg" alt="Institución pública" class="icon-lf icon-lf-organization">
+          {{this.memberOf.0.name}} ({{this.name}})</a> - {{format_amount contract_amount_top_buyer}} pesos mexicanos</p>
+        {{/each}}
+      </div>
+      <div class="col-12 col-m-12 mt-2">
         <hr>
       </div>
     </div>
   </div>
+  {{/if}}
 </section>
+{{/ifCond}}
+
 {{#if result.memberships.parent}}
 <section class="profile" id="parents">
   <div class="row">
@@ -260,23 +338,6 @@
   </div>
 </section>
 {{/if}}
-{{#if result.memberships.child}}
-<section class="profile" id="uc">
-  <div class="row">
-    <div class="container">
-      <div  class="col-m-12 col-12">
-        <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
-        <p>
-          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}}
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-{{/if}}
-
-
-
 {{#ifCond type '!=' 'companies'}}
 {{#if result.flags }}
 <section class="profile bg-gray" id="evaluacion">
@@ -292,10 +353,13 @@
             Puntaje total: {{ format_score result.flags.0.total_score }}
           </h4>
         </div>
+        <div class="col-12 col-m-12">
+          <p>A partir de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la puntuación final el sistema también tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede consultarse en <a href="">TodosLosContratos.mx</a>.</p>
+        </div>
       </div>
       <div class="col-12-col-m-12">
-        <h3>Gráfico de puntajes de cada categoría</h3>
-        {{#each result.flags.0.contract_score }}
+        {{!-- <h3>Gráfico de puntajes de cada categoría</h3> --}}
+        {{#each result.flags.0.criteria_score }}
         <div class="flags_graph_bar">
           <div class="flag_name">
             {{flag_name @key}}
@@ -332,12 +396,7 @@
     <div class="container">
       <div  class="col-m-12 col-12 mt-2">
         <h3>Solicitar más información</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Con el objetivo de que las dependencias y las Unidades Compradoras puedan mejorar la calidad de los datos de contrataciones destacamos las tres banderas que dieron un resultado más bajo y como pueden mejorar. Para tener la lista completa contáctanos a través del formulario. </p>
         <form class="sendinfo-form mt-2">
           <fieldset>
             <div class="form-group" data-required="true">
@@ -371,6 +430,20 @@
 </section>
 {{/if}}
 {{/ifCond}}
+{{#if result.memberships.child}}
+<section class="profile" id="uc">
+  <div class="row">
+    <div class="container">
+      <div  class="col-m-12 col-12">
+        <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
+        <p>
+          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{{/if}}
 
 {{> send_info_form}}
 <script>

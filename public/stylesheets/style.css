@@ -366,6 +366,12 @@ a:focus {
 .right-align {
   text-align: right;
 }
+.red-text {
+  color: #db2828 !important;
+}
+.green-text {
+  color: #278529 !important;
+}
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -2996,6 +3002,12 @@ button.close {
 .doc-download-link:hover {
   color: #21018b !important;
   background: transparent !important;
+}
+.buyer-button {
+  background: #db2828 !important;
+}
+.supplier-button {
+  background: #278529 !important;
 }
 .flag_name {
   float: left;
