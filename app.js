@@ -333,7 +333,15 @@ app.engine('.hbs', hbs({
         // console.log(org);
         //TODo: Elegir cuales mostrar
         //Seleccionar las 3 más cercanas al mínimo. Utilizar cero mientras no haya mínimo.
-        selected_flags = ["traz-ei","traz-pf","tcr"];
+        const flag_minimums = {};
+        const flagsDiff = [];
+
+        const allFlags = _.merge(org.node_rules,org.contract_rules);
+        _.forEach(allFlags,(flag_id,flag_score) => {
+          const flag_minimum = flag_minumums[flag_id] || 0;
+          flagsDiff[flag_id] = flag_score-flag_minimum
+        })
+        const selected_flags = Object.keys(flagsDiff.sort()).slice(3);
 
         const recommendations = [
           flag_details[selected_flags[0]],flag_details[selected_flags[1]],flag_details[selected_flags[2]],
