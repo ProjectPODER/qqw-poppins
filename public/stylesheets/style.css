@@ -83,7 +83,7 @@ img {
 }
 hr {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
   border: 0;
   border-top: 1px solid #eee;
 }
@@ -409,7 +409,7 @@ hr {
   background-color: #999;
   height: 1px;
   border: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .text-center {
   text-align: center;
@@ -545,8 +545,8 @@ section {
   padding-bottom: 5rem;
 }
 section.profile {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 section.data-sources {
   background-color: #f7f7f7;
@@ -602,7 +602,6 @@ section.tabs h1 {
   font-size: 0.7rem;
   color: #808080;
   bottom: 0;
-  text-align: right;
 }
 .sources-icons {
   width: 7rem;
@@ -931,6 +930,7 @@ button.reset-filters {
 .description-data-name h3,
 .description-data-title h3 {
   font-size: 2rem;
+  margin-top: 0.5em;
 }
 .search-result-emph {
   color: #2900f5;
@@ -1063,8 +1063,7 @@ button.reset-filters {
 .js-foundation-date .cardItemData {
   padding-left: 5px;
 }
-.js-title-data,
-.js-data {
+.js-title-data {
   text-transform: uppercase;
 }
 .js-title-data {
@@ -1139,7 +1138,10 @@ button.reset-filters {
 }
 .breadcrumb {
   padding-top: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 0;
+}
+.breadcrumb h4 {
+  margin-bottom: 0;
 }
 .if-address-org {
   margin-bottom: 2rem;

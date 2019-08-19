@@ -37,12 +37,12 @@
           <ul>
             <li>
               <a href="#informacion-general" class="page-scroll button-link">
-                Información General
+                Información
               </a>
             </li>
             <li>
               <a href="#evolucion-contratos" class="page-scroll button-link">
-                Evolución de contratos
+                Gráficas
               </a>
 
             </li>
@@ -84,7 +84,7 @@
 
             <li>
               <a href="#evaluacion" class="page-scroll button-link evaluacion">
-                <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación y recomendaciones
+                <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación
               </a>
             </li>
             {{/if}}
@@ -109,38 +109,26 @@
               <h4 class="amount-data">
                 {{format_amount result.contract_amount.buyer}}
               </h4>
-                Pesos mexicanos como comprador
               {{/if}}
               {{#if result.contract_amount.supplier}}
               <h4 class="amount-data">
                 {{format_amount result.contract_amount.supplier}}
               </h4>
-                Pesos mexicanos como comprador
               {{/if}}
             {{/ifCond}}
         </div>
       </div>
       <div class="col-12 col-m-12 flex">
-        {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
-          <div class="col-m-4 col-4 pd-nonleft">
-            <p class="js-title-data">Suma de contratos como comprador</p>
-            <p class="js-data">{{format_amount result.contract_amount.buyer}}</p>
-          </div>
-          <div class="col-m-4 col-4 pd-nonleft">
-            <p class="js-title-data">Suma de contratos como proveedor</p>
-            <p class="js-data">{{format_amount result.contract_amount.supplier}}</p>
-          </div>
-        {{/ifCond}}
         {{#if result.contract_count.buyer}}
-          <div class="col-m-4 col-4 pd-nonleft">
-            <p class="js-title-data">Número de contratos como comprador</p>
-            <p class="js-data">{{result.contract_count.buyer}}</p>
+          <div class="col-m-6 col-6 pd-nonleft">
+            <p class="js-title-data">Contratos como comprador</p>
+            <p class="js-data">Cantidad: {{result.contract_count.buyer}}. Importe: {{format_amount result.contract_amount.buyer}} MXN</p>
           </div>
         {{/if}}
         {{#if result.contract_count.supplier}}
-          <div class="col-m-4 col-4 pd-nonleft">
-            <p class="js-title-data">Número de contratos como proveedor</p>
-            <p class="js-data">{{result.contract_count.supplier}}</p>
+          <div class="col-m-6 col-6 pd-nonleft">
+            <p class="js-title-data">Contratos como proveedor</p>
+            <p class="js-data">Cantidad: {{result.contract_count.supplier}}. Importe: {{format_amount result.contract_amount.supplier}} MXN</p>
           </div>
         {{/if}}
         {{#if result.date}}
@@ -149,8 +137,14 @@
             <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
           </div>
         {{/if}}
-        {{#if result.source}}
+        {{#if result.identifiers }}
           <div class="col-m-4 col-4 pd-nonleft">
+            <p class="js-title-data">Identificadores</p>
+            <p class="js-data">{{#each result.identifiers}}{{scheme}}: {{identifier}}{{/each}}</p>
+          </div>
+        {{/if}}
+        {{#if result.source}}
+          <div class="col-m-2 col-2 pd-nonleft">
             <p class="js-title-data">Fuente(s)</p>
             <p class="js-data">{{#each result.source}}{{this}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
           </div>
@@ -166,13 +160,13 @@
   <div class="row">
     <div class="container">
         <div  class="col-m-12 col-6">
-          <h4 class="description-data-subtitle">EVOLUCIÓN DE CONTRATOS</h4>
+          <h4 class="description-data-subtitle">EVOLUCIÓN ANUAL DE CONTRATOS</h4>
           <div id="chart">
             <svg></svg>
           </div>
         </div>
         <div class="col-m-12 col-6">
-          <h4 class="description-data-subtitle">TIPO DE CONTRATOS</h4>
+          <h4 class="description-data-subtitle">TIPO DE PROCEDIMIENTO</h4>
           <div id="piechartBuyer">
             {{#if svg}}
             Comprador
