@@ -166,7 +166,7 @@
           <h4 class="description-data-subtitle" id="contract_problemas_destacados">PROBLEMAS DESTACADOS</h4>
           <ul class="party_flags_recommendations_list">
             {{# each this.rules}}
-                <li class="party_flags_recommendations_item">{{name}} {{count}}</li>
+                <li class="party_flags_recommendations_item">{{#with (contract_recommendations name) }}{{ contract_string }}.{{/with}}</li>
             {{/each}}
           </ul>
           {{/with}}

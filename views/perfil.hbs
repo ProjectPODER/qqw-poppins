@@ -350,7 +350,7 @@
         <div class="col-m-6 col-6 right-align">
           <h4 class="amount-data">
             {{!-- {{format_amount result.amount}} --}}
-            Puntaje total: {{ format_score result.flags.0.criteria_score.total_score }}
+            Puntaje total: {{ format_score result.flags.0.total_score }}
           </h4>
         </div>
         <div class="col-12 col-m-12">
@@ -384,9 +384,9 @@
         {{# each (flag_recommendations result.flags flag_count) }}
         <div class="col-4 col-m-12 category-profile">
           <p><b>Categoría:</b> {{category}}</p>
-          <p><b>Nombre:</b> {{name}}</p>
+          <p><b>Problema:</b> {{description}}</p>
           <p><b>Puntaje:</b> {{format_score score }}</p>
-          <p><b>Recomendación:</b> {{text}}</p>
+          <p><b>Recomendación:</b> {{uc_string}}</p>
         </div>
         {{/each}}
       </div>
