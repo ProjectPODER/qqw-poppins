@@ -334,8 +334,8 @@
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
         </div>
-       {{#each result.records.0.compiledRelease.awards }}
-       <div class="col-m-12 col-12">
+        {{#each result.records.0.compiledRelease.awards }}
+        <div class="col-m-12 col-12">
           {{#if suppliers }}
           <div class="col-m-7 col-7">
               <p class="js-title-data">Proveedor(es)</p>
@@ -363,15 +363,16 @@
               <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
               <p class="js-data">{{moment date date lang="es" format="LL"}}</p>
           </div>
+          {{/if}}
+          <div class="col-m-2 col-2">
+            <p class="js-title-data">Identificador</p>
+            <p class="js-data">
+                {{id}}</p>
+          </div>
         </div>
-        {{/if}}
-        <div class="col-m-2 col-2">
-          <p class="js-title-data">Identificador</p>
-          <p class="js-data">
-              {{id}}</p>
-        </div>
+        {{/each}}
       </div>
-      {{/each}}
+
       <div class="col-m-8 col-8">
         <hr>
       </div>
