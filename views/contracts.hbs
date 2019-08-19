@@ -179,83 +179,87 @@
             </div>
             <div id="contract-index" class="dataTable" aria-describedby="contract-index_info" role="grid">
               <div class="dataCardBody">
-                {{#each result.data.0.records}}
-                <div role="row" class="search-card odd">
-                  <div class=" js-title no-title search-result-title col-m-8 col-8">
-                    {{!-- <div class="cardItemTitle">Título</div>
-                    <div class="cardItemData"></div> --}}
-                    <a href="/contratos/{{compiledRelease.ocid}}" title="{{compiledRelease.contracts.0.title}}"><p class="text-overflow">{{compiledRelease.contracts.0.title}}</p></a>
-                  </div>
-                  <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1" title="{{ format_amount compiledRelease.total_amount}}">
-                    {{!-- <div class="cardItemTitle"></div>
-                    <div class="cardItemData"></div> --}}
-                    {{ format_amount compiledRelease.total_amount}}
-                    <span class="contract_currency">{{format_currency compiledRelease.contracts.0.value.currency}}</span>
-                  </div>
-                  <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
-                    {{!-- <div class="cardItemTitle"></div> --}}
-                    <div class="cardItemData"></div>Vigente desde {{moment compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
-                  </div>
-                  <div class=" js-ocid no-title col-2 col-m-2">
-                    {{!-- <div class="cardItemTitle">OCID</div>
-                    <div class="cardItemData"></div> --}}
-                    <a href="/contratos/{{compiledRelease.ocid}}" class="button-link">Ver contrato</a>
-                  </div>
-                  <div class=" js-dependency col-3 col-m-3">
-                    <div class="cardItemTitle">Dependencia</div>
-                    {{!-- <div class="cardItemData"></div> --}}
-                    <ul class="dependency-cell list-unstyled">
-                      <li class="text-overflow">
-                        <a href="/{{get_type_url (get_party_type this compiledRelease.parties.0.id) }}/{{compiledRelease.parties.0.memberOf.0.id}}" title="{{compiledRelease.parties.0.memberOf.0.name}}">{{{hilight ../filters.dependencia.value compiledRelease.parties.0.memberOf.0.name}}}</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class=" js-suppliers col-4 col-m-4">
-                    <div class="cardItemTitle">Proveedores ({{compiledRelease.awards.length }})</div>
-                    <div class="col-12 col-m-12 flex">
-                      {{#each compiledRelease.awards }}
-                        <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
-                          {{#each suppliers}}
-                            <p class="text-overflow supplier-list-item" title="{{name}}"><a href="/{{get_type_url (get_party_type ../../this id) }}/{{id}}"><b>&bull;</b> {{{hilight ../../../filters.proveedor.value name}}}</a></p>
-                          {{/each}}
-                        </div>
-                        <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
-                          <p class="amount-index-contracts text-overflow supplier-list-item" title="{{format_amount value.amount}}">{{format_amount value.amount}}</p>
-                        </div>
-                      {{/each}}
+                {{#if result.data.0.records.length }}
+                  {{#each result.data.0.records}}
+                  <div role="row" class="search-card odd">
+                    <div class=" js-title no-title search-result-title col-m-8 col-8">
+                      {{!-- <div class="cardItemTitle">Título</div>
+                      <div class="cardItemData"></div> --}}
+                      <a href="/contratos/{{compiledRelease.ocid}}" title="{{compiledRelease.contracts.0.title}}"><p class="text-overflow">{{compiledRelease.contracts.0.title}}</p></a>
                     </div>
-                    {{#ifCond compiledRelease.awards.length '>' 3}}
-                    <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-                      <a class="supplier-list-toggle">Ver todos</a>
+                    <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1" title="{{ format_amount compiledRelease.total_amount}}">
+                      {{!-- <div class="cardItemTitle"></div>
+                      <div class="cardItemData"></div> --}}
+                      {{ format_amount compiledRelease.total_amount}}
+                      <span class="contract_currency">{{format_currency compiledRelease.contracts.0.value.currency}}</span>
                     </div>
-                    {{/ifCond}}
-                  </div>
-
-                  {{!-- <div class=" js-suppliers col-4 col-m-4">
-                    <div class="cardItemTitle">Proveedores</div>
-                    <div class="cardItemData"></div>
-                    <ul class="suppliers-cell list-unstyled">
-                      {{#each compiledRelease.awards}}
-                        {{#each suppliers}}
-                        <li>
-                          <a href="/{{get_party_type ../../records id }}/{{id}}">{{name}}</a>
+                    <div class=" js-start-date inline-title search-result-mono-gray col-m-8 col-8">
+                      {{!-- <div class="cardItemTitle"></div> --}}
+                      <div class="cardItemData"></div>Vigente desde {{moment compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
+                    </div>
+                    <div class=" js-ocid no-title col-2 col-m-2">
+                      {{!-- <div class="cardItemTitle">OCID</div>
+                      <div class="cardItemData"></div> --}}
+                      <a href="/contratos/{{compiledRelease.ocid}}" class="button-link">Ver contrato</a>
+                    </div>
+                    <div class=" js-dependency col-3 col-m-3">
+                      <div class="cardItemTitle">Dependencia</div>
+                      {{!-- <div class="cardItemData"></div> --}}
+                      <ul class="dependency-cell list-unstyled">
+                        <li class="text-overflow">
+                          <a href="/{{get_type_url (get_party_type this compiledRelease.parties.0.id) }}/{{compiledRelease.parties.0.memberOf.0.id}}" title="{{compiledRelease.parties.0.memberOf.0.name}}">{{{hilight ../filters.dependencia.value compiledRelease.parties.0.memberOf.0.name}}}</a>
                         </li>
+                      </ul>
+                    </div>
+                    <div class=" js-suppliers col-4 col-m-4">
+                      <div class="cardItemTitle">Proveedores ({{compiledRelease.awards.length }})</div>
+                      <div class="col-12 col-m-12 flex">
+                        {{#each compiledRelease.awards }}
+                          <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
+                            {{#each suppliers}}
+                              <p class="text-overflow supplier-list-item" title="{{name}}"><a href="/{{get_type_url (get_party_type ../../this id) }}/{{id}}"><b>&bull;</b> {{{hilight ../../../filters.proveedor.value name}}}</a></p>
+                            {{/each}}
+                          </div>
+                          <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
+                            <p class="amount-index-contracts text-overflow supplier-list-item" title="{{format_amount value.amount}}">{{format_amount value.amount}}</p>
+                          </div>
                         {{/each}}
-                      {{/each}}
-                    </ul>
-                  </div> --}}
-                  {{#if compiledRelease.tender.procurementMethodDetails}}
-                  <div class=" js-procedure col-2 col-m-2 ml-25">
-                    <div class="cardItemTitle">Procedimiento</div>
-                    <div class="cardItemData">{{compiledRelease.tender.procurementMethodDetails}}</div>
+                      </div>
+                      {{#ifCond compiledRelease.awards.length '>' 3}}
+                      <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                        <a class="supplier-list-toggle">Ver todos</a>
+                      </div>
+                      {{/ifCond}}
+                    </div>
+
+                    {{!-- <div class=" js-suppliers col-4 col-m-4">
+                      <div class="cardItemTitle">Proveedores</div>
+                      <div class="cardItemData"></div>
+                      <ul class="suppliers-cell list-unstyled">
+                        {{#each compiledRelease.awards}}
+                          {{#each suppliers}}
+                          <li>
+                            <a href="/{{get_party_type ../../records id }}/{{id}}">{{name}}</a>
+                          </li>
+                          {{/each}}
+                        {{/each}}
+                      </ul>
+                    </div> --}}
+                    {{#if compiledRelease.tender.procurementMethodDetails}}
+                    <div class=" js-procedure col-2 col-m-2 ml-25">
+                      <div class="cardItemTitle">Procedimiento</div>
+                      <div class="cardItemData">{{compiledRelease.tender.procurementMethodDetails}}</div>
+                    </div>
+                    {{/if}}
+                    {{!-- <div class=" js-score col-1 col-m-1 hidden">
+                      <div class="cardItemTitle">Puntaje</div>
+                      <div class="cardItemData"></div>47.62<span class="d100">/100</span>
+                    </div> --}}
                   </div>
-                  {{/if}}
-                  {{!-- <div class=" js-score col-1 col-m-1 hidden">
-                    <div class="cardItemTitle">Puntaje</div>
-                    <div class="cardItemData"></div>47.62<span class="d100">/100</span>
-                  </div> --}}
-                </div>
-                {{/each}}
+                  {{/each}}
+                {{else}}
+                No hay resultados para esta búsqueda. Por favor pruebe eliminando filtros. Si el problema persiste por favor contáctenos.
+                {{/if}}
               </div>
             </div>
             {{> pagination}}

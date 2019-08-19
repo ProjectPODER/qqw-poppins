@@ -128,47 +128,51 @@
               </div>
               <div id="organization-index" class="dataTable" aria-describedby="organization-index_info" role="grid">
                 <div class="dataCardBody">
-                  {{#each result.data}}
-                  <div role="row" class="search-card odd">
-                    <div class=" js-title no-title search-result-title col-m-8 col-8">
-                      <div class="cardItemTitle">Nombre</div>
-                      <a href="/empresas/{{id}}">
-                        <div class="cardItemData">{{name}}</div>
-                      </a>
+                  {{# if result.data.length }}
+                    {{#each result.data}}
+                    <div role="row" class="search-card odd">
+                      <div class=" js-title no-title search-result-title col-m-8 col-8">
+                        <div class="cardItemTitle">Nombre</div>
+                        <a href="/empresas/{{id}}">
+                          <div class="cardItemData">{{name}}</div>
+                        </a>
+                      </div>
+                      <div class=" js-ocid no-title col-2 col-m-2">
+                        <a href="/empresas/{{id}}" class="button-link">Ver empresa</a>
+                      </div>
+                      <div class=" col-m-8 col-8">
+                        <div class="cardItemTitle"></div>
+                        <div class="cardItemData"></div>
+                        <p class="js-person-type" style="font-size: 16px;">
+                          <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
+                          Empresa
+                          {{#if contract_count}}
+                          con
+                          <span class="js-contract-count">
+                            <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+                            {{format_number contract_count.supplier}} contrato(s)
+                          </span>
+                          por
+                          <span class="js-contract-amount">
+                            {{format_amount contract_amount.supplier}}
+                          </span>
+                          pesos mexicanos.
+                          {{/if}}
+                        </p>
+                      </div>
+                      {{!-- <div class=" js-score col-2 col-m-2 hidden">
+                        <div class="cardItemTitle">Puntaje</div>
+                        <div class="cardItemData"></div>51.19<span class="d100">/100</span>
+                      </div> --}}
+                      <div class=" col-m-8 col-8">
+                        <div class="cardItemTitle"></div>
+                        <div class="cardItemData"></div>
+                      </div>
                     </div>
-                    <div class=" js-ocid no-title col-2 col-m-2">
-                      <a href="/empresas/{{id}}" class="button-link">Ver empresa</a>
-                    </div>
-                    <div class=" col-m-8 col-8">
-                      <div class="cardItemTitle"></div>
-                      <div class="cardItemData"></div>
-                      <p class="js-person-type" style="font-size: 16px;">
-                        <img src="images/icons/empresa-gray-light.svg" alt="" class="icon">
-                        Empresa
-                        {{#if contract_count}}
-                        con
-                        <span class="js-contract-count">
-                          <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
-                          {{format_number contract_count.supplier}} contrato(s)
-                        </span>
-                        por
-                        <span class="js-contract-amount">
-                          {{format_amount contract_amount.supplier}} 
-                        </span>
-                        pesos mexicanos.
-                        {{/if}}
-                      </p>
-                    </div>
-                    {{!-- <div class=" js-score col-2 col-m-2 hidden">
-                      <div class="cardItemTitle">Puntaje</div>
-                      <div class="cardItemData"></div>51.19<span class="d100">/100</span>
-                    </div> --}}
-                    <div class=" col-m-8 col-8">
-                      <div class="cardItemTitle"></div>
-                      <div class="cardItemData"></div>
-                    </div>
-                  </div>
-                  {{/each}}
+                    {{/each}}
+                  {{else}}
+                  No hay resultados para esta búsqueda. Por favor pruebe eliminando filtros. Si el problema persiste por favor contáctenos.
+                  {{/if}}
                 </div>
               </div>
               {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}

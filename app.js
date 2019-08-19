@@ -160,7 +160,7 @@ const flag_details = {
     description: "No se incluye un enlace a la publicación oficial",
     type: "bool",
     contract_string: "No tiene un enlace para verificar los datos que están en la base de datos",
-    uc_string: "Ser más coherentes entre la escala de la empresa (micro-pequeña-mediana-grande) demandada y la escala que tiene la empresa que ganó el contrato.",
+    uc_string: "Asociar todos los contratos publicados en la base de datos un enlace dónde se pueda conseguir más información.",
     hidden_uc: false,
   },
   "traz-ir": {
