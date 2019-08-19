@@ -32,6 +32,7 @@ const flag_categories = {
 
 const flag_details = {
   "trans-ov": {
+    id: "trans-ov",
     name: "OCDS válido",
     category: "Transparencia",
     level: "contract",
@@ -42,6 +43,7 @@ const flag_details = {
     hidden_uc: true,
   },
   "trans-sc": {
+    id: "trans-sc",
     name: "Secciones completas",
     category: "Transparencia",
     level: "contract",
@@ -52,6 +54,7 @@ const flag_details = {
     hidden_uc: true,
   },
   "trans-cc": {
+    id: "trans-cc",
     name: "Campos completos",
     category: "Transparencia",
     level: "contract",
@@ -62,6 +65,7 @@ const flag_details = {
     hidden_uc: true,
   },
   "temp-cft": {
+    id: "trans-cft",
     level: "contract",
     category: "Temporalidad",
     name: "Campos fundamentales para la temporalidad",
@@ -72,6 +76,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "temp-dl": {
+    id: "temp-dl",
     level: "contract",
     category: "Temporalidad",
     name: "Duración larga",
@@ -82,6 +87,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "temp-tipo": {
+    id: "temp-tipo",
     level: "contract",
     category: "Temporalidad",
     name: "Tiempo insuficiente de preparación de ofertas",
@@ -92,6 +98,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "temp-fs": {
+    id: "temp-fs",
     level: "contract",
     category: "Temporalidad",
     name: "Fechas sospechosas",
@@ -102,6 +109,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "comp-cfc": {
+    id: "comp-cfc",
     level: "contract",
     category: "Competitividad",
     name: "Fechas sospechosas",
@@ -112,6 +120,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "comp-pf": {
+    id: "comp-pf",
     level: "contract",
     category: "Competitividad",
     name: "Paraísos fiscales",
@@ -122,6 +131,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-cft": {
+    id: "traz-cft",
     level: "contract",
     category: "Trazabilidad",
     name: "Campos fundamentales para la trazabilidad",
@@ -132,6 +142,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-ei": {
+    id: "traz-ei",
     level: "contract",
     category: "Trazabilidad",
     name: "Escala inconsistente",
@@ -142,6 +153,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-fro": {
+    id: "traz-fro",
     level: "contract",
     category: "Trazabilidad",
     name: "Falta de referencia oficial",
@@ -152,6 +164,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-ir": {
+    id: "traz-ir",
     level: "contract",
     category: "Trazabilidad",
     name: "Importe redondeado",
@@ -162,6 +175,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-ip": {
+    id: "traz-ip",
     level: "contract",
     category: "Trazabilidad",
     name: "Información de las partes",
@@ -172,6 +186,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-mc": {
+    id: "traz-mc",
     level: "contract",
     category: "Trazabilidad",
     name: "Modificaciones al contrato",
@@ -182,6 +197,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-pf": {
+    id: "traz-pf",
     level: "contract",
     category: "Trazabilidad",
     name: "Proveedor fantasma",
@@ -192,6 +208,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "traz-ct": {
+    id: "traz-ct",
     level: "contract",
     category: "Trazabilidad",
     name: "Comprensión del título",
@@ -202,6 +219,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "conf": {
+    id: "conf",
     level: "party",
     category: "Confiabilidad",
     name: "Confiabilidad",
@@ -212,6 +230,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "aepm": {
+    id: "aepm",
     level: "node",
     category: "Competitividad",
     name: "% Agente Económico Preponderante (AEP) por monto",
@@ -222,6 +241,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "aepc": {
+    id: "aepc",
     level: "node",
     category: "Competitividad",
     name: "% AEP por cantidad de contratos",
@@ -232,6 +252,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "tcr": {
+    id: "tcr",
     level: "node",
     category: "Trazabilidad",
     name: "Títulos de contrato repetidos",
@@ -242,6 +263,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "mcr": {
+    id: "mcr",
     level: "node",
     category: "Trazabilidad",
     name: "Montos de contratos repetidos",
@@ -252,6 +274,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "celp": {
+    id: "celp",
     level: "node",
     category: "Competitividad",
     name: "Concentración de excepciones a la licitación púb.",
@@ -262,6 +285,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "rla": {
+    id: "rla",
     level: "node",
     category: "Competitividad",
     name: "Rebasa el límite asignado",
@@ -272,6 +296,7 @@ const flag_details = {
     hidden_uc: false,
   },
   "ncap": {
+    id: "ncap",
     level: "node",
     category: "Competitividad",
     name: "Número de contratos arriba del promedio",
@@ -329,23 +354,44 @@ app.engine('.hbs', hbs({
       contract_recommendations: function(flag) {
         return flag_details[flag];
       },
-      flag_recommendations: function (org, count) {
-        // console.log(org);
-        //TODo: Elegir cuales mostrar
-        //Seleccionar las 3 más cercanas al mínimo. Utilizar cero mientras no haya mínimo.
+      flag_recommendations: function (org_flags, count) {
+        // console.log(org_flags);
         const flag_minimums = {};
         const flagsDiff = [];
+        let flagsLimit = count || 3;
+        console.log("flag_recommendations",flagsLimit,count)
 
-        const allFlags = _.merge(org.node_rules,org.contract_rules);
-        _.forEach(allFlags,(flag_id,flag_score) => {
-          const flag_minimum = flag_minumums[flag_id] || 0;
-          flagsDiff[flag_id] = flag_score-flag_minimum
+        // const allFlags = _.merge(org_flags[0].node_rules,org_flags[0].contract_rules);
+        const allFlags = _.merge(org_flags[0].node_score);
+        // console.log(allFlags);
+        _.forEach(allFlags,(i,flag_id,flags) => {
+          // console.log(flag_id,flags[flag_id]);
+          if (flag_id != "total_score") {
+            //TODO: Seleccionar las 3 más cercanas al mínimo. Utilizar cero mientras no haya mínimo.
+            const flag_minimum = flag_minimums[flag_id] || 0;
+            flagsDiff[flag_id] = parseFloat(flags[flag_id])-flag_minimum
+          }
         })
-        const selected_flags = Object.keys(flagsDiff.sort()).slice(3);
 
-        const recommendations = [
-          flag_details[selected_flags[0]],flag_details[selected_flags[1]],flag_details[selected_flags[2]],
-        ]
+        //sort flags
+        okeys = Object.keys(flagsDiff),
+        sortedFlags = {};
+        okeys.sort((p,c) => flagsDiff[p] <= flagsDiff[c]).forEach((p,i) => sortedFlags[okeys[i]] = flagsDiff[p]);
+
+        const sortedFlagKeys = Object.keys(sortedFlags);
+
+        const recommendations = []
+
+        for (var i = 0;  i < flagsLimit; i++) {
+          if (sortedFlagKeys[i]) {
+            const recommendation = _.clone(flag_details[sortedFlagKeys[i].replace(/[0-9]/g,"")]);
+            recommendation.score = allFlags[sortedFlagKeys[i]];
+            recommendations.push(recommendation);
+          }
+          else {
+            console.error("flag_recommendations","Asked for too many flags",i,sortedFlagKeys[i],flag_details[sortedFlagKeys[i]]);
+          }
+        }
         return recommendations;
       },
       filter_array: function(haystack,property,needle) {

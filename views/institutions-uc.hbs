@@ -101,7 +101,7 @@
                   <div role="row" class="search-card odd">
                     <div class=" js-title no-title search-result-title col-m-8 col-8">
                       <div class="cardItemTitle">Nombre</div>
-                      <a href="/instituciones/{{id}}">
+                      <a href="/instituciones-publicas/{{id}}">
                         <div class="cardItemData">{{name}}</div>
                       </a>
                     </div>
@@ -127,7 +127,7 @@
                         {{#ifCond contract_amount.supplier '==' '0'}}
                           {{else}}
                           <span class="js-contract-amount">
-                            por {{format_amount contract_amount.supplier}} 
+                            por {{format_amount contract_amount.supplier}}
                           </span>
                             pesos mexicanos.
                         {{/ifCond}}
@@ -141,7 +141,7 @@
                         </span>
                         por
                         <span class="js-contract-amount">
-                          {{format_amount contract_amount.buyer}} 
+                          {{format_amount contract_amount.buyer}}
                         </span>
                         pesos mexicanos.
                         {{else}}
@@ -151,12 +151,12 @@
                         {{/if}}
                       </p>
                       <p class="js-flags">
-                        Puntaje: {{ format_score flags.0.criteria_score.total_score }}, 
-                        Trazabilidad: {{ format_score flags.0.criteria_score.traz }}, 
-                        Transparencia: {{ format_score flags.0.criteria_score.trans }}, 
-                        Competitividad: {{ format_score flags.0.criteria_score.comp }}, 
-                        Temporalidad: {{ format_score flags.0.criteria_score.trans }}, 
-                        Confiabilidad: {{ format_score flags.0.criteria_score.conf }}
+                        Puntaje: {{ format_score flags.0.total_score }},
+                        Trazabilidad: {{ format_score flags.0.contract_score.traz }},
+                        Transparencia: {{ format_score flags.0.contract_score.trans }},
+                        Competitividad: {{ format_score flags.0.contract_score.comp }},
+                        Temporalidad: {{ format_score flags.0.contract_score.trans }},
+                        Confiabilidad: {{ format_score flags.0.node_score.conf }}
                       </p>
                     </div>
                     {{!-- <div class=" js-score col-2 col-m-2 hidden">
@@ -178,5 +178,3 @@
         {{> modal-form}}
     </div>
 </div>
-
-
