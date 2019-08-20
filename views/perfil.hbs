@@ -362,11 +362,9 @@
         {{#each result.flags.0.contract_score }}
         <div class="flags_graph_bar">
           <div class="flag_name">
-            {{flag_name @key}} {{result.flags.0.contract_score.total_score}}
-            {{#if result.flags.0.contract_score.total_score}}
-            {{else}}
-            <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
-            {{/if}}
+             {{#with (flag_name @key) }}
+                {{name}} <a data-toggle="tooltip" data-placement="right" title="{{info}}"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
+             {{/with}}
           </div>
           <div class="flag_pole flag_{{@key}}">
             <div class="flag_pole_min" style="width: {{format_score this}}">

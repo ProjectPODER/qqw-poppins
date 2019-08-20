@@ -22,11 +22,27 @@ var app = express();
 
 
 const flag_categories = {
-  conf: "Confiabilidad",
-  traz: "Trazabilidad",
-  trans: "Transparencia",
-  comp: "Competitividad",
-  temp: "Temporalidad",
+
+  conf: {
+    name: "Confiabilidad",
+    info: "Una organización es tan confiable como el promedio de aquellas con las que se relaciona."
+  } ,
+  traz: {
+    name: "Trazabilidad",
+    info: "Se puede seguir el dinero del presupuesto al ítem y se conocen los detalles de todos los actores involucrados."
+  },
+  trans: {
+    name: "Transparencia",
+    info: "Cumple con estándares internacionales de contrataciones abiertas."
+  },
+  comp: {
+    name: "Competitividad",
+    info: "El proceso de contratación fue una competencia justa y abierta."
+  },
+  temp: {
+    name: "Temporalidad",
+    info: "Se respetan los tiempos de los distintos procesos dentro la contratación."
+  },
   total_score: "Puntaje total"
 }
 

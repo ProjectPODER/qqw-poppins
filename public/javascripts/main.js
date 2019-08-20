@@ -90,35 +90,13 @@ $("#first-search").click(function() {
 // Right menu Contract page
 $('.right-menu-contracts').affix({offset: {top: 280, bottom:950} });
 
-// $('a.page-scroll').bind('click', function(event) {
-//     var $anchor = $(this);
-//     $('html, body').stop().animate({
-//         scrollTop: ($($anchor.attr('href')).offset().top - 70)
-//     }, 1250, 'easeInOutExpo');
-//     event.preventDefault();
-// });
-
-  // Add scrollspy to <body>
-// $('body').scrollspy({target: "#right-menu-contracts", offset: 150});
-
-// // Add smooth scrolling on all links inside the navbar
-// $("#right-menu-contracts a").on('click', function(event) {
-//   // Make sure this.hash has a value before overriding default behavior
-//   if (this.hash !== "") {
-//     // Prevent default anchor click behavior
-//     event.preventDefault();
-
-//     // Store hash
-//     var hash = this.hash;
-
-//     // Using jQuery's animate() method to add smooth page scroll
-//     // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-//     $('html, body').animate({
-//       scrollTop: $(hash).offset().top - 70
-//     }, 800, function(){
-//     });
-//   }  // End if
-// });
+$('a.page-scroll').bind('click', function(event) {
+    var $anchor = $(this);
+    $('html, body').stop().animate({
+        scrollTop: ($($anchor.attr('href')).offset().top - 70)
+    }, 1250, 'easeInOutExpo');
+    event.preventDefault();
+});
 
   // Add scrollspy to <body>
 $('body').scrollspy({target: "#right-menu-contracts", offset: 150});

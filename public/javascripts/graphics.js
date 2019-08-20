@@ -2,25 +2,30 @@
 // ------- GRAPHS --------
 
 // Bar Chart
+
 function barChart(summaries) {
   const yearData = [
     {
-        "key" : "Importe vendedor" ,
+        "key" : "Importe de contratos como proveedor" ,
         "bar": true,
-        "values" : []
+        "values" : [],
+        "color": "#278529"
     },
     {
-        "key" : "Cantidad vendedor" ,
-        "values" : []
+        "key" : "Cantidad de contratos como proveedor" ,
+        "values" : [],
+        "color": "#1b5d1c"
     },
     {
-        "key" : "Importe comprador" ,
+        "key" : "Importe de contratos como comprador" ,
         "bar": true,
-        "values" : []
+        "values" : [],
+        "color": "#db2828"
     },
     {
-        "key" : "Cantidad comprador" ,
-        "values" : []
+        "key" : "Cantidad de contratos como comprador" ,
+        "values" : [],
+        "color": "#991c1c"
     },
   ]
 
@@ -52,7 +57,8 @@ function barChart(summaries) {
       // .y(function(d,i) {return d[1] })
       .legendRightAxisHint(' [Eje derecho]')
       .legendLeftAxisHint(' [Eje izquierdo]')
-      .color(d3.scale.category20().range().slice(1))
+      // .color(d3.scale.category20().range().slice(1))
+      .color(function(d){return d.data.color})
       .focusEnable(false)
 
   // chart.xAxis.tickFormat(function(d) {
@@ -109,15 +115,27 @@ function pieChart(summaries) {
     })
   }
 
-  // console.log(typeData);
+  const nameLabels = {
+    "open": "Licitación abierta",
+    "direct": "Adjudicación Directa",
+    "limited": "#Invitación a tres",
+    "undefined": "Sin definir"
+  } 
 
+  // console.log(typeData);
+  const procurementColors = {
+    "open": "#1f6a20",
+    "direct": "#8AB283",
+    "limited": "#DDF8D7",
+    "undefined": "#8b8b8b"
+  } 
   // Pie Chart
   if (isSupplierType) {
     nv.addGraph(function() {
       var chart = nv.models.pieChart()
-          .x(function(d) { return d.label })
+          .x(function(d) { return nameLabels[d.label] })
           .y(function(d) { return d.value })
-          .color(d3.scale.category20().range().slice(1))
+          .color(function (d) { console.log(d); return procurementColors[d.label] })
           .showLabels(true);
 
         d3.select("#piechartSupplier")
@@ -130,13 +148,20 @@ function pieChart(summaries) {
     });
   }
 
+  const procurementColorsBuyer = {
+    "open": "#af2020",
+    "direct": "#DA9488",
+    "limited": "#FFE5DB",
+    "undefined": "#8b8b8b"
+  }
+
   if (isBuyerType) {
     nv.addGraph(function() {
       var chart = nv.models.pieChart()
-          .x(function(d) { return d.label })
+          .x(function(d) { return nameLabels[d.label] })
           .y(function(d) { return d.value })
-          .color(d3.scale.category20().range().slice(1))
-          .showLabels(true);
+          .color(function (d) { console.log(d); return procurementColorsBuyer[d.label] })
+          .showLabels(true)
 
         // d3.select("#piechartBuyer")
         //     .append("svg")
