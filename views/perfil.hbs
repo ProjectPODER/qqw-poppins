@@ -70,12 +70,14 @@
             </li>
             {{/if}}
             {{#ifCond type '!=' 'companies'}}
+            {{#if result.top3contracts.buyer }}
             {{#if result.flags }}
             <li>
               <a href="#evaluacion" class="page-scroll button-link evaluacion">
                 <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación
               </a>
             </li>
+            {{/if}}
             {{/if}}
             {{/ifCond}}
             {{#if result.memberships.child }}
@@ -343,6 +345,7 @@
 </section>
 {{/if}}
 {{#ifCond type '!=' 'companies'}}
+{{#if result.top3contracts.buyer}}
 {{#if result.flags }}
 <section class="profile bg-gray" id="evaluacion">
 
@@ -435,7 +438,9 @@
   </div>
 </section>
 {{/if}}
+{{/if}}
 {{/ifCond}}
+
 {{#if result.memberships.child}}
 <section class="profile" id="uc">
   <div class="row">
