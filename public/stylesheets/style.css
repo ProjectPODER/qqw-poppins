@@ -1292,6 +1292,9 @@ a.see-contract {
   font-size: 1.1rem;
   line-height: 2.5rem;
 }
+.right-menu-contracts > li > a {
+  padding: 5px 0px !important;
+}
 .right-menu-contracts li {
   color: #9b9b9b;
   text-decoration: none;
@@ -3056,6 +3059,16 @@ button.close {
   background: rgba(0,0,0,0.5);
   height: 1.5em;
   float: left;
+}
+.informe-iframe {
+  width: 100%;
+  height: 700px;
+  margin-top: 40px;
+  display: block;
+}
+.active > .anchor {
+  color: #2b00f7;
+  font-weight: bold;
 }
 .home article margin-top 10% input[type="email"] {
   padding: 10px;
