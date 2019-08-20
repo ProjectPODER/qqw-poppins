@@ -156,7 +156,7 @@ function copyClipboard() {
    autoHeightManual();
  });
 
-// Contact form
+// Contact form about/contact.hbs
 $("#send_email").click(function (e) {
   var to, name, subjectMail, email, text;
   e.preventDefault();
@@ -189,14 +189,14 @@ $("#send_email").click(function (e) {
   return false;
 });
 
-// Add information form
+// Send information form send_info_form.hbs
 $("#send_info_email").click(function (e) {
   var to, message, source, email;
   e.preventDefault();
   // enter your email account that you want to recieve emails at.
-  message = $("#message").val();
-  source = $("#source").val();
-  email = $("#email").val();
+  message = $("#message_info").val();
+  source = $("#source_info").val();
+  email = $("#email_info").val();
   $.post("/send", {
       to: to,
       message: message,
@@ -207,7 +207,7 @@ $("#send_info_email").click(function (e) {
       if (data.status == "sent") {
             console.log("Email sent");
             $(".addinfo-form").hide()
-            $("#thanks-column").show().removeClass("hidden");
+            $("#thanks-column_info").show().removeClass("hidden");
       }
       if (data.status == "error") {
             console.log("No email sent");
@@ -219,7 +219,7 @@ $("#send_info_email").click(function (e) {
   return false;
 });
 
-// Send information UC
+// Ask for inforomation UC modal-form.hbs
 $(".solicitar_info").click(function(e) {
   let value = $(e.currentTarget).parents(".js-ocid").find(".uc-href").attr("href");
   // console.log($(e.currentTarget),$(e.currentTarget).parents(".js-ocid"),$(e.currentTarget).parents(".js-ocid").find(".uc-href"),value);

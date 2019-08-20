@@ -138,7 +138,7 @@ function getFilters(collection, query, defaultFilters) {
   			let value = query[filterElements[filterElement].htmlFieldName];
 
         if (filterElements[filterElement].type == "string") {
-  				value = "/"+value+"/i"
+  				value = "/"+value.trim()+"/i"
   			}
         if (filterElements[filterElement].type == "date") {
   				value = (new Date(value).toISOString()).replace("Z","");
