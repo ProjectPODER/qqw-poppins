@@ -349,8 +349,7 @@
 {{#if result.flags }}
 <section class="profile bg-gray" id="evaluacion">
 
-{{!-- SECCION DE BANDERAS, --}}
-{{!--   <div class="row">
+  <div class="row">
     <div class="container">
       <div class="col-12 col-m-12">
         <div class="col-6 col-m-6">
@@ -362,31 +361,27 @@
           </h4>
         </div>
         <div class="col-12 col-m-12">
-          <p>A partir de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la puntuación final el sistema también tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede consultarse en <a href="">TodosLosContratos.mx</a>.</p>
+          <p>A partir de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la puntuación final el sistema también tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede consultarse en <a href="https://www.TodosLosContratos.mx/#metodologia">TodosLosContratos.mx</a>.</p>
         </div>
       </div>
       <div class="col-12-col-m-12">
-        {{#each result.flags.0.contract_score }}
+        {{#each (get_party_categories result.flags.[0]) }}
         <div class="flags_graph_bar">
           <div class="flag_name">
              {{#with (flag_name @key) }}
                 {{name}} <a data-toggle="tooltip" data-placement="right" title="{{info}}"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
              {{/with}}
           </div>
-          <div class="flag_pole flag_{{@key}}">
-            <div class="flag_pole_min" style="width: {{format_score this}}">
-
+            <div class="flag_pole flag_{{@key}}">
+              <div class="flag_pole_min" style="width: {{format_score (party_category_min @key)}}">
+              </div>
+              <div class="flag_pole_max" style="width: {{format_score (math 1 "-" (party_category_max @key))}}">
+              </div>
+              <div class="flag_marker" style="left: {{format_score this}}">
+                {{format_score this}}
+              </div>
             </div>
-
-            <div class="flag_pole_max" style="width: {{format_score (100-this)}}">
-
-            </div>
-            <div class="flag_marker" style="left: {{format_score this}}">
-              {{format_score this}}
-            </div>
-          </div>
         </div>
-
         {{/each}}
       </div>
       <div class="col-12-col-m-12 mt-60">
@@ -400,7 +395,7 @@
         {{/each}}
       </div>
     </div>
-  </div> --}}
+  </div>
   <div class="row">
     <div class="container">
       <div  class="col-m-12 col-12 mt-2">

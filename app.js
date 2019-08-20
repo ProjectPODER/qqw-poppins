@@ -20,6 +20,131 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const contract_categories_min_max = {
+    "max-contract_score-total_score" : 0.8145347394540943,
+    "min-contract_score-total_score" : 0.3652233250620347,
+    "max-contract_score-trans" : 0.5169727047146402,
+    "min-contract_score-trans" : 0.3414474772539289,
+    "max-contract_score-temp" : 1,
+    "min-contract_score-temp" : 0,
+    "max-contract_score-comp" : 1,
+    "min-contract_score-comp" : 0,
+    "max-contract_score-traz" : 0.75,
+    "min-contract_score-traz" : 0.25,
+    "max-rules_score-trans-ov" : 0,
+    "min-rules_score-trans-ov" : 0,
+    "max-rules_score-trans-sc" : 1,
+    "min-rules_score-trans-sc" : 0.8333333333333334,
+    "max-rules_score-trans-cc" : 0.2,
+    "min-rules_score-trans-cc" : 0.12923076923076923,
+    "max-rules_score-trans-ccm" : 0.8709677419354839,
+    "min-rules_score-trans-ccm" : 0.4032258064516129,
+    "max-rules_score-temp-cft" : 1,
+    "min-rules_score-temp-cft" : 0,
+    "max-rules_score-temp-tipo" : 1,
+    "min-rules_score-temp-tipo" : 0,
+    "max-rules_score-temp-dl" : 1,
+    "min-rules_score-temp-dl" : 0,
+    "max-rules_score-temp-fs" : 1,
+    "min-rules_score-temp-fs" : 0,
+    "max-rules_score-comp-cfc" : 1,
+    "min-rules_score-comp-cfc" : 0,
+    "max-rules_score-comp-pf" : 1,
+    "min-rules_score-comp-pf" : 0,
+    "max-rules_score-traz-ei" : 1,
+    "min-rules_score-traz-ei" : 0,
+    "max-rules_score-traz-cft" : 0,
+    "min-rules_score-traz-cft" : 0,
+    "max-rules_score-traz-mc" : 1,
+    "min-rules_score-traz-mc" : 0,
+    "max-rules_score-traz-ip" : 0,
+    "min-rules_score-traz-ip" : 0,
+    "max-rules_score-traz-pf" : 1,
+    "min-rules_score-traz-pf" : 0,
+    "max-rules_score-traz-ir" : 1,
+    "min-rules_score-traz-ir" : 0,
+    "max-rules_score-traz-ct" : 1,
+    "min-rules_score-traz-ct" : 0,
+    "max-rules_score-traz-fro" : 1,
+    "min-rules_score-traz-fro" : 0
+}
+
+const party_categories_min_max = {
+    "max-contract_categories-total_score" : 0.8149193548387097,
+    "min-contract_categories-total_score" : 0.43852253928866836,
+    "max-contract_categories-trans" : 0.5185111662531018,
+    "min-contract_categories-trans" : 0.3414474772539289,
+    "max-contract_categories-temp" : 1,
+    "min-contract_categories-temp" : 0,
+    "max-contract_categories-comp" : 1,
+    "min-contract_categories-comp" : 0.5,
+    "max-contract_categories-traz" : 0.75,
+    "min-contract_categories-traz" : 0.25,
+    "max-contract_rules-trans-ov" : 0,
+    "min-contract_rules-trans-ov" : 0,
+    "max-contract_rules-trans-sc" : 1,
+    "min-contract_rules-trans-sc" : 0.833333333333307,
+    "max-contract_rules-trans-ccm" : 0.8709677419354839,
+    "min-contract_rules-trans-ccm" : 0.4032258064516129,
+    "max-contract_rules-trans-cc" : 0.20615384615384616,
+    "min-contract_rules-trans-cc" : 0.12923076923076923,
+    "max-contract_rules-temp-cft" : 1,
+    "min-contract_rules-temp-cft" : 0,
+    "max-contract_rules-temp-tipo" : 1,
+    "min-contract_rules-temp-tipo" : 0,
+    "max-contract_rules-temp-dl" : 1,
+    "min-contract_rules-temp-dl" : 0,
+    "max-contract_rules-temp-fs" : 1,
+    "min-contract_rules-temp-fs" : 0,
+    "max-contract_rules-comp-cfc" : 1,
+    "min-contract_rules-comp-cfc" : 0,
+    "max-contract_rules-comp-pf" : 1,
+    "min-contract_rules-comp-pf" : 0,
+    "max-contract_rules-traz-ei" : 1,
+    "min-contract_rules-traz-ei" : 0,
+    "max-contract_rules-traz-cft" : 0,
+    "min-contract_rules-traz-cft" : 0,
+    "max-contract_rules-traz-mc" : 1,
+    "min-contract_rules-traz-mc" : 0,
+    "max-contract_rules-traz-ip" : 0,
+    "min-contract_rules-traz-ip" : 0,
+    "max-contract_rules-traz-pf" : 1,
+    "min-contract_rules-traz-pf" : 0,
+    "max-contract_rules-traz-ir" : 1,
+    "min-contract_rules-traz-ir" : 0,
+    "max-contract_rules-traz-ct" : 1,
+    "min-contract_rules-traz-ct" : 0,
+    "max-contract_rules-traz-fro" : 1,
+    "min-contract_rules-traz-fro" : 0,
+    "max-node_rules-conf" : 0.8129032258064516,
+    "min-node_rules-conf" : 0.47116521918941273,
+    "max-node_rules-aepm" : 1,
+    "min-node_rules-aepm" : 0,
+    "max-node_rules-aepc" : 1,
+    "min-node_rules-aepc" : 0,
+    "max-node_rules-tcr10" : 1,
+    "min-node_rules-tcr10" : 0,
+    "max-node_rules-mcr10" : 1,
+    "min-node_rules-mcr10" : 0,
+    "max-node_rules-celp" : 1,
+    "min-node_rules-celp" : 0,
+    "max-node_rules-rla" : 1,
+    "min-node_rules-rla" : 0,
+    "max-node_rules-ncap3" : 1,
+    "min-node_rules-ncap3" : 0,
+    "max-node_categories-comp" : 1,
+    "min-node_categories-comp" : 0,
+    "max-node_categories-traz" : 1,
+    "min-node_categories-traz" : 0,
+    "max-node_categories-total_score" : 1,
+    "min-node_categories-total_score" : 0,
+    "max-category_score-comp" : 1,
+    "min-category_score-comp" : 0.25,
+    "max-category_score-traz" : 0.875,
+    "min-category_score-traz" : 0.125,
+    "max-total_score" : 0.898266129032258,
+    "min-total_score" : 0.21926126964433418
+}
 
 const flag_categories = {
 
@@ -369,46 +494,102 @@ app.engine('.hbs', hbs({
       flag_name: function (flag_id) {
         return flag_categories[flag_id];
       },
-
+      contract_category_min: function(category) {
+        return contract_categories_min_max["min-contract_score-"+category];
+      },
+      contract_category_max: function(category) {
+        return contract_categories_min_max["max-contract_score-"+category];
+      },
+      party_category_min: function(category) {
+        let selector = "";
+        switch (category) {
+          case "conf": selector = "node_rules-conf"; break;
+          case "comp": selector = "node_categories-comp"; break;
+          case "traz": selector = "node_categories-traz"; break;
+          case "temp": selector = "contract_categories-temp"; break;
+          case "trans": selector = "contract_categories-trans"; break;
+        }
+        return party_categories_min_max["min-"+selector];
+      },
+      party_category_max: function(category) {
+        let selector = "";
+        switch (category) {
+          case "conf": selector = "node_rules-conf"; break;
+          case "comp": selector = "node_categories-comp"; break;
+          case "traz": selector = "node_categories-traz"; break;
+          case "temp": selector = "contract_categories-temp"; break;
+          case "trans": selector = "contract_categories-trans"; break;
+        }
+        return party_categories_min_max["max-"+selector];
+      },
       contract_recommendations: function(flag) {
         return flag_details[flag];
       },
+      get_party_categories: function(flags) {
+        // console.log(JSON.stringify(flags,null,4));
+        return {
+          "trans": flags.contract_categories.trans,
+          "temp": flags.contract_categories.temp,
+          "comp": flags.node_categories.comp,
+          "traz": flags.node_categories.traz,
+          "conf": flags.node_rules.conf,
+        }
+      },
       flag_recommendations: function (org_flags, count) {
-        // console.log(org_flags);
-        const flag_minimums = {};
+        // console.log(JSON.stringify(org_flags,null,4));
         const flagsDiff = [];
         let flagsLimit = count || 3;
         console.log("flag_recommendations",flagsLimit,count)
 
+        function get_min(flag_id) {
+          if (party_categories_min_max["min-node_rules-"+flag_id] !== undefined) {
+            return party_categories_min_max["min-node_rules-"+flag_id];
+          }
+          else {
+            return  party_categories_min_max["min-contract_rules-"+flag_id];
+          }
+        }
+
         // const allFlags = _.merge(org_flags[0].node_rules,org_flags[0].contract_rules);
-        const allFlags = _.merge(org_flags[0].node_score);
-        // console.log(allFlags);
+        const allFlags = _.merge(org_flags[0].node_rules,org_flags[0].contract_rules);
+        console.log(allFlags);
         _.forEach(allFlags,(i,flag_id,flags) => {
-          // console.log(flag_id,flags[flag_id]);
           if (flag_id != "total_score") {
-            //TODO: Seleccionar las 3 más cercanas al mínimo. Utilizar cero mientras no haya mínimo.
-            const flag_minimum = flag_minimums[flag_id] || 0;
-            flagsDiff[flag_id] = parseFloat(flags[flag_id])-flag_minimum
+            //Seleccionar las 3 más cercanas al mínimo.
+            const diff = get_min(flag_id)-parseFloat(flags[flag_id]);
+            flagsDiff.push({
+              flag_id: flag_id,
+              diff: diff
+            })
+            // console.log(flag_id,"diff",flagsDiff[flag_id],"score",flags[flag_id],"min",flag_minimum);
           }
         })
 
-        //sort flags
-        okeys = Object.keys(flagsDiff),
-        sortedFlags = {};
-        okeys.sort((p,c) => flagsDiff[p] <= flagsDiff[c]).forEach((p,i) => sortedFlags[okeys[i]] = flagsDiff[p]);
-
-        const sortedFlagKeys = Object.keys(sortedFlags);
+        // //sort flags
+        // okeys = Object.keys(flagsDiff),
+        // sortedFlags = {};
+        // okeys.sort((p,c) => flagsDiff[p] <= flagsDiff[c]).forEach((p,i) => sortedFlags[okeys[i]] = flagsDiff[p]);
+        sortedFlags = _.orderBy(flagsDiff,"diff","desc");
+        console.log("sortedFlags",sortedFlags);
+        // const sortedFlagKeys = Object.keys(sortedFlags);
 
         const recommendations = []
 
         for (var i = 0;  i < flagsLimit; i++) {
-          if (sortedFlagKeys[i]) {
-            const recommendation = _.clone(flag_details[sortedFlagKeys[i].replace(/[0-9]/g,"")]);
-            recommendation.score = allFlags[sortedFlagKeys[i]];
+          const flag = sortedFlags[i];
+          if (flag) {
+            if (flag_details[flag.flag_id].hidden_uc) {
+              console.log("hidden",flag.flag_id);
+              flagsLimit++;
+              continue;
+            }
+            const recommendation = _.clone(flag_details[flag.flag_id]);
+            recommendation.score = allFlags[flag.flag_id];
+            recommendation.minimum = get_min(flag.flag_id);
             recommendations.push(recommendation);
           }
           else {
-            console.error("flag_recommendations","Asked for too many flags",i,sortedFlagKeys[i],flag_details[sortedFlagKeys[i]]);
+            console.error("flag_recommendations","Asked for too many flags",i,flag.flag_id,flag_details[flag.flag_id]);
           }
         }
         return recommendations;

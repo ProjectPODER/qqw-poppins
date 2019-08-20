@@ -3065,6 +3065,10 @@ button.close {
   height: 1.5em;
   float: left;
 }
+.flag_pole_max {
+  position: absolute;
+  right: 0;
+}
 .informe-iframe {
   width: 100%;
   height: 700px;

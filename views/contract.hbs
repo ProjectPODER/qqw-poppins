@@ -42,10 +42,7 @@
             <p class="js-data">{{moment result.records.0.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
-         {{#each result.records}}
-           {{#each compiledRelease.contracts}}
-           {{/each}}
-         {{/each}}
+
         {{#if result.records.0.compiledRelease.parties.length }}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
@@ -134,7 +131,7 @@
       <div class="">
         <div  class="col-m-9 col-9 mt-2 party_flags" id="calidad">
           <h4 class="description-data-subtitle">CALIDAD DE CONTRATO</h4>
-          <p>Evaluado por QuienEsQuien.wiki y <a href="https://todosloscontratos.mx/#metodologia">TodosLosContratos.mx</a></p>
+          <p>Evaluado por QuienEsQuien.wiki y <a href="https://www.todosloscontratos.mx/#metodologia">TodosLosContratos.mx</a></p>
 
           <div class="col-12-col-m-12">
             {{#each (get_record_flags result.records.0.flags) }}
@@ -146,11 +143,11 @@
                  {{/with}}
               </div>
               <div class="flag_pole flag_{{@key}}">
-                <div class="flag_pole_min" style="width: {{format_score this}}">
+                <div class="flag_pole_min" style="width: {{format_score (contract_category_min @key)}}">
 
                 </div>
 
-                <div class="flag_pole_max" style="width: {{format_score (100-this)}}">
+                <div class="flag_pole_max" style="width: {{format_score (math 1 "-" (contract_category_max @key))}}">
 
                 </div>
                 <div class="flag_marker" style="left: {{format_score this}}">
