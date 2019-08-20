@@ -2078,6 +2078,7 @@ div.content {
 .about-sidebar {
   position: fixed;
   left: 9%;
+  width: 18%;
   right: auto;
   margin-top: 20px;
   background-color: #f7f7f7;
@@ -2456,6 +2457,13 @@ div.dataTables_paginate li.last a:after {
     display: block;
     margin-top: 2rem;
   }
+  .about-sidebar {
+    position: initial;
+    width: 95%;
+  }
+  .about-sidebar ul a {
+    font-size: 0.8rem;
+  }
 }
 @media only screen and (max-width: 870px) {
   .explore-card.button-link {
@@ -2534,6 +2542,13 @@ div.dataTables_paginate li.last a:after {
   }
   .button-link-apifirst {
     margin-bottom: 3rem;
+  }
+  .about-sidebar {
+    position: initial;
+    width: 100%;
+  }
+  .about-sidebar ul a {
+    font-size: 1rem;
   }
 }
 .amount-index-contracts {
