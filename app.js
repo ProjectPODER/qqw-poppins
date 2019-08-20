@@ -395,8 +395,8 @@ const flag_details = {
     uc_string: "No realizar un porcentaje de contratos tan alto con un único proveedor para evitar que este tenga una posición preponderante dentro de la institución",
     hidden_uc: false,
   },
-  "tcr": {
-    id: "tcr",
+  "tcr10": {
+    id: "tcr10",
     level: "node",
     category: "Trazabilidad",
     name: "Títulos de contrato repetidos",
@@ -406,8 +406,8 @@ const flag_details = {
     uc_string: "Ser más específicos con los nombres de los contratos y no repetir nombres como “Servicios profesionales”.",
     hidden_uc: false,
   },
-  "mcr": {
-    id: "mcr",
+  "mcr10": {
+    id: "mcr10",
     level: "node",
     category: "Trazabilidad",
     name: "Montos de contratos repetidos",
@@ -439,8 +439,8 @@ const flag_details = {
     uc_string: "Esta bandera es más que una recomendación, se podría estar vulnerado la ley al haber contratado más del 30% del importe anual por adjudicación directa.",
     hidden_uc: false,
   },
-  "ncap": {
-    id: "ncap",
+  "ncap3": {
+    id: "ncap3",
     level: "node",
     category: "Competitividad",
     name: "Número de contratos arriba del promedio",
@@ -577,9 +577,14 @@ app.engine('.hbs', hbs({
 
         for (var i = 0;  i < flagsLimit; i++) {
           const flag = sortedFlags[i];
-          if (flag) {
+          if (flag && flag_details[flag.flag_id]) {
             if (flag_details[flag.flag_id].hidden_uc) {
               console.log("hidden",flag.flag_id);
+              flagsLimit++;
+              continue;
+            }
+            if (allFlags[flag.flag_id] === 0) {
+              console.log("Saltando cero",flag.flag_id);
               flagsLimit++;
               continue;
             }
