@@ -69,7 +69,7 @@
         {{#if result.records.0.compiledRelease.parties.0.contactPoint }}
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Responsable <a data-toggle="tooltip" data-placement="right" title="Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></i></a></p>
-            <p class="js-data"><a href="/personas?filtername={{result.records.0.compiledRelease.parties.0.contactPoint.name}}">{{result.records.0.compiledRelease.parties.0.contactPoint.name}}</a></p>
+            <p class="js-data"><a href="/personas/{{result.records.0.compiledRelease.parties.0.contactPoint.id}}">{{result.records.0.compiledRelease.parties.0.contactPoint.name}}</a></p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.awards.length }}
@@ -437,7 +437,7 @@
         </div>
         {{/if}}
       </div>
-      
+
 
       {{/each }}
       </div>

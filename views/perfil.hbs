@@ -252,7 +252,7 @@
       <div class="col-m-12 col-12">
         <h5 class="description-data-subtitle">Proveedores principales</h5>
         {{#each result.summaries.top_suppliers }}
-        <p class="description-data-amount"><a href="/{{this.details.type}}/{{this.id}}"><img src="../images/icons/empresa-gray.svg" alt="Empresa" class="icon-lf icon-lf-organization">
+        <p class="description-data-amount"><a href="/{{get_type_url this.details.type}}/{{this.id}}"><img src="../images/icons/empresa-gray.svg" alt="Empresa" class="icon-lf icon-lf-organization">
           {{this.name}}</a> - {{format_amount contract_amount_top_supplier}} pesos mexicanos</p>
         {{/each}}
       </div>
@@ -315,7 +315,7 @@
       <div class="col-m-12 col-12">
         <h4 class="description-data-subtitle">Principales dependencias a las que provee</h4>
         {{#each result.summaries.top_buyers }}
-        <p class="description-data-amount"><a href="/{{this.details.type}}/{{this.memberOf.0.id}}"><img src="../images/icons/dependencia-gray.svg" alt="Institución pública" class="icon-lf icon-lf-organization">
+        <p class="description-data-amount"><a href="/{{get_type_url this.details.type}}/{{this.memberOf.0.id}}"><img src="../images/icons/dependencia-gray.svg" alt="Institución pública" class="icon-lf icon-lf-organization">
           {{this.memberOf.0.name}} ({{this.name}})</a> - {{format_amount contract_amount_top_buyer}} pesos mexicanos</p>
         {{/each}}
       </div>
@@ -443,7 +443,13 @@
       <div  class="col-m-12 col-12">
         <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
         <p>
-          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}<a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}{{/each}}
+          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}
+          {{#if this.organization_class }}
+          <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+          {{else}}
+          <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+          {{/if}}
+          {{/each}}
         </p>
       </div>
     </div>
