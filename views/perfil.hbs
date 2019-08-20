@@ -345,7 +345,9 @@
 {{#ifCond type '!=' 'companies'}}
 {{#if result.flags }}
 <section class="profile bg-gray" id="evaluacion">
-  <div class="row">
+
+{{!-- SECCION DE BANDERAS, --}}
+{{!--   <div class="row">
     <div class="container">
       <div class="col-12 col-m-12">
         <div class="col-6 col-m-6">
@@ -353,7 +355,6 @@
         </div>
         <div class="col-m-6 col-6 right-align">
           <h4 class="amount-data">
-            {{!-- {{format_amount result.amount}} --}}
             Puntaje total: {{ format_score result.flags.0.total_score }}
           </h4>
         </div>
@@ -362,7 +363,6 @@
         </div>
       </div>
       <div class="col-12-col-m-12">
-        {{!-- <h3>Gráfico de puntajes de cada categoría</h3> --}}
         {{#each result.flags.0.contract_score }}
         <div class="flags_graph_bar">
           <div class="flag_name">
@@ -397,7 +397,7 @@
         {{/each}}
       </div>
     </div>
-  </div>
+  </div> --}}
   <div class="row">
     <div class="container">
       <div  class="col-m-12 col-12 mt-2">
