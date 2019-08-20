@@ -9,25 +9,33 @@ function barChart(summaries) {
         "key" : "Importe de contratos como proveedor" ,
         "bar": true,
         "values" : [],
-        "color": "#278529"
+        // "color": "#278529"
     },
     {
         "key" : "Cantidad de contratos como proveedor" ,
         "values" : [],
-        "color": "#1b5d1c"
+        // "color": "#1b5d1c"
     },
     {
         "key" : "Importe de contratos como comprador" ,
         "bar": true,
         "values" : [],
-        "color": "#db2828"
+        // "color": "#db2828"
     },
     {
         "key" : "Cantidad de contratos como comprador" ,
         "values" : [],
-        "color": "#991c1c"
+        // "color": "#991c1c"
     },
   ]
+
+  const barColors = {
+    "Importe de contratos como proveedor": "#278529",
+    "Cantidad de contratos como proveedor": "#1b5d1c",
+    "Importe de contratos como comprador": "#db2828",
+    "Cantidad de contratos como comprador": "#991c1c"
+  }
+  
 
   for (y in summaries.year) {
     yearData[0].values.push({
@@ -58,13 +66,14 @@ function barChart(summaries) {
       .legendRightAxisHint(' [Eje derecho]')
       .legendLeftAxisHint(' [Eje izquierdo]')
       // .color(d3.scale.category20().range().slice(1))
-      .color(function(d){return d.data.color})
+      .color(function(d){console.log("color",d.originalKey); return barColors[d.originalKey]})
       .focusEnable(false)
 
   // chart.xAxis.tickFormat(function(d) {
   //   var dx = yearData[0].values[d] && yearData[0].values[d].x || 0;
   //   return d3.time.format('%Y')(new Date(dx))
   // });
+// chart.color(["blue"])
 
   chart.y1Axis
   .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
