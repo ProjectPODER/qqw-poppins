@@ -92,7 +92,7 @@
             <p class="js-data">{{result.records.0.compiledRelease.dataSource}}</p>
           {{!-- {{/each}} --}}
           {{# each result.records.0.compiledRelease.source}}
-          <a href="{{fix_compranet_url url}}" class="">Ver fuente</a>
+          <a href="{{fix_compranet_url url}}" target="_blank">Ver fuente</a>
           {{/each}}
         </div>
         {{/if}}
@@ -132,17 +132,18 @@
       </div>
 
       <div class="">
-        <div  class="col-m-12 col-6 mt-2 party_flags" id="calidad">
+        <div  class="col-m-9 col-9 mt-2 party_flags" id="calidad">
           <h4 class="description-data-subtitle">CALIDAD DE CONTRATO</h4>
-          <p>Evaluado por QuienEsQuien.wiki y TodosLosContratos.mx</p>
+          <p>Evaluado por QuienEsQuien.wiki y <a href="https://todosloscontratos.mx/#metodologia">TodosLosContratos.mx</a></p>
 
           <div class="col-12-col-m-12">
-            <h3>Gráfico de puntajes de cada categoría</h3>
             {{#each (get_record_flags result.records.0.flags) }}
             {{#ifCond @key "!=" "rules" }}
             <div class="flags_graph_bar">
               <div class="flag_name">
-                {{flag_name @key}}
+                 {{#with (flag_name @key) }}
+                    {{name}} <a data-toggle="tooltip" data-placement="right" title="{{info}}"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
+                 {{/with}}
               </div>
               <div class="flag_pole flag_{{@key}}">
                 <div class="flag_pole_min" style="width: {{format_score this}}">
@@ -436,9 +437,7 @@
         </div>
         {{/if}}
       </div>
-      <div class="col-m-4 col-4">
-        <hr>
-      </div>
+      
 
       {{/each }}
       </div>
