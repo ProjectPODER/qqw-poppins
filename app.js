@@ -43,7 +43,10 @@ const flag_categories = {
     name: "Temporalidad",
     info: "Se respetan los tiempos de los distintos procesos dentro la contratación."
   },
-  total_score: "Puntaje total"
+  total_score: {
+    name: "Puntaje total",
+    info: "Promedio de todas categorías."
+  }
 }
 
 const flag_details = {
