@@ -233,7 +233,7 @@
         {{#ifCond result.contract_count.buyer '>' 3}}
         <p>Viendo hasta 3 de <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>.</p>
         <div class="contract-button">
-          <a href="/contratos?filter_name={{result.name}}" class="button-link buyer-button">Ver todos los contratos</a>
+          <a href="/contratos?dependencia={{result.name}}" class="button-link buyer-button">Ver todos los contratos</a>
         </div>
         {{else}}
           <p>Viendo <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>. </p>
@@ -296,7 +296,7 @@
         {{#ifCond result.contract_count.supplier '>' 3}}
         <p>Viendo hasta 3 de <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>.</p>
         <div class="contract-button">
-          <a href="/contratos?filter_name={{result.name}}" class="button-link supplier-button">Ver todos los contratos</a>
+          <a href="/contratos?proveedor={{result.name}}" class="button-link supplier-button">Ver todos los contratos</a>
         </div>
         {{else}}
           <p>Viendo <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>. </p>
