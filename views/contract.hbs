@@ -50,12 +50,12 @@
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
             {{!-- {{#each result.records.0.compiledRelease.parties.0.memberOf.0.name}} --}}
-              <a href="/{{get_party_type result.records.[0] result.records.0.compiledRelease.parties.0.memberOf.0.id }}/{{result.records.0.compiledRelease.parties.0.memberOf.0.id}}"><p class="js-data">{{result.records.0.compiledRelease.parties.0.memberOf.0.name}}</p></a>
+              <a href="/{{get_type_url (get_party_type result.records.[0] result.records.0.compiledRelease.parties.0.memberOf.0.id) }}/{{result.records.0.compiledRelease.parties.0.memberOf.0.id}}"><p class="js-data">{{result.records.0.compiledRelease.parties.0.memberOf.0.name}}</p></a>
             {{!-- {{/each}} --}}
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.buyer }}
-        <div class="col-m-7 col-7">
+        <div class="col-m-7 col-7 pr-1">
             <p class="js-title-data">Unidad compradora <a data-toggle="tooltip" data-placement="right" title="El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
             <p class="js-data"><a href="/instituciones-publicas/{{result.records.0.compiledRelease.buyer.id }}">{{result.records.0.compiledRelease.buyer.name}}</a></p>
         </div>
@@ -63,7 +63,7 @@
         {{#if result.records.0.compiledRelease.parties.0.identifier.id }}
         <div class="col-m-5 col-5">
             <p class="js-title-data">Clave de unidad compradora <a data-toggle="tooltip" data-placement="right" title="Clave de identificación de la Unidad Compradora en Compranet 3.0."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
-            <p class="js-data">{{result.records.0.compiledRelease.parties.0.identifier.id}}</p>
+            <p class="js-data"><a href="/instituciones-publicas/{{result.records.0.compiledRelease.buyer.id }}">{{result.records.0.compiledRelease.parties.0.identifier.id}}</a></p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.parties.0.contactPoint }}
@@ -78,7 +78,7 @@
             <p class="js-data">
             {{#each result.records.0.compiledRelease.awards}}
               {{#each suppliers}}
-              <a href="/{{get_party_type ../../result.records.[0] id }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
+              <a href="/{{get_type_url (get_party_type ../../result.records.[0] id) }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
               {{/each}}
               {{#if @last}}{{else}},{{/if}}
             {{/each}}
@@ -249,39 +249,39 @@
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.procurementMethod }}
         <div class="col-m-6 col-6 mb-2">
-            <span class="js-title-data">Forma de convocatoria: </span>
+            <p class="js-title-data">Forma de convocatoria: </p>
             <span class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodMxCnet}}</span>
             (<span class="js-data">{{result.records.0.compiledRelease.tender.procurementMethod}}</span>)
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.mainProcurementCategory }}
         <div class="col-m-6 col-6 mb-2">
-            <span class="js-title-data">Tipo de compra: </span>
-            <span class="js-data">{{result.records.0.compiledRelease.tender.mainProcurementCategory}}</span>
+            <p class="js-title-data">Tipo de compra: </p>
+            <p class="js-data">{{result.records.0.compiledRelease.tender.mainProcurementCategory}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.procurementMethod }}
         <div class="col-m-6 col-6 mb-2">
-          <span class="js-title-data">Formato del pliego: </span>
-          <span class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodDetailsTemplateMxCnet}}</span>
+          <p class="js-title-data">Formato del pliego: </p>
+          <p class="js-data">{{result.records.0.compiledRelease.tender.procurementMethodDetailsTemplateMxCnet}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.submissionMethod }}
         <div class="col-m-6 col-6 mb-2">
-            <span class="js-title-data">Presentación de pliegos: </span>
-            <span class="js-data">{{result.records.0.compiledRelease.tender.submissionMethod}}</span>
+            <p class="js-title-data">Presentación de pliegos: </p>
+            <p class="js-data">{{result.records.0.compiledRelease.tender.submissionMethod}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.tenderPeriod.startDate }}
         <div class="col-m-6 col-6 mb-2">
-            <span class="js-title-data">Período de convocatoria: </span>
-            <span class="js-data">{{moment result.records.0.compiledRelease.tender.tenderPeriod.startDate  date lang="es" format="LL"}} - {{moment result.records.0.compiledRelease.tender.tenderPeriod.endDate date lang="es" format="LL"}}</span>
+            <p class="js-title-data">Período de convocatoria: </p>
+            <p class="js-data">{{moment result.records.0.compiledRelease.tender.tenderPeriod.startDate  date lang="es" format="LL"}} - {{moment result.records.0.compiledRelease.tender.tenderPeriod.endDate date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.contractPeriod.multiyearContractMxCnet }}
         <div class="col-m-6 col-6 mb-2">
-            <span class="js-title-data">Contrato plurianual: </span>
-            <span class="js-data">{{result.records.0.compiledRelease.tender.contractPeriod.multiyearContractMxCnet}}</span>
+            <p class="js-title-data">Contrato plurianual: </p>
+            <p class="js-data">{{result.records.0.compiledRelease.tender.contractPeriod.multiyearContractMxCnet}}</p>
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.tender.additionalProcurementCategories }}
@@ -336,13 +336,13 @@
           <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
         </div>
         {{#each result.records.0.compiledRelease.awards }}
-        <div class="col-m-12 col-12">
+        <div class="col-m-12 col-12 mb-3">
           {{#if suppliers }}
           <div class="col-m-7 col-7">
               <p class="js-title-data">Proveedor(es)</p>
               {{#each suppliers }}
-              <p class="js-data">
-                <a href="/{{get_party_type ../../result.records.[0] id }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
+              <p class="js-data mb-1" >
+                <a href="/{{get_type_url (get_party_type ../../result.records.[0] id) }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
               </p>
               {{/each}}
           </div>
@@ -350,24 +350,24 @@
           {{#if value }}
           <div class="col-m-3 col-3">
               <p class="js-title-data">Monto</p>
-              <p class="js-data">{{format_amount value.amount}} {{ value.currency}}</p>
+              <p class="js-data mb-1" >{{format_amount value.amount}} {{ value.currency}}</p>
           </div>
           {{/if}}
           {{#if status }}
           <div class="col-m-6 col-4">
               <p class="js-title-data">Estatus de la adjudicación</p>
-              <p class="js-data">{{ status}}</p>
+              <p class="js-data mb-1" >{{ status}}</p>
           </div>
           {{/if}}
           {{#if date }}
           <div class="col-m-6 col-8">
               <p class="js-title-data">Fecha de fallo <a data-toggle="tooltip" data-placement="right" title="Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
-              <p class="js-data">{{moment date date lang="es" format="LL"}}</p>
+              <p class="js-data mb-1" >{{moment date date lang="es" format="LL"}}</p>
           </div>
           {{/if}}
           <div class="col-m-2 col-2">
             <p class="js-title-data">Identificador</p>
-            <p class="js-data">
+            <p class="js-data mb-1" >
                 {{id}}</p>
           </div>
         </div>

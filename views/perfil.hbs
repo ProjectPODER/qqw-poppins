@@ -46,12 +46,14 @@
               </a>
 
             </li>
+            {{#ifCond type '!=' 'companies'}}
             {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
             <li>
               <a href="#compras" class="page-scroll button-link">
                 Compras
               </a>
             </li>
+            {{/ifCond}}
             {{/ifCond}}
             {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
             <li>
@@ -199,6 +201,7 @@
     </div>
   </div>
 </section>
+{{#ifCond type '!=' 'companies'}}
 {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
 <section class="profile" id="compras">
   <div class="row">
@@ -260,6 +263,7 @@
   </div>
 {{/if}}
 </section>
+{{/ifCond}}
 {{/ifCond}}
 
 {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}

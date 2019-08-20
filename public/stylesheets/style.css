@@ -379,7 +379,7 @@ a:focus {
   margin-bottom: 0;
 }
 .mb-1 {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
 .mb-2 {
   margin-bottom: 2rem;
@@ -1218,7 +1218,7 @@ button.reset-filters {
   font-weight: bold;
 }
 .amount-data {
-  color: #2900f5;
+  color: #2d1c9d;
   font-size: 2rem;
   font-weight: bold;
   margin: 10px 0 5px;
