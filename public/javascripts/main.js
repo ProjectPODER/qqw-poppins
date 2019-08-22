@@ -79,7 +79,9 @@ $('.easy-search-input').keypress(function(e) {
   // console.log("esi keypress", keycode)
   if (keycode == 13 || keycode === undefined) {
     console.log("esi keypress 13",$(".easy-search-input.landing-search-inputtext.tt-input").val(),$("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')"))
-    location.href= $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
+    // location.href= $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
+    console.log($("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href"));
+    event.preventDefault()
   }
 })
 
@@ -90,15 +92,16 @@ $("#first-search").click(function() {
 // Right menu Contract page
 $('.right-menu-contracts').affix({offset: {top: 280, bottom:950} });
 
+//Anchors animation 
 $('a.page-scroll').bind('click', function(event) {
     var $anchor = $(this);
     $('html, body').stop().animate({
-        scrollTop: ($($anchor.attr('href')).offset().top - 70)
+        scrollTop: ($($anchor.attr('href')).offset().top - 240)
     }, 1250, 'easeInOutExpo');
     event.preventDefault();
 });
 
-  // Add scrollspy to <body>
+  // Add scrollspy to <body> in Contract perfil
 $('body').scrollspy({target: "#right-menu-contracts", offset: 150});
 
 // Add smooth scrolling on all links inside the navbar
@@ -343,4 +346,18 @@ $(document).on("click",".hide-alert-bar",{},function(e) {
 $('#toggle').click(function() {
  $(this).toggleClass('active');
  $('#overlay').toggleClass('open');
+});
+
+
+//Fixed perfil title
+$(window).scroll(function(e) {
+    // alert("scroll");
+  if ($(this).scrollTop() > 20) {
+    $("#wrap").addClass("fixed-title");
+    $("#profile-menu").addClass("profile-menu-margin");
+  } else {
+    $("#wrap").removeClass("fixed-title");
+    $("#profile-menu").removeClass("profile-menu-margin");
+  }
+  
 });

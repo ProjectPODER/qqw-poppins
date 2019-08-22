@@ -2929,3 +2929,56 @@ button
 .active > .anchor
   color #2b00f7
   font-weight bold
+
+.wrap
+  // overflow auto
+  position relative
+  background #fff
+  -webkit-transition height .35s
+  -moz-transition height .35s
+  transition height .35s
+  
+.breadcrumb,
+.description-data-title
+  // position absolute
+
+.description-data-title
+  top 70px
+  
+.fixed-title
+  height 106px
+  background #fff
+  position fixed !important
+  margin-top -4px
+  z-index 1
+  .breadcrumb
+    padding-top 0 
+  .description-data-title
+    h3
+      margin-top 0
+      font-size 1.5rem
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      -webkit-transition all .25s ease
+      -moz-transition all .25s ease 
+      transition all .25s ease
+    
+.profile-menu-margin
+  margin-top 10rem
+
+@media (max-width: 768px)
+    .fixed-title
+        width 95%
+        
+@media (min-width: 768px)
+    .fixed-title
+        width 750px
+
+@media (min-width: 992px)
+    .fixed-title
+        width 970px
+
+@media (min-width: 1200px)
+    .fixed-title
+        width 1170px

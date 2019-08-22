@@ -3082,6 +3082,59 @@ button.close {
   color: #2b00f7;
   font-weight: bold;
 }
+.wrap {
+  position: relative;
+  background: #fff;
+  -webkit-transition: height 0.35s;
+  -moz-transition: height 0.35s;
+  transition: height 0.35s;
+}
+.description-data-title {
+  top: 70px;
+}
+.fixed-title {
+  height: 106px;
+  background: #fff;
+  position: fixed !important;
+  margin-top: -4px;
+  z-index: 1;
+}
+.fixed-title .breadcrumb {
+  padding-top: 0;
+}
+.fixed-title .description-data-title h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.profile-menu-margin {
+  margin-top: 10rem;
+}
+@media (max-width: 768px) {
+  .fixed-title {
+    width: 95%;
+  }
+}
+@media (min-width: 768px) {
+  .fixed-title {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .fixed-title {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .fixed-title {
+    width: 1170px;
+  }
+}
 .home article margin-top 10% input[type="email"] {
   padding: 10px;
   margin-right: 5px;
