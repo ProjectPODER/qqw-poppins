@@ -31,6 +31,7 @@ async function getAPI(req,collection,filters,debug) {
 
   if (collection=="contracts") {
     params.sort="-compiledRelease.total_amount";
+    filters.hidden="false";
   }
   if (collection=="persons" || collection=="organizations" || collection=="companies") {
     params.sort="-contract_amount.supplier";
@@ -249,6 +250,7 @@ function searchPage(collectionName, defaultFilters, templateName) {
 
 function entityPage(collection,templateName,idFieldName) {
   return catchError(async function(req, res, next) {
+    console.log("entityPage",collection,templateName,idFieldName,req,res,next);
     let filters = {
       limit: 1,
       sort: null,
@@ -257,6 +259,14 @@ function entityPage(collection,templateName,idFieldName) {
     const flag_count = req.query.flag_count || 3;
     const debug = req.query.debug || false;
     filters[idFieldName] = req.params.id;
+
+    //FIX for contracts with slashes in the ocid
+    if (req.params.id2) {
+      filters[idFieldName] = req.params.id+"/"+req.params.id2;
+    }
+    if (req.params.id2 && req.params.id3) {
+      filters[idFieldName] = req.params.id+"/"+req.params.id2+"/"+req.params.id3;
+    }
 
     const result = await getAPI(req,collection,filters,debug);
     if (!result.data[0]) {

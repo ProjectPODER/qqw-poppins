@@ -153,11 +153,11 @@
                         </p>
                         <p class="js-flags">
                           Puntaje: {{ format_score flags.0.total_score }},
-                          Trazabilidad: {{ format_score flags.0.contract_score.traz }},
-                          Transparencia: {{ format_score flags.0.contract_score.trans }},
-                          Competitividad: {{ format_score flags.0.contract_score.comp }},
-                          Temporalidad: {{ format_score flags.0.contract_score.trans }},
-                          Confiabilidad: {{ format_score flags.0.node_score.conf }}
+                          Transparencia: {{ format_score flags.0.contract_categories.trans }},
+                          Temporalidad: {{ format_score flags.0.contract_categories.temp }},
+                          Competitividad: {{ format_score flags.0.node_categories.comp }},
+                          Trazabilidad: {{ format_score flags.0.node_categories.traz }},
+                          Confiabilidad: {{ format_score flags.0.node_rules.conf }}
                         </p>
                       </div>
                       {{!-- <div class=" js-score col-2 col-m-2 hidden">
