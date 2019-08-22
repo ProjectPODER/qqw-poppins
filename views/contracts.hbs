@@ -185,7 +185,7 @@
                     <div class=" js-title no-title search-result-title col-m-8 col-8">
                       {{!-- <div class="cardItemTitle">Título</div>
                       <div class="cardItemData"></div> --}}
-                      <a href="/contratos/{{compiledRelease.ocid}}" title="{{compiledRelease.contracts.0.title}}"><p class="text-overflow">{{compiledRelease.contracts.0.title}}</p></a>
+                      <a href="/contratos/{{encode compiledRelease.ocid}}" title="{{compiledRelease.contracts.0.title}}"><p class="text-overflow">{{compiledRelease.contracts.0.title}}</p></a>
                     </div>
                     <div class="js-amount no-title search-result-emph col-m-4 col-4 sorting_1" title="{{ format_amount compiledRelease.total_amount}}">
                       {{!-- <div class="cardItemTitle"></div>
@@ -200,7 +200,7 @@
                     <div class=" js-ocid no-title col-2 col-m-2">
                       {{!-- <div class="cardItemTitle">OCID</div>
                       <div class="cardItemData"></div> --}}
-                      <a href="/contratos/{{compiledRelease.ocid}}" class="button-link">Ver contrato</a>
+                      <a href="/contratos/{{encode compiledRelease.ocid}}" class="button-link">Ver contrato</a>
                     </div>
                     <div class=" js-dependency col-3 col-m-3">
                       <div class="cardItemTitle">Dependencia</div>

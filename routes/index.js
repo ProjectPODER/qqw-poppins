@@ -24,9 +24,6 @@ router.get('/empresas', lib.searchPage("companies",{sort: "-contract_amount.supp
 
 /* GET contract view */
 router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));
-//FIX for contracts with slashes in the ocid
-router.get('/contratos/:id/:id2', lib.entityPage("contracts","contract","ocid"));
-router.get('/contratos/:id/:id2/:id3', lib.entityPage("contracts","contract","ocid"));
 
 /* GET person view. */
 router.get('/personas/:id', lib.entityPage("persons","perfil","id"));

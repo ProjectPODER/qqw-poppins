@@ -474,6 +474,9 @@ app.engine('.hbs', hbs({
         }
         return "Fecha desconocida";
       },
+      encode: function(string) {
+        return encodeURIComponent(string)
+      },
       format_amount: function(value) {
         if (value) {
           return "$"+value.toLocaleString('es-MX',

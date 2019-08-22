@@ -260,14 +260,6 @@ function entityPage(collection,templateName,idFieldName) {
     const debug = req.query.debug || false;
     filters[idFieldName] = req.params.id;
 
-    //FIX for contracts with slashes in the ocid
-    if (req.params.id2) {
-      filters[idFieldName] = req.params.id+"/"+req.params.id2;
-    }
-    if (req.params.id2 && req.params.id3) {
-      filters[idFieldName] = req.params.id+"/"+req.params.id2+"/"+req.params.id3;
-    }
-
     const result = await getAPI(req,collection,filters,debug);
     if (!result.data[0]) {
       let err = new Error("No encontrado: "+collection);

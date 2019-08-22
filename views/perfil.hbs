@@ -225,7 +225,7 @@
             <tr>
               <td class="description-data-contract">
                 <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
-                <a href="/contratos/{{compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
+                <a href="/contratos/{{encode compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
               </td>
               <td class="description-data-amount">{{format_amount compiledRelease.total_amount}} {{format_currency compiledRelease.contracts.0.value.currency}}</td>
               <td class="description-data-date">{{moment compiledRelease.contracts.0.period.startDate date lang="es" format="YYYY"}}</td>
@@ -289,7 +289,7 @@
             <tr>
               <td class="description-data-contract">
                 <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract">
-                <a href="/contratos/{{compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
+                <a href="/contratos/{{encode compiledRelease.ocid}}">{{compiledRelease.contracts.0.title}}</a>
               </td>
               <td class="description-data-amount">{{format_amount compiledRelease.total_amount}} {{format_currency compiledRelease.contracts.0.value.currency}}</td>
               <td class="description-data-date">{{moment compiledRelease.contracts.0.period.startDate date lang="es" format="YYYY"}}</td>
