@@ -41,7 +41,7 @@ $('.easy-search-input').typeahead(
             case "contract":
               type = "contratos";
               id = data.compiledRelease.ocid;
-              text = data.title;
+              text = data.compiledRelease.contracts[0].title;
             break;
             case "person":
               type = "personas";
@@ -78,10 +78,12 @@ $('.easy-search-input').keypress(function(e) {
   var keycode = (e.keyCode ? e.keyCode : e.which);
   // console.log("esi keypress", keycode)
   if (keycode == 13 || keycode === undefined) {
+    e.preventDefault();
     console.log("esi keypress 13",$(".easy-search-input.landing-search-inputtext.tt-input").val(),$("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')"))
-    // location.href= $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
-    console.log($("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href"));
-    event.preventDefault()
+    const newLocation = $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
+    if (newLocation) {
+      location.href= newLocation;
+    }
   }
 })
 

@@ -4,56 +4,120 @@
 // Bar Chart
 
 function barChart(summaries) {
-  const yearData = [
-    {
-        "key" : "Importe de contratos como proveedor" ,
-        "bar": true,
-        "values" : [],
-        // "color": "#278529"
-    },
-    {
-        "key" : "Cantidad de contratos como proveedor" ,
-        "values" : [],
-        // "color": "#1b5d1c"
-    },
-    {
-        "key" : "Importe de contratos como comprador" ,
-        "bar": true,
-        "values" : [],
-        // "color": "#db2828"
-    },
-    {
-        "key" : "Cantidad de contratos como comprador" ,
-        "values" : [],
-        // "color": "#991c1c"
-    },
-  ]
-
+  const yearData = [];
   const barColors = {
     "Importe de contratos como proveedor": "#278529",
     "Cantidad de contratos como proveedor": "#1b5d1c",
     "Importe de contratos como comprador": "#db2828",
-    "Cantidad de contratos como comprador": "#991c1c"
+    "Cantidad de contratos como comprador": "#991c1c",
+    "Importe de contratos como financiador": "#0b2828",
+    "Cantidad de contratos como financiador": "#091c1c"
   }
-  
+  let year_isSupplier = false;
+  let year_isBuyer = false;
+  let year_isFunder = false;
+  let index_supplier_amount,index_supplier_count,index_buyer_amount,index_buyer_count,index_funder_amount,index_funder_count = null;
 
   for (y in summaries.year) {
-    yearData[0].values.push({
-      x: y,
-      y: summaries.year[y].supplier.value
-    })
-    yearData[1].values.push({
-      x: y,
-      y: summaries.year[y].supplier.count
-    })
-    yearData[2].values.push({
-      x: y,
-      y: summaries.year[y].buyer.value
-    })
-    yearData[3].values.push({
-      x: y,
-      y: summaries.year[y].buyer.count
-    })
+    if (summaries.year[y].supplier.value || summaries.year[y].supplier.count) {
+      year_isSupplier = true;
+    }
+    if (summaries.year[y].buyer.value || summaries.year[y].buyer.count) {
+      year_isBuyer = true;
+    }
+    if (summaries.year[y].funder.value || summaries.year[y].funder.count) {
+      year_isFunder = true;
+    }
+  }
+
+  if (year_isSupplier) {
+    index_supplier_amount = yearData.length;
+    yearData.push(
+      {
+        "key" : "Importe de contratos como proveedor" ,
+        "bar": true,
+        "values" : [],
+      }
+    )
+    index_supplier_count = yearData.length;
+    yearData.push(
+      {
+          "key" : "Cantidad de contratos como proveedor" ,
+          "values" : [],
+          // "color": "#1b5d1c"
+      },
+    )
+  }
+  if (year_isBuyer) {
+    index_buyer_amount = yearData.length;
+    yearData.push(
+      {
+          "key" : "Importe de contratos como comprador" ,
+          "bar": true,
+          "values" : [],
+          "color": "#db2828"
+      },
+    )
+    index_buyer_count = yearData.length;
+    yearData.push(
+      {
+          "key" : "Cantidad de contratos como comprador" ,
+          "values" : [],
+          "color": "#991c1c"
+      },
+    )
+  }
+  if (year_isFunder) {
+    index_funder_amount = yearData.length;
+    yearData.push(
+      {
+          "key" : "Importe de contratos como financiador" ,
+          "bar": true,
+          "values" : [],
+          // "color": "#db2828"
+      },
+    )
+    index_funder_count = yearData.length;
+    yearData.push(
+      {
+          "key" : "Cantidad de contratos como financiador" ,
+          "values" : [],
+          // "color": "#991c1c"
+      },
+    )
+  }
+
+  for (y in summaries.year) {
+    if (year_isSupplier) {
+      yearData[index_supplier_amount].values.push({
+        x: y,
+        y: summaries.year[y].supplier.value
+      })
+      yearData[index_supplier_count].values.push({
+        x: y,
+        y: summaries.year[y].supplier.count
+      })
+    }
+    if (year_isBuyer) {
+      yearData[index_buyer_amount].values.push({
+        x: y,
+        y: summaries.year[y].buyer.value
+      })
+      yearData[index_buyer_count].values.push({
+        x: y,
+        y: summaries.year[y].buyer.count
+      })
+    }
+    if (year_isFunder) {
+      yearData[index_funder_amount].values.push({
+        x: y,
+        y: summaries.year[y].funder.value
+      })
+      yearData[index_funder_count].values.push({
+        x: y,
+        y: summaries.year[y].funder.count
+      })
+    }
   }
 
   var chart;
@@ -66,7 +130,7 @@ function barChart(summaries) {
       .legendRightAxisHint(' [Eje derecho]')
       .legendLeftAxisHint(' [Eje izquierdo]')
       // .color(d3.scale.category20().range().slice(1))
-      .color(function(d){console.log("color",d.originalKey); return barColors[d.originalKey]})
+      .color(function(d,i){ return barColors[d.originalKey]})
       .focusEnable(false)
 
   // chart.xAxis.tickFormat(function(d) {
@@ -78,7 +142,16 @@ function barChart(summaries) {
   chart.y1Axis
   .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
 
-  // chart.bars.forceY([0]).padData(false);
+  // console.log(chart)
+
+// chart.useInteractiveGuideline(true)
+  // chart.padData(true);
+  // chart.lines.padData(true);
+  // chart.bars.padData(true);
+
+  // chart.bars.stacked
+  // chart.bars.forceY( [0,10000000000]).padData(false);
+  // chart.bars2.forceY([0,10000000000]).padData(false);
   // chart.lines.forceY([0,2]);
 
   // chart.x2Axis.tickFormat(function(d) {
@@ -101,11 +174,13 @@ function barChart(summaries) {
 function pieChart(summaries) {
   const typeData = {
     buyer: [],
-    supplier: []
+    supplier: [],
+    funder: []
   }
 
   let isBuyerType = false;
   let isSupplierType = false;
+  let isFunderType = false;
 
   for (t in summaries.type) {
     if (summaries.type[t].buyer.count != 0) {
@@ -113,6 +188,9 @@ function pieChart(summaries) {
     }
     if (summaries.type[t].supplier.count != 0) {
       isSupplierType = true;
+    }
+    if (summaries.type[t].funder.count != 0) {
+      isFunderType = true;
     }
     typeData.buyer.push({
       "label": t,
@@ -122,14 +200,18 @@ function pieChart(summaries) {
       "label": t,
       "value": summaries.type[t].supplier.count
     })
+    typeData.funder.push({
+      "label": t,
+      "value": summaries.type[t].funder.count
+    })
   }
 
   const nameLabels = {
     "open": "Licitación abierta",
     "direct": "Adjudicación Directa",
-    "limited": "#Invitación a tres",
+    "limited": "Invitación a tres",
     "undefined": "Sin definir"
-  } 
+  }
 
   // console.log(typeData);
   const procurementColors = {
@@ -137,14 +219,14 @@ function pieChart(summaries) {
     "direct": "#8AB283",
     "limited": "#DDF8D7",
     "undefined": "#8b8b8b"
-  } 
+  }
   // Pie Chart
   if (isSupplierType) {
     nv.addGraph(function() {
       var chart = nv.models.pieChart()
           .x(function(d) { return nameLabels[d.label] })
           .y(function(d) { return d.value })
-          .color(function (d) { console.log(d); return procurementColors[d.label] })
+          .color(function (d) { return procurementColors[d.label] })
           .showLabels(true);
 
         d3.select("#piechartSupplier")
@@ -169,7 +251,7 @@ function pieChart(summaries) {
       var chart = nv.models.pieChart()
           .x(function(d) { return nameLabels[d.label] })
           .y(function(d) { return d.value })
-          .color(function (d) { console.log(d); return procurementColorsBuyer[d.label] })
+          .color(function (d) { return procurementColorsBuyer[d.label] })
           .showLabels(true)
 
         // d3.select("#piechartBuyer")
@@ -184,6 +266,34 @@ function pieChart(summaries) {
         d3.select("#piechartBuyer")
             .append("svg")
             .datum(typeData.buyer)
+            .transition().duration(350)
+            .call(chart);
+
+
+      return chart;
+    });
+  }
+
+  if (isFunderType) {
+    nv.addGraph(function() {
+      var chart = nv.models.pieChart()
+          .x(function(d) { return nameLabels[d.label] })
+          .y(function(d) { return d.value })
+          .color(function (d) {  return procurementColorsBuyer[d.label] })
+          .showLabels(true)
+
+        // d3.select("#piechartBuyer")
+        //     .append("svg")
+        //     .append("text")
+        //     .attr("x", 200)
+        //     .attr("y", 100)
+        //     .attr("text-anchor", "middle")
+        //     .text("Sample Charts")
+        //     .call(chart);
+
+        d3.select("#piechartBuyer")
+            .append("svg")
+            .datum(typeData.funder)
             .transition().duration(350)
             .call(chart);
 

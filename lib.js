@@ -31,6 +31,7 @@ async function getAPI(req,collection,filters,debug) {
 
   if (collection=="contracts") {
     params.sort="-compiledRelease.total_amount";
+    filters.hidden="false";
   }
   if (collection=="persons" || collection=="organizations" || collection=="companies") {
     params.sort="-contract_amount.supplier";
@@ -114,7 +115,8 @@ const filterElements = [
   { htmlFieldName: "maximo-importe-comprador", apiFieldNames:["contract_amount.buyer"], fieldLabel:"Importe máximo comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
   { htmlFieldName: "minimo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad mínima comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
   { htmlFieldName: "maximo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad máxima comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
-	{ htmlFieldName: "proveedor", apiFieldNames:["compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
+  { htmlFieldName: "titulo", apiFieldNames:["compiledRelease.contracts.title"], fieldLabel:"Título", type:"string", collections: ["contracts"] },
+  { htmlFieldName: "proveedor", apiFieldNames:["compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
   { htmlFieldName: "dependencia", apiFieldNames:["compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
   { htmlFieldName: "from_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">", collections: ["contracts"] },
   { htmlFieldName: "to_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.endDate"], fieldLabel:"Fecha de fin", type:"date",modifier:"<", collections: ["contracts"] },
@@ -249,6 +251,7 @@ function searchPage(collectionName, defaultFilters, templateName) {
 
 function entityPage(collection,templateName,idFieldName) {
   return catchError(async function(req, res, next) {
+    console.log("entityPage",collection,templateName,idFieldName,req,res,next);
     let filters = {
       limit: 1,
       sort: null,

@@ -219,6 +219,22 @@
                             </span>
                         {{/if}}
                         </p>
+                        <p class="js-person-type" style="font-size: 16px;">
+                        {{#if contract_count.funder}}
+                          <span class="js-contract-count">
+                            <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+                            {{contract_count.funder}} contrato(s) como financiador
+                          </span>
+                          por
+                          <span class="js-contract-amount">
+                            {{#ifCond contract_amount.supplier '==' '0'}}
+                            {{else}}
+                              {{format_amount contract_amount.funder}}
+                            {{/ifCond}}
+                          </span>
+                          pesos mexicanos.
+                        {{/if}}
+                        </p>
 
                       </div>
                       {{!-- <div class=" js-score col-2 col-m-2 hidden">
