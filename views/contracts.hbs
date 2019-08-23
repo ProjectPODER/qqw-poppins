@@ -5,6 +5,17 @@
           <h4 class="search-title">Filtros Avanzados</h4>
 
           <fieldset name="proveedores">
+            <p class="search-title">TÍTULO <a data-toggle="tooltip" data-placement="right" title="Título del contrato."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-2px;"></a></p>
+            <div class="multiple-controls-group">
+              <div class="multiple-control-container">
+                <input type="text" name="titulo" placeholder="Título del contrato" class="contract_title_filter multiple-control" value="{{filters.titulo.value }}">
+                <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control">
+              </div>
+
+            </div>
+          </fieldset>
+
+          <fieldset name="proveedores">
             <p class="search-title">FILTRAR PROVEEDORES <a data-toggle="tooltip" data-placement="right" title="Nombre o Razón Social del Proveedor o Contratista ganador de la contratación."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-2px;"></a></p>
             <div class="multiple-controls-group">
               <div class="multiple-control-container">

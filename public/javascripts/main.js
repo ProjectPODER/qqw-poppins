@@ -41,7 +41,7 @@ $('.easy-search-input').typeahead(
             case "contract":
               type = "contratos";
               id = data.compiledRelease.ocid;
-              text = data.title;
+              text = data.compiledRelease.contracts[0].title;
             break;
             case "person":
               type = "personas";
