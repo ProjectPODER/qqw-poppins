@@ -78,8 +78,12 @@ $('.easy-search-input').keypress(function(e) {
   var keycode = (e.keyCode ? e.keyCode : e.which);
   // console.log("esi keypress", keycode)
   if (keycode == 13 || keycode === undefined) {
+    e.preventDefault();
     console.log("esi keypress 13",$(".easy-search-input.landing-search-inputtext.tt-input").val(),$("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')"))
-    location.href= $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
+    const newLocation = $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
+    if (newLocation) {
+      location.href= newLocation;
+    }
   }
 })
 
