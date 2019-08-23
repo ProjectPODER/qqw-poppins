@@ -3135,6 +3135,22 @@ button.close {
     width: 1170px;
   }
 }
+.button-manual.right {
+  text-align: right !important;
+  padding-right: 1rem;
+}
+.button-manual.left {
+  text-align: left !important;
+}
+@media (max-width: 767px) {
+  .button-manual.right {
+    text-align: center !important;
+    padding-right: 0;
+  }
+  .button-manual.left {
+    text-align: center !important;
+  }
+}
 .home article margin-top 10% input[type="email"] {
   padding: 10px;
   margin-right: 5px;

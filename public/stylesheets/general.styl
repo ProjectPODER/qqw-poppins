@@ -2982,3 +2982,19 @@ button
 @media (min-width: 1200px)
     .fixed-title
         width 1170px
+        
+.button-manual
+  &.right
+    text-align right !important
+    padding-right 1rem
+  &.left
+    text-align left !important
+
+@media (max-width: 767px)
+  .button-manual
+    &.right
+      text-align center !important
+      padding-right 0
+    &.left
+      text-align center !important
+    
