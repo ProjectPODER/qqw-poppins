@@ -3102,6 +3102,10 @@ button.close {
 .fixed-title .breadcrumb {
   padding-top: 0;
 }
+.fixed-title .description-data-title {
+  width: 65%;
+  float: left;
+}
 .fixed-title .description-data-title h3 {
   margin-top: 0;
   font-size: 1.5rem;
@@ -3111,6 +3115,11 @@ button.close {
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
+}
+.fixed-title .contract-amount {
+  width: 35%;
+  float: right;
+  margin-top: -25px;
 }
 .profile-menu-margin {
   margin-top: 10rem;
