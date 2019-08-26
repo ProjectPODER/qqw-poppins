@@ -1,38 +1,42 @@
 <section class="profile">
   <div class="row">
     <div class="container mt-1">
-      <div class="breadcrumb">
-        <h4>
-            <a href="/">Inicio</a> >
-            {{#ifCond type '==' 'persons'}}
-              <a href="/personas">Personas y proveedores</a>
-            {{/ifCond}}
-            {{#ifCond type '==' 'institutions'}}
-              <a href="/instituciones-publicas">
-                Instituciones públicas o empresas productivas del estado
+
+      <div class="wrap" id="wrap">
+        <div class="breadcrumb">
+          <h4>
+              <a href="/">Inicio</a> >
+              {{#ifCond type '==' 'persons'}}
+                <a href="/personas">Personas y proveedores</a>
+              {{/ifCond}}
+              {{#ifCond type '==' 'institutions'}}
+                <a href="/instituciones-publicas">
+                  Instituciones públicas o empresas productivas del estado
+                </a>
+              {{/ifCond}}
+              {{#ifCond type '==' 'companies'}}
+              <a href="/empresas">
+                Empresas o asociaciones civiles
               </a>
-            {{/ifCond}}
-            {{#ifCond type '==' 'companies'}}
-            <a href="/empresas">
-              Empresas o asociaciones civiles
-            </a>
-            {{/ifCond}}
-        </h4>
-      </div>
-      <div class='datos-generales clearfix'>
-        <div class="gd-col-left-wrapper col-m-12">
-            <div class="description-data-title">
-              <h3>
-                <img src="../images/icons/{{#ifCond type '==' 'persons'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institutions'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'companies'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
-                {{ result.name}}
-              </h3>
-            </div>
+              {{/ifCond}}
+          </h4>
+        </div>
+        <div class='datos-generales clearfix'>
+          <div class="gd-col-left-wrapper col-m-12">
+              <div class="description-data-title">
+                <h3 title="{{ result.name}}">
+                  <img src="../images/icons/{{#ifCond type '==' 'persons'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institutions'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'companies'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
+                  {{ result.name}}
+                </h3>
+              </div>
+          </div>
+        </div>
+        <div class="col-12 col-m-12 ">
+          <hr>
         </div>
       </div>
-      <div class="col-12 col-m-12 ">
-        <hr>
-      </div>
-      <div class="col-12 col-m-12 text-center">
+
+      <div class="col-12 col-m-12 text-center mt-2">
         <div id="profile-menu">
           <ul>
             <li>
