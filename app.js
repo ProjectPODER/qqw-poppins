@@ -530,12 +530,17 @@ app.engine('.hbs', hbs({
       },
       get_party_categories: function(flags) {
         // console.log(JSON.stringify(flags,null,4));
-        return {
-          "trans": flags.contract_categories.trans,
-          "temp": flags.contract_categories.temp,
-          "comp": flags.node_categories.comp,
-          "traz": flags.node_categories.traz,
-          "conf": flags.node_rules.conf,
+        if (flags.contract_categories) {
+          return {
+            "trans": flags.contract_categories.trans,
+            "temp": flags.contract_categories.temp,
+            "comp": flags.node_categories.comp,
+            "traz": flags.node_categories.traz,
+            "conf": flags.node_rules.conf,
+          }
+        }
+        else {
+          return {"error": "no flags"};
         }
       },
       flag_recommendations: function (org_flags, count) {
