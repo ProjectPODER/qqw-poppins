@@ -244,7 +244,9 @@ function searchPage(collectionName, defaultFilters, templateName) {
 
    filters.offset = current_page * 25;
 
-   res.render(templateName, {result: result, pagesArray:arrayNum, current_url: cleanURL(req.originalUrl), current_page: current_page, filters: cleanFilters(filters), "recommendations": recommendations});
+   const share_url = req.originalUrl;
+
+   res.render(templateName, {result: result, share_url: share_url, pagesArray:arrayNum, current_url: cleanURL(req.originalUrl), current_page: current_page, filters: cleanFilters(filters), "recommendations": recommendations});
  })
 }
 
