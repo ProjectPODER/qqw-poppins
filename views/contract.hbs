@@ -1,26 +1,22 @@
 <div class="container">
   <div class='viewWrapper'>
-    <div class='datos-generales clearfix' id="">
+    <div class='datos-generales clearfix' id="wrap-contract">
       <div class="gd-col-left-wrapper col-m-12">
-          <div class="col-m-12 col-12 breadcrumb" style="clear:both">
-            <h4><a href="/">Inicio</a> > <a href="/contratos">Contratos</a></h4>
-          </div>
-
-          <div class="">
-            <div class="description-data-title">
-              <h3 style="clear: both">
-                <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
-                {{result.records.0.compiledRelease.contracts.0.title}}
-              </h3>
-            </div>
-            <div class="right-align contract-amount">
-              <p class="amount-data">
-                {{format_amount result.records.0.compiledRelease.total_amount}}
-              </p>
-              {{format_currency result.records.0.compiledRelease.contracts.0.value.currency}}
-            </div>
-          </div>
-
+        <div class="col-m-12 col-12 breadcrumb" style="clear:both">
+          <h4><a href="/">Inicio</a> > <a href="/contratos">Contratos</a></h4>
+        </div>
+        <div class="description-data-title">
+          <h3 style="clear: both" title="{{result.records.0.compiledRelease.contracts.0.title}}">
+            <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
+            {{result.records.0.compiledRelease.contracts.0.title}}
+          </h3>
+        </div>
+        <div class="right-align contract-amount">
+          <p class="amount-data">
+            {{format_amount result.records.0.compiledRelease.total_amount}}
+          </p>
+          <p id="currency-contract">{{format_currency result.records.0.compiledRelease.contracts.0.value.currency}}</p>
+        </div>
       </div>
       <div class="col-12 col-m-12">
         <hr>

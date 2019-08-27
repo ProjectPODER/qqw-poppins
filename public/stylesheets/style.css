@@ -227,6 +227,10 @@ h6,
 p {
   margin: 0 0 10px;
 }
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
 .flexbox-container-modal {
   display: -ms-flex;
   display: -webkit-flex;
@@ -244,8 +248,9 @@ p {
   text-overflow: ellipsis;
 }
 .table-responsive {
-  min-height: 0.01%;
-  overflow-x: auto;
+  display: block !important;
+  width: 100% !important;
+  overflow-x: auto !important;
 }
 .table {
   width: 100%;
@@ -1294,6 +1299,7 @@ a.see-contract {
   text-transform: uppercase;
   font-size: 1.1rem;
   line-height: 2.5rem;
+  margin-top: 1.5rem;
 }
 .right-menu-contracts > li > a {
   padding: 5px 0px !important;
@@ -3082,31 +3088,34 @@ button.close {
   color: #2b00f7;
   font-weight: bold;
 }
-.wrap {
+.wrap,
+.wrap-contract {
   position: relative;
   background: #fff;
   -webkit-transition: height 0.35s;
   -moz-transition: height 0.35s;
   transition: height 0.35s;
 }
-.description-data-title {
-  top: 70px;
-}
-.fixed-title {
+.fixed-title,
+.fixed-title-contract {
   height: 106px;
   background: #fff;
   position: fixed !important;
   margin-top: -4px;
   z-index: 1;
 }
-.fixed-title .breadcrumb {
+.fixed-title .breadcrumb,
+.fixed-title-contract .breadcrumb {
   padding-top: 0;
 }
-.fixed-title .description-data-title {
-  width: 65%;
-  float: left;
+.fixed-title .breadcrumb h4,
+.fixed-title-contract .breadcrumb h4 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.fixed-title .description-data-title h3 {
+.fixed-title .description-data-title h3,
+.fixed-title-contract .description-data-title h3 {
   margin-top: 0;
   font-size: 1.5rem;
   overflow: hidden;
@@ -3116,31 +3125,56 @@ button.close {
   -moz-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
-.fixed-title .contract-amount {
+.fixed-title .contract-amount,
+.fixed-title-contract .contract-amount {
   width: 35%;
   float: right;
-  margin-top: -25px;
+  margin-top: -15px;
+}
+.fixed-title .contract-amount .amount-data,
+.fixed-title-contract .contract-amount .amount-data {
+  font-size: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.fixed-title-contract {
+  height: 118px;
+}
+.fixed-title-contract .description-data-title {
+  width: 65%;
+  float: left;
 }
 .profile-menu-margin {
   margin-top: 10rem;
 }
+.contract-margin {
+  margin-top: 11.5rem;
+}
 @media (max-width: 768px) {
-  .fixed-title {
+  .fixed-title,
+  .fixed-title-contract {
     width: 95%;
   }
 }
 @media (min-width: 768px) {
-  .fixed-title {
+  .fixed-title,
+  .fixed-title-contract {
     width: 750px;
   }
 }
 @media (min-width: 992px) {
-  .fixed-title {
+  .fixed-title,
+  .fixed-title-contract {
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
-  .fixed-title {
+  .fixed-title,
+  .fixed-title-contract {
     width: 1170px;
   }
 }

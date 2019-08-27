@@ -229,6 +229,10 @@ h6,
 p
   margin 0 0 10px
 
+.img-fluid
+    max-width 100%
+    height auto
+    
 .flexbox-container-modal
   display -ms-flex
   display -webkit-flex
@@ -246,8 +250,9 @@ p
   text-overflow ellipsis
 
 .table-responsive
-  min-height .01%
-  overflow-x auto
+  display block !important
+  width 100% !important
+  overflow-x auto !important
 
 .table
   width 100%
@@ -327,6 +332,10 @@ a, .cursor-pointer
     margin-right auto
     margin-left auto
 
+// @media (max-width: 768px)
+//     .container
+//         width 95%
+        
 @media (min-width: 768px)
     .container
         width 750px
@@ -1286,6 +1295,7 @@ a
   text-transform uppercase
   font-size 1.1rem
   line-height 2.5rem
+  margin-top 1.5rem
   & > li > a
       padding 5px 0px !important
   & li
@@ -2930,22 +2940,16 @@ button
   color #2b00f7
   font-weight bold
 
-.wrap
-  // overflow auto
+.wrap,
+.wrap-contract
   position relative
   background #fff
   -webkit-transition height .35s
   -moz-transition height .35s
   transition height .35s
   
-.breadcrumb,
-.description-data-title
-  // position absolute
-
-.description-data-title
-  top 70px
-  
-.fixed-title
+.fixed-title,
+.fixed-title-contract
   height 106px
   background #fff
   position fixed !important
@@ -2953,9 +2957,11 @@ button
   z-index 1
   .breadcrumb
     padding-top 0 
+    h4
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
   .description-data-title
-    width 65%
-    float left
     h3
       margin-top 0
       font-size 1.5rem
@@ -2968,26 +2974,46 @@ button
   .contract-amount
     width 35%
     float right
-    margin-top -25px
-    p
+    margin-top -15px
+    .amount-data
+      font-size 1.5rem
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      -webkit-transition all .25s ease
+      -moz-transition all .25s ease 
+      transition all .25s ease
+
+.fixed-title-contract
+  height 118px
+  .description-data-title
+    width 65%
+    float left
     
 .profile-menu-margin
   margin-top 10rem
+  
+.contract-margin
+  margin-top 11.5rem
 
 @media (max-width: 768px)
-    .fixed-title
+    .fixed-title,
+    .fixed-title-contract
         width 95%
         
 @media (min-width: 768px)
-    .fixed-title
+    .fixed-title,
+    .fixed-title-contract
         width 750px
 
 @media (min-width: 992px)
-    .fixed-title
+    .fixed-title,
+    .fixed-title-contract
         width 970px
 
 @media (min-width: 1200px)
-    .fixed-title
+    .fixed-title,
+    .fixed-title-contract
         width 1170px
         
 .button-manual

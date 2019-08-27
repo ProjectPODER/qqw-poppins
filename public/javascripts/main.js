@@ -92,7 +92,7 @@ $("#first-search").click(function() {
 })
 
 // Right menu Contract page
-$('.right-menu-contracts').affix({offset: {top: 280, bottom:950} });
+$('.right-menu-contracts').affix({offset: {top: 20, bottom:900} });
 
 //Anchors animation 
 $('a.page-scroll').bind('click', function(event) {
@@ -104,7 +104,7 @@ $('a.page-scroll').bind('click', function(event) {
 });
 
   // Add scrollspy to <body> in Contract perfil
-$('body').scrollspy({target: "#right-menu-contracts", offset: 150});
+$('body').scrollspy({target: "#right-menu-contracts", offset: 250});
 
 // Add smooth scrolling on all links inside the navbar
 $("#right-menu-contracts a").on('click', function(event) {
@@ -119,7 +119,7 @@ $("#right-menu-contracts a").on('click', function(event) {
     // Using jQuery's animate() method to add smooth page scroll
     // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
     $('html, body').animate({
-      scrollTop: $(hash).offset().top - 70
+      scrollTop: $(hash).offset().top - 200
     }, 800, function(){
     });
   }  // End if
@@ -356,10 +356,16 @@ $(window).scroll(function(e) {
     // alert("scroll");
   if ($(this).scrollTop() > 20) {
     $("#wrap").addClass("fixed-title");
+    $("#wrap-contract").addClass("fixed-title-contract");
+    $("#currency-contract").css("display", "none");
     $("#profile-menu").addClass("profile-menu-margin");
+    $(".contract_detail").addClass("contract-margin");
   } else {
     $("#wrap").removeClass("fixed-title");
+    $("#wrap-contract").removeClass("fixed-title-contract");
+    $("#currency-contract").css("display", "block");
     $("#profile-menu").removeClass("profile-menu-margin");
+    $(".contract_detail").removeClass("contract-margin");
   }
   
 });
