@@ -246,7 +246,14 @@ function searchPage(collectionName, defaultFilters, templateName) {
 
    const share_url = req.originalUrl;
 
-   res.render(templateName, {result: result, share_url: share_url, pagesArray:arrayNum, current_url: cleanURL(req.originalUrl), current_page: current_page, filters: cleanFilters(filters), "recommendations": recommendations});
+   let metaTitle = []
+   if (templateName == "contracts"){ metaTitle = "QQW - Contratos" }
+   if (templateName == "persons"){ metaTitle = "QQW - Personas" }
+   if (templateName == "institutions"){ metaTitle = "QQW - Instituciones Públicas" }
+   if (templateName == "companies"){ metaTitle = "QQW - Empresas" }
+   if (templateName == "institutions-uc"){ metaTitle = "QQW - Unidades Compradoras" }
+
+   res.render(templateName, {result: result, share_url: share_url, title: metaTitle, pagesArray:arrayNum, current_url: cleanURL(req.originalUrl), current_page: current_page, filters: cleanFilters(filters), "recommendations": recommendations});
  })
 }
 
@@ -269,7 +276,14 @@ function entityPage(collection,templateName,idFieldName) {
       err.status = 404;
       throw(err);
     }
-    res.render(templateName, {result: result.data[0], type: collection, flag_count: flag_count});
+
+    let metaTitle = []
+    if (templateName == "contract"){ metaTitle = "QQW - Contrato" }
+    if (collection == "persons"){ metaTitle = "QQW - Persona" }
+    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública" }
+    if (collection == "companies"){ metaTitle = "QQW - Empresa" }
+
+    res.render(templateName, {result: result.data[0], type: collection, flag_count: flag_count, title: metaTitle});
   })
 }
 
@@ -312,13 +326,24 @@ function homePage() {
     }
 
 
-    res.render('home', { feed: feed, home: true, stats:stats, alert: alert  });
+    res.render('home', { feed: feed, home: true, stats:stats, alert: alert, title: "QuiénEsQuién.Wiki"  });
   })
 }
 
 function staticPage(templateName) {
   return catchError(async function(req, res, next) {
-   res.render(templateName , { currentSection: templateName });
+  
+       let metaTitle = []
+       if (templateName == "about"){ metaTitle = "QQW - Sobre QQW" }
+       if (templateName == "sources"){ metaTitle = "QQW - Entidades y fuentes" }
+       if (templateName == "apis"){ metaTitle = "QQW - Herramientas" }
+       if (templateName == "investigations"){ metaTitle = "QQW - Investigaciones" }
+       if (templateName == "manual"){ metaTitle = "QQW - Manual" }
+       if (templateName == "partners"){ metaTitle = "QQW - Aliados" }
+       if (templateName == "privacy"){ metaTitle = "QQW - Privacidad" }
+       if (templateName == "contact"){ metaTitle = "QQW - Contacto" }
+  
+   res.render(templateName , { currentSection: templateName, title: metaTitle });
  })
 }
 
