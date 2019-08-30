@@ -16,12 +16,22 @@ var qqw_suggest = new Bloodhound({
   }
 });
 
+function qqw_suggestWithDefaults(q, sync) {
+  if (q === '') {
+    sync(qqw_suggest.get('Detroit Lions', 'Green Bay Packers', 'Chicago Bears'));
+  }
+
+  else {
+    qqw_suggest.search(q, sync);
+  }
+}
+
 //Search
 $('.easy-search-input').typeahead(
   {
     hint: true,
     highlight: true,
-    minLength: 2
+    minLength: 0
   },
   {
   name: 'qqw',
