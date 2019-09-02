@@ -115,7 +115,7 @@ const filterElements = [
   { htmlFieldName: "maximo-importe-comprador", apiFieldNames:["contract_amount.buyer"], fieldLabel:"Importe máximo comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
   { htmlFieldName: "minimo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad mínima comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
   { htmlFieldName: "maximo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad máxima comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
-  { htmlFieldName: "titulo", apiFieldNames:["compiledRelease.contracts.title"], fieldLabel:"Título", type:"string", collections: ["contracts"] },
+  { htmlFieldName: "titulo", apiFieldNames:["compiledRelease.contracts.title"], fieldLabel:"Título", type:"text", collections: ["contracts"] },
   { htmlFieldName: "proveedor", apiFieldNames:["compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
   { htmlFieldName: "dependencia", apiFieldNames:["compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
   { htmlFieldName: "from_date_contracts_index", apiFieldNames:["compiledRelease.contracts.period.startDate"], fieldLabel:"Fecha de incio", type:"date",modifier:">", collections: ["contracts"] },
@@ -332,7 +332,7 @@ function homePage() {
 
 function staticPage(templateName) {
   return catchError(async function(req, res, next) {
-  
+
        let metaTitle = []
        if (templateName == "about"){ metaTitle = "QQW - Sobre QQW" }
        if (templateName == "sources"){ metaTitle = "QQW - Entidades y fuentes" }
@@ -342,7 +342,7 @@ function staticPage(templateName) {
        if (templateName == "partners"){ metaTitle = "QQW - Aliados" }
        if (templateName == "privacy"){ metaTitle = "QQW - Privacidad" }
        if (templateName == "contact"){ metaTitle = "QQW - Contacto" }
-  
+
    res.render(templateName , { currentSection: templateName, title: metaTitle });
  })
 }
