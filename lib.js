@@ -260,7 +260,7 @@ function searchPage(collectionName, defaultFilters, templateName) {
 
 function entityPage(collection,templateName,idFieldName) {
   return catchError(async function(req, res, next) {
-    console.log("entityPage",collection,templateName,idFieldName,req,res,next);
+    // console.log("entityPage",collection,templateName,idFieldName,req,res,next);
     let filters = {
       limit: 1,
       sort: null,
