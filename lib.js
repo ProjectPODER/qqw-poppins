@@ -277,8 +277,8 @@ function entityPage(collection,templateName,idFieldName) {
       throw(err);
     }
 
-    let metaTitle = []
-    if (templateName == "contract"){ metaTitle = "QQW - Contrato" }
+    let metaTitle = "";
+    if (collection == "contracts"){ metaTitle = "QQW - Contrato" }
     if (collection == "persons"){ metaTitle = "QQW - Persona" }
     if (collection == "institutions"){ metaTitle = "QQW - Institución Pública" }
     if (collection == "companies"){ metaTitle = "QQW - Empresa" }
