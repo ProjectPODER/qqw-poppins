@@ -64,14 +64,14 @@
             <a href="/instituciones-publicas">
               <h3>
                 <strong>
-                  {{format_number stats.institutions.count}}
+                  {{format_number stats.institution.count}}
                 </strong>
               </h3>
               <h3 class="card-h3">Instituciones</h3>
             </a>
            {{!--  <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
             <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
-            <p class="triplet-last-update">Actualización: {{ moment stats.institutions.lastModified date lang="es" format="LL" }} </p>
+            <p class="triplet-last-update">Actualización: {{ moment stats.institution.lastModified date lang="es" format="LL" }} </p>
           </div>
         </div>
       </div>
@@ -81,14 +81,14 @@
             <a href="/empresas">
               <h3>
                 <strong>
-                  {{format_number stats.companies.count}}
+                  {{format_number stats.company.count}}
                 </strong>
               </h3>
               <h3 class="card-h3">Empresas</h3>
             </a>
             {{!-- <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
             <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
-            <p class="triplet-last-update">Actualización: {{ moment stats.companies.lastModified date lang="es" format="LL"}} </p>
+            <p class="triplet-last-update">Actualización: {{ moment stats.company.lastModified date lang="es" format="LL"}} </p>
           </div>
         </div>
       </div>
@@ -250,5 +250,5 @@
         <a class="button-link important-button-link" type="button" href="herramientas">VER TODAS LAS HERRAMIENTAS</a>
       </div>
     </div>
-  </div> 
+  </div>
 </section>

@@ -296,29 +296,8 @@ function homePage() {
     // Always render home even without API
     try {
       feed = await getFeed(req);
-      persons = await getAPI(req,"persons",{limit:1, sort:"-date"}, debug);
-      institutions = await getAPI(req,"institutions",{limit:1, sort:"-date"}, debug);
-      companies = await getAPI(req,"companies",{limit:1, sort:"-date"}, debug);
-      contracts = await getAPI(req,"contracts",{limit:1, sort:"-compiledRelease.date"}, debug);
-
-      stats = {
-        persons: {
-          count: persons.count,
-          lastModified: persons.data[0] ? persons.data[0].date : "API ERROR"
-        },
-        institutions: {
-          count: institutions.count,
-          lastModified: institutions.data[0] ?  institutions.data[0].date : "API ERROR"
-        },
-        companies: {
-          count: companies.count,
-          lastModified: companies.data[0] ?  companies.data[0].date : "API ERROR"
-        },
-        contracts: {
-          count: contracts.count,
-          lastModified: contracts.data[0] ? contracts.data[0].records[0].compiledRelease.date : "Error de API"
-        }
-      }
+      sources = await getAPI(req,"sources");
+      stats = sources.data[0].collections;
     }
     catch(e) {
       alert = "No se pudieron recuperar algunas fuentes de datos, por favor contáctenos si este error le afecta.";
