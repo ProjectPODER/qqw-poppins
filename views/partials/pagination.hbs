@@ -5,6 +5,7 @@
     {{else}}
         <li class="paginate_button previous" id="index_previous"><a href="{{current_url}}&page={{math current_page "-" 1}}" aria-controls="index">Anterior</a></li>
     {{/ifCond}}
+    {{!-- Menor a 5 --}}
     {{#ifCond result.pages '<=' 5 }}
         {{#each pagesArray as |i pageNum|}}
             <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
@@ -12,15 +13,17 @@
             </li>
         {{/each}}
     {{/ifCond}}
+    {{!-- Mayor a 5 --}}
     {{#ifCond result.pages '>' 5 }}
         {{#ifCond current_page '>=' 2}}
             <li class="paginate_button">
                 <a href="{{current_url}}&page=0" aria-controls="index">1</a>
             </li>
             <li class="paginate_button disabled" id="index_ellipsis">
-                <a href="#" aria-controls="index">…</a>
+                <a aria-controls="index">…</a>
             </li>
         {{/ifCond}}
+        {{!-- Last page --}}
         {{#ifCond current_page '==' (math result.pages '-' 1)}}
           {{#each pagesArray as |i pageNum|}}
               <li class="paginate_button {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
@@ -35,9 +38,21 @@
               </li>
             {{/ifCond}}
           {{/each}}
+          {{!-- 5,10,15 --}}
+          {{!-- {{#ifCond current_page '>' 1}}
+            <li class="paginate_button disabled" id="index_ellipsis">
+                <a aria-controls="index">…</a>
+            </li>
+            {{#each pagesArray as |i pageNum|}}
+              <li class="paginate_button">
+                <a href="{{../current_url}}&page={{math (math (math ../current_page "+" pageNum) '*' 5) "-" 1}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '*' 5}}</a>
+              </li>
+            {{/each}}
+          {{/ifCond}}
+ --}}
         {{/ifCond}}
             <li class="paginate_button disabled" id="index_ellipsis">
-                <a href="#" aria-controls="index">…</a>
+                <a aria-controls="index">…</a>
             </li>
             <li class="paginate_button ">
                 <a href="{{current_url}}&page={{math result.pages '-' 1}}" aria-controls="index">{{result.pages}}</a>

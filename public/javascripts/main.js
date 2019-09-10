@@ -196,7 +196,7 @@ $("#send_email").click(function (e) {
       }
       if (data.status == "error") {
             console.log("No email sent");
-            alert("Le pedimos discupas, su correo no se ha podido enviar. Por favor intente de nuevo.")
+            alert("Le pedimos disculpas, su correo no se ha podido enviar. Por favor intente de nuevo.")
       }
   },"json").fail(function(error) {
     console.error(error);
@@ -226,7 +226,7 @@ $("#send_info_email").click(function (e) {
       }
       if (data.status == "error") {
             console.log("No email sent");
-            alert("Le pedimos discupas, su información no se ha podido enviar. Por favor intente de nuevo.")
+            alert("Le pedimos disculpas, su información no se ha podido enviar. Por favor intente de nuevo.")
       }
   },"json").fail(function(error) {
     console.error(error);
