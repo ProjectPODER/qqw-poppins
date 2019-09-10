@@ -270,6 +270,10 @@ function entityPage(collection,templateName,idFieldName) {
     const debug = req.query.debug || false;
     filters[idFieldName] = req.params.id;
 
+    if (collection == "institutions") {
+      filters["classification"] = "institution,state,municipality";
+    }
+
     const result = await getAPI(req,collection,filters,debug);
     if (!result.data[0]) {
       let err = new Error("No encontrado: "+collection);

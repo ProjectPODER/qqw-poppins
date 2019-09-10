@@ -770,6 +770,8 @@ app.engine('.hbs', hbs({
       get_type_url: function(type) {
         switch(type) {
           case "institution": return "instituciones-publicas"; break;
+          case "municipality": return "instituciones-publicas"; break;
+          case "state": return "instituciones-publicas"; break;
           case "company": return "empresas"; break;
           case "contract": return "contratos"; break;
           case "person": return "personas"; break;

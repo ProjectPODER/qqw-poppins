@@ -14,7 +14,7 @@ router.get('/personas', lib.searchPage("persons"));
 
 /* GET institutions index */
 //Don't bring UCs
-router.get('/instituciones-publicas', lib.searchPage("institutions",{"subclassification": "!unidad-compradora", "sort": "-contract_amount.buyer"}));
+router.get('/instituciones-publicas', lib.searchPage("institutions",{"subclassification": "!unidad-compradora", "classification": "state,institution,municipality", "sort": "-contract_amount.buyer"}));
 
 router.get('/unidades-compradoras', lib.searchPage("institutions",{"subclassification": "unidad-compradora", "sort": "-flags.total_score", "embed": true},"institutions-uc"));
 
