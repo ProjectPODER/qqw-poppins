@@ -44,12 +44,14 @@
                 Información
               </a>
             </li>
+            {{#ifCond result.summaries.relation.nodes.length ">" 0}}
             <li>
               <a href="#graficas" class="page-scroll button-link">
                 Gráficas
               </a>
 
             </li>
+            {{/ifCond}}
             {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
             <li>
               <a href="#financiacion" class="page-scroll button-link">
@@ -189,6 +191,8 @@
     </div>
   </div>
 </section>
+{{#ifCond result.summaries.relation.nodes.length ">" 0}}
+
 <section class="profile" id="graficas">
   <div class="row">
     <div class="container">
@@ -222,6 +226,8 @@
     </div>
   </div>
 </section>
+
+{{/ifCond}}
 {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
 <section class="profile" id="compras">
   <div class="row">
