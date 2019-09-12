@@ -6,19 +6,7 @@
         <div class="breadcrumb">
           <h4>
               <a href="/">Inicio</a> >
-              {{#ifCond type '==' 'persons'}}
-                <a href="/personas">Personas y proveedores</a>
-              {{/ifCond}}
-              {{#ifCond type '==' 'institutions'}}
-                <a href="/instituciones-publicas">
-                  Instituciones públicas o empresas productivas del estado
-                </a>
-              {{/ifCond}}
-              {{#ifCond type '==' 'companies'}}
-              <a href="/empresas">
-                Empresas o asociaciones civiles
-              </a>
-              {{/ifCond}}
+              <a href="/{{get_type_url type}}">{{get_type_plural type}}</a>
           </h4>
         </div>
         <div class='datos-generales clearfix'>
@@ -44,12 +32,14 @@
                 Información
               </a>
             </li>
+            {{#ifCond result.summaries.relation.nodes.length ">" 0}}
             <li>
               <a href="#graficas" class="page-scroll button-link">
                 Gráficas
               </a>
 
             </li>
+            {{/ifCond}}
             {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
             <li>
               <a href="#financiacion" class="page-scroll button-link">
@@ -73,12 +63,24 @@
               </a>
             </li>
             {{/ifCond}}
-            {{#if result.memberships.parent }}
+
+            {{#if result.memberships.parent}}
+            {{#each result.memberships.parent }}
             <li>
-              <a href="#parents" class="page-scroll button-link">
-                Dependencias
+              <a href="#memberships-parent-{{@index}}" class="page-scroll button-link">
+                {{this.role}}
               </a>
             </li>
+            {{/each}}
+            {{/if}}
+            {{#if result.memberships.child}}
+            {{#each result.memberships.child }}
+            <li>
+              <a href="#memberships-child-{{@index}}" class="page-scroll button-link">
+                {{this.role}}
+              </a>
+            </li>
+            {{/each}}
             {{/if}}
             {{#ifCond type '!=' 'companies'}}
             {{#if result.top3contracts.buyer }}
@@ -91,13 +93,6 @@
             {{/if}}
             {{/if}}
             {{/ifCond}}
-            {{#if result.memberships.child }}
-            <li>
-              <a href="#uc" class="page-scroll button-link">
-                Unidades Compradoras
-              </a>
-            </li>
-            {{/if}}
           </ul>
         </div>
       </div>
@@ -189,6 +184,8 @@
     </div>
   </div>
 </section>
+{{#ifCond result.summaries.relation.nodes.length ">" 0}}
+
 <section class="profile" id="graficas">
   <div class="row">
     <div class="container">
@@ -222,6 +219,8 @@
     </div>
   </div>
 </section>
+
+{{/ifCond}}
 {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
 <section class="profile" id="compras">
   <div class="row">
@@ -413,18 +412,26 @@
 {{/ifCond}}
 
 {{#if result.memberships.parent}}
-<section class="profile" id="parents">
+{{#each result.memberships.parent }}
+<section class="profile" id="memberships-parent-{{@index}}">
   <div class="row">
     <div class="container">
       <div  class="col-m-12 col-12">
-        <h4 class="description-data-subtitle">Dependencia de la que forma parte</h4>
+        <h4 class="description-data-subtitle">{{this.role}}</h4>
         <p>
-          Esta institución es una {{result.memberships.parent.0.role}} de: {{#each result.memberships.parent}}<a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
+          Esta {{get_type_singular ../type}} tiene como {{this.role}} a: {{#each this.memberships}}
+          {{#if this.organization_class }}
+          <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+          {{else}}
+          <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+          {{/if}}
+          {{/each}}
         </p>
       </div>
     </div>
   </div>
 </section>
+{{/each}}
 {{/if}}
 {{#ifCond type '!=' 'companies'}}
 {{#if result.top3contracts.buyer}}
@@ -519,24 +526,24 @@
 {{/ifCond}}
 
 {{#if result.memberships.child}}
-<section class="profile" id="uc">
+{{#each result.memberships.child }}
+<section class="profile" id="memberships-child-{{@index}}">
   <div class="row">
     <div class="container">
       <div  class="col-m-12 col-12">
-        <h4 class="description-data-subtitle">UNIDADES COMPRADORAS</h4>
-        <p>
-          Esta institución tiene como {{result.memberships.child.0.role}} a: {{#each result.memberships.child}}
-          {{#if this.organization_class }}
-          <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-          {{else}}
-          <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-          {{/if}}
-          {{/each}}
-        </p>
+        <h4 class="description-data-subtitle">{{this.role}}</h4>
+
+
+
+          <p>
+            Esta {{get_type_singular ../type}} tiene como {{this.role}} a: {{#each this.memberships}}<a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
+          </p>
+
       </div>
     </div>
   </div>
 </section>
+{{/each}}
 {{/if}}
 
 {{> send_info_form}}
