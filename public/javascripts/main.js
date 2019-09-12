@@ -117,10 +117,14 @@ $('.right-menu-contracts').affix({offset: {top: 20, bottom:900} });
 //Anchors animation
 $('a.page-scroll').bind('click', function(event) {
     var $anchor = $(this);
-    $('html, body').stop().animate({
-        scrollTop: ($($anchor.attr('href')).offset().top - 240)
-    }, 1250, 'easeInOutExpo');
-    event.preventDefault();
+    let element = $($anchor.attr('href').replace(" ","\ "));
+    if (element.length > 0) {
+      let dest = (element.offset().top - 240);
+      $('html, body').stop().animate({
+          scrollTop: dest
+      }, 1250, 'easeInOutExpo');
+      event.preventDefault();
+    }
 });
 
   // Add scrollspy to <body> in Contract perfil

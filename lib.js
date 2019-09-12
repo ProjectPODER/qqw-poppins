@@ -275,7 +275,7 @@ function entityPage(collection,templateName,idFieldName) {
     }
 
     const result = await getAPI(req,collection,filters,debug);
-    if (!result.data[0]) {
+    if (!result || !result.data || !result.data[0]) {
       let err = new Error("No encontrado: "+collection);
       err.status = 404;
       throw(err);
@@ -287,8 +287,61 @@ function entityPage(collection,templateName,idFieldName) {
     if (collection == "institutions"){ metaTitle = "QQW - Institución Pública" }
     if (collection == "companies"){ metaTitle = "QQW - Empresa" }
 
-    res.render(templateName, {result: result.data[0], type: collection, flag_count: flag_count, title: metaTitle});
+    let processedResult = fixMemberships(result.data[0])
+
+    // console.log(processedResult);
+
+    res.render(templateName, {result: processedResult, type: collection, flag_count: flag_count, title: metaTitle});
   })
+}
+
+function fixMemberships(result) {
+  if (result.memberships) {
+    const childMemberships = {};
+    // console.log("fixMemberships",allMemberships,allMemberships.length);
+    if (result.memberships.child.length > 0) {
+      for (m in result.memberships.child) {
+        let role = getSubclassName(result.memberships.child[m].parent_subclass);
+
+        if (!childMemberships[role]) {
+          childMemberships[role] = {
+            role: role,
+            memberships: []
+          }
+        }
+        childMemberships[role].memberships.push(result.memberships.child[m]);
+      }
+      result.memberships.child = childMemberships;
+    }
+    const parentMemberships = {};
+
+    if (result.memberships.parent.length > 0) {
+      for (m in result.memberships.parent) {
+        let role = result.memberships.parent[m].role;
+
+        if (!parentMemberships[role]) {
+          parentMemberships[role] = {
+            role: role,
+            memberships: []
+          }
+        }
+        parentMemberships[role].memberships.push(result.memberships.parent[m]);
+      }
+      result.memberships.parent = parentMemberships;
+    }
+
+    console.log("fixMemberships RR",result.memberships);
+  }
+  return result;
+}
+
+function getSubclassName(subclass) {
+  switch (subclass) {
+    case "dependencia": return "Dependencia"; break;
+    case "unidad-compradora": return "Unidad compradora"; break;
+    default: console.error("getSubclassName: Unknown subclass:",subclass); return subclass;
+  }
+
 }
 
 function homePage() {

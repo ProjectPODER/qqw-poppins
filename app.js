@@ -767,13 +767,41 @@ app.engine('.hbs', hbs({
 
         return record_flags;
       },
+      get_type_plural: function(type) {
+        switch(type) {
+          case "institutions": return "Instituciones públicas o empresas productivas del estado"; break;
+          case "municipality": return "Municipios"; break;
+          case "state": return "Estados"; break;
+          case "company": return "Empresas o asociaciones civiles"; break;
+          case "contract": return "Contratos"; break;
+          case "persons": return "Personas"; break;
+          case "person": return "Personas"; break;
+          case "funder": return "Bancos"; break;
+          default: console.log("get_type_url",type); return "Entidades"; break;
+        }
+      },
+      get_type_singular: function(type) {
+        switch(type) {
+          case "institutions": return "Institución pública o empresa productiva del estado"; break;
+          case "municipality": return "Municipio"; break;
+          case "state": return "Estado"; break;
+          case "company": return "Empresa o asociación civil"; break;
+          case "contract": return "Contrato"; break;
+          case "persons": return "Persona"; break;
+          case "person": return "Persona"; break;
+          case "funder": return "Banco"; break;
+          default: console.log("get_type_url",type); return "Entidad"; break;
+        }
+      },
       get_type_url: function(type) {
         switch(type) {
+          case "institutions": return "instituciones-publicas"; break;
           case "institution": return "instituciones-publicas"; break;
           case "municipality": return "instituciones-publicas"; break;
           case "state": return "instituciones-publicas"; break;
           case "company": return "empresas"; break;
           case "contract": return "contratos"; break;
+          case "persons": return "personas"; break;
           case "person": return "personas"; break;
           case "funder": return "instituciones-publicas"; break;
           default: console.log("get_type_url",type); return "unknown"; break;
