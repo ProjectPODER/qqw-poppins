@@ -419,7 +419,7 @@
       <div  class="col-m-12 col-12">
         <h4 class="description-data-subtitle">{{this.role}}</h4>
         <p>
-          Esta {{get_type_singular type}} tiene como {{this.role}} a: {{#each this.memberships}}
+          Esta {{get_type_singular ../type}} tiene como {{this.role}} a: {{#each this.memberships}}
           {{#if this.organization_class }}
           <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}
           {{else}}

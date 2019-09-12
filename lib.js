@@ -301,7 +301,7 @@ function fixMemberships(result) {
     // console.log("fixMemberships",allMemberships,allMemberships.length);
     if (result.memberships.child.length > 0) {
       for (m in result.memberships.child) {
-        let role = getSubclassName(result.memberships.child[m].parent_subclass);
+        let role = getSubclassName(result.memberships.child[m].parent_subclass || result.memberships.child[m].parent_class);
 
         if (!childMemberships[role]) {
           childMemberships[role] = {
@@ -339,6 +339,8 @@ function getSubclassName(subclass) {
   switch (subclass) {
     case "dependencia": return "Dependencia"; break;
     case "unidad-compradora": return "Unidad compradora"; break;
+    case "state": return "Estado"; break;
+    case "municipality": return "Municipio"; break;
     default: console.error("getSubclassName: Unknown subclass:",subclass); return subclass;
   }
 
