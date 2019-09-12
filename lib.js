@@ -281,13 +281,15 @@ function entityPage(collection,templateName,idFieldName) {
       throw(err);
     }
 
-    let metaTitle = "";
-    if (collection == "contracts"){ metaTitle = "QQW - Contrato" }
-    if (collection == "persons"){ metaTitle = "QQW - Persona" }
-    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública" }
-    if (collection == "companies"){ metaTitle = "QQW - Empresa" }
+    const share_url = req.originalUrl;
 
-    res.render(templateName, {result: result.data[0], type: collection, flag_count: flag_count, title: metaTitle});
+    let metaTitle = "";
+    if (collection == "contracts"){ metaTitle = "QQW - Contrato:" }
+    if (collection == "persons"){ metaTitle = "QQW - Persona:" }
+    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública:" }
+    if (collection == "companies"){ metaTitle = "QQW - Empresa:" }
+
+    res.render(templateName, {result: result.data[0], type: collection, flag_count: flag_count, title: metaTitle, share_url: share_url });
   })
 }
 
@@ -308,8 +310,9 @@ function homePage() {
       console.error("Error",e);
     }
 
+    const share_url = req.originalUrl;
 
-    res.render('home', { feed: feed, home: true, stats:stats, alert: alert, title: "QuiénEsQuién.Wiki"  });
+    res.render('home', { feed: feed, home: true, stats:stats, alert: alert, title: "QuiénEsQuién.Wiki", share_url: share_url});
   })
 }
 
@@ -326,7 +329,9 @@ function staticPage(templateName) {
        if (templateName == "privacy"){ metaTitle = "QQW - Privacidad" }
        if (templateName == "contact"){ metaTitle = "QQW - Contacto" }
 
-   res.render(templateName , { currentSection: templateName, title: metaTitle });
+   const share_url = req.originalUrl;
+
+   res.render(templateName , { currentSection: templateName, title: metaTitle, share_url: share_url });
  })
 }
 
