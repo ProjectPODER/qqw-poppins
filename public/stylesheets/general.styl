@@ -8,9 +8,6 @@ body
   font-family 'Montserrat', sans-serif
   font-size 14px
   line-height 1.42857143
-  // position relative
-  // display flex
-  // flex-direction column
 
 html, body
   height 100%
@@ -331,10 +328,6 @@ a, .cursor-pointer
     padding-left 15px
     margin-right auto
     margin-left auto
-
-// @media (max-width: 768px)
-//     .container
-//         width 95%
         
 @media (min-width: 768px)
     .container
@@ -1290,20 +1283,22 @@ a
 .contract-button
   margin-top 3rem
 
-.right-menu-contracts
+#right-menu
   list-style-type none
   text-transform uppercase
   font-size 1.1rem
-  line-height 2.5rem
   margin-top 1.5rem
-  & > li > a
-      padding 5px 0px !important
+  margin-left 40px
+  & ul
+    background-color #ffffff
+    padding 0 5px
   & li
     color #9b9b9b
     text-decoration none
     & a
       color #9b9b9b
       text-decoration none
+      padding 8px 10px !important
       // &::before
       //   content ''
       //   display inline-block
@@ -1319,6 +1314,13 @@ a
       // &:active:before
       // &:focus:before
       //   background-image url('../images/icons/hexagono-blue.png')
+  .evaluacion
+    img
+      margin-right 5px
+      width 20px
+      
+.menu-profile
+  margin-top 0 !important
 
 .rubro-list
   &::before
@@ -2406,7 +2408,7 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
       width 100%
       text-align left
       margin-bottom 10px
-  #right-menu-contracts
+  #right-menu
     display none
   .investigaciones.row
     height 400px
@@ -2687,7 +2689,7 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
         width 100%
         margin auto
 
-#profile-menu
+/*#profile-menu
   ul
     padding 0
     li
@@ -2700,7 +2702,7 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
         background-color #2D1C9D
       img
         margin-right 5px
-        width 20px
+        width 20px*/
 
 .modal-open
   overflow hidden
@@ -2937,7 +2939,7 @@ button
   display block
 
 .active > .anchor
-  color #2b00f7
+  color #2b00f7 !important
   font-weight bold
 
 .wrap,
@@ -3002,6 +3004,9 @@ button
 .contract-margin
   margin-top 11.5rem
 
+.profile-margin
+  margin-top 6rem
+
 @media (max-width: 768px)
     .fixed-title,
     .fixed-title-contract
@@ -3036,24 +3041,3 @@ button
       padding-right 0
     &.left
       text-align center !important
-
-// div {
-//     margin-bottom: 10px;
-//     display: flex;
-//     align-items: center;
-// }
-
-// label {
-//   display: inline-block;
-//   width: 300px;
-// }
-
-// #from_date_contracts_index:invalid+span:after,
-// #to_date_contracts_index:invalid+span:after
-//     content: '✖'
-//     padding-left 5px
-
-// #from_date_contracts_index:valid+span:after,
-// #to_date_contracts_index:valid+span:after
-//     content: '✓'
-//     padding-left 5px

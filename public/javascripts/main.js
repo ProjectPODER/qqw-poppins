@@ -112,7 +112,8 @@ $("#first-search").click(function() {
 })
 
 // Right menu Contract page
-$('.right-menu-contracts').affix({offset: {top: 20, bottom:900} });
+$('.right-menu').affix({offset: {top: 20, bottom:900} });
+$('.right-menu-profile').affix({offset: {top: 20, bottom:900} });
 
 //Anchors animation
 $('a.page-scroll').bind('click', function(event) {
@@ -128,10 +129,10 @@ $('a.page-scroll').bind('click', function(event) {
 });
 
   // Add scrollspy to <body> in Contract perfil
-$('body').scrollspy({target: "#right-menu-contracts", offset: 250});
+$('body').scrollspy({target: "#right-menu", offset: 250});
 
 // Add smooth scrolling on all links inside the navbar
-$("#right-menu-contracts a").on('click', function(event) {
+$("#right-menu a").on('click', function(event) {
   // Make sure this.hash has a value before overriding default behavior
   if (this.hash !== "") {
     // Prevent default anchor click behavior
@@ -382,14 +383,16 @@ $(window).scroll(function(e) {
     $("#wrap").addClass("fixed-title");
     $("#wrap-contract").addClass("fixed-title-contract");
     $("#currency-contract").css("display", "none");
-    $("#profile-menu").addClass("profile-menu-margin");
+    // $("#profile-menu").addClass("profile-menu-margin");
     $(".contract_detail").addClass("contract-margin");
+    $("#informacion-general").addClass("profile-margin");
   } else {
     $("#wrap").removeClass("fixed-title");
     $("#wrap-contract").removeClass("fixed-title-contract");
     $("#currency-contract").css("display", "block");
-    $("#profile-menu").removeClass("profile-menu-margin");
+    // $("#profile-menu").removeClass("profile-menu-margin");
     $(".contract_detail").removeClass("contract-margin");
+    $("#informacion-general").removeClass("profile-margin");
   }
 
 });

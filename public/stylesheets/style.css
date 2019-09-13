@@ -1294,23 +1294,32 @@ a.see-contract {
 .contract-button {
   margin-top: 3rem;
 }
-.right-menu-contracts {
+#right-menu {
   list-style-type: none;
   text-transform: uppercase;
   font-size: 1.1rem;
-  line-height: 2.5rem;
   margin-top: 1.5rem;
+  margin-left: 40px;
 }
-.right-menu-contracts > li > a {
-  padding: 5px 0px !important;
+#right-menu ul {
+  background-color: #fff;
+  padding: 0 5px;
 }
-.right-menu-contracts li {
+#right-menu li {
   color: #9b9b9b;
   text-decoration: none;
 }
-.right-menu-contracts li a {
+#right-menu li a {
   color: #9b9b9b;
   text-decoration: none;
+  padding: 8px 10px !important;
+}
+#right-menu .evaluacion img {
+  margin-right: 5px;
+  width: 20px;
+}
+.menu-profile {
+  margin-top: 0 !important;
 }
 .rubro-list::before {
   content: '';
@@ -2525,7 +2534,7 @@ div.dataTables_paginate li.last a:after {
     text-align: left;
     margin-bottom: 10px;
   }
-  #right-menu-contracts {
+  #right-menu {
     display: none;
   }
   .investigaciones.row {
@@ -2823,24 +2832,6 @@ div.dataTables_paginate li.last a:after {
     margin: auto;
   }
 }
-#profile-menu ul {
-  padding: 0;
-}
-#profile-menu ul li {
-  list-style: none;
-  display: inline-block;
-  margin: 0 0.3rem 1.5rem 0 !important;
-}
-#profile-menu ul .evaluacion {
-  background-color: #110046;
-}
-#profile-menu ul .evaluacion:hover {
-  background-color: #2d1c9d;
-}
-#profile-menu ul .evaluacion img {
-  margin-right: 5px;
-  width: 20px;
-}
 .modal-open {
   overflow: hidden;
 }
@@ -3085,7 +3076,7 @@ button.close {
   display: block;
 }
 .active > .anchor {
-  color: #2b00f7;
+  color: #2b00f7 !important;
   font-weight: bold;
 }
 .wrap,
@@ -3163,6 +3154,9 @@ button.close {
 }
 .contract-margin {
   margin-top: 11.5rem;
+}
+.profile-margin {
+  margin-top: 6rem;
 }
 @media (max-width: 768px) {
   .fixed-title,
