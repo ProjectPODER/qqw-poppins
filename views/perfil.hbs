@@ -12,9 +12,9 @@
         <div class='datos-generales clearfix'>
           <div class="gd-col-left-wrapper col-m-12">
               <div class="description-data-title">
-                <h3 title="{{ result.name}}">
+                <h3 title="{{ result.compiledRelease.name}}">
                   <img src="../images/icons/{{#ifCond type '==' 'persons'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institutions'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'companies'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
-                  {{ result.name}}
+                  {{ result.compiledRelease.name}}
                 </h3>
               </div>
           </div>
@@ -34,60 +34,60 @@
           <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
         </div>
         <div class="col-m-6 col-6 mb-2 right-align">
-            {{#ifCond result.contract_amount.supplier '&&' result.contract_amount.buyer}}
+            {{#ifCond result.compiledRelease.contract_amount.supplier '&&' result.compiledRelease.contract_amount.buyer}}
             {{else}}
-              {{#if result.contract_amount.buyer}}
+              {{#if result.compiledRelease.contract_amount.buyer}}
               <h4 class="amount-data red-text">
-                {{format_amount result.contract_amount.buyer}}
+                {{format_amount result.compiledRelease.contract_amount.buyer}}
               </h4>
               {{/if}}
-              {{#if result.contract_amount.supplier}}
+              {{#if result.compiledRelease.contract_amount.supplier}}
               <h4 class="amount-data green-text">
-                {{format_amount result.contract_amount.supplier}}
+                {{format_amount result.compiledRelease.contract_amount.supplier}}
               </h4>
               {{/if}}
-              {{#if result.contract_amount.funder}}
+              {{#if result.compiledRelease.contract_amount.funder}}
               <h4 class="amount-data ">
-                {{format_amount result.contract_amount.funder}}
+                {{format_amount result.compiledRelease.contract_amount.funder}}
               </h4>
               {{/if}}
             {{/ifCond}}
         </div>
         <div class="col-12 col-m-12 flex">
-          {{#if result.contract_count.funder}}
+          {{#if result.compiledRelease.contract_count.funder}}
             <div class="col-m-6 col-6 pd-nonleft">
               <p class="js-title-data">Contratos como financiador</p>
-              <p class="js-data">Cantidad: {{result.contract_count.funder}}. Importe: <span>{{format_amount result.contract_amount.funder}}</span> MXN</p>
+              <p class="js-data">Cantidad: {{result.compiledRelease.contract_count.funder}}. Importe: <span>{{format_amount result.compiledRelease.contract_amount.funder}}</span> MXN</p>
             </div>
           {{/if}}
-          {{#if result.contract_count.buyer}}
+          {{#if result.compiledRelease.contract_count.buyer}}
             <div class="col-m-6 col-6 pd-nonleft">
               <p class="js-title-data">Contratos como comprador</p>
-              <p class="js-data">Cantidad: {{result.contract_count.buyer}}. Importe: <span class="red-text">{{format_amount result.contract_amount.buyer}}</span> MXN</p>
+              <p class="js-data">Cantidad: {{result.compiledRelease.contract_count.buyer}}. Importe: <span class="red-text">{{format_amount result.compiledRelease.contract_amount.buyer}}</span> MXN</p>
             </div>
           {{/if}}
-          {{#if result.contract_count.supplier}}
+          {{#if result.compiledRelease.contract_count.supplier}}
             <div class="col-m-6 col-6 pd-nonleft">
               <p class="js-title-data">Contratos como proveedor</p>
-              <p class="js-data">Cantidad: {{result.contract_count.supplier}}. Importe: <span class="green-text">{{format_amount result.contract_amount.supplier}}</span> MXN</p>
+              <p class="js-data">Cantidad: {{result.compiledRelease.contract_count.supplier}}. Importe: <span class="green-text">{{format_amount result.compiledRelease.contract_amount.supplier}}</span> MXN</p>
             </div>
           {{/if}}
-          {{#if result.date}}
+          {{#if result.compiledRelease.date}}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Fecha de actualización</p>
-              <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
+              <p class="js-data">{{moment result.compiledRelease.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
-          {{#if result.identifiers }}
+          {{#if result.compiledRelease.identifiers }}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Identificadores</p>
-              <p class="js-data">{{#each result.identifiers}}{{scheme}}: {{identifier}}{{/each}}</p>
+              <p class="js-data">{{#each result.compiledRelease.identifiers}}{{scheme}}: {{identifier}}{{/each}}</p>
             </div>
           {{/if}}
-          {{#if result.source}}
+          {{#if result.compiledRelease.source}}
             <div class="col-m-2 col-2 pd-nonleft">
               <p class="js-title-data">Fuente(s)</p>
-              <p class="js-data">{{#each result.source}}{{this}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.compiledRelease.source}}{{this.id}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
           {{#ifCond type '==' 'persons'}}
@@ -95,11 +95,11 @@
               <p class="description-data-amount">Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.</p>
             </div>
           {{/ifCond}}
-          {{#ifCond result.subclassification '==' 'banco'}}
-            {{#if result.source}}
+          {{#ifCond result.compiledRelease.subclassification '==' 'banco'}}
+            {{#if result.compiledRelease.source}}
               <div class="col-m-2 col-2">
                 <p class="js-title-data">Tipo de entidad</p>
-                <p class="js-data">{{result.subclassification}}</p>
+                <p class="js-data">{{result.compiledRelease.subclassification}}</p>
               </div>
             {{/if}}
           {{/ifCond}}
@@ -180,7 +180,7 @@
           </ul>
         </nav>
       </div>
-      
+
     </div>
   </div>
 </section>
@@ -211,7 +211,7 @@
         </div>
         <div class="col-m-12 col-12 mt-60">
           <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
-          <div id="graph-content">
+          <div id="graph-container">
           </div>
         </div>
         <div class="col-12 col-m-12 mt-2">
@@ -255,13 +255,13 @@
           </table>
         </div>
         <div class="col-m-12 mb-12 mb-5">
-          {{#ifCond result.contract_count.buyer '>' 3}}
-          <p>Viendo hasta 3 de <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>.</p>
+          {{#ifCond result.compiledRelease.contract_count.buyer '>' 3}}
+          <p>Viendo hasta 3 de <strong>{{result.compiledRelease.contract_count.buyer}} contrato(s) en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?dependencia={{result.name}}" class="button-link buyer-button">Ver todos los contratos</a>
+            <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link buyer-button">Ver todos los contratos</a>
           </div>
           {{else}}
-            <p>Viendo <strong>{{result.contract_count.buyer}} contrato(s) en total</strong>. </p>
+            <p>Viendo <strong>{{result.compiledRelease.contract_count.buyer}} contrato(s) en total</strong>. </p>
           {{/ifCond}}
         </div>
         {{/if}}
@@ -323,13 +323,13 @@
           </table>
         </div>
         <div class="col-m-12 mb-12 mb-5">
-          {{#ifCond result.contract_count.funder '>' 3}}
-          <p>Viendo hasta 3 de <strong>{{result.contract_count.funder}} contrato(s) en total</strong>.</p>
+          {{#ifCond result.compiledRelease.contract_count.funder '>' 3}}
+          <p>Viendo hasta 3 de <strong>{{result.compiledRelease.contract_count.funder}} contrato(s) en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?financiador={{result.name}}" class="button-link">Ver todos los contratos</a>
+            <a href="/contratos?financiador={{result.compiledRelease.name}}" class="button-link">Ver todos los contratos</a>
           </div>
           {{else}}
-            <p>Viendo <strong>{{result.contract_count.funder}} contrato(s) en total</strong>. </p>
+            <p>Viendo <strong>{{result.compiledRelease.contract_count.funder}} contrato(s) en total</strong>. </p>
           {{/ifCond}}
         </div>
         {{/if}}
@@ -391,13 +391,13 @@
           </table>
         </div>
         <div class="col-m-12 mb-12 mb-5">
-          {{#ifCond result.contract_count.supplier '>' 3}}
-          <p>Viendo hasta 3 de <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>.</p>
+          {{#ifCond result.compiledRelease.contract_count.supplier '>' 3}}
+          <p>Viendo hasta 3 de <strong>{{result.compiledRelease.contract_count.supplier}} contrato(s) en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?proveedor={{result.name}}" class="button-link supplier-button">Ver todos los contratos</a>
+            <a href="/contratos?proveedor={{result.compiledRelease.name}}" class="button-link supplier-button">Ver todos los contratos</a>
           </div>
           {{else}}
-            <p>Viendo <strong>{{result.contract_count.supplier}} contrato(s) en total</strong>. </p>
+            <p>Viendo <strong>{{result.compiledRelease.contract_count.supplier}} contrato(s) en total</strong>. </p>
           {{/ifCond}}
         </div>
         {{/if}}
@@ -428,6 +428,7 @@
 {{#if result.memberships.parent}}
 {{#each result.memberships.parent }}
 <section class="profile" id="memberships-parent-{{@index}}">
+  <!-- {{j this}} -->
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
@@ -435,11 +436,13 @@
           <h4 class="description-data-subtitle">{{this.role}}</h4>
           <p>
             Esta {{get_type_singular ../type}} tiene como {{this.role}} a: {{#each this.memberships}}
+            {{#with compiledRelease }}
             {{#if this.organization_class }}
             <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}
             {{else}}
             <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
             {{/if}}
+            {{/with}}
             {{/each}}
           </p>
         </div>
@@ -554,7 +557,12 @@
         <div  class="col-m-12 col-12">
           <h4 class="description-data-subtitle">{{this.role}}</h4>
             <p>
-              Esta {{get_type_singular ../type}} tiene como {{this.role}} a: {{#each this.memberships}}<a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>,{{#if @last}}.{{else}}, {{/if}}{{/each}}
+              Esta {{get_type_singular ../type}} tiene como {{this.role}} a:
+              {{#each this.memberships}}
+              {{#with compiledRelease }}
+              <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>,{{#if @last}}.{{else}}, {{/if}}
+              {{/with}}
+              {{/each}}
             </p>
         </div>
       </div>

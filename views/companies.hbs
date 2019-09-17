@@ -130,6 +130,7 @@
                 <div class="dataCardBody">
                   {{# if result.data.length }}
                     {{#each result.data}}
+                    {{#with compiledRelease}}
                     <div role="row" class="search-card odd">
                       <div class=" js-title no-title search-result-title col-m-8 col-8">
                         <div class="cardItemTitle">Nombre</div>
@@ -169,6 +170,7 @@
                         <div class="cardItemData"></div>
                       </div>
                     </div>
+                    {{/with}}
                     {{/each}}
                   {{else}}
                   No hay resultados para esta búsqueda. Por favor pruebe eliminando filtros. Si el problema persiste por favor contáctenos.

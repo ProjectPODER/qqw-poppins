@@ -14,12 +14,12 @@ router.get('/personas', lib.searchPage("persons"));
 
 /* GET institutions index */
 //Don't bring UCs
-router.get('/instituciones-publicas', lib.searchPage("institutions",{"subclassification": "!unidad-compradora", "classification": "state,institution,municipality", "sort": "-contract_amount.buyer"}));
+router.get('/instituciones-publicas', lib.searchPage("institutions",{"compiledRelease.subclassification": "!unidad-compradora", "compiledRelease.classification": "state,institution,municipality", "sort": "-compiledRelease.contract_amount.buyer"}));
 
-router.get('/unidades-compradoras', lib.searchPage("institutions",{"subclassification": "unidad-compradora", "sort": "-flags.total_score", "embed": true},"institutions-uc"));
+router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRelease.subclassification": "unidad-compradora", "sort": "-flags.total_score", "embed": true},"institutions-uc"));
 
 /* GET companies index */
-router.get('/empresas', lib.searchPage("companies",{sort: "-contract_amount.supplier"}));
+router.get('/empresas', lib.searchPage("companies",{sort: "-compiledRelease.contract_amount.supplier"}));
 
 
 /* GET contract view */

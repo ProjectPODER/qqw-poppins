@@ -106,15 +106,15 @@ function sendMail(req, callback) {
 
 // Filters
 const filterElements = [
-	{ htmlFieldName: "filtername", apiFieldNames:["name"], fieldLabel:"Nombre", type:"string", collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "minimo-importe-proveedor", apiFieldNames:["contract_amount.supplier"], fieldLabel:"Importe mínimo proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "maximo-importe-proveedor", apiFieldNames:["contract_amount.supplier"], fieldLabel:"Importe máximo proveedor", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "minimo-cantidad-proveedor", apiFieldNames:["contract_count.supplier"], fieldLabel:"Cantidad mínima proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "maximo-cantidad-proveedor", apiFieldNames:["contract_count.supplier"], fieldLabel:"Cantidad máxima proveedor", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
-  { htmlFieldName: "minimo-importe-comprador", apiFieldNames:["contract_amount.buyer"], fieldLabel:"Importe mínimo comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
-  { htmlFieldName: "maximo-importe-comprador", apiFieldNames:["contract_amount.buyer"], fieldLabel:"Importe máximo comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
-  { htmlFieldName: "minimo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad mínima comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
-  { htmlFieldName: "maximo-cantidad-comprador", apiFieldNames:["contract_count.buyer"], fieldLabel:"Cantidad máxima comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
+	{ htmlFieldName: "filtername", apiFieldNames:["compiledRelease.other_names.name"], fieldLabel:"Nombre", type:"string", collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "minimo-importe-proveedor", apiFieldNames:["compiledRelease.contract_amount.supplier"], fieldLabel:"Importe mínimo proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "maximo-importe-proveedor", apiFieldNames:["compiledRelease.contract_amount.supplier"], fieldLabel:"Importe máximo proveedor", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "minimo-cantidad-proveedor", apiFieldNames:["compiledRelease.contract_count.supplier"], fieldLabel:"Cantidad mínima proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "maximo-cantidad-proveedor", apiFieldNames:["compiledRelease.contract_count.supplier"], fieldLabel:"Cantidad máxima proveedor", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
+  { htmlFieldName: "minimo-importe-comprador", apiFieldNames:["compiledRelease.contract_amount.buyer"], fieldLabel:"Importe mínimo comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
+  { htmlFieldName: "maximo-importe-comprador", apiFieldNames:["compiledRelease.contract_amount.buyer"], fieldLabel:"Importe máximo comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
+  { htmlFieldName: "minimo-cantidad-comprador", apiFieldNames:["compiledRelease.contract_count.buyer"], fieldLabel:"Cantidad mínima comprador", type:"number",modifier:">", repeated: true, collections: ["institutions"] },
+  { htmlFieldName: "maximo-cantidad-comprador", apiFieldNames:["compiledRelease.contract_count.buyer"], fieldLabel:"Cantidad máxima comprador", type:"number",modifier:"<", repeated: true, collections: ["institutions"] },
   { htmlFieldName: "titulo", apiFieldNames:["compiledRelease.contracts.title"], fieldLabel:"Título", type:"text", collections: ["contracts"] },
   { htmlFieldName: "proveedor", apiFieldNames:["compiledRelease.awards.suppliers.name"], fieldLabel:"Proveedor", type:"string", collections: ["contracts"] },
   { htmlFieldName: "dependencia", apiFieldNames:["compiledRelease.parties.memberOf.name"], fieldLabel:"Dependencia", type:"string", collections: ["contracts"] },
@@ -271,7 +271,7 @@ function entityPage(collection,templateName,idFieldName) {
     filters[idFieldName] = req.params.id;
 
     if (collection == "institutions") {
-      filters["classification"] = "institution,state,municipality";
+      filters["compiledRelease.classification"] = "institution,state,municipality";
     }
 
     const result = await getAPI(req,collection,filters,debug);
@@ -303,7 +303,7 @@ function fixMemberships(result) {
     // console.log("fixMemberships",allMemberships,allMemberships.length);
     if (result.memberships.child.length > 0) {
       for (m in result.memberships.child) {
-        let role = getSubclassName(result.memberships.child[m].parent_subclass || result.memberships.child[m].parent_class);
+        let role = getSubclassName(result.memberships.child[m].compiledRelease.parent_subclass || result.memberships.child[m].compiledRelease.parent_class);
 
         if (!childMemberships[role]) {
           childMemberships[role] = {
@@ -319,7 +319,7 @@ function fixMemberships(result) {
 
     if (result.memberships.parent.length > 0) {
       for (m in result.memberships.parent) {
-        let role = result.memberships.parent[m].role;
+        let role = result.memberships.parent[m].compiledRelease.role;
 
         if (!parentMemberships[role]) {
           parentMemberships[role] = {
