@@ -115,6 +115,7 @@
           <div id="person-index" class="dataTable" aria-describedby="person-index_info" role="grid">
             <div class="dataCardBody">
               {{#each result.data}}
+              {{#with compiledRelease }}
               <div role="row" class="search-card odd">
                 <div class=" js-title no-title search-result-title col-m-8 col-8">
                   <div class="cardItemTitle">Nombre</div>
@@ -189,6 +190,7 @@
 
                 </div>
               </div>
+              {{/with}}
               {{/each}}
             </div>
           </div>

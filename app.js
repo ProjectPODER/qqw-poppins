@@ -700,9 +700,15 @@ app.engine('.hbs', hbs({
         return 'Valor desconocido';
       },
       hilight: function(needle, haystack) {
-        const r = new RegExp("("+needle+")","i");
-        // console.log("hilight",r,haystack);
-        return haystack.replace(r, "<span class='hilight'>$1</span>");
+        if (haystack && needle) {
+          const r = new RegExp("("+needle+")","i");
+          // console.log("hilight",r,haystack);
+          return haystack.replace(r, "<span class='hilight'>$1</span>");
+        }
+        else {
+          return haystack;
+          console.error("hilight error:",needle,haystack);
+        }
       },
       match: function(needle, haystack) {
         const r = new RegExp("("+needle+")","i");
