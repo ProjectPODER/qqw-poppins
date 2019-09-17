@@ -402,7 +402,7 @@ a:focus {
   margin-top: 60px;
 }
 .mt-1 {
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 .mt-2 {
   margin-top: 2rem;
@@ -1302,7 +1302,6 @@ a.see-contract {
   margin-left: 40px;
 }
 #right-menu ul {
-  background-color: #fff;
   padding: 0 5px;
 }
 #right-menu li {
@@ -3179,7 +3178,7 @@ button.close {
 @media (min-width: 1200px) {
   .fixed-title,
   .fixed-title-contract {
-    width: 1170px;
+    width: 85%;
   }
 }
 .button-manual.right {

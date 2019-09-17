@@ -1,6 +1,6 @@
 <section class="profile">
   <div class="row">
-    <div class="container mt-1">
+    <div class="content mt-1">
 
       <div class="wrap" id="wrap">
         <div class="breadcrumb">
@@ -101,7 +101,7 @@
 </section>
 <section class="profile" id="informacion-general">
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div class="col-9 col-m-9">
         <div class="col-6 col-m-6 mb-2">
           <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
@@ -261,7 +261,7 @@
 
 <section class="profile" id="graficas">
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div  class="col-m-12 col-6">
           <h4 class="description-data-subtitle">EVOLUCIÓN ANUAL DE CONTRATOS</h4>
@@ -284,7 +284,7 @@
         </div>
         <div class="col-m-12 col-12 mt-60">
           <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
-          <div id="graph-container">
+          <div id="graph-content">
           </div>
         </div>
         <div class="col-12 col-m-12 mt-2">
@@ -299,7 +299,7 @@
 {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
 <section class="profile" id="compras">
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <h4 class="description-data-subtitle red-text">COMPRAS</h4>
         {{#if result.top3contracts.buyer}}
@@ -344,7 +344,7 @@
 
 {{#if result.summaries.top_suppliers }}
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div class="col-m-12 col-12">
           <h5 class="description-data-subtitle">Proveedores principales</h5>
@@ -367,7 +367,7 @@
 {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
 <section class="profile" id="financiacion">
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <h4 class="description-data-subtitle">Financiacion</h4>
         {{#if result.top3contracts.funder}}
@@ -412,7 +412,7 @@
 
 {{#if result.summaries.top_fundees }}
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div class="col-m-12 col-12">
           <h5 class="description-data-subtitle">Principales instituciones financiadas</h5>
@@ -435,7 +435,7 @@
 {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
 <section class="profile" id="proveedor">
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <h4 class="description-data-subtitle green-text">PROVEEDOR</h4>
         {{#if result.top3contracts.supplier }}
@@ -479,7 +479,7 @@
   </div>
 {{#if result.summaries.top_buyers }}
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">Principales dependencias a las que provee</h4>
@@ -502,7 +502,7 @@
 {{#each result.memberships.parent }}
 <section class="profile" id="memberships-parent-{{@index}}">
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div  class="col-m-12 col-12">
           <h4 class="description-data-subtitle">{{this.role}}</h4>
@@ -528,7 +528,7 @@
 <section class="profile bg-gray" id="evaluacion">
 
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div class="col-12 col-m-12">
           <div class="col-6 col-m-6">
@@ -577,7 +577,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div  class="col-m-12 col-12 mt-2">
           <h3>Solicitar más información</h3>
@@ -622,7 +622,7 @@
 {{#each result.memberships.child }}
 <section class="profile" id="memberships-child-{{@index}}">
   <div class="row">
-    <div class="container">
+    <div class="content">
       <div  class="col-m-9 col-9">
         <div  class="col-m-12 col-12">
           <h4 class="description-data-subtitle">{{this.role}}</h4>
