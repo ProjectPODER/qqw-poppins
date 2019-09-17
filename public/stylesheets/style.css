@@ -1313,7 +1313,7 @@ a.see-contract {
   text-decoration: none;
   padding: 8px 10px !important;
 }
-#right-menu .evaluacion img {
+.right-menu-icon {
   margin-right: 5px;
   width: 20px;
 }
@@ -3077,6 +3077,9 @@ button.close {
 .active > .anchor {
   color: #2b00f7 !important;
   font-weight: bold;
+}
+.active > .anchor > img {
+  fill: #f00;
 }
 .wrap,
 .wrap-contract {

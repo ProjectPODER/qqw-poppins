@@ -23,79 +23,6 @@
           <hr>
         </div>
       </div>
-
-      {{!-- <div class="col-12 col-m-12 text-center mt-2">
-        <div id="profile-menu">
-          <ul>
-            <li>
-              <a href="#informacion-general" class="page-scroll button-link">
-                Información
-              </a>
-            </li>
-            {{#ifCond result.summaries.relation.nodes.length ">" 0}}
-            <li>
-              <a href="#graficas" class="page-scroll button-link">
-                Gráficas
-              </a>
-
-            </li>
-            {{/ifCond}}
-            {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
-            <li>
-              <a href="#financiacion" class="page-scroll button-link">
-                Financiacion
-              </a>
-            </li>
-            {{/ifCond}}
-            {{#ifCond type '!=' 'companies'}}
-            {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
-            <li>
-              <a href="#compras" class="page-scroll button-link">
-                Compras
-              </a>
-            </li>
-            {{/ifCond}}
-            {{/ifCond}}
-            {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
-            <li>
-              <a href="#proveedor" class="page-scroll button-link">
-                Proveedor
-              </a>
-            </li>
-            {{/ifCond}}
-
-            {{#if result.memberships.parent}}
-            {{#each result.memberships.parent }}
-            <li>
-              <a href="#memberships-parent-{{@index}}" class="page-scroll button-link">
-                {{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
-            {{#if result.memberships.child}}
-            {{#each result.memberships.child }}
-            <li>
-              <a href="#memberships-child-{{@index}}" class="page-scroll button-link">
-                {{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
-            {{#ifCond type '!=' 'companies'}}
-            {{#if result.top3contracts.buyer }}
-            {{#if result.flags }}
-            <li>
-              <a href="#evaluacion" class="page-scroll button-link evaluacion">
-                <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación
-              </a>
-            </li>
-            {{/if}}
-            {{/if}}
-            {{/ifCond}}
-          </ul>
-        </div>
-      </div> --}}
     </div>
   </div>
 </section>
@@ -186,13 +113,13 @@
           <ul class="right-menu-profile nav-stacked nav">
             <li>
               <a href="#informacion-general" class="anchor">
-                Información
+                <i class="fas fa-folder-open"></i>Información
               </a>
             </li>
             {{#ifCond result.summaries.relation.nodes.length ">" 0}}
             <li>
               <a href="#graficas" class="anchor">
-                Gráficas
+                <i class="fas fa-chart-pie"></i>Gráficas
               </a>
 
             </li>
@@ -200,7 +127,7 @@
             {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
             <li>
               <a href="#financiacion" class="anchor">
-                Financiacion
+                <i class="fas fa-donate"></i>Financiacion
               </a>
             </li>
             {{/ifCond}}
@@ -208,7 +135,7 @@
             {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
             <li>
               <a href="#compras" class="anchor">
-                Compras
+                <i class="fas fa-money-check-alt"></i>Compras
               </a>
             </li>
             {{/ifCond}}
@@ -216,7 +143,7 @@
             {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
             <li>
               <a href="#proveedor" class="anchor">
-                Proveedor
+                <i class="fas fa-dolly"></i>Proveedor
               </a>
             </li>
             {{/ifCond}}
@@ -243,8 +170,8 @@
             {{#if result.top3contracts.buyer }}
             {{#if result.flags }}
             <li>
-              <a href="#evaluacion" class="anchor evaluacion">
-                <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación
+              <a href="#evaluacion" class="anchor">
+                <i class="fas fa-file-signature"></i>Evaluación
               </a>
             </li>
             {{/if}}
