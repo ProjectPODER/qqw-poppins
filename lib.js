@@ -31,7 +31,12 @@ async function getAPI(req,collection,filters,debug) {
 
   if (collection=="contracts") {
     params.sort="-compiledRelease.total_amount";
-    filters.hidden="false";
+    // console.log("getAPI contract filters", filters,Object.keys(filters),Object.keys(filters).length);
+
+    //Only hide hidden contracts when there's no other filter
+    if (Object.keys(filters).length<1) {
+      filters.hidden="false";
+    }
   }
   if (collection=="persons" || collection=="organizations" || collection=="companies") {
     params.sort="-contract_amount.supplier";
@@ -106,7 +111,7 @@ function sendMail(req, callback) {
 
 // Filters
 const filterElements = [
-	{ htmlFieldName: "filtername", apiFieldNames:["compiledRelease.other_names.name"], fieldLabel:"Nombre", type:"string", collections: ["persons","institutions","companies"] },
+	{ htmlFieldName: "filtername", apiFieldNames:["compiledRelease.name"], fieldLabel:"Nombre", type:"string", collections: ["persons","institutions","companies"] },
   { htmlFieldName: "minimo-importe-proveedor", apiFieldNames:["compiledRelease.contract_amount.supplier"], fieldLabel:"Importe mínimo proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
   { htmlFieldName: "maximo-importe-proveedor", apiFieldNames:["compiledRelease.contract_amount.supplier"], fieldLabel:"Importe máximo proveedor", type:"number",modifier:"<", repeated: true, collections: ["persons","institutions","companies"] },
   { htmlFieldName: "minimo-cantidad-proveedor", apiFieldNames:["compiledRelease.contract_count.supplier"], fieldLabel:"Cantidad mínima proveedor", type:"number",modifier:">", repeated: true, collections: ["persons","institutions","companies"] },
@@ -284,10 +289,10 @@ function entityPage(collection,templateName,idFieldName) {
     const share_url = req.originalUrl;
 
     let metaTitle = "";
-    if (collection == "contracts"){ metaTitle = "QQW - Contrato:" }
-    if (collection == "persons"){ metaTitle = "QQW - Persona:" }
-    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública:" }
-    if (collection == "companies"){ metaTitle = "QQW - Empresa:" }
+    if (collection == "contracts"){ metaTitle = "QQW - Contrato: " + result.data[0].records[0].compiledRelease.contracts[0].title }
+    if (collection == "persons"){ metaTitle = "QQW - Persona: " + result.data[0].compiledRelease.name }
+    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública: " + result.data[0].compiledRelease.name }
+    if (collection == "companies"){ metaTitle = "QQW - Empresa: " + result.data[0].compiledRelease.name }
 
     let processedResult = fixMemberships(result.data[0])
 

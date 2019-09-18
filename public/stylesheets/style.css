@@ -1311,7 +1311,10 @@ a.see-contract {
 #right-menu li a {
   color: #9b9b9b;
   text-decoration: none;
-  padding: 8px 10px !important;
+  padding: 5px 10px !important;
+}
+#right-menu li a i {
+  margin-right: 10px;
 }
 .evaluacion i {
   color: #2d1c9d;
@@ -3616,6 +3619,7 @@ header .navbar .autosuggest i,
     display: block;
   }
 }
+.profile-list-hidden,
 .supplier-hidden {
   display: none;
 }

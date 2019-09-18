@@ -31,7 +31,7 @@
     <div class="content">
       <div class="col-9 col-m-9">
         <div class="col-6 col-m-6 mb-2">
-          <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> INFORMACIÓN GENERAL</h4>
         </div>
         <div class="col-m-6 col-6 mb-2 right-align">
             {{#ifCond result.compiledRelease.contract_amount.supplier '&&' result.compiledRelease.contract_amount.buyer}}
@@ -78,6 +78,12 @@
               <p class="js-data">{{moment result.compiledRelease.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
+          {{#if result.compiledRelease.other_names.length }}
+            <div class="col-m-4 col-4 pd-nonleft">
+              <p class="js-title-data">Nombres alternativos</p>
+              <ul class="js-data">{{#each result.compiledRelease.other_names}}<li>{{name}}</li>{{/each}}</ul>
+            </div>
+          {{/if}}
           {{#if result.compiledRelease.identifiers }}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Identificadores</p>
@@ -91,9 +97,11 @@
             </div>
           {{/if}}
           {{#ifCond type '==' 'persons'}}
-            <div class="col-12 col-m-12">
-              <p class="description-data-amount">Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.</p>
-            </div>
+            {{#ifCond result.compiledRelease.contract_count.buyer '>' '0'}}
+              <div class="col-12 col-m-12">
+                <p class="description-data-amount">Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.</p>
+              </div>
+            {{/ifCond}}
           {{/ifCond}}
           {{#ifCond result.compiledRelease.subclassification '==' 'banco'}}
             {{#if result.compiledRelease.source}}
@@ -116,6 +124,25 @@
                 <i class="fas fa-folder-open"></i>Información
               </a>
             </li>
+            {{#if result.memberships.parent}}
+            {{#each result.memberships.parent }}
+            <li>
+              <a href="#memberships-parent-{{@index}}" class="anchor">
+                <i class="fas fa-building"></i>{{get_role_name this.role}}
+              </a>
+            </li>
+            {{/each}}
+            {{/if}}
+            {{#if result.memberships.child}}
+            {{#each result.memberships.child }}
+            <li>
+              <a href="#memberships-child-{{@index}}" class="anchor">
+                <i class="fas fa-building"></i>{{get_role_name this.role}}
+              </a>
+            </li>
+            {{/each}}
+            {{/if}}
+
             {{#ifCond result.summaries.relation.nodes.length ">" 0}}
             <li>
               <a href="#graficas" class="anchor">
@@ -147,25 +174,6 @@
               </a>
             </li>
             {{/ifCond}}
-
-            {{#if result.memberships.parent}}
-            {{#each result.memberships.parent }}
-            <li>
-              <a href="#memberships-parent-{{@index}}" class="anchor">
-                <i class="fas fa-building"></i>{{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
-            {{#if result.memberships.child}}
-            {{#each result.memberships.child }}
-            <li>
-              <a href="#memberships-child-{{@index}}" class="anchor">
-                <i class="fas fa-building"></i>{{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
             {{#ifCond type '!=' 'companies'}}
             {{#if result.top3contracts.buyer }}
             {{#if result.flags }}
@@ -180,10 +188,77 @@
           </ul>
         </nav>
       </div>
-
     </div>
   </div>
 </section>
+
+
+<div class="row">
+  <div class="content">
+    <div class="col-9 col-m-9">
+      {{#if result.memberships.parent}}
+        {{#each result.memberships.parent }}
+        <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
+          <div  class=" profile-list">
+            <h4 class="description-data-subtitle"><i class="fas fa-building"></i> {{get_role_name this.role}}</h4>
+            <!-- <p>
+              Esta {{get_type_singular ../type}} es une {{get_role_name this.role}} de:
+            </p> -->
+            <ul>
+              {{#each this.memberships}}
+                {{#with compiledRelease }}
+                  <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                    {{#if this.organization_class }}
+                      <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if title}} como {{title}}{{/if}}{{#if @last}}.{{else}}, {{/if}}
+                    {{else}}
+                      <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                    {{/if}}
+                  </li>
+                {{/with}}
+              {{/each}}
+            </ul>
+            {{#ifCond this.memberships.length '>' 5}}
+            <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+              <a class="profile-list-toggle">Ver todos</a>
+            </div>
+            {{/ifCond}}
+          </div>
+        </section>
+        {{/each}}
+      {{/if}}
+
+      {{#if result.memberships.child}}
+        {{#each result.memberships.child }}
+        <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
+          <div class="profile-list">
+            <h4 class="description-data-subtitle"><i class="fas fa-building"></i> {{get_role_name this.role}}</h4>
+            <!-- <p>
+              Esta {{get_type_singular ../type}} tiene como {{get_role_name this.role}} a:
+            </p> -->
+            <ul>
+              {{#each this.memberships}}
+                {{#with compiledRelease }}
+                  <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                    <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                  </li>
+                {{/with}}
+              {{/each}}
+            </ul>
+            {{#ifCond this.memberships.length '>' 5}}
+            <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+              <a class="profile-list-toggle">Ver todos</a>
+            </div>
+            {{/ifCond}}
+          </div>
+        </section>
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+
+
 {{#ifCond result.summaries.relation.nodes.length ">" 0}}
 
 <section class="profile" id="graficas">
@@ -191,13 +266,13 @@
     <div class="content">
       <div  class="col-m-9 col-9">
         <div  class="col-m-12 col-6">
-          <h4 class="description-data-subtitle">EVOLUCIÓN ANUAL DE CONTRATOS</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> EVOLUCIÓN ANUAL DE CONTRATOS</h4>
           <div id="chart">
             <svg></svg>
           </div>
         </div>
         <div class="col-m-12 col-6">
-          <h4 class="description-data-subtitle">TIPO DE PROCEDIMIENTO</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> TIPO DE PROCEDIMIENTO</h4>
           <div id="piechartBuyer">
             {{#if svg}}
             Comprador
@@ -210,7 +285,7 @@
           </div>
         </div>
         <div class="col-m-12 col-12 mt-60">
-          <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> FLUJOS DE DINERO</h4>
           <div id="graph-container">
           </div>
         </div>
@@ -228,7 +303,7 @@
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
-        <h4 class="description-data-subtitle red-text">COMPRAS</h4>
+        <h4 class="description-data-subtitle red-text"><i class="fas fa-money-check-alt"></i> COMPRAS</h4>
         {{#if result.top3contracts.buyer}}
         <div class="col-m-12 col-12">
           <h5 class="description-data-subtitle">Contratos de compra</h5>
@@ -296,7 +371,7 @@
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
-        <h4 class="description-data-subtitle">Financiacion</h4>
+        <h4 class="description-data-subtitle"><i class="fas fa-donate"></i> Financiacion</h4>
         {{#if result.top3contracts.funder}}
         <div class="col-m-12 col-12">
           <h5 class="description-data-subtitle">Contratos financiados</h5>
@@ -364,7 +439,7 @@
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
-        <h4 class="description-data-subtitle green-text">PROVEEDOR</h4>
+        <h4 class="description-data-subtitle green-text"><i class="fas fa-dolly"></i> PROVEEDOR</h4>
         {{#if result.top3contracts.supplier }}
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">Contratos como proveedor</h4>
@@ -425,33 +500,7 @@
 </section>
 {{/ifCond}}
 
-{{#if result.memberships.parent}}
-{{#each result.memberships.parent }}
-<section class="profile" id="memberships-parent-{{@index}}">
-  <!-- {{j this}} -->
-  <div class="row">
-    <div class="content">
-      <div  class="col-m-9 col-9">
-        <div  class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">{{this.role}}</h4>
-          <p>
-            Esta {{get_type_singular ../type}} tiene como {{this.role}} a: {{#each this.memberships}}
-            {{#with compiledRelease }}
-            {{#if this.organization_class }}
-            <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-            {{else}}
-            <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-            {{/if}}
-            {{/with}}
-            {{/each}}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/each}}
-{{/if}}
+
 {{#ifCond type '!=' 'companies'}}
 {{#if result.top3contracts.buyer}}
 {{#if result.flags }}
@@ -462,7 +511,7 @@
       <div  class="col-m-9 col-9">
         <div class="col-12 col-m-12">
           <div class="col-6 col-m-6">
-            <h4 class="description-data-subtitle">EVALUACIÓN Y RECOMENDACIONES</h4>
+            <h4 class="description-data-subtitle"><i class="fas fa-file-signature"></i> EVALUACIÓN Y RECOMENDACIONES</h4>
           </div>
           <div class="col-m-6 col-6 right-align">
             <h4 class="amount-data">
@@ -548,29 +597,6 @@
 {{/if}}
 {{/ifCond}}
 
-{{#if result.memberships.child}}
-{{#each result.memberships.child }}
-<section class="profile" id="memberships-child-{{@index}}">
-  <div class="row">
-    <div class="content">
-      <div  class="col-m-9 col-9">
-        <div  class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">{{this.role}}</h4>
-            <p>
-              Esta {{get_type_singular ../type}} tiene como {{this.role}} a:
-              {{#each this.memberships}}
-              {{#with compiledRelease }}
-              <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>,{{#if @last}}.{{else}}, {{/if}}
-              {{/with}}
-              {{/each}}
-            </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/each}}
-{{/if}}
 
 {{> send_info_form}}
 <script>

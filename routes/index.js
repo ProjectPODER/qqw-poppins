@@ -10,7 +10,7 @@ router.get('/contratos', lib.searchPage("contracts"));
 
 /* GET persons index */
 //TODO: Default filters
-router.get('/personas', lib.searchPage("persons"));
+router.get('/personas', lib.searchPage("persons",{sort: "-compiledRelease.contract_amount.supplier"}));
 
 /* GET institutions index */
 //Don't bring UCs

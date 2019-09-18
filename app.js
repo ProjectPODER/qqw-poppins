@@ -773,6 +773,13 @@ app.engine('.hbs', hbs({
 
         return record_flags;
       },
+      get_role_name: function(type) {
+        switch(type) {
+          case "Boardmember": return "Consejere"; break;
+          case "Shareholder": return "Accionista"; break;
+          default: console.log("get_role_name",type); return type; break;
+        }
+      },
       get_type_plural: function(type) {
         switch(type) {
           case "institutions": return "Instituciones públicas o empresas productivas del estado"; break;
@@ -783,7 +790,7 @@ app.engine('.hbs', hbs({
           case "persons": return "Personas"; break;
           case "person": return "Personas"; break;
           case "funder": return "Bancos"; break;
-          default: console.log("get_type_url",type); return "Entidades"; break;
+          default: console.log("get_type_plural",type); return "Entidades"; break;
         }
       },
       get_type_singular: function(type) {
@@ -796,7 +803,7 @@ app.engine('.hbs', hbs({
           case "persons": return "Persona"; break;
           case "person": return "Persona"; break;
           case "funder": return "Banco"; break;
-          default: console.log("get_type_url",type); return "Entidad"; break;
+          default: console.log("get_type_singular",type); return "Entidad"; break;
         }
       },
       get_type_url: function(type) {
@@ -806,6 +813,7 @@ app.engine('.hbs', hbs({
           case "municipality": return "instituciones-publicas"; break;
           case "state": return "instituciones-publicas"; break;
           case "company": return "empresas"; break;
+          case "companies": return "empresas"; break;
           case "contract": return "contratos"; break;
           case "persons": return "personas"; break;
           case "person": return "personas"; break;
