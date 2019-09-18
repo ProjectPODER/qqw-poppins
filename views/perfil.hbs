@@ -127,7 +127,7 @@
             {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
             <li>
               <a href="#financiacion" class="anchor">
-                <i class="fas fa-donate"></i>Financiacion
+                <i class="fas fa-donate"></i>Financiación
               </a>
             </li>
             {{/ifCond}}
@@ -152,7 +152,7 @@
             {{#each result.memberships.parent }}
             <li>
               <a href="#memberships-parent-{{@index}}" class="anchor">
-                {{this.role}}
+                <i class="fas fa-building"></i>{{this.role}}
               </a>
             </li>
             {{/each}}
@@ -161,7 +161,7 @@
             {{#each result.memberships.child }}
             <li>
               <a href="#memberships-child-{{@index}}" class="anchor">
-                {{this.role}}
+                <i class="fas fa-building"></i>{{this.role}}
               </a>
             </li>
             {{/each}}
@@ -170,7 +170,7 @@
             {{#if result.top3contracts.buyer }}
             {{#if result.flags }}
             <li>
-              <a href="#evaluacion" class="anchor">
+              <a href="#evaluacion" class="anchor evaluacion">
                 <i class="fas fa-file-signature"></i>Evaluación
               </a>
             </li>

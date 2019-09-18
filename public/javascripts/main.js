@@ -1,5 +1,7 @@
 //Tooltips
-$('[data-toggle="tooltip"]').tooltip({placement: 'top'});
+$('[data-toggle="tooltip"]').tooltip(
+  // {placement: 'top'}
+);
 
 // Autocomplete Typeahead
 var qqw_suggest = new Bloodhound({
