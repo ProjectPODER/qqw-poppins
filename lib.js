@@ -32,7 +32,7 @@ async function getAPI(req,collection,filters,debug) {
   if (collection=="contracts") {
     params.sort="-compiledRelease.total_amount";
     // console.log("getAPI contract filters", filters,Object.keys(filters),Object.keys(filters).length);
-    
+
     //Only hide hidden contracts when there's no other filter
     if (Object.keys(filters).length<1) {
       filters.hidden="false";
@@ -289,10 +289,10 @@ function entityPage(collection,templateName,idFieldName) {
     const share_url = req.originalUrl;
 
     let metaTitle = "";
-    if (collection == "contracts"){ metaTitle = "QQW - Contrato:" }
-    if (collection == "persons"){ metaTitle = "QQW - Persona:" }
-    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública:" }
-    if (collection == "companies"){ metaTitle = "QQW - Empresa:" }
+    if (collection == "contracts"){ metaTitle = "QQW - Contrato: " + result.data[0].records[0].compiledRelease.contracts[0].title }
+    if (collection == "persons"){ metaTitle = "QQW - Persona: " + result.data[0].compiledRelease.name }
+    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública: " + result.data[0].compiledRelease.name }
+    if (collection == "companies"){ metaTitle = "QQW - Empresa: " + result.data[0].compiledRelease.name }
 
     let processedResult = fixMemberships(result.data[0])
 
