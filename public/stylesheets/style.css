@@ -1300,6 +1300,7 @@ a.see-contract {
   font-size: 1.3rem;
   margin-top: 1.5rem;
   margin-left: 40px;
+  position: absolute;
 }
 #right-menu ul {
   padding: 0 5px;
@@ -2487,6 +2488,12 @@ div.dataTables_paginate li.last a:after {
   }
   .about-sidebar ul a {
     font-size: 0.8rem;
+  }
+  #right-menu {
+    font-size: 1rem;
+  }
+  #right-menu li a i {
+    margin-right: 5px;
   }
 }
 @media only screen and (max-width: 870px) {
