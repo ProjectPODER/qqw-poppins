@@ -3616,6 +3616,7 @@ header .navbar .autosuggest i,
     display: block;
   }
 }
+.profile-list-hidden,
 .supplier-hidden {
   display: none;
 }

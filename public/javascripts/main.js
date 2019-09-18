@@ -347,10 +347,10 @@ $('.delete-blob-filter').click(function(event, instance) {
   console.log(location.search,field,re);
 })
 
-$('.supplier-list-toggle').click(function(event, instance) {
-  let parent = $(event.target).parents(".js-suppliers");
+$('.supplier-list-toggle,.profile-list-toggle').click(function(event, instance) {
+  let parent = $(event.target).parents(".js-suppliers,.profile-list");
   // console.log("supplier toggle",parent);
-  parent.find(".supplier-hidden").toggle();
+  parent.find(".supplier-hidden,.profile-list-hidden").toggle();
 })
 
 

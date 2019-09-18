@@ -773,6 +773,13 @@ app.engine('.hbs', hbs({
 
         return record_flags;
       },
+      get_role_name: function(type) {
+        switch(type) {
+          case "Boardmember": return "Consejere"; break;
+          case "Shareholder": return "Accionista"; break;
+          default: console.log("get_role_name",type); return type; break;
+        }
+      },
       get_type_plural: function(type) {
         switch(type) {
           case "institutions": return "Instituciones públicas o empresas productivas del estado"; break;

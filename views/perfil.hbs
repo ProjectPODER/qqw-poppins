@@ -170,9 +170,11 @@
             </div>
           {{/if}}
           {{#ifCond type '==' 'persons'}}
-            <div class="col-12 col-m-12">
-              <p class="description-data-amount">Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.</p>
-            </div>
+            {{#ifCond result.compiledRelease.contract_count.buyer '>' '0'}}
+              <div class="col-12 col-m-12">
+                <p class="description-data-amount">Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.</p>
+              </div>
+            {{/ifCond}}
           {{/ifCond}}
           {{#ifCond result.compiledRelease.subclassification '==' 'banco'}}
             {{#if result.compiledRelease.source}}
@@ -195,6 +197,28 @@
                 Información
               </a>
             </li>
+
+
+
+            {{#if result.memberships.parent}}
+            {{#each result.memberships.parent }}
+            <li>
+              <a href="#memberships-parent-{{@index}}" class="anchor">
+                {{get_role_name this.role}}
+              </a>
+            </li>
+            {{/each}}
+            {{/if}}
+            {{#if result.memberships.child}}
+            {{#each result.memberships.child }}
+            <li>
+              <a href="#memberships-child-{{@index}}" class="anchor">
+                {{get_role_name this.role}}
+              </a>
+            </li>
+            {{/each}}
+            {{/if}}
+
             {{#ifCond result.summaries.relation.nodes.length ">" 0}}
             <li>
               <a href="#graficas" class="anchor">
@@ -227,24 +251,6 @@
             </li>
             {{/ifCond}}
 
-            {{#if result.memberships.parent}}
-            {{#each result.memberships.parent }}
-            <li>
-              <a href="#memberships-parent-{{@index}}" class="anchor">
-                {{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
-            {{#if result.memberships.child}}
-            {{#each result.memberships.child }}
-            <li>
-              <a href="#memberships-child-{{@index}}" class="anchor">
-                {{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
             {{#ifCond type '!=' 'companies'}}
             {{#if result.top3contracts.buyer }}
             {{#if result.flags }}
@@ -263,6 +269,74 @@
     </div>
   </div>
 </section>
+
+
+<div class="row">
+  <div class="content">
+    <div class="col-9 col-m-9">
+      {{#if result.memberships.parent}}
+        {{#each result.memberships.parent }}
+        <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
+          <div  class=" profile-list">
+            <h4 class="description-data-subtitle">{{get_role_name this.role}}</h4>
+            <!-- <p>
+              Esta {{get_type_singular ../type}} es une {{get_role_name this.role}} de:
+            </p> -->
+            <ul>
+              {{#each this.memberships}}
+                {{#with compiledRelease }}
+                  <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                    {{#if this.organization_class }}
+                      <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if title}} como {{title}}{{/if}}{{#if @last}}.{{else}}, {{/if}}
+                    {{else}}
+                      <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                    {{/if}}
+                  </li>
+                {{/with}}
+              {{/each}}
+            </ul>
+            {{#ifCond this.memberships.length '>' 5}}
+            <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+              <a class="profile-list-toggle">Ver todos</a>
+            </div>
+            {{/ifCond}}
+          </div>
+        </section>
+        {{/each}}
+      {{/if}}
+
+      {{#if result.memberships.child}}
+        {{#each result.memberships.child }}
+        <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
+          <div class="profile-list">
+            <h4 class="description-data-subtitle">{{get_role_name this.role}}</h4>
+            <!-- <p>
+              Esta {{get_type_singular ../type}} tiene como {{get_role_name this.role}} a:
+            </p> -->
+            <ul>
+              {{#each this.memberships}}
+                {{#with compiledRelease }}
+                  <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                    <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                  </li>
+                {{/with}}
+              {{/each}}
+            </ul>
+            {{#ifCond this.memberships.length '>' 5}}
+            <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+              <a class="profile-list-toggle">Ver todos</a>
+            </div>
+            {{/ifCond}}
+          </div>
+        </section>
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+
+
 {{#ifCond result.summaries.relation.nodes.length ">" 0}}
 
 <section class="profile" id="graficas">
@@ -504,33 +578,7 @@
 </section>
 {{/ifCond}}
 
-{{#if result.memberships.parent}}
-{{#each result.memberships.parent }}
-<section class="profile" id="memberships-parent-{{@index}}">
-  <!-- {{j this}} -->
-  <div class="row">
-    <div class="content">
-      <div  class="col-m-9 col-9">
-        <div  class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">{{this.role}}</h4>
-          <p>
-            Esta {{get_type_singular ../type}} tiene como {{this.role}} a: {{#each this.memberships}}
-            {{#with compiledRelease }}
-            {{#if this.organization_class }}
-            <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-            {{else}}
-            <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-            {{/if}}
-            {{/with}}
-            {{/each}}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/each}}
-{{/if}}
+
 {{#ifCond type '!=' 'companies'}}
 {{#if result.top3contracts.buyer}}
 {{#if result.flags }}
@@ -627,29 +675,6 @@
 {{/if}}
 {{/ifCond}}
 
-{{#if result.memberships.child}}
-{{#each result.memberships.child }}
-<section class="profile" id="memberships-child-{{@index}}">
-  <div class="row">
-    <div class="content">
-      <div  class="col-m-9 col-9">
-        <div  class="col-m-12 col-12">
-          <h4 class="description-data-subtitle">{{this.role}}</h4>
-            <p>
-              Esta {{get_type_singular ../type}} tiene como {{this.role}} a:
-              {{#each this.memberships}}
-              {{#with compiledRelease }}
-              <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>,{{#if @last}}.{{else}}, {{/if}}
-              {{/with}}
-              {{/each}}
-            </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/each}}
-{{/if}}
 
 {{> send_info_form}}
 <script>
