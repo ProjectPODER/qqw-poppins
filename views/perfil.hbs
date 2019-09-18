@@ -151,6 +151,12 @@
               <p class="js-data">{{moment result.compiledRelease.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
+          {{#if result.compiledRelease.other_names.length }}
+            <div class="col-m-4 col-4 pd-nonleft">
+              <p class="js-title-data">Nombres alternativos</p>
+              <ul class="js-data">{{#each result.compiledRelease.other_names}}<li>{{name}}</li>{{/each}}</ul>
+            </div>
+          {{/if}}
           {{#if result.compiledRelease.identifiers }}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Identificadores</p>
