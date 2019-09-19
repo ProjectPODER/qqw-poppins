@@ -294,11 +294,13 @@ function entityPage(collection,templateName,idFieldName) {
     if (collection == "institutions"){ metaTitle = "QQW - Institución Pública: " + result.data[0].compiledRelease.name }
     if (collection == "companies"){ metaTitle = "QQW - Empresa: " + result.data[0].compiledRelease.name }
 
+    let processedResult = {};
+
     if (collection == "contracts") {
-      let processedResult = fixContract(result.data[0])
+      processedResult = fixContract(result.data[0])
     }
     else {
-      let processedResult = fixMemberships(result.data[0])
+      processedResult = fixMemberships(result.data[0])
     }
 
     // console.log(processedResult);
