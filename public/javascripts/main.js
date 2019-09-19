@@ -12,21 +12,11 @@ var qqw_suggest = new Bloodhound({
     url: AUTOCOMPLETE_URL+'/%QUERY',
     wildcard: '%QUERY',
     transform: function(response) {
-      console.log("blood",response.data);
+      // console.log("blood",response.data);
       return response.data;
     }
   }
 });
-
-function qqw_suggestWithDefaults(q, sync) {
-  if (q === '') {
-    sync(qqw_suggest.get('Detroit Lions', 'Green Bay Packers', 'Chicago Bears'));
-  }
-
-  else {
-    qqw_suggest.search(q, sync);
-  }
-}
 
 const emptyFooter = '<hr><div class="tt-footer"><a href="/personas">Buscar personas</a></div>' +
 '<div class="tt-footer orgs"><a href="/instituciones-publicas">Buscar instituciones</a></div>' +

@@ -218,7 +218,13 @@
                       {{!-- <div class="cardItemData"></div> --}}
                       <ul class="dependency-cell list-unstyled">
                         <li class="text-overflow">
-                          <a href="/{{get_type_url (get_party_type this compiledRelease.parties.0.id) }}/{{compiledRelease.parties.0.memberOf.0.id}}" title="{{compiledRelease.parties.0.memberOf.0.name}}">{{{hilight ../filters.dependencia.value compiledRelease.parties.0.memberOf.0.name}}}</a>
+                          {{#with (get_party this compiledRelease.parties.0.id)}}
+                            {{#if memberOf.0.id }}
+                            <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}" title="{{memberOf.0.name}}">{{{hilight ../../filters.dependencia.value memberOf.0.name}}}</a>
+                            {{else}}
+                            <a href="/{{get_type_url details.type }}/{{id}}" title="{{name}}">{{{hilight ../../filters.dependencia.value name}}}</a>
+                            {{/if}}
+                          {{/with}}
                         </li>
                       </ul>
                     </div>
@@ -228,7 +234,11 @@
                         {{#each compiledRelease.awards }}
                           <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
                             {{#each suppliers}}
-                              <p class="text-overflow supplier-list-item" title="{{name}}"><a href="/{{get_type_url (get_party_type ../../this id) }}/{{id}}"><b>&bull;</b> {{{hilight ../../../filters.proveedor.value name}}}</a></p>
+                              <p class="text-overflow supplier-list-item" title="{{name}}">
+                                {{#with (get_party ../../this id)}}
+                                <a href="/{{get_type_url details.type }}/{{id}}"><b>&bull;</b> {{{hilight ../../../../filters.proveedor.value name}}}</a>
+                                {{/with}}
+                              </p>
                             {{/each}}
                           </div>
                           <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
