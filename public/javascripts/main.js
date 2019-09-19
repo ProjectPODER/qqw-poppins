@@ -96,8 +96,17 @@ $('.easy-search-input').keypress(function(e) {
     if (newLocation) {
       location.href= newLocation;
     }
+    else {
+      alert("Por favor ingrese un término y seleccione una opción.")
+    }
   }
 })
+
+$('.easy-search-input').bind('typeahead:select', function(ev, suggestion) {
+  console.log('Selection: ' + suggestion);
+  $(".easy-search-input.landing-search-inputtext.tt-input").val(suggestion);
+});
+
 
 $("#first-search").click(function() {
   $('.easy-search-input').trigger("keypress",13);
