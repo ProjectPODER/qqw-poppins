@@ -294,12 +294,25 @@ function entityPage(collection,templateName,idFieldName) {
     if (collection == "institutions"){ metaTitle = "QQW - Institución Pública: " + result.data[0].compiledRelease.name }
     if (collection == "companies"){ metaTitle = "QQW - Empresa: " + result.data[0].compiledRelease.name }
 
-    let processedResult = fixMemberships(result.data[0])
+    if (collection == "contracts") {
+      let processedResult = fixContract(result.data[0])
+    }
+    else {
+      let processedResult = fixMemberships(result.data[0])
+    }
 
     // console.log(processedResult);
 
     res.render(templateName, {result: processedResult, type: collection, flag_count: flag_count, title: metaTitle, share_url: share_url});
   })
+}
+
+function fixContract(result) {
+  //title
+  //description
+  //startdate y end date
+  //dependencia
+  return result;
 }
 
 function fixMemberships(result) {

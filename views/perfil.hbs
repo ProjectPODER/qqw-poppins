@@ -152,9 +152,20 @@
             </div>
           {{/if}}
           {{#if result.compiledRelease.other_names.length }}
-            <div class="col-m-4 col-4 pd-nonleft">
+            <div class="col-m-4 col-4 pd-nonleft profile-list">
               <p class="js-title-data">Nombres alternativos</p>
-              <ul class="js-data">{{#each result.compiledRelease.other_names}}<li>{{name}}</li>{{/each}}</ul>
+              <ul class="js-data">
+                {{#each result.compiledRelease.other_names}}
+                <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                    {{name}}
+                </li>
+                {{/each}}
+              </ul>
+              {{#ifCond result.compiledRelease.other_names.length '>' 5}}
+              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+              <a class="profile-list-toggle">Ver todos</a>
+              </div>
+              {{/ifCond}}
             </div>
           {{/if}}
           {{#if result.compiledRelease.identifiers }}

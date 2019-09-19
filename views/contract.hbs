@@ -22,7 +22,7 @@
         <hr>
       </div>
     </div>
-    
+
 
     <div class="contract_detail clearfix">
 
@@ -30,6 +30,12 @@
         <div class="col-m-12">
           <h4 class="description-data-subtitle">DATOS GENERALES</h4>
         </div>
+        {{#if result.records.0.compiledRelease.contracts.0.description }}
+        <div class="col-m-4 col-4">
+            <p class="js-title-data">Descripción</p>
+            <p class="js-data">{{result.records.0.compiledRelease.contracts.0.description}}</p>
+        </div>
+        {{/if}}
         {{#if result.records.0.compiledRelease.contracts.0.period.startDate }}
         <div class="col-m-4 col-4">
             <p class="js-title-data">Fecha de inicio</p>
@@ -47,7 +53,9 @@
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">Dependencia <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a></p>
             {{!-- {{#each result.records.0.compiledRelease.parties.0.memberOf.0.name}} --}}
-              <a href="/{{get_type_url (get_party_type result.records.[0] result.records.0.compiledRelease.parties.0.memberOf.0.id) }}/{{result.records.0.compiledRelease.parties.0.memberOf.0.id}}"><p class="js-data">{{result.records.0.compiledRelease.parties.0.memberOf.0.name}}</p></a>
+            {{#with (get_party result.records.[0] result.records.0.compiledRelease.parties.0.memberOf.0.id) }}
+              <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}"><p class="js-data">{{memberOf.0.name}}</p></a>
+            {{/with}}
             {{!-- {{/each}} --}}
         </div>
         {{/if}}
@@ -75,22 +83,34 @@
             <p class="js-data">
             {{#each result.records.0.compiledRelease.awards}}
               {{#each suppliers}}
-              <a href="/{{get_type_url (get_party_type ../../result.records.[0] id) }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
+              {{#with (get_party ../../result.records.[0] id) }}
+              <a href="/{{get_type_url details.type }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
+              {{/with}}
               {{/each}}
               {{#if @last}}{{else}},{{/if}}
             {{/each}}
             </p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.dataSource }}
-        <div class="col-m-12 col-12 link-lf-contracts">
+        {{#if result.records.0.compiledRelease.source }}
+        <div class="col-m-3 col-3 link-lf-contracts">
           <p class="js-title-data">Fuente(s)</p>
-          {{!-- {{#each result.records.0.compiledRelease.dataSource}} --}}
-            <p class="js-data">{{result.records.0.compiledRelease.dataSource}}</p>
-          {{!-- {{/each}} --}}
-          {{# each result.records.0.compiledRelease.source}}
-          <a href="{{fix_compranet_url url}}" target="_blank">Ver fuente</a>
-          {{/each}}
+          <p class="js-data">
+            {{# each result.records.0.compiledRelease.source}}
+            {{id}}
+            {{/each}}
+          </p>
+          <p class="js-data">
+          {{#if result.records.0.compiledRelease.awards.length }}
+            {{#each result.records.0.compiledRelease.awards}}
+              {{#if documents.length }}
+                {{#each documents }}
+                  <a href="{{url}}">Ver fuente</a>
+                {{/each}}
+              {{/if}}
+            {{/each}}
+          {{/if}}
+          </p>
         </div>
         {{/if}}
         <hr>
@@ -186,8 +206,10 @@
           {{# with (get_record_funder result.records.[0]) }}
           <div class="col-m-12 col-12 mb-2">
             <span class="js-title-data">Financiador: </span>
-            <span class="js-data"><a href="/{{get_type_url (get_party_type ../result.records.[0] id)}}/{{id}}">{{name}}</a>
+            {{#with (get_party ../result.records.[0] id)}}
+            <span class="js-data"><a href="/{{get_type_url details.type}}/{{id}}">{{name}}</a>
             </span>
+            {{/with}}
           </div>
           {{/with}}
         {{/if}}
@@ -333,14 +355,26 @@
           <h4 class="description-data-subtitle">ADJUDICACIONES</h4>
         </div>
         {{#each result.records.0.compiledRelease.awards }}
+        <div class="" style="background: #eee; padding: 0.3em; margin: 0.5em 0.5em 0.5em 0;">
+          Adjudicación código {{id}}
+        </div>
+
         <div class="col-m-12 col-12 mb-3">
+          {{#if description }}
+          <div class="col-m-12 col-12">
+              <p class="js-title-data">Descripción</p>
+              <p class="js-data mb-1" >{{description}}</p>
+          </div>
+          {{/if}}
           {{#if suppliers }}
           <div class="col-m-7 col-7">
               <p class="js-title-data">Proveedor(es)</p>
               {{#each suppliers }}
-              <p class="js-data mb-1" >
-                <a href="/{{get_type_url (get_party_type ../../result.records.[0] id) }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
+              {{#with (get_party ../../result.records.[0] id) }}
+              <p class="js-data mb-1">
+                <a href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> ({{#each additionalIdentifiers}}{{scheme}}:{{id}}{{/each}} ){{#if @last}}{{else}},{{/if}}
               </p>
+              {{/with}}
               {{/each}}
           </div>
           {{/if}}
@@ -362,11 +396,6 @@
               <p class="js-data mb-1" >{{moment date date lang="es" format="LL"}}</p>
           </div>
           {{/if}}
-          <div class="col-m-2 col-2">
-            <p class="js-title-data">Identificador</p>
-            <p class="js-data mb-1" >
-                {{id}}</p>
-          </div>
         </div>
         {{/each}}
       </div>
@@ -379,11 +408,20 @@
           <h4 class="description-data-subtitle">CONTRATOS</h4>
         </div>
       {{#each result.records.0.compiledRelease.contracts }}
+      <div class="" style="background: #eee; padding: 0.3em; margin: 0.5em 0.5em 0.5em 0;">
+        Contrato código {{id}}
+      </div>
       <div class="col-m-12 col-12">
         {{#if title }}
         <div class="col-m-12 col-12">
             <p class="js-title-data">Título</p>
             <p class="js-data">{{title}}</p>
+        </div>
+        {{/if}}
+        {{#if description }}
+        <div class="col-m-12 col-12">
+            <p class="js-title-data">Descripción</p>
+            <p class="js-data mb-1" >{{description}}</p>
         </div>
         {{/if}}
         {{#if dateSigned }}
@@ -411,10 +449,6 @@
             <p class="js-data">{{statusMxCnet}} ({{status}})</p>
         </div>
         {{/if}}
-        <div class="col-m-3 col-3">
-          <p class="js-title-data">Identificador</p>
-          <p class="js-data">{{id}}</p>
-        </div>
         {{#if filedMxCnet }}
         <div class="col-m-2 col-2">
             <p class="js-title-data">Archivado</p>

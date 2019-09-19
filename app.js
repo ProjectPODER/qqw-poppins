@@ -821,7 +821,7 @@ app.engine('.hbs', hbs({
           default: console.log("get_type_url",type); return "unknown"; break;
         }
       },
-      get_party_type: function(records,party_id) {
+      get_party: function(records,party_id) {
         let party;
         if (records) {
           party = _.find(records.compiledRelease.parties,{id: party_id});
@@ -834,11 +834,11 @@ app.engine('.hbs', hbs({
             })
             // console.log("get_party_type",party)
             if (party) {
-              return party.details.type;
+              return party;
             }
           }
           if (party && party.details) {
-            return party.details.type;
+            return party;
           }
           else {
             console.log("get_party_type not found",party_id);
