@@ -23,79 +23,6 @@
           <hr>
         </div>
       </div>
-
-      {{!-- <div class="col-12 col-m-12 text-center mt-2">
-        <div id="profile-menu">
-          <ul>
-            <li>
-              <a href="#informacion-general" class="page-scroll button-link">
-                Información
-              </a>
-            </li>
-            {{#ifCond result.summaries.relation.nodes.length ">" 0}}
-            <li>
-              <a href="#graficas" class="page-scroll button-link">
-                Gráficas
-              </a>
-
-            </li>
-            {{/ifCond}}
-            {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
-            <li>
-              <a href="#financiacion" class="page-scroll button-link">
-                Financiacion
-              </a>
-            </li>
-            {{/ifCond}}
-            {{#ifCond type '!=' 'companies'}}
-            {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
-            <li>
-              <a href="#compras" class="page-scroll button-link">
-                Compras
-              </a>
-            </li>
-            {{/ifCond}}
-            {{/ifCond}}
-            {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
-            <li>
-              <a href="#proveedor" class="page-scroll button-link">
-                Proveedor
-              </a>
-            </li>
-            {{/ifCond}}
-
-            {{#if result.memberships.parent}}
-            {{#each result.memberships.parent }}
-            <li>
-              <a href="#memberships-parent-{{@index}}" class="page-scroll button-link">
-                {{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
-            {{#if result.memberships.child}}
-            {{#each result.memberships.child }}
-            <li>
-              <a href="#memberships-child-{{@index}}" class="page-scroll button-link">
-                {{this.role}}
-              </a>
-            </li>
-            {{/each}}
-            {{/if}}
-            {{#ifCond type '!=' 'companies'}}
-            {{#if result.top3contracts.buyer }}
-            {{#if result.flags }}
-            <li>
-              <a href="#evaluacion" class="page-scroll button-link evaluacion">
-                <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación
-              </a>
-            </li>
-            {{/if}}
-            {{/if}}
-            {{/ifCond}}
-          </ul>
-        </div>
-      </div> --}}
     </div>
   </div>
 </section>
@@ -104,7 +31,7 @@
     <div class="content">
       <div class="col-9 col-m-9">
         <div class="col-6 col-m-6 mb-2">
-          <h4 class="description-data-subtitle">INFORMACIÓN GENERAL</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> INFORMACIÓN GENERAL</h4>
         </div>
         <div class="col-m-6 col-6 mb-2 right-align">
             {{#ifCond result.compiledRelease.contract_amount.supplier '&&' result.compiledRelease.contract_amount.buyer}}
@@ -205,17 +132,14 @@
           <ul class="right-menu-profile nav-stacked nav">
             <li>
               <a href="#informacion-general" class="anchor">
-                Información
+                <i class="fas fa-folder-open"></i>Información
               </a>
             </li>
-
-
-
             {{#if result.memberships.parent}}
             {{#each result.memberships.parent }}
             <li>
               <a href="#memberships-parent-{{@index}}" class="anchor">
-                {{get_role_name this.role}}
+                <i class="fas fa-building"></i>{{get_role_name this.role}}
               </a>
             </li>
             {{/each}}
@@ -224,7 +148,7 @@
             {{#each result.memberships.child }}
             <li>
               <a href="#memberships-child-{{@index}}" class="anchor">
-                {{get_role_name this.role}}
+                <i class="fas fa-building"></i>{{get_role_name this.role}}
               </a>
             </li>
             {{/each}}
@@ -233,7 +157,7 @@
             {{#ifCond result.summaries.relation.nodes.length ">" 0}}
             <li>
               <a href="#graficas" class="anchor">
-                Gráficas
+                <i class="fas fa-chart-pie"></i>Gráficas
               </a>
 
             </li>
@@ -241,7 +165,7 @@
             {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
             <li>
               <a href="#financiacion" class="anchor">
-                Financiacion
+                <i class="fas fa-donate"></i>Financiación
               </a>
             </li>
             {{/ifCond}}
@@ -249,7 +173,7 @@
             {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
             <li>
               <a href="#compras" class="anchor">
-                Compras
+                <i class="fas fa-money-check-alt"></i>Compras
               </a>
             </li>
             {{/ifCond}}
@@ -257,17 +181,16 @@
             {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
             <li>
               <a href="#proveedor" class="anchor">
-                Proveedor
+                <i class="fas fa-dolly"></i>Proveedor
               </a>
             </li>
             {{/ifCond}}
-
             {{#ifCond type '!=' 'companies'}}
             {{#if result.top3contracts.buyer }}
             {{#if result.flags }}
             <li>
               <a href="#evaluacion" class="anchor evaluacion">
-                <img src="../images/evaluacion.svg" alt="evaluacion">Evaluación
+                <i class="fas fa-file-signature"></i>Evaluación
               </a>
             </li>
             {{/if}}
@@ -276,7 +199,6 @@
           </ul>
         </nav>
       </div>
-
     </div>
   </div>
 </section>
@@ -289,7 +211,7 @@
         {{#each result.memberships.parent }}
         <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
           <div  class=" profile-list">
-            <h4 class="description-data-subtitle">{{get_role_name this.role}}</h4>
+            <h4 class="description-data-subtitle"><i class="fas fa-building"></i> {{get_role_name this.role}}</h4>
             <!-- <p>
               Esta {{get_type_singular ../type}} es une {{get_role_name this.role}} de:
             </p> -->
@@ -320,7 +242,7 @@
         {{#each result.memberships.child }}
         <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
           <div class="profile-list">
-            <h4 class="description-data-subtitle">{{get_role_name this.role}}</h4>
+            <h4 class="description-data-subtitle"><i class="fas fa-building"></i> {{get_role_name this.role}}</h4>
             <!-- <p>
               Esta {{get_type_singular ../type}} tiene como {{get_role_name this.role}} a:
             </p> -->
@@ -355,13 +277,13 @@
     <div class="content">
       <div  class="col-m-9 col-9">
         <div  class="col-m-12 col-6">
-          <h4 class="description-data-subtitle">EVOLUCIÓN ANUAL DE CONTRATOS</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> EVOLUCIÓN ANUAL DE CONTRATOS</h4>
           <div id="chart">
             <svg></svg>
           </div>
         </div>
         <div class="col-m-12 col-6">
-          <h4 class="description-data-subtitle">TIPO DE PROCEDIMIENTO</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> TIPO DE PROCEDIMIENTO</h4>
           <div id="piechartBuyer">
             {{#if svg}}
             Comprador
@@ -374,7 +296,7 @@
           </div>
         </div>
         <div class="col-m-12 col-12 mt-60">
-          <h4 class="description-data-subtitle">FLUJOS DE DINERO</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> FLUJOS DE DINERO</h4>
           <div id="graph-container">
           </div>
         </div>
@@ -392,7 +314,7 @@
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
-        <h4 class="description-data-subtitle red-text">COMPRAS</h4>
+        <h4 class="description-data-subtitle red-text"><i class="fas fa-money-check-alt"></i> COMPRAS</h4>
         {{#if result.top3contracts.buyer}}
         <div class="col-m-12 col-12">
           <h5 class="description-data-subtitle">Contratos de compra</h5>
@@ -460,7 +382,7 @@
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
-        <h4 class="description-data-subtitle">Financiacion</h4>
+        <h4 class="description-data-subtitle"><i class="fas fa-donate"></i> Financiacion</h4>
         {{#if result.top3contracts.funder}}
         <div class="col-m-12 col-12">
           <h5 class="description-data-subtitle">Contratos financiados</h5>
@@ -528,7 +450,7 @@
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
-        <h4 class="description-data-subtitle green-text">PROVEEDOR</h4>
+        <h4 class="description-data-subtitle green-text"><i class="fas fa-dolly"></i> PROVEEDOR</h4>
         {{#if result.top3contracts.supplier }}
         <div class="col-m-12 col-12">
           <h4 class="description-data-subtitle">Contratos como proveedor</h4>
@@ -600,7 +522,7 @@
       <div  class="col-m-9 col-9">
         <div class="col-12 col-m-12">
           <div class="col-6 col-m-6">
-            <h4 class="description-data-subtitle">EVALUACIÓN Y RECOMENDACIONES</h4>
+            <h4 class="description-data-subtitle"><i class="fas fa-file-signature"></i> EVALUACIÓN Y RECOMENDACIONES</h4>
           </div>
           <div class="col-m-6 col-6 right-align">
             <h4 class="amount-data">

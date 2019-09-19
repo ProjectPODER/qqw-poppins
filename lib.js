@@ -249,7 +249,7 @@ function searchPage(collectionName, defaultFilters, templateName) {
 
    filters.offset = current_page * 25;
 
-   const share_url = req.originalUrl;
+   const share_url = encodeURIComponent(req.originalUrl);
 
    let metaTitle = []
    if (templateName == "contracts"){ metaTitle = "QQW - Contratos" }
