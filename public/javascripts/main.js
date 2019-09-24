@@ -150,6 +150,10 @@ $("#right-menu a").on('click', function(event) {
     });
   }  // End if
 });
+// Add hash (#) to URL when scrolling
+$(window).on('activate.bs.scrollspy', function (e) {
+  history.replaceState({}, "", $("a[href^='#']", e.target).attr("href"));
+});
 
 // Copy clipboard
 function copyClipboard() {

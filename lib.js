@@ -289,10 +289,10 @@ function entityPage(collection,templateName,idFieldName) {
     const share_url = req.originalUrl;
 
     let metaTitle = "";
-    if (collection == "contracts"){ metaTitle = "QQW - Contrato: " + result.data[0].records[0].compiledRelease.contracts[0].title }
-    if (collection == "persons"){ metaTitle = "QQW - Persona: " + result.data[0].compiledRelease.name }
-    if (collection == "institutions"){ metaTitle = "QQW - Institución Pública: " + result.data[0].compiledRelease.name }
-    if (collection == "companies"){ metaTitle = "QQW - Empresa: " + result.data[0].compiledRelease.name }
+    if (collection == "contracts"){ metaTitle = result.data[0].records[0].compiledRelease.contracts[0].title + " < Contrato < QuiénEsQuién.Wiki"}
+    if (collection == "persons"){ metaTitle = result.data[0].compiledRelease.name + " < Persona < QuiénEsQuién.Wiki" }
+    if (collection == "institutions"){ metaTitle = result.data[0].compiledRelease.name + " < Institución Pública < QuiénEsQuién.Wiki" }
+    if (collection == "companies"){ metaTitle = result.data[0].compiledRelease.name + " < Empresa < QuiénEsQuién.Wiki" }
 
     let processedResult = {};
 
