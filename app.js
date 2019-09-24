@@ -712,14 +712,16 @@ app.engine('.hbs', hbs({
       },
       match: function(needle, haystack) {
         const r = new RegExp("("+needle+")","i");
-        // console.log("match",r,haystack);
-        if (haystack.toString().match(r)) {
+        console.log("match",r,haystack);
+        if (haystack && haystack.toString().match(r)) {
           return true;
         }
-        for (e in haystack) {
-          // console.log(haystack[e],haystack[e].name.toString(),r);
-          if (haystack[e].name.toString().match(r)) {
-            return true;
+        else if (haystack && typeof haystack[0] == "object") {
+          for (e in haystack) {
+            // console.log("match",haystack[e],haystack[e].name.toString(),r);
+            if (haystack[e].name && haystack[e].name.toString().match(r)) {
+              return true;
+            }
           }
         }
         return false;
