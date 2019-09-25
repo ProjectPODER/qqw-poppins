@@ -229,20 +229,18 @@
                       </ul>
                     </div>
                     <div class=" js-suppliers col-4 col-m-4">
-                      <div class="cardItemTitle">Proveedores ({{compiledRelease.awards.length }})</div>
+                      <div class="cardItemTitle">Proveedores ({{supplier_count }})</div>
                       <div class="col-12 col-m-12 flex">
-                        {{#each compiledRelease.awards }}
-                          <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
-                            {{#each suppliers}}
-                              <p class="text-overflow supplier-list-item" title="{{name}}">
-                                {{#with (get_party ../../this id)}}
-                                <a href="/{{get_type_url details.type }}/{{id}}"><b>&bull;</b> {{{hilight ../../../../filters.proveedor.value name}}}</a>
-                                {{/with}}
-                              </p>
-                            {{/each}}
+                        {{#each supplier_summary }}
+                          <div class="col-7 col-m-7 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value name) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
+                            <p class="text-overflow supplier-list-item" title="{{name}}">
+                              {{#with (get_party ../this id)}}
+                                <a href="/{{get_type_url details.type }}/{{id}}"><b>&bull;</b> {{{hilight ../../../filters.proveedor.value name}}}</a>
+                              {{/with}}
+                            </p>
                           </div>
-                          <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value suppliers) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
-                            <p class="amount-index-contracts text-overflow supplier-list-item" title="{{format_amount value.amount}}">{{format_amount value.amount}}</p>
+                          <div class="col-5 col-m-5 {{#ifCond @index ">" 2}}{{#if (match ../../filters.proveedor.value name) }}{{else}}supplier-hidden{{/if}}{{/ifCond}}">
+                            <p class="amount-index-contracts text-overflow supplier-list-item" title="{{format_amount contract_amount}}">{{format_amount contract_amount}}</p>
                           </div>
                         {{/each}}
                       </div>

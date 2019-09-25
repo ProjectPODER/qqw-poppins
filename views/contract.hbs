@@ -77,40 +77,52 @@
             <p class="js-data"><a href="/personas/{{result.records.0.compiledRelease.parties.0.contactPoint.id}}">{{result.records.0.compiledRelease.parties.0.contactPoint.name}}</a></p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.awards.length }}
-        <div class="col-m-12 col-12 link-lf-contracts">
+        {{#if result.records.0.supplier_summary }}
+        <div class="col-m-12 col-12 link-lf-contracts js-suppliers ">
             <p class="js-title-data">Proveedor(es)</p>
-            <p class="js-data">
-            {{#each result.records.0.compiledRelease.awards}}
-              {{#each suppliers}}
-              {{#with (get_party ../../result.records.[0] id) }}
-              <a href="/{{get_type_url details.type }}/{{id}}">{{name}}</a>{{#if @last}}{{else}},{{/if}}
+            <ul>
+
+            {{#each result.records.0.supplier_summary }}
+              {{#with (get_party ../result.records.[0] id) }}
+              <li class="js-data mb-1 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
+                <a class="supplier-list-item" href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}) {{/if}}. {{format_amount ../contract_amount}} MXN.
+              </li>
               {{/with}}
-              {{/each}}
-              {{#if @last}}{{else}},{{/if}}
             {{/each}}
-            </p>
+          </ul>
+            {{#ifCond result.records.0.supplier_count '>' 3}}
+              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                <a class="supplier-list-toggle">Ver todos</a>
+              </div>
+            {{/ifCond}}
         </div>
         {{/if}}
         {{#if result.records.0.compiledRelease.source }}
-        <div class="col-m-3 col-3 link-lf-contracts">
+        <div class="col-m-3 col-3 link-lf-contracts profile-list">
           <p class="js-title-data">Fuente(s)</p>
           <p class="js-data">
             {{# each result.records.0.compiledRelease.source}}
             {{id}}
             {{/each}}
           </p>
-          <p class="js-data">
           {{#if result.records.0.compiledRelease.awards.length }}
-            {{#each result.records.0.compiledRelease.awards}}
-              {{#if documents.length }}
-                {{#each documents }}
-                  <a href="{{url}}">Ver fuente</a>
-                {{/each}}
-              {{/if}}
-            {{/each}}
+            <ul>
+              {{#each result.records.0.compiledRelease.awards}}
+                {{#if documents.length }}
+                  {{#each documents }}
+                  <li class="{{#ifCond @../index ">" 2}}profile-list-hidden{{/ifCond}}">
+                      <a href="{{url}}">Ver fuente {{@../index}}</a>
+                  </li>
+                  {{/each}}
+                {{/if}}
+              {{/each}}
+            </ul>
+            {{#ifCond result.records.0.compiledRelease.awards.length '>' 3}}
+              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                <a class="profile-list-toggle">Ver todos</a>
+              </div>
+            {{/ifCond}}
           {{/if}}
-          </p>
         </div>
         {{/if}}
         <hr>
@@ -372,7 +384,7 @@
               {{#each suppliers }}
               {{#with (get_party ../../result.records.[0] id) }}
               <p class="js-data mb-1">
-                <a href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> ({{#each additionalIdentifiers}}{{scheme}}:{{id}}{{/each}} ){{#if @last}}{{else}},{{/if}}
+                <a href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
               </p>
               {{/with}}
               {{/each}}
