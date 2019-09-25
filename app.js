@@ -256,7 +256,7 @@ const flag_details = {
     id: "comp-cfc",
     level: "contract",
     category: "Competitividad",
-    name: "Fechas sospechosas",
+    name: "Campos fundamentales para la competitividad",
     description: "Existe un proveedor con nombre válido y especifican el tipo de procedimiento del contrato. Bandera en porcentaje.",
     type: "percent",
     contract_string: "Le falta el tipo de procedimiento o el nombre del proveedor.",
