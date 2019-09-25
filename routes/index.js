@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var lib = require('../lib.js');
+var lib = require('../lib/lib.js');
 
 /* GET home page. */
 router.get('/', lib.homePage());
