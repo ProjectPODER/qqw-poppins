@@ -13,7 +13,8 @@
           <div class="gd-col-left-wrapper col-m-12">
               <div class="description-data-title">
                 <h3 title="{{ result.compiledRelease.name}}">
-                  <img src="../images/icons/{{#ifCond type '==' 'persons'}}persona-gray.svg{{/ifCond}}{{#ifCond type '==' 'institutions'}}institucion-gray.svg{{/ifCond}}{{#ifCond type '==' 'companies'}}empresa-gray.png{{/ifCond}}" class="icon-lf">
+                  {{{ get_classification_icon type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
+                  {{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}:
                   {{ result.compiledRelease.name}}
                 </h3>
               </div>
@@ -139,7 +140,7 @@
             {{#each result.memberships.parent }}
             <li>
               <a href="#memberships-parent-{{@index}}" class="anchor">
-                <i class="fas fa-building"></i>{{get_role_name this.role}}
+                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
               </a>
             </li>
             {{/each}}
@@ -148,7 +149,7 @@
             {{#each result.memberships.child }}
             <li>
               <a href="#memberships-child-{{@index}}" class="anchor">
-                <i class="fas fa-building"></i>{{get_role_name this.role}}
+                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
               </a>
             </li>
             {{/each}}
@@ -211,10 +212,9 @@
         {{#each result.memberships.parent }}
         <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
           <div  class=" profile-list">
-            <h4 class="description-data-subtitle"><i class="fas fa-building"></i> {{get_role_name this.role}}</h4>
-            <!-- <p>
-              Esta {{get_type_singular ../type}} es une {{get_role_name this.role}} de:
-            </p> -->
+            <h4 class="description-data-subtitle">
+              {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+            </h4>
             <ul>
               {{#each this.memberships}}
                 {{#with compiledRelease }}
@@ -242,10 +242,9 @@
         {{#each result.memberships.child }}
         <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
           <div class="profile-list">
-            <h4 class="description-data-subtitle"><i class="fas fa-building"></i> {{get_role_name this.role}}</h4>
-            <!-- <p>
-              Esta {{get_type_singular ../type}} tiene como {{get_role_name this.role}} a:
-            </p> -->
+            <h4 class="description-data-subtitle">
+              {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+            </h4>
             <ul>
               {{#each this.memberships}}
                 {{#with compiledRelease }}
