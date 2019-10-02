@@ -30,22 +30,23 @@
         <div class="col-m-12">
           <h4 class="description-data-subtitle">DATOS GENERALES</h4>
         </div>
-        {{#if result.records.0.compiledRelease.contracts.0.description }}
+        {{#if result.records.0.description }}
         <div class="col-m-4 col-4">
             <p class="js-title-data">Descripción</p>
-            <p class="js-data">{{result.records.0.compiledRelease.contracts.0.description}}</p>
+            <p class="js-data">{{result.records.0.description}}</p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.contracts.0.period.startDate }}
+
+        {{#if result.records.0.startDate }}
         <div class="col-m-4 col-4">
             <p class="js-title-data">Fecha de inicio</p>
-            <p class="js-data">{{moment result.records.0.compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}}</p>
+            <p class="js-data">{{moment result.records.0.startDate date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.contracts.0.period.endDate }}
+        {{#if result.records.0.endDate }}
         <div class="col-m-8 col-8">
             <p class="js-title-data">Fecha de fin</p>
-            <p class="js-data">{{moment result.records.0.compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}</p>
+            <p class="js-data">{{moment result.records.0.endDate date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
 
@@ -163,51 +164,52 @@
       <div class="">
         <div  class="col-m-9 col-9 mt-2 party_flags" id="calidad">
           <h4 class="description-data-subtitle">CALIDAD DE CONTRATO</h4>
-          <p>Evaluado por QuienEsQuien.wiki y <a href="https://www.todosloscontratos.mx/#metodologia">TodosLosContratos.mx</a></p>
+          {{#if result.records.0.flags.length }}
+            <p>Evaluado por QuienEsQuien.wiki y <a href="https://www.todosloscontratos.mx/#metodologia">TodosLosContratos.mx</a></p>
+            <div class="col-12-col-m-12">
+              {{#each (get_record_flags result.records.0.flags) }}
+              {{#ifCond @key "!=" "rules" }}
+              <div class="flags_graph_bar">
+                <div class="flag_name">
+                   {{#with (flag_name @key) }}
+                      {{name}} <a data-toggle="tooltip" data-placement="right" title="{{info}}"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
+                   {{/with}}
+                </div>
+                <div class="flag_pole flag_{{@key}}">
+                  <div class="flag_pole_min" style="width: {{format_score (contract_category_min @key)}}">
 
-          <div class="col-12-col-m-12">
-            {{#each (get_record_flags result.records.0.flags) }}
-            {{#ifCond @key "!=" "rules" }}
-            <div class="flags_graph_bar">
-              <div class="flag_name">
-                 {{#with (flag_name @key) }}
-                    {{name}} <a data-toggle="tooltip" data-placement="right" title="{{info}}"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
-                 {{/with}}
+                  </div>
+
+                  <div class="flag_pole_max" style="width: {{format_score (math 1 "-" (contract_category_max @key))}}">
+
+                  </div>
+                  <div class="flag_marker" style="left: {{format_score this}}">
+                    {{format_score this}}
+                  </div>
+                </div>
               </div>
-              <div class="flag_pole flag_{{@key}}">
-                <div class="flag_pole_min" style="width: {{format_score (contract_category_min @key)}}">
+              {{/ifCond}}
 
-                </div>
-
-                <div class="flag_pole_max" style="width: {{format_score (math 1 "-" (contract_category_max @key))}}">
-
-                </div>
-                <div class="flag_marker" style="left: {{format_score this}}">
-                  {{format_score this}}
-                </div>
-              </div>
+              {{/each}}
             </div>
-            {{/ifCond}}
 
-            {{/each}}
-          </div>
-
-          {{# with (get_record_flags result.records.0.flags)}}
-          <h4 class="description-data-subtitle" id="contract_problemas_destacados">PROBLEMAS DESTACADOS</h4>
-          <ul class="party_flags_recommendations_list">
-            {{# each this.rules}}
-                <li class="party_flags_recommendations_item">{{#with (contract_recommendations name) }}{{ contract_string }}.{{/with}}</li>
-            {{/each}}
-          </ul>
-          {{/with}}
+            {{# with (get_record_flags result.records.0.flags)}}
+            <h4 class="description-data-subtitle" id="contract_problemas_destacados">PROBLEMAS DESTACADOS</h4>
+            <ul class="party_flags_recommendations_list">
+              {{# each this.rules}}
+                  <li class="party_flags_recommendations_item">{{#with (contract_recommendations name) }}{{ contract_string }}{{/with}}</li>
+              {{/each}}
+            </ul>
+            {{/with}}
+          {{else}}
+            <p>Aún no hemos realizado la evaluación de este contrato.</p>
+          {{/if}}
 
         </div>
       </div>
-
       <div class="col-m-8 col-8">
         <hr>
       </div>
-
 
       <div class="col-m-9 col-9 flex mt-2" id="planeacion">
         <div class="col-m-12 col-12">
@@ -445,7 +447,9 @@
         {{#if period }}
         <div class="col-m-8 col-8">
             <p class="js-title-data">Período de ejecución</p>
-            <p class="js-data">{{moment period.startDate date lang="es" format="LL"}} {{#if period.endDate }} - {{moment period.endDate date lang="es" format="LL"}}{{/if}}</p>
+            <p class="js-data">{{moment period.startDate date lang="es" format="LL"}} {{#if period.endDate }} - {{moment period.endDate date lang="es" format="LL"}}{{/if}}
+              {{!-- #if (contract_has_flag id "temp-dl") }}{{> bandera flag_id="temp-dl"}}{{/if --}}
+            </p>
         </div>
         {{/if}}
 
