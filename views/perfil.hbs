@@ -99,7 +99,7 @@
           {{#if result.compiledRelease.identifiers }}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Identificadores</p>
-              <p class="js-data">{{#each result.compiledRelease.identifiers}}{{scheme}}: {{identifier}} {{#ifCond scheme '==' 'RUPC'}}<a data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>{{/ifCond}}{{/each}}</p>
+              <p class="js-data">{{#each result.compiledRelease.identifiers}}{{scheme}}: {{id}} {{#ifCond scheme '==' 'RUPC'}}<a data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>{{/ifCond}}{{/each}}</p>
             </div>
           {{/if}}
           {{#if result.compiledRelease.source}}

@@ -86,7 +86,7 @@
             {{#each result.records.0.supplier_summary }}
               {{#with (get_party ../result.records.[0] id) }}
               <li class="js-data mb-1 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
-                <a class="supplier-list-item" href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}) {{/if}}. {{format_amount ../contract_amount}} MXN.
+                <a class="supplier-list-item" href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}}. {{format_amount ../contract_amount}} MXN.
               </li>
               {{/with}}
             {{/each}}
