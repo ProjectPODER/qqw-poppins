@@ -19,13 +19,12 @@ build() {
 test() {
 	echo -e "Run ${REPO} image."
 	docker run --name ${WEB_APP_NAME} -p ${APP_PORT} -d ${REPO} &
-	echo -e "Wait until ${REPO} is fully started."
-	sleep 10
+	sleep 5
 	docker logs ${WEB_APP_NAME}
 }
 
 release() {
-	echo -e "Release ${WEB_IMG} image."
+	echo -e "Release ${REPO} image."
 	if [[ ! -z "$DOCKER_PWD" ]]; then
 		cat ${DOCKER_PWD} | docker login --username ${DOCKER_USER} --password-stdin
 	fi
@@ -34,13 +33,9 @@ release() {
 }
 
 clean() {
-	echo -e ""
 	echo -e "Cleaning local build environment."
-	echo -e ""
 	docker stop ${WEB_APP_NAME} 2>/dev/null; true
 	docker rm ${WEB_APP_NAME}  2>/dev/null; true
-	echo -e ""
-	echo -e "Purging local images."
 	docker rmi ${REPO} 2>/dev/null; true
 }
 
