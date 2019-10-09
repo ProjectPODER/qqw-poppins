@@ -1,20 +1,25 @@
 #!/bin/bash
 
+[[ ! -f $HOME/allvars ]] && { echo -e "[ERROR]: No se encontro allvars deployado"; exit -1 }
+
 source $HOME/allvars
 APP_PORT=8086:8080
+APP_VERSION=$(cat package.json | jq -r .version)
+REPO=${DOCKER_REPO}/${WEB_ORG_NAME}:${APP_VERSION}
 export ENVIRONMENT="stg"
 
+
 build() {
-	echo -e "Building ${WEB_DOCKER_REPO} image."
-	docker build -t ${WEB_DOCKER_REPO} .
-	echo -e "Listing ${WEB_DOCKER_REPO} image."
+	echo -e "Building ${REPO} image."
+	docker build -t ${REPO} .
+	echo -e "Listing ${REPO} image."
 	docker images
 }
 
 test() {
-	echo -e "Run ${WEB_DOCKER_REPO} image."
-	docker run --name ${WEB_APP_NAME} -p ${APP_PORT} -d ${WEB_DOCKER_REPO} &
-	echo -e "Wait until ${WEB_DOCKER_REPO} is fully started."
+	echo -e "Run ${REPO} image."
+	docker run --name ${WEB_APP_NAME} -p ${APP_PORT} -d ${REPO} &
+	echo -e "Wait until ${REPO} is fully started."
 	sleep 10
 	docker logs ${WEB_APP_NAME}
 }
@@ -24,8 +29,8 @@ release() {
 	if [[ ! -z "$DOCKER_PWD" ]]; then
 		cat ${DOCKER_PWD} | docker login --username ${DOCKER_USER} --password-stdin
 	fi
-	docker tag  ${WEB_DOCKER_REPO} ${WEB_DOCKER_REPO}
-	docker push ${WEB_DOCKER_REPO}
+	docker tag  ${REPO} ${REPO}
+	docker push ${REPO}
 }
 
 clean() {
@@ -36,7 +41,7 @@ clean() {
 	docker rm ${WEB_APP_NAME}  2>/dev/null; true
 	echo -e ""
 	echo -e "Purging local images."
-	docker rmi ${WEB_DOCKER_REPO} 2>/dev/null; true
+	docker rmi ${REPO} 2>/dev/null; true
 }
 
 help() {
@@ -47,7 +52,7 @@ help() {
 	echo -e "  test		Tests image."
 	echo -e "  release	Releases images."
 	echo -e "  clean		Cleans local images."
-	echo -e ""	
+	echo -e ""
 }
 
 if [[ "$1" == "build" ]]; then build;
