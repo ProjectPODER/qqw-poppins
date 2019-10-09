@@ -10,21 +10,21 @@ export ENVIRONMENT="stg"
 
 
 build() {
-	echo -e "Building ${REPO} image."
+	echo -e " => Building ${REPO} image."
 	docker build -t ${REPO} .
-	echo -e "Listing ${REPO} image."
+	echo -e " => Listing ${REPO} image."
 	docker images
 }
 
 test() {
-	echo -e "Run ${REPO} image."
+	echo -e " => Run ${REPO} image."
 	docker run --name ${WEB_APP_NAME} -p ${APP_PORT} -d ${REPO} &
 	sleep 5
 	docker logs ${WEB_APP_NAME}
 }
 
 release() {
-	echo -e "Release ${REPO} image."
+	echo -e " => Release ${REPO} image."
 	if [[ ! -z "$DOCKER_PWD" ]]; then
 		cat ${DOCKER_PWD} | docker login --username ${DOCKER_USER} --password-stdin
 	fi
@@ -33,7 +33,7 @@ release() {
 }
 
 clean() {
-	echo -e "Cleaning local build environment."
+	echo -e " => Cleaning local build environment."
 	docker stop ${WEB_APP_NAME} 2>/dev/null; true
 	docker rm ${WEB_APP_NAME}  2>/dev/null; true
 	docker rmi ${REPO} 2>/dev/null; true
