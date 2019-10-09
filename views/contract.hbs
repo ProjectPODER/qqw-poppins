@@ -6,9 +6,9 @@
           <h4><a href="/">Inicio</a> > <a href="/contratos">Contratos</a></h4>
         </div>
         <div class="description-data-title">
-          <h3 style="clear: both" title="{{result.records.0.title}}">
-            <img src="../images/icons/contrato-gray.svg" alt="contrato" class="icon-lf">
-            {{result.records.0.title}}
+          <h3 style="clear: both" title="{{result.records.0.compiledRelease.contracts.0.title}}">
+            <i class="fas fa-file-alt"></i>
+             {{result.records.0.compiledRelease.contracts.0.title}}
           </h3>
         </div>
         <div class="right-align contract-amount">
@@ -86,7 +86,7 @@
             {{#each result.records.0.supplier_summary }}
               {{#with (get_party ../result.records.[0] id) }}
               <li class="js-data mb-1 {{#ifCond @index ">" 2}}supplier-hidden{{/ifCond}}">
-                <a class="supplier-list-item" href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}) {{/if}}. {{format_amount ../contract_amount}} MXN.
+                <a class="supplier-list-item" href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}}. {{format_amount ../contract_amount}} MXN.
               </li>
               {{/with}}
             {{/each}}
