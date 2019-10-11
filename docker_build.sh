@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ ! -f $HOME/allvars ]] && { echo -e "[ERROR]: No se encontro allvars deployado"; exit -1; }
+[[ ! -f "$HOME/allvars" ]] && { echo -e "[ERROR]: No se encontro allvars deployado"; exit -1; }
 
 source $HOME/allvars
 APP_PORT=8086:8080
