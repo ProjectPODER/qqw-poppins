@@ -1,5 +1,5 @@
 FROM mhart/alpine-node:8
-MAINTAINER Jorge Medina <jorge.medina@kronops.com.mx>
+MAINTAINER Kronops <kronops@kronops.com.mx>
 
 ENV PORT=${PORT:-8080}
 ENV NODE_ENV=production
@@ -26,4 +26,3 @@ RUN npm install
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["npm", "start"]
-
