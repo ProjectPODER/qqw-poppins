@@ -136,12 +136,12 @@
 
                   <p class="js-person-type" style="font-size: 16px;">
                   {{#if contract_count.supplier}}
-                    <span class="js-contract-count">
-                      <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+                    <span class="js-contract-count green-text">
+                      <i class="fas fa-file-alt"></i> 
                       {{contract_count.supplier}} contrato(s) como proveedor
                     </span>
                     por
-                    <span class="js-contract-amount">
+                    <span class="js-contract-amount green-text">
                       {{#ifCond contract_amount.supplier '==' '0'}}
                       {{else}}
                         {{format_amount contract_amount.supplier}}
@@ -156,12 +156,12 @@
                   </p>
                   <p class="js-person-type" style="font-size: 16px;">
                   {{#if contract_count.buyer}}
-                    <span class="js-contract-count">
-                      <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+                    <span class="js-contract-count red-text">
+                      <i class="fas fa-file-alt"></i> 
                       {{contract_count.buyer}} contrato(s) como comprador
                     </span>
                     por
-                    <span class="js-contract-amount">
+                    <span class="js-contract-amount red-text">
                       {{format_amount contract_amount.buyer}}
                     </span>
                     pesos mexicanos.
