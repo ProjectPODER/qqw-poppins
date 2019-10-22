@@ -153,15 +153,6 @@
             </li>
             {{/each}}
             {{/if}}
-
-            {{#ifCond result.summaries.relation.nodes.length ">" 0}}
-            <li>
-              <a href="#graficas" class="anchor">
-                <i class="fas fa-chart-pie"></i>Gráficas
-              </a>
-
-            </li>
-            {{/ifCond}}
             {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
             <li>
               <a href="#financiacion" class="anchor">
@@ -185,6 +176,13 @@
               </a>
             </li>
             {{/ifCond}}
+            {{#ifCond result.summaries.relation.nodes.length ">" 0}}
+            <li>
+              <a href="#flujos-monetarios" class="anchor">
+                <i class="fas fa-chart-pie"></i>Flujos monetarios
+              </a>
+            </li>
+            {{/ifCond}}
             {{#ifCond type '!=' 'companies'}}
             {{#if result.top3contracts.buyer }}
             {{#if result.flags }}
@@ -201,112 +199,76 @@
       </div>
     </div>
   </div>
-</section>
-
-
-<div class="row">
-  <div class="content">
-    <div class="col-9 col-m-9">
-      {{#if result.memberships.parent}}
-        {{#each result.memberships.parent }}
-        <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
-          <div  class=" profile-list">
-            <h4 class="description-data-subtitle">
-              {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
-            </h4>
-            <ul>
-              {{#each this.memberships}}
-                {{#with compiledRelease }}
-                  <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
-                    {{#if this.organization_class }}
-                      <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if title}} como {{title}}{{/if}}{{#if @last}}.{{else}}, {{/if}}
-                    {{else}}
-                      <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-                    {{/if}}
-                  </li>
-                {{/with}}
-              {{/each}}
-            </ul>
-            {{#ifCond this.memberships.length '>' 5}}
-            <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-              <a class="profile-list-toggle">Ver todos</a>
-            </div>
-            {{/ifCond}}
-          </div>
-        </section>
-        {{/each}}
-      {{/if}}
-
-      {{#if result.memberships.child}}
-        {{#each result.memberships.child }}
-        <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
-          <div class="profile-list">
-            <h4 class="description-data-subtitle">
-              {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
-            </h4>
-            <ul>
-              {{#each this.memberships}}
-                {{#with compiledRelease }}
-                  <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
-                    <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-                  </li>
-                {{/with}}
-              {{/each}}
-            </ul>
-            {{#ifCond this.memberships.length '>' 5}}
-            <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-              <a class="profile-list-toggle">Ver todos</a>
-            </div>
-            {{/ifCond}}
-          </div>
-        </section>
-        {{/each}}
-      {{/if}}
-    </div>
-  </div>
-</div>
-
-
-
-{{#ifCond result.summaries.relation.nodes.length ">" 0}}
-
-<section class="profile" id="graficas">
-  <div class="row">
+  
+  <div class="row memberships">
     <div class="content">
-      <div  class="col-m-9 col-9">
-        <div  class="col-m-12 col-6">
-          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> EVOLUCIÓN ANUAL DE CONTRATOS</h4>
-          <div id="chart">
-            <svg></svg>
-          </div>
-        </div>
-        <div class="col-m-12 col-6">
-          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> TIPO DE PROCEDIMIENTO</h4>
-          <div id="piechartBuyer">
-            {{#if svg}}
-            Comprador
-            {{/if}}
-          </div>
-          <div id="piechartSupplier">
-            {{#if svg}}
-            Vendedor
-            {{/if}}
-          </div>
-        </div>
-        <div class="col-m-12 col-12 mt-60">
-          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> FLUJOS DE DINERO</h4>
-          <div id="graph-container">
-          </div>
-        </div>
+      <div class="col-9 col-m-9">
+        {{#if result.memberships.parent}}
+          {{#each result.memberships.parent }}
+          <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
+            <div  class=" profile-list">
+              <h4 class="description-data-subtitle">
+                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+              </h4>
+              <ul>
+                {{#each this.memberships}}
+                  {{#with compiledRelease }}
+                    <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                      {{#if this.organization_class }}
+                        <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if title}} como {{title}}{{/if}}{{#if @last}}.{{else}}, {{/if}}
+                      {{else}}
+                        <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                      {{/if}}
+                    </li>
+                  {{/with}}
+                {{/each}}
+              </ul>
+              {{#ifCond this.memberships.length '>' 5}}
+              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                <a class="profile-list-toggle">Ver todos</a>
+              </div>
+              {{/ifCond}}
+            </div>
+          </section>
+          {{/each}}
+        {{/if}}
+
+        {{#if result.memberships.child}}
+          {{#each result.memberships.child }}
+          <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
+            <div class="profile-list">
+              <h4 class="description-data-subtitle">
+                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+              </h4>
+              <ul>
+                {{#each this.memberships}}
+                  {{#with compiledRelease }}
+                    <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                      <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                    </li>
+                  {{/with}}
+                {{/each}}
+              </ul>
+              {{#ifCond this.memberships.length '>' 5}}
+              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                <a class="profile-list-toggle">Ver todos</a>
+              </div>
+              {{/ifCond}}
+            </div>
+          </section>
+          {{/each}}
+        {{/if}}
+        {{#ifCond result.memberships.parent.length '||' result.memberships.child.length }}
         <div class="col-12 col-m-12 mt-2">
           <hr>
         </div>
+        {{/ifCond}}
       </div>
     </div>
   </div>
 </section>
 
-{{/ifCond}}
+{{!-- COMPRAS --}}
 {{#ifCond result.top3contracts.buyer.length '||' result.summaries.top_suppliers.length}}
 <section class="profile" id="compras">
   <div class="row">
@@ -354,7 +316,7 @@
   </div>
 
 {{#if result.summaries.top_suppliers }}
-  <div class="row">
+  <div class="row mb-5">
     <div class="content">
       <div  class="col-m-9 col-9">
         <div class="col-m-12 col-12">
@@ -364,17 +326,33 @@
             {{this.name}}</a> - {{format_amount contract_amount_top_supplier}} pesos mexicanos</p>
           {{/each}}
         </div>
-        <div class="col-12 col-m-12 mt-2">
+        {{!-- <div class="col-12 col-m-12 mt-2">
           <hr>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>
 {{/if}}
+  <div class="row">
+    <div class="content">
+      <div class="col-m-9 col-9">
+        <div  class="col-m-12 col-6">
+          <h5 class="description-data-subtitle">Evolución anual de contratos</h5>
+          <div id="chartBuyer">
+            <svg></svg>
+          </div>
+        </div>
+        <div class="col-m-12 col-6">
+          <h5 class="description-data-subtitle">Tipo de procedimiento</h5>
+          <div id="piechartBuyer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 {{/ifCond}}
 
-
+{{!-- FINANCIACIÓN --}}
 {{#ifCond result.top3contracts.funder.length '||' result.summaries.top_fundees.length}}
 <section class="profile" id="financiacion">
   <div class="row">
@@ -442,7 +420,7 @@
 </section>
 {{/ifCond}}
 
-
+{{!-- PROVEEDORES --}}
 {{#ifCond result.top3contracts.supplier.length '||' result.summaries.top_buyers.length}}
 <section class="profile" id="proveedor">
   <div class="row">
@@ -489,7 +467,7 @@
     </div>
   </div>
 {{#if result.summaries.top_buyers }}
-  <div class="row">
+  <div class="row mb-5">
     <div class="content">
       <div  class="col-m-9 col-9">
         <div class="col-m-12 col-12">
@@ -499,16 +477,50 @@
             {{this.memberOf.0.name}} ({{this.name}})</a> - {{format_amount contract_amount_top_buyer}} pesos mexicanos</p>
           {{/each}}
         </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+  <div class="row">
+    <div class="content">
+      <div class="col-m-9 col-9">
+        <div  class="col-m-12 col-6">
+          <h5 class="description-data-subtitle">Evolución anual de contratos</h5>
+          <div id="chartSupplier">
+            <svg></svg>
+          </div>
+        </div>
+        <div class="col-m-12 col-6">
+          <h5 class="description-data-subtitle">Tipo de procedimiento</h5>
+          <div id="piechartSupplier"></div>
+        </div>
         <div class="col-12 col-m-12 mt-2">
           <hr>
         </div>
       </div>
     </div>
   </div>
-  {{/if}}
 </section>
 {{/ifCond}}
 
+{{#ifCond result.summaries.relation.nodes.length ">" 0}}
+<section class="profile" id="flujos-monetarios">
+  <div class="row">
+    <div class="content">
+      <div  class="col-m-9 col-9">
+        <div class="col-m-12 col-12">
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> FLUJOS MONETARIOS</h4>
+          <div id="graph-container">
+          </div>
+        </div>
+        {{!-- <div class="col-12 col-m-12 mt-2">
+          <hr>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+</section>
+{{/ifCond}}
 
 {{#ifCond type '!=' 'companies'}}
 {{#if result.top3contracts.buyer}}

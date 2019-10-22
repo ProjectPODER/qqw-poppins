@@ -4,7 +4,9 @@
 // Bar Chart
 
 function barChart(summaries) {
-  const yearData = [];
+  const yearDataSupplier = [];
+  const yearDataBuyer = [];
+  const yearDataFunder = [];
   const barColors = {
     "Importe de contratos como proveedor": "#278529",
     "Cantidad de contratos como proveedor": "#1b5d1c",
@@ -31,16 +33,16 @@ function barChart(summaries) {
   }
 
   if (year_isSupplier) {
-    index_supplier_amount = yearData.length;
-    yearData.push(
+    index_supplier_amount = yearDataSupplier.length;
+    yearDataSupplier.push(
       {
         "key" : "Importe de contratos como proveedor" ,
         "bar": true,
         "values" : [],
       }
     )
-    index_supplier_count = yearData.length;
-    yearData.push(
+    index_supplier_count = yearDataSupplier.length;
+    yearDataSupplier.push(
       {
           "key" : "Cantidad de contratos como proveedor" ,
           "values" : [],
@@ -49,8 +51,8 @@ function barChart(summaries) {
     )
   }
   if (year_isBuyer) {
-    index_buyer_amount = yearData.length;
-    yearData.push(
+    index_buyer_amount = yearDataBuyer.length;
+    yearDataBuyer.push(
       {
           "key" : "Importe de contratos como comprador" ,
           "bar": true,
@@ -58,8 +60,8 @@ function barChart(summaries) {
           "color": "#db2828"
       },
     )
-    index_buyer_count = yearData.length;
-    yearData.push(
+    index_buyer_count = yearDataBuyer.length;
+    yearDataBuyer.push(
       {
           "key" : "Cantidad de contratos como comprador" ,
           "values" : [],
@@ -68,8 +70,8 @@ function barChart(summaries) {
     )
   }
   if (year_isFunder) {
-    index_funder_amount = yearData.length;
-    yearData.push(
+    index_funder_amount = yearDataFunder.length;
+    yearDataFunder.push(
       {
           "key" : "Importe de contratos como financiador" ,
           "bar": true,
@@ -77,8 +79,8 @@ function barChart(summaries) {
           // "color": "#db2828"
       },
     )
-    index_funder_count = yearData.length;
-    yearData.push(
+    index_funder_count = yearDataFunder.length;
+    yearDataFunder.push(
       {
           "key" : "Cantidad de contratos como financiador" ,
           "values" : [],
@@ -89,36 +91,75 @@ function barChart(summaries) {
 
   for (y in summaries.year) {
     if (year_isSupplier) {
-      yearData[index_supplier_amount].values.push({
+      yearDataSupplier[index_supplier_amount].values.push({
         x: y,
         y: summaries.year[y].supplier.value
       })
-      yearData[index_supplier_count].values.push({
+      yearDataSupplier[index_supplier_count].values.push({
         x: y,
         y: summaries.year[y].supplier.count
       })
     }
     if (year_isBuyer) {
-      yearData[index_buyer_amount].values.push({
+      yearDataBuyer[index_buyer_amount].values.push({
         x: y,
         y: summaries.year[y].buyer.value
       })
-      yearData[index_buyer_count].values.push({
+      yearDataBuyer[index_buyer_count].values.push({
         x: y,
         y: summaries.year[y].buyer.count
       })
     }
     if (year_isFunder) {
-      yearData[index_funder_amount].values.push({
+      yearDataFunder[index_funder_amount].values.push({
         x: y,
         y: summaries.year[y].funder.value
       })
-      yearData[index_funder_count].values.push({
+      yearDataFunder[index_funder_count].values.push({
         x: y,
         y: summaries.year[y].funder.count
       })
     }
   }
+
+// FUNCIÓN PARA SEPARAR Y DAR UN NUEVO ID Y NUEVA VARIABLES DE YEARDATA PARA CADA UNO
+
+// function charts(idChart, dataChart) {
+//     var chart;
+
+//     nv.addGraph(function() {
+//     chart = nv.models.linePlusBarChart()
+//         .margin({top: 0, right: 30, bottom: 10, left: 100})
+//         .legendRightAxisHint(' [Eje derecho]')
+//         .legendLeftAxisHint(' [Eje izquierdo]')
+//         .color(function(d,i){ return barColors[d.originalKey]})
+//         .focusEnable(false)
+
+//     chart.y1Axis
+//     .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
+
+//     d3.select('idChart svg')
+//         .datum(dataChart)
+//         .transition().duration(500).call(chart);
+
+//     nv.utils.windowResize(chart.update);
+
+//     chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+//     console.log(idChart);
+//     console.log(dataChart);
+//     return chart;
+//   });
+// }
+// var chartId1 = "#chartSupplier";
+// var chartData1 = "yearDataSupplier";
+// var chartId2 = "#chartBuyer";
+// var chartData2 = "yearDataBuyer";
+
+// charts(chartId1, chartData1);
+// charts(chartId2, chartData2);
+
+
+
 
   var chart;
   nv.addGraph(function() {
@@ -158,8 +199,8 @@ function barChart(summaries) {
   //     return d3.time.format('%Y')(new Date(yearData[0].values[d].x))
   // }).showMaxMin(false);
 
-  d3.select('#chart svg')
-      .datum(yearData)
+  d3.select('#chartSupplier svg')
+      .datum(yearDataSupplier)
       .transition().duration(500).call(chart);
 
   nv.utils.windowResize(chart.update);
@@ -168,8 +209,36 @@ function barChart(summaries) {
 
   return chart;
 });
+
+  var chart;
+  nv.addGraph(function() {
+
+  chart = nv.models.linePlusBarChart()
+      .margin({top: 0, right: 30, bottom: 10, left: 100})
+      .legendRightAxisHint(' [Eje derecho]')
+      .legendLeftAxisHint(' [Eje izquierdo]')
+      .color(function(d,i){ return barColors[d.originalKey]})
+      .focusEnable(false)
+
+  chart.y1Axis
+  .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
+
+  d3.select('#chartBuyer svg')
+      .datum(yearDataBuyer)
+      .transition().duration(500).call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+  chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+  return chart;
+});
+
 }
 // console.log(summaries.type)
+
+
+// Pie Chart
 
 function pieChart(summaries) {
   const typeData = {
@@ -312,7 +381,7 @@ function pieChart(summaries) {
 
 
 
-//------ Force-directed Graph
+// Force-directed Graph
 function flujosProveedores(summaries) {
 
   // console.log(summaries.relation);
