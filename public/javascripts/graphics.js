@@ -12,9 +12,10 @@ function barChart(summaries) {
     "Cantidad de contratos como proveedor": "#1b5d1c",
     "Importe de contratos como comprador": "#db2828",
     "Cantidad de contratos como comprador": "#991c1c",
-    "Importe de contratos como financiador": "#0b2828",
-    "Cantidad de contratos como financiador": "#091c1c"
+    "Importe de contratos como financiador": "#DA9488",
+    "Cantidad de contratos como financiador": "#af2020"
   }
+
   let year_isSupplier = false;
   let year_isBuyer = false;
   let year_isFunder = false;
@@ -76,7 +77,7 @@ function barChart(summaries) {
           "key" : "Importe de contratos como financiador" ,
           "bar": true,
           "values" : [],
-          // "color": "#db2828"
+          "color": "#b6893e"
       },
     )
     index_funder_count = yearDataFunder.length;
@@ -84,7 +85,7 @@ function barChart(summaries) {
       {
           "key" : "Cantidad de contratos como financiador" ,
           "values" : [],
-          // "color": "#991c1c"
+          "color": "#5b441f"
       },
     )
   }
@@ -124,115 +125,37 @@ function barChart(summaries) {
 
 // FUNCIÓN PARA SEPARAR Y DAR UN NUEVO ID Y NUEVA VARIABLES DE YEARDATA PARA CADA UNO
 
-// function charts(idChart, dataChart) {
-//     var chart;
+function charts(idChart, dataChart) {
+    var chart;
 
-//     nv.addGraph(function() {
-//     chart = nv.models.linePlusBarChart()
-//         .margin({top: 0, right: 30, bottom: 10, left: 100})
-//         .legendRightAxisHint(' [Eje derecho]')
-//         .legendLeftAxisHint(' [Eje izquierdo]')
-//         .color(function(d,i){ return barColors[d.originalKey]})
-//         .focusEnable(false)
+    nv.addGraph(function() {
+    chart = nv.models.linePlusBarChart()
+        .margin({top: 0, right: 30, bottom: 10, left: 100})
+        .legendRightAxisHint(' [Eje derecho]')
+        .legendLeftAxisHint(' [Eje izquierdo]')
+        .color(function(d,i){ return barColors[d.originalKey]})
+        .focusEnable(false)
 
-//     chart.y1Axis
-//     .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
+    chart.y1Axis
+    .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
 
-//     d3.select('idChart svg')
-//         .datum(dataChart)
-//         .transition().duration(500).call(chart);
+    d3.select(idChart+' svg')
+        .datum(dataChart)
+        .transition().duration(500).call(chart);
 
-//     nv.utils.windowResize(chart.update);
+    nv.utils.windowResize(chart.update);
 
-//     chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
-//     console.log(idChart);
-//     console.log(dataChart);
-//     return chart;
-//   });
-// }
-// var chartId1 = "#chartSupplier";
-// var chartData1 = "yearDataSupplier";
-// var chartId2 = "#chartBuyer";
-// var chartData2 = "yearDataBuyer";
+    chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+    console.log(idChart);
+    console.log(dataChart);
+    return chart;
+  });
+}
 
-// charts(chartId1, chartData1);
-// charts(chartId2, chartData2);
+charts("#chartSupplier", yearDataSupplier);
+charts("#chartBuyer", yearDataBuyer);
+charts("#chartFunder", yearDataFunder);
 
-
-
-
-  var chart;
-  nv.addGraph(function() {
-
-  chart = nv.models.linePlusBarChart()
-      .margin({top: 0, right: 30, bottom: 10, left: 100})
-      // .x(function(d,i) { return i })
-      // .y(function(d,i) {return d[1] })
-      .legendRightAxisHint(' [Eje derecho]')
-      .legendLeftAxisHint(' [Eje izquierdo]')
-      // .color(d3.scale.category20().range().slice(1))
-      .color(function(d,i){ return barColors[d.originalKey]})
-      .focusEnable(false)
-
-  // chart.xAxis.tickFormat(function(d) {
-  //   var dx = yearData[0].values[d] && yearData[0].values[d].x || 0;
-  //   return d3.time.format('%Y')(new Date(dx))
-  // });
-// chart.color(["blue"])
-
-  chart.y1Axis
-  .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
-
-  // console.log(chart)
-
-// chart.useInteractiveGuideline(true)
-  // chart.padData(true);
-  // chart.lines.padData(true);
-  // chart.bars.padData(true);
-
-  // chart.bars.stacked
-  // chart.bars.forceY( [0,10000000000]).padData(false);
-  // chart.bars2.forceY([0,10000000000]).padData(false);
-  // chart.lines.forceY([0,2]);
-
-  // chart.x2Axis.tickFormat(function(d) {
-  //     return d3.time.format('%Y')(new Date(yearData[0].values[d].x))
-  // }).showMaxMin(false);
-
-  d3.select('#chartSupplier svg')
-      .datum(yearDataSupplier)
-      .transition().duration(500).call(chart);
-
-  nv.utils.windowResize(chart.update);
-
-  chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
-
-  return chart;
-});
-
-  var chart;
-  nv.addGraph(function() {
-
-  chart = nv.models.linePlusBarChart()
-      .margin({top: 0, right: 30, bottom: 10, left: 100})
-      .legendRightAxisHint(' [Eje derecho]')
-      .legendLeftAxisHint(' [Eje izquierdo]')
-      .color(function(d,i){ return barColors[d.originalKey]})
-      .focusEnable(false)
-
-  chart.y1Axis
-  .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
-
-  d3.select('#chartBuyer svg')
-      .datum(yearDataBuyer)
-      .transition().duration(500).call(chart);
-
-  nv.utils.windowResize(chart.update);
-
-  chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
-
-  return chart;
-});
 
 }
 // console.log(summaries.type)
@@ -323,15 +246,6 @@ function pieChart(summaries) {
           .color(function (d) { return procurementColorsBuyer[d.label] })
           .showLabels(true)
 
-        // d3.select("#piechartBuyer")
-        //     .append("svg")
-        //     .append("text")
-        //     .attr("x", 200)
-        //     .attr("y", 100)
-        //     .attr("text-anchor", "middle")
-        //     .text("Sample Charts")
-        //     .call(chart);
-
         d3.select("#piechartBuyer")
             .append("svg")
             .datum(typeData.buyer)
@@ -343,24 +257,22 @@ function pieChart(summaries) {
     });
   }
 
+  const procurementColorsFunder = {
+    "open": "#9f7836",
+    "direct": "#e4ac4e",
+    "limited": "#ecc483",
+    "undefined": "#8b8b8b"
+  }
+
   if (isFunderType) {
     nv.addGraph(function() {
       var chart = nv.models.pieChart()
           .x(function(d) { return nameLabels[d.label] })
           .y(function(d) { return d.value })
-          .color(function (d) {  return procurementColorsBuyer[d.label] })
+          .color(function (d) {  return procurementColorsFunder[d.label] })
           .showLabels(true)
 
-        // d3.select("#piechartBuyer")
-        //     .append("svg")
-        //     .append("text")
-        //     .attr("x", 200)
-        //     .attr("y", 100)
-        //     .attr("text-anchor", "middle")
-        //     .text("Sample Charts")
-        //     .call(chart);
-
-        d3.select("#piechartBuyer")
+        d3.select("#piechartFunder")
             .append("svg")
             .datum(typeData.funder)
             .transition().duration(350)

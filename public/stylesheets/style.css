@@ -377,6 +377,9 @@ a:focus {
 .green-text {
   color: #278529 !important;
 }
+.funder-text {
+  color: #b6893e !important;
+}
 .mb-10 {
   margin-bottom: 10px;
 }
@@ -1691,7 +1694,8 @@ textarea.form-control {
   fill-opacity: 0 !important;
 }
 #piechartSupplier svg,
-#piechartBuyer svg {
+#piechartBuyer svg,
+#piechartFunder svg {
   height: 450px;
   width: 100%;
 }
@@ -3031,6 +3035,9 @@ button.close {
 }
 .supplier-button {
   background: #278529 !important;
+}
+.funder-button {
+  background: #b6893e !important;
 }
 .flag_name {
   float: left;
