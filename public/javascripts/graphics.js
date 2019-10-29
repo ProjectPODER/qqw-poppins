@@ -202,7 +202,8 @@ function pieChart(summaries) {
     "open": "Licitación abierta",
     "direct": "Adjudicación Directa",
     "limited": "Invitación a tres",
-    "undefined": "Sin definir"
+    "undefined": "Sin definir",
+    "": "Sin información"
   }
 
   // console.log(typeData);
@@ -318,6 +319,18 @@ function flujosProveedores(summaries) {
     regular: "#9467bd"
   }
 
+  const name_legend = [
+    { label: 'Institución', color: "#aec7e8" },
+    { label: 'Empresa', color: "#ff7f0e" },
+    { label: 'Persona', color: "#ffbb78" },
+    { label: 'Dependencia', color: "#2ca02c" },
+    { label: 'Licitación abierta', color: "#98df8a" },
+    { label: 'Adjudicación Directa', color: "#ff9896" },
+    { label: 'Invitación a tres', color: "#d62728" },
+    { label: 'Sin definir', color: "#8b8b8b" },
+    { label: 'Regular', color: "#9467bd" }
+  ];
+
   var chartDiv = document.getElementById("graph-container");
   // $(chartDiv).height(500);
   var width = chartDiv.clientWidth;
@@ -370,6 +383,36 @@ function flujosProveedores(summaries) {
     .selectAll(".node");
 
   var nodeCircle, nodeLabel;
+
+// Legend
+  var legendRectSize = 18;  
+  var legendSpacing = 4;    
+
+  var legend = svg.selectAll('.legend')                  
+          .data(name_legend)                                
+          .enter()                                             
+          .append('g')                                         
+          .attr('class', 'legend')                             
+          .attr('transform', function(d, i) {                  
+            var height = legendRectSize + legendSpacing;       
+            var offset =  height * color.domain().length / 2;  
+            var horz = 0;                       // NEW
+            var vert = i * height - offset;                    
+            return 'translate(' + horz + ',' + vert + ')';     
+          });                                                  
+
+        legend.append('rect')                                  
+          .attr('width', legendRectSize)                       
+          .attr('height', legendRectSize)                      
+          .style('fill', function(d) { return d.color; })                                
+          .style('stroke', function(d) { return d.color; });                             
+
+        legend.append('text')                                  
+          .attr('x', legendRectSize + legendSpacing)           
+          .attr('y', legendRectSize - legendSpacing)           
+          .text(function(d) { return d.label; }); 
+
+
 
   function update() {
 
