@@ -331,6 +331,15 @@ function flujosProveedores(summaries) {
     { label: 'Regular', color: "#9467bd" }
   ];
 
+  const linkLabels = {
+    "open": "Licitación abierta",
+    "direct": "Adjudicación Directa",
+    "limited": "Invitación a tres",
+    "undefined": "Sin definir",
+    "regular": "Regular",
+    "": "Sin información"
+  }
+
   var chartDiv = document.getElementById("graph-container");
   // $(chartDiv).height(500);
   var width = chartDiv.clientWidth;
@@ -368,7 +377,7 @@ function flujosProveedores(summaries) {
     .force("center", d4.forceCenter(centerCoor[0], centerCoor[1]))
     .force("link", d4.forceLink().id(function(d) { return d.id; }).distance(1).strength(0.7))
     .force("collide",
-      d4.forceCollide(function (d) { return radius(d.weight)*1.2 })
+      d4.forceCollide(function (d) { return radius(d.weight)*1.5 })
       .strength(0.9)
     )
     .force("radial", d4.forceRadial(width/4.5,centerCoor[0],centerCoor[1]).strength(0.5))
@@ -476,6 +485,32 @@ function flujosProveedores(summaries) {
     link = link.enter().append("line")
       .attr("stroke", function(d) {
         return link_colors[d.type];
+      })
+      .on("mouseover", function(d) {
+        dOverLink = d;
+        d4.select(this).style("cursor", "none");
+        var linkTooltip = d4.select("body")//svg
+        .append("div")
+        .attr('class', 'foreign-tooltip')
+        
+        linkTooltip.append("div")
+        .attr('class', 'node-tooltip')
+        .html(function(d) {
+          return '<p class="name">' + linkLabels[dOverLink.type] + ': ' + dOverLink.weight + '</p>';
+        });
+      })
+      .on("mousemove", function(d) {
+        // console.log(d4.mouse(this)[0]);
+        d4.select(".foreign-tooltip")
+        .style("left", (d4.event.pageX - 80) + "px")
+        .style("top", (d4.event.pageY + 10) + "px");
+      })
+      .on("mouseout", function(d) {
+        // tpActive = false;
+        dOverLink = [];
+        d4.select(this).style("cursor", "default");
+        d4.select(".foreign-tooltip")
+        .remove();
       })
       .merge(link);
 
