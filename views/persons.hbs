@@ -63,13 +63,13 @@
       </div>
     </div>
     <div class="row mb-2 tools-section">
-      <div class="col-6 col-m-6">
+      <div class="col-5 col-m-5">
         <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contacto">contáctanos.</a></p>
       </div>
       <div class="col-m-4">
         {{> table_lenght}}
       </div>
-      <div class="col-2 col-m-2">
+      <div class="col-3 col-m-3">
         <div class="dropdown">
           <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../images/icons/settings.svg" alt="Ícono Herramientas">
             Herramientas
@@ -100,8 +100,8 @@
         <div class="col-m-8">
           {{> blob_filter}}
         </div>
-        <div class="col-m-4" style="float: right; text-align: right;">
-          <div class="dataTables_info" id="person-index_info" role="status" aria-live="polite" style="margin-top: 5px; margin-bottom: 10px;">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
+        <div class="col-m-4">
+          <div class="dataTables_info" id="person-index_info" role="status" aria-live="polite" style="margin-bottom: 10px;">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
           </div>
         </div>
         <div class="col-m-12">
@@ -123,11 +123,7 @@
                     <div class="cardItemData">{{name}}</div>
                   </a>
                 </div>
-                <div class=" js-ocid no-title col-2 col-m-2">
-                  {{!-- <div class="cardItemTitle">enlace</div>
-                  <div class="cardItemData"></div> --}}
-                  <a href="/personas/{{id}}" class="button-link">Ver persona</a>
-                </div>
+                
                 <div class=" js-person-type col-m-8 col-8">
                   {{!-- <div class="cardItemTitle"></div>
                   <div class="cardItemData"></div> --}}
@@ -187,7 +183,9 @@
                     pesos mexicanos.
                   {{/if}}
                   </p>
-
+                </div>
+                <div class=" js-ocid no-title col-3 col-m-3">
+                  <a href="/personas/{{id}}" class="button-link">Ver persona</a>
                 </div>
               </div>
               {{/with}}

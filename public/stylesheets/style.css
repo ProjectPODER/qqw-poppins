@@ -206,7 +206,7 @@ h1,
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 h3,
 .h3 {
@@ -410,6 +410,9 @@ a:focus {
 .mt-2 {
   margin-top: 2rem;
 }
+.mt-3 {
+  margin-top: 3rem;
+}
 .mt-4 {
   margin-top: 4rem;
 }
@@ -457,6 +460,9 @@ hr {
 }
 .pd-nonleft {
   padding: 0.5rem 1rem 1rem 0;
+}
+.pd-1 {
+  padding: 1rem !important;
 }
 .filter-bar input[type="text"] {
   padding: 10px 5px;
@@ -1122,6 +1128,7 @@ button.reset-filters {
   font-weight: bold !important;
   color: #21018b;
   line-height: 1.8rem;
+  float: right;
 }
 .dataTables_length {
   text-align: right;
@@ -2073,8 +2080,6 @@ div.tab button.active {
   background-color: #ccc;
 }
 div.document-header {
-  display: flex;
-  align-items: flex-end;
   margin-bottom: 2rem;
   margin-top: 6rem;
 }
@@ -2398,7 +2403,7 @@ div.dataTables_paginate li.last a:after {
     position: relative;
   }
   .proyecto button,
-  .proyecto a {
+  .proyecto a.proyecto-link {
     width: 85%;
     bottom: 0;
     right: 0;
@@ -2536,7 +2541,7 @@ div.dataTables_paginate li.last a:after {
     margin: auto;
   }
   .card-pad {
-    padding: 1rem;
+    padding: 1rem 1rem 3rem;
   }
   .card-pad .button-link {
     font-size: 1rem;
@@ -2639,7 +2644,6 @@ div.dataTables_paginate li.last a:after {
   }
   div.landing-header-content p {
     font-size: 1.2rem;
-    text-align: left;
   }
   div.card-pad h3 strong {
     font-size: 2rem;
@@ -3176,6 +3180,27 @@ button.close {
 .profile-margin {
   margin-top: 6rem;
 }
+.about-sidebar.open {
+  display: block;
+  visibility: visible;
+  height: 100%;
+}
+#left-sidebar {
+  display: none;
+  background-color: #eaeaea;
+  text-align: center;
+  color: #3e3e3e;
+}
+.filters-link-lg {
+  display: block;
+}
+.filters-link-sm {
+  display: none;
+}
+.advance-filters fieldset,
+.advance-filters .search-submit {
+  display: block;
+}
 @media (max-width: 768px) {
   .fixed-title,
   .fixed-title-contract {
@@ -3214,6 +3239,86 @@ button.close {
   }
   .button-manual.left {
     text-align: center !important;
+  }
+  .pr-2 {
+    padding-right: 0;
+  }
+  .card-pad-ext {
+    padding-right: 0;
+  }
+  .pr-5 {
+    padding-right: 0;
+  }
+  .pl-5 {
+    padding-left: 0;
+  }
+  .proyecto a {
+    font-size: 13px;
+    white-space: initial;
+  }
+  div .proyecto-info-img p {
+    margin-bottom: 5rem;
+  }
+  .important-button-link {
+    font-size: 90%;
+  }
+  div.proyecto {
+    margin-right: 0;
+  }
+  section.investigaciones .center-button {
+    bottom: 30px;
+  }
+  h2 {
+    font-size: 1.7rem;
+  }
+  .sources-icons {
+    width: 4rem;
+  }
+  .text-left-sm {
+    text-align: left !important;
+  }
+  section.explore-data {
+    padding-top: 40px !important;
+  }
+  .tools-section,
+  .dataTables_length {
+    text-align: center;
+  }
+  .dataTables_info {
+    float: none;
+  }
+  .js-ocid {
+    float: none;
+    text-align: center;
+    margin-right: 0;
+  }
+  .js-ocid a.button-link {
+    display: block;
+  }
+  .js-amount {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .about-sidebar {
+    display: none;
+  }
+  #left-sidebar {
+    display: block;
+  }
+  .filters-link-lg {
+    display: none;
+  }
+  .filters-link-sm {
+    display: block;
+  }
+  .advance-filters fieldset,
+  .advance-filters .search-submit {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  footer {
+    position: relative !important;
   }
 }
 .home article margin-top 10% input[type="email"] {

@@ -171,24 +171,24 @@ function copyClipboard() {
      - $('footer').height()
    ));
  }
- function autoHeightManual() {
-   $('section.about-template').css('min-height', 0);
-   $('section.about-template').css('min-height', (
-     $(document).height()
-     - $('footer').height()
-   ));
- }
+//  function autoHeightManual() {
+//    $('section.about-template').css('min-height', 0);
+//    $('section.about-template').css('min-height', (
+//      $(document).height()
+//      - $('footer').height()
+//    ));
+//  }
 
  // onDocumentReady function bind
  $(document).ready(function() {
    autoHeight();
-   autoHeightManual();
+  //  autoHeightManual();
  });
 
  // onResize bind of the function
  $(window).resize(function() {
    autoHeight();
-   autoHeightManual();
+  //  autoHeightManual();
  });
 
 // Contact form about/contact.hbs
@@ -375,11 +375,22 @@ $(document).on("click",".hide-alert-bar",{},function(e) {
   $(e.target).parent(".alert-bar").fadeOut()
 });
 
+// Main menu
 $('#toggle').click(function() {
  $(this).toggleClass('active');
  $('#overlay').toggleClass('open');
 });
 
+// Left sidebar
+$('#left-sidebar').click(function() {
+  $('.about-sidebar').toggle(300);
+});
+
+// Left sidebar
+$('.filters-link-sm').click(function() {
+  $('.search-submit').toggle(200);
+  $('fieldset').toggle(300);
+});
 
 //Fixed perfil title
 $(window).scroll(function(e) {

@@ -1,9 +1,9 @@
 <div class="row document-body">
   <div class="col-3 col-m-3">
     <div class="filter-bar">
-      <form>
-          <h4 class="search-title">Filtros Avanzados</h4>
-
+      <form class="advance-filters">
+          <h4 class="search-title filters-link-lg">Filtros Avanzados</h4>
+          <h4 class="search-title filters-link-sm">Filtros Avanzados <i class="fas fa-angle-down" style="float: right"></i></h4>
           <fieldset name="proveedores">
             <p class="search-title">TÍTULO <a data-toggle="tooltip" data-placement="right" title="Título del contrato."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-2px;"></a></p>
             <div class="multiple-controls-group">
@@ -11,7 +11,6 @@
                 <input type="text" name="titulo" placeholder="Título del contrato" class="contract_title_filter multiple-control" value="{{filters.titulo.value }}">
                 <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control">
               </div>
-
             </div>
           </fieldset>
 
@@ -109,13 +108,13 @@
       </div>
     </div>
     <div class="row mb-2 tools-section">
-      <div class="col-6 col-m-6">
+      <div class="col-5 col-m-5">
         <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contacto">contáctanos.</a></p>
       </div>
       <div class="col-m-4">
         {{> table_lenght}}
       </div>
-      <div class="col-2 col-m-2">
+      <div class="col-3 col-m-3">
 
         {{!-- <div class="dropdown">
           <button class="button-tools dropdown-toggle" type="button" id="dropdownCsv" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -176,8 +175,8 @@
           <div class="col-m-8">
             {{> blob_filter}}
           </div>
-          <div class="col-m-4" style="float: right; text-align: right;">
-            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite" style="margin-top: 5px; margin-bottom: 10px;">Mostrando {{format_number (math (math current_page "*" result.size) "+" 1)}} a  {{format_number (math (math current_page "*" result.size) "+" result.size)}}{{#if (match "DEAD" result.count ) }}. No se pudo calcular el total de páginas. {{else}} de {{format_number result.count}}  resultados.{{/if}}
+          <div class="col-m-4">
+            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite" style="margin-bottom: 10px;">Mostrando {{format_number (math (math current_page "*" result.size) "+" 1)}} a  {{format_number (math (math current_page "*" result.size) "+" result.size)}}{{#if (match "DEAD" result.count ) }}. No se pudo calcular el total de páginas. {{else}} de {{format_number result.count}}  resultados.{{/if}}
             </div>
           </div>
           <div class="col-m-12">
@@ -208,11 +207,7 @@
                       {{!-- <div class="cardItemTitle"></div> --}}
                       <div class="cardItemData"></div>Vigente desde {{moment compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
                     </div>
-                    <div class=" js-ocid no-title col-2 col-m-2">
-                      {{!-- <div class="cardItemTitle">OCID</div>
-                      <div class="cardItemData"></div> --}}
-                      <a href="/contratos/{{encode compiledRelease.ocid}}" class="button-link">Ver contrato</a>
-                    </div>
+                    
                     <div class=" js-dependency col-3 col-m-3">
                       <div class="cardItemTitle">Dependencia</div>
                       {{!-- <div class="cardItemData"></div> --}}
@@ -274,6 +269,9 @@
                       <div class="cardItemTitle">Puntaje</div>
                       <div class="cardItemData"></div>47.62<span class="d100">/100</span>
                     </div> --}}
+                    <div class=" js-ocid no-title col-2 col-m-2">
+                      <a href="/contratos/{{encode compiledRelease.ocid}}" class="button-link">Ver contrato</a>
+                    </div>
                   </div>
                   {{/each}}
                 {{else}}
