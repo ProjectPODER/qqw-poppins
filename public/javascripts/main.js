@@ -381,15 +381,14 @@ $('#toggle').click(function() {
  $('#overlay').toggleClass('open');
 });
 
-// Left sidebar
+// Left sidebar about
 $('#left-sidebar').click(function() {
-  $('.about-sidebar').toggle(300);
+  $('.about-sidebar').toggleClass('open');
 });
 
-// Left sidebar
+// Advance filters
 $('.filters-link-sm').click(function() {
-  $('.search-submit').toggle(200);
-  $('fieldset').toggle(300);
+  $('.advance-filters').toggleClass('open');
 });
 
 //Fixed perfil title

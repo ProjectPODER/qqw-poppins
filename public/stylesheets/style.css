@@ -3180,15 +3180,12 @@ button.close {
 .profile-margin {
   margin-top: 6rem;
 }
-.about-sidebar.open {
-  display: block;
-  visibility: visible;
-  height: 100%;
-}
 #left-sidebar {
   display: none;
-  background-color: #eaeaea;
-  text-align: center;
+  background-color: #f7f7f7;
+  border-color: #9c9c9c;
+  border-width: 1px;
+  border-style: solid;
   color: #3e3e3e;
 }
 .filters-link-lg {
@@ -3197,9 +3194,13 @@ button.close {
 .filters-link-sm {
   display: none;
 }
-.advance-filters fieldset,
-.advance-filters .search-submit {
-  display: block;
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @media (max-width: 768px) {
   .fixed-title,
@@ -3299,9 +3300,6 @@ button.close {
     margin-bottom: 30px;
     text-align: center;
   }
-  .about-sidebar {
-    display: none;
-  }
   #left-sidebar {
     display: block;
   }
@@ -3311,14 +3309,52 @@ button.close {
   .filters-link-sm {
     display: block;
   }
-  .advance-filters fieldset,
-  .advance-filters .search-submit {
+  .advance-filters,
+  .about-sidebar {
     display: none;
+  }
+  .advance-filters.open,
+  .about-sidebar.open {
+    display: block;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
   }
 }
 @media (max-width: 992px) {
   footer {
     position: relative !important;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 .home article margin-top 10% input[type="email"] {

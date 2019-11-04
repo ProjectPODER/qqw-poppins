@@ -3015,16 +3015,13 @@ button
 .profile-margin
   margin-top 6rem
 
-.about-sidebar 
-  &.open 
-      display block
-      visibility visible
-      height 100%
-
 #left-sidebar
     display none
-    background-color #eaeaea
-    text-align center
+    background-color: #f7f7f7;
+    border-color: #9c9c9c;
+    border-width: 1px;
+    border-style: solid;
+    // text-align center
     color #3e3e3e
 
 .filters-link-lg
@@ -3033,10 +3030,15 @@ button
 .filters-link-sm
   display none
 
-.advance-filters
-  fieldset
-  .search-submit
-    display block
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
 
 @media (max-width: 768px)
     .fixed-title,
@@ -3114,9 +3116,7 @@ button
       display block
   .js-amount
     margin-bottom 30px
-    text-align center
-  .about-sidebar
-    display none
+    text-align center  
   #left-sidebar
     display block
   .filters-link-lg
@@ -3124,9 +3124,12 @@ button
   .filters-link-sm
     display block
   .advance-filters
-    fieldset
-    .search-submit
-      display none
+  .about-sidebar
+    display none
+    &.open
+        display block
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
 
 @media (max-width: 992px)
   footer 

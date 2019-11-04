@@ -33,26 +33,26 @@
         <div class="col-6 col-m-6 mb-2">
           <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> INFORMACIÓN GENERAL</h4>
         </div>
+        {{#ifCond result.compiledRelease.contract_amount.supplier '&&' result.compiledRelease.contract_amount.buyer}}
+        {{else}}
         <div class="col-m-6 col-6 mb-2 right-align">
-            {{#ifCond result.compiledRelease.contract_amount.supplier '&&' result.compiledRelease.contract_amount.buyer}}
-            {{else}}
-              {{#if result.compiledRelease.contract_amount.buyer}}
-              <h4 class="amount-data red-text">
-                {{format_amount result.compiledRelease.contract_amount.buyer}}
-              </h4>
-              {{/if}}
-              {{#if result.compiledRelease.contract_amount.supplier}}
-              <h4 class="amount-data green-text">
-                {{format_amount result.compiledRelease.contract_amount.supplier}}
-              </h4>
-              {{/if}}
-              {{#if result.compiledRelease.contract_amount.funder}}
-              <h4 class="amount-data funder-text">
-                {{format_amount result.compiledRelease.contract_amount.funder}}
-              </h4>
-              {{/if}}
-            {{/ifCond}}
+          {{#if result.compiledRelease.contract_amount.buyer}}
+          <h4 class="amount-data red-text">
+            {{format_amount result.compiledRelease.contract_amount.buyer}}
+          </h4>
+          {{/if}}
+          {{#if result.compiledRelease.contract_amount.supplier}}
+          <h4 class="amount-data green-text">
+            {{format_amount result.compiledRelease.contract_amount.supplier}}
+          </h4>
+          {{/if}}
+          {{#if result.compiledRelease.contract_amount.funder}}
+          <h4 class="amount-data funder-text">
+            {{format_amount result.compiledRelease.contract_amount.funder}}
+          </h4>
+          {{/if}}
         </div>
+        {{/ifCond}}
         <div class="col-12 col-m-12 flex">
           {{#if result.compiledRelease.contract_count.funder}}
             <div class="col-m-6 col-6 pd-nonleft">
