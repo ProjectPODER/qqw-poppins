@@ -2220,6 +2220,9 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
   color #fff
   cursor default
 
+.nodesChart
+    transform: translate(0, 20px);
+
 @media only screen and (min-width: 768px)
   .col-m-1
     width 8.33%
@@ -2417,8 +2420,6 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
       width 100%
       text-align left
       margin-bottom 10px
-  #right-menu
-    display none
   .investigaciones.row
     height 400px
   .addinfo-box
@@ -2445,6 +2446,8 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
       width 100%
       ul a
         font-size 1 rem
+  .nodesChart
+    transform: translate(0, 40px);
 
 .amount-index-contracts
   text-align right
@@ -2475,6 +2478,8 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
     margin-left 0
   .amount-index-contracts
     text-align left
+  #right-menu
+    display none
 
 @media only screen and (max-width: 700px)
   input[type=submit].landing-search-inputtext
@@ -3128,8 +3133,8 @@ button
     display none
     &.open
         display block
-        -webkit-animation: fadeIn 1s;
-        animation: fadeIn 1s;
+        -webkit-animation fadeIn 1s
+        animation fadeIn 1s
 
 @media (max-width: 992px)
   footer 

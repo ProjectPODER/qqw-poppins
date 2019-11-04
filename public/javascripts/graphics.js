@@ -130,9 +130,9 @@ function charts(idChart, dataChart) {
 
     nv.addGraph(function() {
     chart = nv.models.linePlusBarChart()
-        .margin({top: 0, right: 30, bottom: 10, left: 100})
-        .legendRightAxisHint(' [Eje derecho]')
-        .legendLeftAxisHint(' [Eje izquierdo]')
+        .margin({top: 0, right: 30, bottom: 15, left: 100})
+        .legendRightAxisHint(' [der.]')
+        .legendLeftAxisHint(' [izq.]')
         .color(function(d,i){ return barColors[d.originalKey]})
         .focusEnable(false)
 
@@ -331,6 +331,21 @@ function flujosProveedores(summaries) {
     { label: 'Regular', color: "#9467bd" }
   ];
 
+  const node_legend = [
+    { label: 'Institución', color: "#aec7e8" },
+    { label: 'Empresa', color: "#ff7f0e" },
+    { label: 'Persona', color: "#ffbb78" },
+    { label: 'Dependencia', color: "#2ca02c" },
+  ];
+
+  const link_legend = [
+    { label: 'Licitación abierta', color: "#98df8a" },
+    { label: 'Adjudicación Directa', color: "#ff9896" },
+    { label: 'Invitación a tres', color: "#d62728" },
+    { label: 'Sin definir', color: "#8b8b8b" },
+    { label: 'Regular', color: "#9467bd" }
+  ];
+
   const linkLabels = {
     "open": "Licitación abierta",
     "direct": "Adjudicación Directa",
@@ -398,7 +413,7 @@ function flujosProveedores(summaries) {
   var legendSpacing = 4;    
 
   var legend = svg.selectAll('.legend')                  
-          .data(name_legend)                                
+          .data(node_legend)                                
           .enter()                                             
           .append('g')                                         
           .attr('class', 'legend')                             
@@ -408,19 +423,43 @@ function flujosProveedores(summaries) {
             var horz = 0;                       // NEW
             var vert = i * height - offset;                    
             return 'translate(' + horz + ',' + vert + ')';     
-          });                                                  
-
-        legend.append('rect')                                  
-          .attr('width', legendRectSize)                       
-          .attr('height', legendRectSize)                      
+          });                                                    
+        
+        legend.append("circle")
+          .attr("cx", 7)
+          .attr("cy", 7.7) // 100 is where the first dot appears. 25 is the distance between dots
+          .attr("r", 7)
           .style('fill', function(d) { return d.color; })                                
-          .style('stroke', function(d) { return d.color; });                             
+          .style('stroke', function(d) { return d.color; });
 
         legend.append('text')                                  
           .attr('x', legendRectSize + legendSpacing)           
           .attr('y', legendRectSize - legendSpacing)           
-          .text(function(d) { return d.label; }); 
+          .text(function(d) { return d.label; });
+          
+  var legend2 = svg.selectAll('.legend2')                  
+          .data(link_legend)                                
+          .enter()                                             
+          .append('g')                                         
+          .attr('class', 'legend2')                             
+          .attr('transform', function(d, i) {                  
+            var height = legendRectSize + legendSpacing;       
+            var offset =  height * color.domain().length / 2;  
+            var horz = 150;                       // NEW
+            var vert = i * height - offset;                    
+            return 'translate(' + horz + ',' + vert + ')';     
+          });
 
+          legend2.append('rect')                                  
+          .attr('width', legendRectSize)                       
+          .attr('height', 4)                      
+          .style('fill', function(d) { return d.color; })                                
+          .style('stroke', function(d) { return d.color; });
+          
+          legend2.append('text')                                  
+          .attr('x', legendRectSize + legendSpacing)           
+          .attr('y', legendRectSize - legendSpacing)           
+          .text(function(d) { return d.label; });
 
 
   function update() {
