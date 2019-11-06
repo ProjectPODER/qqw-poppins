@@ -237,6 +237,7 @@ $("#send_info_email").click(function (e) {
       message: message,
       source: source,
       email: email,
+      url: document.location.href,
       type: "info"
   }, function (data) {
       if (data.status == "sent") {
@@ -276,6 +277,7 @@ $("#send_info_uc").click(function (e) {
       institution: institution,
       email: email,
       message: message,
+      url: document.location.href,
       type: "info-uc"
   }, function (data) {
       if (data.status == "sent") {
