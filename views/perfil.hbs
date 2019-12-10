@@ -107,12 +107,21 @@
               <p class="js-data">{{#each result.compiledRelease.source}}{{this.id}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
-          {{#ifCond result.compiledRelease.area.classification '==' 'country'}} 
-            <div class="col-m-2 col-2 pd-nonleft">
-              <p class="js-title-data">País</p>
-              <p class="js-data">{{result.compiledRelease.area.name}}</p>
-            </div>
-          {{/ifCond}}
+
+          {{#each result.compiledRelease.area }}
+              <div class="col-m-2 col-2 pd-nonleft">
+                <p class="js-title-data">
+                  {{#ifCond classification '==' 'country'}}País{{/ifCond}}
+                  {{#ifCond classification '==' 'city'}}Ciudad{{/ifCond}}
+                  {{#ifCond classification '==' 'region'}}Región{{/ifCond}}
+                  {{#ifCond classification '==' 'state'}}Estado{{/ifCond}}
+                </p>
+                <p class="js-data">
+                  {{name}}
+                </p>
+              </div>
+          {{/each}}
+          
           {{#ifCond type '==' 'persons'}}
             {{#ifCond result.compiledRelease.contract_count.buyer '>' '0'}}
               <div class="col-12 col-m-12">
