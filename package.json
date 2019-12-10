@@ -1,6 +1,6 @@
 {
   "name": "qqw-poppins",
-  "version": "0.9.51",
+  "version": "0.9.6",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -9,9 +9,12 @@
     "async-error-catcher": "1.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.0.0",
+    "dotenv-expand": "5.1.0",
     "express": "~4.16.1",
+    "express-cache-controller": "^1.1.0",
     "express-handlebars": "^3.0.2",
-    "hbs": "~4.0.4",
+    "hbs": "~4.0.6",
     "helper-moment": "^0.2.0",
     "http-errors": "~1.6.3",
     "jquery": "^3.4.1",
@@ -21,8 +24,6 @@
     "nodemailer": "^6.2.1",
     "qqw": "git+http://gitlab.rindecuentas.org/equipo-qqw/node-qqw.git#v0.2.1",
     "rss-parser": "3.7.0",
-    "stylus": "0.54.5",
-    "dotenv": "^8.0.0",
-    "dotenv-expand": "5.1.0"
+    "stylus": "0.54.5"
   }
 }

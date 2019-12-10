@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cacheControl = require('express-cache-controller');
 var stylus = require('stylus');
 var hbs = require('express-handlebars');
 var jquery = require('jquery');
@@ -37,6 +38,7 @@ app.engine('.hbs', hbs({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use(cacheControl());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -61,6 +63,9 @@ app.use(function(err, req, res, next) {
 
   console.error("/!\\ QuienEsQuien.Wiki APP Error",err);
 
+  res.cacheControl = {
+    noCache: true
+  }
   // render the error page
   res.status(err.status || 500);
   res.render('error', { error: true });
