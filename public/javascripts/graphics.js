@@ -134,10 +134,12 @@ function charts(idChart, dataChart) {
         .legendRightAxisHint(' [der.]')
         .legendLeftAxisHint(' [izq.]')
         .color(function(d,i){ return barColors[d.originalKey]})
-        .focusEnable(false)
+        .focusEnable(false)   
 
     chart.y1Axis
     .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
+
+    chart.forceX([0]);
 
     d3.select(idChart+' svg')
         .datum(dataChart)
