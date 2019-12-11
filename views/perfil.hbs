@@ -98,9 +98,9 @@
           {{#if result.compiledRelease.identifiers }}
             <div class="col-m-4 col-4 pd-nonleft">
               <p class="js-title-data">Identificadores</p>
-              <p class="js-data">
-                {{#each result.compiledRelease.identifiers}}
-                  {{scheme}}: {{id}}
+              {{#each result.compiledRelease.identifiers}}
+                <p class="js-data">
+                  {{scheme}}: {{id}}{{identifier}}
                   {{#ifCond scheme '==' 'RUPC'}} <a data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>{{/ifCond}}
                 {{/each}}</p>
             </div>
@@ -109,6 +109,14 @@
             <div class="col-m-2 col-2 pd-nonleft">
               <p class="js-title-data">Fuente(s)</p>
               <p class="js-data">{{#each result.compiledRelease.source}}{{this.id}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+            </div>
+          {{/if}}
+          {{#if result.compiledRelease.links}}
+            <div class="col-m-2 col-2 pd-nonleft">
+              <p class="js-title-data">Link(s)</p>
+              {{#each result.compiledRelease.links}}
+                <p class="js-data"><a href="{{this.id}}" target="_blank">{{this.id}}</a></p>
+              {{/each}}
             </div>
           {{/if}}
 
