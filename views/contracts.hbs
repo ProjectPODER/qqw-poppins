@@ -176,7 +176,11 @@
             {{> blob_filter}}
           </div>
           <div class="col-m-4">
-            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite" style="margin-bottom: 10px;">Mostrando {{format_number (math (math current_page "*" result.size) "+" 1)}} a  {{format_number (math (math current_page "*" result.size) "+" result.size)}}{{#if (match "DEAD" result.count ) }}. No se pudo calcular el total de páginas. {{else}} de {{format_number result.count}}  resultados.{{/if}}
+            <div class="dataTables_info" id="contract-index_info" role="status" aria-live="polite" style="margin-bottom: 10px;">
+              {{#if result.count }}
+              Mostrando {{format_number (math (math current_page "*" result.size) "+" 1)}} a  {{format_number (math (math current_page "*" result.size) "+" result.size)}}
+              {{#if (match "DEAD" result.count ) }}. No se pudo calcular el total de páginas. {{else}} de {{format_number result.count}}  resultados.{{/if}}
+              {{else}} Sin resultados.{{/if}}
             </div>
           </div>
           <div class="col-m-12">
@@ -207,7 +211,7 @@
                       {{!-- <div class="cardItemTitle"></div> --}}
                       <div class="cardItemData"></div>Vigente desde {{moment compiledRelease.contracts.0.period.startDate date lang="es" format="LL"}} hasta {{moment compiledRelease.contracts.0.period.endDate date lang="es" format="LL"}}
                     </div>
-                    
+
                     <div class=" js-dependency col-3 col-m-3">
                       <div class="cardItemTitle">Dependencia</div>
                       {{!-- <div class="cardItemData"></div> --}}
@@ -275,7 +279,16 @@
                   </div>
                   {{/each}}
                 {{else}}
-                No hay resultados para esta búsqueda. Por favor pruebe eliminando filtros. Si el problema persiste por favor contáctenos.
+                <div class="" style="padding: 2em 0;">
+                  <p>
+                    <strong>
+                      No se han encontrado resultados para esta búsqueda.
+                    </strong>
+                  </p>
+                  <p>
+                    Por favor pruebe eliminando filtros. Si el problema persiste contáctenos.
+                  </p>
+                </div>
                 {{/if}}
               </div>
             </div>
