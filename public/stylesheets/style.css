@@ -3122,6 +3122,7 @@ button.close {
   position: fixed !important;
   margin-top: -4px;
   z-index: 1;
+  width: 85%;
 }
 .fixed-title .breadcrumb,
 .fixed-title-contract .breadcrumb {
@@ -3206,30 +3207,6 @@ button.close {
   }
   to {
     opacity: 1;
-  }
-}
-@media (max-width: 768px) {
-  .fixed-title,
-  .fixed-title-contract {
-    width: 95%;
-  }
-}
-@media (min-width: 768px) {
-  .fixed-title,
-  .fixed-title-contract {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .fixed-title,
-  .fixed-title-contract {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  .fixed-title,
-  .fixed-title-contract {
-    width: 85%;
   }
 }
 .button-manual.right {
