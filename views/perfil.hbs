@@ -123,7 +123,7 @@
           {{#each result.compiledRelease.area }}
               <div class="col-m-2 col-2 pd-nonleft">
                 <p class="js-title-data">
-                  {{#ifCond classification '==' 'country'}}País 
+                  {{#ifCond classification '==' 'country'}}País
                     {{#ifCond subclassification '==' 'country-born'}}de nacimiento{{/ifCond}}
                     {{#ifCond subclassification '==' 'country-of-residence'}}de residencia{{/ifCond}}
                   {{/ifCond}}
@@ -136,7 +136,7 @@
                 </p>
               </div>
           {{/each}}
-          
+
           {{#ifCond type '==' 'persons'}}
             {{#ifCond result.compiledRelease.contract_count.buyer '>' '0'}}
               <div class="col-12 col-m-12">
@@ -229,7 +229,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="row memberships">
     <div class="content">
       <div class="col-9 col-m-9">
@@ -346,7 +346,16 @@
           {{#ifCond result.compiledRelease.contract_count.buyer '>' 3}}
           <p>Viendo hasta 3 de <strong>{{result.compiledRelease.contract_count.buyer}} contrato(s) en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link buyer-button">Ver todos los contratos</a>
+            {{#ifCond type '==' 'persons'}}
+              <a href="/contratos?responsable={{result.compiledRelease.name}}" class="button-link buyer-button">Ver todos los contratos de este responsable</a>
+            {{else }}
+              {{#ifCond result.compiledRelease.subclassification "==" "unidad-compradora"}}
+                <a href="/contratos?uc_id={{result.compiledRelease.id}}" class="button-link buyer-button">Ver todos los contratos de esta UC</a>
+              {{else }}
+                <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link buyer-button">Ver todos los contratos</a>
+              {{/ifCond}}
+            {{/ifCond }}
+
           </div>
           {{else}}
             <p>Viendo <strong>{{result.compiledRelease.contract_count.buyer}} contrato(s) en total</strong>. </p>
