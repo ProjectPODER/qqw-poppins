@@ -1,4 +1,4 @@
-{{#if filters }}
+{{#if filters.filters_active.value  }}
   <p class="search-terms-text">
     Búsqueda para:
     {{#each filters }}
@@ -15,4 +15,5 @@
       {{/ifCond}}
     {{/each}}
   </p>
+  {{else}}&nbsp;
 {{/if}}
