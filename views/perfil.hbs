@@ -115,7 +115,10 @@
           {{#each result.compiledRelease.area }}
               <div class="col-m-2 col-2 pd-nonleft">
                 <p class="js-title-data">
-                  {{#ifCond classification '==' 'country'}}País{{/ifCond}}
+                  {{#ifCond classification '==' 'country'}}País 
+                    {{#ifCond subclassification '==' 'country-born'}}de nacimiento{{/ifCond}}
+                    {{#ifCond subclassification '==' 'country-of-residence'}}de residencia{{/ifCond}}
+                  {{/ifCond}}
                   {{#ifCond classification '==' 'city'}}Ciudad{{/ifCond}}
                   {{#ifCond classification '==' 'region'}}Región{{/ifCond}}
                   {{#ifCond classification '==' 'state'}}Estado{{/ifCond}}
