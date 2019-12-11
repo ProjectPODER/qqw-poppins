@@ -349,8 +349,13 @@
             {{#ifCond type '==' 'persons'}}
               <a href="/contratos?responsable={{result.compiledRelease.name}}" class="button-link buyer-button">Ver todos los contratos de este responsable</a>
             {{else }}
-              <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link buyer-button">Ver todos los contratos</a>
+              {{#ifCond result.compiledRelease.subclassification "==" "unidad-compradora"}}
+                <a href="/contratos?uc_id={{result.compiledRelease.id}}" class="button-link buyer-button">Ver todos los contratos de esta UC</a>
+              {{else }}
+                <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link buyer-button">Ver todos los contratos</a>
+              {{/ifCond}}
             {{/ifCond }}
+
           </div>
           {{else}}
             <p>Viendo <strong>{{result.compiledRelease.contract_count.buyer}} contrato(s) en total</strong>. </p>
