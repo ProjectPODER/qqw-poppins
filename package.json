@@ -14,7 +14,7 @@
     "express": "~4.16.1",
     "express-cache-controller": "^1.1.0",
     "express-handlebars": "^3.0.2",
-    "hbs": "~4.0.6",
+    "hbs": "git+https://github.com/pillarjs/hbs.git#pull/186/head",
     "helper-moment": "^0.2.0",
     "http-errors": "~1.6.3",
     "jquery": "^3.4.1",
