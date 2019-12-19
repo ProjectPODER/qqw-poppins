@@ -61,9 +61,9 @@
             - La ley contempla estas excepciones a la Licitación Pública para utilizarse a reserva y responsabilidad de la depencia."><img src="images/icons/info.svg" alt="Question icon" style="width:13px; margin-top:-3px;"></a></p>
             <select id="tipo-adquisicion" name="tipo-adquisicion" class="search-select">
               <option value="">Todos</option>
-              <option value="Adjudicación Directa Federal" {{#ifCond filters.tipo-adquisicion.value "==" "Adjudicación Directa Federal" }}selected="selected"{{/ifCond}}>Adjudicación directa</option>
-              <option value="Invitación a Cuando Menos 3 Personas" {{#ifCond filters.tipo-adquisicion.value "==" "Invitación a Cuando Menos 3 Personas" }}selected="selected"{{/ifCond}}>Invitación a 3</option>
-              <option value="Licitación Pública|Licitación Pública con OSD" {{#ifCond filters.tipo-adquisicion.value "==" "Licitación Pública|Licitación Pública con OSD" }}selected="selected"{{/ifCond}}>Licitación</option>
+              <option value="direct" {{#ifCond filters.tipo-adquisicion.value "==" "Adjudicación Directa Federal" }}selected="selected"{{/ifCond}}>Adjudicación directa</option>
+              <option value="limited" {{#ifCond filters.tipo-adquisicion.value "==" "Invitación a Cuando Menos 3 Personas" }}selected="selected"{{/ifCond}}>Invitación a 3</option>
+              <option value="open" {{#ifCond filters.tipo-adquisicion.value "==" "Licitación Pública|Licitación Pública con OSD" }}selected="selected"{{/ifCond}}>Licitación</option>
             </select>
           </fieldset>
           <fieldset name="importe" style="margin-bottom: 7rem;">
