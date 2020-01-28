@@ -785,7 +785,8 @@ h2 card-image-container.document-title {
   left: 0;
 }
 .filter-bar,
-.addinfo-box {
+.addinfo-box,
+.addinfo-note {
   background-color: #f7f7f7;
   border-color: #9c9c9c;
   border-width: 1px;
@@ -1549,6 +1550,11 @@ a.see-contract {
   font-size: 1.5rem;
   margin-bottom: 3rem;
 }
+
+.addinfo-note {
+  border: 1px solid
+}
+
 .addinfo-form textarea,
 .contact-template textarea {
   padding: 10px 5px;
