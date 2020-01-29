@@ -17,7 +17,7 @@
 
           <fieldset name="no-contratos">
              <p class="search-title">Número de contratos como proveedor</p>
-             <a class="search-label count-bucket bucket" data-bucket="-0" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>Sin contratos</p></a>
+             <a class="search-label count-bucket bucket" data-bucket="-1" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>Sin contratos</p></a>
              <a class="search-label count-bucket bucket" data-bucket="1-10" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>1 a 10</p></a>
              <a class="search-label count-bucket bucket" data-bucket="10-100" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>10 a 100</p></a>
              <a class="search-label count-bucket bucket" data-bucket="100-1000" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>100 a 1,000</p></a>
@@ -124,7 +124,7 @@
                     <div class="cardItemData">{{name}}</div>
                   </a>
                 </div>
-                
+
                 <div class=" js-person-type col-m-8 col-8">
                   {{!-- <div class="cardItemTitle"></div>
                   <div class="cardItemData"></div> --}}
@@ -134,7 +134,7 @@
                   <p class="js-person-type" style="font-size: 16px;">
                   {{#if contract_count.supplier}}
                     <span class="js-contract-count green-text">
-                      <i class="fas fa-file-alt"></i> 
+                      <i class="fas fa-file-alt"></i>
                       {{contract_count.supplier}} contrato(s) como proveedor
                     </span>
                     por
@@ -154,7 +154,7 @@
                   <p class="js-person-type" style="font-size: 16px;">
                   {{#if contract_count.buyer}}
                     <span class="js-contract-count red-text">
-                      <i class="fas fa-file-alt"></i> 
+                      <i class="fas fa-file-alt"></i>
                       {{contract_count.buyer}} contrato(s) como comprador
                     </span>
                     por
