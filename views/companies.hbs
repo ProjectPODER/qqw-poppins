@@ -16,11 +16,11 @@
             </fieldset>
             <fieldset name="no-contratos">
                <p class="search-title">Número de contratos</p>
-               <a class="search-label count-bucket bucket" data-bucket="-0" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>Sin contratos</p></a>
-               <a class="search-label count-bucket bucket" data-bucket="1-2" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>1 a 2</p></a>
+               <a class="search-label count-bucket bucket" data-bucket="-1" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>Sin contratos</p></a>
                <a class="search-label count-bucket bucket" data-bucket="2-10" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>2 a 10</p></a>
                <a class="search-label count-bucket bucket" data-bucket="10-100" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>10 a 100</p></a>
-               <a class="search-label count-bucket bucket" data-bucket="100-100000" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>100 a 100,000</p></a>
+               <a class="search-label count-bucket bucket" data-bucket="100-1000" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>100 a 1,000</p></a>
+               <a class="search-label count-bucket bucket" data-bucket="1000-100000" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>1,000 a 100,000</p></a>
                <input type="text" name="minimo-cantidad-proveedor" id="minimo-cantidad-proveedor" placeholder="Mínimo" class="search-amount" value="{{filters.minimo-cantidad-proveedor.value }}">
                <input type="text" name="maximo-cantidad-proveedor" id="maximo-cantidad-proveedor" placeholder="Máximo" class="search-amount" value="{{filters.maximo-cantidad-proveedor.value }}">
              </fieldset>
@@ -139,7 +139,7 @@
                           <div class="cardItemData">{{name}}</div>
                         </a>
                       </div>
-                      
+
                       <div class=" col-m-8 col-8">
                         <div class="cardItemTitle"></div>
                         <div class="cardItemData"></div>
