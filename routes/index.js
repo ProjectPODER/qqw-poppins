@@ -21,6 +21,8 @@ router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRele
 /* GET companies index */
 router.get('/empresas', lib.searchPage("companies",{sort: "-compiledRelease.contract_amount.supplier"}));
 
+/* GET countries index */
+router.get('/paises', lib.searchPage("countries"));
 
 /* GET contract view */
 router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));
@@ -32,6 +34,9 @@ router.get('/personas/:id', lib.entityPage("persons","perfil","id"));
 router.get('/instituciones-publicas/:id', lib.entityPage("institutions","perfil","id"));
 
 router.get('/empresas/:id', lib.entityPage("companies","perfil", "id"));
+
+router.get('/countries/:id', lib.entityPage("countries","perfil", "id"));
+
 
 /* GET about */
 router.get('/sobre-qqw', lib.staticPage("about"));

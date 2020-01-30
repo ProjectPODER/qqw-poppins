@@ -3959,6 +3959,9 @@ footer .right {
 .overlay.open li:nth-of-type(5) {
   animation-delay: 0.55s;
 }
+.overlay.open li:nth-of-type(6) {
+  animation-delay: 0.6s;
+}
 .overlay nav {
   position: relative;
   height: 70%;
@@ -3980,7 +3983,7 @@ footer .right {
 .overlay ul li {
   display: block;
   height: 20%;
-  height: calc(100% / 5);
+  height: calc(100% / 6);
   min-height: 50px;
   position: relative;
   opacity: 0;
