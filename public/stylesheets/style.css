@@ -555,6 +555,10 @@ input[type=submit].landing-search-inputtext {
   color: #fff;
   cursor: pointer;
 }
+input[type=submit].landing-search-inputtext:disabled {
+  background-color: #666;
+  color: #eee;
+}
 div.card-pad h3 {
   color: #2b00f7;
   text-align: center;
@@ -785,8 +789,7 @@ h2 card-image-container.document-title {
   left: 0;
 }
 .filter-bar,
-.addinfo-box,
-.addinfo-note {
+.addinfo-box {
   background-color: #f7f7f7;
   border-color: #9c9c9c;
   border-width: 1px;
@@ -1550,11 +1553,6 @@ a.see-contract {
   font-size: 1.5rem;
   margin-bottom: 3rem;
 }
-
-.addinfo-note {
-  border: 1px solid
-}
-
 .addinfo-form textarea,
 .contact-template textarea {
   padding: 10px 5px;
@@ -3681,7 +3679,7 @@ img.name {
 .autosuggest {
   position: relative;
   display: inline-block;
-  width: 80%;
+  width: 100%;
 }
 .no-results .search-input-spinner,
 .autosuggest .search-input-spinner {
