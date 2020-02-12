@@ -555,10 +555,6 @@ input[type=submit].landing-search-inputtext {
   color: #fff;
   cursor: pointer;
 }
-input[type=submit].landing-search-inputtext:disabled {
-  background-color: #666;
-  color: #eee;
-}
 div.card-pad h3 {
   color: #2b00f7;
   text-align: center;
@@ -583,14 +579,10 @@ section.proyectos {
 }
 section.investigaciones {
   border-top: 2px dotted #3a32f9;
-  border-bottom: 2px dotted #3a32f9;
 }
-section.investigaciones .center-button {
-  position: absolute;
-  margin: 0.8rem auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
+section.investigaciones h2 {
+  font-weight: bold;
+  text-align: center;
 }
 section.tabs {
   margin-top: 2rem;
@@ -2055,12 +2047,26 @@ div .proyecto-info-img p {
   font-size: 1.1rem;
 }
 div.investigaciones-card {
-  width: 100%;
+  width: 85%;
   height: 100%;
-  position: relative;
+  overflow: hidden;
+}
+div.investigaciones-card .card-image-container {
+  width: 220px;
+  height: 140px;
+  float: left;
+}
+div.investigaciones-card .card-pad {
+  padding: 0.5rem 1rem;
+  font-size: 1.3em;
 }
 div.investigaciones-card img {
   height: auto;
+  min-width: 100%;
+  min-height: 100%;
+}
+div.investigaciones-card .center-button {
+  margin: 0.2rem auto;
 }
 div.tab {
   overflow: hidden;
@@ -3256,9 +3262,6 @@ button.close {
   div.proyecto {
     margin-right: 0;
   }
-  section.investigaciones .center-button {
-    bottom: 30px;
-  }
   h2 {
     font-size: 1.7rem;
   }
@@ -3679,7 +3682,7 @@ img.name {
 .autosuggest {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 80%;
 }
 .no-results .search-input-spinner,
 .autosuggest .search-input-spinner {
