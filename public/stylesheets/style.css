@@ -785,8 +785,7 @@ h2 card-image-container.document-title {
   left: 0;
 }
 .filter-bar,
-.addinfo-box,
-.addinfo-note {
+.addinfo-box {
   background-color: #f7f7f7;
   border-color: #9c9c9c;
   border-width: 1px;
@@ -1550,11 +1549,6 @@ a.see-contract {
   font-size: 1.5rem;
   margin-bottom: 3rem;
 }
-
-.addinfo-note {
-  border: 1px solid
-}
-
 .addinfo-form textarea,
 .contact-template textarea {
   padding: 10px 5px;
@@ -4073,4 +4067,13 @@ img.logo-horizontal {
     opacity: 1;
     left: 0;
   }
+}
+.index-list-title {
+  margin-bottom: 1rem;
+}
+.index-list-title a {
+  font-weight: bold;
+  color: #4e4e4e;
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }

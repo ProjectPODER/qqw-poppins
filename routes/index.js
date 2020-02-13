@@ -22,7 +22,7 @@ router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRele
 router.get('/empresas', lib.searchPage("companies",{sort: "-compiledRelease.contract_amount.supplier"}));
 
 /* GET countries index */
-router.get('/paises', lib.searchPage("countries"));
+router.get('/paises', lib.searchPage("countries", "countries"));
 
 /* GET contract view */
 router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));

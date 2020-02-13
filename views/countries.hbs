@@ -1,261 +1,76 @@
-<div class="row document-body">
-    <div class="col-3 col-m-3">
-        <div class="filter-bar">
-          <h4 class="search-title filters-link-sm">Filtrar <i class="fas fa-angle-down" style="float: right"></i></h4>
-          <form class="advance-filters">
-            <h4 class="search-title filters-link-lg">Filtrar</h4>
-            <fieldset name="organizaciones">
-              <p class="search-title">Buscar institución</p>
-              <div class="multiple-controls-group">
-                <div class="multiple-control-container">
-                  <input type="text" name="filtername" placeholder="NOMBRE" class="org_name_filter multiple-control" value="{{filters.filtername.value }}">
-                  <!-- <img src="images/button-no.png" alt="quitar" class="form-control remove-field-control"> -->
+<section>
+    <div class="row">
+        <div class="content">
+            <div class="col-12 col-m-12">
+                <div class="row document-header">
+                    <div class="col-2 col-m-12">
+                        <h2 class="document-title">Países</h2>
+                    </div>
+                    <div class="col-10 col-m-12">
+                        <p class="document-description">Entidades y dependencias del gobierno, incluyendo empresas productivas del estado. Ordenadas por el importe total de contratos como comprador, de mayor a menor.</p>
+                    </div>
                 </div>
-              </div>
-              <!-- <img src="images/button-yes.png" alt="agregar" class="form-control add-field-control"> -->
-            </fieldset>
-            <fieldset name="no-contratos">
-               <p class="search-title">Número de contratos por comprador</p>
-               <a class="search-label count-bucket bucket" data-bucket="-2" data-bucket-name="cantidad" data-bucket-type="comprador"><p>Hasta 2</p></a>
-               <a class="search-label count-bucket bucket" data-bucket="2-10" data-bucket-name="cantidad" data-bucket-type="comprador"><p>2 a 10</p></a>
-               <a class="search-label count-bucket bucket" data-bucket="10-100" data-bucket-name="cantidad" data-bucket-type="comprador"><p>10 a 100</p></a>
-               <a class="search-label count-bucket bucket" data-bucket="100-1000" data-bucket-name="cantidad" data-bucket-type="comprador"><p>100 a 1,000</p></a>
-               <a class="search-label count-bucket bucket" data-bucket="1000-" data-bucket-name="cantidad" data-bucket-type="comprador"><p>Más de 100mil</p></a>
-               <input type="text" name="minimo-cantidad-comprador" id="minimo-cantidad-comprador" placeholder="Mínimo" class="search-amount" value="{{filters.minimo-cantidad-comprador.value }}">
-               <input type="text" name="maximo-cantidad-comprador" id="maximo-cantidad-comprador" placeholder="Máximo" class="search-amount" value="{{filters.maximo-cantidad-comprador.value }}">
-             </fieldset>
-              <fieldset name="importe">
-                <p class="search-title">Importe del contrato como comprador
-                  <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
-                </p>
-                <a class="search-label importe-bucket bucket" data-bucket="0-1000000" data-bucket-name="importe" data-bucket-type="comprador">
-                  <p>Menor a 1 millón</p>
-                </a>
-                <a class="search-label importe-bucket bucket" data-bucket="1000000-10000000" data-bucket-name="importe" data-bucket-type="comprador">
-                  <p>Entre 1 millón y 10 millones</p>
-                </a>
-                <a class="search-label importe-bucket bucket" data-bucket="10000000-100000000" data-bucket-name="importe" data-bucket-type="comprador">
-                  <p>Entre 10 millones y 100 millones</p>
-                </a>
-                <a class="search-label importe-bucket bucket" data-bucket="100000000-100000000000" data-bucket-name="importe" data-bucket-type="comprador">
-                  <p>Entre 100 millones y 100 mil millones</p>
-                </a>
-                <a class="search-label importe-bucket bucket" data-bucket="100000000000-" data-bucket-name="importe" data-bucket-type="comprador">
-                  <p>Más de 100 mil millones</p>
-                </a>
-                <input type="text" id="minimo-importe-comprador" name="minimo-importe-comprador" placeholder="Mínimo" class="search-amount" value="{{filters.minimo-importe-comprador.value}}">
-                <input type="text" id="maximo-importe-comprador" name="maximo-importe-comprador" placeholder="Máximo" class="search-amount" value="{{filters.maximo-importe-comprador.value}}">
-              </fieldset>
-
-              <fieldset name="no-contratos">
-                 <p class="search-title">Número de contratos como proveedor</p>
-                 <a class="search-label count-bucket bucket" data-bucket="-2" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>Hasta 2</p></a>
-                 <a class="search-label count-bucket bucket" data-bucket="2-5" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>2 a 5</p></a>
-                 <a class="search-label count-bucket bucket" data-bucket="5-10" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>5 a 10</p></a>
-                 <a class="search-label count-bucket bucket" data-bucket="10-100" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>10 a 100</p></a>
-                 <a class="search-label count-bucket bucket" data-bucket="1000-" data-bucket-name="cantidad" data-bucket-type="proveedor"><p>Más de 1000</p></a>
-                 <input type="text" name="minimo-cantidad-proveedor" id="minimo-cantidad-proveedor" placeholder="Mínimo" class="search-amount" value="{{filters.minimo-cantidad-proveedor.value }}">
-                 <input type="text" name="maximo-cantidad-proveedor" id="maximo-cantidad-proveedor" placeholder="Máximo" class="search-amount" value="{{filters.maximo-cantidad-proveedor.value }}">
-               </fieldset>
-                <fieldset name="importe" style="margin-bottom: 7rem;">
-                  <p class="search-title">Importe del contrato como proveedor
-                    <a data-toggle="tooltip" data-placement="right" title="Importe del contrato sin incluir el impuesto al valor agregado."><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>
-                  </p>
-                  <a class="search-label importe-bucket bucket" data-bucket="0-1000" data-bucket-name="importe" data-bucket-type="proveedor">
-                    <p>Menor a mil</p>
-                  </a>
-                  <a class="search-label importe-bucket bucket" data-bucket="1000-10000" data-bucket-name="importe" data-bucket-type="proveedor">
-                    <p>Entre mil y 10 mil</p>
-                  </a>
-                  <a class="search-label importe-bucket bucket" data-bucket="10000-100000" data-bucket-name="importe" data-bucket-type="proveedor">
-                    <p>Entre 10 mil y 100 mil</p>
-                  </a>
-                  <a class="search-label importe-bucket bucket" data-bucket="100000-1000000" data-bucket-name="importe" data-bucket-type="proveedor">
-                    <p>Entre 100 mil y 1 millón</p>
-                  </a>
-                  <a class="search-label importe-bucket bucket" data-bucket="1000000-" data-bucket-name="importe" data-bucket-type="proveedor">
-                    <p>Más de 1 millón</p>
-                  </a>
-                  <input type="text" id="minimo-importe-proveedor" name="minimo-importe-proveedor" placeholder="Mínimo" class="search-amount" value="{{filters.minimo-importe-proveedor.value}}">
-                  <input type="text" id="maximo-importe-proveedor" name="maximo-importe-proveedor" placeholder="Máximo" class="search-amount" value="{{filters.maximo-importe-proveedor.value}}">
-
-                </fieldset>
-
-            <input type="hidden" name="size" value="{{ filters.size.value }}">
-            <input type="submit" class="search-submit fixed-filter-button" value="FILTRAR">
-            <!-- <button type="reset" class="btn btn-default reset-filters">LIMPIAR</button> -->
-          </form>
-        </div>
-    </div>
-    <div class="col-9 col-m-9 orgs-content">
-        <div class="row document-header">
-          <div class="col-3 col-m-12">
-            <h2 class="document-title">Instituciones</h2>
-          </div>
-          <div class="col-9 col-m-12">
-            <p class="document-description">Entidades y dependencias del gobierno, incluyendo empresas productivas del estado. Ordenadas por el importe total de contratos como comprador, de mayor a menor.</p>
-          </div>
-        </div>
-        <div class="row mb-2 tools-section">
-          <div class="col-5 col-m-5">
-            <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contacto">contáctanos.</a></p>
-          </div>
-          <div class="col-m-4">
-            {{> table_lenght}}
-          </div>
-          <div class="col-3 col-m-3">
-            <div class="dropdown">
-              <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../images/icons/settings.svg" alt="Ícono Herramientas">
-                Herramientas
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu pull-right" aria-labelledby="dropdownTools">
-                <li class="dropdown-header">Compartir</li>
-                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.quienesquien.wiki{{share_url}}&t=QuienesQUienWiki" target="_blank"><img class="share-icons" src="../images/icons/facebook.svg" alt="Facebook">Facebook</a></li>
-                <li><a href="https://twitter.com/intent/tweet?text=Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas..&url=https://www.quienesquien.wiki{{share_url}}&via=ProjectPODER" target="_blank"><img class="share-icons" src="../images/icons/twitter.svg" alt="Twitter">Twitter</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">URL de la API</li>
-                <li class="copy-clip">
-                  <input id="apiUrl" type="text" name="destinatario" value="{{result.api_url}}">
-                  <button class="btn-copy" onclick="copyClipboard()">Copiar URL</button>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li class="copy-clip">
-                  <a class="btn-csv" href="{{url_csv result.api_url}}" download="datos-QQW.csv" target="_blank">Descargar CSV <img src="../images/icons/info.svg" alt="icon" class="info-icon" data-toggle="tooltip" data-placement="right" title="Descarga CSV, limitada a 1000 filas."></a>
-                  <a href="https://quienesquienapi.readthedocs.io/es/latest/" class="doc-download-link">Ver documentación</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        {{!--
-          //Comentado para ocultar puntaje
-
-        <div class="search-order-form">
-          <form class="form-inline">
-            <label for="search-order">Ordenar por</label>
-            <select class="form-control input-sm" name="search-order" id="search-order">
-              <option value="cantidad">Cantidad de contratos (de mayor a menor)</option>
-              <option value="puntaje">Puntaje (de mayor a menor)</option>
-            </select>
-          </form>
-        </div>
-        --}}
-
-        {{!-- {{> tabular table=TabularTables.Orgs
-        id="organization-index"
-        class=""}} --}}
-        <div id="organization-index_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-          <div>
-            <div class="col-m-8">
-              {{> blob_filter}}
-            </div>
-            <div class="col-m-4">
-              <div class="dataTables_info" id="organization-index_info" role="status" aria-live="polite" style="margin-bottom: 10px;">Mostrando {{math current_page "+" 1}} de {{result.pages}} páginas.
-              </div>
-            </div>
-            <div class="col-m-12">
-              <div id="organization-index_processing" class="dataTables_processing panel panel-default" style="display: none;">
-                <div class="loading-container">
-                  <div class="loading">
-                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                  </div>
+                <div class="row mb-2 tools-section">
+                    <div class="col-5 col-m-5">
+                        <p class="document-description">Si quieres una búsqueda más avanzada, <a href="/contacto">contáctanos.</a></p>
+                    </div>
+                    <div class="col-m-4">
+                        {{> table_lenght}}
+                    </div>
+                    <div class="col-3 col-m-3">
+                        <div class="dropdown">
+                            <button class="button-tools dropdown-toggle" type="button" id="dropdownTools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><img src="../images/icons/settings.svg" alt="Ícono Herramientas">
+                                Herramientas
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" aria-labelledby="dropdownTools">
+                                <li class="dropdown-header">Compartir</li>
+                                <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.quienesquien.wiki{{share_url}}&t=QuienesQUienWiki" target="_blank"><img class="share-icons" src="../images/icons/facebook.svg" alt="Facebook">Facebook</a></li>
+                                <li><a href="https://twitter.com/intent/tweet?text=Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas..&url=https://www.quienesquien.wiki{{share_url}}&via=ProjectPODER" target="_blank"><img class="share-icons" src="../images/icons/twitter.svg" alt="Twitter">Twitter</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">URL de la API</li>
+                                <li class="copy-clip">
+                                    <input id="apiUrl" type="text" name="destinatario" value="{{result.api_url}}">
+                                    <button class="btn-copy" onclick="copyClipboard()">Copiar URL</button>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li class="copy-clip">
+                                    <a class="btn-csv" href="{{url_csv result.api_url}}" download="datos-QQW.csv" target="_blank">Descargar CSV <img src="../images/icons/info.svg" alt="icon" class="info-icon" data-toggle="tooltip" data-placement="right" title="Descarga CSV, limitada a 1000 filas."></a>
+                                    <a href="https://quienesquienapi.readthedocs.io/es/latest/" class="doc-download-link">Ver documentación</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div id="organization-index" class="dataTable" aria-describedby="organization-index_info" role="grid">
-                <div class="dataCardBody">
-                  {{# if result.data.length }}
+            </div>
+            <div class="col-12 col-m-12">
+                {{#if result.data.length }}
                     {{#each result.data}}
-                    {{#with compiledRelease }}
-                    <div role="row" class="search-card odd">
-                      <div class=" js-title no-title search-result-title col-m-10 col-10">
-                        <div class="cardItemTitle">Nombre</div>
-                        <a href="/instituciones-publicas/{{id}}">
-                          <div class="cardItemData">{{name}}</div>
-                        </a>
-                      </div>
-                      
-                      <div class=" col-m-8 col-8">
-                        <div class="cardItemTitle"></div>
-                        <div class="cardItemData"></div>
-                        <p class="js-person-type" style="font-size: 16px;">
-                          <img src="images/icons/institucion-gray-light.svg" alt="" class="icon">
-                          Institución
-                        </p>
-                        <p class="js-person-type" style="font-size: 16px;">
-                        {{#if contract_count.buyer}}
-                          <span class="js-contract-count red-text">
-                            <i class="fas fa-file-alt"></i>
-                            {{contract_count.buyer}} contrato(s) como comprador
-                          </span>
-                          por
-                          <span class="js-contract-amount red-text">
-                            {{format_amount contract_amount.buyer}}
-                          </span>
-                          pesos mexicanos.
-                          {{else}}
-                          <span class="js-person-type">
-                            Sin contratos como comprador.
-                          </span>
-                        {{/if}}
-                        </p>
-                        <p class="js-person-type" style="font-size: 16px;">
-                        {{#if contract_count.supplier}}
-                          <span class="js-contract-count green-text">
-                            <i class="fas fa-file-alt"></i>
-                            {{contract_count.supplier}} contrato(s) como proveedor
-                          </span>
-                          por
-                          <span class="js-contract-amount green-text">
-                            {{#ifCond contract_amount.supplier '==' '0'}}
-                            {{else}}
-                              {{format_amount contract_amount.supplier}}
-                            {{/ifCond}}
-                          </span>
-                          pesos mexicanos.
-                          {{else}}
-                            <span class="js-person-type">
-                              Sin contratos como proveedor.
-                            </span>
-                        {{/if}}
-                        </p>
-                        <p class="js-person-type" style="font-size: 16px;">
-                        {{#if contract_count.funder}}
-                          <span class="js-contract-count funder-text">
-                            <i class="fas fa-file-alt"></i>
-                            {{contract_count.funder}} contrato(s) como financiador
-                          </span>
-                          por
-                          <span class="js-contract-amount funder-text">
-                            {{#ifCond contract_amount.supplier '==' '0'}}
-                            {{else}}
-                              {{format_amount contract_amount.funder}}
-                            {{/ifCond}}
-                          </span>
-                          pesos mexicanos.
-                        {{/if}}
-                        </p>
-
-                      </div>
-                      {{!-- <div class=" js-score col-2 col-m-2 hidden">
-                        <div class="cardItemTitle">Puntaje</div>
-                        <div class="cardItemData"></div>51.19<span class="d100">/100</span>
-                      </div> --}}
-                      <div class=" js-ocid no-title col-3 col-m-3">
-                        <a href="/instituciones-publicas/{{id}}" class="button-link">Ver institución</a>
-                      </div>
+                    {{#with compiledRelease}}
+                    <div class="index-list-item">
+                        <div class="index-list-title">
+                            <a href="/paises/{{id}}">
+                                <i class="fas fa-flag"></i> {{name}}
+                            </a>
+                        </div>
+                        <div class="index-list-elements">
+                            <p class="index-list-element">Element</p>
+                        </div>
+                        <div class="index-list-button">
+                            <a href="/paises/{{id}}"><i class="far fa-arrow-alt-circle-right"></i></a>
+                        </div>
+                        <hr>
                     </div>
                     {{/with}}
                     {{/each}}
-                  {{else}}
-                  No hay resultados para esta búsqueda. Por favor pruebe eliminando filtros. Si el problema persiste por favor contáctenos.
-                  {{/if}}
-                </div>
-              </div>
-              {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
+                {{else}}
+                No hay resultados para esta búsqueda. Por favor pruebe eliminando filtros. Si el problema persiste por favor contáctenos.
+                {{/if}}
             </div>
-          </div>
+            <div class="col-12 col-m-12">
+                {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
+            </div>
         </div>
-
     </div>
-</div>
+</section>
+
