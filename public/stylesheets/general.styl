@@ -229,7 +229,7 @@ p
 .img-fluid
     max-width 100%
     height auto
-    
+
 .flexbox-container-modal
   display -ms-flex
   display -webkit-flex
@@ -328,7 +328,7 @@ a, .cursor-pointer
     padding-left 15px
     margin-right auto
     margin-left auto
-        
+
 @media (min-width: 768px)
     .container
         width 750px
@@ -371,7 +371,7 @@ a
 
 .green-text
   color #278529 !important
-  
+
 .funder-text
   color #b6893e !important
 
@@ -383,7 +383,7 @@ a
 
 .mb-1
   margin-bottom 1rem !important
-  
+
 .mb-1-2
   margin-bottom 1.2rem !important
 
@@ -571,15 +571,10 @@ section
   &.proyectos
     background-color #110046
   &.investigaciones
-    // background-color #f7f7f7
     border-top 2px dotted #3a32f9
-    border-bottom 2px dotted #3a32f9
-    .center-button
-      position absolute
-      margin 0.8rem auto
-      bottom 0
-      left: 0;
-      right: 0;
+    h2
+      font-weight bold
+      text-align center
   &.tabs
     margin-top 2rem
     min-height 100vh
@@ -1309,7 +1304,7 @@ a
       color #9b9b9b
       text-decoration none
       padding 5px 10px !important
-      i 
+      i
         margin-right 10px
         // padding 4px
 
@@ -1317,7 +1312,7 @@ a
   // background-color #2d1c9d
   // color #ffffff
   color #2d1c9d
-      
+
 .menu-profile
   margin-top 0 !important
 
@@ -1325,7 +1320,7 @@ a
 .active > .evaluacion i
   color #2b00f7 !important
   font-weight bold
-  
+
 .rubro-list
   &::before
     content ''
@@ -1975,11 +1970,23 @@ div
       padding-top 1rem
       font-size 1.1rem
   &.investigaciones-card
-    width 100%
+    width 85%
     height 100%
-    position relative
+    overflow hidden
+    .card-image-container
+      width 220px
+      height 140px
+      float left
+    .card-pad
+      padding 0.5rem 1rem
+      font-size 1.3em
     img
       height auto
+      min-width 100%
+      min-height 100%
+    .center-button
+      margin 0.2rem auto
+
   &.tab
     overflow hidden
     border 2px dotted #3a32f9
@@ -2889,7 +2896,7 @@ button
 
 .supplier-button
   background #278529 !important
-  
+
 .funder-button
   background #b6893e !important
 
@@ -2962,7 +2969,7 @@ button
   -webkit-transition height .35s
   -moz-transition height .35s
   transition height .35s
-  
+
 .fixed-title,
 .fixed-title-contract
   height 70px
@@ -2972,7 +2979,7 @@ button
   z-index 1
   width 85%
   .breadcrumb
-    padding-top 0 
+    padding-top 0
     margin-bottom 0 !important
     h4
       overflow hidden
@@ -2987,7 +2994,7 @@ button
       white-space nowrap
       text-overflow ellipsis
       -webkit-transition all .25s ease
-      -moz-transition all .25s ease 
+      -moz-transition all .25s ease
       transition all .25s ease
   .contract-amount
     width 35%
@@ -2999,9 +3006,9 @@ button
       white-space nowrap
       text-overflow ellipsis
       -webkit-transition all .25s ease
-      -moz-transition all .25s ease 
+      -moz-transition all .25s ease
       transition all .25s ease
-  img.icon-lf 
+  img.icon-lf
     width 15px
   hr
     margin-top 0 !important
@@ -3011,10 +3018,10 @@ button
   .description-data-title
     width 65%
     float left
-    
+
 .profile-menu-margin
   margin-top 10rem
-  
+
 .contract-margin
   margin-top 11.5rem
 
@@ -3053,7 +3060,7 @@ button
 //     .fixed-title,
 //     .fixed-title-contract
 //         width 95%
-        
+
 // @media (min-width: 768px)
 //     .fixed-title,
 //     .fixed-title-contract
@@ -3068,7 +3075,7 @@ button
 //     .fixed-title,
 //     .fixed-title-contract
 //         width 85%
-        
+
 .button-manual
   &.right
     text-align right !important
@@ -3088,7 +3095,7 @@ button
     padding-right 0
   .card-pad-ext
     padding-right 0
-  .pr-5 
+  .pr-5
     padding-right 0
   .pl-5
     padding-left 0
@@ -3101,8 +3108,6 @@ button
     font-size 90%
   div.proyecto
     margin-right 0
-  section.investigaciones .center-button
-    bottom 30px
   h2
     font-size 1.7rem
   .sources-icons
@@ -3125,7 +3130,7 @@ button
       display block
   .js-amount
     margin-bottom 30px
-    text-align center  
+    text-align center
   #left-sidebar
     display block
   .filters-link-lg
@@ -3141,7 +3146,5 @@ button
         animation fadeIn 1s
 
 @media (max-width: 992px)
-  footer 
+  footer
     position relative !important
-
-
