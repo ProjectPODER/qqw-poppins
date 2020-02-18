@@ -48,19 +48,33 @@
                     {{#each result.data}}
                     {{#with compiledRelease}}
                     <div class="index-list-item">
-                        <div class="index-list-title">
-                            <a href="/paises/{{id}}">
-                                <i class="fas fa-flag"></i> {{name}}
-                            </a>
-                        </div>
-                        <div class="index-list-elements">
-                            <p class="index-list-element">Element</p>
+                        <div class="index-list-group">
+                            <div class="index-list-title">
+                                <a href="/paises/{{id}}">
+                                    <i class="fas fa-flag"></i> {{name}}
+                                </a>
+                            </div>
+                            <div class="index-list-elements">
+                                <div class="left-elements">
+                                    <p class="index-list-element"><i class="fas fa-venus"></i> 153 consejeras</p>
+                                    <p class="index-list-element"><i class="fas fa-mars"></i> 1230 consejeros</p>
+                                    <p class="index-list-element"><i class="fas fa-hashtag"></i> 5° posición en ranking</p>
+                                </div>
+                                <div class="right-elements">
+                                    <p class="index-list-element"><img src="../images/icons/consejeras.png" width="18"> 12.93 consejeros por cada consejera</p>
+                                    <p class="index-list-element"><img src="../images/icons/sinconsejeras.png" width="13"> 42.25% empresas sin consejeras</p>
+                                    <a href="">
+                                        <p class="index-list-element"><i class="fas fa-chart-line"></i> Bolsa Mexicana de Valores</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="index-list-button">
                             <a href="/paises/{{id}}"><i class="far fa-arrow-alt-circle-right"></i></a>
                         </div>
                         <hr>
                     </div>
+                    <hr class="hr-index">
                     {{/with}}
                     {{/each}}
                 {{else}}
