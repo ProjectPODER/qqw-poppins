@@ -22,7 +22,7 @@ router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRele
 router.get('/empresas', lib.searchPage("companies",{sort: "-compiledRelease.contract_amount.supplier"}));
 
 /* GET countries index */
-router.get('/paises', lib.searchPage("countries"));
+router.get('/paises', lib.searchPage("countries", "countries"));
 
 /* GET contract view */
 router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));
@@ -35,7 +35,9 @@ router.get('/instituciones-publicas/:id', lib.entityPage("institutions","perfil"
 
 router.get('/empresas/:id', lib.entityPage("companies","perfil", "id"));
 
-router.get('/countries/:id', lib.entityPage("countries","perfil", "id"));
+router.get('/paises/:id', lib.staticPage("profiles"));
+
+router.get('/paises/:id/mujeresenlabolsa', lib.staticPage("country-mujeres"));
 
 
 /* GET about */
