@@ -447,7 +447,7 @@ hr {
   color: #5c5c5c !important;
 }
 .text-white {
-  color: #fff;
+  color: #fff !important;
 }
 .text-darkblue {
   color: #2d1c9d;
@@ -3349,6 +3349,33 @@ button.close {
 }
 #mujeresenlabolsa .container-button .stockexchange-out {
   background: #008075 !important;
+}
+.bg-purple {
+  background: #4900a3;
+}
+.variations-container {
+  padding: 3rem 2rem;
+}
+.column-one {
+  display: flex;
+  align-items: center;
+}
+.column-one .data-icon {
+  font-size: 3rem;
+  color: #fff;
+  margin-right: 5px;
+}
+.column-one .variation-icon {
+  font-size: 3rem;
+}
+.data-variation-container p {
+  margin-bottom: 0;
+  color: #fff !important;
+}
+.data-variation-container p span {
+  font-weight: normal;
+  font-size: 0.8rem;
+  margin-left: 10px;
 }
 @-moz-keyframes fadeIn {
   from {

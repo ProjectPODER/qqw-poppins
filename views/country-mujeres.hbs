@@ -12,11 +12,11 @@
           <div class="gd-col-left-wrapper col-m-12">
               <div class="description-data-title">
                 <h3 title="{{ result.compiledRelease.name}}">
-                    <img src="../images/icons/mexico.png" alt="" style="width: 42px; margin-top: -5px;">
+                    <img src="../../images/icon-mujeresenlabolsa.png" alt="Mujeres en la bolsa" style="width: 30px; margin-top: -4px;">
                   {{!-- {{{ get_classification_icon type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
                   {{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}:
                   {{ result.compiledRelease.name}} --}}
-                  México
+                  Mujeres en la Bolsa: México
                 </h3>
               </div>
           </div>
@@ -28,52 +28,32 @@
     </div>
   </div>
 </section>
-<section class="profile" id="mujeresenlabolsa">
+<section class="profile" id="variaciones">
   <div class="row">
     <div class="content">
-      <div class="col-9 col-m-9">
-        <div class="col-6 col-m-6 mb-2">
-          {{!-- <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> INFORMACIÓN GENERAL</h4> --}}
-          <img src="../images/logo-mujeresenlabolsa.png" alt="Mujeres en la Bolsa" class="logo-mujeres">
-          <img src="../images/bolsa-mexico.jpg" alt="Bolsa de Valores" class="stockexchange-img">
-        </div>
-        <div class="col-6 col-m-6 mt-2">
+      <div class="col-9 col-m-9 bg-purple">
+        <div class="variations-container">
+            <div class="col-m-12 col-12">
+                <h4 class="description-data-subtitle text-white"><i class="fas fa-arrows-alt-v"></i> VARIACIONES ANUALES</h4>
+            </div>
             <div class="col-6 col-m-6">
-                <div class="data-icon">
-                    <i class="fas fa-venus"></i>
-                    <div>
+                <h4 class="description-data-subtitle text-white text-center">2020</h4>
+                <div class="column-one">
+                    <i class="fas fa-venus data-icon"></i>
+                    <i class="fas fa-sort-up variation-icon up"></i>
+                    {{!-- <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract"> --}}
+                    <div class="data-variation-container">
+                        <p class="js-data">153 <span>9.32%</span></p>
                         <p class="js-title-data">Consejeras</p>
-                        <p class="js-data">153</p>
-                    </div> 
+                    </div>
                 </div>
             </div>
             <div class="col-6 col-m-6">
-                <div class="data-icon">
-                    <i class="fas fa-mars"></i>
-                    <diV>
-                        <p class="js-title-data">Consejeros</p>
-                        <p class="js-data">153</p>
-                    </div> 
-                </div>
+                <h4 class="description-data-subtitle text-white text-center">2019</h4>
             </div>
-            <div class="col-12 col-m-12">
-                <p class="data-description">Mujeres en la Bolsa de Valores es un proyecto que mide la equidad de género en los consejos de administración de las empresas que cotizan en las bolsas de 15 países de América Latina y España. Los resultados del análisis son publicados en alianza con 15 medios de la región y con organizaciones internacionales. Actualmente va en su segunda edición</p>
-                <div class="container-button">
-                    <a href="/paises/ad/mujeresenlabolsa" class="button-link stockexchange-mx">VER MUJERES EN LA BOLSA DE MÉXICO</a>
-                </div>
-                <div class="container-button">
-                    <a href="https://mujeresenlabolsa.org/" class="button-link stockexchange-out">VER MUJERESENLABOLSA.ORG</a>
-                </div>
+            <div class="col-12 col-m-12 mt-2">
+                
             </div>
-        </div>
-        <div  class="col-m-12 col-12 mt-2">
-          <h5 class="description-data-subtitle"><i class="fas fa-chart-line"></i> Bolsas de Valores</h5>
-          <ul>
-            <li><a href="">Bolsa Mexicana de Valores</a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-m-12 mt-2">
-          <hr>
         </div>
       </div>
       <div class="col-m-3 col-3">
@@ -110,6 +90,73 @@
             </li>
           </ul>
         </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="row memberships">
+    <div class="content">
+      <div class="col-9 col-m-9">
+        {{#if result.memberships.parent}}
+          {{#each result.memberships.parent }}
+          <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
+            <div  class=" profile-list">
+              <h4 class="description-data-subtitle">
+                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+              </h4>
+              <ul>
+                {{#each this.memberships}}
+                  {{#with compiledRelease }}
+                    <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                      {{#if this.organization_class }}
+                        <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if title}} como {{title}}{{/if}}{{#if @last}}.{{else}}, {{/if}}
+                      {{else}}
+                        <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                      {{/if}}
+                    </li>
+                  {{/with}}
+                {{/each}}
+              </ul>
+              {{#ifCond this.memberships.length '>' 5}}
+              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                <a class="profile-list-toggle">Ver todos</a>
+              </div>
+              {{/ifCond}}
+            </div>
+          </section>
+          {{/each}}
+        {{/if}}
+
+        {{#if result.memberships.child}}
+          {{#each result.memberships.child }}
+          <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
+            <div class="profile-list">
+              <h4 class="description-data-subtitle">
+                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+              </h4>
+              <ul>
+                {{#each this.memberships}}
+                  {{#with compiledRelease }}
+                    <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
+                      <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>{{#if @last}}.{{else}}, {{/if}}
+                    </li>
+                  {{/with}}
+                {{/each}}
+              </ul>
+              {{#ifCond this.memberships.length '>' 5}}
+              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
+                <a class="profile-list-toggle">Ver todos</a>
+              </div>
+              {{/ifCond}}
+            </div>
+          </section>
+          {{/each}}
+        {{/if}}
+        {{#ifCond result.memberships.parent.length '||' result.memberships.child.length }}
+        <div class="col-12 col-m-12 mt-2">
+          <hr>
+        </div>
+        {{/ifCond}}
       </div>
     </div>
   </div>
