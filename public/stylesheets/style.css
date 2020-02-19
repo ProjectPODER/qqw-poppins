@@ -3353,20 +3353,40 @@ button.close {
 .bg-purple {
   background: #4900a3;
 }
+.border {
+  border-right: 1px solid #999;
+}
 .variations-container {
   padding: 3rem 2rem;
 }
-.column-one {
+.flex-variations {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.data-item {
   display: flex;
   align-items: center;
+  justify-content: start;
 }
-.column-one .data-icon {
+.data-item .data-icon {
   font-size: 3rem;
   color: #fff;
-  margin-right: 5px;
+  margin-right: 30px;
 }
-.column-one .variation-icon {
+.data-item .variation-icon {
   font-size: 3rem;
+  margin-right: 30px;
+  margin-top: 20px;
+}
+.data-item .up {
+  color: #12b616 !important;
+}
+.data-item .down {
+  color: #db2828 !important;
+}
+.data-item .equal {
+  color: #fff;
 }
 .data-variation-container p {
   margin-bottom: 0;
