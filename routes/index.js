@@ -35,9 +35,9 @@ router.get('/instituciones-publicas/:id', lib.entityPage("institutions","perfil"
 
 router.get('/empresas/:id', lib.entityPage("companies","perfil", "id"));
 
-router.get('/paises/:id', lib.staticPage("profiles"));
+router.get('/paises/:id', lib.entityPage("countries","profiles","id"));
 
-router.get('/paises/:id/mujeresenlabolsa', lib.staticPage("country-mujeres"));
+router.get('/paises/:id/mujeresenlabolsa', lib.entityPage("countries","country-mujeres","id"));
 
 
 /* GET about */
