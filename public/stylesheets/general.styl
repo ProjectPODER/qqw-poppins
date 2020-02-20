@@ -3151,6 +3151,13 @@ button
 
 
 // New country profile
+
+.text-orange
+  color #FFA500
+
+.text-purple
+  color #4900A3 !important
+
 #mujeresenlabolsa
   .logo-mujeres
     width 250px
@@ -3182,6 +3189,12 @@ button
 .bg-purple 
   background #4900A3
 
+.bg-green 
+  background #00CAB9 
+
+.text-gray
+  color #9b9b9b
+
 .border
   border-right 1px solid #999
 
@@ -3190,33 +3203,79 @@ button
 
 .flex-variations
   display flex 
-  flex-direction column
-  justify-content center
-.data-item
-  display flex
   align-items center
-  justify-content start
-  .data-icon
-    font-size 3rem
-    color #ffffff
-    margin-right 30px
-  .variation-icon
-    font-size 3rem
-    margin-right 30px
-    margin-top 20px
-  .up
-    color #12B616 !important 
-  .down
-    color #db2828 !important
-  .equal
-    color #ffffff 
-  
+  justify-content flex-end
+.data-icon
+  font-size 2.7rem
+  color #ffffff
+  margin-right 20px
+  text-align right
+.variation-icon
+  font-size 2rem
+  margin-right 20px
+.up
+  color #12B616 !important 
+.down
+  color #db2828 !important
+.equal
+  color #ffffff 
 
-.data-variation-container
+.icon-variations1
+  width 45px
+  margin-right 20px
+.icon-variations2
+  width 35px
+  margin-right 20px
+
+#variaciones
   p 
     margin-bottom 0
     color #ffffff !important
-    span
+    span.percentage, span.number
       font-weight normal
       font-size 0.8rem
       margin-left 10px
+    span.number
+      margin-left 0
+  hr
+    margin-bottom 20px !important
+  
+.data-item-left
+  padding 20px 10px 20px
+
+.data-item-right
+  padding 20px 10px 20px 30%
+
+.org-logo
+  width 150px
+
+
+@media (max-width: 992px)
+  .data-icon
+    // font-size 2.7rem
+    margin-right 10px
+  .variation-icon
+    // font-size 2rem
+    margin-right 10px
+  .icon-variations1
+    // width 45px
+    margin-right 10px
+  .icon-variations2
+    // width 35px
+    margin-right 10px
+
+
+@media (max-width: 767px)
+  .data-item-left
+    display flex
+  .flex-variations
+    justify-content center
+  // .data-item-right
+  //   padding 20px 10px 20px 30%
+  .border
+    border-right none
+  .mt-mobile
+    margin-top 3rem
+
+.man-cards 
+  

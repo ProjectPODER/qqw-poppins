@@ -32,77 +32,95 @@
   <div class="row">
     <div class="content">
       <div class="col-9 col-m-9 bg-purple">
-        <div class="variations-container">
+        <div class="variations-container row">
             <div class="col-m-12 col-12">
                 <h4 class="description-data-subtitle text-white"><i class="fas fa-arrows-alt-v"></i> VARIACIONES ANUALES</h4>
             </div>
             <div class="col-6 col-m-6 border">
-                <div class="flex-variations">
-                    <h4 class="description-data-subtitle text-white text-center">2020</h4>
-                    <hr>
-                    <div class="data-item">
-                        <div class="icon-variation-container">
-                            <i class="fas fa-venus data-icon"></i>
-                            <i class="fas fa-sort-up variation-icon up"></i>
-                        </div>
-                        <div class="data-variation-container">
-                            <p class="js-data">153 <span>9.32%</span></p>
-                            <p class="js-title-data">Consejeras</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="data-item">
-                        <i class="fas fa-mars data-icon"></i>
-                        <i class="fas fa-sort-up variation-icon up"></i>
-                        <div class="data-variation-container">
-                            <p class="js-data">153 <span>9.32%</span></p>
-                            <p class="js-title-data">Consejeros</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="data-item">
-                        <img src="../../images/icons/consejeras.png" alt="Ícono " class="icon-lf icon-lf-contract">
-                        {{!-- <i class="fas fa-venus data-icon"></i> --}}
-                        <i class="fas fa-sort-up variation-icon up"></i>
-                        <div class="data-variation-container">
-                            <p class="js-data">12.23</p>
-                            <p class="js-title-data">Consejeros por<br>cada consejera</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="data-item">
-                        <i class="fas fa-venus data-icon"></i>
-                        <i class="fas fa-sort-up variation-icon up"></i>
-                        {{!-- <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract"> --}}
-                        <div class="data-variation-container">
-                            <p class="js-data">15<span>/254</span><span>10.23%</span></p>
-                            <p class="js-title-data">Empresas sin consejeras</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="data-item">
-                        <i class="fas fa-hashtag data-icon"></i>
-                        <i class="fas fa-sort-up variation-icon up"></i>
-                        {{!-- <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract"> --}}
-                        <div class="data-variation-container">
-                            <p class="js-data">5 <span>/16</span></p>
-                            <p class="js-title-data">Posición en el ranking</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-m-6">
-                <h4 class="description-data-subtitle text-white text-center">2019</h4>
+                <h4 class="description-data-subtitle text-white text-center">2020</h4>
                 <hr>
-                <div class="data-item">
-                    <div class="data-variation-container">
-                        <p class="js-data">153 <span>9.32%</span></p>
+                <div class="data-item-left row">
+                    <div class="col-5 col-m-5 text-right flex-variations">
+                        <i class="fas fa-venus data-icon"></i>
+                        <i class="fas fa-chevron-up variation-icon up"></i>
+                    </div>
+                    <div class="col-7 col-m-7">
+                        <p class="js-data">153 <span class="percentage">9.32%</span></p>
                         <p class="js-title-data">Consejeras</p>
                     </div>
                 </div>
+                <div class="data-item-left row">
+                    <div class="col-5 col-m-5 text-right flex-variations">
+                        <i class="fas fa-mars data-icon"></i>
+                        <i class="fas fa-chevron-down variation-icon down"></i>
+                    </div>
+                    <div class="col-7 col-m-7">
+                        <p class="js-data">153 <span class="percentage">9.32%</span></p>
+                        <p class="js-title-data">Consejeros</p>
+                    </div>
+               </div>
+                <div class="data-item-left row">
+                    <div class="col-5 col-m-5 text-right flex-variations">
+                        <img src="../../images/icons/consejeras-blanco.png" alt="Ícono " class="icon-variations1 img-fluid">
+                        {{!-- <i class="fas fa-venus data-icon"></i> --}}
+                        <i class="fas fa-chevron-up variation-icon up"></i>
+                    </div>
+                    <div class="col-7 col-m-7">
+                        <p class="js-data">12.23</p>
+                        <p class="js-title-data">Consejeros por consejera</p>
+                    </div>
+               </div>
+                <div class="data-item-left row">
+                    <div class="col-5 col-m-5 text-right flex-variations">
+                        <img src="../../images/icons/sinconsejeras-blanco.png" alt="Ícono" class="icon-variations2 img-fluid">
+                        {{!-- <i class="fas fa-venus data-icon"></i> --}}
+                        <i class="fas fa-chevron-up variation-icon up"></i>
+                    </div>
+                    <div class="col-7 col-m-7">
+                        <p class="js-data">15<span class="number">/254</span><span class="percentage">10.23%</span></p>
+                        <p class="js-title-data">Empresas sin consejeras</p>
+                    </div>
+                </div>
+                <div class="data-item-left row">
+                    <div class="col-5 col-m-5 text-right flex-variations">
+                        <i class="fas fa-hashtag data-icon"></i>
+                        <i class="fas fa-equals variation-icon equal"></i>
+                    </div>
+                    <div class="col-7 col-m-7">
+                        <p class="js-data">5 <span class="number">/16</span></p>
+                        <p class="js-title-data">Posición en el ranking</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-m-12 mt-2">
+            <div class="col-6 col-m-6 mt-mobile">
+                <h4 class="description-data-subtitle text-white text-center">2019</h4>
+                <hr>
+                <div class="">
+                    <div class="col-12 col-m-12 data-item-right">
+                        <p class="js-data">153 <span class="percentage">9.32%</span></p>
+                        <p class="js-title-data">Consejeras</p>
+                    </div>
+                    
+                    <div class="col-12 col-m-12 data-item-right">
+                        <p class="js-data">153 <span class="percentage">9.32%</span></p>
+                        <p class="js-title-data">Consejeros</p>
+                    </div>
+                    
+                    <div class="col-12 col-m-12 data-item-right">
+                        <p class="js-data">12.23</p>
+                        <p class="js-title-data">Consejeros por consejera</p>
+                    </div>
                 
+                    <div class="col-12 col-m-12 data-item-right">
+                        <p class="js-data">15<span class="number">/254</span><span class="percentage">10.23%</span></p>
+                        <p class="js-title-data">Empresas sin consejeras</p>
+                    </div>
+                
+                    <div class="col-12 col-m-12 data-item-right">
+                        <p class="js-data">5 <span class="number">/16</span></p>
+                        <p class="js-title-data">Posición en el ranking</p>
+                    </div>
+                </div>
             </div>
         </div>
       </div>
@@ -110,22 +128,22 @@
         <nav id="right-menu" class="menu-profile">
           <ul class="right-menu-profile nav-stacked nav">
             <li>
-              <a href="#mujeresenlabolsa" class="anchor">
-                <i class="fas fa-venus-mars"></i>Género
+              <a href="#variaciones" class="anchor">
+                <i class="fas fa-arrows-alt-v"></i>Variaciones
               </a>
             </li>
             {{!-- {{#if result.memberships.parent}}
             {{#each result.memberships.parent }} --}}
             <li>
-              <a href="#estados" class="anchor">
-                <i class="fas fa-map-marked"></i>Estados
+              <a href="#notas" class="anchor">
+                <i class="fas fa-newspaper"></i>Notas
               </a>
             </li>
             {{!-- {{/each}}
             {{/if}} --}}
             <li>
-              <a href="#personas" class="anchor">
-                <i class="fas fa-user"></i>Personas
+              <a href="#consejerasporempresa" class="anchor">
+                <i class="fas fa-venus"></i>Consejeras
               </a>
             </li>
             <li>
@@ -143,113 +161,67 @@
       </div>
     </div>
   </div>
+</section>
 
-  <div class="row memberships">
+<section class="profile" id="notas">
+  <div class="row">
     <div class="content">
-      <div class="col-9 col-m-9">
-        {{#if result.memberships.parent}}
-          {{#each result.memberships.parent }}
-          <section class="profile col-m-4 col-4" id="memberships-parent-{{@index}}">
-            <div  class=" profile-list">
-              <h4 class="description-data-subtitle">
-                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
-              </h4>
-              <ul>
-                {{#each this.memberships}}
-                  {{#with compiledRelease }}
-                    <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
-                      {{#if this.organization_class }}
-                        <a href="/{{get_type_url this.organization_class}}/{{this.organization_id}}">{{this.organization_name}}</a>{{#if title}} como {{title}}{{/if}}{{#if @last}}.{{else}}, {{/if}}
-                      {{else}}
-                        <a href="/{{get_type_url "person"}}/{{this.person_id}}">{{this.person_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-                      {{/if}}
-                    </li>
-                  {{/with}}
-                {{/each}}
-              </ul>
-              {{#ifCond this.memberships.length '>' 5}}
-              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-                <a class="profile-list-toggle">Ver todos</a>
-              </div>
-              {{/ifCond}}
+      <div class="col-9 col-m-9 bg-gray">
+        <div class="variations-container row">
+            <div class="col-m-12 col-12">
+                <h4 class="description-data-subtitle text-orange"><i class="far fa-newspaper"></i> NOTAS</h4>
             </div>
-          </section>
-          {{/each}}
-        {{/if}}
-
-        {{#if result.memberships.child}}
-          {{#each result.memberships.child }}
-          <section class="profile col-m-4 col-4" id="memberships-child-{{@index}}">
-            <div class="profile-list">
-              <h4 class="description-data-subtitle">
-                {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
-              </h4>
-              <ul>
-                {{#each this.memberships}}
-                  {{#with compiledRelease }}
-                    <li class="{{#ifCond @index ">" 5}}profile-list-hidden{{/ifCond}}">
-                      <a href="/{{get_type_url this.parent_class}}/{{this.parent_id}}">{{this.parent_name}}</a>{{#if @last}}.{{else}}, {{/if}}
-                    </li>
-                  {{/with}}
-                {{/each}}
-              </ul>
-              {{#ifCond this.memberships.length '>' 5}}
-              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-                <a class="profile-list-toggle">Ver todos</a>
-              </div>
-              {{/ifCond}}
+            <div class="col-m-12 col-12">
+                <div class="row">
+                    <div class="col-3 col-m-3 text-center">
+                        <img src="../../images/logo_poder_2018.png" alt="Logo de la organización" class="img-fluid org-logo">
+                    </div>
+                    <div class="col-9 col-m-9">
+                        <h4><b>La Bolsa Mexicana de Valores la última en igualdad de género</b></h5>
+                        <p class="text-gray"><i>20/02/2020 por Clauida Ocaranza</i></p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, qui libero. Culpa accusamus ut, harum, incidunt iure voluptates ullam voluptatibus expedita sint nisi esse, dolorem natus deserunt eveniet beatae quia!</p>
+                        <div class="container-button text-center mt-2 mb-2">
+                            <a href="" class="button-link bg-purple">VER NOTA COMPLETA</a>
+                        </div>
+                        <hr>
+                        <a href=""><h4 class="text-purple"><b>La Bolsa Mexicana de Valores la última en igualdad de género</b></h4></a>
+                        <p class="text-gray"><i>20/02/2020 por Clauida Ocaranza</i></p>
+                    </div>
+                </div>
             </div>
-          </section>
-          {{/each}}
-        {{/if}}
-        {{#ifCond result.memberships.parent.length '||' result.memberships.child.length }}
-        <div class="col-12 col-m-12 mt-2">
-          <hr>
         </div>
-        {{/ifCond}}
       </div>
     </div>
   </div>
 </section>
 
-<section class="profile" id="estados">
+<section class="profile" id="consejerasporempresa">
   <div class="row">
     <div class="content">
       <div  class="col-m-9 col-9">
         <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle"><i class="fas fa-map-marked"></i> ESTADOS</h4>
-          <table class="table table-responsive">
-            <thead>
-              <tr>
-                <th class="description-data-subname">Nombre</th>
-                <th class="description-data-subname">No. de municipios</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{!-- {{#each result.top3contracts.supplier }} --}}
-              <tr>
-                <td class="description-data-contract">
-                  {{!-- <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract"> --}}
-                  <a href="">Estado</a>
-                </td>
-                <td class="description-data-amount">{{format_amount compiledRelease.total_amount}} {{ compiledRelease.contracts.0.value.currency}}</td>
-              </tr>
-              {{!-- {{/each}} --}}
-            </tbody>
-          </table>
+          <h4 class="description-data-subtitle"><i class="fas fa-venus"></i> NÚMERO DE CONSEJERAS POR EMPRESA</h4>
+          <p>Si bien en Argentina existe al menos una empresa con 8 asientos ocupados por consejeras, la mayoría de las compañías tienen 1 consejera.</p>
+          
         </div>
-        <div class="col-m-12 mb-12">
-          {{!-- {{#ifCond result.compiledRelease.contract_count.funder '>' 3}} --}}
-          <p>Viendo hasta 3 de <strong>{{result.compiledRelease.contract_count.funder}} estados en total</strong>.</p>
-          <div class="contract-button">
-            <a href="/contratos?financiador={{result.compiledRelease.name}}" class="button-link">Ver todos los estados</a>
-          </div>
-          {{!-- {{else}}
-            <p>Viendo <strong>{{result.compiledRelease.contract_count.funder}} estado(s) en total</strong>. </p>
-          {{/ifCond}} --}}
-        </div>
-        <div class="col-12 col-m-12 mt-2">
-          <hr>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="profile" id="consejosdehombres">
+  <div class="row">
+    <div class="content">
+      <div class="col-9 col-m-9 bg-green">
+        <div class="variations-container row">
+            <div class="col-m-12 col-12">
+                <h4 class="description-data-subtitle text-white"><i class="fas fa-mars"></i> CONSEJOS DE HOMBRES</h4>
+                <div class="man-cards">
+                    <h4>Jorge Arturo Ramírez Guillemin</h4>
+                    <p><b>3</b> consejos de hombres</p>
+                    <p><b>4</b> en total</p>
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -319,7 +291,7 @@
 
 
 {{> send_info_form}}
-<script>
+{{!-- <script>
   const summaries = {{{j result.summaries}}}
 </script>
 <script src="/javascripts/d3.v4.js"></script>
@@ -328,4 +300,4 @@
 </script>
 <script src="/javascripts/d3.v3.js"></script>
 <script src="/javascripts/nvd3.js"></script>
-<script src="/javascripts/graphics.js"></script>
+<script src="/javascripts/graphics.js"></script> --}}
