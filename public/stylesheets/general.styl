@@ -122,7 +122,7 @@ h6,
 .h6
   font-family inherit
   font-weight 500
-  line-height 1.1
+  line-height 1.2
   color inherit
 
 h1 small,
@@ -294,6 +294,184 @@ table
             border-top 2px solid #ddd
     .table
         background-color #fff
+
+.nav
+    padding-left 0
+    margin-bottom 0
+    list-style none
+    & > li
+        position relative
+        display block
+        & > a
+            position relative
+            display block
+            padding 10px 15px
+            & > img
+                max-width none
+        &.disabled
+            & > a
+                color #777
+    .nav-divider
+        height 1px
+        margin 9px 0
+        overflow hidden
+        background-color #e5e5e5
+
+.nav > li > a:hover,
+.nav > li > a:focus
+    text-decoration none
+    background-color #eee
+
+.nav > li.disabled > a:hover,
+.nav > li.disabled > a:focus
+    color #777
+    text-decoration none
+    cursor not-allowed
+    background-color transparent
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus
+    background-color #eee
+    border-color #337ab7
+
+.nav-tabs
+    border-bottom 1px solid #ddd
+    & > li
+        float left
+        margin-bottom -1px
+        & > a
+            margin-right 2px
+            line-height 1.42857143
+            border 1px solid transparent
+            border-radius 4px 4px 0 0
+            &:hover
+                border-color #eee #eee #ddd
+    &.nav-justified
+        width 100%
+        border-bottom 0
+        & > li
+            float none
+            & > a
+                margin-bottom 5px
+                text-align center
+                margin-right 0
+                border-radius 4px
+        & > .dropdown
+            .dropdown-menu
+                top auto
+                left auto
+    .dropdown-menu
+        margin-top -1px
+        border-top-left-radius 0
+        border-top-right-radius 0
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus
+    color #555
+    cursor default
+    background-color #fff
+    border 1px solid #ddd
+    border-bottom-color transparent
+
+@media (min-width: 768px)
+    .nav-tabs
+        &.nav-justified
+            & > li
+                display table-cell
+                width 1%
+                & > a
+                    margin-bottom 0
+
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:focus
+    border 1px solid #ddd
+
+@media (min-width: 768px)
+    .nav-tabs
+        &.nav-justified
+            & > li
+                & > a
+                    border-bottom 1px solid #ddd
+                    border-radius 4px 4px 0 0
+
+    .nav-tabs.nav-justified > .active > a,
+    .nav-tabs.nav-justified > .active > a:hover,  
+    .nav-tabs.nav-justified > .active > a:focus
+      border-bottom-color #fff
+
+.nav-pills
+    & > li
+        float left
+        & > a
+            border-radius 4px
+        & + li
+            margin-left 2px
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus
+    color #fff
+    background-color #337ab7
+
+.nav-stacked
+    & > li
+        float none
+        & + li
+            margin-top 2px
+            margin-left 0
+
+.nav-justified
+    width 100%
+    & > li
+        float none
+        & > a
+            margin-bottom 5px
+            text-align center
+    & > .dropdown
+        .dropdown-menu
+            top auto
+            left auto
+
+@media (min-width: 768px)
+    .nav-justified
+        & > li
+            display table-cell
+            width 1%
+            & > a
+                margin-bottom 0
+
+.nav-tabs-justified
+    border-bottom 0
+    & > li
+        & > a
+            margin-right 0
+            border-radius 4px
+
+.nav-tabs-justified > .active > a,
+.nav-tabs-justified > .active > a:hover,
+.nav-tabs-justified > .active > a:focus
+    border 1px solid #ddd
+
+@media (min-width: 768px)
+    .nav-tabs-justified
+        & > li
+            & > a
+                border-bottom 1px solid #ddd
+                border-radius 4px 4px 0 0
+
+    .nav-tabs-justified > .active > a,
+    .nav-tabs-justified > .active > a:hover,
+    .nav-tabs-justified > .active > a:focus
+      border-bottom-color #fff
+
+.tab-content
+    & > .tab-pane
+        display none
+    & > .active
+        display block
 
 .flex-center
   display flex !important
@@ -3151,6 +3329,16 @@ button
 
 
 // New country profile
+
+.text-orange
+  color #FFA500
+
+.text-purple
+  color #4900A3 !important
+
+.text-red 
+  color #EB004A
+
 #mujeresenlabolsa
   .logo-mujeres
     width 250px
@@ -3182,6 +3370,12 @@ button
 .bg-purple 
   background #4900A3
 
+.bg-green 
+  background #00CAB9 
+
+.text-gray
+  color #9b9b9b
+
 .border
   border-right 1px solid #999
 
@@ -3190,33 +3384,118 @@ button
 
 .flex-variations
   display flex 
-  flex-direction column
-  justify-content center
-.data-item
-  display flex
   align-items center
-  justify-content start
-  .data-icon
-    font-size 3rem
-    color #ffffff
-    margin-right 30px
-  .variation-icon
-    font-size 3rem
-    margin-right 30px
-    margin-top 20px
-  .up
-    color #12B616 !important 
-  .down
-    color #db2828 !important
-  .equal
-    color #ffffff 
-  
+  justify-content flex-end
+.data-icon-variations
+  font-size 2.7rem
+  color #ffffff
+  margin-right 20px
+  text-align right
+.variation-icon
+  font-size 2rem
+  margin-right 20px
+.up
+  color #12B616 !important 
+.down
+  color #db2828 !important
+.equal
+  color #ffffff 
 
-.data-variation-container
+.icon-variations1
+  width 45px
+  margin-right 20px
+.icon-variations2
+  width 35px
+  margin-right 20px
+
+#variaciones
   p 
     margin-bottom 0
     color #ffffff !important
-    span
+    span.percentage, span.number
       font-weight normal
       font-size 0.8rem
       margin-left 10px
+    span.number
+      margin-left 0
+  hr
+    margin-bottom 20px !important
+  
+.data-item-left
+  padding 20px 10px 20px
+
+.data-item-right
+  padding 20px 10px 20px 30%
+
+.org-logo
+  width 150px
+
+
+@media (max-width: 992px)
+  .data-icon
+    // font-size 2.7rem
+    margin-right 10px
+  .variation-icon
+    // font-size 2rem
+    margin-right 10px
+  .icon-variations1
+    // width 45px
+    margin-right 10px
+  .icon-variations2
+    // width 35px
+    margin-right 10px
+
+
+@media (max-width: 767px)
+  .data-item-left
+    display flex
+  .flex-variations
+    justify-content center
+  // .data-item-right
+  //   padding 20px 10px 20px 30%
+  .border
+    border-right none
+  .mt-mobile
+    margin-top 3rem
+
+.man-cards 
+  padding 20px
+  border 1px solid #ccc
+  // box-shadow 13px 13px 0 -5px #F8E923
+  background #ffffff
+  margin-right 30px 
+  min-width 350px
+  margin-bottom 60px
+
+.overflow-cards
+  display flex
+  flex-direction row
+  flex-wrap nowrap
+  overflow-x scroll
+  overflow-y hidden
+
+  &::-webkit-scrollbar
+    height 15px
+  &::-webkit-scrollbar-track:horizontal
+    // -webkit-box-shadow inset 0 0 6px rgba(0,0,0,0.3) 
+    background #f7f7f7
+    -webkit-border-radius 5px
+    border-radius 5px
+  &::-webkit-scrollbar-thumb:horizontal
+    background #4900A3
+    -webkit-border-radius 5px
+    border-radius 5px
+  // &::-webkit-scrollbar-button:single-button
+  //     background-color red
+  //     display block
+  //     border-style solid
+  //     height 13px
+  //     width 20px
+  //     margin auto
+  // &::-webkit-scrollbar-button:single-button:horizontal:decrement
+  //     border-width 8px 8px 8px 0
+  //     border-color transparent #4900A3 transparent transparent
+  //     margin-right 20px
+  &.scroller
+    scrollbar-color #4900A3 #f7f7f7
+    scrollbar-width auto

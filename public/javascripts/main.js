@@ -404,6 +404,7 @@ $(window).scroll(function(e) {
     $(".contract_detail").addClass("contract-margin");
     $("#informacion-general").addClass("profile-margin");
     $("#mujeresenlabolsa").addClass("profile-margin");
+    $("#variaciones").addClass("profile-margin");
   } else {
     $("#wrap").removeClass("fixed-title");
     $("#wrap-contract").removeClass("fixed-title-contract");
@@ -412,6 +413,7 @@ $(window).scroll(function(e) {
     $(".contract_detail").removeClass("contract-margin");
     $("#informacion-general").removeClass("profile-margin");
     $("#mujeresenlabolsa").removeClass("profile-margin");
+    $("#variaciones").removeClass("profile-margin");
   }
 
 });
