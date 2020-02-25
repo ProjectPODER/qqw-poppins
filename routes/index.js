@@ -67,5 +67,7 @@ router.get('/contacto', lib.staticPage("contact"));
 router.post('/send', lib.sendMailPage());
 
 
+router.get('/mujeres-en-la-bolsa', lib.staticPage("mujeres-en-la-bolsa"));
+
 
 module.exports = router;
