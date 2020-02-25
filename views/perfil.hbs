@@ -100,7 +100,12 @@
               <p class="js-title-data">Identificadores</p>
               {{#each result.compiledRelease.identifiers}}
                 <p class="js-data">
-                  {{scheme}}: {{id}}{{identifier}}
+                  {{#ifCond identifier '!=' '#ĦVALOR!'}}
+                    {{#ifCond scheme '!=' 'CIQ'}}
+                      {{scheme}}: {{id}}{{identifier}}
+                    {{/ifCond}}
+                  {{/ifCond}}
+
                   {{#ifCond scheme '==' 'RUPC'}} <a data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>{{/ifCond}}
                 {{/each}}</p>
             </div>
