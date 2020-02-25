@@ -3543,10 +3543,10 @@ button.close {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-#mujeresenlabolsa .container-button .stockexchange-mx {
+.stockexchange-mx {
   background: #4900a3 !important;
 }
-#mujeresenlabolsa .container-button .stockexchange-out {
+.stockexchange-out {
   background: #008075 !important;
 }
 .bg-purple {
@@ -3681,29 +3681,87 @@ button.close {
   scrollbar-color: #4900a3 #f7f7f7;
   scrollbar-width: auto;
 }
-.gender-container {
-  display: flex;
-  align-items: center;
-  padding: 15px;
-  justify-content: middle;
+.gender-indicator-container {
+  padding: 20px;
 }
 .mujeres-logo-white {
   width: 150px;
+  min-width: 130px;
   padding: 10px;
 }
-.media-gender {
-  padding: 10px;
-  margin-top: 0 !important;
+.gender-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+  grid-row-gap: 16px;
+  grid-column-gap: 12px;
 }
-.media-gender i {
+.gender-grid .data-icon {
+  display: flex;
+  align-items: center;
+}
+.gender-grid .data-icon i {
   font-size: 2.6rem;
-}
-.media-gender .js-data {
-  margin-bottom: 0;
-}
-.media-gender .js-data,
-.media-gender .js-title-data {
+  margin-right: 5px;
   color: #fff;
+}
+.gender-grid .data-icon .js-data {
+  margin: 0;
+}
+.gender-grid .data-icon .js-data,
+.gender-grid .data-icon .js-title-data {
+  color: #fff;
+}
+.gender-grid .data-icon .js-title-data {
+  font-size: 14px;
+}
+.grid {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-grid-columns: 1fr 1fr 1fr 1.5fr 1.5fr;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr 1.5fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+}
+.container-button-gender {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.gender-icons {
+  height: 41px;
+  margin-right: 4px;
+}
+.gender-country-link {
+  color: #00cab9;
+}
+.gender-country-link:hover {
+  color: #00cab9;
+}
+@media screen and (max-width: 1149px) {
+  .grid {
+    -ms-grid-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1.5fr 1fr;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+  }
+}
+@media screen and (max-width: 578px) {
+  .grid {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+  }
+  .gender-indicator-container {
+    padding: 30px;
+  }
 }
 @-moz-keyframes fadeIn {
   from {

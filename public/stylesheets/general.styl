@@ -3361,10 +3361,10 @@ button
   .container-button
     margin-top 2rem
     margin-bottom 2rem
-    .stockexchange-mx 
-      background #4900A3 !important
-    .stockexchange-out
-      background #008075 !important
+.stockexchange-mx 
+  background #4900A3 !important
+.stockexchange-out
+  background #008075 !important
 
 // Country mujeres
 .bg-purple 
@@ -3500,23 +3500,76 @@ button
     scrollbar-color #4900A3 #f7f7f7
     scrollbar-width auto
 
-.gender-container
-  display flex
-  align-items center
-  padding 15px
-  justify-content middle
-  // display grid
-  // grid-template-columns: auto auto auto auto auto;
-  // align-items center
+// .Gender indicator
+
+.gender-indicator-container
+  padding 20px
+
 .mujeres-logo-white
     width 150px
+    min-width 130px
     padding 10px
-.media-gender
-  padding 10px
-  margin-top 0 !important
-  i 
-    font-size 2.6rem
-  .js-data
-    margin-bottom 0
-  .js-data, .js-title-data
-    color #ffffff
+
+.gender-grid
+  display -ms-grid
+  display grid
+  grid-auto-columns 1fr
+  -ms-grid-columns 1fr 1fr
+  grid-template-columns 1fr 1fr
+  -ms-grid-rows auto auto
+  grid-template-rows auto auto
+  grid-row-gap 16px
+  grid-column-gap 12px
+  .data-icon
+    display flex
+    align-items center
+    i
+      font-size 2.6rem
+      margin-right 5px
+      color #ffffff
+    .js-data
+      margin 0
+    .js-data, .js-title-data
+      color #ffffff
+    .js-title-data
+      font-size 14px
+.grid
+  -webkit-box-align center
+  -webkit-align-items center
+  -ms-flex-align center
+  align-items center
+  -ms-grid-columns 1fr 1fr 1fr 1.5fr 1.5fr
+  grid-template-columns 1fr 1fr 1fr 1.5fr 1.5fr
+  -ms-grid-rows auto
+  grid-template-rows auto
+
+.container-button-gender
+  margin-top 30px
+  margin-bottom 15px
+  text-align center
+
+.gender-icons
+  height 41px
+  margin-right 4px
+
+.gender-country-link
+  color #00CAB9 
+  &:hover
+    color #00CAB9
+
+@media screen and (max-width: 1149px)
+  .grid
+    -ms-grid-columns 1fr 1fr 1fr
+    grid-template-columns 1.5fr 1.5fr 1fr
+    -ms-grid-rows auto auto
+    grid-template-rows auto auto
+
+@media screen and (max-width: 578px)
+  .grid
+    -ms-grid-columns 1fr
+    grid-template-columns 1fr
+    -ms-grid-rows auto auto auto auto auto
+    grid-template-rows auto auto auto auto auto
+
+  .gender-indicator-container
+    padding 30px
