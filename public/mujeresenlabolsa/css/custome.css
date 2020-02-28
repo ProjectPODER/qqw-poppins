@@ -1056,9 +1056,10 @@ a:hover {
   white-space: normal;
 }
 
-.list-item.text-overflow {
-  overflow: hidden;
+.text-overflow {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .image-7 {
@@ -1075,11 +1076,13 @@ a:hover {
 }
 
 .section-main-bg {
-  height: 100vh;
-  background-image: url('../images/MUJERES2019.png');
-  background-position: 50% 50%;
-  background-size: cover;
-  background-attachment: scroll;
+  /*height: 100vh;*/
+  background-image: url('../images/portada.png');
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  width: 100%;
+  min-height: 100vh;
+  background-position: 50% 50% !important;
 }
 
 .text-block-5 {
@@ -1153,6 +1156,10 @@ a:hover {
 
 .tooltip-text {
   white-space: nowrap;
+}
+
+.card-list li a {
+  font-size: 16px;
 }
 
 @media screen and (max-width: 991px) {
@@ -1529,6 +1536,7 @@ a:hover {
   .text-overflow {
     overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 
