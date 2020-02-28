@@ -849,6 +849,7 @@ section.tabs h1 {
 }
 .investigaciones-p {
   color: #2d1c9d;
+  padding-right: 10px;
 }
 .arrow-down {
   text-align: center;
@@ -3823,23 +3824,19 @@ section.explore-data {
     margin: 0;
   }
 }
-.no-results,
 .autosuggest {
   position: relative;
   display: inline-block;
-  width: 80%;
+  width: 100%;
 }
-.no-results .search-input-spinner,
 .autosuggest .search-input-spinner {
   position: absolute;
   right: 15px;
   top: 15px;
 }
-.no-results .search-input-spinner i,
 .autosuggest .search-input-spinner i {
   color: auxColor;
 }
-.no-results ul.suggestions,
 .autosuggest ul.suggestions {
   background-color: backgroundColor;
   position: absolute;
@@ -3848,11 +3845,9 @@ section.explore-data {
   box-shadow: 2px 2px 4px #000;
   z-index: 9999;
 }
-.no-results ul.suggestions li,
 .autosuggest ul.suggestions li {
   margin: 0.5em 0.5em 0.5em 1em;
 }
-.no-results ul.suggestions li i,
 .autosuggest ul.suggestions li i {
   margin-right: 5pt;
 }
@@ -4166,6 +4161,15 @@ footer .right {
 img.logo-horizontal {
   width: 10rem;
   margin: 1.1rem 2%;
+}
+img.logo {
+  width: 714px;
+  margin: auto;
+}
+img.name {
+  width: 25rem;
+  vertical-align: middle;
+  margin-left: 1rem;
 }
 .icon-navbar {
   width: 20px;

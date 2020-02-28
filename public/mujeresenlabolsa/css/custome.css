@@ -2736,12 +2736,6 @@ a:hover {
   font-weight: 400;
   font-style: normal;
 }
-@font-face {
-  font-family: 'Apercu';
-  src: url('../fonts/Apercu-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
 
 .embed-responsive {
   position: relative;
