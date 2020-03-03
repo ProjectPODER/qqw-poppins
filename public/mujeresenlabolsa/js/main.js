@@ -44,7 +44,7 @@ Webflow.require('ix2').init(
 );
 
 
-$("#email-form").click(function (e) {
+$("#email-form-send").click(function (e) {
   var to, name, subjectMail, email, text;
   e.preventDefault();
   // enter your email account that you want to recieve emails at.
@@ -53,6 +53,8 @@ $("#email-form").click(function (e) {
   email = $("#email").val();
   text = $("#message").val();
   // $("#message").text("Sending E-mail...Please wait");
+  $(".w-form-fail").hide();
+  $(".w-form-done").hide();
   $.post("/send", {
       to: to,
       name: name,
@@ -63,12 +65,12 @@ $("#email-form").click(function (e) {
   }, function (data) {
       if (data.status == "sent") {
             console.log("Email sent");
-            $("#contactForm").hide()
-            $("#thanks-column").show().removeClass("hidden");
+            $("#email-form").hide()
+            $(".w-form-done").show();
       }
       if (data.status == "error") {
             console.log("No email sent");
-            alert("Le pedimos disculpas, su correo no se ha podido enviar. Por favor intente de nuevo.")
+            $(".w-form-fail").show();
       }
   },"json").fail(function(error) {
     console.error(error);
