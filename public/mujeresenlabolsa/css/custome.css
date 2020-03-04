@@ -74,8 +74,6 @@ a:hover {
 .section {
   padding-top: 60px;
   padding-bottom: 60px;
-  -webkit-transition: background-color 200ms ease;
-  transition: background-color 200ms ease;
 }
 
 .section.bg-red {
@@ -110,6 +108,10 @@ a:hover {
 
 .section.bg-purple {
   background-image: linear-gradient(135deg, #7042bf, #4900a3);
+}
+
+.section#introduccion {
+  padding-top: 0;
 }
 
 .container-graphic {
@@ -1029,6 +1031,7 @@ a:hover {
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
+  z-index: 9999999999;
 }
 
 .menu-item-link {
@@ -1067,12 +1070,27 @@ a:hover {
 }
 
 .logo-container {
-  margin-bottom: 60px;
-  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0px;
+  top: 5px;
+  z-index: 9999999999999;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  border-radius: 0px;
+  background-color: transparent;
+  text-align: left;
 }
 
 .logo-mujeresenlabolsa {
-  width: 300px;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 150px;
+  padding: 10px;
+  border-radius: 2px;
+  background-color: hsla(0, 0%, 100%, 0.85);
 }
 
 .section-main-bg {
@@ -1371,12 +1389,13 @@ a:hover {
   }
   .menu-link-up {
     font-size: 40px;
+    text-shadow: 1px 1px 4px #8f8f8f;
   }
   .div-block-2 {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: space-around;
     -webkit-box-align: stretch;
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
@@ -1403,6 +1422,12 @@ a:hover {
     -webkit-align-items: stretch;
     -ms-flex-align: stretch;
     align-items: stretch;
+  }
+  .logo-container {
+    display: none;
+  }
+  .section#introduccion {
+    padding-top: 60px;
   }
 }
 
