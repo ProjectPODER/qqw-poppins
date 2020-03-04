@@ -66,9 +66,18 @@ a:hover {
   height: auto;
 }
 
-.main-image {
-  display: none;
+.main-cover-logo {
   text-align: center;
+  padding-top: 60px;
+}
+
+.main-cover-logo img {
+  width: 400px;
+}
+
+.main-cover-data p {
+  text-align: center;
+  
 }
 
 .section {
@@ -1184,11 +1193,6 @@ a:hover {
   h2 {
     font-size: 42px;
     line-height: 48px;
-  }
-  .main-image {
-    display: none;
-    height: 100vh;
-    background-image: none;
   }
   .container-graphic {
     width: 720px;
