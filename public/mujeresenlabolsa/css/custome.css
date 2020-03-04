@@ -66,18 +66,35 @@ a:hover {
   height: auto;
 }
 
+.main-cover {
+  height: 100%;
+}
+
 .main-cover-logo {
   text-align: center;
-  padding-top: 60px;
+  margin: 60px 0;
+}
+
+.main-cover-data {
+  text-align: center;
+  margin: 60px 0;
+  position: absolute;
+  left: 0%;
+  top: auto;
+  right: 0%;
+  bottom: 0%;
+}
+
+.main-cover-data p {
+  color: #ffffff;
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: bold;
+  text-shadow: 3px 3px 6px grey;
 }
 
 .main-cover-logo img {
   width: 400px;
-}
-
-.main-cover-data p {
-  text-align: center;
-  
 }
 
 .section {
@@ -1103,13 +1120,14 @@ a:hover {
 }
 
 .section-main-bg {
-  /*height: 100vh;*/
   background-image: url('../images/portada.png');
   background-repeat: no-repeat !important;
   background-size: cover !important;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 500px;
   background-position: 50% 50% !important;
+  background-attachment: scroll;
 }
 
 .text-block-5 {
@@ -2815,4 +2833,11 @@ a:hover {
 
 .embed-responsive-1by1::before {
   padding-top: 100%;
+}
+
+@media screen and (max-height: 500px) {
+  .main-cover-data {
+    position: relative;
+    margin-top: 150px;
+  }
 }
