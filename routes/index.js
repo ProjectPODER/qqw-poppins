@@ -69,7 +69,7 @@ router.post('/send', lib.sendMailPage());
 
 router.get('/mujeres-en-la-bolsa', lib.staticPage("mujeres-en-la-bolsa",null));
 
-router.get('/grafico1', lib.staticPage("graph1", null));
+router.get('/mujeres-en-la-bolsa/grafico1', lib.staticPage("graph1", null));
 router.get('/grafico2', lib.staticPage("graph2", null));
 
 
