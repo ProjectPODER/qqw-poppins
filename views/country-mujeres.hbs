@@ -6,19 +6,19 @@
           <h4>
               <a href="/">Inicio</a> >
               <a href="/{{get_type_url type}}">{{get_type_plural type}}</a> >
-              <a href="">País</a> >
+              <a href="/{{get_type_url type}}/{{ result.compiledRelease.id}}">{{ result.compiledRelease.name}}</a> >
               <span>Mujeres en la bolsa</span>
           </h4>
         </div>
         <div class='datos-generales clearfix'>
           <div class="gd-col-left-wrapper col-m-12">
               <div class="description-data-title">
-                <h3 title="{{ result.compiledRelease.name}}">
+                <h3 title="Mujeres en la Bolsa: {{ result.compiledRelease.name}}">
                     <img src="../../images/icon-mujeresenlabolsa.png" alt="Mujeres en la bolsa" style="width: 20px; margin-top: -4px;">
                   {{!-- {{{ get_classification_icon type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
                   {{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}:
                   {{ result.compiledRelease.name}} --}}
-                  Mujeres en la Bolsa: México
+                  Mujeres en la Bolsa: {{ result.compiledRelease.name}}
                 </h3>
               </div>
           </div>
@@ -323,7 +323,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
