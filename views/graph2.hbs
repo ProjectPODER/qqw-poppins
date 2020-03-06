@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<style>body{background-color:none transparent;}</style>
+<style>body{background-color:transparent;}</style>
 <script>(function() {
   // If window.HTMLWidgets is already defined, then use it; otherwise create a
   // new object. This allows preceding code to set options that affect the
@@ -308,7 +308,7 @@
         getHeight: function() { return cel.offsetHeight; }
       };
 
-    } else {chartBackground
+    } else {
       el.style.width = px(sizing.width);
       el.style.height = px(sizing.height);
 
@@ -2669,7 +2669,7 @@ e)})})(e)});
 
     while (len--) {
       cat = cats[len];
-
+      
       if (cat.categories) {
         if (parent) {
           cat.parent = parent;
@@ -2894,17 +2894,17 @@ e)})})(e)});
     }
     walk(this.categoriesTree, 'categories', function (group) {
       var tick = group.tick;
-
+      
       if (!tick) {
         return false;
       }
       tick.label.destroy();
-
+      
       each(tick, function (v, i) {
         delete tick[i];
       });
       delete group.tick;
-
+      
       return true;
     });
     this.labelsGrid = null;
@@ -2947,13 +2947,13 @@ e)})})(e)});
     var tick = this,
       axis = tick.axis,
       category;
-
+    
     protoTickAddLabel.call(tick);
-
+    
     if (!axis.categories || !(category = axis.categories[tick.pos])) {
       return false;
     }
-
+    
     // set label text - but applied after formatter #46
     if (tick.label) {
       tick.label.attr('text', tick.axis.labelFormatter.call({
@@ -2965,7 +2965,7 @@ e)})})(e)});
         pos: tick.pos
       }));
     }
-
+    
     // create elements for parent categories
     if (axis.isGrouped && axis.options.labels.enabled) {
       tick.addGroupedLabels(category);
@@ -3106,18 +3106,18 @@ e)})})(e)});
 
     while (group.parent) {
       group = group.parent;
-
+      
       var fix = fixOffset(treeCat),
         userX = group.labelOffsets.x,
         userY = group.labelOffsets.y;
-
+      
       minPos = tickPosition(tick, mathMax(group.startAt - 1, min - 1));
       maxPos = tickPosition(tick, mathMin(group.startAt + group.leaves - 1 - fix, max));
       bBox = group.label.getBBox(true);
       lvlSize = axis.groupSize(depth);
       // check if on the edge to adjust
       reverseCrisp = ((horiz && maxPos.x === axis.pos + axis.len) || (!horiz && maxPos.y === axis.pos)) ? -1 : 0;
-
+      
       attrs = horiz ? {
         x: (minPos.x + maxPos.x) / 2 + userX,
         y: size + axis.groupFontHeights[depth] + lvlSize / 2 + userY / 2
@@ -3125,7 +3125,7 @@ e)})})(e)});
         x: size + lvlSize / 2 + userX,
         y: (minPos.y + maxPos.y - bBox.height) / 2 + baseLine + userY
       };
-
+      
       if (!isNaN(attrs.x) && !isNaN(attrs.y)) {
         group.label.attr(attrs);
 
@@ -3458,7 +3458,7 @@ e)})})(e)});
     TRACKER_FILL = 'rgba(192,192,192,' + (H.hasSVG ? 0.0001 : 0.002) + ')', // invisible but clickable
     M = 'M',
     L = 'L';
-
+  
   // handle unsorted data, throw error anyway
   function error(code, stop) {
     var msg = 'Highcharts error #' + code + ': www.highcharts.com/errors/' + code;
@@ -3468,10 +3468,10 @@ e)})})(e)});
       console.log(msg); // eslint-disable-line
     }
   }
-
+  
   /**
   If replacing L and M in tracker will be necessary use that getPath():
-
+  
   function getPath(arr){
   var ret = [];
   each(arr, function(el, ind) {
@@ -3487,8 +3487,8 @@ e)})})(e)});
   return ret;
   }
   **/
-
-
+  
+  
   function getPath(arr) {
     var ret = [];
     each(arr, function (el) {
@@ -3563,9 +3563,9 @@ e)})})(e)});
   *   ColoredLine series type
   *
   **/
-
+  
   seriesTypes.coloredline = H.extendClass(seriesTypes.line);
-
+  
   H.seriesTypes.coloredline.prototype.processData = function (force) {
     var series = this,
       processedXData = series.xData, // copied during slice operation below
@@ -3578,39 +3578,39 @@ e)})})(e)});
       i, // loop variable
       options = series.options,
       isCartesian = series.isCartesian;
-
+    
     // If the series data or axes haven't changed, don't go through this. Return false to pass
     // the message on to override methods like in data grouping.
     if (isCartesian && !series.isDirty && !xAxis.isDirty && !series.yAxis.isDirty && !force) {
       return false;
     }
-
+    
     // Find the closest distance between processed points
     for (i = processedXData.length - 1; i >= 0; i--) {
       distance = processedXData[i] - processedXData[i - 1];
       if (distance > 0 && (closestPointRange === UNDEFINED || distance < closestPointRange)) {
         closestPointRange = distance;
-
+        
         // Unsorted data is not supported by the line tooltip, as well as data grouping and
         // navigation in Stock charts (#725) and width calculation of columns (#1900)
       } else if (distance < 0 && series.requireSorting) {
         error(15);
       }
     }
-
+    
     // Record the properties
     series.cropped = cropped; // undefined or true
     series.cropStart = cropStart;
     series.processedXData = processedXData;
     series.processedYData = processedYData;
-
+    
     if (options.pointRange === null) { // null means auto, as for columns, candlesticks and OHLC
       series.pointRange = closestPointRange || 1;
     }
     series.closestPointRange = closestPointRange;
     return true;
   };
-
+  
   H.seriesTypes.coloredline.prototype.drawTracker = function () {
     var series = this,
       options = series.options,
@@ -3647,7 +3647,7 @@ e)})})(e)});
         }
       }
     }
-
+    
     // handle single points
     for (i = 0; i < singlePoints.length; i++) {
       singlePoint = singlePoints[i];
@@ -3656,7 +3656,7 @@ e)})})(e)});
           L, singlePoint.plotX + snap, singlePoint.plotY);
       }
     }
-
+    
     // draw the tracker
     if (tracker) {
       tracker.attr({ d: trackerPath });
@@ -3671,7 +3671,7 @@ e)})})(e)});
         zIndex: 2
       })
       .add(series.group);
-
+      
       // The tracker is added to the series group, which is clipped, but is covered
       // by the marker group. So the marker group also needs to capture events.
       each([series.tracker, series.markerGroup], function (track) {
@@ -3679,15 +3679,15 @@ e)})})(e)});
         .on('mouseover', onMouseOver)
         .on('mouseout', function (e) { pointer.onTrackerMouseOut(e); })
         .css(css);
-
+        
         if (hasTouch) {
           track.on('touchstart', onMouseOver);
         }
       });
     }
-
+    
   };
-
+  
   H.seriesTypes.coloredline.prototype.setState = function (state) {
     var series = this,
       options = series.options,
@@ -3695,20 +3695,20 @@ e)})})(e)});
       stateOptions = options.states,
       lineWidth = options.lineWidth,
       attribs;
-
+    
     state = state || NORMAL_STATE;
-
+    
     if (series.state !== state) {
       series.state = state;
-
+      
       if (stateOptions[state] && stateOptions[state].enabled === false) {
         return;
       }
-
+      
       if (state) {
         lineWidth = stateOptions[state].lineWidth || lineWidth + 1;
       }
-
+      
       if (graph && !graph.dashstyle) { // hover is turned off for dashed lines in VML
         attribs = {
           'stroke-width': lineWidth
@@ -3720,7 +3720,7 @@ e)})})(e)});
       }
     }
   };
-
+  
   /**
   * The main change to get multi color isFinite changes segments array.
   * From array of points to object with color and array of points.
@@ -3733,9 +3733,9 @@ e)})})(e)});
       i,
       points = series.points,
       pointsLength = points.length;
-
+    
     if (pointsLength) { // no action required for []
-
+      
       // if connect nulls, just remove null points
       if (series.options.connectNulls) {
         // iterate backwars for secure point removal
@@ -3745,7 +3745,7 @@ e)})})(e)});
           }
         }
         pointsLength = points.length;
-
+        
         each(points, function (point, j) {
           if (j > 0 && points[j].segmentColor !== points[j - 1].segmentColor) {
             segments.push({
@@ -3765,18 +3765,18 @@ e)})})(e)});
             });
           }
         }
-
+        
         if (points.length && segments.length === 0) {
           segments = [points];
         }
-
+        
         // else, split on null points or different colors
       } else {
         var previousColor = null;
         each(points, function (point, j) {
           var colorChanged = j > 0 && (point.y === null || points[j - 1].y === null || (point.segmentColor !== points[j - 1].segmentColor && points[j].segmentColor !== previousColor)),
             colorExists = points[j - 1] && points[j - 1].segmentColor && points[j - 1].y !== null ? true : false;
-
+          
           if (colorChanged) {
             var p = points.slice(lastColor, j + 1);
             if (p.length > 0) {
@@ -3787,7 +3787,7 @@ e)})})(e)});
                   p.splice(k, 1);
                 }
               });
-
+              
               segments.push({
                 points: p,
                 color: colorExists ? points[j - 1].segmentColor : previousColor
@@ -3814,9 +3814,9 @@ e)})})(e)});
               });
               lastColor = j;
             }
-
+            
           }
-
+          
           // store previous color
           if (point) {
             previousColor = point.segmentColor;
@@ -3827,7 +3827,7 @@ e)})})(e)});
     // register it
     series.segments = segments;
   };
-
+  
   H.seriesTypes.coloredline.prototype.getGraphPath = function () {
     // var ret = f.apply(this, Array.prototype.slice.call(arguments, 1));
     var series = this,
@@ -3844,14 +3844,14 @@ e)})})(e)});
         singlePoints.push(segment.points);
       }
     });
-
+    
     // Record it for use in drawGraph and drawTracker, and return graphPath
     series.singlePoints = singlePoints;
     series.graphPath = graphPath;
-
+    
     return graphPath;
   };
-
+  
   H.seriesTypes.coloredline.prototype.drawGraph = function () {
     var series = this,
       options = series.options,
@@ -3862,7 +3862,7 @@ e)})})(e)});
       graphPath = series.getGraphPath(),
       graphPathLength = graphPath.length,
       graphSegmentsLength = 0;
-
+    
     function getSegment(segment, prop, i) {
       var attribs = {
           stroke: prop[1],
@@ -3879,7 +3879,7 @@ e)})})(e)});
       if (segment[1]) {
         attribs.stroke = segment[1];
       }
-
+      
       item = series.chart.renderer.path(segment[0])
       .attr(attribs)
       .add(series.group);
@@ -3888,7 +3888,7 @@ e)})})(e)});
       if (item.shadow) {
         item.shadow(!i && options.shadow);
       }
-
+      
       return item;
     }
 
@@ -3897,19 +3897,19 @@ e)})})(e)});
       var graphKey = prop[0],
         graph = series[graphKey],
         g;
-
+      
       if (graph) { // cancel running animations, #459
         // do we have animation
         each(graphPath, function (segment, j) {
           // update color and path
-
+          
           if (series[graphKey][j]) {
             series[graphKey][j].attr({ d: segment[0], stroke: segment[1] });
           } else {
             series[graphKey][j] = getSegment(segment, prop, i);
           }
         });
-
+        
       } else if (graphPath.length) { // #1487
         graph = [];
         each(graphPath, function (segment, j) {
@@ -3928,7 +3928,7 @@ e)})})(e)});
       }
       // Checks if series.graph exists. #3
       graphSegmentsLength = (series.graph && series.graph.length) || -1;
-
+      
       for (var j = graphSegmentsLength; j >= graphPathLength; j--) {
         if (series[graphKey][j]) {
           series[graphKey][j].destroy();
@@ -3944,21 +3944,21 @@ e)})})(e)});
       this.getSegments();
     }
   });
-
-
-
+  
+  
+  
   /**
   *
   *   ColoredArea series type
   *
   **/
   seriesTypes.coloredarea = H.extendClass(seriesTypes.coloredline);
-
+  
   H.seriesTypes.coloredarea.prototype.init = function (chart, options) {
     options.threshold = options.threshold || null;
     H.Series.prototype.init.call(this, chart, options);
   };
-
+  
   H.seriesTypes.coloredarea.prototype.closeSegment = function (path, segment, translatedThreshold) {
     path.push(
       L,
@@ -3969,7 +3969,7 @@ e)})})(e)});
       translatedThreshold
     );
   };
-
+  
   H.seriesTypes.coloredarea.prototype.drawGraph = function (f) {
     H.seriesTypes.coloredline.prototype.drawGraph.call(this, f);
     var series = this,
@@ -3979,17 +3979,17 @@ e)})})(e)});
     each(props, function (prop) {
       var graphKey = prop[0],
         graph = series[graphKey];
-
+      
       if (graph) { // cancel running animations, #459
         // do we have animation
         each(series.graphPath, function (segment, j) {
           // update color and path
-
+          
           if (series[graphKey][j]) {
             series[graphKey][j].attr({ fill: segment[1] });
           }
         });
-
+        
       }
     });
   };
@@ -4028,14 +4028,14 @@ e)})})(e)});
     }
     return areaSegmentPath;
   };
-
+  
   H.seriesTypes.coloredarea.prototype.getGraphPath = function () {
     var series = this,
       graphPath = [],
       segmentPath,
       singlePoints = []; // used in drawTracker
     // Divide into segments and build graph and area paths
-
+    
     this.areaPath = [];
     each(series.segments, function (segment) {
       segmentPath = series.getSegmentPath(segment.points);
@@ -4046,14 +4046,14 @@ e)})})(e)});
         singlePoints.push(segment.points);
       }
     });
-
+    
     // Record it for use in drawGraph and drawTracker, and return graphPath
     series.singlePoints = singlePoints;
     series.graphPath = graphPath;
     return graphPath;
-
+  
   };
-
+  
   H.seriesTypes.coloredarea.prototype.drawLegendSymbol = H.LegendSymbolMixin.drawRectangle;
 }));</script>
 <script>var HCDefaults = $.extend(true, {}, Highcharts.getOptions(), {});
@@ -4070,7 +4070,7 @@ function ResetHighchartsOptions() {
 }
 </script>
 <script>(function (H) {
-
+  
   // cross http://stackoverflow.com/a/25379352/829971
   Highcharts.Renderer.prototype.symbols.cross = function (x, y, radius) {
     var r = radius * 0.4,
@@ -4112,8 +4112,8 @@ function ResetHighchartsOptions() {
         'z'
     ];
   };
-
-
+  
+  
 }(Highcharts));
 </script>
 <script>/* Highcharts plugin to handle text symbols */
@@ -4130,7 +4130,7 @@ function ResetHighchartsOptions() {
                     fontFamily: 'FontAwesome',
                     fontSize: h * 2
                   });
-
+                
             if (svgElem.renderer.isVML) {
                 svgElem.fillSetter = function (value, key, element) {
                     element.style.color = H.Color(value).get('rgb');
@@ -4144,13 +4144,13 @@ function ResetHighchartsOptions() {
     if (H.VMLRenderer) {
         H.wrap(H.VMLRenderer.prototype, 'symbol', symbolWrap);
     }
-
+    
     // Load the font for SVG files also
     /*
     H.wrap(H.Chart.prototype, 'getSVG', function (proceed) {
         var svg = proceed.call(this);
         svg = '<?xml-stylesheet type="text/css" ' +
-            'href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" ?>' +
+            'href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" ?>' + 
             svg;
         return svg;
     });
@@ -4172,7 +4172,7 @@ function ResetHighchartsOptions() {
   },
 
   renderValue: function(el, x, instance) {
-
+    
     if(x.debug) {
       window.xclone = JSON.parse(JSON.stringify(x));
       window.elclone = $(el);
@@ -4183,59 +4183,59 @@ function ResetHighchartsOptions() {
     }
 
     if(x.fonts !== undefined) {
-
+      
       x.fonts = ((typeof(x.fonts) == "string") ? [x.fonts] : x.fonts);
-
+    
       x.fonts.forEach(function(s){
         /* http://stackoverflow.com/questions/4724606 */
         var urlfont = 'https://fonts.googleapis.com/css?family=' + s;
         if (!$("link[href='" + urlfont + "']").length) {
           $('<link href="' + urlfont + '" rel="stylesheet" type="text/css">').appendTo("head");
         }
-
+        
       });
-
+      
     }
-
+    
     ResetHighchartsOptions();
-
+    
     if(x.theme !== null) {
-
+      
       if(x.debug) console.log("adding THEME");
-
+      
       Highcharts.setOptions(x.theme);
-
+      
     }
-
+    
     if((x.theme && x.theme.chart.divBackgroundImage !== undefined) |
          (x.hc_opts.chart  && x.hc_opts.chart.divBackgroundImage !== undefined)) {
-
-      if(x.debug) console.log("adding BackgroundImage");
-
+           
+      if(x.debug) console.log("adding BackgroundImage");     
+           
       var bkgrnd = x.theme.chart.divBackgroundImage || x.hc_opts.chart.divBackgroundImage;
-
+      
       Highcharts.wrap(Highcharts.Chart.prototype, "getContainer", function (proceed) {
-
+        
         proceed.call(this);
-
+        
         $("#" + el.id).css("background-image", "url(" + bkgrnd + ")");
         $("#" + el.id).css("-webkit-background-size", "cover");
         $("#" + el.id).css("-moz-background-size", "cover");
         $("#" + el.id).css("-o-background-size", "cover");
         $("#" + el.id).css("background-size", "cover");
-
+        
       });
-
+      
     }
-
+    
     Highcharts.setOptions(x.conf_opts);
-
+    
     if(x.type == "chart") {
       if(x.debug) console.log("charting CHART");
       $("#" + el.id).highcharts(x.hc_opts);
     } else if (x.type == "stock") {
       if(x.debug) console.log("charting STOCK");
-      $("#" + el.id).highcharts('StockChart', x.hc_opts);
+      $("#" + el.id).highcharts('StockChart', x.hc_opts);  
     } else if (x.type == "map"){
       if(x.debug) console.log("charting MAP");
 
@@ -4246,9 +4246,9 @@ function ResetHighchartsOptions() {
         }
         return e;
       });
-
-      $("#" + el.id).highcharts('Map', x.hc_opts);
-
+      
+      $("#" + el.id).highcharts('Map', x.hc_opts); 
+      
       if(x.hc_opts.mapNavigation !== undefined && x.hc_opts.mapNavigation.enabled === true){
         /* if have navigation option and enabled true: http://stackoverflow.com/questions/7600454 */
         $("#" + el.id).bind( 'mousewheel DOMMouseScroll', function ( e ) {
@@ -4258,37 +4258,37 @@ function ResetHighchartsOptions() {
           e.preventDefault();
 
         });
-
+        
       }
-
+      
     }
-
+    
     if(x.hc_opts.motion !== undefined) {
-
+      
       $("#" + el.id).css({"position" : "relative" });
-
+      
       if(x.debug) console.log("setting MOTION options");
-
+      
       var pc = $($("#" + el.id).find("#play-controls")[0]);
-
+      
       var ct = x.theme.chart;
-
+      
       if(ct.backgroundColor !== undefined) $(pc.find("#play-pause-button")[0]).css({backgroundColor : x.theme.chart.backgroundColor});
       if(ct.style !== undefined)  $(pc.find("#play-output")[0]).css(x.theme.chart.style);
       if(ct.style !== undefined && ct.style.color !== undefined) $(pc.find("#play-pause-button")[0]).css({color : x.theme.chart.style.color});
-
-
-    }
-
+      
+      
+    } 
+    
   },
 
   resize: function(el, width, height, instance) {
-
+    
     /* http://stackoverflow.com/questions/18445784/ */
     var chart = $("#" +el.id).highcharts();
-    var w = chart.renderTo.clientWidth;
-    var h = chart.renderTo.clientHeight;
-    chart.setSize(w, h);
+    var w = chart.renderTo.clientWidth; 
+    var h = chart.renderTo.clientHeight; 
+    chart.setSize(w, h); 
 
   }
 
@@ -4298,9 +4298,9 @@ function ResetHighchartsOptions() {
 </head>
 <body>
 <div id="htmlwidget_container">
-  <div id="htmlwidget-6a9cc6dd4047734a8f13" style="width:100%;height:500px;" class="highchart html-widget"></div>
+  <div id="htmlwidget-9face0a27d34741460b9" style="width:100%;height:500px;" class="highchart html-widget"></div>
 </div>
-<script type="application/json" data-for="htmlwidget-6a9cc6dd4047734a8f13">{"x":{"hc_opts":{"title":{"text":"Porcentaje de mujeres en la bolsa o en ministerios de América Latina","style":{"fontSize":"20px","fontFamily":"Lato","fontWeight":"bold"}},"yAxis":{"title":{"text":"Porcentaje de mujeres (%)","style":{"color":"#ffffff","fontSize":"16px","fontFamily":"Lato"}},"tickInterval":10,"labels":{"style":{"color":"#ffffff","fontSize":"16px","fontFamily":"Lato"}}},"credits":{"enabled":false},"exporting":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"errorbar":{"stemWidth":10,"color":"#785cde","whiskerLength":0},"line":{"color":"#30d4c8","lineWidth":0,"marker":{"symbol":"circle","radius":7,"states":{"hover":{"radius":10}}},"states":{"hover":{"lineWidth":"0px"}}}},"chart":{"inverted":true},"series":[{"data":[{"name":"Costa Rica","low":23.85,"high":55.2},{"name":"España","low":19.06,"high":63.2},{"name":"Colombia","low":17.12,"high":50},{"name":"Nicaragua","low":16.67,"high":56.3},{"name":"Argentina","low":16.41,"high":13.3},{"name":"Uruguay","low":14.63,"high":33.3},{"name":"Ecuador","low":14.15,"high":24.7},{"name":"Guatemala","low":14.06,"high":15.6},{"name":"El Salvador","low":13.17,"high":26.3},{"name":"Panamá","low":12.74,"high":20.7},{"name":"Bolivia","low":12.66,"high":27.8},{"name":"Brasil","low":12.38,"high":4.9},{"name":"Paraguay","low":10.61,"high":23.5},{"name":"Chile","low":9.76,"high":35.7},{"name":"Perú","low":9.62,"high":22.6},{"name":"México","low":7.74,"high":36.4}],"type":"errorbar"},{"name":"Bolsa de valores","data":[23.85,19.06,17.12,16.67,16.41,14.63,14.15,14.06,13.17,12.74,12.66,12.38,10.61,9.76,9.62,7.74],"color":"#d1ffe2"},{"name":"Ministerios","data":[55.2,63.2,50,56.3,13.3,33.3,24.7,15.6,26.3,20.7,27.8,4.9,23.5,35.7,22.6,36.4],"color":"#30d4c8"}],"xAxis":{"type":"category","categories":["Costa Rica","España","Colombia","Nicaragua","Argentina","Uruguay","Ecuador","Guatemala","El Salvador","Panamá","Bolivia","Brasil","Paraguay","Chile","Perú","México"],"lineWidth":0,"tickWidth":0,"labels":{"style":{"fontSize":"16px","fontFamily":"Lato","color":"#ffffff"}}},"legend":{"verticalAlign":"top","itemStyle":{"fontFamily":"Lato","fontSize":"14px"}}},"theme":{"chart":{"backgroundColor":"transparent"},"title":{"style":{"color":"#ffffff"}},"subtitle":{"style":{"color":"#ffffff"}},"legend":{"itemStyle":{"fontFamily":"Lato","color":"#ffffff"},"itemHoverStyle":{"color":"#ffffff"}}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":"Lato","debug":false},"evals":[],"jsHooks":[]}</script>
-<script type="application/htmlwidget-sizing" data-for="htmlwidget-6a9cc6dd4047734a8f13">{"viewer":{"width":"100%","height":350,"padding":0,"fill":true},"browser":{"width":"100%","height":500,"padding":0,"fill":true}}</script>
+<script type="application/json" data-for="htmlwidget-9face0a27d34741460b9">{"x":{"hc_opts":{"title":{"text":"Porcentaje de mujeres en la bolsa o en ministerios de América Latina","style":{"fontSize":"20px","fontFamily":"Lato","fontWeight":"bold"}},"yAxis":{"title":{"text":"Porcentaje de mujeres (%)","style":{"color":"#ffffff","fontSize":"16px","fontFamily":"Lato"}},"tickInterval":10,"labels":{"style":{"color":"#ffffff","fontSize":"16px","fontFamily":"Lato"}}},"credits":{"enabled":false},"exporting":{"enabled":false},"plotOptions":{"series":{"label":{"enabled":false},"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"errorbar":{"stemWidth":10,"color":"#785cde","whiskerLength":0,"enableMouseTracking":false},"line":{"color":"#30d4c8","lineWidth":0,"marker":{"symbol":"circle","radius":7,"states":{"hover":{"radius":10}}},"states":{"hover":{"lineWidth":"0px"}}}},"chart":{"inverted":true,"errorbar":{"tooltip":{"enabled":false}}},"series":[{"data":[{"name":"Costa Rica","low":23.85,"high":55.2},{"name":"España","low":19.06,"high":63.2},{"name":"Colombia","low":17.12,"high":50},{"name":"Nicaragua","low":16.67,"high":56.3},{"name":"Argentina","low":16.41,"high":13.3},{"name":"Uruguay","low":14.63,"high":33.3},{"name":"Ecuador","low":14.15,"high":24.7},{"name":"Guatemala","low":14.06,"high":15.6},{"name":"El Salvador","low":13.17,"high":26.3},{"name":"Panamá","low":12.74,"high":20.7},{"name":"Bolivia","low":12.66,"high":27.8},{"name":"Brasil","low":12.38,"high":4.9},{"name":"Paraguay","low":10.61,"high":23.5},{"name":"Chile","low":9.76,"high":35.7},{"name":"Perú","low":9.62,"high":22.6},{"name":"México","low":7.74,"high":36.4}],"type":"errorbar"},{"name":"Bolsa de valores","data":[23.85,19.06,17.12,16.67,16.41,14.63,14.15,14.06,13.17,12.74,12.66,12.38,10.61,9.76,9.62,7.74],"color":"#d1ffe2"},{"name":"Ministerios","data":[55.2,63.2,50,56.3,13.3,33.3,24.7,15.6,26.3,20.7,27.8,4.9,23.5,35.7,22.6,36.4],"color":"#30d4c8"}],"xAxis":{"type":"category","categories":["Costa Rica","España","Colombia","Nicaragua","Argentina","Uruguay","Ecuador","Guatemala","El Salvador","Panamá","Bolivia","Brasil","Paraguay","Chile","Perú","México"],"lineWidth":0,"tickWidth":0,"labels":{"style":{"fontSize":"16px","fontFamily":"Lato","color":"#ffffff"}}},"tooltip":{"formatter":"function(){ var text = '<b>' + this.x + '<\/b><br>' + this.series.name + \": \" + this.point.y + \" %\"; if(this.series.name != 'Series 1') return text }"},"legend":{"verticalAlign":"top","itemStyle":{"fontFamily":"Lato","fontSize":"14px"}}},"theme":{"chart":{"backgroundColor":"transparent"},"title":{"style":{"color":"#ffffff"}},"subtitle":{"style":{"color":"#ffffff"}},"legend":{"itemStyle":{"fontFamily":"Lato","color":"#ffffff"},"itemHoverStyle":{"color":"#ffffff"}}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":"Lato","debug":false},"evals":["hc_opts.tooltip.formatter"],"jsHooks":[]}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-9face0a27d34741460b9">{"viewer":{"width":"100%","height":350,"padding":0,"fill":true},"browser":{"width":"100%","height":500,"padding":0,"fill":true}}</script>
 </body>
 </html>
