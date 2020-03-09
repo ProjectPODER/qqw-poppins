@@ -11,8 +11,8 @@
         <div class='datos-generales clearfix'>
           <div class="gd-col-left-wrapper col-m-12">
               <div class="description-data-title">
-                <h3 title="{{ result.compiledRelease.name }}">
-                  {{{ get_classification_icon type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
+                <h3>
+                  <span class="flag-icon flag-icon-{{result.id}}" title="{{ result.compiledRelease.name }}"></span>
                   {{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}:
                   {{result.compiledRelease.name }}
                 </h3>
@@ -57,7 +57,7 @@
             <div class="col-12 col-m-12">
                 <p class="data-description">Mujeres en la Bolsa de Valores es un proyecto que mide la equidad de género en los consejos de administración de las empresas que cotizan en las bolsas de 15 países de América Latina y España. 15 medios y organizaciones sociales publican reportes con la información y en QuiénEsQuién.Wiki puedes consultar tanto los resultados por país como los agregados totales.</p>
                 <div class="container-button">
-                    <a href="/paises/ad/mujeresenlabolsa" class="button-link stockexchange-mx">VER MUJERES EN LA BOLSA DE MÉXICO</a>
+                    <a href="/paises/{{result.id}}/mujeresenlabolsa" class="button-link stockexchange-mx">VER MUJERES EN LA BOLSA DE MÉXICO</a>
                 </div>
                 <div class="container-button">
                     <a href="https://mujeresenlabolsa.org/" class="button-link stockexchange-out">VER MUJERESENLABOLSA.ORG</a>
