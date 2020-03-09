@@ -11,12 +11,12 @@
         <div class='datos-generales clearfix'>
           <div class="gd-col-left-wrapper col-m-12">
               <div class="description-data-title">
-                <h3 title="{{ result.pais }}">
+                <h3 title="{{ result.compiledRelease.name }}">
                     <img src="../images/icons/mexico.png" alt="" style="width: 42px; margin-top: -5px;">
                   {{!-- {{{ get_classification_icon type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
                   {{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}:
                   {{ result.compiledRelease.name}} --}}
-                  {{result.pais }}
+                  {{result.compiledRelease.name }}
                 </h3>
               </div>
           </div>
@@ -42,7 +42,7 @@
                 <div class="data-icon">
                     <i class="fas fa-venus"></i>
                     <div>
-                      <p class="js-data">{{result.persons.0.count}}</p>
+                      <p class="js-data">{{result.compiledRelease.summaries.persons_count}}</p>
                       <p class="js-title-data">Consejeras</p>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                 <div class="data-icon">
                     <i class="fas fa-mars"></i>
                     <diV>
-                        <p class="js-data">{{result.persons.0.count}}</p>
+                        <p class="js-data">{{result.compiledRelease.summaries.persons_count}}</p>
                         <p class="js-title-data">Consejeros</p>
                     </div>
                 </div>
@@ -167,9 +167,9 @@
           <h4 class="description-data-subtitle"><i class="fas fa-user"></i> PERSONAS</h4>
         </div>
         <div class="col-m-12 mb-12">
-          <p>{{result.persons.0.count}} personas en total</strong>.</p>
+          <p>{{result.compiledRelease.summaries.persons_count}} personas en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?financiador={{result.compiledRelease.name}}" class="button-link">Ver todas las personas</a>
+            <a href="/contratos?pais={{result.compiledRelease.id}}" class="button-link">Ver todas las personas</a>
           </div>
         </div>
         <div class="col-12 col-m-12 mt-2">
@@ -188,9 +188,9 @@
           <h4 class="description-data-subtitle"><i class="fas fa-building"></i></i> EMPRESAS</h4>
         </div>
         <div class="col-m-12 mb-12">
-          <p>{{result.companies.0.count}} empresas en total</strong>.</p>
+          <p>{{result.compiledRelease.summaries.companies_count}} empresas en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?financiador={{result.compiledRelease.name}}" class="button-link">Ver todas las empresas</a>
+            <a href="/empresas?pais={{result.compiledRelease.id}}" class="button-link">Ver todas las empresas</a>
           </div>
         </div>
         <div class="col-12 col-m-12 mt-2">
@@ -211,7 +211,7 @@
         <div class="col-m-12 mb-12">
           <p>60 instituciones en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?financiador={{result.compiledRelease.name}}" class="button-link">Ver todas las instituciones</a>
+            <a href="/instituciones-publicas?pais={{result.compiledRelease.id}}" class="button-link">Ver todas las instituciones</a>
           </div>
         </div>
       </div>
