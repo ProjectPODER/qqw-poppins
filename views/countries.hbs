@@ -50,13 +50,14 @@
                         <div class="index-list-group">
                             <div class="index-list-title">
                                 <a href="/paises/{{id}}">
-                                    <i class="fas fa-flag"></i> {{compiledRelease.name}}
+                                    <span class="flag-icon flag-icon-{{id}}" title="Bandera de {{ compiledRelease.name }}"></span>
+                                    {{compiledRelease.name}}
                                 </a>
                             </div>
                             <div class="index-list-elements">
                                 <div class="left-elements">
-                                    <p class="index-list-element"><i class="fas fa-users"></i> {{compiledRelease.summaries.persons_count}} <span>personas</span></p>
-                                    <p class="index-list-element"><i class="fas fa-building"></i> {{compiledRelease.summaries.companies_count}} <span>empresas</span></p>
+                                    <p class="index-list-element"><i class="fas fa-users"></i> {{format_number compiledRelease.summaries.persons_count}} <span>personas</span></p>
+                                    <p class="index-list-element"><i class="fas fa-building"></i> {{format_number compiledRelease.summaries.companies_count}} <span>empresas</span></p>
                                 </div>
                                 <div class="right-elements">
                                     <p class="index-list-element"><i class="fas fa-map-marked"></i> XX <span>estados</span></p>
@@ -80,7 +81,7 @@
                 {{/if}}
             </div>
             <div class="col-12 col-m-12">
-                {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
+                {{!-- > pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page --}}
             </div>
         </div>
     </div>
