@@ -19,7 +19,7 @@
         <div class="data-icon">
             <img src="../images/icons/porcentaje-mujeres-icon-white.png" alt="" class="gender-icons">
             <div>
-                <p class="js-data">{{ format_number (math this.summaries.f "/" (math this.summaries.f "+" this.summaries.m )) }}%</p>
+                <p class="js-data">{{ format_number (math 100 "*" (math this.summaries.f "/" (math this.summaries.f "+" this.summaries.m ))) }}%</p>
                 <p class="js-title-data">Mujeres consejeras</p>
             </div>
         </div>
