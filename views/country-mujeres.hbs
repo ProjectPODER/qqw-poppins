@@ -171,20 +171,22 @@
             </div>
             <div class="col-m-12 col-12">
                 <div class="row">
+                  {{# each result.content }}
                     <div class="col-3 col-m-3 text-center">
-                        <img src="../../images/logo_poder_2018.png" alt="Logo de la organización" class="img-fluid org-logo">
+                        <img src="../../images/{{publisher}}.png" alt="Logo de {{publisher}}" class="img-fluid org-logo">
                     </div>
                     <div class="col-9 col-m-9">
-                        <h4><b>La Bolsa Mexicana de Valores la última en igualdad de género</b></h5>
-                        <p class="text-gray"><i>20/02/2020 por Clauida Ocaranza</i></p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, qui libero. Culpa accusamus ut, harum, incidunt iure voluptates ullam voluptatibus expedita sint nisi esse, dolorem natus deserunt eveniet beatae quia!</p>
+                        <h4><b>{{title}}</b></h5>
+                        <p class="text-gray"><i>{{moment published_date  lang="es" format="LL"}} por Autor</i></p>
+                        <p>{{content}}</p>
                         <div class="container-button text-center mt-2 mb-2">
-                            <a href="" class="button-link bg-purple">VER NOTA COMPLETA</a>
+                            <a href="{{url}}" class="button-link bg-purple">VER NOTA COMPLETA</a>
                         </div>
-                        <hr>
+                        <!-- <hr>
                         <a href=""><h4 class="text-purple"><b>La Bolsa Mexicana de Valores la última en igualdad de género</b></h4></a>
-                        <p class="text-gray"><i>20/02/2020 por Clauida Ocaranza</i></p>
+                        <p class="text-gray"><i>20/02/2020 por Clauida Ocaranza</i></p> -->
                     </div>
+                  {{/each}}
                 </div>
             </div>
         </div>
@@ -199,11 +201,18 @@
       <div  class="col-m-9 col-9">
         <div class="variations-container row">
           <div class="col-m-12 col-12">
+
             <h4 class="description-data-subtitle"><i class="fas fa-venus"></i> NÚMERO DE CONSEJERAS POR EMPRESA</h4>
-            <p>Si bien en Argentina existe al menos una empresa con 8 asientos ocupados por consejeras, la mayoría de las compañías tienen 1 consejera.</p>
+            <p>Si bien en {{result.name}} --- existe al menos una empresa con 8 asientos ocupados por consejeras, la mayoría de las compañías tienen 1 consejera.</p>
+            <div class="consejeras_chart" style="width:100%">
+
+            </div>
             <script type="text/javascript">
-            const consejeras_por_empresa = {{ j result.summaries.2020.consejeras_por_empresa }}
+              const consejeras_por_empresa = {{ j (generate_consejeras_por_empresa result) }}
             </script>
+            <script src="/javascripts/d3.v4.js"></script>
+            <script type="text/javascript" src="/javascripts/country-mujeres-graph.js"></script>
+
           </div>
         </div>
       </div>
