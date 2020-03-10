@@ -17,6 +17,7 @@
     "hbs": "git+https://github.com/pillarjs/hbs.git#pull/186/head",
     "helper-moment": "^0.2.0",
     "http-errors": "~1.6.3",
+    "i18n-iso-countries": "^5.0.0",
     "jquery": "^3.4.1",
     "jquery.easing": "^1.4.1",
     "lodash": "^4.17.15",

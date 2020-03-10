@@ -417,3 +417,38 @@ $(window).scroll(function(e) {
   }
 
 });
+
+$(document).ready( function () {
+    $('#empresas-mujeres-table').DataTable({
+      pageLength: 100,
+      lengthChange: false,
+      language: {
+    "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ empresas",
+                "sZeroRecords":    "No se encontraron empresas",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+                "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ empresas",
+                "sInfoEmpty":      "Mostrando empresas del 0 al 0 de un total de 0 empresas",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ empresas)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar por nombre:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copy": "Copiar",
+                    "colvis": "Visibilidad"
+                }
+            }
+    });
+} );

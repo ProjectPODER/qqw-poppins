@@ -1,33 +1,35 @@
 <div class="col-12 col-m-12 bg-purple gender-indicator-container">
     <div class="gender-grid grid">
         <img src="../images/mujeresenlabolsa-blanco.png" alt="Mujeres en la bolsa" class="img-fluid mujeres-logo-white">
+        {{# with (match_filter result_name country_data.0.summaries.2020.memberships) }}
         <div class="data-icon">
             <i class="fas fa-venus"></i>
             <div>
-                <p class="js-data">153</p>
+                <p class="js-data"> {{ this.summaries.f }} </p>
                 <p class="js-title-data">Consejeras</p>
-            </div> 
+            </div>
         </div>
         <div class="data-icon">
             <i class="fas fa-mars"></i>
             <div>
-                <p class="js-data">153</p>
+                <p class="js-data">{{ this.summaries.m }} </p>
                 <p class="js-title-data">Consejeros</p>
-            </div> 
+            </div>
         </div>
         <div class="data-icon">
             <img src="../images/icons/porcentaje-mujeres-icon-white.png" alt="" class="gender-icons">
             <div>
-                <p class="js-data">13%</p>
+                <p class="js-data">{{ format_number (math 100 "*" (math this.summaries.f "/" (math this.summaries.f "+" this.summaries.m ))) }}%</p>
                 <p class="js-title-data">Mujeres consejeras</p>
-            </div> 
+            </div>
         </div>
+        {{/with }}
         <div class="data-icon">
             <img src="../images/icons/media.png" alt="" class="gender-icons">
             <div>
-                <p class="js-data">10%</p>
-                <p class="js-title-data">Media del país (<a href="" class="gender-country-link">México</a>)</p>
-            </div> 
+                <p class="js-data">{{ format_number (math 100 "*" (math  country_data.0.summaries.2020.consejeres.f "/" (math  country_data.0.summaries.2020.consejeres.f "+" (math  country_data.0.summaries.2020.consejeres.m "+" country_data.0.summaries.2020.consejeres.nd)))) }}%</p>
+                <p class="js-title-data">Media del país (<a href="/paises/{{country_data.0.id}}/mujeresenlabolsa" class="gender-country-link">{{country_data.0.name}}</a>)</p>
+            </div>
         </div>
     </div>
     <div class="container-button-gender">
