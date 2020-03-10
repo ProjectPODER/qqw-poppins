@@ -83,30 +83,37 @@
                 <i class="fas fa-venus-mars"></i>Género
               </a>
             </li>
-            {{!-- {{#if result.memberships.parent}}
-            {{#each result.memberships.parent }} --}}
+
+            {{#ifCond result.compiledRelease.summaries.estados_count ">" 0 }}
+
             <li>
               <a href="#estados" class="anchor">
                 <i class="fas fa-map-marked"></i>Estados
               </a>
             </li>
-            {{!-- {{/each}}
-            {{/if}} --}}
+            {{/ifCond}}
+            {{#ifCond result.compiledRelease.summaries.persons_count ">" 0 }}
+
             <li>
               <a href="#personas" class="anchor">
                 <i class="fas fa-user"></i>Personas
               </a>
             </li>
+            {{/ifCond}}
+            {{#ifCond result.compiledRelease.summaries.companies_count ">" 0 }}
             <li>
               <a href="#empresas" class="anchor">
                 <i class="fas fa-building"></i>Empresas
               </a>
             </li>
+            {{/ifCond}}
+            {{#ifCond result.compiledRelease.summaries.institutions_count ">" 0 }}
             <li>
               <a href="#instituciones-publicas" class="anchor">
                 <i class="fas fa-landmark"></i>Instituciones Públicas
               </a>
             </li>
+            {{/ifCond}}
           </ul>
         </nav>
       </div>
@@ -114,6 +121,7 @@
   </div>
 </section>
 
+{{#ifCond result.compiledRelease.summaries.estados_count ">" 0 }}
 <section class="profile" id="estados">
   <div class="row">
     <div class="content">
@@ -144,7 +152,7 @@
           {{!-- {{#ifCond result.compiledRelease.contract_count.funder '>' 3}} --}}
           <p>Viendo hasta 3 de <strong>{{result.compiledRelease.contract_count.funder}} estados en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?financiador={{result.compiledRelease.name}}" class="button-link">Ver todos los estados</a>
+            <a href="/instituciones-publicas?pais={{result.compiledRelease.name}}" class="button-link">Ver todos los estados</a>
           </div>
           {{!-- {{else}}
             <p>Viendo <strong>{{result.compiledRelease.contract_count.funder}} estado(s) en total</strong>. </p>
@@ -157,7 +165,9 @@
     </div>
   </div>
 </section>
+{{/ifCond}}
 
+{{#ifCond result.compiledRelease.summaries.persons_count ">" 0 }}
 <section class="profile" id="personas">
   <div class="row">
     <div class="content">
@@ -168,7 +178,7 @@
         <div class="col-m-12 mb-12">
           <p>{{format_number result.compiledRelease.summaries.persons_count}} personas en total</strong>.</p>
           <div class="contract-button">
-            <a href="/contratos?pais={{result.compiledRelease.id}}" class="button-link">Ver todas las personas</a>
+            <a href="/personas?pais={{result.compiledRelease.id}}" class="button-link">Ver todas las personas</a>
           </div>
         </div>
         <div class="col-12 col-m-12 mt-2">
@@ -178,7 +188,9 @@
     </div>
   </div>
 </section>
+{{/ifCond}}
 
+{{#ifCond result.compiledRelease.summaries.companies_count ">" 0 }}
 <section class="profile" id="empresas">
   <div class="row">
     <div class="content">
@@ -199,7 +211,9 @@
     </div>
   </div>
 </section>
+{{/ifCond}}
 
+{{#ifCond result.compiledRelease.summaries.insititutions_count ">" 0 }}
 <section class="profile" id="instituciones-publicas">
   <div class="row">
     <div class="content">
@@ -208,7 +222,7 @@
           <h4 class="description-data-subtitle"><i class="fas fa-landmark"></i></i> INSTITUCIONES PÚBLICAS</h4>
         </div>
         <div class="col-m-12 mb-12">
-          <p>60 instituciones en total</strong>.</p>
+          <p>{{result.compiledRelease.summaries.insititutions_count}} instituciones en total</strong>.</p>
           <div class="contract-button">
             <a href="/instituciones-publicas?pais={{result.compiledRelease.id}}" class="button-link">Ver todas las instituciones</a>
           </div>
@@ -217,6 +231,8 @@
     </div>
   </div>
 </section>
+{{/ifCond}}
+
 
 
 
