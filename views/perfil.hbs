@@ -137,7 +137,7 @@
                   {{#ifCond classification '==' 'state'}}Estado{{/ifCond}}
                 </p>
                 <p class="js-data">
-                  {{translate_area name}}
+                  {{translate_area id}}
                 </p>
               </div>
           {{/each}}
@@ -158,7 +158,9 @@
             {{/if}}
           {{/ifCond}}
         </div>
-        {{> gender-indicator}}
+        {{#ifCond type "==" "companies"}}
+        {{> gender-indicator result_name=result.compiledRelease.name country_data=result.countryData }}
+        {{/ifCond}}
         <div class="col-12 col-m-12 mt-2">
           <hr>
         </div>
