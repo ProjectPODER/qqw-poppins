@@ -3592,13 +3592,13 @@ button.close {
   font-size: 2rem;
   margin-right: 20px;
 }
-.up {
+.variation-icon.fa-chevron-up {
   color: #12b616 !important;
 }
-.down {
+.variation-icon.fa-chevron-down {
   color: #db2828 !important;
 }
-.equal {
+.variation-icon.fa-equals {
   color: #fff;
 }
 .icon-variations1 {

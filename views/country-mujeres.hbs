@@ -6,18 +6,18 @@
           <h4>
               <a href="/">Inicio</a> >
               <a href="/{{get_type_url type}}">{{get_type_plural type}}</a> >
-              <a href="/{{get_type_url type}}/{{ result.compiledRelease.id}}">{{ result.compiledRelease.name}}</a>
+              <a href="/{{get_type_url type}}/{{ result.id}}">{{ result.name}}</a>
           </h4>
         </div>
         <div class='datos-generales clearfix'>
           <div class="gd-col-left-wrapper col-m-12">
               <div class="description-data-title">
-                <h3 title="Mujeres en la Bolsa: {{ result.compiledRelease.name}}">
+                <h3 title="Mujeres en la Bolsa: {{ result.name}}">
                     <img src="../../images/icon-mujeresenlabolsa.png" alt="Mujeres en la bolsa" style="width: 20px; margin-top: -4px;">
                   {{!-- {{{ get_classification_icon type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
                   {{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}:
                   {{ result.compiledRelease.name}} --}}
-                  Mujeres en la Bolsa: {{ result.compiledRelease.name}}
+                  Mujeres en la Bolsa: {{ result.name}}
                 </h3>
               </div>
           </div>
@@ -45,72 +45,72 @@
                   <hr>
                   <div id="element-icons-a" class="element-icons">
                     <i class="fas fa-venus data-icon-variations"></i>
-                    <i class="fas fa-chevron-up variation-icon up"></i>
+                    <i class="fas fa-{{get_variation_direction_more_better (math 100 "*" (math  result.summaries.2020.consejeres.f "/" (math  result.summaries.2020.consejeres.f "+" (math  result.summaries.2020.consejeres.m "+" result.summaries.2020.consejeres.nd)))) (math 100 "*" (math  result.summaries.2019.consejeres.f "/" (math  result.summaries.2019.consejeres.f "+" (math  result.summaries.2019.consejeres.m "+" result.summaries.2019.consejeres.nd)))) }} variation-icon"></i>
                   </div>
                   <div id="element-icons-b" class="element-icons">
                     <i class="fas fa-mars data-icon-variations"></i>
-                    <i class="fas fa-chevron-down variation-icon down"></i>
+                    <i class="fas fa-{{get_variation_direction_more_worst (math 100 "*" (math  result.summaries.2020.consejeres.m "/" (math  result.summaries.2020.consejeres.f "+" (math  result.summaries.2020.consejeres.m "+" result.summaries.2020.consejeres.nd)))) (math 100 "*" (math  result.summaries.2019.consejeres.m "/" (math  result.summaries.2019.consejeres.f "+" (math  result.summaries.2019.consejeres.m "+" result.summaries.2019.consejeres.nd)))) }} variation-icon"></i>
                   </div>
                   <div id="element-icons-c" class="element-icons">
                     <img src="../../images/icons/consejeras-blanco.png" alt="Ícono " class="icon-variations1 img-fluid">
-                    <i class="fas fa-chevron-up variation-icon up"></i>
+                    <i class="fas fa-{{get_variation_direction_more_worst (math result.summaries.2020.consejeres.m "/" result.summaries.2020.consejeres.f) (math result.summaries.2019.consejeres.m "/" result.summaries.2019.consejeres.f)}} variation-icon"></i>
                   </div>
                   <div id="element-icons-d" class="element-icons">
                     <img src="../../images/icons/sinconsejeras-blanco.png" alt="Ícono" class="icon-variations2 img-fluid">
-                    <i class="fas fa-chevron-up variation-icon up"></i>
+                    <i class="fas fa-{{get_variation_direction_more_worst (math 100 "*" (math result.summaries.2020.consejeras_por_empresa.0.companies_count "/" result.summaries.2020.companies)) (math 100 "*" (math result.summaries.2019.consejeras_por_empresa.0.companies_count "/" result.summaries.2019.companies))}} variation-icon"></i>
                   </div>
                   <div id="element-icons-e" class="element-icons">
                     <i class="fas fa-hashtag data-icon-variations"></i>
-                    <i class="fas fa-equals variation-icon equal"></i>
+                    <i class="fas fa-{{get_variation_direction_more_better result.summaries.2020.ranking result.summaries.2019.ranking }} variation-icon"></i>
                   </div>
                   <div id="element-with-icon-a" class="element-with-icon">
                     <div class="data-text">
-                      <p class="js-data">153 <span class="percentage">9.32%</span></p>
+                      <p class="js-data">{{format_number result.summaries.2020.consejeres.f }} <span class="percentage">{{format_number (math 100 "*" (math  result.summaries.2020.consejeres.f "/" (math  result.summaries.2020.consejeres.f "+" (math  result.summaries.2020.consejeres.m "+" result.summaries.2020.consejeres.nd)))) }}%</span></p>
                       <p class="js-title-data">Consejeras</p>
                     </div>
                   </div>
                   <div id="element-with-icon-b" class="element-with-icon">
                     <div class="data-text">
-                      <p class="js-data">153 <span class="percentage">9.32%</span></p>
+                      <p class="js-data">{{format_number result.summaries.2020.consejeres.m }} <span class="percentage">{{ format_number (math 100 "*" (math  result.summaries.2020.consejeres.m "/" (math  result.summaries.2020.consejeres.f "+" (math  result.summaries.2020.consejeres.m "+" result.summaries.2020.consejeres.nd)))) }}%</span></p>
                       <p class="js-title-data">Consejeros</p>
                     </div>
                   </div>
                   <div id="element-with-icon-c" class="element-with-icon">
                     <div class="data-text">
-                      <p class="js-data">12.23</p>
+                      <p class="js-data">{{format_number (math result.summaries.2020.consejeres.m "/" result.summaries.2020.consejeres.f) }}</p>
                       <p class="js-title-data">Consejeros por consejera</p>
                     </div>
                   </div>
                   <div id="element-with-icon-d" class="element-with-icon">
                     <div class="data-text">
-                      <p class="js-data">15<span class="number">/254</span><span class="percentage">10.23%</span></p>
+                      <p class="js-data">{{ format_number result.summaries.2020.consejeras_por_empresa.0.companies_count }}<span class="number">/{{ format_number result.summaries.2020.companies }}</span><span class="percentage">{{ format_number (math 100 "*" (math result.summaries.2020.consejeras_por_empresa.0.companies_count "/" result.summaries.2020.companies)) }}%</span></p>
                       <p class="js-title-data">Empresas sin consejeras</p>
                     </div>
                   </div>
                   <div id="element-with-icon-e" class="element-with-icon">
                     <div class="data-text">
-                      <p class="js-data">5 <span class="number">/16</span></p>
+                      <p class="js-data">{{ result.summaries.2020.ranking }} <span class="number">/16</span></p>
                       <p class="js-title-data">Posición en el ranking</p>
                     </div>
                   </div>
                   <div id="element-a" class="element">
-                    <p class="js-data">153 <span class="percentage">9.32%</span></p>
+                    <p class="js-data">{{format_number result.summaries.2019.consejeres.f }} <span class="percentage">{{format_number (math 100 "*" (math  result.summaries.2019.consejeres.f "/" (math  result.summaries.2019.consejeres.f "+" (math  result.summaries.2019.consejeres.m "+" result.summaries.2019.consejeres.nd)))) }}%</span></p>
                     <p class="js-title-data">Consejeras</p>
                   </div>
                   <div id="element-b" class="element">
-                    <p class="js-data">153 <span class="percentage">9.32%</span></p>
+                    <p class="js-data">{{format_number result.summaries.2019.consejeres.m }} <span class="percentage">{{ format_number (math 100 "*" (math  result.summaries.2019.consejeres.m "/" (math  result.summaries.2019.consejeres.f "+" (math  result.summaries.2019.consejeres.m "+" result.summaries.2019.consejeres.nd)))) }}%</span></p>
                     <p class="js-title-data">Consejeros</p>
                   </div>
                   <div id="element-c" class="element">
-                    <p class="js-data">12.23</p>
+                    <p class="js-data">{{format_number (math result.summaries.2019.consejeres.m "/" result.summaries.2019.consejeres.f) }}</p>
                     <p class="js-title-data">Consejeros por consejera</p>
                   </div>
                   <div id="element-d" class="element">
-                    <p class="js-data">15<span class="number">/254</span><span class="percentage">10.23%</span></p>
+                    <p class="js-data">{{ format_number result.summaries.2019.consejeras_por_empresa.0.companies_count }}<span class="number">/{{ format_number result.summaries.2019.companies }}</span><span class="percentage">{{ format_number (math 100 "*" (math result.summaries.2019.consejeras_por_empresa.0.companies_count "/" result.summaries.2019.companies)) }}%</span></p>
                     <p class="js-title-data">Empresas sin consejeras</p>
                   </div>
                   <div id="element-e" class="element">
-                    <p class="js-data">5 <span class="number">/16</span></p>
+                    <p class="js-data">{{ result.summaries.2019.ranking }} <span class="number">/15</span></p>
                     <p class="js-title-data">Posición en el ranking</p>
                   </div>
                 </div>
@@ -197,6 +197,9 @@
           <div class="col-m-12 col-12">
             <h4 class="description-data-subtitle"><i class="fas fa-venus"></i> NÚMERO DE CONSEJERAS POR EMPRESA</h4>
             <p>Si bien en Argentina existe al menos una empresa con 8 asientos ocupados por consejeras, la mayoría de las compañías tienen 1 consejera.</p>
+            <script type="text/javascript">
+            const consejeras_por_empresa = {{ j result.summaries.2020.consejeras_por_empresa }}
+            </script>
           </div>
         </div>
       </div>
@@ -212,31 +215,12 @@
             <div class="col-m-12 col-12">
                 <h4 class="description-data-subtitle text-white"><i class="fas fa-mars"></i> CONSEJOS DE HOMBRES</h4>
                 <div class="row overflow-cards scroller">
+                  {{#each result.summaries.2020.consejos_de_hombres }}
                     <div class="man-cards">
-                        <h4><b>Jorge Arturo Ramírez Guillemin</b></h4>
-                        <p><b>3</b> consejos de hombres</p>
-                        <p><b>4</b> en total</p>
+                        <h4><b><a href="/personas/{{id}}"> {{name}}</a></b></h4>
+                        <p><b>{{companies_without_women_count}}</b> consejos de hombres</p>
                     </div>
-                    <div class="man-cards">
-                        <h4><b>Jorge Arturo Ramírez Guillemin</b></h4>
-                        <p><b>3</b> consejos de hombres</p>
-                        <p><b>4</b> en total</p>
-                    </div>
-                    <div class="man-cards">
-                        <h4><b>Jorge Arturo Ramírez Guillemin</b></h4>
-                        <p><b>3</b> consejos de hombres</p>
-                        <p><b>4</b> en total</p>
-                    </div>
-                    <div class="man-cards">
-                        <h4><b>Jorge Arturo Ramírez Guillemin</b></h4>
-                        <p><b>3</b> consejos de hombres</p>
-                        <p><b>4</b> en total</p>
-                    </div>
-                    <div class="man-cards">
-                        <h4><b>Jorge Arturo Ramírez Guillemin</b></h4>
-                        <p><b>3</b> consejos de hombres</p>
-                        <p><b>4</b> en total</p>
-                    </div>
+                  {{/each}}
                 </div>
             </div>
         </div>
@@ -271,17 +255,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {{!-- {{#each result.top3contracts.supplier }} --}}
+                      {{#each result.summaries.2020.memberships }}
                       <tr>
                         <td class="description-data-contract">
-                          <a href=""><i class="fas fa-building"></i> Empresa</a>
+                          <a href=""><i class="fas fa-building"></i> <a href="/empresas/{{id}}">{{name}}</a>
                         </td>
-                        <td class="description-data-amount">BMV/BIVA</td>
-                        <td class="description-data-amount text-center">11</td>
-                        <td class="description-data-amount text-center">2389</td>
-                        <td class="description-data-amount text-center">23%</td>
+                        <td class="description-data-amount">{{bolsa}}</td>
+                        <td class="description-data-amount text-center">{{format_number summaries.f}}</td>
+                        <td class="description-data-amount text-center">{{format_number summaries.m}}</td>
+                        <td class="description-data-amount text-center">{{format_number (math 100 "*" (math summaries.f "/" (math summaries.f "+" summaries.m))) }}%</td>
                       </tr>
-                      {{!-- {{/each}} --}}
+                      {{/each}}
                     </tbody>
                   </table>
               </div>
