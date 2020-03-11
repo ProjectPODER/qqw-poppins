@@ -3,8 +3,8 @@ var values;
 
 // Set the dimensions and margins
 var margin = {top: 30, right: 60, bottom: 70, left: 80},
-width = 1000 - margin.left - margin.right,
-height = 600 - margin.top - margin.bottom;
+width = 918 - margin.left - margin.right,
+height = 400 - margin.top - margin.bottom;
 
 
 //Make chart responsive
