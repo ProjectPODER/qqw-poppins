@@ -217,11 +217,11 @@
             <div class="consejeras_chart" style="width:100%">
 
             </div>
+            {{#ifCond result.id "!=" "ec" }}
             <script type="text/javascript">
               const consejeras_por_empresa = {{ j (generate_consejeras_por_empresa result) }}
             </script>
             <script src="/javascripts/d3.v4.js"></script>
-            {{#ifCond result.id "!=" "ec" }}
             <script type="text/javascript" src="/javascripts/country-mujeres-graph.js"></script>
             {{/ifCond}}
 
