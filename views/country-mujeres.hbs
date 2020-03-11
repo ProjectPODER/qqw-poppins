@@ -41,7 +41,9 @@
                 <div class="w-layout-grid grid-2">
                   <h4 id="twenty-year" class="description-data-subtitle text-white text-center">2020</h4>
                   <hr>
+                  {{#ifCond result.id "!=" "ec" }}
                   <h4 id="nineteen-year" class="description-data-subtitle text-white text-center">2019</h4>
+                  {{/ifCond}}
                   <hr>
                   <div id="element-icons-a" class="element-icons">
                     <i class="fas fa-venus data-icon-variations"></i>
@@ -101,6 +103,8 @@
                       </p>
                     </div>
                   </div>
+                  {{#ifCond result.id "!=" "ec" }}
+
                   <div id="element-a" class="element">
                     <p class="js-data">{{format_number result.summaries.2019.consejeres.f }} <span class="percentage">{{format_number (math 100 "*" (math  result.summaries.2019.consejeres.f "/" (math  result.summaries.2019.consejeres.f "+" (math  result.summaries.2019.consejeres.m "+" result.summaries.2019.consejeres.nd)))) }}%</span></p>
                     <p class="js-title-data">Consejeras</p>
@@ -122,6 +126,7 @@
                     <p class="js-title-data">Posición en el ranking
                     </p>
                   </div>
+                  {{/ifCond}}
                 </div>
 
             </div>
@@ -208,7 +213,7 @@
           <div class="col-m-12 col-12">
 
             <h4 class="description-data-subtitle"><i class="fas fa-venus"></i> NÚMERO DE CONSEJERAS POR EMPRESA</h4>
-            <p>Si bien en {{result.name}} existe al menos una empresa con {{ result.summaries.2020.consejeras_por_empresa.6.consejeras_count }} asientos ocupados por consejeras, la mayoría de las compañías tienen {{ result.summaries.2020.consejeras_por_empresa.0.consejeras_count }} consejera.</p>
+            <p>Si bien en {{result.name}} existe al menos una empresa con {{ last_consejeras_count result.summaries.2020.consejeras_por_empresa }} asientos ocupados por consejeras, la mayoría de las compañías tienen {{ result.summaries.2020.consejeras_por_empresa.0.consejeras_count }} consejera.</p>
             <div class="consejeras_chart" style="width:100%">
 
             </div>
@@ -216,7 +221,9 @@
               const consejeras_por_empresa = {{ j (generate_consejeras_por_empresa result) }}
             </script>
             <script src="/javascripts/d3.v4.js"></script>
+            {{#ifCond result.id "!=" "ec" }}
             <script type="text/javascript" src="/javascripts/country-mujeres-graph.js"></script>
+            {{/ifCond}}
 
           </div>
         </div>
@@ -236,7 +243,7 @@
                   {{#each result.summaries.2020.consejos_de_hombres }}
                     <div class="man-cards">
                         <h4><b><a href="/personas/{{id}}"> {{name}}</a></b></h4>
-                        <p><b>{{companies_without_women_count}}</b> consejos de hombres</p>
+                        <p><b>{{companies_without_women_count}}</b> consejos sin mujeres</p>
                     </div>
                   {{/each}}
                 </div>
