@@ -66,13 +66,18 @@
                   <div id="element-with-icon-a" class="element-with-icon">
                     <div class="data-text">
                       <p class="js-data">{{format_number result.summaries.2020.consejeres.f }} <span class="percentage">{{format_number (math 100 "*" (math  result.summaries.2020.consejeres.f "/" (math  result.summaries.2020.consejeres.f "+" (math  result.summaries.2020.consejeres.m "+" result.summaries.2020.consejeres.nd)))) }}%</span></p>
-                      <p class="js-title-data">Consejeras</p>
+                      <p class="js-title-data">Consejeras
+                        <a data-toggle="tooltip" data-placement="right" title="Cantidad de asientos del consejo ocupados por mujeres. Incluso si una persona ocupa más de un asiento en la misma empresa."><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
+                      </p>
                     </div>
                   </div>
                   <div id="element-with-icon-b" class="element-with-icon">
                     <div class="data-text">
                       <p class="js-data">{{format_number result.summaries.2020.consejeres.m }} <span class="percentage">{{ format_number (math 100 "*" (math  result.summaries.2020.consejeres.m "/" (math  result.summaries.2020.consejeres.f "+" (math  result.summaries.2020.consejeres.m "+" result.summaries.2020.consejeres.nd)))) }}%</span></p>
-                      <p class="js-title-data">Consejeros</p>
+                      <p class="js-title-data">Consejeros
+                        <a data-toggle="tooltip" data-placement="right" title="Cantidad de asientos del consejo ocupados por hombres. Incluso si una persona ocupa más de un asiento en la misma empresa."><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
+                      </p>
+
                     </div>
                   </div>
                   <div id="element-with-icon-c" class="element-with-icon">
@@ -203,7 +208,7 @@
           <div class="col-m-12 col-12">
 
             <h4 class="description-data-subtitle"><i class="fas fa-venus"></i> NÚMERO DE CONSEJERAS POR EMPRESA</h4>
-            <p>Si bien en {{result.name}} --- existe al menos una empresa con 8 asientos ocupados por consejeras, la mayoría de las compañías tienen 1 consejera.</p>
+            <p>Si bien en {{result.name}} existe al menos una empresa con {{ result.summaries.2020.consejeras_por_empresa.6.consejeras_count }} asientos ocupados por consejeras, la mayoría de las compañías tienen {{ result.summaries.2020.consejeras_por_empresa.0.consejeras_count }} consejera.</p>
             <div class="consejeras_chart" style="width:100%">
 
             </div>
@@ -249,20 +254,15 @@
         <div class="variations-container row">
           <div class="col-m-12 col-12">
             <h4 class="description-data-subtitle text-red"><i class="fas fa-building"></i> EMPRESAS</h4>
-            <!-- <ul class="nav nav-tabs" style="display: flex;">
-              <li class="active"><a data-toggle="tab" href="#a-z">A-Z</a></li>
-              <li><a data-toggle="tab" href="#numMujeres">No. de mujeres</a></li>
-              <li><a data-toggle="tab" href="#numHombres">No. de hombres</a></li>
-              <li><a data-toggle="tab" href="#porcentajeMujeres">Porcentaje de mujeres</a></li>
-            </ul> -->
+
             <table class="table table-responsive mt-3" id="empresas-mujeres-table">
                     <thead>
                       <tr>
                         <th class="description-data-subname">Nombre</th>
                         <th class="description-data-subname">Bolsa</th>
-                        <th class="description-data-subname">No. de Mujeres</th>
-                        <th class="description-data-subname">No. de Hombres</th>
-                        <th class="description-data-subname">Porcentaje de Mujeres</th>
+                        <th class="description-data-subname">Cantidad consejeras</th>
+                        <th class="description-data-subname">Cantidad consejeros</th>
+                        <th class="description-data-subname">Porcentaje consejeras</th>
                       </tr>
                     </thead>
                     <tbody>

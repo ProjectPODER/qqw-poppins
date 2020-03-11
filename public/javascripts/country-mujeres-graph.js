@@ -82,7 +82,7 @@ function createChart(newWidth, height, data, y_domain) {
               .domain(data.map(d => d.consejeras_count))
   var x1 = d3.scaleBand()
               .padding(0.05)
-              .domain(["2019", "2020"])
+              .domain(["datos2020", "datos2019"])
               .rangeRound([0, x0.bandwidth()]);
 
   svg.append("g")
@@ -183,7 +183,7 @@ function createChart(newWidth, height, data, y_domain) {
     .attr("fill", "#333333")
     .attr("transform", "translate(0," + margin.top + ")")
   .selectAll("g")
-  .data(["2019", "2020"])
+  .data(["2020", "2019"])
   .enter().append("g")
     .attr("transform", function(d, i) { return "translate(0," + i * 24 + ")"; });
 
@@ -203,7 +203,7 @@ function createChart(newWidth, height, data, y_domain) {
 
 function getSubcategories(d) {
   return Object.keys(d).filter(key => key !== 'consejeras_count').map(function(key) {
-    return { key: +key, value: d[key] };
+    return { key: key, value: d[key] };
   });
 }
 

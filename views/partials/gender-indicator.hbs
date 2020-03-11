@@ -6,21 +6,27 @@
             <i class="fas fa-venus"></i>
             <div>
                 <p class="js-data"> {{ this.summaries.f }} </p>
-                <p class="js-title-data">Consejeras</p>
+                <p class="js-title-data">Consejeras activas
+                  <a data-toggle="tooltip" data-placement="right" title="Cantidad de asientos del consejo ocupados por mujeres. El listado de abajo incluye también inactivos."><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
+
+                </p>
             </div>
         </div>
         <div class="data-icon">
             <i class="fas fa-mars"></i>
             <div>
                 <p class="js-data">{{ this.summaries.m }} </p>
-                <p class="js-title-data">Consejeros</p>
+                <p class="js-title-data">Consejeros activos
+                  <a data-toggle="tooltip" data-placement="right" title="Cantidad de asientos del consejo ocupados por hombres. El listado de abajo incluye también inactivos."><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
+
+                </p>
             </div>
         </div>
         <div class="data-icon">
             <img src="../images/icons/porcentaje-mujeres-icon-white.png" alt="" class="gender-icons">
             <div>
                 <p class="js-data">{{ format_number (math 100 "*" (math this.summaries.f "/" (math this.summaries.f "+" this.summaries.m ))) }}%</p>
-                <p class="js-title-data">Mujeres consejeras</p>
+                <p class="js-title-data">de mujeres en el consejo</p>
             </div>
         </div>
         {{/with }}

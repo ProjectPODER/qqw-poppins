@@ -41,7 +41,7 @@
                 <div class="data-icon">
                     <i class="fas fa-venus"></i>
                     <div>
-                      <p class="js-data">{{format_number result.compiledRelease.summaries.persons_count}}</p>
+                      <p class="js-data">{{format_number result.compiledRelease.summaries.mujeres.summaries.2020.consejeres.f }}</p>
                       <p class="js-title-data">Consejeras</p>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="data-icon">
                     <i class="fas fa-mars"></i>
                     <diV>
-                        <p class="js-data">{{format_number result.compiledRelease.summaries.persons_count}}</p>
+                        <p class="js-data">{{format_number result.compiledRelease.summaries.mujeres.summaries.2020.consejeres.m  }}</p>
                         <p class="js-title-data">Consejeros</p>
                     </div>
                 </div>
@@ -68,7 +68,9 @@
         <div  class="col-m-12 col-12 mt-2">
           <h5 class="description-data-subtitle"><i class="fas fa-chart-line"></i> Bolsas de Valores</h5>
           <ul>
-            <li><a href="">Bolsa Mexicana de Valores</a></li>
+            {{#each result.compiledRelease.summaries.bolsas }}
+            <li><a href="/empresas/{{id}}">{{compiledRelease.name}}</a></li>
+            {{/each}}
           </ul>
         </div>
         <div class="col-12 col-m-12 mt-2">
@@ -84,14 +86,14 @@
               </a>
             </li>
 
-            {{#ifCond result.compiledRelease.summaries.estados_count ">" 0 }}
+            {{#if result.compiledRelease.summaries.estados }}
 
             <li>
               <a href="#estados" class="anchor">
                 <i class="fas fa-map-marked"></i>Estados
               </a>
             </li>
-            {{/ifCond}}
+            {{/if}}
             {{#ifCond result.compiledRelease.summaries.persons_count ">" 0 }}
 
             <li>
@@ -121,7 +123,7 @@
   </div>
 </section>
 
-{{#ifCond result.compiledRelease.summaries.estados_count ">" 0 }}
+{{#if result.compiledRelease.summaries.estados }}
 <section class="profile" id="estados">
   <div class="row">
     <div class="content">
@@ -132,31 +134,26 @@
             <thead>
               <tr>
                 <th class="description-data-subname">Nombre</th>
-                <th class="description-data-subname">No. de municipios</th>
+                <th class="description-data-subname">Cantidad municipios</th>
               </tr>
             </thead>
             <tbody>
-              {{!-- {{#each result.top3contracts.supplier }} --}}
+              {{#each result.compiledRelease.summaries.estados }}
               <tr>
                 <td class="description-data-contract">
-                  {{!-- <img src="../images/icons/contrato-blue.svg" alt="Ícono contrato" class="icon-lf icon-lf-contract"> --}}
-                  <a href="">Estado</a>
+                  <i class="fa fa-icon fa-map-marker"></i>
+                  <a href="/instituciones-publicas/{{id}}">{{compiledRelease.name}}</a>
                 </td>
-                <td class="description-data-amount">{{format_number compiledRelease.total_amount}} {{ compiledRelease.contracts.0.value.currency}}</td>
+                <td class="description-data-amount">{{format_number municipios.0.count}}</td>
               </tr>
-              {{!-- {{/each}} --}}
+              {{/each}}
             </tbody>
           </table>
         </div>
         <div class="col-m-12 mb-12">
-          {{!-- {{#ifCond result.compiledRelease.contract_count.funder '>' 3}} --}}
-          <p>Viendo hasta 3 de <strong>{{result.compiledRelease.contract_count.funder}} estados en total</strong>.</p>
           <div class="contract-button">
-            <a href="/instituciones-publicas?pais={{result.compiledRelease.name}}" class="button-link">Ver todos los estados</a>
+            <a href="/instituciones-publicas?tipo-institucion=state" class="button-link">Ver todos los estados</a>
           </div>
-          {{!-- {{else}}
-            <p>Viendo <strong>{{result.compiledRelease.contract_count.funder}} estado(s) en total</strong>. </p>
-          {{/ifCond}} --}}
         </div>
         <div class="col-12 col-m-12 mt-2">
           <hr>
@@ -165,7 +162,7 @@
     </div>
   </div>
 </section>
-{{/ifCond}}
+{{/if}}
 
 {{#ifCond result.compiledRelease.summaries.persons_count ">" 0 }}
 <section class="profile" id="personas">
@@ -213,7 +210,7 @@
 </section>
 {{/ifCond}}
 
-{{#ifCond result.compiledRelease.summaries.insititutions_count ">" 0 }}
+{{#ifCond result.compiledRelease.summaries.institutions_count ">" 0 }}
 <section class="profile" id="instituciones-publicas">
   <div class="row">
     <div class="content">
@@ -222,9 +219,9 @@
           <h4 class="description-data-subtitle"><i class="fas fa-landmark"></i></i> INSTITUCIONES PÚBLICAS</h4>
         </div>
         <div class="col-m-12 mb-12">
-          <p>{{result.compiledRelease.summaries.insititutions_count}} instituciones en total</strong>.</p>
+          <p>{{result.compiledRelease.summaries.institutions_count}} instituciones en total</strong>.</p>
           <div class="contract-button">
-            <a href="/instituciones-publicas?pais={{result.compiledRelease.id}}" class="button-link">Ver todas las instituciones</a>
+            <a href="/instituciones-publicas" class="button-link">Ver todas las instituciones</a>
           </div>
         </div>
       </div>
