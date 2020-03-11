@@ -92,7 +92,7 @@ a:hover {
   background-size: cover;
   background-repeat: repeat;
   background-attachment: scroll; 
-
+  border-top: 5px solid #4900A3;
 }
 
 .container-graphic {
@@ -316,7 +316,7 @@ a:hover {
   -ms-flex: 1;
   flex: 1;
   border: 2px solid #4900a3;
-  background-color: transparent;
+  background-color: rgba(73,0,163,0.15);
   -webkit-transition: color 250ms ease, background-color 250ms ease;
   transition: color 250ms ease, background-color 250ms ease;
   color: #4900a3;
@@ -12935,6 +12935,11 @@ a:hover {
     padding-top: 150%;
   }
 }
+@media screen and (max-width: 378px) {
+  .embed-responsive-16by9::before {
+    padding-top: 200%;
+  }
+}
 
 .section-main-bg {
   background-image: url('../images/portada.png');
@@ -12962,7 +12967,7 @@ a:hover {
   left: 0%;
   right: 0%;
   top: auto;
-  bottom: 0%;
+  bottom: 9%;
   padding: 0 25%;
 }
 
@@ -12980,7 +12985,6 @@ a:hover {
   line-height: 32px;
   font-weight: bold;
   text-shadow: 4px 3px 6px #AE4E99;
-  margin-bottom: 40px;
 }
 
 .main-cover-data .data-numbers {
