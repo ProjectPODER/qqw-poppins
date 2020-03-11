@@ -140,15 +140,13 @@
                 <i class="fas fa-arrows-alt-v"></i>Variaciones
               </a>
             </li>
-            {{!-- {{#if result.memberships.parent}}
-            {{#each result.memberships.parent }} --}}
+            {{#if result.content }}
             <li>
               <a href="#notas" class="anchor">
                 <i class="fas fa-newspaper"></i>Notas
               </a>
             </li>
-            {{!-- {{/each}}
-            {{/if}} --}}
+            {{/if}} 
             <li>
               <a href="#consejerasporempresa" class="anchor">
                 <i class="fas fa-venus"></i>Consejeras
@@ -171,6 +169,7 @@
   </div>
 </section>
 
+{{#if result.content }}
 <section class="country-mujeres" id="notas">
   <div class="row">
     <div class="content">
@@ -204,6 +203,7 @@
     </div>
   </div>
 </section>
+{{/if}}
 
 <section class="country-mujeres" id="consejerasporempresa">
   <div class="row">
@@ -213,17 +213,15 @@
           <div class="col-m-12 col-12">
 
             <h4 class="description-data-subtitle"><i class="fas fa-venus"></i> NÚMERO DE CONSEJERAS POR EMPRESA</h4>
-            <p>Si bien en {{result.name}} existe al menos una empresa con {{ last_consejeras_count result.summaries.2020.consejeras_por_empresa }} asientos ocupados por consejeras, la mayoría de las compañías tienen {{ result.summaries.2020.consejeras_por_empresa.0.consejeras_count }} consejera.</p>
+            <p>Si bien en {{result.name}} existe al menos una empresa con {{ last_consejeras_count result.summaries.2020.consejeras_por_empresa }} asientos ocupados por consejeras, la mayoría de las compañías tienen {{ result.summaries.2020.consejeras_por_empresa.0.consejeras_count }} consejeras.</p>
             <div class="consejeras_chart" style="width:100%">
 
             </div>
-            {{#ifCond result.id "!=" "ec" }}
             <script type="text/javascript">
               const consejeras_por_empresa = {{ j (generate_consejeras_por_empresa result) }}
             </script>
             <script src="/javascripts/d3.v4.js"></script>
             <script type="text/javascript" src="/javascripts/country-mujeres-graph.js"></script>
-            {{/ifCond}}
 
           </div>
         </div>

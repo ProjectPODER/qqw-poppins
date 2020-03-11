@@ -1,6 +1,6 @@
 {
   "name": "qqw-poppins",
-  "version": "0.9.91",
+  "version": "0.9.92",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
