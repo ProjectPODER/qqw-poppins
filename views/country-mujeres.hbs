@@ -178,11 +178,11 @@
                 <div class="row">
                   {{# each result.content }}
                     <div class="col-3 col-m-3 text-center">
-                        <img src="../../images/{{publisher}}.png" alt="Logo de {{publisher}}" class="img-fluid org-logo">
+                        <img src="{{get_publisher_logo publisher}}" alt="Logo de {{publisher}}" class="img-fluid org-logo">
                     </div>
                     <div class="col-9 col-m-9">
                         <h4><b>{{title}}</b></h5>
-                        <p class="text-gray"><i>{{moment published_date  lang="es" format="LL"}} por Autor</i></p>
+                        <p class="text-gray"><i>{{moment published_date  lang="es" format="LL"}} por {{author}}</i></p>
                         <p>{{content}}</p>
                         <div class="container-button text-center mt-2 mb-2">
                             <a href="{{url}}" class="button-link bg-purple">VER NOTA COMPLETA</a>
