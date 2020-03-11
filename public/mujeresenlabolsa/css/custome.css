@@ -61,6 +61,14 @@ a:hover {
   color: #00cab9;
 }
 
+hr.separator {
+  background-color: #999;
+  height: 1px;
+  border: 0;
+  margin-bottom: 40px;
+  width: 30%;
+}
+
 .section {
   padding-top: 60px;
   padding-bottom: 60px;
@@ -92,7 +100,6 @@ a:hover {
   background-size: cover;
   background-repeat: repeat;
   background-attachment: scroll; 
-  border-top: 5px solid #4900A3;
 }
 
 .container-graphic {
@@ -12967,7 +12974,7 @@ a:hover {
   left: 0%;
   right: 0%;
   top: auto;
-  bottom: 9%;
+  bottom: 0%;
   padding: 0 25%;
 }
 
@@ -12985,6 +12992,7 @@ a:hover {
   line-height: 32px;
   font-weight: bold;
   text-shadow: 4px 3px 6px #AE4E99;
+  margin-bottom: 40px;
 }
 
 .main-cover-data .data-numbers {
