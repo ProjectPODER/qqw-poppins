@@ -33,8 +33,8 @@
       <div class="col-9 col-m-9">
         <div class="col-6 col-m-6 mb-2">
           {{!-- <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> INFORMACIÓN GENERAL</h4> --}}
-          <img src="../images/logo-mujeresenlabolsa.png" alt="Mujeres en la Bolsa" class="logo-mujeres">
-          <img src="../images/bolsa-mexico.jpg" alt="Bolsa de Valores" class="stockexchange-img">
+          <img src="/images/logo-mujeresenlabolsa.png" alt="Mujeres en la Bolsa" class="logo-mujeres">
+          <img src="/images/bolsa-{{result.id}}.jpg" alt="Bolsa de Valores" class="stockexchange-img">
         </div>
         <div class="col-6 col-m-6 mt-2">
             <div class="col-6 col-m-6">
@@ -58,7 +58,7 @@
             <div class="col-12 col-m-12">
                 <p class="data-description">Mujeres en la Bolsa de Valores es un proyecto que mide la equidad de género en los consejos de administración de las empresas que cotizan en las bolsas de 15 países de América Latina y España. 15 medios y organizaciones sociales publican reportes con la información y en QuiénEsQuién.Wiki puedes consultar tanto los resultados por país como los agregados totales.</p>
                 <div class="container-button">
-                    <a href="/paises/{{result.id}}/mujeresenlabolsa" class="button-link stockexchange-mx">VER MUJERES EN LA BOLSA DE MÉXICO</a>
+                    <a href="/paises/{{result.id}}/mujeresenlabolsa" class="button-link stockexchange-mx">VER MUJERES EN LA BOLSA DE {{result.compiledRelease.name}}</a>
                 </div>
                 <div class="container-button">
                     <a href="https://mujeresenlabolsa.org/" class="button-link stockexchange-out">VER MUJERESENLABOLSA.ORG</a>
