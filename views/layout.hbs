@@ -21,7 +21,7 @@
     <meta name="robots" content="index,follow"><!-- All Search Engines -->
     <meta name="googlebot" content="index,follow"><!-- Google Specific -->
     <meta http-equiv="Content-Security-Policy"
-      content="default-src 'self' {{api_domain}}  manualinvestigarcontrataciones.readthedocs.io; img-src *.rindecuentas.org  www.google-analytics.com 'self'; font-src fonts.gstatic.com 'self'; style-src 'self' cdn.datatables.net 'unsafe-inline' fonts.googleapis.com; script-src www.google-analytics.com www.googletagmanager.com cdn.datatables.net 'self' 'unsafe-inline' 'unsafe-eval';">
+      content="default-src 'self' {{api_domain}}  manualinvestigarcontrataciones.readthedocs.io; img-src *.rindecuentas.org  www.google-analytics.com buenacubera.projectpoder.org 'self'; font-src fonts.gstatic.com 'self'; style-src 'self' cdn.datatables.net 'unsafe-inline' fonts.googleapis.com; script-src www.google-analytics.com www.googletagmanager.com cdn.datatables.net buenacubera.projectpoder.org 'self' 'unsafe-inline' 'unsafe-eval';">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -36,6 +36,27 @@
     <script type="text/javascript">
       const AUTOCOMPLETE_URL = "{{autocomplete_url}}";
     </script>
+
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+      var _paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setCookieDomain", "*.www.quienesquien.wiki"]);
+      _paq.push(["setDomains", ["*.www.quienesquien.wiki","*.mujeresenlabolsa.quienesquien.wiki","*.quienesquien.wiki"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://buenacubera.projectpoder.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '2']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="https://buenacubera.projectpoder.org/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Matomo Code -->
   </head>
   <body>
     {{> header-new}}
