@@ -1,6 +1,11 @@
+// Main menu
+$('#toggle').click(function() {
+  $(this).toggleClass('active');
+  $('#overlay').toggleClass('open');
+ });
+ 
 //Tooltips
 $('[data-toggle="tooltip"]').tooltip(
-  // {placement: 'top'}
 );
 
 // Autocomplete Typeahead
@@ -375,13 +380,7 @@ function removeQueryField(field) {
 
 $(document).on("click",".hide-alert-bar",{},function(e) {
   $(e.target).parent(".alert-bar").fadeOut()
-});
-
-// Main menu
-$('#toggle').click(function() {
- $(this).toggleClass('active');
- $('#overlay').toggleClass('open');
-});
+}); 
 
 // Left sidebar about
 $('#left-sidebar').click(function() {
