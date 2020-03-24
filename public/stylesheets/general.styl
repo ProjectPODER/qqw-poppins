@@ -3468,29 +3468,36 @@ button
   flex-wrap nowrap
   overflow-x scroll
   overflow-y hidden
-
   &::-webkit-scrollbar
     height 15px
   &::-webkit-scrollbar-track:horizontal
-    // -webkit-box-shadow inset 0 0 6px rgba(0,0,0,0.3)
     background #f7f7f7
-    -webkit-border-radius 5px
-    border-radius 5px
   &::-webkit-scrollbar-thumb:horizontal
     background #4900A3
     -webkit-border-radius 5px
     border-radius 5px
-  // &::-webkit-scrollbar-button:single-button
-  //     background-color red
-  //     display block
-  //     border-style solid
-  //     height 13px
-  //     width 20px
-  //     margin auto
-  // &::-webkit-scrollbar-button:single-button:horizontal:decrement
-  //     border-width 8px 8px 8px 0
-  //     border-color transparent #4900A3 transparent transparent
-  //     margin-right 20px
+  /* Buttons */
+  &::-webkit-scrollbar-button:single-button
+    background-color #f7f7f7
+    display block
+    border-style solid
+    height 13px
+    width 11px
+  /* Up */
+  &::-webkit-scrollbar-button:single-button:horizontal:decrement 
+    border-width 8px 8px 8px 0
+    border-color transparent #555555 transparent  transparent
+    border-radius 5px 0 0 5px
+  &::-webkit-scrollbar-button:single-button:horizontal:decrement:hover 
+    border-color transparent #777777 transparent  transparent
+  /* Down */
+  &::-webkit-scrollbar-button:single-button:horizontal:increment 
+    border-width 8px 0 8px 8px
+    border-color transparent transparent transparent #555555
+    border-radius 0 5px 5px 0
+  &::-webkit-scrollbar-button:horizontal:single-button:increment:hover 
+    border-color transparent transparent transparent #777777
+  /* Firefox */
   &.scroller
     scrollbar-color #4900A3 #f7f7f7
     scrollbar-width auto
