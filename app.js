@@ -6,13 +6,15 @@ var logger = require('morgan');
 const cacheControl = require('express-cache-controller');
 var stylus = require('stylus');
 var hbs = require('express-handlebars');
-var jquery = require('jquery');
+// var jquery = require('jquery');
 var moment = require('helper-moment');
-var _ = require('lodash')
-var dotenv = require('dotenv')
-var dotenvExpand = require('dotenv-expand')
-var myEnv = dotenv.config()
+var _ = require('lodash');
+var dotenv = require('dotenv');
+var dotenvExpand = require('dotenv-expand');
+var myEnv = dotenv.config();
 const util = require('util');
+// var bootstrap = require('bootstrap');
+
 
 dotenvExpand(myEnv)
 
@@ -45,7 +47,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+// app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+
+// Bootstrap 4 and libraries
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
