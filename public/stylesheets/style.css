@@ -3683,19 +3683,44 @@ button.close {
   flex-wrap: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+/* Buttons */
+/* Up */
+/* Down */
+/* Firefox */
 }
 .overflow-cards::-webkit-scrollbar {
   height: 15px;
 }
 .overflow-cards::-webkit-scrollbar-track:horizontal {
   background: #f7f7f7;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
 }
 .overflow-cards::-webkit-scrollbar-thumb:horizontal {
   background: #4900a3;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+}
+.overflow-cards::-webkit-scrollbar-button:single-button {
+  background-color: #f7f7f7;
+  display: block;
+  border-style: solid;
+  height: 13px;
+  width: 11px;
+}
+.overflow-cards::-webkit-scrollbar-button:single-button:horizontal:decrement {
+  border-width: 8px 8px 8px 0;
+  border-color: transparent #555 transparent transparent;
+  border-radius: 5px 0 0 5px;
+}
+.overflow-cards::-webkit-scrollbar-button:single-button:horizontal:decrement:hover {
+  border-color: transparent #777 transparent transparent;
+}
+.overflow-cards::-webkit-scrollbar-button:single-button:horizontal:increment {
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #555;
+  border-radius: 0 5px 5px 0;
+}
+.overflow-cards::-webkit-scrollbar-button:horizontal:single-button:increment:hover {
+  border-color: transparent transparent transparent #777;
 }
 .overflow-cards.scroller {
   scrollbar-color: #4900a3 #f7f7f7;
