@@ -1,0 +1,507 @@
+// New country profile
+
+.text-orange
+  color #FFA500
+
+.text-purple
+  color #4900A3 !important
+
+.text-red
+  color #EB004A
+
+#mujeresenlabolsa
+  .logo-mujeres
+    width 250px
+
+  .stockexchange-img
+    width 95%
+    margin-top 2rem
+
+  .data-icon
+    display flex
+    align-items center
+    i
+      font-size 3rem
+      margin-right 5px
+    .js-data
+      margin 0
+      font-size 1.5rem
+  .data-description
+    color #9b9b9b
+    margin-top 1.3rem
+  .container-button
+    margin-top 2rem
+    margin-bottom 2rem
+.stockexchange-mx
+  background #4900A3 !important
+.stockexchange-out
+  background #008075 !important
+
+// Country mujeres
+.bg-purple
+  background #4900A3
+
+.bg-purple-light
+  background #f5f7ff
+
+.bg-green
+  background #00CAB9
+
+.text-gray
+  color #9b9b9b
+
+.border
+  border-right 1px solid #999
+
+.variations-container
+  padding 3rem 2rem
+
+.flex-variations
+  display flex
+  align-items center
+  justify-content flex-end
+.data-icon-variations
+  font-size 2.7rem
+  color #ffffff
+  margin-right 20px
+  text-align right
+.variation-icon
+  font-size 2rem
+  margin-right 20px
+  &.fa-chevron-up
+    color #12B616 !important
+  &.fa-chevron-down
+    color #db2828 !important
+  &.fa-equals
+    color #ffffff
+
+.icon-variations1
+  width 40px
+  margin-right 20px
+.icon-variations2
+  width 35px
+  margin-right 20px
+
+#variaciones
+  p
+    margin-bottom 0
+    color #ffffff !important
+    span.percentage, span.number
+      font-weight normal
+      font-size 0.8rem
+      margin-left 10px
+    span.number
+      margin-left 0
+  hr
+    margin-bottom 20px !important
+
+.data-item-left
+  padding 20px 10px 20px
+
+.data-item-right
+  padding 20px 10px 20px 30%
+
+.org-logo
+  width 150px
+  padding 0 10px
+
+#empresas-mujeres-table_wrapper,
+#empresas-mujeres-table
+  width 100% !important
+  overflow-x: visible
+
+  .description-data-company
+    overflow: hidden
+    max-width: 30em
+    
+@media (max-width: 992px)
+  .data-icon
+    // font-size 2.7rem
+    margin-right 10px
+  .variation-icon
+    // font-size 2rem
+    margin-right 10px
+  .icon-variations1
+    // width 45px
+    margin-right 10px
+  .icon-variations2
+    // width 35px
+    margin-right 10px
+
+
+@media (max-width: 767px)
+  .variation-icon
+    display: none
+  .data-item-left
+    display flex
+  .flex-variations
+    justify-content center
+  // .data-item-right
+  //   padding 20px 10px 20px 30%
+  .border
+    border-right none
+  .mt-mobile
+    margin-top 3rem
+  .description-data-title h3
+    font-size 1.5rem
+
+.man-cards
+  padding 20px
+  border 1px solid #ccc
+  // box-shadow 13px 13px 0 -5px #F8E923
+  background #ffffff
+  margin-right 30px
+  min-width 350px
+  margin-bottom 60px
+
+.overflow-cards
+  display flex
+  flex-direction row
+  flex-wrap nowrap
+  overflow-x scroll
+  overflow-y hidden
+
+  &::-webkit-scrollbar
+    height 15px
+  &::-webkit-scrollbar-track:horizontal
+    // -webkit-box-shadow inset 0 0 6px rgba(0,0,0,0.3)
+    background #f7f7f7
+    -webkit-border-radius 5px
+    border-radius 5px
+  &::-webkit-scrollbar-thumb:horizontal
+    background #4900A3
+    -webkit-border-radius 5px
+    border-radius 5px
+  // &::-webkit-scrollbar-button:single-button
+  //     background-color red
+  //     display block
+  //     border-style solid
+  //     height 13px
+  //     width 20px
+  //     margin auto
+  // &::-webkit-scrollbar-button:single-button:horizontal:decrement
+  //     border-width 8px 8px 8px 0
+  //     border-color transparent #4900A3 transparent transparent
+  //     margin-right 20px
+  &.scroller
+    scrollbar-color #4900A3 #f7f7f7
+    scrollbar-width auto
+
+
+// Grid variations section
+.w-layout-grid
+    display -ms-grid
+    display grid
+    grid-auto-columns 1fr
+    -ms-grid-columns 1fr 1fr
+    grid-template-columns 1fr 1fr
+    -ms-grid-rows auto auto
+    grid-template-rows auto auto
+    grid-row-gap 16px
+    grid-column-gap 16px
+
+.grid-2
+    -ms-grid-columns 0.5fr 1fr 1fr
+    grid-template-columns 0.5fr 1fr 1fr
+    -ms-grid-rows auto auto auto auto auto auto
+    grid-template-rows auto auto auto auto auto auto
+
+.element-with-icon
+    display block
+    -webkit-box-pack start
+    -webkit-justify-content flex-start
+    -ms-flex-pack start
+    justify-content flex-start
+    -webkit-box-align center
+    -webkit-align-items center
+    -ms-flex-align center
+    align-items center
+
+.icon
+    width 20px
+
+.element-icons
+    display -webkit-box
+    display -webkit-flex
+    display -ms-flexbox
+    display flex
+
+@media screen and (max-width: 767px)
+    .grid
+        -ms-grid-columns 0.25fr 1fr 1fr
+        grid-template-columns 0.25fr 1fr 1fr
+
+@media screen and (max-width: 479px)
+    .grid
+        -ms-grid-columns 0.5fr 1fr 1fr
+        grid-template-columns 0.5fr 1fr 1fr
+
+#twenty-year
+    -ms-grid-column-align stretch
+    justify-self stretch
+    -ms-grid-row-align stretch
+    align-self stretch
+    -ms-grid-column-span 2
+    grid-column-end 3
+    -ms-grid-column 1
+    grid-column-start 1
+    -ms-grid-row-span 1
+    grid-row-end 2
+    -ms-grid-row 1
+    grid-row-start 1
+
+#nineteen-year
+    -ms-grid-row-align stretch
+    align-self stretch
+    -ms-grid-column-align stretch
+    justify-self stretch
+    -ms-grid-column-span 1
+    grid-column-end 4
+    -ms-grid-column 3
+    grid-column-start 3
+    -ms-grid-row-span 1
+    grid-row-end 2
+    -ms-grid-row 1
+    grid-row-start 1
+
+#element-icons-a
+    -ms-grid-column-span 1
+    grid-column-end 2
+    -ms-grid-column 1
+    grid-column-start 1
+    -ms-grid-row-span 1
+    grid-row-end 3
+    -ms-grid-row 2
+    grid-row-start 2
+    -ms-grid-column-align end
+    justify-self end
+    -ms-grid-row-align start
+    align-self start
+
+#element-icons-b
+    -ms-grid-column-span 1
+    grid-column-end 2
+    -ms-grid-column 1
+    grid-column-start 1
+    -ms-grid-row-span 1
+    grid-row-end 4
+    -ms-grid-row 3
+    grid-row-start 3
+    -ms-grid-column-align end
+    justify-self end
+    -ms-grid-row-align start
+    align-self start
+
+#element-icons-c
+    -ms-grid-column-span 1
+    grid-column-end 2
+    -ms-grid-column 1
+    grid-column-start 1
+    -ms-grid-row-span 1
+    grid-row-end 5
+    -ms-grid-row 4
+    grid-row-start 4
+    -ms-grid-column-align end
+    justify-self end
+    -ms-grid-row-align start
+    align-self start
+
+#element-icons-d
+    -ms-grid-column-span 1
+    grid-column-end 2
+    -ms-grid-column 1
+    grid-column-start 1
+    -ms-grid-row-span 1
+    grid-row-end 6
+    -ms-grid-row 5
+    grid-row-start 5
+    -ms-grid-column-align end
+    justify-self end
+    -ms-grid-row-align start
+    align-self start
+
+#element-icons-e
+    -ms-grid-column-span 1
+    grid-column-end 2
+    -ms-grid-column 1
+    grid-column-start 1
+    -ms-grid-row-span 1
+    grid-row-end 7
+    -ms-grid-row 6
+    grid-row-start 6
+    -ms-grid-column-align end
+    justify-self end
+    -ms-grid-row-align start
+    align-self start
+
+#element-with-icon-a
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column-span 1
+    grid-column-end 3
+    -ms-grid-column 2
+    grid-column-start 2
+    -ms-grid-row-span 1
+    grid-row-end 3
+    -ms-grid-row 2
+    grid-row-start 2
+
+#element-with-icon-b
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 2
+    grid-column-start 2
+    -ms-grid-row 3
+    grid-row-start 3
+    -ms-grid-column-span 1
+    grid-column-end 3
+    -ms-grid-row-span 1
+    grid-row-end 4
+
+#element-with-icon-c
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 2
+    grid-column-start 2
+    -ms-grid-row 4
+    grid-row-start 4
+    -ms-grid-column-span 1
+    grid-column-end 3
+    -ms-grid-row-span 1
+    grid-row-end 5
+
+#element-with-icon-d
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 2
+    grid-column-start 2
+    -ms-grid-row 5
+    grid-row-start 5
+    -ms-grid-column-span 1
+    grid-column-end 3
+    -ms-grid-row-span 1
+    grid-row-end 6
+
+#element-with-icon-e
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 2
+    grid-column-start 2
+    -ms-grid-row 6
+    grid-row-start 6
+    -ms-grid-column-span 1
+    grid-column-end 3
+    -ms-grid-row-span 1
+    grid-row-end 7
+
+#element-a
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column-span 1
+    grid-column-end 4
+    -ms-grid-column 3
+    grid-column-start 3
+    -ms-grid-row-span 1
+    grid-row-end 3
+    -ms-grid-row 2
+    grid-row-start 2
+
+#element-b
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 3
+    grid-column-start 3
+    -ms-grid-row 3
+    grid-row-start 3
+    -ms-grid-column-span 1
+    grid-column-end 4
+    -ms-grid-row-span 1
+    grid-row-end 4
+
+#element-c
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 3
+    grid-column-start 3
+    -ms-grid-row 4
+    grid-row-start 4
+    -ms-grid-column-span 1
+    grid-column-end 4
+    -ms-grid-row-span 1
+    grid-row-end 5
+
+#element-d
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 3
+    grid-column-start 3
+    -ms-grid-row 5
+    grid-row-start 5
+    -ms-grid-column-span 1
+    grid-column-end 4
+    -ms-grid-row-span 1
+    grid-row-end 6
+
+#element-e
+    -ms-grid-row-align start
+    align-self start
+    -ms-grid-column-align start
+    justify-self start
+    -ms-grid-column 3
+    grid-column-start 3
+    -ms-grid-row 6
+    grid-row-start 6
+    -ms-grid-column-span 1
+    grid-column-end 4
+    -ms-grid-row-span 1
+    grid-row-end 7
+
+@media screen and (max-width: 489px)
+  .data-icon-variations
+    font-size 2rem
+    margin-right 10px
+  .variation-icon
+    font-size 1.5rem
+    margin-right 0
+  .icon-variations1
+    width 30px
+    margin-right 10px
+  .icon-variations2
+    width 25px
+    margin-right 10px
+  #variaciones
+    p
+      font-size 14px
+
+@media screen and (max-width: 412px)
+  .element-icons
+    display block
+    text-align center
+  .icon-variations1
+    width 30px
+    margin-right 0
+    margin-bottom 3px
+  .icon-variations2
+    width 25px
+    margin-right 1px
+    margin-bottom 3px
+  .data-icon-variations
+    margin-right 0

@@ -1,10 +1,155 @@
 #content
   min-height 100%
 
+// TEXT STYLES
+.red-text
+  color #db2828 !important
+
+.green-text
+  color #278529 !important
+
+.funder-text
+  color #b6893e !important
+
+.text-darkgray
+  color #5c5c5c !important
+
+.text-white
+  color #fff !important
+
+.text-darkblue
+  color #2d1c9d
+
 .text-overflow
   overflow hidden
   white-space nowrap
   text-overflow ellipsis
+
+.serif-gray
+  font-family serif
+  color #5c5c5c
+
+// .flex-center
+//   display flex !important
+//   justify-content center
+//   align-items center
+//   flex-flow row wrap
+
+// MARGIN AND PADDING
+// .mb-10
+//   margin-bottom 10px
+
+// .mb-0
+//   margin-bottom 0 !important
+
+// .mb-1
+//   margin-bottom 1rem !important
+
+// .mb-1-2
+//   margin-bottom 1.2rem !important
+
+// .mb-2
+//   margin-bottom 2rem !important
+
+// .mb-3
+//   margin-bottom 3rem !important
+
+// .mb-5
+//   margin-bottom 5rem !important
+
+// .mt-60
+//   margin-top 60px
+
+// .mt-1
+//   margin-top 1rem !important
+
+// .mt-2
+//   margin-top 2rem
+
+// .mt-3
+//   margin-top 3rem
+
+// .mt-4
+//   margin-top 4rem
+
+// .ml-25
+//   margin-left 25px
+
+// .pr-1
+//   padding-right 1rem
+
+// .pr-2
+//   padding-right 2rem
+
+// .pr-5
+//   padding-right 5rem
+
+// .pl-5
+//   padding-left 5rem
+
+// .pd-nonleft
+//   padding 0.5rem 1rem 1rem 0
+
+// .pd-1
+//  padding 1rem !important
+
+// BG COLORS
+.bg-gray
+  background-color #f7f7f7
+
+.bg-darkblue
+  background-color #110046
+
+// SE QUEDA????
+.button-link
+  background-color #2b00f7
+  color #fff
+  border none
+  padding 10px 12px
+  white-space nowrap
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  &:hover
+  &:focus
+    color #fff
+    background-color #2200c5
+    text-decoration none
+
+.important-button-link
+  font-weight bold
+  padding 15px 20px
+
+.btn-filter
+  background-color #9b9b9b
+  color #fff
+  border-radius 0
+  padding 10px 12px
+  -webkit-transition all .35s
+  -moz-transition all .35s
+  transition all .35s
+  margin-right 5px
+  margin-bottom 5px
+  &:hover
+  &:focus
+    background-color #2d1c9d
+    color #fff
+
+.contract-button
+  margin-top 3rem
+
+[class*="col-"]
+  width 100%
+  float left
+
+
+input[type="email"]
+  padding 10px
+  margin-right 5px
+  border-color #d3d3d3
+  border-style solid
+  border-width 1px
+  margin-bottom 20px
 
 // .table-responsive
 //   display block !important
@@ -233,11 +378,7 @@
 //     & > .active
 //         display block
 
-.flex-center
-  display flex !important
-  justify-content center
-  align-items center
-  flex-flow row wrap
+
 
 // .nav>li>a
 //   text-decoration none
@@ -292,86 +433,11 @@
 // .right-align
 //   text-align right
 
-.red-text
-  color #db2828 !important
 
-.green-text
-  color #278529 !important
 
-.funder-text
-  color #b6893e !important
 
-.mb-10
-  margin-bottom 10px
 
-.mb-0
-  margin-bottom 0 !important
 
-.mb-1
-  margin-bottom 1rem !important
-
-.mb-1-2
-  margin-bottom 1.2rem !important
-
-.mb-2
-  margin-bottom 2rem !important
-
-.mb-3
-  margin-bottom 3rem !important
-
-.mb-5
-  margin-bottom 5rem !important
-
-.mt-60
-  margin-top 60px
-
-.mt-1
-  margin-top 1rem !important
-
-.mt-2
-  margin-top 2rem
-
-.mt-3
-  margin-top 3rem
-
-.mt-4
-  margin-top 4rem
-
-.ml-25
-  margin-left 25px
-
-.pr-1
-  padding-right 1rem
-
-.pr-2
-  padding-right 2rem
-
-.pr-5
-  padding-right 5rem
-
-.pl-5
-  padding-left 5rem
-
-.pd-nonleft
-  padding 0.5rem 1rem 1rem 0
-
-.pd-1
- padding 1rem !important
-
-.bg-gray
-  background-color #f7f7f7
-
-.bg-darkblue
-  background-color #110046
-
-.text-darkgray
-  color #5c5c5c !important
-
-.text-white
-  color #fff !important
-
-.text-darkblue
-  color #2d1c9d
 
 // .filter-bar
 //     input[type="text"]
@@ -447,49 +513,6 @@
 //   cursor pointer
 
 
-.serif-gray
-  font-family serif
-  color #5c5c5c
-
-
-// limpiar, se usa para perfiles
-section
-  padding-top 5rem
-  padding-bottom 5rem
-  &.profile
-    padding-top 2rem
-    padding-bottom 2rem
-  &.profile-header
-    padding-top 3rem
-    padding-bottom 1rem
-  &.country-mujeres
-    padding-top 0
-    padding-bottom 0
-  &.data-sources
-    background-color #f7f7f7
-  &.proyectos
-    background-color #110046
-  &.investigaciones
-    border-top 2px dotted #3a32f9
-    h2
-      font-weight bold
-      text-align center
-  &.tabs
-    margin-top 2rem
-    min-height 100vh
-    h3
-      font-size 1.5rem
-      color #3a32f9
-      margin-bottom 2rem
-    h1
-      font-size 2rem
-      margin-bottom 2rem
-
-.category-profile
-  padding 1rem 1.5rem 0 0
-
-// limpiar acaba
-
 
 
 
@@ -511,40 +534,6 @@ section
 //   color #150b58
 
 
-.proyectos
-  h2
-    color #fff
-
-.proyecto-info
-  margin-top 0
-
-.proyecto
-  button
-    bottom 30px
-    right 30px
-
-.contacto-text
-  text-align center
-  p
-    display inline-block
-    // font-family monospace
-    font-size 2rem
-  button
-  a
-    vertical-align super
-    margin-top 1.5rem
-    margin-left 2rem
-
-.investigaciones.row
-  height 400px
-  h2
-    color #150b58
-  p
-    font-size 1.5rem
-
-.investigaciones-p
-  color #2d1c9d
-  padding-right 10px
 
 // .arrow-down
 //   text-align center
@@ -559,679 +548,408 @@ section
 //     position absolute
 
 
+// .search-order-form
+//   float: right;
+//   margin-top: -2em;
+//   font-size .9rem
+//   font-weight bold
+//   color #21018b
+//   line-height 1.8rem
+
+// .search-order-form select.input-sm
+//   display inline-block
+
+
+// .tabcontent
+//   display none
+//   padding 2rem 1rem
+//   border 2px dotted #3a32f9
+//   border-top none
+
+// *
+//   box-sizing border-box
+
+// button
+//   cursor pointer
+
+
+
+// #tipo-adquisicion
+//   margin-bottom 1rem
+
+// .filter-bar
+//   position fixed
+//   width 24%
+//   height 93%
+//   z-index 1
+//   overflow-y scroll
+//   top 4.05rem
+//   left 0
+// .filter-bar
+
+
+// .search-title
+//   font-weight bold
+//   text-transform uppercase
+//   color #21018b
+//   margin-top 1rem
+//   margin-bottom .5rem
+//   line-height 1.1rem
+
+// input[type="date"]::placeholder
+//   text-transform uppercase
+//   color red
+
+// ::placeholder
+//   text-transform uppercase
+
+// select
+//   &.search-select
+//     padding 10px 5px
+//     font-size .8rem
+//     text-transform uppercase
+//     color #808080
+//     border-radius 0
+//     border-style solid
+//     border-width 1px
+//     background-color white
+
+
+// .form-control
+//   height 25px
+//   vertical-align middle
+
+// img.icon
+//   width 12px
+//   margin-top -3px
+
+// img.icon-lf
+//   width 20px
+//   margin-top -0.3rem
+//   margin-right 0.8rem
+//   &.icon-lf-person
+//     width 25px
+//   &.icon-lf-organization
+//     width 15px
+//   &.icon-lf-contract
+//     width 14px
+
+// .selected-block
+//   margin-bottom .8rem
+
+// .selected-form-text
+//   color #9C9C9C
+//   width 85%
+//   display inline-block
+//   margin-right 5px
+//   p
+//     display inline-block
+//     word-wrap break-word
+//     vertical-align middle
+
+
+
 
-.card
-  border-width 2px
-  border-style dotted
-  border-color #3a32f9
-  position relative
-
-.card-pad
-  overflow hidden
-  padding 1rem
-
-.card-pad-ext
-  height 100%
-  padding 1rem 1rem 1rem 0
-
-.card-image-container
-  max-height 220px
-  overflow hidden
-
-.card-image
-  display inline-block
-  width 100%
-  height 11rem
-  overflow-y hidden
-  overflow-x hidden
-
-p
-  &.capitalize-style
-    text-transform uppercase
-    color #21018b
-    letter-spacing 2px
-    margin-bottom 5px
-  &.document-description
-    padding 1rem 0
-    font-size .9rem
-    color #585858
-  &.search-terms-text
-    font-size .9rem
-    font-weight bold
-    color #21018b
-    line-height 1.8rem
-    margin-bottom 0
-    span
-      color #fff
-      background-color #21018b
-      border-radius 7px
-      font-weight 300
-      padding .2rem .5rem .2rem .7rem
-      margin 0.2rem .2rem 0 0
-      display: inline-block
-.delete-blob-filter
-  margin-left 5px
-  margin-right 5px
-  opacity 0.9
-  cursor pointer
-
-.search-order-form
-  float: right;
-  margin-top: -2em;
-  font-size .9rem
-  font-weight bold
-  color #21018b
-  line-height 1.8rem
-
-.search-order-form select.input-sm
-  display inline-block
-
-
-.box
-  margin-bottom 1rem
-
-.tabcontent
-  display none
-  padding 2rem 1rem
-  border 2px dotted #3a32f9
-  border-top none
-
-*
-  box-sizing border-box
-
-button
-  cursor pointer
-
-h2 card-image-container
-  font-size 2.5rem
-  font-weight bold
-  padding 1rem 0
-  margin-bottom 3rem
-  &.document-title
-    color #21018b
-    font-size 2.3rem
-    margin 0
-
-#tipo-adquisicion
-  margin-bottom 1rem
-
-.filter-bar
-  position fixed
-  width 24%
-  height 93%
-  z-index 1
-  overflow-y scroll
-  top 4.05rem
-  left 0
-.filter-bar
-.addinfo-box
-  background-color #F7F7F7
-  border-color #9C9C9C
-  border-width 1px
-  border-style solid
-  margin 0 1rem 1rem 0
-  font-size .8rem
-  padding 1rem
-
-  img.form-control
-      width: auto;
-      padding: 0;
-      border: none;
-      background: transparent;
-      display: inline;
-      box-shadow: none;
-      margin-right 0
-
-.search-title
-  font-weight bold
-  text-transform uppercase
-  color #21018b
-  margin-top 1rem
-  margin-bottom .5rem
-  line-height 1.1rem
-
-input[type="date"]::placeholder
-  text-transform uppercase
-  color red
-
-::placeholder
-  text-transform uppercase
-
-select
-  &.search-select
-    padding 10px 5px
-    font-size .8rem
-    text-transform uppercase
-    color #808080
-    border-radius 0
-    border-style solid
-    border-width 1px
-    background-color white
-.form-control
-  height 25px
-  vertical-align middle
-
-img.icon
-  width 12px
-  margin-top -3px
-
-img.icon-lf
-  width 20px
-  margin-top -0.3rem
-  margin-right 0.8rem
-  &.icon-lf-person
-    width 25px
-  &.icon-lf-organization
-    width 15px
-  &.icon-lf-contract
-    width 14px
-
-.selected-block
-  margin-bottom .8rem
-
-.selected-form-text
-  color #9C9C9C
-  width 85%
-  display inline-block
-  margin-right 5px
-  p
-    display inline-block
-    word-wrap break-word
-    vertical-align middle
-
-.search-label
-  color #9C9C9C
-  // text-transform uppercase
-  margin-bottom .3rem
-  margin-top .8rem
-  line-height 1.2rem
-
-  &.selected
-  &:hover p
-  &:focus p
-    color #21018b
-    text-decoration none
-    font-weight bold
-
-fieldset
-  margin-bottom 1rem
-  min-width 0
-  padding 0
-  margin 0
-  border 0
-
-.fixed-filter-button
-  position: fixed
-  left 14px
-  bottom 5px
-  width 22%
-
-input[type="submit"].search-submit
-input[type="button"].search-submit
-  // width 100%
-  font-weight bold
-  font-size 1rem
-  margin-top -5px !important
-
-input[type="submit"].search-submit, .contact-submit
-input[type="button"].search-submit
-  background-color #21018b
-  border none
-  color white
-  padding 16px 32px
-  text-decoration none
-  margin 4px 2px
-  cursor pointer
-  box-shadow 2px 2px 7px grey
-  -webkit-transition all .35s
-  -moz-transition all .35s
-  transition all .35s
-  &:hover
-  &:focus
-    color #ffffff
-    background-color #2b00f7
-
-button[type="reset"]
-  padding 16px 32px
-  margin 4px 2px
-  -webkit-transition all .35s
-  -moz-transition all .35s
-  transition all .35s
-
-button.reset-filters
-  width 100%
-
-.search-card
-    overflow hidden
-
-.search-results-header
-  display flex
-  align-items center
-
-.search-result-title
-  & a
-    color #4e4e4e
-.search-result-title
-.description-data-name h3
-.description-data-title h3
-  font-weight bold
-  color #4e4e4e
-  margin-bottom 0.7rem
-  font-size 1.5rem
-  text-transform uppercase
-
-
-.description-data-name h3
-.description-data-title h3
-  font-size 2rem
-  // display inline
-
-.search-result-emph
-  color #2900f5
-  font-size 2.1rem
-
-.search-result-emph-complementary
-  color #2900f5
-  font-size 1.3rem
-
-.search-result-mono-gray
-  color #9b9b9b;
-  font-size 1rem
-  display inline-block
-
-.no-title .cardItemTitle
-    visibility hidden
-    height 0
-
-.inline-title .cardItemData,
-.inline-title .cardItemTitle
-    display inline
-
-#person-index_paginate
-#contract-index_paginate
-#organization-index_paginate
-  text-align center
-
-.pagination > .active > a
-.pagination > .active > span
-.pagination > .active > a:hover
-.pagination > .active > span:hover
-.pagination > .active > a:focus
-.pagination > .active > span:focus
-  background-color #21018b
-  border-color #21018b
-
-.pagination > li > a
-.pagination > li > span
-  padding 6px 12px
-  color #9b9b9b
-  background-color #fff
-  border 1px solid #ddd
-
-.pagination > li > a:hover
-  color #21018b
-
-// .paginate_button
-//   .previous
-//   .next
-//     border 2px solid #9c9c9c
-
-.js-amount
-    text-align right
-    padding 0 0.5em 0.2em 0
-    text-overflow ellipsis
-    overflow hidden
-    font-weight bold
-    margin-top -5px
-
-.js-start-date
-    clear left
-
-.js-start-date
-.js-end-date
-    padding-left 20px
-    padding-bottom 2px
-    background url(/images/calendar.png) no-repeat;
-
-    .cardItemData
-        font-weight bold
-        padding-left 5px
-
-.js-dependency
-    clear left
-    padding-right 0.5em
-    .cardItemTitle
-      padding-left 25px
-      background url(/images/icons/dependencia-gray-light.svg) no-repeat;
-      background-size 16px
-.js-suppliers
-    .cardItemTitle
-      padding-left 25px
-      background url(/images/icons/empresa-gray-light.svg) no-repeat;
-      background-size 16px
-
-.js-procedure
-    .cardItemTitle
-      padding-left 25px
-      background url(/images/icons/procedimiento-gray-light.svg) no-repeat;
-      background-size 16px
-.js-procedure
-.js-dependency
-.js-suppliers
-    margin-top: 5px
-    color #9b9b9b
-    padding-right 1em
-
-.dependency-cell li a
-.suppliers-cell li a
-  color #2b00f7
-  -webkit-transition all .35s
-  -moz-transition all .35s
-  transition all .35s
-  &:hover
-    // text-decoration none
-    color #2d1c9d
-
-.js-ocid
-    float right!important
-    text-align right
-    margin 2em 1em 0 0
-
-.js-contract-count
-.js-company-count
-.js-contract-amount
-    color #2b00f7
-
-.js-person-type
-.js-foundation-date
-.js-flags
-    color #9b9b9b
-
-.js-contract-count
-.js-company-count
-.js-person-type
-.js-foundation-date
-    // font-family monospace
-    font-size 1rem
-    .cardItemData
-        padding-left 5px
-
-.js-title-data
-.js-data
-  text-transform uppercase
-
-.js-title-data
-  color #9b9b9b
-  margin-bottom 0
-
-.js-data
-.js-data-lf
-  color #4e4e4e
-  font-weight bold
-
-.js-data-lf
-  font-size 1.2rem
-
-.js-data-link
-  color #2b00f7
-  -webkit-transition all .35s
-  -moz-transition all .35s
-  transition all .35s
-  &:hover
-    color #21018b
-    text-decoration none
-
-
-.js-score.col-m-2
-  .cardItemData,.cardItemTitle
-    display inline
-    margin-right 0.2em
-
-.contract_currency
-  font-size 0.4em
-  color #9b9b9b
-  display block
-  line-height 0
-
-.dataTables_info
-// .dataTables_length label
-  padding-top 0 !important
-  font-size .9rem
-  font-weight bold !important
-  color #21018b
-  line-height 1.8rem
-  float right
-
-.dataTables_length
-  text-align right
-  padding-top 0.65rem
-  font-weight normal !important
-  font-size 0.9rem
-  color #585858
-
-  select
-    width 75px
-    display inline-block
-
-.info-icon
-  width 13px
-  margin-top -3.5px
-
-.dataTables_paginate
-  margin-top 2.5rem !important
-
-.viewWrapper
-  padding-top 4rem
-  .js-data
-  .js-data-lf
-    margin-bottom 2rem
-
-.type
-.description-data-subtitle
-  color #2d1c9d
-  font-weight bold
-
-.breadcrumb
-  // background #f0f0f0
-  padding-top 2rem
-  margin-bottom 20px
-
-.if-address-org
-  margin-bottom 2rem
-
-.flex
-  overflow hidden
-  display -webkit-box
-  display -webkit-flex
-  display flex
-  -webkit-flex-flow row wrap
-  flex-flow row wrap
-
-.flex-item
-  display -webkit-grid
-  display grid
-
-.description-data-subtitle
-  font-size 1.3rem
-  margin-bottom 2rem
-
-.description-data-subname
-  font-size 1.1rem
-  color #5c5c5c
-  font-weight bold
-
-.description-data-organization
-  width 30%
-
-.description-data-organization
-.description-data-rol
-.description-data-amount
-.description-data-contract
-.description-data-date
-  font-size 1.1rem
-  color #9b9b9b
-
-.description-data-subname
-.description-data-organization
-.description-data-contract
-  text-transform uppercase
-
-.party_flag_score
-  float left
-  width 20%
-  border 1px solid #ccc
-  border-right none
-  border-collapse collapse
-  text-align center
-  height 50px
-  overflow hidden
-  background #f7f7f7
-
-.party_flag_title
-  font-size 0.65em
-  padding-top 5px
-  color #666
-  text-transform uppercase
-  font-weight bold
-
-.party_flag_value
-  font-size 1.2em
-
-.d100
-  font-size 0.5em
-
-
-.party_flag_total_score
-  border 1px solid black
-  background #ffc
-
-  .party_flag_value
-    font-weight bold
-
-
-.amount-data
-  color #2d1c9d
-  font-size 2rem
-  font-weight bold
-  margin 10px 0 5px
-
-
-a
-  &.see-contract
-    padding .5rem 1rem
-    background-color #2900f5
-    color white
-    font-weight bold
-    text-decoration none
-
-.search-results-last-row
-  margin-top 1.5rem
-
-.block
-  display block
-  margin auto
-  content ""
-  width auto
-
-.button-link
-  background-color #2b00f7
-  color #fff
-  border none
-  padding 10px 12px
-  white-space nowrap
-  -webkit-transition all .35s
-  -moz-transition all .35s
-  transition all .35s
-  &:hover
-  &:focus
-    color #fff
-    background-color #2200c5
-    text-decoration none
-
-.important-button-link
-  font-weight bold
-  padding 15px 20px
-
-.btn-default
-    color #333
-    background-color #fff
-    border-color #ccc
-    padding 10px 12px
-    white-space nowrap
-    border-radius 0
-
-.btn-filter
-  background-color #9b9b9b
-  color #fff
-  border-radius 0
-  padding 10px 12px
-  -webkit-transition all .35s
-  -moz-transition all .35s
-  transition all .35s
-  margin-right 5px
-  margin-bottom 5px
-  &:hover
-  &:focus
-    background-color #2d1c9d
-    color #fff
-
-.contract-button
-  margin-top 3rem
-
-#right-menu
-  list-style-type none
-  text-transform uppercase
-  font-size 1.3rem
-  margin-top 1.5rem
-  margin-left 40px
-  position absolute
-  & ul
-    padding 0 5px
-  & li
-    color #9b9b9b
-    text-decoration none
-    & a
-      color #9b9b9b
-      text-decoration none
-      padding 5px 10px !important
-      i
-        margin-right 10px
-        // padding 4px
-
-.evaluacion i
-  // background-color #2d1c9d
-  // color #ffffff
-  color #2d1c9d
-
-.menu-profile
-  margin-top 0 !important
-
-.active > .anchor,
-.active > .evaluacion i
-  color #2b00f7 !important
-  font-weight bold
-
-.rubro-list
-  &::before
-    content ''
-    display inline-block
-    height 30px
-    width 30px
-    background-size 10px
-    background-image url('../images/icons/hexagono-blue.png')
-    background-repeat no-repeat
-    margin-right 10px
-    background-position center center
-    vertical-align middle
-
-.rubro-list-data
-.rubro-list
-  color #9b9b9b
-  font-size 1.1rem
-
-.affix
-  top 197px
-  position fixed !important
+// fieldset
+//   margin-bottom 1rem
+//   min-width 0
+//   padding 0
+//   margin 0
+//   border 0
+
+// .fixed-filter-button
+//   position: fixed
+//   left 14px
+//   bottom 5px
+//   width 22%
+
+// input[type="submit"].search-submit
+// input[type="button"].search-submit
+//   // width 100%
+//   font-weight bold
+//   font-size 1rem
+//   margin-top -5px !important
+
+// input[type="submit"].search-submit, .contact-submit
+// input[type="button"].search-submit
+//   background-color #21018b
+//   border none
+//   color white
+//   padding 16px 32px
+//   text-decoration none
+//   margin 4px 2px
+//   cursor pointer
+//   box-shadow 2px 2px 7px grey
+//   -webkit-transition all .35s
+//   -moz-transition all .35s
+//   transition all .35s
+//   &:hover
+//   &:focus
+//     color #ffffff
+//     background-color #2b00f7
+
+// button[type="reset"]
+//   padding 16px 32px
+//   margin 4px 2px
+//   -webkit-transition all .35s
+//   -moz-transition all .35s
+//   transition all .35s
+
+// button.reset-filters
+//   width 100%
+
+
+
+
+// .description-data-name h3
+// .description-data-title h3
+//   font-size 2rem
+//   // display inline
+
+// .search-result-emph
+//   color #2900f5
+//   font-size 2.1rem
+
+// .search-result-emph-complementary
+//   color #2900f5
+//   font-size 1.3rem
+
+// .search-result-mono-gray
+//   color #9b9b9b;
+//   font-size 1rem
+//   display inline-block
+
+// .no-title .cardItemTitle
+//     visibility hidden
+//     height 0
+
+// .inline-title .cardItemData,
+// .inline-title .cardItemTitle
+//     display inline
+
+// #person-index_paginate
+// #contract-index_paginate
+// #organization-index_paginate
+//   text-align center
+
+// .pagination > .active > a
+// .pagination > .active > span
+// .pagination > .active > a:hover
+// .pagination > .active > span:hover
+// .pagination > .active > a:focus
+// .pagination > .active > span:focus
+//   background-color #21018b
+//   border-color #21018b
+
+// .pagination > li > a
+// .pagination > li > span
+//   padding 6px 12px
+//   color #9b9b9b
+//   background-color #fff
+//   border 1px solid #ddd
+
+// .pagination > li > a:hover
+//   color #21018b
+
+// // .paginate_button
+// //   .previous
+// //   .next
+// //     border 2px solid #9c9c9c
+
+// .js-amount
+//     text-align right
+//     padding 0 0.5em 0.2em 0
+//     text-overflow ellipsis
+//     overflow hidden
+//     font-weight bold
+//     margin-top -5px
+
+// .js-start-date
+//     clear left
+
+// .js-start-date
+// .js-end-date
+//     padding-left 20px
+//     padding-bottom 2px
+//     background url(/images/calendar.png) no-repeat;
+
+//     .cardItemData
+//         font-weight bold
+//         padding-left 5px
+
+// .js-dependency
+//     clear left
+//     padding-right 0.5em
+//     .cardItemTitle
+//       padding-left 25px
+//       background url(/images/icons/dependencia-gray-light.svg) no-repeat;
+//       background-size 16px
+// .js-suppliers
+//     .cardItemTitle
+//       padding-left 25px
+//       background url(/images/icons/empresa-gray-light.svg) no-repeat;
+//       background-size 16px
+
+// .js-procedure
+//     .cardItemTitle
+//       padding-left 25px
+//       background url(/images/icons/procedimiento-gray-light.svg) no-repeat;
+//       background-size 16px
+// .js-procedure
+// .js-dependency
+// .js-suppliers
+//     margin-top: 5px
+//     color #9b9b9b
+//     padding-right 1em
+
+// .dependency-cell li a
+// .suppliers-cell li a
+//   color #2b00f7
+//   -webkit-transition all .35s
+//   -moz-transition all .35s
+//   transition all .35s
+//   &:hover
+//     // text-decoration none
+//     color #2d1c9d
+
+// .js-ocid
+//     float right!important
+//     text-align right
+//     margin 2em 1em 0 0
+
+// .js-contract-count
+// .js-company-count
+// .js-contract-amount
+//     color #2b00f7
+
+// .js-person-type
+// .js-foundation-date
+// .js-flags
+//     color #9b9b9b
+
+// .js-contract-count
+// .js-company-count
+// .js-person-type
+// .js-foundation-date
+//     // font-family monospace
+//     font-size 1rem
+//     .cardItemData
+//         padding-left 5px
+
+// .js-title-data
+// .js-data
+//   text-transform uppercase
+
+// .js-title-data
+//   color #9b9b9b
+//   margin-bottom 0
+
+// .js-data
+// .js-data-lf
+//   color #4e4e4e
+//   font-weight bold
+
+// .js-data-lf
+//   font-size 1.2rem
+
+// .js-data-link
+//   color #2b00f7
+//   -webkit-transition all .35s
+//   -moz-transition all .35s
+//   transition all .35s
+//   &:hover
+//     color #21018b
+//     text-decoration none
+
+
+// .js-score.col-m-2
+//   .cardItemData,.cardItemTitle
+//     display inline
+//     margin-right 0.2em
+
+// .contract_currency
+//   font-size 0.4em
+//   color #9b9b9b
+//   display block
+//   line-height 0
+
+
+
+  // select
+  //   width 75px
+  //   display inline-block
+
+// .info-icon
+//   width 13px
+//   margin-top -3.5px
+
+// .dataTables_paginate
+//   margin-top 2.5rem !important
+
+
+// .flex
+//   overflow hidden
+//   display -webkit-box
+//   display -webkit-flex
+//   display flex
+//   -webkit-flex-flow row wrap
+//   flex-flow row wrap
+
+// .flex-item
+//   display -webkit-grid
+//   display grid
+
+
+// .description-data-organization
+// .description-data-rol
+// .description-data-amount
+// .description-data-contract
+// .description-data-date
+//   font-size 1.1rem
+//   color #9b9b9b
+
+// .description-data-subname
+// .description-data-organization
+// .description-data-contract
+//   text-transform uppercase
+
+// .party_flag_score
+//   float left
+//   width 20%
+//   border 1px solid #ccc
+//   border-right none
+//   border-collapse collapse
+//   text-align center
+//   height 50px
+//   overflow hidden
+//   background #f7f7f7
+
+// .party_flag_title
+//   font-size 0.65em
+//   padding-top 5px
+//   color #666
+//   text-transform uppercase
+//   font-weight bold
+
+// .party_flag_value
+//   font-size 1.2em
+
+// .d100
+//   font-size 0.5em
+
+
+// .party_flag_total_score
+//   border 1px solid black
+//   background #ffc
+
+//   .party_flag_value
+//     font-weight bold
+
+
+
+
+
+
 
 // .tooltip
 //     position absolute
@@ -1372,1233 +1090,375 @@ a
 //     white-space: pre-wrap
 //     text-align left
 
-.link-lf-contracts
-  & a
-    text-decoration none
-    p
-      color #2b00f7 !important
-      font-size 1.2rem
-      -webkit-transition all .35s
-      -moz-transition all .35s
-      transition all .35s
-      &:hover
-        color #2d1c9d !important
+// .link-lf-contracts
+//   & a
+//     text-decoration none
+//     p
+//       color #2b00f7 !important
+//       font-size 1.2rem
+//       -webkit-transition all .35s
+//       -moz-transition all .35s
+//       transition all .35s
+//       &:hover
+//         color #2d1c9d !important
 
-.other-dependency
-.principal-suppliers
-  & a
-    color #2b00f7
-    font-size 1.1rem
-    // text-decoration none
-    -webkit-transition all .35s
-    -moz-transition all .35s
-    transition all .35s
-    &:hover
-      color #2d1c9d
-
-.addinfo
-  margin-top 6rem
-  margin-bottom 4rem
-
-.addinfo-box
-  margin-right 0
-  margin 0 0 3rem 3rem
-  text-align center
-  font-size 100%
-  h4
-    font-weight bold
-    color #4e4e4e
+// .other-dependency
+// .principal-suppliers
+//   & a
+//     color #2b00f7
+//     font-size 1.1rem
+//     // text-decoration none
+//     -webkit-transition all .35s
+//     -moz-transition all .35s
+//     transition all .35s
+//     &:hover
+//       color #2d1c9d
 
 
-.addinfo-title
-  color #2d1c9d
-  font-weight bold
-  font-size 1.5rem
-  margin-bottom 3rem
-
-.addinfo-form
-.contact-template
-    textarea
-      padding 10px 5px
-    input[type="text"]
-      padding 20px 5px
-      margin-right 5px
-      border-color #D3D3D3
-      border-style solid
-      border-width 1px
-    label
-      color #4e4e4e
-      font-weight bold
-      font-size 18px
-
-.addinfo-box-logo
-  width 250px
-  padding 2rem 0
-  margin auto
-
-textarea.form-control
-  height auto
-
-.error-template
-.about-template
-.privacy-template
-  padding-top 5rem
-  h1
-    color #150b58
-    font-size 2.5rem
-    font-weight bold
-    margin-bottom 2rem
-    img
-      width 50px
-  h2
-    color #150b58
-    font-family monospace
-    font-size 2.5rem
-    text-transform uppercase
-    margin-top 3rem
-    margin-bottom 1.5rem
-  h3
-    color #150b58
-    font-weight bold
-    margin-top 2.5rem
-  h4
-    margin-top 1.5rem
-
-.privacy-template
-  h3
-    font-weight: bold;
-    color: #4e4e4e;
-    text-transform: uppercase;
-
-.media
-    margin-top 15px
-    &:first-child
-        margin-top 0
-    .media-object
-      width 150px
-
-.media,
-.media-body
-    overflow hidden
-    zoom 1
-
-.media-body
-    width 10000px
-
-.media-object
-    display block
-    &.img-thumbnail
-        max-width none
-
-.media-right,
-.media > .pull-right
-    padding-left 10px
-
-.media-left,
-.media > .pull-left
-    padding-right 10px
-
-.media-left,
-.media-right,
-.media-body
-    display table-cell
-    vertical-align top
-
-.media-middle
-    vertical-align middle
-
-.media-bottom
-    vertical-align bottom
-
-.media-heading
-    margin-top 0
-    margin-bottom 5px
-
-.media-list
-    padding-left 0
-    list-style none
-
-#contract_problemas_destacados
-  margin-top 2em
-  float left
-  width 100%
-
-#chartSupplier, #chartBuyer, #chartFunder
-    svg
-        height 450px
-        width 100%
-
-.nvd3
-    .nv-axis
-        line
-            fill none
-            stroke #e5e5e5
-            shape-rendering crispEdges
-    // .nv-y1
-    //     path
-    //         fill #71a7f2
-    //         stroke #71a7f2 !important
-    //         stroke-width 2
-    // .nv-y2
-    //     path
-    //         fill #ff6e00
-    //         stroke #ff6e00 !important
-    //         stroke-width 2
-    &.nv-line
-        fill-opacity 0 !important
-        path
-          fill-opacity 0 !important
-        .nvd3
-            &.nv-scatter
-                .nv-groups
-                    .nv-point
-                        fill-opacity 1 !important
-                        stroke-opacity 1 !important
-    &.nv-line
-        fill-opacity 0 !important
-    // .nv-bars
-    //     transform translateX(50px)
-
-#piechartSupplier
-#piechartBuyer
-#piechartFunder
-    svg
-        height 450px
-        width 100%
-
-#treemap
-  height 300px
-  width 100%
-  margin auto
-
-  svg
-    width 100%
-
-#graph-container, #graph-container svg
-    width 100%
-    height 600px
-
-#flags-graph
-  svg
-    width 100%
-    height 200px
-
-    .nv-background rect
-      fill white
 
 
-.links
-    line
 
-.node
-    .nodeBack
-        opacity 0.85
-    &.active
-        .nodeBack
-            opacity 0
-    circle
-        stroke #fff
-        stroke-width 1px
-    .bubble-label
-        // font-family 'Poppins'
-        font-weight bold
-        font-size 1rem
-        fill #000
-        // stroke #000
-        // stroke-width 1px
-        // stroke-linejoin round
 
-.foreign-tooltip
-    display flex
-    width 160px
-    position absolute
-    pointer-events none
-    .node-tooltip
-        background-color #222222
-        border-radius 3px
-        box-shadow 0 0 5px rgba(0,0,0,0.3)
-        position relative
-        text-align center
-        padding 7px 8px 2px
-        line-height 1em
-        display inline-table
-        margin 0 auto
-        &::before
-            position absolute
-            content ''
-            border 10px solid transparent
-            border-bottom-color #222222
-            top -20px
-            left calc(50% - 10px)
-        .name
-            font-family 'Poppins'
-            font-size 12px
-            margin-bottom 3px
-            color #FFF
-            font-weight 600
 
-.form-group
-    margin-bottom 15px
+// .contratos-content
+// .orgs-content
+// .personas-content
+//   margin-left 25%
 
-#subscribe-popup
-#login-dropdown-list
-  .form-suscribe
-    margin-right 10px
-  .modal-dialog
-    margin 100px auto 30px
-  p
-    color #5b5b5b
-    font-size: 1.1rem;
-  ul
-    padding-left 0
-  li
-    list-style-type none
-    color #5b5b5b
-  h2
-    color: #2d1c9d;
-    font-weight bold
-  .modal-body
-    padding 40px 15px
-  label
-    color: #2d1c9d;
-    font-size: 1.1rem;
-    text-transform uppercase
-    font-weight bold
-  input
-    padding 20px
-  button
-    padding: 15px 25px;
-    font-weight bold
-    margin-bottom 10px
-    background-color #2b00f7
-    text-transform uppercase
-    color #fff
-    border none
-    white-space nowrap
-    -webkit-transition all .35s
-    -moz-transition all .35s
-    transition all .35s
-    &:hover
-    &:focus
-      color #fff
-      background-color #2200c5
-      text-decoration none
-  .modal-content
-    background-color #f6f6f6
-  .at-form
-    margin-top -35px
-    margin-bottom 0
 
-.contratos-content
-.orgs-content
-.personas-content
-  margin-left 25%
+// .row
+//   &::after
+//     content ""
+//     clear both
+//     display table
 
-.apis-template
-  .card
-    margin-bottom 2rem
-    padding-bottom: 2.5rem;
-    .card-content
-      padding 1rem 1rem 2.5rem 1rem
-    p
-      padding-top 0.5rem
-      padding-bottom 1.5rem
-    h3
-      margin-top 1rem
-      margin-bottom 1rem
-      color #2B00F7
-    .button-link
-      color #fff
-      -webkit-transition all .35s
-      -moz-transition all .35s
-      transition all .35s
-      font-weight normal
-      margin-right 1rem
-      &:hover
-      &:focus
-        color #fff
-    .link
-      text-decoration underline !important
-  .card-list
-    position relative
-    img
-      width 90%
-    p
-      padding-bottom 0
-  .subtitle-apis
-    // margin-top -20px
-    margin-bottom 40px
-  .apis-bg
-    background-image url('../images/apis-bg.png')
-    height 460px
-    background-size cover
-    background-repeat no-repeat
-    background-position center top
-  .hr-apis
-    background-color #bec8ff
-  .apis-kibana
-    height 150px
-    background-image url('../images/apis-tlc.png')
-    background-size cover
-    background-repeat no-repeat
-  hr
-    margin-bottom 20px
-  .button-link-apilist
-    margin-right 0 !important
-    position absolute
-    right 1rem
-    bottom 0
-  .card-software
-    padding-bottom 0
-  .card-post-blog
-    padding 0.5rem
-  .content-post-blog
-    text-align center !important
-    background-color #f7f7f7
-    border solid 1px rgba(222, 222, 222, 0.3)
-    padding 1rem
-    h4
-      margin 0
-  .button-link-status-container
-    text-align right
-    margin-top 40px
-    margin-bottom 40px
-    .button-link-status
-      font-weight: normal;
-      border solid 1px #2B00F7
-      color #2B00F7
-      background-color transparent
-      &:hover
-        color #ffffff
-        background-color #2B00F7
-.row
-  &::after
-    content ""
-    clear both
-    display table
-
-[class*="col-"]
-  width 100%
-  float left
-
-div
-  &.header-container
-    background-color white
-    height auto
-    padding-top 40px
-  &.landing-header
-    background -webkit-gradient(linear, left top, left bottom, color-stop(88%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1))), url(../images/fondo-home.png) no-repeat top left #def /* safari4+,chrome */
-    height 100%
-    width 100%
-    -webkit-background-size cover
-    -moz-background-size cover
-    -o-background-size cover
-    background-size cover
-    background-blend-mode lighten
-  &.landing-header-content
-    padding 4rem
-    width 75%
-    text-align center
-    margin auto
-    padding-top 7%
-    h1
-      display inline-block
-      margin-left 1rem
-      font-size 4rem
-    p
-      display inline-block
-      margin 7%
-      font-size 1.5rem
-      color #5c5c5c
-      text-align center
-  &.landing-search
-    text-align left
-    p
-      font-size 1rem
-      color #2d1c9d
-      margin 1rem auto 1rem auto
-      &:first-child
-        font-size 1.2rem
-        color #2d1c9d
-        margin .5rem auto 1rem auto
-
-    margin auto
-  &.card-pad
-    h3 strong
-      font-size 2rem
-      margin-bottom .2rem
-    h3
-      font-size 1.5rem
-      margin-bottom .7rem
-  &.proyecto
-    background-color #fff
-    padding 1rem
-    margin 1rem 1rem 1rem 0
-    margin-bottom 2rem
-    border 1px solid #2b00f7
-    position relative
-    -ms-flex 1 1 auto
-    flex 1 1 auto
-    .center-button
-      // width 100%
-      position absolute
-      margin 0.8rem auto
-      bottom 0
-      left: 0;
-      right: 0;
-  .proyecto-info-img
-    display -ms-flexbox
-    display flex
-    -ms-flex 1 0 0%
-    flex 1 0 0%
-    -ms-flex-direction column
-    flex-direction column
-    img
-      width 100%
-    p
-      margin-bottom 3rem
-      padding-top 1rem
-      font-size 1.1rem
-  &.investigaciones-card
-    width 85%
-    height 100%
-    overflow hidden
-    .card-image-container
-      width 220px
-      height 140px
-      float left
-    .card-pad
-      padding 0.5rem 1rem
-      font-size 1.3em
-    img
-      height auto
-      min-width 100%
-      min-height 100%
-    .center-button
-      margin 0.2rem auto
-
-  &.tab
-    overflow hidden
-    border 2px dotted #3a32f9
-    background-color #f1f1f1
-    button
-      background-color inherit
-      float left
-      border none
-      outline none
-      cursor pointer
-      padding 14px 16px
-      transition 0.3s
-      font-size 17px
-      &:hover
-        background-color #ddd
-      &.active
-        background-color #ccc
-
-  &.document-header
-    // display flex
-    // align-items flex-end
-    margin-bottom 2rem
-    margin-top 6rem
-    // padding 0 2rem 0 0
-
-  &.document-body
-    padding 0 2rem 2rem 2rem
-    // flex 1 0 auto
-
-  &.search-card
-    border-bottom 1px dashed #4d29ff
-    padding 1.5rem 0
-  &.content
-    display block
-    margin auto
-    width 85%
-
-.about-template
-  div
-    &.proyecto
-      background-color #f7f7f7
-      padding 1rem
-      width 100%
-      margin-bottom 2rem
-      position relative
-      img
-        width 90%
-      p
-        margin-right 1rem
-        margin-bottom 3rem
-        padding 1rem 1.5rem 0 0
-        font-size 1.1rem
-
-.about-sidebar
-  position fixed
-  left 9%
-  width 18%
-  right auto
-  margin-top 20px
-  background-color #f7f7f7
-  ul
-    padding 1rem 2rem
-    margin 0
-    a
-      text-decoration none !important
-      font-weight bold
-      li
-        list-style none
-        padding 0.5rem 1rem
-        -webkit-transition all .25s
-        -moz-transition all .25s
-        transition all .25s
-        &:hover
-        &:focus
-        &.active
-          background-color #2b00f7
-          color #ffffff
-
-.partners
-  .media
-    margin-bottom 3rem
-
-.card-h3
-  margin-top -10px
-
-input[type="email"]
-  padding 10px
-  margin-right 5px
-  border-color #d3d3d3
-  border-style solid
-  border-width 1px
-  margin-bottom 20px
 
 /* data-table */
-.index-table
-  margin-top 3em
-  tr td:first-child
-    text-transform capitalize
-    cursor pointer
-  tr td:first-child:hover
-    color #337ab7
 
-#contract-index tbody
-  td.js-suppliers a
-    text-transform capitalize
-  td.js-ocid, td.js-dependency, td.js-title
-    cursor pointer
-    color #337ab7
-    &:hover
-      text-decoration underline
+// select
+//   &.input-sm
+//     height 30px
+//     line-height 30px
 
-.list-unstyled
-  padding-left 0
-  list-style none
+// .form-control
+//   height 25px
+//   vertical-align middle
+//   display block
+//   width 100%
+//   height 34px
+//   padding 6px 12px
+//   font-size 14px
+//   line-height 1.42857143
+//   color #555
+//   background-color #fff
+//   background-image none
+//   border 1px solid #ccc
+//   border-radius 4px
+//   -webkit-box-shadow inset 0 1px 1px rgba(0, 0, 0, .075)
+//   box-shadow inset 0 1px 1px rgba(0, 0, 0, .075)
+//   -webkit-transition border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
+//   transition border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
+//   transition border-color ease-in-out .15s, box-shadow ease-in-out .15s
+//   transition border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
 
-select
-  &.input-sm
-    height 30px
-    line-height 30px
-
-.form-control
-  height 25px
-  vertical-align middle
-  display block
-  width 100%
-  height 34px
-  padding 6px 12px
-  font-size 14px
-  line-height 1.42857143
-  color #555
-  background-color #fff
-  background-image none
-  border 1px solid #ccc
-  border-radius 4px
-  -webkit-box-shadow inset 0 1px 1px rgba(0, 0, 0, .075)
-  box-shadow inset 0 1px 1px rgba(0, 0, 0, .075)
-  -webkit-transition border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
-  transition border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
-  transition border-color ease-in-out .15s, box-shadow ease-in-out .15s
-  transition border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
-
-.input-sm
-  height 30px
-  padding 5px 10px
-  font-size 12px
-  line-height 1.5
-  border-radius 3px
+// .input-sm
+//   height 30px
+//   padding 5px 10px
+//   font-size 12px
+//   line-height 1.5
+//   border-radius 3px
 
 // pagination
 
-#index_paginate
-  text-align center
+// #index_paginate
+//   text-align center
 
-div
-  &.dataTables_wrapper
-    div
-      &.dataTables_paginate
-        margin 0
-        white-space nowrap
-        text-align right
-        ul
-          &.pagination
-            margin 2px 0
-            white-space nowrap
+// div
+//   &.dataTables_wrapper
+//     div
+//       &.dataTables_paginate
+//         margin 0
+//         white-space nowrap
+//         text-align right
+//         ul
+//           &.pagination
+//             margin 2px 0
+//             white-space nowrap
 
-.dataTables_paginate
-  margin-top 2.5rem !important
+// .dataTables_paginate
+//   margin-top 2.5rem !important
 
-.pagination
-  display inline-block
-  padding-left 0
-  margin 20px 0
-  border-radius 4px
-  & > li
-    display inline
+// .pagination
+//   display inline-block
+//   padding-left 0
+//   margin 20px 0
+//   border-radius 4px
+//   & > li
+//     display inline
 
-div.dataTables_paginate li.first>a, div.dataTables_paginate li.previous>a
-  position relative
-  padding-left 24px
+// div.dataTables_paginate li.first>a, div.dataTables_paginate li.previous>a
+//   position relative
+//   padding-left 24px
 
-.pagination>li:first-child>a, .pagination>li:first-child>span
-  margin-left 0
-  border-top-left-radius 4px
-  border-bottom-left-radius 4px
+// .pagination>li:first-child>a, .pagination>li:first-child>span
+//   margin-left 0
+//   border-top-left-radius 4px
+//   border-bottom-left-radius 4px
 
-.pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus
-  color #777
-  cursor not-allowed
-  background-color #fff
-  border-color #ddd
+// .pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus
+//   color #777
+//   cursor not-allowed
+//   background-color #fff
+//   border-color #ddd
 
-.pagination>li>a, .pagination>li>span
-  padding 6px 12px
-  color #9b9b9b
-  background-color #fff
-  border 1px solid #ddd
-  position relative
-  float left
-  margin-left -1px
-  line-height 1.42857143
-  text-decoration none
+// .pagination>li>a, .pagination>li>span
+//   padding 6px 12px
+//   color #9b9b9b
+//   background-color #fff
+//   border 1px solid #ddd
+//   position relative
+//   float left
+//   margin-left -1px
+//   line-height 1.42857143
+//   text-decoration none
 
-div
-  &.dataTables_paginate
-    li
-      &.previous
-        a
-          &:before
-            content "<"
-      &.next
-        a
-          &:after
-            content ">"
+// div
+//   &.dataTables_paginate
+//     li
+//       &.previous
+//         a
+//           &:before
+//             content "<"
+//       &.next
+//         a
+//           &:after
+//             content ">"
 
-div.dataTables_paginate li.first a:before, div.dataTables_paginate li.previous a:before
-  position absolute
-  top 7px
-  left 10px
-  display block
+// div.dataTables_paginate li.first a:before, div.dataTables_paginate li.previous a:before
+//   position absolute
+//   top 7px
+//   left 10px
+//   display block
 
-div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
-  position absolute
-  top 7px
-  right 10px
-  display block
+// div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
+//   position absolute
+//   top 7px
+//   right 10px
+//   display block
 
-@media (min-width: 768px)
-  .form-inline
-    .form-control
-      display inline-block
-      width auto
-      vertical-align middle
+// @media (min-width: 768px)
+//   .form-inline
+//     .form-control
+//       display inline-block
+//       width auto
+//       vertical-align middle
 
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus
-  background-color #21018b
-  border-color #21018b
-  z-index 2
-  color #fff
-  cursor default
-
-.nodesChart
-    transform: translate(0, 20px);
-
-@media only screen and (min-width: 768px)
-  .col-m-1
-    width 8.33%
-  .col-m-2
-    width 16.66%
-  .col-m-3
-    width 25%
-  .col-m-4
-    width 33.33%
-  .col-m-5
-    width 41.66%
-  .col-m-6
-    width 50%
-  .col-m-7
-    width 58.33%
-  .col-m-8
-    width 66.66%
-  .col-m-9
-    width 75%
-  .col-m-10
-    width 83.33%
-  .col-m-11
-    width 91.66%
-  .col-m-12
-    width 100%
-
-@media only screen and (min-width: 1300px)
-  .col-1
-    width 8.33%
-  .col-2
-    width 16.66%
-  .col-3
-    width 25%
-  .col-4
-    width 33.33%
-  .col-5
-    width 41.66%
-  .col-6
-    width 50%
-  .col-7
-    width 58.33%
-  .col-8
-    width 66.66%
-  .col-9
-    width 75%
-  .col-10
-    width 83.33%
-  .col-11
-    width 91.66%
-  .col-12
-    width 100%
-
-@media only screen and (max-width: 1200px)
-  .apis-template .card
-    h3
-      margin-right 1rem
-    p
-      margin-right 1rem
+// .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus
+//   background-color #21018b
+//   border-color #21018b
+//   z-index 2
+//   color #fff
+//   cursor default
 
 
-@media only screen and (max-width: 1160px)
-  div
-    &.explore-card
-      width 100%
-  .proyecto-info
-    position relative
-  .proyecto
-    button
-    a.proyecto-link
-      width 85%
-      bottom 0
-      right 0
-      display block
-      text-align center
-      margin auto
 
-@media only screen and (max-width: 1042px)
-  input[type=text].landing-search-inputtext
-    width 100%
-  input[type=submit].landing-search-inputtext
-    width auto
-    margin 0
-  .card-image
-    display none
-  .contacto
-    button
-      margin-left auto
-  .explore-card
-    button
-      width 85%
-  .investigaciones
-    .card
-      p
-        font-size 1.4rem
+// @media only screen and (min-width: 768px)
+//   .col-m-1
+//     width 8.33%
+//   .col-m-2
+//     width 16.66%
+//   .col-m-3
+//     width 25%
+//   .col-m-4
+//     width 33.33%
+//   .col-m-5
+//     width 41.66%
+//   .col-m-6
+//     width 50%
+//   .col-m-7
+//     width 58.33%
+//   .col-m-8
+//     width 66.66%
+//   .col-m-9
+//     width 75%
+//   .col-m-10
+//     width 83.33%
+//   .col-m-11
+//     width 91.66%
+//   .col-m-12
+//     width 100%
 
-@media only screen and (max-width: 992px)
-    .navbar-header
-        float none
-    .navbar-left,.navbar-right
-        float none !important
-    .navbar-toggle
-        display block
-    .navbar-collapse
-        border-top 1px solid transparent
-        box-shadow inset 0 1px 0 rgba(255,255,255,0.1)
-        &.collapse
-            display none!important
-    .navbar-fixed-top
-        top 0
-        border-width 0 0 1px
-    .navbar-nav
-        float none!important
-        margin-top 7.5px
-        & > li
-            float none
-            & > a
-                padding-top 10px
-                padding-bottom 10px
-    .collapse
-        &.in
-            display block !important
-    .card-pad
-      .button-link
-        font-size 0.8rem
-    .filter-bar
-      position relative
-      width 100%
-      height 100%
-      overflow-y hidden
-    .fixed-filter-button
-      position: relative
-      left 0
-      width 100%
-    .contratos-content
-    .orgs-content
-    .personas-content
-      margin-left 0
-      padding-left 15px
-    .apis-template .card .link
-        display block
-        margin-top 2rem
-    .about-sidebar
-      position initial
-      width 95%
-      ul a
-        font-size 0.8rem
-    #right-menu
-      font-size 1rem
-      & li a i
-        margin-right 5px
-
-@media only screen and (max-width: 870px)
-  .explore-card
-    &.button-link
-      padding 9px
-      font-size .7rem
-  div
-    &.landing-header-content
-      width 90%
-
-@media only screen and (max-width: 800px)
-  .explore-card
-    &.button-link
-      color #2b00f7
-      background-color #fff
-  div
-    &.investigaciones-card
-      height 100%
+// @media only screen and (min-width: 1300px)
+//   .col-1
+//     width 8.33%
+//   .col-2
+//     width 16.66%
+//   .col-3
+//     width 25%
+//   .col-4
+//     width 33.33%
+//   .col-5
+//     width 41.66%
+//   .col-6
+//     width 50%
+//   .col-7
+//     width 58.33%
+//   .col-8
+//     width 66.66%
+//   .col-9
+//     width 75%
+//   .col-10
+//     width 83.33%
+//   .col-11
+//     width 91.66%
+//   .col-12
+//     width 100%
 
 
-@media only screen and (max-width: 768px)
-  .explore-card
-    &.button-link
-      color #fff
-      background-color #2b00f7
-      padding 14px 14px
-      font-size .9rem
-    button
-      width auto
-  div
-    &.proyecto
-      img
-        width 15rem
-        display block
-        margin auto
-  .card-pad
-    padding: 1rem 1rem 3rem;
-    .button-link
-      font-size 1rem
-  .shrink
-  .fixed-nav
-    .navbar-right
-      width 100%
-    form.nav-form, .fixed-nav form.nav-form
-      width 100%
-      text-align left
-      margin-bottom 10px
-  .investigaciones.row
-    height 400px
-  .addinfo-box
-    margin 3rem 0 0 0
-  .investigaciones.row
-    height auto
-  .investigaciones-card
-    .card-pad
-      .button-link
-        position inherit
-        display block
-        width 100%
-  footer
-    a
-      .logofooter-ml
-      .logofooter-pl
-        margin-bottom 1rem
-  .js-ocid
-    margin-bottom 2rem
-  .button-link-apifirst
-    margin-bottom 3rem
-  .about-sidebar
-      position initial
-      width 100%
-      ul a
-        font-size 1 rem
-  .nodesChart
-    transform: translate(0, 40px);
 
-.amount-index-contracts
-  text-align right
+// @media only screen and (max-width: 992px)
+    // .filter-bar
+    //   position relative
+    //   width 100%
+    //   height 100%
+    //   overflow-y hidden
+    // .fixed-filter-button
+    //   position: relative
+    //   left 0
+    //   width 100%
+    // .contratos-content
+    // .orgs-content
+    // .personas-content
+    //   margin-left 0
+    //   padding-left 15px
+    
+  
+// TOOLS DROPDOWN 
+// .dropdown
+//     position relative
 
-@media only screen and (max-width: 767px)
-  .button-link-apilist
-    position relative !important
-    margin-top 1rem
-  .apis-template
-    .button-link-status-container
-      text-align center
-      margin-top 0
-    h1
-      font-size 2rem
-    .card
-      p
-        margin-bottom 1.5rem
-    .card-list
-      img
-        width 100%
-    .card-software
-      padding-bottom 0.5rem
-      p
-        margin-left 16px
-      h3
-        margin-left 16px
-  .ml-25
-    margin-left 0
-  .amount-index-contracts
-    text-align left
-  #right-menu
-    display none
+// .dropdown-toggle
+//     &:focus
+//         outline 0
 
-@media only screen and (max-width: 700px)
-  input[type=submit].landing-search-inputtext
-    float none
-    margin-top 5px
-    width 100%
-  .autosuggest
-    width 100% !important
-  div
-    &.landing-header-content
-      padding 64px 0 0 0
-      p
-        font-size 1.2rem
-        // text-align left
-    // &.content
-    //   width 95%
-    &.card-pad
-      h3 strong
-        font-size 2rem
-        -webkit-margin-before .2rem
-        -webkit-margin-after .2rem
+// .dropdown-menu
+//     position absolute
+//     top 100%
+//     left 0
+//     z-index 1000
+//     display none
+//     float left
+//     min-width 160px
+//     padding 5px 0
+//     margin 2px 0 0
+//     font-size 14px
+//     text-align left
+//     list-style none
+//     background-color #fff
+//     -webkit-background-clip padding-box
+//     background-clip padding-box
+//     border 1px solid #ccc
+//     border 1px solid rgba(0, 0, 0, .15)
+//     border-radius 4px
+//     -webkit-box-shadow 0 6px 12px rgba(0, 0, 0, .175)
+//     box-shadow 0 6px 12px rgba(0, 0, 0, .175)
+//     &.pull-right
+//         right 0
+//         left auto
+//     .divider
+//         height 1px
+//         margin 9px 0
+//         overflow hidden
+//         background-color #e5e5e5
+//     & > li
+//         & > a
+//             display block
+//             padding 3px 20px
+//             clear both
+//             font-weight normal
+//             line-height 1.42857143
+//             color #333
+//             white-space nowrap
+//     .copy-clip
+//       padding 3px 20px
 
-    &.investigaciones-card
-      height 100%
-      position relative
+// .dropdown-menu > li > a:hover,
+// .dropdown-menu > li > a:focus
+//     color #262626
+//     text-decoration none
+//     background-color #f5f5f5
 
-  img
-    &.name
-      width 100%
-      margin-left 0
-  .shrink
-  .fixed-nav
-    img
-      &.logo-horizontal
-        width 7rem
-  input[type=text].nav-search-inputtext
-    width 7rem
-    padding 10px 10px
-    border-color #2b00f7
-  input[type=submit].nav-search-inputtext
-    width 5rem
-    padding 11px 6px
+// .dropdown-menu > .active > a,
+// .dropdown-menu > .active > a:hover,
+// .dropdown-menu > .active > a:focus
+//     color #fff
+//     text-decoration none
+//     background-color #337ab7
+//     outline 0
 
-.dropdown
-    position relative
+// .dropdown-menu > .disabled > a,
+// .dropdown-menu > .disabled > a:hover,
+// .dropdown-menu > .disabled > a:focus
+//     color #777
 
-.dropdown-toggle
-    &:focus
-        outline 0
+// .dropdown-menu > .disabled > a:hover,
+// .dropdown-menu > .disabled > a:focus
+//     text-decoration none
+//     cursor not-allowed
+//     background-color transparent
+//     background-image none
+//     //filter progid:DXImageTransform.Microsoft.gradient(enabled = false)
 
-.dropdown-menu
-    position absolute
-    top 100%
-    left 0
-    z-index 1000
-    display none
-    float left
-    min-width 160px
-    padding 5px 0
-    margin 2px 0 0
-    font-size 14px
-    text-align left
-    list-style none
-    background-color #fff
-    -webkit-background-clip padding-box
-    background-clip padding-box
-    border 1px solid #ccc
-    border 1px solid rgba(0, 0, 0, .15)
-    border-radius 4px
-    -webkit-box-shadow 0 6px 12px rgba(0, 0, 0, .175)
-    box-shadow 0 6px 12px rgba(0, 0, 0, .175)
-    &.pull-right
-        right 0
-        left auto
-    .divider
-        height 1px
-        margin 9px 0
-        overflow hidden
-        background-color #e5e5e5
-    & > li
-        & > a
-            display block
-            padding 3px 20px
-            clear both
-            font-weight normal
-            line-height 1.42857143
-            color #333
-            white-space nowrap
-    .copy-clip
-      padding 3px 20px
+// .open
+//     & > .dropdown-menu
+//         display block
+//     & > a
+//         outline 0
 
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus
-    color #262626
-    text-decoration none
-    background-color #f5f5f5
+// .dropdown-menu-right
+//     right 0
+//     left auto
 
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus
-    color #fff
-    text-decoration none
-    background-color #337ab7
-    outline 0
+// .dropdown-menu-left
+//     right auto
+//     left 0
 
-.dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus
-    color #777
+// .dropdown-header
+//     display block
+//     padding 3px 20px
+//     font-size 12px
+//     line-height 1.42857143
+//     color #777
+//     white-space nowrap
 
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus
-    text-decoration none
-    cursor not-allowed
-    background-color transparent
-    background-image none
-    //filter progid:DXImageTransform.Microsoft.gradient(enabled = false)
+// .dropdown-backdrop
+//     position fixed
+//     top 0
+//     right 0
+//     bottom 0
+//     left 0
+//     z-index 990
 
-.open
-    & > .dropdown-menu
-        display block
-    & > a
-        outline 0
+// .pull-right
+//     & > .dropdown-menu
+//         right 0
+//         left auto
 
-.dropdown-menu-right
-    right 0
-    left auto
+// .dropup .caret,
+// .navbar-fixed-bottom .dropdown .caret
+//     content ""
+//     border-top 0
+//     border-bottom 4px dashed
+//     border-bottom 4px solid \9
 
-.dropdown-menu-left
-    right auto
-    left 0
+// .dropup .dropdown-menu,
+// .navbar-fixed-bottom .dropdown .dropdown-menu
+//     top auto
+//     bottom 100%
+//     margin-bottom 2px
 
-.dropdown-header
-    display block
-    padding 3px 20px
-    font-size 12px
-    line-height 1.42857143
-    color #777
-    white-space nowrap
 
-.dropdown-backdrop
-    position fixed
-    top 0
-    right 0
-    bottom 0
-    left 0
-    z-index 990
 
-.pull-right
-    & > .dropdown-menu
-        right 0
-        left auto
-
-.dropup .caret,
-.navbar-fixed-bottom .dropdown .caret
-    content ""
-    border-top 0
-    border-bottom 4px dashed
-    border-bottom 4px solid \9
-
-.dropup .dropdown-menu,
-.navbar-fixed-bottom .dropdown .dropdown-menu
-    top auto
-    bottom 100%
-    margin-bottom 2px
-
-.button-tools
-  background transparent
-  // border 1px solid #dddddd
-  border none
-  margin-top 0.6rem
-  padding 5px
-  img
-    width 20px
-  &:hover
-    color #2200c5
-
-#apiUrl
-  padding 5px
-  width 100%
-  margin-right 5px
-  margin-bottom 3px
-  border 1px solid #d3d3d3
-  display inline-block
-
-.btn-copy
-.btn-csv
-  width 100%
-  display inline-block
-  border 1px solid grey
-  background-color #f0f0f0
-  text-align center
-  border-radius 5px
-  padding 6px 8px !important
-
-.tools-section
-  background #f0f0f0
-  padding-right 20px
-  padding-left 20px
-  .document-description
-    margin-bottom 0 !important
-  .dropdown
-    text-align right
-
-.share-icons
-  width 17px
-  margin-right 5px
-
-@media only screen and (max-width: 768px)
-  .tools-section
-    .dropdown
-      text-align center
-      margin-bottom 10px
-
-@media only screen and (max-width: 1300px)
-  div
-    .m-noflex
-      display block
-    .proyecto
-      img
-        width 100%
-        margin auto
 
 /*#profile-menu
   ul
@@ -2615,988 +1475,212 @@ div.dataTables_paginate li.next a:after, div.dataTables_paginate li.last a:after
         margin-right 5px
         width 20px*/
 
-.modal-open
-  overflow hidden
-  .modal
-    overflow-x hidden
-    overflow-y auto
-.modal
-  position fixed
-  top 0
-  right 0
-  bottom 0
-  left 0
-  z-index 1050
-  display none
-  overflow hidden
-  -webkit-overflow-scrolling touch
-  outline 0
-  &.fade
-    .modal-dialog
-      -webkit-transition -webkit-transform .3s ease-out
-      -o-transition -o-transform .3s ease-out
-      transition transform .3s ease-out
-      -webkit-transform translate(0, -25%)
-      -ms-transform translate(0, -25%)
-      -o-transform translate(0, -25%)
-      transform translate(0, -25%)
-  &.in
-    .modal-dialog
-      -webkit-transform translate(0, 0)
-      -ms-transform translate(0, 0)
-      -o-transform translate(0, 0)
-      transform translate(0, 0)
-.modal-dialog
-  position relative
-  width auto
-  margin 10px
-.modal-content
-  position relative
-  background-color #fff
-  -webkit-background-clip padding-box
-  background-clip padding-box
-  border 1px solid #999
-  border 1px solid rgba(0, 0, 0, .2)
-  border-radius 6px
-  outline 0
-  -webkit-box-shadow 0 3px 9px rgba(0, 0, 0, .5)
-  box-shadow 0 3px 9px rgba(0, 0, 0, .5)
-  -webkit-box-shadow 0 5px 15px rgba(0, 0, 0, .5)
-  box-shadow 0 5px 15px rgba(0, 0, 0, .5)
-.modal-backdrop
-  position fixed
-  top 0
-  right 0
-  bottom 0
-  left 0
-  z-index 1040
-  background-color #000
-  &.fade
-    // filter alpha(opacity=0)
-    opacity 0
-  &.in
-    // filter alpha(opacity=50)
-    opacity .5
-.modal-header
-  padding 15px
-  border-bottom 1px solid #e5e5e5
-  .close
-    margin-top -2px
-.modal-title
-  margin 0
-  line-height 1.42857143
-.modal-body
-  position relative
-  padding 15px
-.modal-footer
-  padding 15px
-  text-align right
-  border-top 1px solid #e5e5e5
-  .btn
-    & + .btn
-      margin-bottom 0
-      margin-left 5px
-  .btn-group
-    .btn
-      & + .btn
-        margin-left -1px
-  .btn-block
-    & + .btn-block
-      margin-left 0
-.modal-scrollbar-measure
-  position absolute
-  top -9999px
-  width 50px
-  height 50px
-  overflow scroll
+// .modal-open
+//   overflow hidden
+//   .modal
+//     overflow-x hidden
+//     overflow-y auto
+// .modal
+//   position fixed
+//   top 0
+//   right 0
+//   bottom 0
+//   left 0
+//   z-index 1050
+//   display none
+//   overflow hidden
+//   -webkit-overflow-scrolling touch
+//   outline 0
+//   &.fade
+//     .modal-dialog
+//       -webkit-transition -webkit-transform .3s ease-out
+//       -o-transition -o-transform .3s ease-out
+//       transition transform .3s ease-out
+//       -webkit-transform translate(0, -25%)
+//       -ms-transform translate(0, -25%)
+//       -o-transform translate(0, -25%)
+//       transform translate(0, -25%)
+//   &.in
+//     .modal-dialog
+//       -webkit-transform translate(0, 0)
+//       -ms-transform translate(0, 0)
+//       -o-transform translate(0, 0)
+//       transform translate(0, 0)
+// .modal-dialog
+//   position relative
+//   width auto
+//   margin 10px
+// .modal-content
+//   position relative
+//   background-color #fff
+//   -webkit-background-clip padding-box
+//   background-clip padding-box
+//   border 1px solid #999
+//   border 1px solid rgba(0, 0, 0, .2)
+//   border-radius 6px
+//   outline 0
+//   -webkit-box-shadow 0 3px 9px rgba(0, 0, 0, .5)
+//   box-shadow 0 3px 9px rgba(0, 0, 0, .5)
+//   -webkit-box-shadow 0 5px 15px rgba(0, 0, 0, .5)
+//   box-shadow 0 5px 15px rgba(0, 0, 0, .5)
+// .modal-backdrop
+//   position fixed
+//   top 0
+//   right 0
+//   bottom 0
+//   left 0
+//   z-index 1040
+//   background-color #000
+//   &.fade
+//     // filter alpha(opacity=0)
+//     opacity 0
+//   &.in
+//     // filter alpha(opacity=50)
+//     opacity .5
+// .modal-header
+//   padding 15px
+//   border-bottom 1px solid #e5e5e5
+//   .close
+//     margin-top -2px
+// .modal-title
+//   margin 0
+//   line-height 1.42857143
+// .modal-body
+//   position relative
+//   padding 15px
+// .modal-footer
+//   padding 15px
+//   text-align right
+//   border-top 1px solid #e5e5e5
+//   .btn
+//     & + .btn
+//       margin-bottom 0
+//       margin-left 5px
+//   .btn-group
+//     .btn
+//       & + .btn
+//         margin-left -1px
+//   .btn-block
+//     & + .btn-block
+//       margin-left 0
+// .modal-scrollbar-measure
+//   position absolute
+//   top -9999px
+//   width 50px
+//   height 50px
+//   overflow scroll
 
-button
-  &.close
-    padding 0
-    cursor pointer
-    background 0 0
-    border 0
-    -webkit-appearance none
-    -moz-appearance none
-    appearance none
-.close
-  float right
-  font-size 31px
-  font-weight 700
-  line-height 1
-  color #000
-  text-shadow 0 1px 0 #fff
-  // filter alpha(opacity=20)
-  opacity .2
-
-
-@media (min-width: 768px)
-  .modal-dialog
-    width 600px
-    margin 30px auto
-  .modal-sm
-    width 300px
-@media (min-width: 992px)
-  .modal-lg
-    width 900px
-
-.tooltip-download
-  position relative
-  display inline-block
-  border-bottom 1px dotted black
-  .tooltiptext
-    // visibility hidden
-    width 220px
-    background-color #555
-    color #fff
-    text-align center
-    border-radius 6px
-    padding 5px 0
-    position absolute
-    z-index 1
-    bottom 125%
-    left 50%
-    margin-left -60px
-    opacity 0
-    transition opacity 0.3s
-    &::after
-      content ""
-      position absolute
-      top 100%
-      left 50%
-      margin-left -5px
-      border-width 5px
-      border-style solid
-      border-color #555 transparent transparent transparent
-  &:hover
-    .tooltiptext
-      visibility visible
-      opacity 1
-
-.doc-download-link
-  font-size 12px
-  color #2b00f7 !important
-
-.doc-download-link:hover
-  color #21018b !important
-  background transparent !important
-
-.buyer-button
-  background #db2828 !important
-
-.supplier-button
-  background #278529 !important
-
-.funder-button
-  background #b6893e !important
-
-.flags_graph_bar {
-}
-.flag_name {
-  float: left;
-  line-height: 2em;
-}
-.flag_pole {
-  position: relative;
-  height: 1.5em;
-  margin: 2em 2em 2em 10em;
-}
-.flag_marker {
-  position: absolute;
-  background: inherit;
-  border: 2px solid grey;
-  color: #222222;
-  margin-top: -1.55em;
-  padding: 0.5em;
-  border-radius: 3em;
-  width: 4.5em;
-  height: 4.5em;
-  line-height: 3.5em;
-  text-align: center;
-  margin-left: -2.7em;
-  font-weight: bold;
-}
-.flag_total_score {
-  background: hsl(1, 100%, 79%);
-}
-.flag_trans {
-  background: hsl(222, 100%, 57%);
-}
-.flag_temp {
-  background: hsl(205, 80%, 82%);
-}
-.flag_comp {
-  background: hsl(212, 100%, 76%);
-}
-.flag_traz {
-  background: hsl(215, 97%, 62%);
-}
-.flag_conf {
-  background: hsl(166, 100%, 40%);
-}
-
-.flag_pole_min,
-.flag_pole_max {
-  background: rgba(0,0,0,0.5);
-  height: 1.5em;
-  float: left;
-}
-.flag_pole_max {
-  position: absolute;
-  right: 0;
-}
-
-.informe-iframe
-  width 100%
-  height 700px
-  margin-top 40px
-  display block
-
-.wrap,
-.wrap-contract
-  position relative
-  background #fff
-  -webkit-transition height .35s
-  -moz-transition height .35s
-  transition height .35s
-
-.fixed-title,
-.fixed-title-contract
-  height 72px
-  background #fff
-  position fixed !important
-  margin-top -4px
-  z-index 1
-  width 85%
-  .breadcrumb
-    padding-top 0
-    margin-bottom 0 !important
-    h4
-      overflow hidden
-      white-space nowrap
-      text-overflow ellipsis
-      font-size 15px
-  .description-data-title
-    h3
-      margin-top 0
-      font-size 1.2rem
-      overflow hidden
-      white-space nowrap
-      text-overflow ellipsis
-      -webkit-transition all .25s ease
-      -moz-transition all .25s ease
-      transition all .25s ease
-  .contract-amount
-    width 35%
-    float right
-    margin-top -15px
-    .amount-data
-      font-size 1.2rem
-      overflow hidden
-      white-space nowrap
-      text-overflow ellipsis
-      -webkit-transition all .25s ease
-      -moz-transition all .25s ease
-      transition all .25s ease
-  img.icon-lf
-    width 15px
-  hr
-    margin-top 0 !important
-
-.fixed-title-contract
-  height 70px
-  .description-data-title
-    width 65%
-    float left
-
-.profile-menu-margin
-  margin-top 10rem
-
-.contract-margin
-  margin-top 11.5rem
-
-.profile-margin
-  margin-top 6rem
-
-#left-sidebar
-    display none
-    background-color: #f7f7f7;
-    border-color: #9c9c9c;
-    border-width: 1px;
-    border-style: solid;
-    // text-align center
-    color #3e3e3e
-
-.filters-link-lg
-  display block
-
-.filters-link-sm
-  display none
-
-.party_flags_recommendations_list
-  display inline-block
+// button
+//   &.close
+//     padding 0
+//     cursor pointer
+//     background 0 0
+//     border 0
+//     -webkit-appearance none
+//     -moz-appearance none
+//     appearance none
+// .close
+//   float right
+//   font-size 31px
+//   font-weight 700
+//   line-height 1
+//   color #000
+//   text-shadow 0 1px 0 #fff
+//   // filter alpha(opacity=20)
+//   opacity .2
 
 
-@-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
+// @media (min-width: 768px)
+//   .modal-dialog
+//     width 600px
+//     margin 30px auto
+//   .modal-sm
+//     width 300px
+// @media (min-width: 992px)
+//   .modal-lg
+//     width 900px
 
-.button-manual
-  &.right
-    text-align right !important
-    padding-right 1rem
-  &.left
-    text-align left !important
-
-@media (max-width: 767px)
-// Home
-  .button-manual
-    &.right
-      text-align center !important
-      padding-right 0
-    &.left
-      text-align center !important
-  .pr-2
-    padding-right 0
-  .card-pad-ext
-    padding-right 0
-  .pr-5
-    padding-right 0
-  .pl-5
-    padding-left 0
-  .proyecto a
-    font-size 13px
-    white-space initial
-  div .proyecto-info-img p
-    margin-bottom: 5rem
-  .important-button-link
-    font-size 90%
-  div.proyecto
-    margin-right 0
-  h2
-    font-size 1.7rem
-  .sources-icons
-    width 4rem
-  // search
-  .text-left-sm
-    text-align left !important
-  section.explore-data
-    padding-top 40px !important
-  .tools-section
-  .dataTables_length
-    text-align center
-  .dataTables_info
-    float none
-  .js-ocid
-    float none
-    text-align center
-    margin-right 0
-    a.button-link
-      display block
-  .js-amount
-    margin-bottom 30px
-    text-align center
-  #left-sidebar
-    display block
-  .filters-link-lg
-    display none
-  .filters-link-sm
-    display block
-  .advance-filters
-  .about-sidebar
-    display none
-    &.open
-        display block
-        -webkit-animation fadeIn 1s
-        animation fadeIn 1s
-
-@media (max-width: 992px)
-  footer
-    position relative !important
+// .tooltip-download
+//   position relative
+//   display inline-block
+//   border-bottom 1px dotted black
+//   .tooltiptext
+//     // visibility hidden
+//     width 220px
+//     background-color #555
+//     color #fff
+//     text-align center
+//     border-radius 6px
+//     padding 5px 0
+//     position absolute
+//     z-index 1
+//     bottom 125%
+//     left 50%
+//     margin-left -60px
+//     opacity 0
+//     transition opacity 0.3s
+//     &::after
+//       content ""
+//       position absolute
+//       top 100%
+//       left 50%
+//       margin-left -5px
+//       border-width 5px
+//       border-style solid
+//       border-color #555 transparent transparent transparent
+//   &:hover
+//     .tooltiptext
+//       visibility visible
+//       opacity 1
 
 
-// New country profile
-
-.text-orange
-  color #FFA500
-
-.text-purple
-  color #4900A3 !important
-
-.text-red
-  color #EB004A
-
-#mujeresenlabolsa
-  .logo-mujeres
-    width 250px
-
-  .stockexchange-img
-    width 95%
-    margin-top 2rem
-
-  .data-icon
-    display flex
-    align-items center
-    i
-      font-size 3rem
-      margin-right 5px
-    .js-data
-      margin 0
-      font-size 1.5rem
-  .data-description
-    color #9b9b9b
-    margin-top 1.3rem
-  .container-button
-    margin-top 2rem
-    margin-bottom 2rem
-.stockexchange-mx
-  background #4900A3 !important
-.stockexchange-out
-  background #008075 !important
-
-// Country mujeres
-.bg-purple
-  background #4900A3
-
-.bg-purple-light
-  background #f5f7ff
-
-.bg-green
-  background #00CAB9
-
-.text-gray
-  color #9b9b9b
-
-.border
-  border-right 1px solid #999
-
-.variations-container
-  padding 3rem 2rem
-
-.flex-variations
-  display flex
-  align-items center
-  justify-content flex-end
-.data-icon-variations
-  font-size 2.7rem
-  color #ffffff
-  margin-right 20px
-  text-align right
-.variation-icon
-  font-size 2rem
-  margin-right 20px
-  &.fa-chevron-up
-    color #12B616 !important
-  &.fa-chevron-down
-    color #db2828 !important
-  &.fa-equals
-    color #ffffff
-
-.icon-variations1
-  width 40px
-  margin-right 20px
-.icon-variations2
-  width 35px
-  margin-right 20px
-
-#variaciones
-  p
-    margin-bottom 0
-    color #ffffff !important
-    span.percentage, span.number
-      font-weight normal
-      font-size 0.8rem
-      margin-left 10px
-    span.number
-      margin-left 0
-  hr
-    margin-bottom 20px !important
-
-.data-item-left
-  padding 20px 10px 20px
-
-.data-item-right
-  padding 20px 10px 20px 30%
-
-.org-logo
-  width 150px
-  padding 0 10px
-
-@media (max-width: 992px)
-  .data-icon
-    // font-size 2.7rem
-    margin-right 10px
-  .variation-icon
-    // font-size 2rem
-    margin-right 10px
-  .icon-variations1
-    // width 45px
-    margin-right 10px
-  .icon-variations2
-    // width 35px
-    margin-right 10px
 
 
-@media (max-width: 767px)
-  .variation-icon
-    display: none
-  .data-item-left
-    display flex
-  .flex-variations
-    justify-content center
-  // .data-item-right
-  //   padding 20px 10px 20px 30%
-  .border
-    border-right none
-  .mt-mobile
-    margin-top 3rem
-  .description-data-title h3
-    font-size 1.5rem
 
-.man-cards
-  padding 20px
-  border 1px solid #ccc
-  // box-shadow 13px 13px 0 -5px #F8E923
-  background #ffffff
-  margin-right 30px
-  min-width 350px
-  margin-bottom 60px
 
-.overflow-cards
-  display flex
-  flex-direction row
-  flex-wrap nowrap
-  overflow-x scroll
-  overflow-y hidden
 
-  &::-webkit-scrollbar
-    height 15px
-  &::-webkit-scrollbar-track:horizontal
-    // -webkit-box-shadow inset 0 0 6px rgba(0,0,0,0.3)
-    background #f7f7f7
-    -webkit-border-radius 5px
-    border-radius 5px
-  &::-webkit-scrollbar-thumb:horizontal
-    background #4900A3
-    -webkit-border-radius 5px
-    border-radius 5px
-  // &::-webkit-scrollbar-button:single-button
-  //     background-color red
+
+// .filters-link-lg
+//   display block
+
+// .filters-link-sm
+//   display none
+
+// .party_flags_recommendations_list
+//   display inline-block
+
+
+// @-webkit-keyframes fadeIn {
+//     from { opacity: 0; }
+//       to { opacity: 1; }
+// }
+// @keyframes fadeIn {
+//     from { opacity: 0; }
+//       to { opacity: 1; }
+// }
+
+
+// @media (max-width: 767px)
+
+  // .tools-section
+  // .dataTables_length
+  //   text-align center
+  // .dataTables_info
+  //   float none
+  // .js-ocid
+  //   float none
+  //   text-align center
+  //   margin-right 0
+  //   a.button-link
   //     display block
-  //     border-style solid
-  //     height 13px
-  //     width 20px
-  //     margin auto
-  // &::-webkit-scrollbar-button:single-button:horizontal:decrement
-  //     border-width 8px 8px 8px 0
-  //     border-color transparent #4900A3 transparent transparent
-  //     margin-right 20px
-  &.scroller
-    scrollbar-color #4900A3 #f7f7f7
-    scrollbar-width auto
+  // .js-amount
+  //   margin-bottom 30px
+  //   text-align center
+  // .filters-link-lg
+  //   display none
+  // .filters-link-sm
+  //   display block
+  // .advance-filters
+ 
 
 
-// Grid variations section
-.w-layout-grid
-    display -ms-grid
-    display grid
-    grid-auto-columns 1fr
-    -ms-grid-columns 1fr 1fr
-    grid-template-columns 1fr 1fr
-    -ms-grid-rows auto auto
-    grid-template-rows auto auto
-    grid-row-gap 16px
-    grid-column-gap 16px
-
-.grid-2
-    -ms-grid-columns 0.5fr 1fr 1fr
-    grid-template-columns 0.5fr 1fr 1fr
-    -ms-grid-rows auto auto auto auto auto auto
-    grid-template-rows auto auto auto auto auto auto
-
-.element-with-icon
-    display block
-    -webkit-box-pack start
-    -webkit-justify-content flex-start
-    -ms-flex-pack start
-    justify-content flex-start
-    -webkit-box-align center
-    -webkit-align-items center
-    -ms-flex-align center
-    align-items center
-
-.icon
-    width 20px
-
-.element-icons
-    display -webkit-box
-    display -webkit-flex
-    display -ms-flexbox
-    display flex
-
-@media screen and (max-width: 767px)
-    .grid
-        -ms-grid-columns 0.25fr 1fr 1fr
-        grid-template-columns 0.25fr 1fr 1fr
-
-@media screen and (max-width: 479px)
-    .grid
-        -ms-grid-columns 0.5fr 1fr 1fr
-        grid-template-columns 0.5fr 1fr 1fr
-
-#twenty-year
-    -ms-grid-column-align stretch
-    justify-self stretch
-    -ms-grid-row-align stretch
-    align-self stretch
-    -ms-grid-column-span 2
-    grid-column-end 3
-    -ms-grid-column 1
-    grid-column-start 1
-    -ms-grid-row-span 1
-    grid-row-end 2
-    -ms-grid-row 1
-    grid-row-start 1
-
-#nineteen-year
-    -ms-grid-row-align stretch
-    align-self stretch
-    -ms-grid-column-align stretch
-    justify-self stretch
-    -ms-grid-column-span 1
-    grid-column-end 4
-    -ms-grid-column 3
-    grid-column-start 3
-    -ms-grid-row-span 1
-    grid-row-end 2
-    -ms-grid-row 1
-    grid-row-start 1
-
-#element-icons-a
-    -ms-grid-column-span 1
-    grid-column-end 2
-    -ms-grid-column 1
-    grid-column-start 1
-    -ms-grid-row-span 1
-    grid-row-end 3
-    -ms-grid-row 2
-    grid-row-start 2
-    -ms-grid-column-align end
-    justify-self end
-    -ms-grid-row-align start
-    align-self start
-
-#element-icons-b
-    -ms-grid-column-span 1
-    grid-column-end 2
-    -ms-grid-column 1
-    grid-column-start 1
-    -ms-grid-row-span 1
-    grid-row-end 4
-    -ms-grid-row 3
-    grid-row-start 3
-    -ms-grid-column-align end
-    justify-self end
-    -ms-grid-row-align start
-    align-self start
-
-#element-icons-c
-    -ms-grid-column-span 1
-    grid-column-end 2
-    -ms-grid-column 1
-    grid-column-start 1
-    -ms-grid-row-span 1
-    grid-row-end 5
-    -ms-grid-row 4
-    grid-row-start 4
-    -ms-grid-column-align end
-    justify-self end
-    -ms-grid-row-align start
-    align-self start
-
-#element-icons-d
-    -ms-grid-column-span 1
-    grid-column-end 2
-    -ms-grid-column 1
-    grid-column-start 1
-    -ms-grid-row-span 1
-    grid-row-end 6
-    -ms-grid-row 5
-    grid-row-start 5
-    -ms-grid-column-align end
-    justify-self end
-    -ms-grid-row-align start
-    align-self start
-
-#element-icons-e
-    -ms-grid-column-span 1
-    grid-column-end 2
-    -ms-grid-column 1
-    grid-column-start 1
-    -ms-grid-row-span 1
-    grid-row-end 7
-    -ms-grid-row 6
-    grid-row-start 6
-    -ms-grid-column-align end
-    justify-self end
-    -ms-grid-row-align start
-    align-self start
-
-#element-with-icon-a
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column-span 1
-    grid-column-end 3
-    -ms-grid-column 2
-    grid-column-start 2
-    -ms-grid-row-span 1
-    grid-row-end 3
-    -ms-grid-row 2
-    grid-row-start 2
-
-#element-with-icon-b
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 2
-    grid-column-start 2
-    -ms-grid-row 3
-    grid-row-start 3
-    -ms-grid-column-span 1
-    grid-column-end 3
-    -ms-grid-row-span 1
-    grid-row-end 4
-
-#element-with-icon-c
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 2
-    grid-column-start 2
-    -ms-grid-row 4
-    grid-row-start 4
-    -ms-grid-column-span 1
-    grid-column-end 3
-    -ms-grid-row-span 1
-    grid-row-end 5
-
-#element-with-icon-d
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 2
-    grid-column-start 2
-    -ms-grid-row 5
-    grid-row-start 5
-    -ms-grid-column-span 1
-    grid-column-end 3
-    -ms-grid-row-span 1
-    grid-row-end 6
-
-#element-with-icon-e
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 2
-    grid-column-start 2
-    -ms-grid-row 6
-    grid-row-start 6
-    -ms-grid-column-span 1
-    grid-column-end 3
-    -ms-grid-row-span 1
-    grid-row-end 7
-
-#element-a
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column-span 1
-    grid-column-end 4
-    -ms-grid-column 3
-    grid-column-start 3
-    -ms-grid-row-span 1
-    grid-row-end 3
-    -ms-grid-row 2
-    grid-row-start 2
-
-#element-b
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 3
-    grid-column-start 3
-    -ms-grid-row 3
-    grid-row-start 3
-    -ms-grid-column-span 1
-    grid-column-end 4
-    -ms-grid-row-span 1
-    grid-row-end 4
-
-#element-c
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 3
-    grid-column-start 3
-    -ms-grid-row 4
-    grid-row-start 4
-    -ms-grid-column-span 1
-    grid-column-end 4
-    -ms-grid-row-span 1
-    grid-row-end 5
-
-#element-d
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 3
-    grid-column-start 3
-    -ms-grid-row 5
-    grid-row-start 5
-    -ms-grid-column-span 1
-    grid-column-end 4
-    -ms-grid-row-span 1
-    grid-row-end 6
-
-#element-e
-    -ms-grid-row-align start
-    align-self start
-    -ms-grid-column-align start
-    justify-self start
-    -ms-grid-column 3
-    grid-column-start 3
-    -ms-grid-row 6
-    grid-row-start 6
-    -ms-grid-column-span 1
-    grid-column-end 4
-    -ms-grid-row-span 1
-    grid-row-end 7
-
-@media screen and (max-width: 489px)
-  .data-icon-variations
-    font-size 2rem
-    margin-right 10px
-  .variation-icon
-    font-size 1.5rem
-    margin-right 0
-  .icon-variations1
-    width 30px
-    margin-right 10px
-  .icon-variations2
-    width 25px
-    margin-right 10px
-  #variaciones
-    p
-      font-size 14px
-
-@media screen and (max-width: 412px)
-  .element-icons
-    display block
-    text-align center
-  .icon-variations1
-    width 30px
-    margin-right 0
-    margin-bottom 3px
-  .icon-variations2
-    width 25px
-    margin-right 1px
-    margin-bottom 3px
-  .data-icon-variations
-    margin-right 0
-
-// .Gender indicator
-.gender-indicator-container
-  padding 20px
-
-.mujeres-logo-white
-    width 150px
-    min-width 130px
-    padding 10px
-
-.gender-grid
-  display -ms-grid
-  display grid
-  grid-auto-columns 1fr
-  -ms-grid-columns 1fr 1fr
-  grid-template-columns 1fr 1fr
-  -ms-grid-rows auto auto
-  grid-template-rows auto auto
-  grid-row-gap 16px
-  grid-column-gap 12px
-  .data-icon
-    display flex
-    align-items center
-    i
-      font-size 2.6rem
-      margin-right 5px
-      color #ffffff
-    .js-data
-      margin 0
-    .js-data, .js-title-data
-      color #ffffff
-    .js-title-data
-      font-size 14px
-.grid
-  -webkit-box-align center
-  -webkit-align-items center
-  -ms-flex-align center
-  align-items center
-  -ms-grid-columns 1fr 1fr 1fr 1.5fr 1.5fr
-  grid-template-columns 1fr 1fr 1fr 1.5fr 1.5fr
-  -ms-grid-rows auto
-  grid-template-rows auto
-
-.container-button-gender
-  margin-top 30px
-  margin-bottom 15px
-  text-align center
-
-.gender-icons
-  height 41px
-  margin-right 4px
-
-.gender-country-link
-  color #00CAB9
-  &:hover
-    color #00CAB9
-
-@media screen and (max-width: 1149px)
-  .grid
-    -ms-grid-columns 1fr 1fr 1fr
-    grid-template-columns 1.5fr 1.5fr 1fr
-    -ms-grid-rows auto auto
-    grid-template-rows auto auto
-
-@media screen and (max-width: 578px)
-  .grid
-    -ms-grid-columns 1fr
-    grid-template-columns 1fr
-    -ms-grid-rows auto auto auto auto auto
-    grid-template-rows auto auto auto auto auto
-
-  .gender-indicator-container
-    padding 30px
-
-#empresas-mujeres-table_wrapper,
-#empresas-mujeres-table
-  width 100% !important
-  overflow-x: visible
-
-  .description-data-company
-    overflow: hidden
-    max-width: 30em

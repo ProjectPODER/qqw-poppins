@@ -1,23 +1,6 @@
 body
-  background-color #FFF
-  overflow-x hidden
-  margin 0
   font-family 'Montserrat', sans-serif
-  font-size 14px
   line-height 1.42857143
-
-html, body
-  height 100%
-  font-size 100%
-
-*
-  -webkit-box-sizing border-box
-  box-sizing border-box
-
-*:before,
-*:after
-  -webkit-box-sizing border-box
-  box-sizing border-box
 
 input,
 button,
@@ -33,7 +16,8 @@ a
   -webkit-transition all .35s
   -moz-transition all .35s
   transition all .35s
-  // font-weight bold
+  overflow hidden !important
+  text-overflow ellipsis !important
   &:focus
     outline thin dotted
     outline 5px auto -webkit-focus-ring-color

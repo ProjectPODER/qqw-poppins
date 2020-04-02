@@ -1,0 +1,607 @@
+// se puede usar???
+
+.type
+.description-data-subtitle
+  color #2d1c9d
+  font-weight bold
+  font-size 1.3rem
+  margin-bottom 2rem
+
+.breadcrumb
+  // background #f0f0f0
+  padding-top 2rem
+  margin-bottom 20px
+
+.description-data-subname
+  font-size 1.1rem
+  color #5c5c5c
+  font-weight bold
+
+.amount-data
+  color #2d1c9d
+  font-size 2rem
+  font-weight bold
+  margin 10px 0 5px
+
+#right-menu
+  list-style-type none
+  text-transform uppercase
+  font-size 1.3rem
+  margin-top 1.5rem
+  margin-left 40px
+  position absolute
+  & ul
+    padding 0 5px
+  & li
+    color #9b9b9b
+    text-decoration none
+    & a
+      color #9b9b9b
+      text-decoration none
+      padding 5px 10px !important
+      i
+        margin-right 10px
+        // padding 4px
+
+.menu-profile
+  margin-top 0 !important
+
+.affix
+  top 197px
+  position fixed !important
+
+// FORM PERFIL
+.addinfo
+  margin-top 6rem
+  margin-bottom 4rem
+
+.addinfo-box
+  margin-right 0
+  margin 0 0 3rem 3rem
+  text-align center
+  font-size 100%
+  h4
+    font-weight bold
+    color #4e4e4e
+
+
+.addinfo-title
+  color #2d1c9d
+  font-weight bold
+  font-size 1.5rem
+  margin-bottom 3rem
+
+.addinfo-form
+.contact-template
+    textarea
+      padding 10px 5px
+    input[type="text"]
+      padding 20px 5px
+      margin-right 5px
+      border-color #D3D3D3
+      border-style solid
+      border-width 1px
+    label
+      color #4e4e4e
+      font-weight bold
+      font-size 18px
+
+.addinfo-box-logo
+  width 250px
+  padding 2rem 0
+  margin auto
+
+#subscribe-popup
+#login-dropdown-list
+  .form-suscribe
+    margin-right 10px
+  .modal-dialog
+    margin 100px auto 30px
+  p
+    color #5b5b5b
+    font-size: 1.1rem;
+  ul
+    padding-left 0
+  li
+    list-style-type none
+    color #5b5b5b
+  h2
+    color: #2d1c9d;
+    font-weight bold
+  .modal-body
+    padding 40px 15px
+  label
+    color: #2d1c9d;
+    font-size: 1.1rem;
+    text-transform uppercase
+    font-weight bold
+  input
+    padding 20px
+  button
+    padding: 15px 25px;
+    font-weight bold
+    margin-bottom 10px
+    background-color #2b00f7
+    text-transform uppercase
+    color #fff
+    border none
+    white-space nowrap
+    -webkit-transition all .35s
+    -moz-transition all .35s
+    transition all .35s
+    &:hover
+    &:focus
+      color #fff
+      background-color #2200c5
+      text-decoration none
+  .modal-content
+    background-color #f6f6f6
+  .at-form
+    margin-top -35px
+    margin-bottom 0
+
+
+// GRAPHICS
+#chartSupplier, #chartBuyer, #chartFunder
+    svg
+        height 450px
+        width 100%
+
+.nvd3
+    .nv-axis
+        line
+            fill none
+            stroke #e5e5e5
+            shape-rendering crispEdges
+    // .nv-y1
+    //     path
+    //         fill #71a7f2
+    //         stroke #71a7f2 !important
+    //         stroke-width 2
+    // .nv-y2
+    //     path
+    //         fill #ff6e00
+    //         stroke #ff6e00 !important
+    //         stroke-width 2
+    &.nv-line
+        fill-opacity 0 !important
+        path
+          fill-opacity 0 !important
+        .nvd3
+            &.nv-scatter
+                .nv-groups
+                    .nv-point
+                        fill-opacity 1 !important
+                        stroke-opacity 1 !important
+    &.nv-line
+        fill-opacity 0 !important
+    // .nv-bars
+    //     transform translateX(50px)
+
+#piechartSupplier
+#piechartBuyer
+#piechartFunder
+    svg
+        height 450px
+        width 100%
+
+#treemap
+  height 300px
+  width 100%
+  margin auto
+
+  svg
+    width 100%
+
+#graph-container, #graph-container svg
+    width 100%
+    height 600px
+
+#flags-graph
+  svg
+    width 100%
+    height 200px
+
+    .nv-background rect
+      fill white
+
+
+.links
+    line
+
+.node
+    .nodeBack
+        opacity 0.85
+    &.active
+        .nodeBack
+            opacity 0
+    circle
+        stroke #fff
+        stroke-width 1px
+    .bubble-label
+        // font-family 'Poppins'
+        font-weight bold
+        font-size 1rem
+        fill #000
+        // stroke #000
+        // stroke-width 1px
+        // stroke-linejoin round
+
+.foreign-tooltip
+    display flex
+    width 160px
+    position absolute
+    pointer-events none
+    .node-tooltip
+        background-color #222222
+        border-radius 3px
+        box-shadow 0 0 5px rgba(0,0,0,0.3)
+        position relative
+        text-align center
+        padding 7px 8px 2px
+        line-height 1em
+        display inline-table
+        margin 0 auto
+        &::before
+            position absolute
+            content ''
+            border 10px solid transparent
+            border-bottom-color #222222
+            top -20px
+            left calc(50% - 10px)
+        .name
+            font-family 'Poppins'
+            font-size 12px
+            margin-bottom 3px
+            color #FFF
+            font-weight 600
+
+.nodesChart
+    transform: translate(0, 20px)
+
+.button-tools
+  background transparent
+  // border 1px solid #dddddd
+  border none
+  margin-top 0.6rem
+  padding 5px
+  img
+    width 20px
+  &:hover
+    color #2200c5
+
+#apiUrl
+  padding 5px
+  width 100%
+  margin-right 5px
+  margin-bottom 3px
+  border 1px solid #d3d3d3
+  display inline-block
+
+.btn-copy
+.btn-csv
+  width 100%
+  display inline-block
+  border 1px solid grey
+  background-color #f0f0f0
+  text-align center
+  border-radius 5px
+  padding 6px 8px !important
+
+.tools-section
+  background #f0f0f0
+  padding-right 20px
+  padding-left 20px
+  .document-description
+    margin-bottom 0 !important
+  .dropdown
+    text-align right
+
+.share-icons
+  width 17px
+  margin-right 5px
+
+.buyer-button
+  background #db2828 !important
+
+.supplier-button
+  background #278529 !important
+
+.funder-button
+  background #b6893e !important
+
+.flags_graph_bar {
+}
+.flag_name {
+  float: left;
+  line-height: 2em;
+}
+.flag_pole {
+  position: relative;
+  height: 1.5em;
+  margin: 2em 2em 2em 10em;
+}
+.flag_marker {
+  position: absolute;
+  background: inherit;
+  border: 2px solid grey;
+  color: #222222;
+  margin-top: -1.55em;
+  padding: 0.5em;
+  border-radius: 3em;
+  width: 4.5em;
+  height: 4.5em;
+  line-height: 3.5em;
+  text-align: center;
+  margin-left: -2.7em;
+  font-weight: bold;
+}
+.flag_total_score {
+  background: hsl(1, 100%, 79%);
+}
+.flag_trans {
+  background: hsl(222, 100%, 57%);
+}
+.flag_temp {
+  background: hsl(205, 80%, 82%);
+}
+.flag_comp {
+  background: hsl(212, 100%, 76%);
+}
+.flag_traz {
+  background: hsl(215, 97%, 62%);
+}
+.flag_conf {
+  background: hsl(166, 100%, 40%);
+}
+
+.flag_pole_min,
+.flag_pole_max {
+  background: rgba(0,0,0,0.5);
+  height: 1.5em;
+  float: left;
+}
+.flag_pole_max {
+  position: absolute;
+  right: 0;
+}
+
+.wrap,
+.wrap-contract
+  position relative
+  background #fff
+  -webkit-transition height .35s
+  -moz-transition height .35s
+  transition height .35s
+
+.fixed-title,
+.fixed-title-contract
+  height 72px
+  background #fff
+  position fixed !important
+  margin-top -4px
+  z-index 1
+  width 85%
+  .breadcrumb
+    padding-top 0
+    margin-bottom 0 !important
+    h4
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      font-size 15px
+  .description-data-title
+    h3
+      margin-top 0
+      font-size 1.2rem
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      -webkit-transition all .25s ease
+      -moz-transition all .25s ease
+      transition all .25s ease
+  .contract-amount
+    width 35%
+    float right
+    margin-top -15px
+    .amount-data
+      font-size 1.2rem
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      -webkit-transition all .25s ease
+      -moz-transition all .25s ease
+      transition all .25s ease
+  img.icon-lf
+    width 15px
+  hr
+    margin-top 0 !important
+
+.fixed-title-contract
+  height 70px
+  .description-data-title
+    width 65%
+    float left
+
+.profile-menu-margin
+  margin-top 10rem
+
+.contract-margin
+  margin-top 11.5rem
+
+.profile-margin
+  margin-top 6rem
+
+// .Gender indicator
+.gender-indicator-container
+  padding 20px
+
+.mujeres-logo-white
+    width 150px
+    min-width 130px
+    padding 10px
+
+.gender-grid
+  display -ms-grid
+  display grid
+  grid-auto-columns 1fr
+  -ms-grid-columns 1fr 1fr
+  grid-template-columns 1fr 1fr
+  -ms-grid-rows auto auto
+  grid-template-rows auto auto
+  grid-row-gap 16px
+  grid-column-gap 12px
+  .data-icon
+    display flex
+    align-items center
+    i
+      font-size 2.6rem
+      margin-right 5px
+      color #ffffff
+    .js-data
+      margin 0
+    .js-data, .js-title-data
+      color #ffffff
+    .js-title-data
+      font-size 14px
+.grid
+  -webkit-box-align center
+  -webkit-align-items center
+  -ms-flex-align center
+  align-items center
+  -ms-grid-columns 1fr 1fr 1fr 1.5fr 1.5fr
+  grid-template-columns 1fr 1fr 1fr 1.5fr 1.5fr
+  -ms-grid-rows auto
+  grid-template-rows auto
+
+.container-button-gender
+  margin-top 30px
+  margin-bottom 15px
+  text-align center
+
+.gender-icons
+  height 41px
+  margin-right 4px
+
+.gender-country-link
+  color #00CAB9
+  &:hover
+    color #00CAB9
+
+// PERFILES AND COUNTRIES
+p
+  &.document-description
+    padding 1rem 0
+    font-size .9rem
+    color #585858
+// BLOB_FILTER
+  &.search-terms-text
+    font-size .9rem
+    font-weight bold
+    color #21018b
+    line-height 1.8rem
+    margin-bottom 0
+    span
+      color #fff
+      background-color #21018b
+      border-radius 7px
+      font-weight 300
+      padding .2rem .5rem .2rem .7rem
+      margin 0.2rem .2rem 0 0
+      display: inline-block
+.delete-blob-filter
+  margin-left 5px
+  margin-right 5px
+  opacity 0.9
+  cursor pointer
+
+// FORM DE LOS PERFILES, SE QUEDA???
+.addinfo-box
+  background-color #F7F7F7
+  border-color #9C9C9C
+  border-width 1px
+  border-style solid
+  margin 0 1rem 1rem 0
+  font-size .8rem
+  padding 1rem
+
+  img.form-control
+      width: auto;
+      padding: 0;
+      border: none;
+      background: transparent;
+      display: inline;
+      box-shadow: none;
+      margin-right 0
+
+// limpiar, se usa para perfiles
+section
+  padding-top 5rem
+  padding-bottom 5rem
+  &.profile
+    padding-top 2rem
+    padding-bottom 2rem
+  &.profile-header
+    padding-top 3rem
+    padding-bottom 1rem
+  &.country-mujeres
+    padding-top 0
+    padding-bottom 0
+  &.data-sources
+    background-color #f7f7f7
+  &.proyectos
+    background-color #110046
+  &.investigaciones
+    border-top 2px dotted #3a32f9
+    h2
+      font-weight bold
+      text-align center
+  &.tabs
+    margin-top 2rem
+    min-height 100vh
+    h3
+      font-size 1.5rem
+      color #3a32f9
+      margin-bottom 2rem
+    h1
+      font-size 2rem
+      margin-bottom 2rem
+
+.category-profile
+  padding 1rem 1.5rem 0 0
+
+// limpiar acaba
+
+
+@media screen and (max-width: 1149px)
+  .grid
+    -ms-grid-columns 1fr 1fr 1fr
+    grid-template-columns 1.5fr 1.5fr 1fr
+    -ms-grid-rows auto auto
+    grid-template-rows auto auto
+
+@media screen and (max-width: 578px)
+  .grid
+    -ms-grid-columns 1fr
+    grid-template-columns 1fr
+    -ms-grid-rows auto auto auto auto auto
+    grid-template-rows auto auto auto auto auto
+
+  .gender-indicator-container
+    padding 30px
+
+@media only screen and (max-width: 768px)
+  .tools-section
+    .dropdown
+      text-align center
+      margin-bottom 10px
+
+@media only screen and (max-width: 768px)
+  .nodesChart
+    transform: translate(0, 40px);
+
+@media only screen and (max-width: 992px)
+    #right-menu
+      font-size 1rem
+      & li a i
+        margin-right 5px

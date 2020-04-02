@@ -1,11 +1,34 @@
 <section class="about-template">
-  <div class="row">
-    <div class="content">
-      <div class="col-3 col-m-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-3">
         {{> about-sidebar}}
       </div>
-      <div class="col-9 col-m-9" style="float: right">
-        {{> about/history}}
+      <div class="col-12 col-md-9">
+        {{!-- {{#ifCond currentSection "==" "about" }} --}}
+          {{> about/history}}
+        {{!-- {{/ifCond}} --}}
+        {{!-- {{#ifCond currentSection "==" "sources" }}
+          {{> about/entities-sources}}
+        {{/ifCond}}
+        {{#ifCond currentSection "==" "apis" }}
+          {{> about/apis}}
+        {{/ifCond}}
+        {{#ifCond currentSection "==" "investigations" }}
+          {{> about/investigations}}
+        {{/ifCond}}
+        {{#ifCond currentSection "==" "manual" }}
+          {{> about/manual}}
+        {{/ifCond}}
+        {{#ifCond currentSection "==" "partners" }}
+          {{> about/partners}}
+        {{/ifCond}}
+        {{#ifCond currentSection "==" "contact" }}
+          {{> about/contact}}
+        {{/ifCond}}
+        {{#ifCond currentSection "==" "privacy" }}
+          {{> about/privacy}}
+        {{/ifCond}} --}}
       </div>
     </div>
   </div>

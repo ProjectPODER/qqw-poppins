@@ -8,6 +8,11 @@ $('#toggle').click(function() {
 $('[data-toggle="tooltip"]').tooltip(
 );
 
+// Left sidebar about
+$('#left-sidebar').click(function() {
+  $('.about-sidebar').toggleClass('open');
+});
+
 // Autocomplete Typeahead
 var qqw_suggest = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -381,11 +386,6 @@ function removeQueryField(field) {
 $(document).on("click",".hide-alert-bar",{},function(e) {
   $(e.target).parent(".alert-bar").fadeOut()
 }); 
-
-// Left sidebar about
-$('#left-sidebar').click(function() {
-  $('.about-sidebar').toggleClass('open');
-});
 
 // Advance filters
 $('.filters-link-sm').click(function() {
