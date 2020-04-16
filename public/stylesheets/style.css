@@ -947,6 +947,10 @@ input[type=submit].landing-search-inputtext {
     width: 100% !important;
   }
 }
+.filters {
+  padding-top: 80px;
+  padding-bottom: 1rem;
+}
 .index-list-title {
   margin-bottom: 1rem;
 }
