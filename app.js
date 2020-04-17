@@ -46,7 +46,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(stylus.middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use("/",
+  express.static(
+    path.join(__dirname, 'public'),
+    {
+      index:false,
+      cacheControl: "no-cache",
+    }
+  )
+);
 
 // Bootstrap 4 and libraries
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
@@ -54,7 +62,7 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -67,10 +75,10 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.locals.message = err.message;
 
-  console.error("/!\\ QuienEsQuien.Wiki APP Error",err);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error",req.url,err);
 
   res.cacheControl = {
-    noCache: true
+    noStore: true
   }
   // render the error page
   res.status(err.status || 500);
