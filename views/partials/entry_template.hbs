@@ -1,6 +1,11 @@
 <div class="media card-border investigaciones-card my-4">
   <div class="card-image-container">
-    <img class="align-self-start mr-3 card-image" src="{{entry.enclosure.url}}">
+    {{#each entry.enclosures }}
+      {{#ifCond (indexOf "image" this.$.type) ">" -1 }}
+        <img class="align-self-start mr-3 card-image" src="{{this.$.url}}">
+      {{/ifCond}}
+    {{/each}}
+    
   </div>
   <div class="media-body">
     <div class="card-pad">
