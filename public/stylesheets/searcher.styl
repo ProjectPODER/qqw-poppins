@@ -1,8 +1,111 @@
 // FILTERS
 
 .filters
-    padding-top 80px
-    padding-bottom 1rem
+    position fixed
+    top 60px
+    z-index 1
+    width 100%
+    padding-top 0
+    padding-bottom 0
+    .nav-item
+        margin-left 10px
+        min-width 100px
+    .type-filter
+        border-right 3px solid $main-color
+        margin-left 0
+    .filter-dropdown
+        position static !important  
+    .filter-dropdown-menu
+        margin-top 0px !important  
+        width 100% !important 
+        background-color #e6e6e6
+        padding 1rem
+    .filter-dropdown-menu-tools
+        background-color #e6e6e6
+        padding 1rem
+        min-width 240px
+    .filter-dropdown-item
+        white-space normal
+    .filter-dropdown-item.active, .filter-dropdown-item:active
+        color #16181b
+        background-color #f8f9fa
+    .dropdown-toggle::after
+        font-family "Font Awesome 5 Free"
+        font-weight 900
+        content "\f078"
+        float right
+        border none
+    .dropdown-tools::after
+        display none
+    .icon-tools
+        font-size 1.7rem
+        margin-top 5px
+    .dropdown-divider
+        border-top 1px solid #ffffff
+    .filter-title, .filter-title-simple
+        color #595959
+        font-size 0.9rem
+        border-radius 0
+        border-bottom 2px solid transparent
+    .filter-title-simple
+        display block
+        padding 0.5rem 1rem
+        margin 0
+    .filter-selected
+        &.simple
+            padding: 4px 8px 2px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            display: flex !important;
+            align-content: center !important;
+    .filter-title:hover
+        background-color #e6e6e6
+    .nav-pills .show > .nav-link
+        color #595959
+        background-color #e6e6e6
+        border-bottom 2px solid #4d4d4d
+    .filter-item
+        padding 0.25rem 1.5rem
+    .btn-filter-states
+        background-color #ffffff !important
+.selector-filter-type
+    padding 4px 8px 2px
+    font-weight bold
+
+.selection-filter-box
+    background-color #e6e6e6
+    padding 4px 8px 2px
+    overflow hidden
+    white-space nowrap
+    text-overflow ellipsis
+    max-width 200px
+    display: flex !important;
+    align-content: center!important;
+
+.filter-selected
+    overflow hidden
+    white-space nowrap
+    text-overflow ellipsis
+    margin 1px 0 0
+
+.social-share-icons
+    a 
+        font-size 2.5rem
+        color $darkgray !important
+        &:hover
+            color $link-hover-color !important
+
+@media (min-width: 576px)
+    .filters
+        .form-inline .form-control
+            width 50%
+
+
+
+
+
 
 
 .index-list-title
@@ -112,6 +215,8 @@
 
 @media screen and (max-width: 767px)
   .index-list-elements
+    span 
+        display none
     // -webkit-box-orient vertical
     // -webkit-box-direction normal
     // -webkit-flex-direction column

@@ -1,3 +1,28 @@
+// VARIABLES
+  // Colors
+$blue =        #2b00f7
+$darkblue =    #2d1c9d
+$verydarkblue= #110046 
+$lightgray =   #f7f7f7
+$gray =        #9B9B9B
+$darkgray =    #5c5c5c
+$red =         #db2828
+$green =       #278529
+$gold =        #b6893e
+
+$main-color =      $darkblue 
+$secondary-color = $gray
+$links-color =     $blue
+
+$link-color =                $links-color
+$link-decoration =           none
+$link-hover-color =          $main-color
+$link-hover-decoration =     underline
+
+.emphasis-color-text
+  color $main-color !important
+
+// GENERAL
 body
   font-family 'Montserrat', sans-serif
   line-height 1.42857143
@@ -11,7 +36,7 @@ textarea
   line-height inherit
 
 a
-  color #2b00f7
+  color $link-color
   text-decoration none
   -webkit-transition all .35s
   -moz-transition all .35s
@@ -25,43 +50,8 @@ a
 
 a:hover,
 a:focus
-  color #2d1c9d
+  color $link-hover-color
   text-decoration underline
-
-
-// figure
-//   margin 0
-
-// img
-//   vertical-align middle
-
-// .img-responsive,
-// .thumbnail > img,
-// .thumbnail a > img,
-// .carousel-inner > .item > img,
-// .carousel-inner > .item > a > img
-//   display block
-//   max-width 100%
-//   height auto
-
-// .img-rounded
-//   border-radius 6px
-
-// .img-thumbnail
-//   display inline-block
-//   max-width 100%
-//   height auto
-//   padding 4px
-//   line-height 1.42857143
-//   background-color #fff
-//   border 1px solid #ddd
-//   border-radius 4px
-//   -webkit-transition all .2s ease-in-out
-//   transition all .2s ease-in-out
-
-// .img-circle
-//   border-radius 50%
-
 
 hr
   background-color #999
@@ -188,16 +178,36 @@ h6,
 p
   margin 0 0 10px
 
-.img-fluid
-    max-width 100%
-    height auto
+// .flexbox-container-modal
+//   display -ms-flex
+//   display -webkit-flex
+//   display flex
+//   & > .column-50
+//     width 50%
+//     // padding 10px
+//     &:first-child
+//       margin-right 20px
 
-.flexbox-container-modal
-  display -ms-flex
-  display -webkit-flex
-  display flex
-  & > .column-50
-    width 50%
-    // padding 10px
-    &:first-child
-      margin-right 20px
+
+// BUTTONS
+.btn-light
+  &:hover
+    background-color $main-color
+    border-color $main-color
+    color #ffffff
+  &:focus, &:active
+    background-color $link-color !important
+    border-color $link-color !important
+    color #ffffff !important
+
+.btn-primary
+  background-color $link-color
+  border-color $link-color
+  color #fff
+  &:hover
+    color #fff
+    background-color $link-hover-color
+  &:focus, &:active
+    background-color $link-hover-color !important
+    border-color $link-hover-color !important
+    color #ffffff !important

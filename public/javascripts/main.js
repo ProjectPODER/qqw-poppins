@@ -170,7 +170,11 @@ function copyClipboard() {
   var copyText = document.getElementById("apiUrl");
   copyText.select();
   document.execCommand("copy");
-  // alert("Copied the text: " + copyText.value);
+}
+function copyClipboard() {
+  var copyText = document.getElementById("pageUrl");
+  copyText.select();
+  document.execCommand("copy");
 }
 
  // Function to set the height
