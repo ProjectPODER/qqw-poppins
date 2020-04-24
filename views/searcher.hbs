@@ -92,7 +92,7 @@
     </div>
 </section>
 {{#if result.data }}
-  <section class="results">
+    {{!-- <section class="results">
         <div class="container-fluid">
             {{#each result.data}}
             {{#with compiledRelease }}
@@ -100,15 +100,15 @@
             {{/with}}
             {{/each}}
         </div>
-  </section>
+    </section> --}}
+    <section class="results-list">
+        <div class="container-fluid">
+            {{> results-list}}
+        </div>
+    </section>
 {{else}}
   <section class="error">
     Acá van los errroes
   </section>
 {{/if}}
 
-{{!-- <section class="results-list">
-    <div class="container-fluid">
-        {{> results-list}}
-    </div>
-</section> --}}
