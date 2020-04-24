@@ -96,9 +96,21 @@
       <div class="container-fluid">
         <div class="col-12 col-m-12">
           {{#each result.data}}
-            {{#with compiledRelease }}
-              {{> result  collection=collection result=this }}
-            {{/with}}
+            {{#ifCond ../collection "==" "contracts"}}
+              {{#each records}}
+                {{#with compiledRelease }}
+                  {{> result  collection=../../../collection result=this }}
+                {{/with}}
+              {{/each}}
+            {{else}}
+              {{#with compiledRelease }}
+                {{#ifCond collection "==" "all"}}
+                  {{> result  collection=type result=this }}
+                {{else}}
+                  {{> result  collection=../../collection result=this }}
+                {{/ifCond}}
+              {{/with}}
+            {{/ifCond}}
           {{/each}}
         </div>
         <div class="col-12 col-m-12">
