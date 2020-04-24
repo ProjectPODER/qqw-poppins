@@ -25,10 +25,10 @@
 <section class="filters bg-gray">
     <div class="d-flex">
         <div class="left-box">
-          <form class="advance-filters">          
+          <form class="advance-filters">
             <ul class="nav nav-pills filter-active-collection-{{collection}}" id="filtersList">
               {{# each filter_elements }}
-              {{> filter_element this }}
+              {{> filter_element filter=this values=filter_values collection=../collection }}
               {{/each }}
               <li class="nav-item dropdown filter-dropdown">
                   <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">ORDEN</a>
@@ -53,7 +53,7 @@
             <ul class="nav nav-pills">
                 <li class="nav-item filter-dropdown general-filters">
                     <p class="filter-title-simple" href="#" >RESULTADOS</p>
-                    <p class="filter-selected simple ml-2" title="">34,789</p>
+                    <p class="filter-selected simple ml-2" title="">{{ format_number result.count }}</p>
                 </li>
                 <li class="nav-item dropdown general-filters text-center">
                     <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#">
@@ -92,23 +92,22 @@
     </div>
 </section>
 {{#if result.data }}
-    {{!-- <section class="results">
-        <div class="container-fluid">
-            {{#each result.data}}
+  <section class="results-list">
+      <div class="container-fluid">
+        <div class="col-12 col-m-12">
+          {{#each result.data}}
             {{#with compiledRelease }}
-                {{> result collection=collection result=this }}
+              {{> result  collection=collection result=this }}
             {{/with}}
-            {{/each}}
+          {{/each}}
         </div>
-    </section> --}}
-    <section class="results-list">
-        <div class="container-fluid">
-            {{> results-list}}
+        <div class="col-12 col-m-12">
+            {{!-- > pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page --}}
         </div>
-    </section>
+      </div>
+  </section>
 {{else}}
   <section class="error">
     Acá van los errroes
   </section>
 {{/if}}
-
