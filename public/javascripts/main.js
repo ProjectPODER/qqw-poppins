@@ -179,19 +179,12 @@ function copyClipboard() {
 
  // Function to set the height
  function autoHeight() {
-   $('div.document-body').css('min-height', 0);
-   $('div.document-body').css('min-height', (
+   $('.footer-bottom').css('min-height', 0);
+   $('.footer-bottom').css('min-height', (
      $(document).height()
      - $('footer').height()
    ));
  }
-//  function autoHeightManual() {
-//    $('section.about-template').css('min-height', 0);
-//    $('section.about-template').css('min-height', (
-//      $(document).height()
-//      - $('footer').height()
-//    ));
-//  }
 
  // onDocumentReady function bind
  $(document).ready(function() {

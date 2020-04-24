@@ -1089,6 +1089,9 @@ input[type=submit].landing-search-inputtext {
     width: 50%;
   }
 }
+.results-list {
+  padding-top: 12rem;
+}
 .index-list-title {
   margin-bottom: 1rem;
 }
@@ -1266,61 +1269,6 @@ input[type=submit].landing-search-inputtext {
     -ms-flex-direction: column;
     flex-direction: column;
   }
-}
-.search-label {
-  color: #9c9c9c;
-  margin-bottom: 0.3rem;
-  margin-top: 0.8rem;
-  line-height: 1.2rem;
-}
-.search-label.selected,
-.search-label:hover p,
-.search-label:focus p {
-  color: #21018b;
-  text-decoration: none;
-  font-weight: bold;
-}
-.search-card {
-  overflow: hidden;
-}
-.search-results-header {
-  display: flex;
-  align-items: center;
-}
-.search-result-title a {
-  color: #4e4e4e;
-}
-.search-result-title,
-.description-data-name h3,
-.description-data-title h3 {
-  font-weight: bold;
-  color: #4e4e4e;
-  margin-bottom: 0.7rem;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-.dataTables_info {
-  padding-top: 0 !important;
-  font-size: 0.9rem;
-  font-weight: bold !important;
-  color: #21018b;
-  line-height: 1.8rem;
-  float: right;
-}
-.dataTables_length {
-  text-align: right;
-  padding-top: 0.65rem;
-  font-weight: normal !important;
-  font-size: 0.9rem;
-  color: #585858;
-}
-.doc-download-link {
-  font-size: 12px;
-  color: #2b00f7 !important;
-}
-.doc-download-link:hover {
-  color: #21018b !important;
-  background: transparent !important;
 }
 .text-orange {
   color: #ffa500;

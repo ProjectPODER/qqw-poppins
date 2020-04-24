@@ -1,0 +1,154 @@
+<div class="col-12 col-m-12">
+    {{!-- {{#if result.data.length }}
+        {{#each result.data}} --}}
+        {{!-- CONTRATOS --}}
+        <div class="index-list-item">
+            <div class="index-list-group">
+                <div class="index-list-title">
+                    <a href="/paises/{{id}}">
+                        <i class="fas fa-file-alt"></i>
+                        Nombre del contrato
+                    </a>
+                </div>
+                <div class="index-list-elements">
+                    <div class="left-elements">
+                        <a href="">
+                            <p class="index-list-element"><i class="fas fa-landmark"></i> Nombre de dependencia</p>
+                        </a>
+                        <a href="">
+                            <p class="index-list-element"><i class="fas fa-dolly"></i> Nombre de proveedor</p>
+                        </a>
+                    </div>
+                    <div class="right-elements">
+                        <p class="index-list-element"><i class="fas fa-dollar-sign"></i> 12,200MXN</p>
+                        <p class="index-list-element"><i class="fas fa-calendar-alt"></i> 28/10/2016 al 03/12/2018</p>
+                        <p class="index-list-element"><i class="fas fa-clipboard-list"></i> Licitación</p>
+                    </div>
+                </div>
+            </div>
+            <div class="index-list-button">
+                <a href=""><i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+        </div>
+        <hr class="hr-index">
+
+        {{!-- PERSONAS --}}
+        <div class="index-list-item">
+            <div class="index-list-group">
+                <div class="index-list-title">
+                    <a href="/paises/{{id}}">
+                        <i class="fas fa-user"></i>
+                        Nombre de la persona
+                    </a>
+                </div>
+                <div class="index-list-elements">
+                    <div class="left-elements">
+                        <p class="index-list-element"><i class="fas fa-dolly"></i> Proveedor con <i class="fas fa-file-alt"></i> 72 contrato(s) de <i class="fas fa-dollar-sign"></i> 12,200MXN</p>
+                    </div>
+                    <div class="right-elements">
+                        <p class="index-list-element"><i class="fas fa-mars"></i> Hombre</p>
+                        <a href="">
+                            <p class="index-list-element"><i class="fas fa-chart-line"></i> Nombre de la bolsa de valores</span></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="index-list-button">
+                <a href=""><i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+        </div>
+        <hr class="hr-index">
+
+        {{!-- EMPRESAS --}}
+        <div class="index-list-item">
+            <div class="index-list-group">
+                <div class="index-list-title">
+                    <a href="/paises/{{id}}">
+                        <i class="fas fa-building"></i>
+                        Nombre de la empresa
+                    </a>
+                </div>
+                <div class="index-list-elements">
+                    <div class="left-elements">
+                        <p class="index-list-element"><i class="fas fa-dolly"></i> Proveedor con <i class="fas fa-file-alt"></i> 72 contrato(s) de <i class="fas fa-dollar-sign"></i> 12,200MXN</p>
+                    </div>
+                    <div class="right-elements">
+                        <a href="">
+                            <p class="index-list-element"><i class="fas fa-chart-line"></i> Nombre de la bolsa de valores</span></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="index-list-button">
+                <a href=""><i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+        </div>
+        <hr class="hr-index">
+
+        {{!-- INSTITUCIONES --}}
+        <div class="index-list-item">
+            <div class="index-list-group">
+                <div class="index-list-title">
+                    <a href="/paises/{{id}}">
+                        <i class="fas fa-landmark"></i>
+                        Nombre de la institución
+                    </a>
+                </div>
+                <div class="index-list-elements">
+                    <div class="left-elements">
+                        <p class="index-list-element"><i class="fas fa-dolly"></i> Proveedor con <i class="fas fa-file-alt"></i> 72 contrato(s) de <i class="fas fa-dollar-sign"></i> 12,200MXN</p>
+                        
+                        <p class="index-list-element"><i class="fas fa-money-check-alt"></i> Comprador con <i class="fas fa-file-alt"></i> 72 contrato(s) de <i class="fas fa-dollar-sign"></i> 12,200MXN</p>
+                    </div>
+                    <div class="right-elements">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="index-list-button">
+                <a href=""><i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+        </div>
+        <hr class="hr-index">
+    
+
+        {{!-- PAISES --}}
+        <div class="index-list-item">
+            <div class="index-list-group">
+                <div class="index-list-title">
+                    <a href="/paises/{{id}}">
+                        <span class="flag-icon flag-icon-{{id}}" title="Bandera de {{ compiledRelease.name }}"></span>
+                        {{compiledRelease.name}}
+                    </a>
+                </div>
+                <div class="index-list-elements">
+                    <div class="left-elements">
+                        <p class="index-list-element"><i class="fas fa-users"></i> {{format_number compiledRelease.summaries.persons_count}} <span>personas</span></p>
+                        <p class="index-list-element"><i class="fas fa-building"></i> {{format_number compiledRelease.summaries.companies_count}} <span>empresas</span></p>
+                        {{# if compiledRelease.summaries.states_count }}
+                            <p class="index-list-element"><i class="fas fa-map-marked"></i> {{format_number compiledRelease.summaries.states_count}} <span>estados</span></p>
+                        {{/if }}
+                    </div>
+                    <div class="right-elements">
+                        <a href="/paises/{{id}}#genero">
+                            <p class="index-list-element"><i class="fas fa-chart-line"></i> {{format_number  compiledRelease.summaries.stock_exchanges_count }} <span>Bolsa de Valores</span></p>
+                        </a>
+                        <a href="/paises/{{id}}/mujeresenlabolsa">
+                            <p class="index-list-element"><i class="fas fa-hashtag"></i> {{format_number compiledRelease.summaries.mujeres_ranking }} <span>posición en ranking</span></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="index-list-button">
+                <a href="/paises/{{id}}"><i class="far fa-arrow-alt-circle-right"></i></a>
+            </div>
+        </div>
+        <hr class="hr-index">
+        {{!-- {{/each}}
+    {{else}}
+    No hay resultados para esta búsqueda. Por favor pruebe eliminando filtros. Si el problema persiste por favor contáctenos.
+    {{/if}} --}}
+</div>
+<div class="col-12 col-m-12">
+    {{!-- > pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page --}}
+</div>
