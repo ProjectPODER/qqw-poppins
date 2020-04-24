@@ -1,105 +1,53 @@
-<section class="filters bg-gray footer-bottom">
+<style media="screen">
+  .filter-element {
+    display: none;
+  }
+
+  ul .filter-collection-all {
+    display: block;
+  }
+  ul.filter-active-collection-companies .filter-collection-companies {
+    display: block;
+  }
+  ul.filter-active-collection-contracts .filter-collection-contracts {
+    display: block;
+  }
+  ul.filter-active-collection-institutions .filter-collection-institutions {
+    display: block;
+  }
+  ul.filter-active-collection-persons .filter-collection-persons {
+    display: block;
+  }
+  ul.filter-active-collection-areas .filter-collection-areas {
+    display: block;
+  }
+</style>
+<section class="filters bg-gray">
     <div class="d-flex">
-        <ul class="nav nav-pills">
-            {{!-- Type filter --}}
-            <li class="nav-item dropdown filter-dropdown type-filter">
-                <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">TIPO</a>
-                <div class="selector-filter-type">
-                    <p class="text-center emphasis-color-text" title="">Todos</p>
-                </div>
-                <div class="dropdown-menu filter-dropdown-menu">
-                    <button class="dropdown-item filter-dropdown-item" type="button">
-                        <h4 class="emphasis-color-text">Contratos</h4>
-                        <p>Explora los importes, años, dependencias, empresas proveedoras y otras características de más de tres millones de contratos de México.</p>
-                    </button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item filter-dropdown-item" type="button">
-                        <h4 class="emphasis-color-text">Personas</h4>
-                        <p>Conoce cómo se relacionan los personajes de las élites políticas y económicas en México.</p>
-                    </button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item filter-dropdown-item" type="button">
-                        <h4 class="emphasis-color-text">Empresas y Sociedades</h4>
-                        <p>Empresas proveedoras del estado, titulares de marcas y cotizando en la bolsa. Ordenadas por importe total de contrataciones como proveedor del estado.</p>
-                    </button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item filter-dropdown-item" type="button">
-                        <h4 class="emphasis-color-text">Empresas y Sociedades</h4>
-                        <p>Entidades y dependencias del gobierno, incluyendo empresas productivas del estado. Ordenadas por el importe total de contratos como comprador, de mayor a menor.</p>
-                    </button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item filter-dropdown-item" type="button">
-                        <h4 class="emphasis-color-text">Países</h4>
-                        <p>Estados en los cuales tenemos personas, empresas, instituciones públicas y contratos.</p>
-                    </button>
-                </div>
-            </li>
-            {{!-- End type filter --}}
-        </ul>
         <div class="left-box">
-            <ul class="nav nav-pills">
-                {{!-- General filters --}}
-                <li class="nav-item dropdown filter-dropdown general-filters">
-                    <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">NOMBRE</a>
-                    <div class="selection-filter-box">
-                        <p class="filter-selected" title="">Todos</p>
-                        <button type="button" class="close ml-auto">&times;</button>
-                    </div>
-                    <div class="dropdown-menu filter-dropdown-menu">
-                        <form class="form-inline filter-item" action="">
-                            <input type="text" class="form-control mr-1" placeholder="TÍTULO DEL CONTRATO" id="contractTitle">
-                            <button type="submit" class="btn btn-light">APLICAR</button>
-                        </form>
-                    </div>
-                </li>
-                <li class="nav-item dropdown filter-dropdown general-filters">
-                    <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">PAÍS</a>
-                    <div class="selection-filter-box">
-                        <p class="filter-selected" title="">Todos</p>
-                        <button type="button" class="close ml-auto">&times;</button>
-                    </div>
-                    <div class="dropdown-menu filter-dropdown-menu text-center">
-                        <button class="btn btn-light" type="button">País</button>
-                        <button class="btn btn-light" type="button">País</button>
-                        <button class="btn btn-light" type="button">País</button>
-                    </div>
-                </li>
-                <li class="nav-item dropdown filter-dropdown general-filters">
-                    <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">ESTADO</a>
-                    <div class="selection-filter-box">
-                        <p class="filter-selected">Todos</p>
-                        <button type="button" class="close ml-auto">&times;</button>
-                    </div>
-                    <div class="dropdown-menu filter-dropdown-menu text-center">
-                        <a class="dropdown-toggle btn btn-light btn-filter-states" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            SELECCIONAR ESTADO 
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Estado</a>
-                            <a class="dropdown-item" href="#">Estado</a>
-                            <a class="dropdown-item" href="#">Estado</a>
-                        </div>
-                    </div>
-                </li>
-                {{!-- End General filters --}}
-                {{!-- Order filter --}}
-                <li class="nav-item dropdown filter-dropdown">
-                    <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">ORDEN</a>
-                    <div class="d-flex">
-                        <div class="selection-filter-box">
-                            <p class="filter-selected" title="">Ordenar</p>
-                            <button type="button" class="close ml-auto">&times;</button>
-                        </div>
-                        <button type="button" class="btn btn-light btn-sm ml-auto"><i class="fas fa-sort-amount-down"></i></button>
-                    </div>
-                    <div class="dropdown-menu filter-dropdown-menu text-center">
-                        <button class="btn btn-light" type="button">Orden</button>
-                        <button class="btn btn-light" type="button">Orden</button>
-                        <button class="btn btn-light" type="button">Orden</button>
-                    </div>
-                </li>
-                {{!-- End Order filter --}}
-            </ul> 
+          <form class="advance-filters">          
+            <ul class="nav nav-pills filter-active-collection-{{collection}}" id="filtersList">
+              {{# each filter_elements }}
+              {{> filter_element this }}
+              {{/each }}
+              <li class="nav-item dropdown filter-dropdown">
+                  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">ORDEN</a>
+                  <div class="d-flex">
+                      <div class="selection-filter-box">
+                          <p class="filter-selected" title="">Ordenar</p>
+                          <button type="button" class="close ml-auto">&times;</button>
+                      </div>
+                      <button type="button" class="btn btn-light btn-sm ml-auto"><i class="fas fa-sort-amount-down"></i></button>
+                  </div>
+                  <div class="dropdown-menu filter-dropdown-menu text-center">
+                      <button class="btn btn-light" type="button">Orden</button>
+                      <button class="btn btn-light" type="button">Orden</button>
+                      <button class="btn btn-light" type="button">Orden</button>
+                  </div>
+              </li>
+              {{!-- End Order filter --}}
+            </ul>
+          </form>
         </div>
         <div class="right-box ml-auto">
             <ul class="nav nav-pills">
@@ -109,7 +57,7 @@
                 </li>
                 <li class="nav-item dropdown general-filters text-center">
                     <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#">
-                        DATOS <br> 
+                        DATOS <br>
                         <i class="fas fa-download icon-tools"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
@@ -136,15 +84,31 @@
                         <div class="social-share-icons">
                             <a class="mr-4" href="https://www.facebook.com/sharer/sharer.php?u=https://www.quienesquien.wiki{{share_url}}&t=QuienesQUienWiki" target="_blank"><i class="fab fa-facebook-square"></i></a>
                             <a href="https://twitter.com/intent/tweet?text=Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas..&url=https://www.quienesquien.wiki{{share_url}}&via=ProjectPODER" target="_blank"><i class="fab fa-twitter-square"></i></a>
-                        </div>            
+                        </div>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
 </section>
-<section class="results-list">
+{{#if result.data }}
+  <section class="results">
+        <div class="container-fluid">
+            {{#each result.data}}
+            {{#with compiledRelease }}
+                {{> result collection=collection result=this }}
+            {{/with}}
+            {{/each}}
+        </div>
+  </section>
+{{else}}
+  <section class="error">
+    Acá van los errroes
+  </section>
+{{/if}}
+
+{{!-- <section class="results-list">
     <div class="container-fluid">
         {{> results-list}}
     </div>
-</section>
+</section> --}}

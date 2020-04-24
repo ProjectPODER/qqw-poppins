@@ -3,7 +3,7 @@ $('#toggle').click(function() {
   $(this).toggleClass('active');
   $('#overlay').toggleClass('open');
  });
- 
+
 //Tooltips
 $('[data-toggle="tooltip"]').tooltip(
 );
@@ -121,10 +121,6 @@ $('.easy-search-input').bind('typeahead:select', function(ev, suggestion) {
 $("#first-search").click(function() {
   $('.easy-search-input').trigger("keypress",13);
 })
-
-// Right menu Contract page
-$('.right-menu').affix({offset: {top: 20, bottom:900} });
-$('.right-menu-profile').affix({offset: {top: 20, bottom:900} });
 
 //Anchors animation
 $('a.page-scroll').bind('click', function(event) {
@@ -302,6 +298,17 @@ $("#send_info_uc").click(function (e) {
   return false;
 });
 
+//** FILTERS **//
+
+//Type filter
+$(".dropdown-menu").on("click","button", function(e) {
+  let collection = $(e.currentTarget).data("collection");
+
+  
+
+  console.log()
+})
+
 //set amount and count filters
 $('.bucket').click(function(event) {
   const item = $(event.target).parent(".bucket");
@@ -382,7 +389,7 @@ function removeQueryField(field) {
 
 $(document).on("click",".hide-alert-bar",{},function(e) {
   $(e.target).parent(".alert-bar").fadeOut()
-}); 
+});
 
 // Advance filters
 $('.filters-link-sm').click(function() {
@@ -414,6 +421,7 @@ $(window).scroll(function(e) {
 
 });
 
+//Mujeres pais
 $(document).ready( function () {
     $('#empresas-mujeres-table').DataTable({
       pageLength: 100,

@@ -1,0 +1,426 @@
+2020-04-01: v0.9.954
+- Fix line height for mujeres english
+- Mujeres: Update og url
+- Fix helpers for names with parenthesis #170
+- Add La mafia de la ciencia in home and investigations
+- Add new image in Mujeres en la Bolsa
+- Mujeres: Fix scrollbar #166
+- Updated dependencies
+
+2020-03-20: v0.9.95
+- Adding matomo tracking QuienEsQuienWiki#90
+- Mujeres: Fix iframe z-index
+- Mujeres: Add El Surtidor link
+
+2020-03-11: v0.9.94
+- Change css datatables
+- Fix graphic country mujeres size
+- Add bolsas images
+- Add new links in ranking
+- Countries: fix image path
+- Country: fixes
+- Change logo datasketch and credits
+- Country-bolsa fixes: Adding s, ecuador display graph, hide notas when empty
+
+2020-03-11: v0.9.91
+- Re-fix ecuador
+- Add new logos elfaro, surti, PODER
+- Change role name
+- Fix links in ranking and fix line
+- Fixed ecuador and hidden arrow in mobile.
+- Change texts in top
+- Add links in ranking and fix mobile issues
+
+2020-03-10: v0.9.87
+- Adding publisher logos to country-bolsa
+- Adding vito link
+- Add facebook y twitter cards
+- Adding links
+- Add ranking data
+- Adding analytics code (two tags)
+- Fixes pre mujeres launch
+- Country mujeres: Adding graph and notes
+- Change copies, update graphics and change styles
+- Adding sortable table and ranking variation note to country-mujeres
+- Mapping data for gender indicator and country names in profiles
+- Adding new membership roles, icons and classification names
+- Adding country filter for persons and companies
+- Fix ranking arrow direction
+- Removing empty sections in country
+
+2020-03-09: v0.9.85
+- Mapping country-mujeres data
+- Remove country icon and format numbers in country page
+- Adding country flags mujeres2020#4
+- Fix helpers and mapping for countries
+- Countries: new mapping for data
+- Fix styles in landing mujeres
+- WIP: Integrating API data
+- Add top cards (in process)
+- Changing mujeres graficos path
+- Fixing layout of mujeres graph
+- Fix layout for static pages #160
+- Adding some data from the API to country-mujeres
+- Fix styles in landing mujeres
+- Add logo and text in main cover
+- Transparent background for mujeres
+- Change graphics code for landing mujeres
+- Add text description in countries page
+- Add sticky logo and new background main image, fix styling in landing mujeres
+- Fix data list in countries pagefor responsive
+
+2020-03-03: v0.9.83
+- Mail landing mujeres
+- Fix styling in Countries and Mujeres countries
+- Add main background example and fix top cards
+- Fix style in landing Mujeres2020
+
+2020-02-27: v0.9.82
+- Fix menu in Mujeres en la bolsa landing
+- fix localhost graphics url's
+
+2020-02-26: v0.9.81
+- Add examples graphs in mujeres en la bolsa
+- Add mujeresenlabolsa code testing
+
+2020-02-25: v0.9.8
+- Adding empty mujeres en la bolsa template
+- Finish gender inicator style
+- Add gender indicator partial
+- Finish country and mujeres design template
+- Updated projects text #160
+- Removing BMV identifiers from profiles #158
+- Add style in country mujeres
+- Add man cards
+- Add sections in mujeres country template
+- Fix info-uc mails to gitlab
+- Styling country mujeres en la bolsa template
+- Change country routes to entityPage. Add countries to plural
+- Adding mujeres en la bolsa country template and change url
+- Add country profile
+- Add elements in countries page
+- Add countries page
+- Home: Change text of based research and projects
+- Fixing link in first search
+- Adding images for based articles column
+- Adding based articles column in home
+- Hiding search button #122
+- Add countries item in menu and new template
+- Fixing filter buckets on 0 that don't return any result
+- Updating stylesheet for #134
+
+2020-01-29: v0.9.65
+- Fix regression of contract sorting #131
+
+2020-01-28: v0.9.64
+- Adding note about message recipients in send info box to deter promotional emails #134
+- Not sorting contactPoint searches #131
+- Send contact messages directly to github project (configurable address) #138
+- Change procurement method filter field to the standard one #140
+- Updating dependencies - hbs from github repo
+- Added funder filter #151
+
+2019-12-12: v0.9.63
+- Adding latamoffshore texts #141
+
+2019-12-11: v0.9.62
+- Re-adding lodash dependency
+- Fix wrong position list in contract profile in Safari
+- Adding uc_id filter for contracts
+- Adding contactPoint filter for contracts #131
+- Fix title responsive in profile and contract and add helper for area
+- Fixed OCDS fields for poppins/#44
+- Improving contracts with no results and no filters
+- Add link data in perfil
+- Contract search with title do not sort #79
+- Adding new roles and fixing rol names for ALOS #141 and fix for timeouted searches
+- Fix country data in perfil
+- Fix identifiers
+- Add area data #12
+- Adding cache control #126
+- Updating dependencies
+
+2019-11-28: v0.9.6
+- Add url from send information form
+- Fix identifiers in perfil
+
+2019-11-05: v0.9.5
+- Fix flujos monetarios graph in mobile
+- Add collapsed buttons in filters and about pages
+- Fix responsive and add toggle sidebar menu
+- Add tooltip to link in Flujos monetarios graph
+- Add legend in Flujos de dinero graph and fix bug in pie chart names
+- Add Funder graphs and color funder
+- Changes in perfil and split contract graphs
+- Add colors in search pages #99
+
+2019-10-10: v0.9.42
+- se lee la version del package.json
+- Fix RFC
+
+2019-10-03: v0.9.41
+- Add new icons in menu #106
+- se arreglan los echos del script
+- Se quita el uso de setappdata.sh y se crea el script docker_build en vez del makefile, se actualiza Jenkinsfile a esta nuevo esquema.
+
+2019-10-01: v0.9.4
+- Processes title, description and dates before display #96
+- Helpers for classifications and roles icons and names #97 #84
+- Supplier_summary to avoid duplicated suppliers in search page #28 and fixes in contract page #95
+- Refactoring. Now app in barebones, helpers and constants moved to lib/.
+- Fixed text for cfc flag #72
+- Fix for contracts result page when no results are found.
+- Add hash when scrolling
+- Add links in home and fix title in profile
+- Search alert and fix filter double x
+- Fix contracts search with get_party helper
+- Fix for contact processing
+- Improvements to profile and contract
+- Fix contracts extra text
+- Fix share url
+- Fix right menu profile responsive
+- Finish right menu profile with icons
+- Add icons to right menu profile
+- Fix person profile for shareholders. Move memberships to the top.
+- Add entity name to title. Fix persons sort order. Move supplier contracts first in persons search page.
+- Adding other_names to profile
+
+2019-09-17: Version bump
+- Fix name filters with new API
+- Add new menu icons
+- Adapt to new API v0.5.10
+- Change container size in perfil
+- Change right menu profile style
+- Fix merge
+- Change meta og tags
+- Fix roles for municipalities and states. Fix parent type name in profile page.
+- Group memberships by role in profile page
+- Hide graphs if no summaries avaiable in profile page
+- Adding buyer contracts to person search summary #57
+- Adding municipalities and states to search and institution pages. WIP #16
+- Small title fix
+- Improve autocomplete ux on no results #76
+- Consume sources endpoint
+- Hide pagination 5,10,15 code
+- Add 5,10,etc, paginator #40 (in process), add default suggestions in main search (in process)
+- Fix contract title search #71
+- Add empty suggestions (in process)
+- Fix offset right menu contract
+- Fix fixed titles in perfiles and contract
+- Delete double title tag
+- Add dynamic tag title #42
+- Fix share urls
+- Finish fixed title in Contract and fix responsive bugs
+- Add fixed title in Contract (in process)
+- Fix meta og:image
+
+2019-08-26: Bump version
+- Fixing RRSS image card and copy banderas
+- Add link to API docs
+- Fix error when flags not present
+- Fixing merge
+- Adding manual button download, fixing style
+
+2019-08-23: Bump version
+- Fixing graphs and adding funder
+- Cambio para separar stages de deploy y test del pipeline de CI.
+- Prevent navigation on empty autocomplete box when enter is pressed
+- Adding contracts to autocomplete and contract title filter
+- Add fixed title in perfil and contract page (in process)
+- Encode contract ocids for slashes
+- Fixes: contracts with slashes and flags in uc list
+- Adding meta tags for social media #64
+- Fix home links in Investigaciones and Herramientas
+
+2019-08-20: Bump version
+- Fix broken flag names and improve recommendations.
+- Improved flag bars and recommendations
+- Fix total score name in contract page
+- Comment Evaluación section
+- NUmeralia texts centered
+- Fix Herramientas links
+- Fix send info form when it's in the same page as modal form
+- Fixing text in COntracts index
+- Trim filter string
+- Fixing responsive about page
+
+2019-08-19: Bump version
+- Fixing bugs in perfil and contract page
+- Fixes manual #49
+- Fix contract links in profile
+- Adding new colors in graphics
+- Fixing evaluaciones graph and adding info texts
+- Fixing links to contact page
+- Adding manual, fixing bugs in perfil and fixing side-menu contract
+- Adding missing text. Fix google analytics CSP. Show no results message.
+- Adding info in perfil
+- Fixing flags and recommendations
+- WIP: Calculate shown flags
+- Adding contract recommendation texts
+
+2019-08-18: Version bump
+- Fixes for contract and profile pages
+- Align home last update message #27
+- Hilight current selected option in bucket filters #34
+- Fix pagination and company sort
+- Improved contract profile
+- Fixes to profiles
+
+2019-08-17: Bump version
+- Fix compranet urls. #18
+- Corrección filtro fecha e importe de contratos #29 #30
+- Fix contracts amount filter and party links
+- Fixing info form
+- Fixing download csv style
+- Fixing supplier amounts in filtered contracts search.
+- Adding dowload csv button #31
+- Adding new colors in graphics #167 and Adding form in profile #22
+- Add UC modal form
+- Fixing numeralia section in home #27
+- Fixing enter behavior on homepage
+- Adding popup form in UCs
+
+2019-08-14: Version bump
+- Added debug option. Removed users router.
+- Fixing numerals section
+
+2019-08-13: Bump version
+- Adding contract flags. Removed broken includes in the layout.
+- Show matching suppliers for contracts filter. Fix formatting.
+- Adding new copies
+- Hilight supplier and buyer name on contracts filters. Fix contracts date format.
+- Fixed contract suppliers list
+- Fix sorting for institutions. Buckets for companies and minor design fixes.
+- Fixing title in home
+- Fixing merge
+- Improvements for graphics in profile page
+- Added flags to profile
+- Changing question icon to info icon
+- Finishing contracts profile and adding new copies
+- Fixing autocomplete
+- Adding data in contract page
+- Improvements for UC page
+- Updating archives
+- Improved bucket filters
+- WIP: Improving filters
+- Fix searchPage for pages without template name
+- Changes in year graph
+- Adding graphics code
+- Adding uc page. Update version.
+- Adding in about sidemenu, privacy item
+- Refactor routes and lib.js
+- WIP: Abstracting page handler functions
+- Changes in index, search and footer
+- se limpian las variables del repo
+- se corrige el env files
+- se corrige el nombre de la imagen
+- tetsing repo vars
+- se cambia repo
+- se agregan variables para web
+- se agrega script que inicializa las variables del proyecto
+- Changes in perfil template, in contracts index, styles and index templates.
+- Adding data in profile
+- Udating profile styles
+
+2019-08-06: Version bump
+- Fix for new contracts structure
+- Fixing new contracts references and version number.
+- Adding data in profile
+- Adding new section in profile page and adding new data in contracts index
+- Adding buckets
+- Adding perfil new page
+- Fix app name and update version name
+- Updating version number and dependencies
+- Adding new changes in header, footer, new urls and new icons
+- Home and about design pages, done
+- Fixed contracts search path for new index and some other stuff
+- Adding new footer
+- Finishing new sections and design in home
+- Applying new sections in home (in process)
+- Adding new menu (in process)
+- Cambio para homologar Jenkinsfile.
+- Cambio para modificar puerto para docker local y no choque con el de la api, se pone versión 0.1.0 y se homologa dockerfile.
+- FIxing merge
+- Updating project
+- More data, fixed home
+- Cambio para corregir stage deploy por release.
+- Cambio para url y branch.
+- Cambio para cambiar opciones de git y docker ignore files, cambio en Makefile para traer variables de docker y hacer release.
+- Cambio para agregar Jenkinsfile para construir automaticamente.
+- Cambio para agregar construcción de contenedor docker.
+- Filters for persons, institutions and companies
+- Nuevas páginas para instituciones y empresas
+- Contracts and persons fixes
+- Contracts filters: type and amount (wip)
+- Improved date filters and error messages
+- Small changes in home
+- Improving error page
+- Adding alert bar. Homepage always renders
+- WIP: First fixes for new contract data API
+- QQW now shows contracts from the new API
+- Adding table length, adding info in Home, fixing filters
+- Fixing filters errors
+- New design for tools section, done
+- Fixing tools section
+- Adding Blob filters
+- Pagination done
+- Fixing pagination, adding active and disable classes(in process)
+- Adding pagination
+- Adding more data in profiles Persons and Organizations
+- Desarrollano paginación
+- Fix node-qqw version for easier update
+- Throw 404 for empty data on profiles
+- Improving API error handling and display
+- Unify form field names
+- Basic form validation for send
+- Fix example
+- Adding dotenv to readme
+- Arreglando perfil de Organización y agregando paginador(en proceso)
+- Adding dotenv for managing environment variables
+- Arreglo de formulario en Perfiles, orden por número de contratos, arreglo de urls en Personas
+- Agregué límite de contratos en perfil de Persona
+- Añadiendo datos en Perfil de Personas
+- Sending information Form arreglado
+- Agregando helpers para formato de fechas y montos
+- Agregando Send Info Form e ifs a perfiles
+- Arreglo de formulario, corregí leyenda de contacto en páginas de búsqueda
+- Footer bottom
+- Agregué librerías y ejemplo de gráficos
+- Cambios en formulario de Contacto
+- Agrego código de Contacto desde TLC
+- Terminada barra de herramientas
+- Agregando opción de herramientas
+- Agregando botón de herramientas
+- Agregué frontend de filtro de Número de contratos en Orgs
+- Oculté blog en APIS y aregué TB
+- Arreglo en input de busqueda en navbar, reacomodo en filtros de contratos, corrección de links en busqueda, corrección en estilos
+- Cambié el buscador para el menú fijo, correcciones en urls, agregué algunos datos en la página de Contrato, Agregué url en botones del buscador para personas y organizaciones
+- Agregué url en búsqueda, añadí información en la index de Contratos, cambios en header
+- Adding buttons in main search
+- Arreglo de autocomplete
+- Agregando datos de la API en Persons y Organizations
+- Agregué variables en persons.hbs
+- Arreglo de index.js
+- Arreglo de responsive menu
+- Fix client call with promises
+- Arreglo de merge
+- Añadí template About, Apis, Privacy y Contact
+- Configurable API DOMAIN
+- WIP: Autocomplete
+- Añadí template de person y organization
+- Agregué template Contrato
+- Agregué template de Personas y Organizaciones, arreglo de menú, añadí icons
+- Arreglo de error en API
+- Arreglando conflicto
+- Adding node-qqw dependency and request
+- Arreglé errores en responsive de Home, añadí template Contracts
+- Wait for RSS request
+- Añadí menú collapse y search
+- Adding README
+- Agregué slider y arreglé css
+- Arreglando conflicto
+- Cambios en archivos style
+- Agrego código de home, jquery y menú
+- Agrego npm debug al gitignore
+- Adding RSS client
+- Initial commit
