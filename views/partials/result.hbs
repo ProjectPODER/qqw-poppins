@@ -1,0 +1,74 @@
+{{#with result}}
+<div role="row" class="search-card odd">
+  <div class=" js-title no-title search-result-title col-m-8 col-8">
+    <div class="cardItemTitle">Nombre</div>
+    <a href="/personas/{{id}}">
+      <div class="cardItemData">{{name}}</div>
+    </a>
+  </div>
+
+  <div class=" js-person-type col-m-8 col-8">
+    {{!-- <div class="cardItemTitle"></div>
+    <div class="cardItemData"></div> --}}
+    <p style="font-size: 1rem;">{{#if contract_count.supplier}}Proveedor{{else}}Persona{{/if}}
+    </p>
+
+    <p class="js-person-type" style="font-size: 16px;">
+    {{#if contract_count.supplier}}
+      <span class="js-contract-count green-text">
+        <i class="fas fa-file-alt"></i>
+        {{contract_count.supplier}} contrato(s) como proveedor
+      </span>
+      por
+      <span class="js-contract-amount green-text">
+        {{#ifCond contract_amount.supplier '==' '0'}}
+        {{else}}
+          {{format_amount contract_amount.supplier}}
+        {{/ifCond}}
+      </span>
+      pesos mexicanos.
+      {{else}}
+        <span class="js-person-type">
+          Sin contratos como proveedor.
+        </span>
+    {{/if}}
+    </p>
+    <p class="js-person-type" style="font-size: 16px;">
+    {{#if contract_count.buyer}}
+      <span class="js-contract-count red-text">
+        <i class="fas fa-file-alt"></i>
+        {{contract_count.buyer}} contrato(s) como comprador
+      </span>
+      por
+      <span class="js-contract-amount red-text">
+        {{format_amount contract_amount.buyer}}
+      </span>
+      pesos mexicanos.
+      {{else}}
+      <span class="js-person-type">
+        Sin contratos como comprador.
+      </span>
+    {{/if}}
+    </p>
+    <p class="js-person-type" style="font-size: 16px;">
+    {{#if contract_count.funder}}
+      <span class="js-contract-count">
+        <img src="images/icons/contrato-blue-light.svg" alt="contrato" class="icon">
+        {{contract_count.funder}} contrato(s) como financiador
+      </span>
+      por
+      <span class="js-contract-amount">
+        {{#ifCond contract_amount.supplier '==' '0'}}
+        {{else}}
+          {{format_amount contract_amount.funder}}
+        {{/ifCond}}
+      </span>
+      pesos mexicanos.
+    {{/if}}
+    </p>
+  </div>
+  <div class=" js-ocid no-title col-3 col-m-3">
+    <a href="/personas/{{id}}" class="button-link">Ver persona</a>
+  </div>
+</div>
+{{/with}}
