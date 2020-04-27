@@ -103,7 +103,9 @@
     </section> --}}
     <section class="results-list">
         <div class="container-fluid">
-            {{> results-list}}
+            <div class="row">
+                {{> results-list}}
+            </div>
         </div>
     </section>
 {{else}}
@@ -112,3 +114,4 @@
   </section>
 {{/if}}
 
+{{> pagination}}
