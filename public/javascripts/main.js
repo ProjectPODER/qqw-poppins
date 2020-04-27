@@ -301,12 +301,11 @@ $("#send_info_uc").click(function (e) {
 //** FILTERS **//
 
 //Type filter
-$(".dropdown-menu").on("click","button", function(e) {
+$(".dropdown-menu").on("click","button.filter-dropdown-item", function(e) {
   let collection = $(e.currentTarget).data("collection");
 
-  
-
-  console.log()
+  location.search= removeQueryField("collection") + "&collection="+collection;
+  console.log(location.search);
 })
 
 //set amount and count filters

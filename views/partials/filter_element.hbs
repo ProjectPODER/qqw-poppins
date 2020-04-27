@@ -1,8 +1,9 @@
-<li class="nav-item dropdown filter-element filter-dropdown {{htmlFieldName}}-filter {{#each collections}}filter-collection-{{this}} {{/each}}">
-  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">{{fieldLabel}}</a>
-  {{#ifCond htmlFieldName "==" "collection"}}
+{{#ifCond filter.hidden '!=' true }}
+<li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
+  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">{{filter.fieldLabel}}</a>
+  {{#ifCond filter.htmlFieldName "==" "collection"}}
     <div class="selector-filter-type">
-        <p class="text-center emphasis-color-text" title="">Todos</p>
+        <p class="text-center emphasis-color-text" title="">{{ get_type_plural collection }}</p>
     </div>
     <div class="dropdown-menu filter-dropdown-menu">
         <button class="dropdown-item filter-dropdown-item" type="button" data-collection="contracts">
@@ -25,25 +26,25 @@
             <p>Entidades y dependencias del gobierno, incluyendo empresas productivas del estado. Ordenadas por el importe total de contratos como comprador, de mayor a menor.</p>
         </button>
         <div class="dropdown-divider"></div>
-        <button class="dropdown-item filter-dropdown-item" type="button" data-collection="areas">
+        <button class="dropdown-item filter-dropdown-item" type="button" data-collection="countries">
             <h4 class="emphasis-color-text">Países</h4>
             <p>Estados en los cuales tenemos personas, empresas, instituciones públicas y contratos.</p>
         </button>
     </div>
   {{/ifCond}}
-  {{#ifCond htmlFieldName "!=" "collection"}}
+  {{#ifCond filter.htmlFieldName "!=" "collection"}}
     <div class="selection-filter-box">
         <p class="filter-selected" title="">Todos</p>
         <button type="button" class="close ml-auto">&times;</button>
     </div>
-    <div class="dropdown-menu filter-dropdown-menu {{align}}">
-      {{# ifCond type "==" "string" }}
+    <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
+      {{# ifCond filter.type "==" "string" }}
         <form class="form-inline filter-item" action="">
             <input type="text" class="form-control mr-1" placeholder="TÍTULO DEL CONTRATO" id="contractTitle">
             <button type="submit" class="btn btn-light">APLICAR</button>
         </form>
       {{/ifCond}}
-      {{# ifCond type "==" "select" }}
+      {{# ifCond filter.type "==" "select" }}
         <button class="btn btn-light" type="button">País</button>
         <button class="btn btn-light" type="button">País</button>
         <button class="btn btn-light" type="button">País</button>
@@ -51,3 +52,4 @@
     </div>
   {{/ifCond}}
 </li>
+{{/ifCond}}
