@@ -43,7 +43,7 @@
     .dropdown-divider
         border-top 1px solid #ffffff
     .filter-title, .filter-title-simple
-        color #595959
+        color $light-text-color
         font-size 0.9rem
         border-radius 0
         border-bottom 2px solid transparent
@@ -98,10 +98,6 @@
         &:hover
             color $link-hover-color !important
 
-@media (min-width: 576px)
-    .filters
-        .form-inline .form-control
-            width 50%
 
 // RESULTS
 .results-list
@@ -134,7 +130,7 @@
     -ms-flex-align center
     align-items center
     p 
-        color #9b9b9b
+        color $gray
 
     a p 
         color #2b00f7
@@ -212,6 +208,30 @@
 .document-description
     margin-top 10px
 
+
+// PAGINATION
+
+.page-link
+    color $light-text-color
+    // background-color #fff
+    // border 1px solid #dee2e6
+    &:hover
+        color $light-text-color
+
+.page-item.active .page-link
+    z-index 0
+    color #fff
+    background-color $link-hover-color
+    border-color $link-hover-color
+
+
+// RESPONSIVE VIEWS
+
+@media (min-width: 576px)
+    .filters
+        .form-inline .form-control
+            width 50%
+
 @media screen and (max-width: 767px)
   .index-list-elements
     span 
@@ -225,8 +245,20 @@
     // -webkit-align-items stretch
     // -ms-flex-align stretch
     // align-items stretch
-    span 
-        display none
+  .page-break
+    margin-bottom 2rem !important
+    text-align center
+    margin auto
+    .input-group
+        margin auto
+  .page-results
+    margin-top 2rem
+    text-align center !important
+    .form-group
+        select 
+            float none !important
+            margin auto
+    
 
 @media screen and (max-width: 479px)
     .left-elements

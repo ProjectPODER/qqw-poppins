@@ -113,13 +113,12 @@
             {{/ifCond}}
           {{/each}}
         </div>
-        <div class="col-12 col-m-12">
-            {{!-- > pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page --}}
-        </div>
       </div>
   </section>
 {{else}}
   <section class="error">
-    Acá van los errroes
+    Acá van los errores
   </section>
 {{/if}}
+
+{{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
