@@ -134,7 +134,7 @@ function charts(idChart, dataChart) {
         .legendRightAxisHint(' [der.]')
         .legendLeftAxisHint(' [izq.]')
         .color(function(d,i){ return barColors[d.originalKey]})
-        .focusEnable(false)   
+        .focusEnable(false)
 
     chart.y1Axis
     .tickFormat(function(d) { return '$' + d3.format(',f')(d) });
@@ -318,7 +318,10 @@ function flujosProveedores(summaries) {
     "open": "#98df8a",
     "limited": "#d62728",
     "direct": "#ff9896",
-    regular: "#9467bd"
+    "buyer": "#cccccc",
+    "funder": "#666666",
+    "supplier": "#9467bd",
+    "undefined": "#ff0000"
   }
 
   const name_legend = [
@@ -353,6 +356,9 @@ function flujosProveedores(summaries) {
     "direct": "Adjudicación Directa",
     "limited": "Invitación a tres",
     "undefined": "Sin definir",
+    "buyer": "Dependencia",
+    "funder": "Financiador",
+    "supplier": "Proveedor",
     "regular": "Regular",
     "": "Sin información"
   }
@@ -411,56 +417,56 @@ function flujosProveedores(summaries) {
   var nodeCircle, nodeLabel;
 
 // Legend
-  var legendRectSize = 18;  
-  var legendSpacing = 4;    
+  var legendRectSize = 18;
+  var legendSpacing = 4;
 
-  var legend = svg.selectAll('.legend')                  
-          .data(node_legend)                                
-          .enter()                                             
-          .append('g')                                         
-          .attr('class', 'legend')                             
-          .attr('transform', function(d, i) {                  
-            var height = legendRectSize + legendSpacing;       
-            var offset =  height * color.domain().length / 2;  
+  var legend = svg.selectAll('.legend')
+          .data(node_legend)
+          .enter()
+          .append('g')
+          .attr('class', 'legend')
+          .attr('transform', function(d, i) {
+            var height = legendRectSize + legendSpacing;
+            var offset =  height * color.domain().length / 2;
             var horz = 0;                       // NEW
-            var vert = i * height - offset;                    
-            return 'translate(' + horz + ',' + vert + ')';     
-          });                                                    
-        
+            var vert = i * height - offset;
+            return 'translate(' + horz + ',' + vert + ')';
+          });
+
         legend.append("circle")
           .attr("cx", 7)
           .attr("cy", 7.7) // 100 is where the first dot appears. 25 is the distance between dots
           .attr("r", 7)
-          .style('fill', function(d) { return d.color; })                                
+          .style('fill', function(d) { return d.color; })
           .style('stroke', function(d) { return d.color; });
 
-        legend.append('text')                                  
-          .attr('x', legendRectSize + legendSpacing)           
-          .attr('y', legendRectSize - legendSpacing)           
+        legend.append('text')
+          .attr('x', legendRectSize + legendSpacing)
+          .attr('y', legendRectSize - legendSpacing)
           .text(function(d) { return d.label; });
-          
-  var legend2 = svg.selectAll('.legend2')                  
-          .data(link_legend)                                
-          .enter()                                             
-          .append('g')                                         
-          .attr('class', 'legend2')                             
-          .attr('transform', function(d, i) {                  
-            var height = legendRectSize + legendSpacing;       
-            var offset =  height * color.domain().length / 2;  
+
+  var legend2 = svg.selectAll('.legend2')
+          .data(link_legend)
+          .enter()
+          .append('g')
+          .attr('class', 'legend2')
+          .attr('transform', function(d, i) {
+            var height = legendRectSize + legendSpacing;
+            var offset =  height * color.domain().length / 2;
             var horz = 150;                       // NEW
-            var vert = i * height - offset;                    
-            return 'translate(' + horz + ',' + vert + ')';     
+            var vert = i * height - offset;
+            return 'translate(' + horz + ',' + vert + ')';
           });
 
-          legend2.append('rect')                                  
-          .attr('width', legendRectSize)                       
-          .attr('height', 4)                      
-          .style('fill', function(d) { return d.color; })                                
+          legend2.append('rect')
+          .attr('width', legendRectSize)
+          .attr('height', 4)
+          .style('fill', function(d) { return d.color; })
           .style('stroke', function(d) { return d.color; });
-          
-          legend2.append('text')                                  
-          .attr('x', legendRectSize + legendSpacing)           
-          .attr('y', legendRectSize - legendSpacing)           
+
+          legend2.append('text')
+          .attr('x', legendRectSize + legendSpacing)
+          .attr('y', legendRectSize - legendSpacing)
           .text(function(d) { return d.label; });
 
 
@@ -525,7 +531,7 @@ function flujosProveedores(summaries) {
     link.exit().remove();
     link = link.enter().append("line")
       .attr("stroke", function(d) {
-        return link_colors[d.type];
+        return link_colors[d.type] || "#0000FF";
       })
       .on("mouseover", function(d) {
         dOverLink = d;
@@ -533,7 +539,7 @@ function flujosProveedores(summaries) {
         var linkTooltip = d4.select("body")//svg
         .append("div")
         .attr('class', 'foreign-tooltip')
-        
+
         linkTooltip.append("div")
         .attr('class', 'node-tooltip')
         .html(function(d) {
