@@ -671,13 +671,10 @@
 
 
 {{> send_info_form}}
+<script src="/tiza/tiza.js"></script>
 <script>
   const summaries = {{{j result.summaries}}}
+  tiza.contractTypePie({data: summaries.type});
+  tiza.yearlyContractsBar({data: summaries.year});
+  tiza.moneyFlow({data: summaries.relation});
 </script>
-<script src="/javascripts/d3.v4.js"></script>
-<script>
-  let d4 = d3;
-</script>
-<script src="/javascripts/d3.v3.js"></script>
-<script src="/javascripts/nvd3.js"></script>
-<script src="/javascripts/graphics.js"></script>
