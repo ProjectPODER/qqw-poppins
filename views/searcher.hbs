@@ -23,7 +23,7 @@
   }
 </style>
 <section class="filters bg-gray">
-    <div class="d-flex">
+    <div class="d-flex flex-nowrap">
         <div class="left-box">
           <form class="advance-filters">
             <ul class="nav nav-pills filter-active-collection-{{collection}}" id="filtersList">
@@ -50,18 +50,18 @@
           </form>
         </div>
         <div class="right-box ml-auto">
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills d-flex flex-nowrap">
                 <li class="nav-item filter-dropdown general-filters">
-                    <p class="filter-title-simple" href="#" >RESULTADOS</p>
-                    <p class="filter-selected simple ml-2" title="">{{ format_number result.count }}</p>
+                    <p class="filter-title-simple" href="#" title="RESULTADOS">RESULTADOS</p>
+                    <p class="filter-selected simple ml-2" title="{{ format_number result.count }}">{{ format_number result.count }}</p>
                 </li>
                 <li class="nav-item dropdown general-filters text-center">
-                    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#">
+                    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="DATOS">
                         DATOS <br>
                         <i class="fas fa-download icon-tools"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
-                        <h4>URL DE LA API</h4>
+                        <h6>URL DE LA API</h6>
                         <input class="w-100" id="apiUrl" type="text" name="destinatario" value="{{result.api_url}}">
                         <button class="btn btn-primary w-100" onclick="copyClipboard()">Copiar URL</button>
                         <div class="dropdown-divider mt-3 mb-3"></div>
@@ -72,12 +72,12 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown general-filters text-center">
-                    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#">
+                    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="COMPARTIR">
                         COMPARTIR <br>
                         <i class="fas fa-share-alt icon-tools"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
-                        <h4>COMPARTIR PÁGINA</h4>
+                        <h6>COMPARTIR PÁGINA</h6>
                         <input class="w-100" id="pageUrl" type="text" name="destinatario" value="{{share_url}}">
                         <button class="btn btn-primary w-100" onclick="copyClipboard()">Copiar URL</button>
                         <div class="dropdown-divider mt-3"></div>
@@ -94,24 +94,26 @@
 {{#if result.data }}
   <section class="results-list">
       <div class="container-fluid">
-        <div class="col-12 col-m-12">
-          {{#each result.data}}
-            {{#ifCond ../collection "==" "contracts"}}
-              {{#each records}}
-                {{#with compiledRelease }}
-                  {{> result  collection=../../../collection result=this }}
-                {{/with}}
-              {{/each}}
-            {{else}}
-              {{#with compiledRelease }}
-                {{#ifCond collection "==" "all"}}
-                  {{> result  collection=type result=this }}
+        <div class="row">
+            <div class="col-12 col-m-12">
+            {{#each result.data}}
+                {{#ifCond ../collection "==" "contracts"}}
+                {{#each records}}
+                    {{#with compiledRelease }}
+                    {{> result  collection=../../../collection result=this }}
+                    {{/with}}
+                {{/each}}
                 {{else}}
-                  {{> result  collection=../../collection result=this }}
+                {{#with compiledRelease }}
+                    {{#ifCond collection "==" "all"}}
+                    {{> result  collection=type result=this }}
+                    {{else}}
+                    {{> result  collection=../../collection result=this }}
+                    {{/ifCond}}
+                {{/with}}
                 {{/ifCond}}
-              {{/with}}
-            {{/ifCond}}
-          {{/each}}
+            {{/each}}
+            </div>
         </div>
       </div>
   </section>

@@ -1,9 +1,9 @@
 {{#ifCond filter.hidden '!=' true }}
 <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
-  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">{{filter.fieldLabel}}</a>
+  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}">{{filter.fieldLabel}}</a>
   {{#ifCond filter.htmlFieldName "==" "collection"}}
     <div class="selector-filter-type">
-        <p class="text-center emphasis-color-text" title="">{{ get_type_plural collection }}</p>
+        <p class="text-center emphasis-color-text mb-0" title="{{ get_type_plural collection }}">{{ get_type_plural collection }}</p>
     </div>
     <div class="dropdown-menu filter-dropdown-menu">
         <button class="dropdown-item filter-dropdown-item" type="button" data-collection="contracts">

@@ -859,10 +859,12 @@ input[type=submit].landing-search-inputtext {
   z-index: 1;
   width: 100%;
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 10px;
 }
 .filters .nav-item {
   margin-left: 10px;
+  max-width: 150px;
+  text-align: left;
   min-width: 100px;
 }
 .filters .type-filter {
@@ -895,8 +897,9 @@ input[type=submit].landing-search-inputtext {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f078";
-  float: right;
   border: none;
+  position: absolute;
+  right: 4px;
 }
 .filters .dropdown-tools::after {
   display: none;
@@ -914,6 +917,12 @@ input[type=submit].landing-search-inputtext {
   font-size: 0.9rem;
   border-radius: 0;
   border-bottom: 2px solid transparent;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
+  text-transform: uppercase;
+  position: relative;
+  width: 95%;
 }
 .filters .filter-title-simple {
   display: block;
@@ -946,6 +955,12 @@ input[type=submit].landing-search-inputtext {
 .selector-filter-type {
   padding: 4px 8px 2px;
   font-weight: bold;
+  max-width: 140px;
+}
+.selector-filter-type p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .selection-filter-box {
   background-color: #e6e6e6;
@@ -971,7 +986,7 @@ input[type=submit].landing-search-inputtext {
   color: #2d1c9d !important;
 }
 .results-list {
-  padding-top: 12rem;
+  padding-top: 14rem;
 }
 .index-list-title {
   margin-bottom: 1rem;
@@ -1090,6 +1105,10 @@ input[type=submit].landing-search-inputtext {
   color: #fff;
   background-color: #2d1c9d;
   border-color: #2d1c9d;
+}
+.input-group-prepend .btn,
+.input-group-append .btn {
+  z-index: 0;
 }
 @media (min-width: 576px) {
   .filters .form-inline .form-control {
