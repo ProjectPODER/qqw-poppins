@@ -30,22 +30,6 @@
               {{# each filter_elements }}
               {{> filter_element filter=this values=filter_values collection=../collection }}
               {{/each }}
-              <li class="nav-item dropdown filter-dropdown">
-                  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31">ORDEN</a>
-                  <div class="d-flex">
-                      <div class="selection-filter-box">
-                          <p class="filter-selected" title="">Ordenar</p>
-                          <button type="button" class="close ml-auto">&times;</button>
-                      </div>
-                      <button type="button" class="btn btn-light btn-sm ml-auto"><i class="fas fa-sort-amount-down"></i></button>
-                  </div>
-                  <div class="dropdown-menu filter-dropdown-menu text-center">
-                      <button class="btn btn-light" type="button">Orden</button>
-                      <button class="btn btn-light" type="button">Orden</button>
-                      <button class="btn btn-light" type="button">Orden</button>
-                  </div>
-              </li>
-              {{!-- End Order filter --}}
             </ul>
           </form>
         </div>
