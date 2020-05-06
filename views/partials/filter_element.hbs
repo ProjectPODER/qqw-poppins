@@ -1,73 +1,93 @@
 {{#ifCond filter.hidden '!=' true }}
-<li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
-  {{# ifCond labelType "!=" "icon"}}
-  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}">{{filter.fieldLabel}}</a>
-  {{else}}
-  <button type="button" class="btn btn-light btn-sm ml-auto"><i class="fas {{filter.fieldIcon }}" title="{{filter.fieldLabel}}"></i></button>
-  {{/ifCond}}
-  {{#ifCond filter.htmlFieldName "==" "collection"}}
-    <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
-    <div class="selector-filter-type">
-
-        <p class="text-center emphasis-color-text mb-0" title="">{{ get_type_plural collection true }}</p>
-    </div>
-    <div class="dropdown-menu filter-dropdown-menu">
-        <button class="dropdown-item filter-dropdown-item" type="button" data-collection="contracts">
-            <h4 class="emphasis-color-text">Contratos</h4>
-            <p>Explora los importes, años, dependencias, empresas proveedoras y otras características de más de tres millones de contratos de México.</p>
-        </button>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-item filter-dropdown-item" type="button" data-collection="persons">
-            <h4 class="emphasis-color-text">Personas</h4>
-            <p>Conoce cómo se relacionan los personajes de las élites políticas y económicas en México.</p>
-        </button>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-item filter-dropdown-item" type="button" data-collection="companies">
-            <h4 class="emphasis-color-text">Empresas y Sociedades</h4>
-            <p>Empresas proveedoras del estado, titulares de marcas y cotizando en la bolsa. Ordenadas por importe total de contrataciones como proveedor del estado.</p>
-        </button>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-item filter-dropdown-item" type="button" data-collection="institutions">
-            <h4 class="emphasis-color-text">Instituciones públicas</h4>
-            <p>Entidades y dependencias del gobierno, incluyendo empresas productivas del estado. Ordenadas por el importe total de contratos como comprador, de mayor a menor.</p>
-        </button>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-item filter-dropdown-item" type="button" data-collection="countries">
-            <h4 class="emphasis-color-text">Países</h4>
-            <p>Estados en los cuales tenemos personas, empresas, instituciones públicas y contratos.</p>
-        </button>
-    </div>
-  {{else}}
-    {{# ifCond filter.type "!=" "onlybutton" }}
-
-      <div class="selection-filter-box">
-          <p class="filter-selected" title="">
-            {{#if filter.value }}
-            {{filter.value}}
-            {{else}}
-            Todos
-            {{/if}}
-          </p>
-          {{#if filter.value }}
-          <button type="button" onclick="$('#{{filter.htmlFieldName}}').val('').siblings('button').click()" class="close ml-auto">&times;</button>
-          {{/if}}
-      </div>
-
-      <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
-        <p>{{filter.guidanceText}}</p>
-        {{# ifCond filter.type "==" "string" }}
-            <input type="text" class="form-control mr-1" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
-            <button type="submit" class="btn btn-light">APLICAR</button>
-        {{/ifCond}}
-        {{# ifCond filter.type "==" "select" }}
-          <button class="btn btn-light" type="button">País</button>
-          <button class="btn btn-light" type="button">País</button>
-          <button class="btn btn-light" type="button">País</button>
-        {{/ifCond}}
-      </div>
+  <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
+    {{# ifCond filter.type "!=" "toggle"}}
+      <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}">{{filter.fieldLabel}}</a>
+    {{else}}
+      {{#with (filter_array filter.options "value" value ) }}
+        <button type="button" class="btn btn-light btn-sm ml-auto" onclick="$('{{filter.htmlFieldName}}').val('{{ othervalue }}')[0].form.submit();"><i class="fas {{ icon }}" title="{{../filter.fieldLabel}} - {{label}}"></i></button>
+      {{/with}}
+      <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{value}}">
     {{/ifCond}}
-  {{/ifCond}}
-</li>
-{{else }}
-<input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
+    {{#ifCond filter.htmlFieldName "==" "collection"}}
+      <input type="hidden" name="{{filter.htmlFieldName}}" value="{{collection}}">
+      <div class="selector-filter-type">
+
+          <p class="text-center emphasis-color-text mb-0" title="">{{ get_type_plural collection true }}</p>
+      </div>
+      <div class="dropdown-menu filter-dropdown-menu">
+          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="contracts">
+              <h4 class="emphasis-color-text">Contratos</h4>
+              <p>Explora los importes, años, dependencias, empresas proveedoras y otras características de más de tres millones de contratos de México.</p>
+          </button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="persons">
+              <h4 class="emphasis-color-text">Personas</h4>
+              <p>Conoce cómo se relacionan los personajes de las élites políticas y económicas en México.</p>
+          </button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="companies">
+              <h4 class="emphasis-color-text">Empresas y Sociedades</h4>
+              <p>Empresas proveedoras del estado, titulares de marcas y cotizando en la bolsa. Ordenadas por importe total de contrataciones como proveedor del estado.</p>
+          </button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="institutions">
+              <h4 class="emphasis-color-text">Instituciones públicas</h4>
+              <p>Entidades y dependencias del gobierno, incluyendo empresas productivas del estado. Ordenadas por el importe total de contratos como comprador, de mayor a menor.</p>
+          </button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="countries">
+              <h4 class="emphasis-color-text">Países</h4>
+              <p>Estados en los cuales tenemos personas, empresas, instituciones públicas y contratos.</p>
+          </button>
+      </div>
+    {{else}}
+      {{# ifCond filter.type "!=" "toggle" }}
+        <div class="selection-filter-box">
+          <p class="filter-selected" title="">
+            {{#ifCond filter.type "==" "select" }}
+              {{get_object_element filter.options value}}
+            {{else}}
+              {{#if (or value.min value.max) }}
+                {{value.min}}-{{value.max}}
+              {{else}}
+                {{or value filter.default.label}}
+              {{/if}}
+            {{/ifCond}}
+          </p>
+          {{#if value }}
+          <button type="button" onclick="$('#{{filter.htmlFieldName}},#{{filter.htmlFieldName}}-min,#{{filter.htmlFieldName}}-max').val('')[0].form.submit()" class="close ml-auto">&times;</button>
+          {{/if}}
+        </div>
+
+        <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
+          <p>{{filter.guidanceText}}</p>
+          <fieldset>
+            {{# ifCond filter.type "==" "string" }}
+              <input type="text" class="form-control mr-1" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{value}}">
+              <button type="submit" class="btn btn-light">APLICAR</button>
+            {{/ifCond}}
+            {{# ifCond filter.type "==" "select" }}
+              {{#each filter.options}}
+                <button class="btn btn-light" type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{this}}</button>
+              {{/each}}
+              <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{value}}">
+            {{/ifCond}}
+            {{# ifCond filter.type "==" "minmax" }}
+            {{#each filter.options}}
+              <a class="btn btn-light"  onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</a>
+            {{/each}}
+              <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount" value="{{value.min }}">
+              <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount" value="{{value.max }}">
+              <button type="submit" class="btn btn-light">APLICAR</button>
+            {{/ifCond}}
+            {{# ifCond filter.type "==" "date" }}
+            Not implemented
+            {{/ifCond}}
+          </fieldset>
+        </div>
+      {{/ifCond}}
+    {{/ifCond}}
+  </li>
+{{ else }}
+  <input type="hidden" name="{{filter.htmlFieldName}}" value="{{value}}">
 {{/ifCond}}
