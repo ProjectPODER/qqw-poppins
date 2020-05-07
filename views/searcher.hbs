@@ -28,7 +28,9 @@
           <form class="advance-filters">
             <ul class="nav nav-pills filter-active-collection-{{collection}}" id="filtersList">
               {{# each filter_elements }}
-              {{> filter_element filter=this values=filter_values collection=../collection }}
+                {{#with (or (get_object_element ../filter_values this.htmlFieldName) this.default) }}
+                  {{> filter_element filter=../this value=this.value collection=../../collection }}
+                {{/with}}
               {{/each }}
             </ul>
           </form>
