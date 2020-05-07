@@ -4,28 +4,40 @@
         <a href="/{{get_type_url collection}}/{{result.id}}">
           {{!-- PERSONAS --}}
           {{# ifCond collection "==" "persons" }}
+          <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
+          </p>
           {{/ifCond}}
           {{# ifCond collection "==" "contracts" }}
+          <p class="text-overflow" title="{{result.awards.0.title}}">
             <i class="fas fa-user"></i>
             {{result.awards.0.title}}
+          </p>
           {{/ifCond}}
           {{# ifCond collection "==" "companies" }}
+          <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
+          </p>
           {{/ifCond}}
           {{# ifCond collection "==" "institutions" }}
+          <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
+          </p>
           {{/ifCond}}
           {{# ifCond collection "==" "countries" }}
+          <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
+          </p>
           {{/ifCond}}
           {{# ifCond collection "==" "persons" }}
+          <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
+          </p>
           {{/ifCond}}
         </a>
       </div>

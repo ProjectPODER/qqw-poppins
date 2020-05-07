@@ -1,14 +1,13 @@
 {{#ifCond filter.hidden '!=' true }}
 <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
   {{# ifCond labelType "!=" "icon"}}
-  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}">{{filter.fieldLabel}}</a>
+  <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
   {{else}}
   <button type="button" class="btn btn-light btn-sm ml-auto"><i class="fas {{filter.fieldIcon }}" title="{{filter.fieldLabel}}"></i></button>
   {{/ifCond}}
   {{#ifCond filter.htmlFieldName "==" "collection"}}
     <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
     <div class="selector-filter-type">
-
         <p class="text-center emphasis-color-text mb-0" title="">{{ get_type_plural collection true }}</p>
     </div>
     <div class="dropdown-menu filter-dropdown-menu">

@@ -1,6 +1,10 @@
 .emphasis-color-text {
   color: #2d1c9d !important;
 }
+@font-face {
+  font-family: Montserrat;
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
+}
 body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.42857143;
@@ -859,10 +863,11 @@ input[type=submit].landing-search-inputtext {
   z-index: 1;
   width: 100%;
   padding-top: 0;
-  padding-bottom: 10px;
+  padding-bottom: 0;
 }
 .filters .nav-item {
   margin-left: 10px;
+  margin-bottom: 10px;
   max-width: 150px;
   text-align: left;
   min-width: 100px;
@@ -894,12 +899,7 @@ input[type=submit].landing-search-inputtext {
   background-color: #f8f9fa;
 }
 .filters .dropdown-toggle::after {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f078";
-  border: none;
-  position: absolute;
-  right: 4px;
+  display: none;
 }
 .filters .dropdown-tools::after {
   display: none;
@@ -922,7 +922,24 @@ input[type=submit].landing-search-inputtext {
   text-overflow: ellipsis !important;
   text-transform: uppercase;
   position: relative;
-  width: 95%;
+}
+.filters .filter-title.dropdown-tools,
+.filters .filter-title-simple.dropdown-tools {
+  display: block;
+}
+.filters .filter-title {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.filters .filter-title span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
+}
+.filters .filter-title i {
+  margin-left: 2px;
 }
 .filters .filter-title-simple {
   display: block;
@@ -986,7 +1003,7 @@ input[type=submit].landing-search-inputtext {
   color: #2d1c9d !important;
 }
 .results-list {
-  padding-top: 14rem;
+  padding: 14rem 5rem 0;
 }
 .index-list-title {
   margin-bottom: 1rem;
@@ -1080,6 +1097,7 @@ input[type=submit].landing-search-inputtext {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  width: 90%;
 }
 .index-list-button {
   -webkit-box-flex: 0;
@@ -1093,6 +1111,9 @@ input[type=submit].landing-search-inputtext {
 }
 .document-description {
   margin-top: 10px;
+}
+.pagination {
+  flex-wrap: wrap;
 }
 .page-link {
   color: #595959;
@@ -1115,6 +1136,12 @@ input[type=submit].landing-search-inputtext {
     width: 50%;
   }
 }
+@media (max-width: 576px) {
+  .results-list {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 @media screen and (max-width: 767px) {
   .index-list-elements span {
     display: none;
@@ -1135,8 +1162,6 @@ input[type=submit].landing-search-inputtext {
     float: none !important;
     margin: auto;
   }
-}
-@media screen and (max-width: 479px) {
   .left-elements {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
