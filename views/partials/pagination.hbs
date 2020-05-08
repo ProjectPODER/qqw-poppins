@@ -11,70 +11,11 @@
         </div>
       </div>
       <div class="col-md-6 col-sm-12 text-center">
-        <h6>NO. DE PÁGINA</h5>
+        <h6>PÁGINAS</h5>
         <ul class="pagination justify-content-center">
-            {{#ifCond current_page '==' 0}}
-                <li class="page-item disabled" id="index_previous"><a class="page-link" href="#"><< Primera</a></li>
-            {{else}}
-                <li class="page-item" id="index_previous"><a href="{{current_url}}&page={{math current_page "-" 1}}" aria-controls="index" class="page-link"><< Primera</a></li>
-            {{/ifCond}}
-            {{!-- Menor a 5 --}}
-            {{#ifCond result.pages '<=' 5 }}
-                {{#each pagesArray as |i pageNum|}}
-                    <li class="page-item {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
-                        <a class="page-link" href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
-                    </li>
-                {{/each}}
-            {{/ifCond}}
-            {{!-- Mayor a 5 --}}
-            {{#ifCond result.pages '>' 5 }}
-                {{#ifCond current_page '>=' 2}}
-                    <li class="page-item">
-                        <a class="page-link" href="{{current_url}}&page=0" aria-controls="index">1</a>
-                    </li>
-                    <li class="page-item disabled" id="index_ellipsis">
-                        <a  class="page-link" aria-controls="index">…</a>
-                    </li>
-                {{/ifCond}}
-                {{!-- Last page --}}
-                {{#ifCond current_page '==' (math result.pages '-' 1)}}
-                {{#each pagesArray as |i pageNum|}}
-                    <li class="page-item {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
-                        <a class="page-link" href="{{../current_url}}&page={{math ../current_page "-" pageNum}}" aria-controls="index">{{math (math ../current_page "-" pageNum) '+' 1}} </a>
-                    </li>
-                {{/each}}
-                {{else}}
-                {{#each pagesArray as |i pageNum|}}
-                    {{#ifCond (math ../current_page "+" pageNum) '<' (math ../result.pages "-" 1) }}
-                    <li class="page-item {{#ifCond (math pageNum '+' 1) '==' true}}active{{/ifCond}}">
-                        <a class="page-link" href="{{../current_url}}&page={{math ../current_page "+" pageNum}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '+' 1}} </a>
-                    </li>
-                    {{/ifCond}}
-                {{/each}}
-                {{!-- 5,10,15 --}}
-                {{!-- {{#ifCond current_page '>' 1}}
-                    <li class="paginate_button disabled" id="index_ellipsis">
-                        <a aria-controls="index">…</a>
-                    </li>
-                    {{#each pagesArray as |i pageNum|}}
-                    <li class="paginate_button">
-                        <a href="{{../current_url}}&page={{math (math (math ../current_page "+" pageNum) '*' 5) "-" 1}}" aria-controls="index">{{math (math ../current_page "+" pageNum) '*' 5}}</a>
-                    </li>
-                    {{/each}}
-                {{/ifCond}}--}}
-                {{/ifCond}}
-                    <li class="page-item disabled" id="index_ellipsis">
-                        <a class="page-link" aria-controls="index">…</a>
-                    </li>
-                    <li class="page-item ">
-                        <a class="page-link" href="{{current_url}}&page={{math result.pages '-' 1}}" aria-controls="index">{{result.pages}}</a>
-                    </li>
-            {{/ifCond}}
-            {{#ifCond current_page '==' (math result.pages '-' 1)}}
-                <li class="page-item disabled" id="index_next"><a class="page-link">Última >></a></li>
-            {{else}}
-                <li class="page-item" id="index_next"><a class="page-link" href="{{current_url}}&page={{math current_page "+" 1}}" aria-controls="index">Última >></a></li>
-            {{/ifCond}}
+			{{#each pagesArray}}
+                <li class="page-item {{#if enabled}}{{else}}disabled{{/if}}"><a class="page-link page-{{type}}" {{#if enabled}}href="{{../current_url}}&page={{value}}"{{/if}}>{{type}} {{value}} {{enabled}}</a></li>
+			{{/each}}
         </ul>
       </div>
       <div class="col-md-3 col-sm-12 text-right page-results">
