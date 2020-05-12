@@ -3,37 +3,37 @@
       <div class="index-list-title">
         <a href="/{{get_type_url collection}}/{{result.id}}">
           {{!-- PERSONAS --}}
-          {{# ifCond collection "==" "persons" }}
+          {{#ifCond collection "==" "persons" }}
           <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
           </p>
           {{/ifCond}}
-          {{# ifCond collection "==" "contracts" }}
+          {{#ifCond collection "==" "contracts" }}
           <p class="text-overflow" title="{{result.awards.0.title}}">
             <i class="fas fa-user"></i>
             {{result.awards.0.title}}
           </p>
           {{/ifCond}}
-          {{# ifCond collection "==" "companies" }}
+          {{#ifCond collection "==" "companies" }}
           <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
           </p>
           {{/ifCond}}
-          {{# ifCond collection "==" "institutions" }}
+          {{#ifCond collection "==" "institutions" }}
           <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
           </p>
           {{/ifCond}}
-          {{# ifCond collection "==" "countries" }}
+          {{#ifCond collection "==" "countries" }}
           <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
           </p>
           {{/ifCond}}
-          {{# ifCond collection "==" "persons" }}
+          {{#ifCond collection "==" "persons" }}
           <p class="text-overflow" title="{{result.name}}">
             <i class="fas fa-user"></i>
             {{result.name}}
@@ -43,7 +43,7 @@
       </div>
       <div class="index-list-elements">
         {{!-- PERSONAS --}}
-        {{# ifCond collection "==" "persons" }}
+        {{#ifCond collection "==" "persons" }}
           <div class="left-elements">
             <p class="index-list-element"><i class="fas fa-dolly"></i> Proveedor con <i class="fas fa-file-alt"></i> {{contract_count.supplier}} contrato(s) de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.supplier}} MXN</p>
           </div>
@@ -58,7 +58,7 @@
         {{/ifCond}}
 
         {{!-- CONTRATOS --}}
-        {{# ifCond collection "==" "contracts" }}
+        {{#ifCond collection "==" "contracts" }}
         <div class="left-elements">
           {{#with (get_party this compiledRelease.parties.0.id)}}
             {{#if memberOf.0.id }}
@@ -84,7 +84,7 @@
         {{/ifCond}}
 
         {{!-- EMPRESAS --}}
-        {{# ifCond collection "==" "companies" }}
+        {{#ifCond collection "==" "companies" }}
         <div class="left-elements">
           <p class="index-list-element"><i class="fas fa-dolly"></i> Proveedor con <i class="fas fa-file-alt"></i> 72 contrato(s) de <i class="fas fa-dollar-sign"></i> 12,200MXN</p>
         </div>
@@ -96,7 +96,7 @@
         {{/ifCond}}
 
         {{!-- INSTITUCIONES --}}
-        {{# ifCond collection "==" "institutions" }}
+        {{#ifCond collection "==" "institutions" }}
         <div class="left-elements flex-column">
           <p class="index-list-element"><i class="fas fa-dolly"></i> Proveedor con <i class="fas fa-file-alt"></i> 72 contrato(s) de <i class="fas fa-dollar-sign"></i> 12,200MXN</p>
           <p class="index-list-element"><i class="fas fa-money-check-alt"></i> Comprador con <i class="fas fa-file-alt"></i> 72 contrato(s) de <i class="fas fa-dollar-sign"></i> 12,200MXN</p>
