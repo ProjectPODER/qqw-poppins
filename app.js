@@ -76,7 +76,8 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.locals.message = err.message;
 
-  console.error("/!\\ QuienEsQuien.Wiki APP Error",req.url,err);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error at URL: ",req.url);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err);
 
   res.cacheControl = {
     noStore: true
