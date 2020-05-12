@@ -63,8 +63,8 @@
           <p>{{filter.guidanceText}}</p>
           <fieldset>
             {{# ifCond filter.type "==" "string" }}
-              <input type="text" class="form-control mr-1" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{value}}">
-              <button type="submit" class="btn btn-light">APLICAR</button>
+              <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{value}}">
+              <button type="submit" class="btn btn-light d-inline-block">APLICAR</button>
             {{/ifCond}}
             {{# ifCond filter.type "==" "select" }}
               {{#each filter.options}}
@@ -74,14 +74,20 @@
             {{/ifCond}}
             {{# ifCond filter.type "==" "minmax" }}
             {{#each filter.options}}
-              <a class="btn btn-light"  onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</a>
+              <button class="btn btn-light mb-3" onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</button>
             {{/each}}
-              <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount" value="{{value.min }}">
-              <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount" value="{{value.max }}">
-              <button type="submit" class="btn btn-light">APLICAR</button>
+              <form class="form-inline justify-content-center">
+                <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount form-control input-minmax" value="{{value.min }}">
+                <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount form-control input-minmax mr-2" value="{{value.max }}">
+                <button type="submit" class="btn btn-light">APLICAR</button>
+              </form>
             {{/ifCond}}
             {{# ifCond filter.type "==" "date" }}
-            Not implemented
+              <form class="form-inline justify-content-center">
+                <input type="date" id="from_date_contracts_index" class="form-control input-date" name="from_date_contracts_index" value="" min="2002-01-01">
+                <input type="date" id="to_date_contracts_index" class="form-control input-date" name="to_date_contracts_index" value="" min="2002-01-01">
+                <button type="submit" class="btn btn-light">APLICAR</button>
+              </form>
             {{/ifCond}}
           </fieldset>
         </div>

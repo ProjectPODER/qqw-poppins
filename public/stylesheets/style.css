@@ -969,6 +969,28 @@ input[type=submit].landing-search-inputtext {
 .filters .btn-filter-states {
   background-color: #fff !important;
 }
+.filters input.input-string {
+  width: 70%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+.filters input.input-minmax {
+  width: 200px !important;
+  margin-left: 0.5rem;
+}
+.filters input.input-date {
+  width: 200px !important;
+  margin-right: 0.5rem;
+  padding: 5px 5px 5px 25px;
+  width: 100%;
+  background-image: url("../images/calendar.png");
+  background-repeat: no-repeat;
+  background-position: 6px;
+  border-width: 1px;
+  border-color: #d3d3d3;
+  border-style: solid;
+}
 .selector-filter-type {
   padding: 4px 8px 2px;
   font-weight: bold;

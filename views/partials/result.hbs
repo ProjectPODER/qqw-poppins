@@ -60,9 +60,18 @@
         {{!-- CONTRATOS --}}
         {{# ifCond collection "==" "contracts" }}
         <div class="left-elements">
-          <a href="">
-            <p class="index-list-element"><i class="fas fa-landmark"></i> Nombre de dependencia</p>
-          </a>
+          {{#with (get_party this compiledRelease.parties.0.id)}}
+            {{#if memberOf.0.id }}
+            <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}" title="{{memberOf.0.name}}">
+              <p class="index-list-element"><i class="fas fa-landmark"></i> {{{hilight ../../filters.dependencia.value memberOf.0.name}}}</p>
+            </a>
+            {{else}}
+            <a href="/{{get_type_url details.type }}/{{id}}" title="{{name}}">
+              <p class="index-list-element"><i class="fas fa-landmark"></i> {{{hilight ../../filters.dependencia.value name}}}</p>
+            </a>
+            {{/if}}
+          {{/with}}
+          
           <a href="">
             <p class="index-list-element"><i class="fas fa-dolly"></i> Nombre de proveedor</p>
           </a>
