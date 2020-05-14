@@ -14,7 +14,12 @@
         <h6>PÁGINAS</h5>
         <ul class="pagination justify-content-center">
 			{{#each pagesArray}}
-                <li class="page-item {{#if enabled}}{{else}}disabled{{/if}}"><a class="page-link page-{{type}}" {{#if enabled}}href="{{../current_url}}&page={{value}}"{{/if}}>{{type}} {{value}} {{enabled}}</a></li>
+                <li class="page-item {{#if enabled}}{{else}}disabled{{/if}} {{#ifCond type "==" "current"}}active{{else}}{{/ifCond}}">
+                  <a class="page-link page-{{type}}" {{#if enabled}}href="{{../current_url}}&page={{value}}"{{/if}}>
+                      {{!-- {{type}} {{value}} {{enable}} --}}
+                      {{title}}
+                  </a>
+                </li>
 			{{/each}}
         </ul>
       </div>
