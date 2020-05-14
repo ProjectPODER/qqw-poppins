@@ -6,6 +6,8 @@ source $HOME/allvars
 APP_PORT=8086:8080
 APP_VERSION=$(cat package.json | jq -r .version)
 REPO=${DOCKER_REPO}/${WEB_ORG_NAME}:${APP_VERSION}
+
+#Maybe useless variable
 export ENVIRONMENT="stg"
 
 
