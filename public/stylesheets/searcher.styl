@@ -116,6 +116,29 @@
         border-color: #d3d3d3;
         border-style: solid;
 
+    //Hide all filters, then show only filters ofr the current collection
+    .filter-element
+      display none
+    
+    .filter-collection-all
+      display block
+    
+    ul.filter-active-collection-companies .filter-collection-companies
+      display block
+    
+    ul.filter-active-collection-contracts .filter-collection-contracts
+      display block
+    
+    ul.filter-active-collection-institutions .filter-collection-institutions
+      display block
+    
+    ul.filter-active-collection-persons .filter-collection-persons
+      display block
+    
+    ul.filter-active-collection-areas .filter-collection-areas
+      display: block
+ 
+
 
 .selector-filter-type
     padding 4px 8px 2px
@@ -203,7 +226,7 @@
         -webkit-flex 0 auto
         -ms-flex 0 auto
         flex 0 auto
-
+        
     .right-elements
         display -webkit-box
         display -webkit-flex
@@ -246,6 +269,7 @@
     -ms-flex 1
     flex 1
     width 90%
+    overflow hidden
 
 .index-list-button
     -webkit-box-flex 0
@@ -279,6 +303,15 @@
 .input-group-prepend .btn, .input-group-append .btn
     z-index 0
 
+.page-ellipsis 
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.2rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    background-color: #fff;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
 
 // RESPONSIVE VIEWS
 

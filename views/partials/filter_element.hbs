@@ -48,7 +48,7 @@
               {{get_object_element filter.options value}}
             {{else}}
               {{#if (or value.min value.max) }}
-                {{value.min}}-{{value.max}}
+                {{value.min}} a {{value.max}}
               {{else}}
                 {{or value filter.default.label}}
               {{/if}}
@@ -76,18 +76,14 @@
             {{#each filter.options}}
               <button class="btn btn-light mb-3" onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</button>
             {{/each}}
-              <form class="form-inline justify-content-center">
-                <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount form-control input-minmax" value="{{value.min }}">
-                <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount form-control input-minmax mr-2" value="{{value.max }}">
-                <button type="submit" class="btn btn-light">APLICAR</button>
-              </form>
+              <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount form-control input-minmax" value="{{value.min }}">
+              <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount form-control input-minmax mr-2" value="{{value.max }}">
+              <button type="submit" class="btn btn-light">APLICAR</button>
             {{/ifCond}}
             {{# ifCond filter.type "==" "date" }}
-              <form class="form-inline justify-content-center">
-                <input type="date" id="from_date_contracts_index" class="form-control input-date" name="from_date_contracts_index" value="" min="2002-01-01">
-                <input type="date" id="to_date_contracts_index" class="form-control input-date" name="to_date_contracts_index" value="" min="2002-01-01">
-                <button type="submit" class="btn btn-light">APLICAR</button>
-              </form>
+              <input type="date" id="from_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-min" value="{{value.min }}" min="2002-01-01">
+              <input type="date" id="to_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-max" value="{{value.max }}" min="2002-01-01">
+              <button type="submit" class="btn btn-light">APLICAR</button>
             {{/ifCond}}
           </fieldset>
         </div>

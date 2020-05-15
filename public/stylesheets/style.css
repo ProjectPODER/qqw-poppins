@@ -991,6 +991,27 @@ input[type=submit].landing-search-inputtext {
   border-color: #d3d3d3;
   border-style: solid;
 }
+.filters .filter-element {
+  display: none;
+}
+.filters .filter-collection-all {
+  display: block;
+}
+.filters ul.filter-active-collection-companies .filter-collection-companies {
+  display: block;
+}
+.filters ul.filter-active-collection-contracts .filter-collection-contracts {
+  display: block;
+}
+.filters ul.filter-active-collection-institutions .filter-collection-institutions {
+  display: block;
+}
+.filters ul.filter-active-collection-persons .filter-collection-persons {
+  display: block;
+}
+.filters ul.filter-active-collection-areas .filter-collection-areas {
+  display: block;
+}
 .selector-filter-type {
   padding: 4px 8px 2px;
   font-weight: bold;
@@ -1120,6 +1141,7 @@ input[type=submit].landing-search-inputtext {
   -ms-flex: 1;
   flex: 1;
   width: 90%;
+  overflow: hidden;
 }
 .index-list-button {
   -webkit-box-flex: 0;
@@ -1152,6 +1174,16 @@ input[type=submit].landing-search-inputtext {
 .input-group-prepend .btn,
 .input-group-append .btn {
   z-index: 0;
+}
+.page-ellipsis {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.2rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  background-color: #fff;
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
 }
 @media (min-width: 576px) {
   .filters .form-inline .form-control {
