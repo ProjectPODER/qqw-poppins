@@ -4,7 +4,7 @@
         <a href="/{{get_type_url collection}}/{{ or result.ocid result.id }}">
           <p class="text-overflow" title="{{or result.name result.compiledRelease.contracts.0.title}}">
             {{{ get_classification_icon collection result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
-            {{or result.name result.compiledRelease.contracts.0.title}}
+            {{or result.name result.title}}
           </p>
         </a>
       </div>
@@ -68,6 +68,9 @@
                 <a href="/empresas/{{id}}">
                   {{{get_classification_icon type classification subclassification govLevel }}}
                   {{name }} 
+                  {{#ifCond result.supplier_count ">" 1 }}
+                    (y {{result.supplier_count}} mas)
+                  {{/ifCond}}
                 </a>
               {{/with}}
             </p>
