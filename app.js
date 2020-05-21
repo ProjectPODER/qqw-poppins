@@ -6,14 +6,12 @@ var logger = require('morgan');
 const cacheControl = require('express-cache-controller');
 var stylus = require('stylus');
 var hbs = require('express-handlebars');
-// var jquery = require('jquery');
 var moment = require('helper-moment');
 var _ = require('lodash');
 var dotenv = require('dotenv');
 var dotenvExpand = require('dotenv-expand');
 var myEnv = dotenv.config();
 const util = require('util');
-// var bootstrap = require('bootstrap');
 
 
 dotenvExpand(myEnv)
@@ -57,9 +55,8 @@ app.use("/",
 );
 
 // Bootstrap 4 and libraries
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist/'));
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+app.use('/jQuery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/tiza', express.static(__dirname + '/node_modules/tiza'));
 
 app.use('/', indexRouter);
