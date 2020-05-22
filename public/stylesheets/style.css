@@ -1049,12 +1049,12 @@ input[type=submit].landing-search-inputtext {
   padding: 14rem 5rem 0;
 }
 .index-list-title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
 }
 .index-list-title a {
   font-weight: bold;
   color: #4e4e4e;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
 }
 .index-list-elements {
@@ -1075,6 +1075,7 @@ input[type=submit].landing-search-inputtext {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  font-size: 0.9em;
 }
 .index-list-elements p {
   color: #9b9b9b;
@@ -1135,6 +1136,10 @@ input[type=submit].landing-search-inputtext {
   -ms-flex-align: center;
   align-items: center;
 }
+.index-list-item p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .index-list-group {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -1151,7 +1156,8 @@ input[type=submit].landing-search-inputtext {
   font-size: 2rem;
 }
 .hr-index {
-  margin-bottom: 20px;
+  margin: 0.85em 0;
+  background-color: #ddd;
 }
 .document-description {
   margin-top: 10px;
