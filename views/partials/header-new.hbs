@@ -1,14 +1,6 @@
 <div class="menu-bar">
   <div class="navbar-header">
     <a href="/"><img class="logo-horizontal" src="../../../images/logo-h.png" alt="Logo QuiénEsQuién.wiki"></a>
-  </div>
-  <div class="button_container" id="toggle">
-    <span class="top"></span>
-    <span class="middle"></span>
-    <span class="bottom"></span>
-  </div>
-</div>
-<div class="overlay" id="overlay">
 {{#if home }}
 {{else}}
     <form id="search-header" class="nav-form" role="search" method="get">
@@ -17,13 +9,9 @@
 {{/if}}
   <nav class="overlay-menu" {{#if home }}{{else}}style="top: 40%"{{/if}}>
     <ul>
-      <li><a href="/contratos"><i class="fas fa-file-alt"></i> Contratos</a></li>
-      <li><a href="/personas"><i class="fas fa-users"></i> Personas</a></li>
-      <li><a href="/empresas"><i class="fas fa-building"></i> Empresas y Sociedades</a></li>
-      <li><a href="/instituciones-publicas"><i class="fas fa-landmark"></i> Instituciones Públicas</a></li>
-      <li><a href="/paises"><i class="fas fa-flag"></i> Países</a></li>
-      <hr>
-      <li><a href="/sobre-qqw">Sobre QQW</a></li>
+      <li><a href="/buscador" class="button-link"><i class="fas fa-file-alt"></i> Buscador</a></li>
+      <li><a href="/sobre-qqw" class="button-link">Sobre QQW</a></li>
     </ul>
   </nav>
+  </div>
 </div>

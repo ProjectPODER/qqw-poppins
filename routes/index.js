@@ -8,21 +8,21 @@ router.get('/', lib.homePage());
 /* GET contratcs index. */
 router.get('/contratos', lib.searchPage("contracts"));
 
-/* GET persons index */
-//TODO: Default filters
-router.get('/personas', lib.searchPage("persons",{sort: "-compiledRelease.contract_amount.supplier"}));
+// /* GET persons index */
+// //TODO: Default filters
+// router.get('/personas', lib.searchPage("persons",{sort: "-compiledRelease.contract_amount.supplier"}));
 
-/* GET institutions index */
-//Don't bring UCs
-router.get('/instituciones-publicas', lib.searchPage("institutions",{"compiledRelease.subclassification": "!unidad-compradora", "compiledRelease.classification": "state,institution,municipality", "sort": "-compiledRelease.contract_amount.buyer"}));
+// /* GET institutions index */
+// //Don't bring UCs
+// router.get('/instituciones-publicas', lib.searchPage("institutions",{"compiledRelease.subclassification": "!unidad-compradora", "compiledRelease.classification": "state,institution,municipality", "sort": "-compiledRelease.contract_amount.buyer"}));
 
-router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRelease.subclassification": "unidad-compradora", "sort": "-flags.total_score", "embed": true},"institutions-uc"));
+// router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRelease.subclassification": "unidad-compradora", "sort": "-flags.total_score", "embed": true},"institutions-uc"));
 
-/* GET companies index */
-router.get('/empresas', lib.searchPage("companies",{sort: "-compiledRelease.contract_amount.supplier"}));
+// /* GET companies index */
+// router.get('/empresas', lib.searchPage("companies",{sort: "-compiledRelease.contract_amount.supplier"}));
 
-/* GET countries index */
-router.get('/paises', lib.searchPage("countries", "countries"));
+// /* GET countries index */
+// router.get('/paises', lib.searchPage("countries", "countries"));
 
 /* GET contract view */
 router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));
@@ -31,13 +31,16 @@ router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));
 router.get('/personas/:id', lib.entityPage("persons","perfil","id"));
 
 /* GET organization view. */
-router.get('/instituciones-publicas/:id', lib.entityPage("institutions","perfil","id"));
+router.get('/instituciones-publicas/:id', lib.entityPage("perfil","perfil","id"));
 
 router.get('/empresas/:id', lib.entityPage("companies","perfil", "id"));
 
 router.get('/paises/:id', lib.entityPage("countries","country","id"));
 
 router.get('/paises/:id/mujeresenlabolsa', lib.entityPage("countries","country-mujeres","id"));
+
+router.get('/regiones/:id', lib.entityPage("areas","perfil","id"));
+
 
 /* GET Searcher */
 router.get('/buscador', lib.searchPage2020());
