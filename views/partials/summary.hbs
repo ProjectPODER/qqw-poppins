@@ -1,0 +1,100 @@
+<section class="profile profile-summary" id="summary-{{summary}}">
+  <div class="profile-content">
+    <div class="row">
+      <div  class="col-m-9 col-9">
+        <h4 class="description-data-subtitle">
+            <i class="fas 
+            {{#ifCond summary "==" "buyer"}}
+            fa-money-check-alt
+            {{/ifCond}}
+            {{#ifCond summary "==" "supplier"}}
+            fa-dolly
+            {{/ifCond}}
+            {{#ifCond summary "==" "funder"}}
+            fa-donate
+            {{/ifCond}}
+            "></i> 
+            Resúmen de actividad como {{summary}}
+        </h4>
+        <div class="profile-summary-content">
+            <div class="summary-total {{summary}}-text">
+                <i class="fas fa-file-alt"></i>
+                {{format_number data.total.count}} contratos como {{summary}} por un total de <strong>{{ format_amount data.total.value }} MXN</strong>
+            </div>
+            <div class="row">
+
+                <div  class="col-m-12 col-4 mb-5">
+                <h5 class="description-data-subname">Evolución anual de contratos</h5>
+                <div id="chart-year-{{summary}}" class="summary-chart"></div>
+                </div>
+                <div class="col-m-12 col-4 mb-5">
+                <h5 class="description-data-subname">Tipo de procedimiento</h5>
+                <div id="chart-type-{{summary}}" class="summary-chart"></div>
+                </div>
+
+                <div class="col-m-12 col-4">
+                    <h5 class="description-data-subname">Entidades principales</h5>
+                    {{#each data.top_entities }}
+                        {{>result result=this collection=(get_type_collection this.details.type) }}
+                    {{/each}}
+
+                    <h5 class="description-data-subname">Mayores contratos</h5>
+                    {{#each data.top_contracts }}
+                        {{>result collection="contracts" result=this }}
+                    {{/each}}
+
+                    <div class="contract-button">
+                        {{#ifCond type '==' 'persons'}}
+                        <a href="/contratos?responsable={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos de este responsable</a>
+                        {{else }}
+                        {{#ifCond result.compiledRelease.subclassification "==" "unidad-compradora"}}
+                            <a href="/contratos?uc_id={{result.compiledRelease.id}}" class="button-link {{summary}}-button">Ver todos los contratos de esta UC</a>
+                        {{else }}
+                            <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos</a>
+                        {{/ifCond}}
+                        {{/ifCond }}
+
+                    </div>
+
+                </div>
+                <div class="col-12">
+
+                    <hr>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  
+  tiza.contractTypePie({
+    target: "#chart-type-{{summary}}", 
+    type: "{{summary}}", 
+    nameLabels: {
+        "open": "Licitación abierta",
+        "direct": "Adjudicación Directa",
+        "limited": "Invitación a tres",
+        "undefined": "Sin definir",
+        "": "Sin información"
+    },
+    procurementColors: tiza.procurementColors["{{summary}}"],
+    data: {{{j data.type }}} 
+  });
+
+  tiza.yearlyContractsBar({
+    target: "#chart-year-{{summary}}", 
+    amountKeyName: "Importe",
+    countKeyName: "Cantidad",
+    barColors: {
+        "Importe": tiza.barColors["{{summary}}"].amount,
+        "Cantidad": tiza.barColors["{{summary}}"].count
+    },
+    type: "{{summary}}", 
+    data: {{{j data.year }}} 
+  });
+</script>

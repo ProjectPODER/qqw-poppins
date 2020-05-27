@@ -31,7 +31,8 @@
     "qqw": "git+http://gitlab.rindecuentas.org/equipo-qqw/node-qqw.git#v0.2.3",
     "rss-parser": "3.7.0",
     "stylus": "0.54.5",
-    "tiza": "git+http://gitlab.rindecuentas.org/equipo-qqw/tiza.git#master"
+    "tiza": "file:../tiza"
   },
+  "tiza": "git+http://gitlab.rindecuentas.org/equipo-qqw/tiza.git#master",
   "qqw": "file:../node-qqw"
 }

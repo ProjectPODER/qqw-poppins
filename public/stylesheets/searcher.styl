@@ -24,10 +24,6 @@
         background-color #e6e6e6
         padding 1rem
         // text-align center
-    .filter-dropdown-menu-tools
-        background-color #e6e6e6
-        padding 1rem
-        min-width 240px
     .filter-dropdown-item
         white-space normal
     .filter-dropdown-item.active, .filter-dropdown-item:active
@@ -165,15 +161,9 @@
     text-overflow ellipsis
     margin 1px 0 0
 
-.social-share-icons
-    a 
-        font-size 2.5rem
-        color $darkgray !important
-        &:hover
-            color $link-hover-color !important
-
 
 // RESULTS
+.error
 .results-list
     padding 14rem 5rem 0
 
@@ -211,45 +201,52 @@
     a p 
         color #2b00f7
 
+    .full-elements
     .left-elements
-        display -webkit-box
-        display -webkit-flex
-        display -ms-flexbox
-        display flex
-        -webkit-box-pack justify
-        -webkit-justify-content space-between
-        -ms-flex-pack justify
-        justify-content space-between
-        -webkit-box-align start
-        -webkit-align-items start
-        -ms-flex-align start
-        align-items start
-        -webkit-box-flex 0
-        -webkit-flex 0 auto
-        -ms-flex 0 auto
-        flex 0 auto
-        
     .right-elements
         display -webkit-box
         display -webkit-flex
         display -ms-flexbox
         display flex
-        -webkit-box-pack justify
-        -webkit-justify-content space-between
-        -ms-flex-pack justify
-        justify-content space-between
-        -webkit-box-align start
-        -webkit-align-items start
-        -ms-flex-align start
-        align-items start
-        -webkit-box-flex 0
-        -webkit-flex 0 auto
-        -ms-flex 0 auto
-        flex 0 auto
+        max-width: 100%
+
+    .left-elements
+    .right-elements
+        max-width: 50%
+
+        // -webkit-box-pack justify
+        // -webkit-justify-content space-between
+        // -ms-flex-pack justify
+        // justify-content space-between
+        // -webkit-box-align start
+        // -webkit-align-items start
+        // -ms-flex-align start
+        // align-items start
+        // -webkit-box-flex 0
+        // -webkit-flex 0 auto
+        // -ms-flex 0 auto
+        // flex 0 auto
+        
+        // display -webkit-box
+        // display -webkit-flex
+        // display -ms-flexbox
+        // display flex
+        // -webkit-box-pack justify
+        // -webkit-justify-content space-between
+        // -ms-flex-pack justify
+        // justify-content space-between
+        // -webkit-box-align start
+        // -webkit-align-items start
+        // -ms-flex-align start
+        // align-items start
+        // -webkit-box-flex 0
+        // -webkit-flex 0 auto
+        // -ms-flex 0 auto
+        // flex 0 auto
         // float right
 
 .index-list-element
-    margin-right 20px
+    margin-right 1em
 
 .index-list-item
     display -webkit-box
@@ -265,9 +262,13 @@
     -ms-flex-align center
     align-items center
 
-    p
+    p, span
         margin-top 0
         margin-bottom 0
+        max-height: 1.5em
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap;
 
 .index-list-group
     -webkit-box-flex 1
@@ -288,7 +289,7 @@
     margin 0.85em 0
     background-color #ddd
 
-.document-description
+.document-description //QUE ES ESTO?
     margin-top 10px
 
 
@@ -360,33 +361,36 @@
                 margin auto
     
     .left-elements
-        -webkit-box-orient vertical
-        -webkit-box-direction normal
-        -webkit-flex-direction column
-        -ms-flex-direction column
-        flex-direction column
-        -webkit-box-pack justify
-        -webkit-justify-content space-between
-        -ms-flex-pack justify
-        justify-content space-between
-        -webkit-box-align start
-        -webkit-align-items flex-start
-        -ms-flex-align start
-        align-items flex-start
     .right-elements
-        -webkit-box-orient vertical
-        -webkit-box-direction normal
-        -webkit-flex-direction column
-        -ms-flex-direction column
-        flex-direction column
-        -webkit-box-pack justify
-        -webkit-justify-content space-between
-        -ms-flex-pack justify
-        justify-content space-between
-        -webkit-box-align start
-        -webkit-align-items flex-start
-        -ms-flex-align start
-        align-items flex-start
+        max-width: 50%
+        // -webkit-box-orient vertical
+        // -webkit-box-direction normal
+        // -webkit-flex-direction column
+        // -ms-flex-direction column
+        // flex-direction column
+        // -webkit-box-pack justify
+        // -webkit-justify-content space-between
+        // -ms-flex-pack justify
+        // justify-content space-between
+        // -webkit-box-align start
+        // -webkit-align-items flex-start
+        // -ms-flex-align start
+        // align-items flex-start
+
+
+        // -webkit-box-orient vertical
+        // -webkit-box-direction normal
+        // -webkit-flex-direction column
+        // -ms-flex-direction column
+        // flex-direction column
+        // -webkit-box-pack justify
+        // -webkit-justify-content space-between
+        // -ms-flex-pack justify
+        // justify-content space-between
+        // -webkit-box-align start
+        // -webkit-align-items flex-start
+        // -ms-flex-align start
+        // align-items flex-start
     // .index-list-elements
     //     -webkit-box-orient vertical
     //     -webkit-box-direction normal

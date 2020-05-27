@@ -3,7 +3,7 @@
       <div class="index-list-title">
         <a href="/{{get_type_url collection}}/{{ or result.ocid result.id }}">
           <p class="text-overflow" title="{{or result.name result.compiledRelease.contracts.0.title}}">
-            {{{ get_classification_icon collection result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
+            {{{ get_classification_icon collection (or result.compiledRelease.classification result.details.type) result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
             {{or result.name result.title}}
           </p>
         </a>
@@ -50,14 +50,18 @@
             <p class="index-list-element" title="Comprador">
               {{#with (get_party this compiledRelease.parties.0.id)}}
                {{#if memberOf.0.id }}
-                  <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}" title="{{memberOf.0.name}}">
+                  <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}">
                     {{{get_classification_icon memberOf.0.type memberOf.0.classification memberOf.0.subclassification memberOf.0.govLevel }}}
-                    {{{hilight ../filter_values.dependencia.value memberOf.0.name}}}
+                    <span title="{{memberOf.0.name}}">
+                      {{{hilight ../filter_values.dependencia.value memberOf.0.name}}}
+                    </span>
                   </a>
                 {{else}}
                   <a href="/{{get_type_url details.type }}/{{id}}">
                     {{{get_classification_icon type classification subclassification govLevel }}}
-                    {{{hilight ../filter_values.dependencia.value name}}}
+                    <span title="{{name}}">
+                      {{{hilight ../filter_values.dependencia.value name}}}
+                    </span>
                   </a>
                 {{/if}}
               {{/with}}
@@ -67,7 +71,9 @@
               {{#with result.compiledRelease.awards.[0].suppliers.[0]}}
                 <a href="/empresas/{{id}}">
                   {{{get_classification_icon type classification subclassification govLevel }}}
-                  {{name }} 
+                  <span title="{{name}}">
+                    {{name }} 
+                  </span>
                   {{#ifCond result.supplier_count ">" 1 }}
                     (y {{result.supplier_count}} mas)
                   {{/ifCond}}
@@ -76,9 +82,24 @@
             </p>
           </div>
           <div class="right-elements">
-            <p class="index-list-element"><i class="fas fa-dollar-sign"></i> {{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}</p>
-            <p class="index-list-element"><i class="fas fa-calendar-alt"></i> {{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}</p>
-            <p class="index-list-element"><i class="fas fa-clipboard-list"></i> {{result.compiledRelease.tender.procurementMethod}}</p>
+            <p class="index-list-element" title="Importe">
+              <i class="fas fa-dollar-sign"></i> 
+              <span title="{{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}">
+                {{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}
+              </span> 
+              </p>
+            <p class="index-list-element">
+              <i class="fas fa-calendar-alt" title="Fecha"></i> 
+              <span title="{{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}">
+                {{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}
+              </span>
+            </p>
+            <p class="index-list-element">
+              <i class="fas fa-clipboard-list" title="Tipo de procedimiento"></i> 
+              <span title="{{result.compiledRelease.tender.procurementMethod}}">
+                {{result.compiledRelease.tender.procurementMethod}}
+              </span>
+            </p>
           </div>
         {{/ifCond}}
 
@@ -86,16 +107,23 @@
         {{#ifCond collection "==" "companies" }}
           <div class="left-elements">
             {{# if contract_count.supplier }}
-              <p class="index-list-element">
-                <a href="?collection=contracts&proveedor={{name}}">
+              <p class="index-list-element supplier-text">
+                <a href="?collection=contracts&proveedor={{name}}" title="Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de {{format_amount contract_amount.supplier}} MXN">
                   <i class="fas fa-file-alt"></i> Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.supplier}} MXN
                 </a>
               </p>
             {{/if}}
             {{# if contract_count.buyer }}
-              <p class="index-list-element">
-                <a href="?collection=contracts&comprador={{name}}">
+              <p class="index-list-element buyer-text">
+                <a href="?collection=contracts&comprador={{name}}" title="Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de {{format_amount contract_amount.buyer}} MXN">
                   <i class="fas fa-file-alt"></i> Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.buyer}} MXN
+                </a>
+              </p>
+            {{/if}}
+            {{# if contract_count.funder }}
+              <p class="index-list-element funder-text">
+                <a href="?collection=contracts&financiador={{name}}" title="Financiador en {{format_number contract_count.funder}} contrato(s) por un total de {{format_amount contract_amount.funder}} MXN">
+                  <i class="fas fa-file-alt"></i> Financiador en {{format_number contract_count.funder}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.funder}} MXN
                 </a>
               </p>
             {{/if}}
@@ -119,22 +147,30 @@
 
         {{!-- INSTITUCIONES --}}
         {{#ifCond collection "==" "institutions" }}
-          <div class="left-elements flex-column">
+          <div class="full-elements">
             {{# if contract_count.supplier }}
-              <p class="index-list-element">
-                <a href="?collection=contracts&proveedor={{name}}">
+              <p class="index-list-element supplier-text">
+                <a href="?collection=contracts&proveedor={{name}}" title="Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de {{format_amount contract_amount.supplier}} MXN">
                   <i class="fas fa-file-alt"></i> Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.supplier}} MXN
                 </a>
               </p>
             {{/if}}
             {{# if contract_count.buyer }}
-              <p class="index-list-element">
-                <a href="?collection=contracts&comprador={{name}}">
+              <p class="index-list-element buyer-text">
+                <a href="?collection=contracts&comprador={{name}}" title="Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de {{format_amount contract_amount.buyer}} MXN">
                   <i class="fas fa-file-alt"></i> Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.buyer}} MXN
                 </a>
               </p>
             {{/if}}
+            {{# if contract_count.funder }}
+              <p class="index-list-element funder-text">
+                <a href="?collection=contracts&financiador={{name}}" title="Financiador en {{format_number contract_count.funder}} contrato(s) por un total de {{format_amount contract_amount.funder}} MXN">
+                  <i class="fas fa-file-alt"></i> Financiador en {{format_number contract_count.funder}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.funder}} MXN
+                </a>
+              </p>
+            {{/if}}
           </div>
+
         {{/ifCond}}
 
         {{!-- PAISES --}}

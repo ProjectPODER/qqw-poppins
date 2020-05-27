@@ -1,0 +1,42 @@
+<li class="nav-item dropdown general-filters text-center">
+    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="DATOS">
+        DATOS <br>
+        <i class="fas fa-download icon-tools"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
+        <h6>URL DE LA API</h6>
+        <input class="w-100" id="apiUrl" type="text" name="destinatario" value="{{api_url}}">
+        <button class="btn btn-primary w-100" onclick="copyClipboard()">Copiar URL</button>
+        <div class="dropdown-divider mt-3 mb-3"></div>
+        <a class="btn btn-primary w-100" href="{{url_csv api_url}}" download="datos-QQW.csv" target="_blank">Descargar CSV <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="Descarga CSV, limitada a 1000 filas."></i></a>
+        <div class="mt-2">
+            <a href="https://quienesquienapi.readthedocs.io/es/latest/" class="doc-download-link">Ver documentación</a>
+        </div>
+    </div>
+</li>
+<li class="nav-item dropdown general-filters text-center">
+    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="COMPARTIR">
+        COMPARTIR <br>
+        <i class="fas fa-share-alt icon-tools"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
+        <h6>COMPARTIR PÁGINA</h6>
+        <input class="w-100" id="pageUrl" type="text" name="destinatario" value="{{share_url}}">
+        <button class="btn btn-primary w-100" onclick="copyClipboard()">Copiar URL</button>
+        <div class="dropdown-divider mt-3"></div>
+        <div class="social-share-icons">
+            <a class="mr-4" href="https://www.facebook.com/sharer/sharer.php?u=https://www.quienesquien.wiki{{share_url}}&t=QuienesQuienWiki" target="_blank"><i class="fab fa-facebook-square"></i></a>
+            <a href="https://twitter.com/intent/tweet?text=Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas..&url=https://www.quienesquien.wiki{{share_url}}&via=ProjectPODER" target="_blank"><i class="fab fa-twitter-square"></i></a>
+        </div>
+    </div>
+</li>
+<li class="text-center">
+    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="REPORTAR">
+        REPORTAR <br>
+        <i class="fas fa-comment icon-tools"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
+        {{> send_info_form}}
+        
+    </div>
+</li>
