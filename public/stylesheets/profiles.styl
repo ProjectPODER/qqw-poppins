@@ -192,6 +192,11 @@
   width 100%
   padding 0.5em 1em
 
+.description-data-title
+  h3
+    width calc(100% - 305px)
+
+
 .fixed-title,
 .fixed-title-contract
   position fixed !important
@@ -210,6 +215,7 @@
     //   font-size 15px
   .description-data-title
     h3
+      width calc(100% - 280px)
       margin-top 0
       font-size 1.2rem
       overflow hidden
@@ -374,9 +380,12 @@ section
   margin-top 4em
 
 .js-title-data
-  font-weight: bold 
   margin-top: 2em;
   margin-bottom: 0.5em; 
+  font-size: 0.8em 
+
+.js-data 
+  font-size 1.1em
 
 .description-data-subtitle
   color #2d1c9d
@@ -397,6 +406,23 @@ section
   font-size 2rem
   font-weight bold
   margin 23px 0 5px
+
+.contract-award-item
+  border 1px solid #ccc
+  padding 0 1em
+  margin 1em
+
+  .contract-award-title
+    background #eee
+    border-bottom 1px solid #ccc
+    padding-top: 0.3em
+    padding-bottom: 0.3em
+    margin: 0 0 0.5em 0
+
+  .contract-award-notes
+    margin: 1em 0 0em 0
+    padding-top: 0.5em
+    padding-bottom: 0.5em
 
 @media screen and (max-width: 1149px)
   .grid
@@ -479,9 +505,11 @@ section
 
 .flag_pole_min,
 .flag_pole_max {
-  background: rgba(0,0,0,0.5);
+  background: rgba(255, 255, 255, 0.85);
   height: 1.5em;
   float: left;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 .flag_pole_max {
   position: absolute;

@@ -6,8 +6,21 @@
   src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 body {
-  font-family: 'Montserrat', sans-serif;
   line-height: 1.42857143;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+footer,
+.index-list-title,
+.button-link,
+.about-sidebar,
+nav {
+  font-family: 'Montserrat', sans-serif;
 }
 input,
 button,
@@ -279,6 +292,52 @@ h2 .card-image-container.document-title {
   -o-background-size: cover;
   background-size: cover;
   background-blend-mode: lighten;
+}
+.qqw-home section.landing-header,
+.qqw-home section.explore-data,
+.qqw-home section.proyectos,
+.qqw-home section.investigaciones,
+.qqw-home section.bg-gray {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.qqw-home section.profile {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.qqw-home section.profile-header {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+.qqw-home section.country-mujeres {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.qqw-home section.data-sources {
+  background-color: #f7f7f7;
+}
+.qqw-home section.proyectos {
+  background-color: #110046;
+}
+.qqw-home section.investigaciones {
+  border-top: 2px dotted #3a32f9;
+}
+.qqw-home section.investigaciones h2 {
+  font-weight: bold;
+  text-align: center;
+}
+.qqw-home section.tabs {
+  margin-top: 2rem;
+  min-height: 100vh;
+}
+.qqw-home section.tabs h3 {
+  font-size: 1.5rem;
+  color: #3a32f9;
+  margin-bottom: 2rem;
+}
+.qqw-home section.tabs h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 div.landing-header-content {
   padding: 4rem;
@@ -850,6 +909,13 @@ input[type=submit].landing-search-inputtext {
 }
 .filters ul.filter-active-collection-areas .filter-collection-areas {
   display: block;
+}
+.filters .left-box {
+  overflow: hidden;
+  width: calc(100% - 400px);
+}
+.filters .left-box #filtersList {
+  flex-wrap: nowrap;
 }
 .selector-filter-type {
   padding: 4px 8px 2px;
@@ -1830,6 +1896,9 @@ input[type=submit].landing-search-inputtext {
   width: 100%;
   padding: 0.5em 1em;
 }
+.description-data-title h3 {
+  width: calc(100% - 305px);
+}
 .fixed-title,
 .fixed-title-contract {
   position: fixed !important;
@@ -1842,6 +1911,7 @@ input[type=submit].landing-search-inputtext {
 }
 .fixed-title .description-data-title h3,
 .fixed-title-contract .description-data-title h3 {
+  width: calc(100% - 280px);
   margin-top: 0;
   font-size: 1.2rem;
   overflow: hidden;
@@ -2019,9 +2089,12 @@ section.country-mujeres {
   margin-top: 4em;
 }
 .js-title-data {
-  font-weight: bold;
   margin-top: 2em;
   margin-bottom: 0.5em;
+  font-size: 0.8em;
+}
+.js-data {
+  font-size: 1.1em;
 }
 .description-data-subtitle {
   color: #2d1c9d;
@@ -2042,6 +2115,23 @@ section.country-mujeres {
   font-size: 2rem;
   font-weight: bold;
   margin: 23px 0 5px;
+}
+.contract-award-item {
+  border: 1px solid #ccc;
+  padding: 0 1em;
+  margin: 1em;
+}
+.contract-award-item .contract-award-title {
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  margin: 0 0 0.5em 0;
+}
+.contract-award-item .contract-award-notes {
+  margin: 1em 0 0em 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 @media screen and (max-width: 1149px) {
   .grid {
@@ -2125,9 +2215,11 @@ section.country-mujeres {
 }
 .flag_pole_min,
 .flag_pole_max {
-  background: rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.85);
   height: 1.5em;
   float: left;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
 }
 .flag_pole_max {
   position: absolute;

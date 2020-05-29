@@ -45,11 +45,45 @@
             </div>
         </div>
       </div>
+
+
+{{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
   </section>
 {{else}}
   <section class="error">
-    Acá van los errores
+    <h2>
+      <i class="fa fa-search"></i>
+      Búsqueda sin resultados
+    </h2>
+    <p>
+      Esta búsqueda no ha dado resultados, aquí te damos algunas idea para solucionarlo:
+    </p>
+    <ul>
+      <li>
+        La búsqueda de todos los tipos no funciona durante la etapa de Beta. Por favor elige un tipo para realizar tu búsqueda.
+      </li>
+      <li>
+        Busca las empresas sin la terminación legal y solo los apellidos de las personas.
+      </li>
+      <li>
+        No uses siglas como CFE, desarrolla el nombre completo: Comisión Federal de Electricidad.
+      </li>
+      <li>
+        Consulta nuestro <a href="/entidades-y-fuentes">listado de fuentes</a> para saber sobre que bases estás búscando.
+      </li>
+    </ul>
+    <p>
+      ¿Cómo puedes seguir?
+    </p>
+    <ul>
+      <li>
+        <a href="/buscador">Borrando todos los filtros</a>.
+      </li>
+      <li>
+        Consultar el <a href="/manual">Manual de Investigación</a> o la <a href="https://quienesquienapi.readthedocs.io/es/latest/">documentación de nuestra API</a>.
+      </li>
+    </ul>
+
   </section>
 {{/ifCond}}
 
-{{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
