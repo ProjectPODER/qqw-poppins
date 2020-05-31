@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8
+FROM mhart/alpine-node:10
 MAINTAINER Kronops <kronops@kronops.com.mx>
 
 ENV PORT=${PORT:-8080}
