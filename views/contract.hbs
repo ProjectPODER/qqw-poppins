@@ -20,7 +20,7 @@
 <nav id="right-menu" class="menu-profile">
   <ul class="right-menu-profile nav-stacked nav">
       <li>
-          <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> Resúmen</a>
+          <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> Resumen</a>
       </li>
       <li>
           <a class="anchor" href="#calidad"><i class="fas fa-file-signature"></i> Evaluación</a>
@@ -48,6 +48,22 @@
     <div class="col-9 col-m-9">
       <h4 class="description-data-subtitle"><i class="fas fa-file"></i> RESUMEN DEL CONTRATO</h4>
       <div class="row flex">
+
+        <div class="col-m-6 col-6 contract-total-amount">
+          <p class="js-title-data">Importe total</p>
+          <p class="js-data">{{format_amount result.records.0.compiledRelease.total_amount}}</p>
+        </div>
+
+        <div class="col-6">
+            <p class="js-title-data">Período de contrato(s)</p>
+            Entre el {{moment result.records.0.startDate date lang="es" format="LL"}} y el {{moment result.records.0.endDate date lang="es" format="LL"}}
+        </div>
+
+        <div class="col-6">
+            <p class="js-title-data">Cantidad de contratos</p>
+            {{ result.records.0.compiledRelease.awards.length }}
+        </div>
+
 
 
         {{#if result.records.0.description }}
@@ -79,15 +95,6 @@
 
         </div>
 
-        <div class="col-6">
-            <p class="js-title-data">Período de contrato(s)</p>
-            Entre el {{moment result.records.0.startDate date lang="es" format="LL"}} y el {{moment result.records.0.endDate date lang="es" format="LL"}}
-        </div>
-
-        <div class="col-m-6 col-6">
-          <p class="js-title-data">Importe total</p>
-          <p class="js-data">{{format_amount result.records.0.compiledRelease.total_amount}}</p>
-        </div>
 
         {{#if result.records.0.supplier_summary }}
         <div class="col-m-12 col-12 ">
@@ -107,26 +114,6 @@
           {{/each}}
         </div>
         {{/if}}
-
-
-
-
-        <div class="col-12">
-          <p class="js-title-data">Documentos oficiales</p>
-          {{#if result.records.0.compiledRelease.awards.length }}
-            {{#each result.records.0.compiledRelease.awards}}
-              {{#if documents.length }}
-                {{#each documents }}
-                <a href="{{url}}">
-                  <i class="fas fa-external-link-alt"></i>
-                  Ver documento {{math @../index "+" 1}}
-                </a>
-                <br>
-                {{/each}}
-              {{/if}}
-            {{/each}}
-          {{/if}}
-        </div>
 
         <div class="col-12">
           <hr>
@@ -172,6 +159,7 @@
               <h4 class="description-data-subname" id="contract_problemas_destacados">PROBLEMAS DESTACADOS</h4>
               <ul class="party_flags_recommendations_list">
                 {{# each this.rules}}
+                {{j this }}
                     <li class="party_flags_recommendations_item">{{#with (contract_recommendations name) }}{{ contract_string }}{{/with}}</li>
                 {{/each}}
               </ul>
@@ -449,6 +437,20 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                   </p>
               </div>
               {{/if}}
+
+              {{#if ../documents.length }}
+              <div class="col-12">
+                <p class="js-title-data">Documentos oficiales</p>
+                  {{#each ../documents }}
+                    <a href="{{url}}">
+                      <i class="fas fa-external-link-alt"></i>
+                      Ver {{documentType}} {{math @../index "+" 1}} en sitio oficial 
+                    </a>
+                  <br>
+                  {{/each}}
+              </div>
+              {{/if}}
+
               <div class="col-m-12 col-12 contract-award-notes">
                 {{#if status }}
                   <i class="fa fa-info"></i> Este contrato está {{statusMxCnet}} ({{status}})<br>

@@ -20,6 +20,7 @@
             <div class="summary-total {{summary}}-text">
                 <i class="fas fa-file-alt"></i>
                 {{format_number data.total.count}} contratos como {{summary}} por un total de <strong>{{ format_amount data.total.value }} MXN</strong>
+                entre los años {{ get_first_year data.year }} y {{ get_last_year data.year }}.
             </div>
             <div class="row">
 
