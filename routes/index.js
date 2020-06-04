@@ -5,45 +5,35 @@ var lib = require('../lib/lib.js');
 /* GET home page. */
 router.get('/', lib.homePage());
 
-/* GET contratcs index. */
-router.get('/contratos', lib.searchPage("contracts"));
-
-// /* GET persons index */
-// //TODO: Default filters
-// router.get('/personas', lib.searchPage("persons",{sort: "-compiledRelease.contract_amount.supplier"}));
-
-// /* GET institutions index */
+/* Redirect old search pages */
+router.get('/personas', lib.redirectToSearch("persons"));
+router.get('/contratos', lib.redirectToSearch("contracts"));
 // //Don't bring UCs
 // router.get('/instituciones-publicas', lib.searchPage("institutions",{"compiledRelease.subclassification": "!unidad-compradora", "compiledRelease.classification": "state,institution,municipality", "sort": "-compiledRelease.contract_amount.buyer"}));
-
+router.get('/instituciones-publicas', lib.redirectToSearch("institutions"));
 // router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRelease.subclassification": "unidad-compradora", "sort": "-flags.total_score", "embed": true},"institutions-uc"));
-
-// /* GET companies index */
-// router.get('/empresas', lib.searchPage("companies",{sort: "-compiledRelease.contract_amount.supplier"}));
-
-// /* GET countries index */
-// router.get('/paises', lib.searchPage("countries", "countries"));
-
-/* GET contract view */
-router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));
-
-/* GET person view. */
-router.get('/personas/:id', lib.entityPage("persons","perfil","id"));
-
-/* GET organization view. */
-router.get('/instituciones-publicas/:id', lib.entityPage("institutions","perfil","id"));
-
-router.get('/empresas/:id', lib.entityPage("companies","perfil", "id"));
-
-router.get('/paises/:id', lib.entityPage("countries","country","id"));
-
-router.get('/paises/:id/mujeresenlabolsa', lib.entityPage("countries","country-mujeres","id"));
-
-router.get('/regiones/:id', lib.entityPage("areas","perfil","id"));
-
+router.get('/unidades-compradoras', lib.redirectToSearch("institutions-uc"));
+router.get('/empresas', lib.redirectToSearch("companies"));
+router.get('/paises', lib.redirectToSearch("countries"));
 
 /* GET Searcher */
 router.get('/buscador', lib.searchPage2020());
+
+/* GET entity pages. */
+router.get('/personas/:id', lib.entityPage("persons","perfil","id"));
+router.get('/instituciones-publicas/:id', lib.entityPage("institutions","perfil","id"));
+router.get('/empresas/:id', lib.entityPage("companies","perfil", "id"));
+router.get('/regiones/:id', lib.entityPage("areas","perfil","id"));
+
+/* GET contract pages. */
+//TODO: Agregar páginas de expediente
+router.get('/contratos/:id', lib.entityPage("contracts","contract","ocid"));
+
+//TODO: Ver cómo hacemos con paises y regiones
+router.get('/paises/:id/mujeresenlabolsa', lib.entityPage("countries","country-mujeres","id"));
+router.get('/paises/:id', lib.entityPage("countries","country","id"));
+
+//STATIC PAGES
 
 /* GET about */
 router.get('/sobre-qqw', lib.staticPage("about"));
@@ -69,14 +59,16 @@ router.get('/privacidad', lib.staticPage("privacy"));
 /* GET contact */
 router.get('/contacto', lib.staticPage("contact"));
 
+/* POST contact */
 router.post('/send', lib.sendMailPage());
 
-
+/* GET mujeres español */
 router.get('/mujeres-en-la-bolsa', lib.staticPage("mujeres-en-la-bolsa",null));
+/* GET mujeres inglés */
 router.get('/women-in-the-stock-exchange', lib.staticPage("mujeres-en-la-bolsa-english",null));
 
+/* GET gráficos mujeres iframe */
 router.get('/mujeres-en-la-bolsa/grafico1', lib.staticPage("graph1", null));
 router.get('/mujeres-en-la-bolsa/grafico2', lib.staticPage("graph2", null));
-
 
 module.exports = router;

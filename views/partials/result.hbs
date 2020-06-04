@@ -12,20 +12,7 @@
         {{!-- PERSONAS --}}
         {{#ifCond collection "==" "persons" }}
           <div class="left-elements">
-            {{# if contract_count.supplier }}
-              <p class="index-list-element">
-                <a href="?collection=contracts&proveedor={{name}}">
-                  <i class="fas fa-file-alt"></i> Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.supplier}} MXN
-                </a>
-              </p>
-            {{/if}}
-            {{# if contract_count.buyer }}
-              <p class="index-list-element">
-                <a href="?collection=contracts&comprador={{name}}">
-                  <i class="fas fa-file-alt"></i> Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.buyer}} MXN
-                </a>
-              </p>
-            {{/if}}
+            {{> result-contracts this }}
   
           </div>
           <div class="right-elements">
@@ -106,27 +93,8 @@
         {{!-- EMPRESAS --}}
         {{#ifCond collection "==" "companies" }}
           <div class="left-elements">
-            {{# if contract_count.supplier }}
-              <p class="index-list-element supplier-text">
-                <a href="?collection=contracts&proveedor={{name}}" title="Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de {{format_amount contract_amount.supplier}} MXN">
-                  <i class="fas fa-file-alt"></i> Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.supplier}} MXN
-                </a>
-              </p>
-            {{/if}}
-            {{# if contract_count.buyer }}
-              <p class="index-list-element buyer-text">
-                <a href="?collection=contracts&comprador={{name}}" title="Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de {{format_amount contract_amount.buyer}} MXN">
-                  <i class="fas fa-file-alt"></i> Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.buyer}} MXN
-                </a>
-              </p>
-            {{/if}}
-            {{# if contract_count.funder }}
-              <p class="index-list-element funder-text">
-                <a href="?collection=contracts&financiador={{name}}" title="Financiador en {{format_number contract_count.funder}} contrato(s) por un total de {{format_amount contract_amount.funder}} MXN">
-                  <i class="fas fa-file-alt"></i> Financiador en {{format_number contract_count.funder}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.funder}} MXN
-                </a>
-              </p>
-            {{/if}}
+             {{> result-contracts this }}
+
           </div>
           <div class="right-elements">
             <a href="">
@@ -148,27 +116,7 @@
         {{!-- INSTITUCIONES --}}
         {{#ifCond collection "==" "institutions" }}
           <div class="full-elements">
-            {{# if contract_count.supplier }}
-              <p class="index-list-element supplier-text">
-                <a href="?collection=contracts&proveedor={{name}}" title="Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de {{format_amount contract_amount.supplier}} MXN">
-                  <i class="fas fa-file-alt"></i> Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.supplier}} MXN
-                </a>
-              </p>
-            {{/if}}
-            {{# if contract_count.buyer }}
-              <p class="index-list-element buyer-text">
-                <a href="?collection=contracts&comprador={{name}}" title="Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de {{format_amount contract_amount.buyer}} MXN">
-                  <i class="fas fa-file-alt"></i> Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.buyer}} MXN
-                </a>
-              </p>
-            {{/if}}
-            {{# if contract_count.funder }}
-              <p class="index-list-element funder-text">
-                <a href="?collection=contracts&financiador={{name}}" title="Financiador en {{format_number contract_count.funder}} contrato(s) por un total de {{format_amount contract_amount.funder}} MXN">
-                  <i class="fas fa-file-alt"></i> Financiador en {{format_number contract_count.funder}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount.funder}} MXN
-                </a>
-              </p>
-            {{/if}}
+             {{> result-contracts this }}
           </div>
 
         {{/ifCond}}
