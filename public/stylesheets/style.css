@@ -100,30 +100,30 @@ hr {
   top: -15px;
   max-width: 50em;
 }
-img.logo-horizontal {
+.navbar-header img.logo-horizontal {
   width: 10rem;
   margin: 1.1rem 1em;
 }
-img.logo {
+.navbar-header img.logo {
   width: 714px;
   margin: auto;
 }
-img.name {
+.navbar-header img.name {
   width: 25rem;
   vertical-align: middle;
   margin-left: 1rem;
 }
-.icon-navbar {
+.navbar-header .icon-navbar {
   width: 20px;
   margin-right: 10px;
   margin-top: -6px;
 }
-nav {
+.navbar-header nav {
   float: right;
   margin: 20px 20px 0 0;
 }
-nav ul,
-nav li {
+.navbar-header nav ul,
+.navbar-header nav li {
   display: inline-block;
   margin: 0;
   padding: 0;
@@ -1711,6 +1711,11 @@ input[type=submit].landing-search-inputtext {
 }
 #right-menu li a i {
   width: 25px;
+}
+.breadcrumb {
+  background: none;
+  padding: 0;
+  margin: 0;
 }
 .menu-profile {
   margin-top: 0 !important;

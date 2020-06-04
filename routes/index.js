@@ -9,9 +9,7 @@ router.get('/', lib.homePage());
 router.get('/personas', lib.redirectToSearch("persons"));
 router.get('/contratos', lib.redirectToSearch("contracts"));
 // //Don't bring UCs
-// router.get('/instituciones-publicas', lib.searchPage("institutions",{"compiledRelease.subclassification": "!unidad-compradora", "compiledRelease.classification": "state,institution,municipality", "sort": "-compiledRelease.contract_amount.buyer"}));
 router.get('/instituciones-publicas', lib.redirectToSearch("institutions"));
-// router.get('/unidades-compradoras', lib.searchPage("institutions",{"compiledRelease.subclassification": "unidad-compradora", "sort": "-flags.total_score", "embed": true},"institutions-uc"));
 router.get('/unidades-compradoras', lib.redirectToSearch("institutions-uc"));
 router.get('/empresas', lib.redirectToSearch("companies"));
 router.get('/paises', lib.redirectToSearch("countries"));
