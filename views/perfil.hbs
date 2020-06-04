@@ -9,15 +9,26 @@
       </h3>
     </div>
     <div class="profile-breadcrumb">
-      <a href="/">Inicio</a> &gt;
-      {{#each result.compiledRelease.area }}
-        {{#if id }}
-          <a href="/regiones/{{id}}">
-            {{translate_area id}}
-          </a> &gt;
-        {{/if}}
-      {{/each}}
-      <a href="/{{get_type_url type}}">{{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}</a>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+              <a href="/">Inicio</a>
+          </li>
+          {{#each result.compiledRelease.area }}
+            {{#if id }}
+              <li class="breadcrumb-item">
+                <a href="/regiones/{{id}}">
+                  {{translate_area id}}
+                </a>
+              </li>
+            {{/if}}
+          {{/each}}
+          <li class="breadcrumb-item">
+            <a href="/{{get_type_url type}}">{{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}</a>
+          </li>
+
+        </ol>        
+      </nav>      
     </div>
     <div class="right-box ml-auto filters">
         <ul class="nav nav-pills d-flex flex-nowrap">
@@ -26,6 +37,8 @@
     </div>
   </div>
 </section>
+{{> report_modals }}
+
 
 <nav id="right-menu" class="menu-profile">
   <ul class="right-menu-profile nav-stacked nav">
