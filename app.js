@@ -2,7 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var morgan = require('morgan');
 const cacheControl = require('express-cache-controller');
 var stylus = require('stylus');
 var hbs = require('express-handlebars');
@@ -39,7 +39,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use(cacheControl());
-app.use(logger('dev'));
+
+// log only 4xx and 5xx responses to console
+app.use(morgan('short', {
+  skip: function (req, res) { return (res.statusCode < 400 && req.headers.accept.indexOf("html") == -1 ) }
+}))
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
