@@ -791,6 +791,12 @@ input[type=submit].landing-search-inputtext {
 .filters .filter-dropdown-item {
   white-space: normal;
 }
+.filters .filter-dropdown-item p {
+  margin: 0;
+}
+.filters .filter-type-description {
+  font-size: 0.7em;
+}
 .filters .filter-dropdown-item.active,
 .filters .filter-dropdown-item:active {
   color: #16181b;
