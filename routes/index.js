@@ -56,6 +56,9 @@ router.get('/aliados', lib.staticPage("partners"));
 /* GET privacy */
 router.get('/privacidad', lib.staticPage("privacy"));
 
+/* GET privacy */
+router.get('/licencia', lib.staticPage("license"));
+
 /* GET contact */
 router.get('/contacto', lib.staticPage("contact"));
 
