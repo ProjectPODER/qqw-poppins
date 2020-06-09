@@ -333,10 +333,10 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
             <p class="js-data">{{moment result.records.0.compiledRelease.tender.tenderPeriod.startDate  date lang="es" format="LL"}} - {{moment result.records.0.compiledRelease.tender.tenderPeriod.endDate date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
-        {{#if result.records.0.compiledRelease.tender.contractPeriod.multiyearContractMxCnet }}
+        {{#if result.records.0.compiledRelease.tender.consolidatedProcessMxCnet }}
         <div class="col-m-6 col-6 mb-2">
-            <p class="js-title-data">Contrato plurianual: </p>
-            <p class="js-data">{{get_bool result.records.0.compiledRelease.tender.contractPeriod.multiyearContractMxCnet}}</p>
+            <p class="js-title-data">Proceso consolidado: </p>
+            <p class="js-data">{{get_bool result.records.0.compiledRelease.tender.consolidatedProcessMxCnet }}</p>
         </div>
         {{/if}}
 
@@ -458,7 +458,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                 {{#if filedMxCnet }}
                   <i class="fa fa-info"></i> Este contrato ha sido archivado
                 {{/if}}
-                {{#if period.multiyearContractMxCnet }}
+                {{#if multiyearContractMxCnet }}
                   <i class="fa fa-info"></i> Este contrato plurianual
                 {{/if}}
                 {{#if hasFramework }}
