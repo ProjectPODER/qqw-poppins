@@ -159,7 +159,7 @@
               <h4 class="description-data-subname" id="contract_problemas_destacados">PROBLEMAS DESTACADOS</h4>
               <ul class="party_flags_recommendations_list">
                 {{# each this.rules}}
-                {{j this }}
+                {{!-- {{j this }} --}}
                     <li class="party_flags_recommendations_item">{{#with (contract_recommendations name) }}{{ contract_string }}{{/with}}</li>
                 {{/each}}
               </ul>
@@ -456,16 +456,16 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                   <i class="fa fa-info"></i> Este contrato está {{statusMxCnet}} ({{status}})<br>
                 {{/if}}
                 {{#if filedMxCnet }}
-                  <i class="fa fa-info"></i> Este contrato ha sido archivado
+                  <i class="fa fa-info"></i> Este contrato ha sido archivado<br>
                 {{/if}}
                 {{#if multiyearContractMxCnet }}
-                  <i class="fa fa-info"></i> Este contrato plurianual
+                  <i class="fa fa-info"></i> Este contrato plurianual<br>
                 {{/if}}
                 {{#if hasFramework }}
-                  <i class="fa fa-info"></i> Este contrato fue realizado como parte de un convenio marco
+                  <i class="fa fa-info"></i> Este contrato fue realizado como parte de un convenio marco<br>
                 {{/if}}
                 {{#if hasAmendments }}
-                  <i class="fa fa-info"></i> Este contrato es una extensión, tiene correcciones o enmiendas
+                  <i class="fa fa-info"></i> Este contrato es una extensión, tiene correcciones o enmiendas<br>
                 {{/if}}
               </div>
             {{/with }}
