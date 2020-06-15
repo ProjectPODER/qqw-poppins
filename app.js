@@ -42,7 +42,7 @@ app.use(cacheControl());
 
 // log only 4xx and 5xx responses to console
 app.use(morgan('short', {
-  skip: function (req, res) { return (res.statusCode < 400 && req.headers.accept.indexOf("html") == -1 ) }
+  skip: function (req, res) { return (res.statusCode < 400 && (req.headers.accept && req.headers.accept.indexOf("html") == -1 )) }
 }))
 
 
