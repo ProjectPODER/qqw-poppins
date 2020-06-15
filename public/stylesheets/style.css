@@ -887,7 +887,6 @@ input[type=submit].landing-search-inputtext {
   width: 200px !important;
   margin-right: 0.5rem;
   padding: 5px 5px 5px 25px;
-  width: 100%;
   background-image: url("../images/calendar.png");
   background-repeat: no-repeat;
   background-position: 6px;
