@@ -1,6 +1,6 @@
 <div class="menu-bar">
   <div class="navbar-header">
-    <a href="/"><img class="logo-horizontal" src="../../../images/logo-h.png" alt="Logo QuiénEsQuién.wiki"></a>
+    <a href="/"><img class="logo-horizontal" src="../../../images/logo-h.png" alt="{{t "Logo QuiénEsQuién.wiki"}}"></a>
 {{#if home }}
 {{else}}
     <form id="search-header" class="nav-form" role="search" method="get">
@@ -9,8 +9,8 @@
 {{/if}}
   <nav class="overlay-menu" {{#if home }}{{else}}style="top: 40%"{{/if}}>
     <ul>
-      <li><a href="/buscador" class="button-link"><i class="fas fa-file-alt"></i> Buscador</a></li>
-      <li><a href="/sobre-qqw" class="button-link">Sobre QQW</a></li>
+      <li><a href="/buscador" class="button-link"><i class="fas fa-file-alt"></i> {{t "Buscador"}}</a></li>
+      <li><a href="/sobre-qqw" class="button-link">{{t "Sobre QQW"}}</a></li>
     </ul>
   </nav>
   </div>
