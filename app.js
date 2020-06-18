@@ -30,7 +30,10 @@ app.engine('.hbs', hbs({
         //  path to your partials
         path.join(__dirname, 'views/partials'),
     ],
-    helpers: require("./lib/helpers.js").helpers
+    helpers: require("./lib/helpers.js").helpers,
+    data: {
+      test: "true"
+    }
 }));
 
 
