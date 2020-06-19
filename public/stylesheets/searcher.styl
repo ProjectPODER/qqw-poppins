@@ -50,7 +50,7 @@
         border-top 1px solid #ffffff
     .filter-title, .filter-title-simple
         color $light-text-color
-        font-size 0.9rem
+        font-size 0.8rem
         border-radius 0
         border-bottom 2px solid transparent
         overflow hidden
@@ -78,13 +78,13 @@
         margin 0
     .filter-selected
         &.simple
-            padding 4px 8px 2px
+            padding 4px 1rem
             overflow hidden
             white-space nowrap
             text-overflow ellipsis
             max-width 200px
-            display flex !important
-            align-content center !important
+            // display flex !important
+            // align-content center !important
     .filter-title:hover
         background-color #e6e6e6
     .nav-pills .show > .nav-link
@@ -173,7 +173,7 @@
 // RESULTS
 .error
 .results-list
-    padding 14rem 5rem 0
+    padding 12rem 5rem 0
 
 .index-list-title
     margin-bottom 0.4rem
@@ -198,10 +198,10 @@
     -webkit-justify-content space-between
     -ms-flex-pack justify
     justify-content space-between
-    -webkit-box-align center
-    -webkit-align-items center
-    -ms-flex-align center
-    align-items center
+    -webkit-box-align start
+    -webkit-align-items start
+    -ms-flex-align start
+    align-items start
     font-size 0.9em
     p 
         color $gray
@@ -212,15 +212,17 @@
     .full-elements
     .left-elements
     .right-elements
-        display -webkit-box
-        display -webkit-flex
-        display -ms-flexbox
-        display flex
-        max-width: 100%
+        // display -webkit-box
+        // display -webkit-flex
+        // display -ms-flexbox
+        // display flex
+        // max-width: 100%
 
     .left-elements
     .right-elements
-        max-width: 50%
+        padding 0
+        // max-width: 50%
+
 
         // -webkit-box-pack justify
         // -webkit-justify-content space-between
@@ -368,9 +370,9 @@
                 float none !important
                 margin auto
     
-    .left-elements
-    .right-elements
-        max-width: 50%
+    // .left-elements
+    // .right-elements
+    //     max-width: 50%
         // -webkit-box-orient vertical
         // -webkit-box-direction normal
         // -webkit-flex-direction column
