@@ -87,48 +87,11 @@ hr {
   background-color: #9b9b9b;
   border-color: #9b9b9b;
 }
-.menu-bar {
-  background: #110046;
-  height: 60px;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-}
-#search-header {
-  display: inline-block;
-  width: calc(100% - 500px);
-  position: relative;
-  top: -15px;
-  max-width: 50em;
-}
-.navbar-header img.logo-horizontal {
+.navbar img.logo-horizontal {
   width: 10rem;
-  margin: 1.1rem 1em;
 }
-.navbar-header img.logo {
-  width: 714px;
-  margin: auto;
-}
-.navbar-header img.name {
-  width: 25rem;
-  vertical-align: middle;
-  margin-left: 1rem;
-}
-.navbar-header .icon-navbar {
-  width: 20px;
-  margin-right: 10px;
-  margin-top: -6px;
-}
-.navbar-header nav {
-  float: right;
-  margin: 20px 20px 0 0;
-}
-.navbar-header nav ul,
-.navbar-header nav li {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.bg-mainmenu {
+  background: #110046;
 }
 #content {
   min-height: 100%;
