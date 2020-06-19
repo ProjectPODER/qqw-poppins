@@ -18,7 +18,7 @@
             {{#if id }}
               <li class="breadcrumb-item">
                 <a href="/regiones/{{id}}">
-                  {{translate_area id}}
+                  {{translate_area name}}
                 </a>
               </li>
             {{/if}}
@@ -376,7 +376,9 @@
                   {{#ifCond classification '==' 'state'}}Estado{{/ifCond}}
                 </p>
                 <p class="js-data">
-                  {{translate_area id}}
+                  <a href="/region/{{id}}">
+                    {{translate_area name}}
+                  </a>
                 </p>
               </div>
           {{/each}}
@@ -435,7 +437,7 @@
                     {{/ifCond}}
                   {{/ifCond}}
 
-                  {{#ifCond scheme '==' 'RUPC'}} <a data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>{{/ifCond}}
+                  {{#ifCond scheme '==' 'RUPC'}} <i class="fa fa-info" data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"></i>{{/ifCond}}
                 {{/each}}</p>
             </div>
           {{/if}}

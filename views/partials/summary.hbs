@@ -43,10 +43,13 @@
                     {{#each data.top_contracts }}
                         {{>result collection="contracts" result=this }}
                     {{/each}}
-
                     <div class="contract-button">
                         {{#ifCond type '==' 'persons'}}
-                        <a href="/contratos?responsable={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos de este responsable</a>
+                          {{#ifCond summary '==' 'buyer'}}
+                            <a href="/contratos?responsable={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos de este responsable</a>
+                          {{else }}
+                            <a href="/contratos?proveedor={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos de este proveedor</a>
+                          {{/ifCond }}
                         {{else }}
                         {{#ifCond result.compiledRelease.subclassification "==" "unidad-compradora"}}
                             <a href="/contratos?uc_id={{result.compiledRelease.id}}" class="button-link {{summary}}-button">Ver todos los contratos de esta UC</a>

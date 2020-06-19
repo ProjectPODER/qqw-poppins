@@ -44,13 +44,13 @@
                 {{#with (get_party this compiledRelease.parties.0.id)}}
                 {{#if memberOf.0.id }}
                     <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}" title="{{memberOf.0.name}}">
-                      {{{get_classification_icon memberOf.0.type memberOf.0.classification memberOf.0.subclassification memberOf.0.govLevel }}}
-                        {{{hilight ../filter_values.dependencia.value memberOf.0.name}}}
+                      {{{get_classification_icon "institutions" details.type details.classification details.subclassification details.govLevel }}}
+                        {{{hilight ../../filter_values.dependencia.value memberOf.0.name}}}
                     </a>
                   {{else}}
                     <a href="/{{get_type_url details.type }}/{{id}}" title="{{name}}">
-                      {{{get_classification_icon type classification subclassification govLevel }}}
-                        {{{hilight ../filter_values.dependencia.value name}}}
+                      {{{get_classification_icon "institutions" details.type details.classification details.subclassification details.govLevel }}}
+                        {{{hilight ../../filter_values.dependencia.value name}}}
                     </a>
                   {{/if}}
                 {{/with}}
@@ -58,9 +58,9 @@
             </div> 
             <div class="col-lg-6 p-0">
               <p class="index-list-element" title="Proveedor">
-                {{#with result.compiledRelease.awards.[0].suppliers.[0]}}
-                  <a href="/empresas/{{id}}" title="{{name}}">
-                    {{{get_classification_icon type classification subclassification govLevel }}}
+                {{#with (get_party this result.compiledRelease.awards.[0].suppliers.[0].id) }}
+                  <a href="/{{get_type_url details.type }}/{{id}}" title="{{name}}">
+                      {{{get_classification_icon details.type details.classification details.subclassification details.govLevel }}}
                       {{name }} 
                     {{#ifCond result.supplier_count ">" 1 }}
                       (y {{result.supplier_count}} mas)
