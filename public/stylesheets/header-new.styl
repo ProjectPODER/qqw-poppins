@@ -1,16 +1,60 @@
 .navbar
-    img
-        &.logo-horizontal
-            width 10rem
+  img
+    &.logo-horizontal
+      width 10rem
 
 .bg-mainmenu
   background $verydarkblue
+
+.navbar-toggler
+  font-size: 1.5rem;
+
+.navbar-dark .navbar-nav .nav-link
+  font-size 1.1rem
+  color rgba(255, 255, 255, 0.8)
+  text-align center
+  &:hover
+    color rgba(255, 255, 255, 1)
+
+li.active a:after
+  content ''
+  position absolute
+  bottom 4px
+  left 50%
+  width 80%
+  height 2px
+  background #fff
+
+.navbar-nav
+  a
+    display block
+    position relative
+    &:after
+      content ''
+      position absolute
+      bottom 4px
+      left 50%
+      width 0%
+      transform translateX(-50%)
+      height 2px
+      background #fff
+      transition 0.35s
+    &:hover:after
+      width 80%
+
+@media (max-width: 991px)
+  .navbar-nav
+    a
+      &:hover:after
+        width 40%
+  li.active a:after
+    width 40%
 
 // .menu-bar
 //     background #110046
 //     height 60px
 //     position fixed
-//     width 100%  
+//     width 100%
 //     z-index 100
 
 // #search-header
@@ -18,7 +62,7 @@
 //     width: calc(100% - 500px);
 //     position: relative;
 //     top: -12px;
-//     max-width: 50em;    
+//     max-width: 50em;
 
 // .navbar-header
 //     img
