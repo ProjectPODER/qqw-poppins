@@ -62,7 +62,7 @@
       </div>
     {{else}}
       {{# ifCond filter.type "!=" "toggle" }}
-        <div class="selection-filter-box">
+        <div class="selection-filter-box {{#if value }}with-value{{/if}}">
           <p class="filter-selected" title="">
             {{#ifCond filter.type "==" "select" }}
               {{get_object_element filter.options value}}
@@ -80,7 +80,8 @@
         </div>
 
         <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
-          <p>{{filter.guidanceText}}</p>
+          <h6 class="ml-2"><b>{{filter.fieldLabel}}</b></h6>
+          <p class="ml-2">{{filter.guidanceText}}</p>
           <fieldset>
             {{# ifCond filter.type "==" "string" }}
               <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{value}}">

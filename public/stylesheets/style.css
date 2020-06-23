@@ -90,6 +90,15 @@ hr {
 .navbar img.logo-horizontal {
   width: 10rem;
 }
+.navbar li.active a:after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 80%;
+  height: 2px;
+  background: #fff;
+}
 .bg-mainmenu {
   background: #110046;
 }
@@ -103,15 +112,6 @@ hr {
 }
 .navbar-dark .navbar-nav .nav-link:hover {
   color: #fff;
-}
-li.active a:after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  width: 80%;
-  height: 2px;
-  background: #fff;
 }
 .navbar-nav a {
   display: block;
@@ -135,7 +135,7 @@ li.active a:after {
   .navbar-nav a:hover:after {
     width: 40%;
   }
-  li.active a:after {
+  .navbar li.active a:after {
     width: 40%;
   }
 }
@@ -772,7 +772,7 @@ input[type=submit].landing-search-inputtext {
 }
 .filters {
   position: fixed;
-  top: 60px;
+  top: 57px;
   z-index: 1;
   width: 100%;
   padding-top: 0;
@@ -949,6 +949,9 @@ input[type=submit].landing-search-inputtext {
   max-width: 200px;
   display: flex !important;
   align-content: center !important;
+}
+.with-value {
+  background-color: #cfcfcf;
 }
 .filter-selected {
   overflow: hidden;

@@ -2,6 +2,14 @@
   img
     &.logo-horizontal
       width 10rem
+  li.active a:after
+    content ''
+    position absolute
+    bottom 4px
+    left 50%
+    width 80%
+    height 2px
+    background #fff
 
 .bg-mainmenu
   background $verydarkblue
@@ -15,15 +23,6 @@
   text-align center
   &:hover
     color rgba(255, 255, 255, 1)
-
-li.active a:after
-  content ''
-  position absolute
-  bottom 4px
-  left 50%
-  width 80%
-  height 2px
-  background #fff
 
 .navbar-nav
   a
@@ -47,8 +46,9 @@ li.active a:after
     a
       &:hover:after
         width 40%
-  li.active a:after
-    width 40%
+  .navbar
+    li.active a:after
+      width 40%
 
 // .menu-bar
 //     background #110046

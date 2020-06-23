@@ -17,19 +17,19 @@
             </div>
           </div>
           <div class="right-elements col-lg-4 col-md-4 col-md-4 col-sm-4 col-4">
-            {{#if gender }}
-            <div class="col-lg-6 p-0">
-              <p class="index-list-element">
-                <i class="fas fa-mars"></i>
-                {{gender}}
-              </p>
-            </div>
-            {{/if}}
             {{#if area }}
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
-                <i class="fas fa-flag"></i>
-                <a href="/paises/{{area.id}}">{{area.name}}</a>
+                <a href="/paises/{{area.0.id}}"><i class="fas fa-flag"></i> {{area.0.name}}</a>
+              </p>
+            </div>
+            {{/if}}
+            {{#if gender }}
+            <div class="col-lg-6 p-0">
+              <p class="index-list-element">
+                <i class="{{#ifCond gender "==" "f" }}fas fa-venus{{/ifCond }} {{#ifCond gender "==" "m" }}fas fa-mars{{/ifCond }}"></i>
+                {{#ifCond gender "==" "f" }}Mujer{{/ifCond }} 
+                {{#ifCond gender "==" "m" }}Hombre{{/ifCond }}
               </p>
             </div>
             {{/if}}
@@ -71,22 +71,22 @@
             </div>
           </div>
           <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
-            <div class="col-lg-5 p-0">
+            <div class="col-lg-4 p-0">
               <p class="index-list-element" title="{{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}">
                 <i class="fas fa-dollar-sign"></i> 
                   {{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}
               </p>
             </div>
-            <div class="col-lg-5 p-0">
+            <div class="col-lg-4 p-0">
               <p class="index-list-element" title="{{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}">
                 <i class="fas fa-calendar-alt" title="Fecha"></i> 
                   {{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}
               </p>
             </div>
-            <div class="col-lg-2 p-0">
-              <p class="index-list-element" title="{{result.compiledRelease.tender.procurementMethod}}">
+            <div class="col-lg-4 p-0">
+              <p class="index-list-element" title="{{result.compiledRelease.tender.procurementMethodDetails}}">
                 <i class="fas fa-clipboard-list" title="Tipo de procedimiento"></i> 
-                  {{result.compiledRelease.tender.procurementMethod}}
+                  {{result.compiledRelease.tender.procurementMethodDetails}}
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@
 
         {{!-- INSTITUCIONES --}}
         {{#ifCond collection "==" "institutions" }}
-          <div class="full-elements">
+          <div class="full-elements col-lg-12 p-0">
              {{> result-contracts this }}
           </div>
         {{/ifCond}}
