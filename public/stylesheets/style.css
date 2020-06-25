@@ -57,6 +57,17 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 1.2;
+  color: inherit;
+}
 .btn-light:hover {
   background-color: #2d1c9d;
   border-color: #2d1c9d;
@@ -160,6 +171,9 @@ hr {
 .text-white {
   color: #fff !important;
 }
+.text-darkblue {
+  color: #2d1c9d;
+}
 .text-overflow {
   overflow: hidden;
   white-space: nowrap;
@@ -243,6 +257,15 @@ section.explore-data {
   background-repeat: no-repeat;
   background-position: center top;
 }
+img.logo {
+  width: 714px;
+  margin: auto;
+}
+img.name {
+  width: 25rem;
+  vertical-align: middle;
+  margin-left: 1rem;
+}
 .tools-img {
   width: 150px;
 }
@@ -302,6 +325,73 @@ h2 .card-image-container.document-title {
   -o-background-size: cover;
   background-size: cover;
   background-blend-mode: lighten;
+}
+.qqw-home {
+  font-family: 'Montserrat', sans-serif;
+}
+.qqw-home h1,
+.qqw-home .h1,
+.qqw-home h2,
+.qqw-home .h2,
+.qqw-home h3,
+.qqw-home .h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.qqw-home h4,
+.qqw-home .h4,
+.qqw-home h5,
+.qqw-home .h5,
+.qqw-home h6,
+.qqw-home .h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.qqw-home section.landing-header,
+.qqw-home section.explore-data,
+.qqw-home section.proyectos,
+.qqw-home section.investigaciones,
+.qqw-home section.bg-gray {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.qqw-home section.profile {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.qqw-home section.profile-header {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+.qqw-home section.country-mujeres {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.qqw-home section.data-sources {
+  background-color: #f7f7f7;
+}
+.qqw-home section.proyectos {
+  background-color: #110046;
+}
+.qqw-home section.investigaciones {
+  border-top: 2px dotted #3a32f9;
+}
+.qqw-home section.investigaciones h2 {
+  font-weight: bold;
+  text-align: center;
+}
+.qqw-home section.tabs {
+  margin-top: 2rem;
+  min-height: 100vh;
+}
+.qqw-home section.tabs h3 {
+  font-size: 1.5rem;
+  color: #3a32f9;
+  margin-bottom: 2rem;
+}
+.qqw-home section.tabs h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 div.landing-header-content {
   padding: 4rem;
@@ -425,7 +515,7 @@ div.content {
   width: 85%;
 }
 .card-h3 {
-  margin-top: -10px;
+  margin-top: 0 !important;
 }
 .proyectos h2 {
   color: #fff;
@@ -683,9 +773,10 @@ input[type=text].landing-search-inputtext {
 }
 input[type=text].header-search-inputtext {
   width: 100%;
-  padding: 10px;
-  border: none;
-  background-color: #eef;
+  padding: 12px 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  border-color: #2b00f7;
 }
 input[type=submit].landing-search-inputtext {
   width: 15%;
