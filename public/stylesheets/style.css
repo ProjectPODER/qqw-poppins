@@ -303,52 +303,6 @@ h2 .card-image-container.document-title {
   background-size: cover;
   background-blend-mode: lighten;
 }
-.qqw-home section.landing-header,
-.qqw-home section.explore-data,
-.qqw-home section.proyectos,
-.qqw-home section.investigaciones,
-.qqw-home section.bg-gray {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-.qqw-home section.profile {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-.qqw-home section.profile-header {
-  padding-top: 3rem;
-  padding-bottom: 1rem;
-}
-.qqw-home section.country-mujeres {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.qqw-home section.data-sources {
-  background-color: #f7f7f7;
-}
-.qqw-home section.proyectos {
-  background-color: #110046;
-}
-.qqw-home section.investigaciones {
-  border-top: 2px dotted #3a32f9;
-}
-.qqw-home section.investigaciones h2 {
-  font-weight: bold;
-  text-align: center;
-}
-.qqw-home section.tabs {
-  margin-top: 2rem;
-  min-height: 100vh;
-}
-.qqw-home section.tabs h3 {
-  font-size: 1.5rem;
-  color: #3a32f9;
-  margin-bottom: 2rem;
-}
-.qqw-home section.tabs h1 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
 div.landing-header-content {
   padding: 4rem;
   width: 75%;
@@ -951,7 +905,12 @@ input[type=submit].landing-search-inputtext {
   align-content: center !important;
 }
 .with-value {
-  background-color: #cfcfcf;
+  background-color: #5c5c5c;
+  color: #fff;
+}
+.with-value .close {
+  color: #fff;
+  margin-top: -2px;
 }
 .filter-selected {
   overflow: hidden;
@@ -1090,26 +1049,21 @@ input[type=submit].landing-search-inputtext {
     padding-right: 0;
   }
 }
-@media screen and (max-width: 767px) {
-  .index-list-elements span {
-    display: none;
-  }
-  .page-break {
-    margin-bottom: 2rem !important;
-    text-align: center;
-    margin: auto;
-  }
-  .page-break .input-group {
-    margin: auto;
-  }
-  .page-results {
-    margin-top: 2rem;
-    text-align: center !important;
-  }
-  .page-results .form-group select {
-    float: none !important;
-    margin: auto;
-  }
+.page-break {
+  margin-bottom: 2rem !important;
+  text-align: center;
+  margin: auto;
+}
+.page-break .input-group {
+  margin: auto;
+}
+.page-results {
+  margin-top: 2rem;
+  text-align: center !important;
+}
+.page-results .form-group select {
+  float: none !important;
+  margin: auto;
 }
 .index-list-item {
   display: -webkit-box;

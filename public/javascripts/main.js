@@ -475,8 +475,8 @@ $('.supplier-list-toggle,.profile-list-toggle').click(function(event, instance) 
 })
 
 
-$("#index_length").change(function(){
- var selected = $('#index_length').val();
+$("#indexLength").change(function(){
+ var selected = $('#indexLength').val();
     location.search= removeQueryField("size") + "&size="+selected;
 });
 

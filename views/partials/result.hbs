@@ -11,39 +11,41 @@
       <div class="index-list-elements">
         {{!-- PERSONAS --}}
         {{#ifCond collection "==" "persons" }}
-          <div class="left-elements col-lg-8 col-md-8 col-md-8 col-sm-8 col-8">
-            <div class="col-lg-12 p-0">
-              {{> result-contracts this }}
+          {{!-- <div class="justify-content-start"> --}}
+            <div class="left-elements col-lg-4 col-md-6 col-md-6 col-sm-6 col-6">
+              <div class="col-lg-12 p-0">
+                {{> result-contracts this }}
+              </div>
             </div>
-          </div>
-          <div class="right-elements col-lg-4 col-md-4 col-md-4 col-sm-4 col-4">
-            {{#if area }}
-            <div class="col-lg-6 p-0">
-              <p class="index-list-element">
-                <a href="/paises/{{area.0.id}}"><i class="fas fa-flag"></i> {{area.0.name}}</a>
-              </p>
+            <div class="right-elements col-lg-8 col-md-6 col-md-6 col-sm-6 col-6">
+              {{#if area }}
+              <div class="col-lg-2 p-0">
+                <p class="index-list-element">
+                  <a href="/paises/{{area.0.id}}" title="País: {{area.0.name}}"><i class="fas fa-flag"></i> {{area.0.name}}</a>
+                </p>
+              </div>
+              {{/if}}
+              {{#if gender }}
+              <div class="col-lg-2 p-0">
+                <p class="index-list-element" title="Género: {{#ifCond gender "==" "f" }}Mujer{{/ifCond }} {{#ifCond gender "==" "m" }}Hombre{{/ifCond }}">
+                  <i class="{{#ifCond gender "==" "f" }}fas fa-venus{{/ifCond }} {{#ifCond gender "==" "m" }}fas fa-mars{{/ifCond }}"></i>
+                  {{#ifCond gender "==" "f" }}Mujer{{/ifCond }} 
+                  {{#ifCond gender "==" "m" }}Hombre{{/ifCond }}
+                </p>
+              </div>
+              {{/if}}
             </div>
-            {{/if}}
-            {{#if gender }}
-            <div class="col-lg-6 p-0">
-              <p class="index-list-element">
-                <i class="{{#ifCond gender "==" "f" }}fas fa-venus{{/ifCond }} {{#ifCond gender "==" "m" }}fas fa-mars{{/ifCond }}"></i>
-                {{#ifCond gender "==" "f" }}Mujer{{/ifCond }} 
-                {{#ifCond gender "==" "m" }}Hombre{{/ifCond }}
-              </p>
-            </div>
-            {{/if}}
-          </div>
+          {{!-- </div> --}}
         {{/ifCond}}
 
         {{!-- CONTRATOS --}}
         {{#ifCond collection "==" "contracts" }}
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
-              <p class="index-list-element" title="Comprador">
+              <p class="index-list-element">
                 {{#with (get_party this compiledRelease.parties.0.id)}}
                 {{#if memberOf.0.id }}
-                    <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}" title="{{memberOf.0.name}}">
+                    <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}" title="Comprador: {{memberOf.0.name}}">
                       {{{get_classification_icon "institutions" details.type details.classification details.subclassification details.govLevel }}}
                         {{{hilight ../../filter_values.dependencia.value memberOf.0.name}}}
                     </a>
@@ -57,9 +59,9 @@
               </p>
             </div> 
             <div class="col-lg-6 p-0">
-              <p class="index-list-element" title="Proveedor">
+              <p class="index-list-element">
                 {{#with (get_party this result.compiledRelease.awards.[0].suppliers.[0].id) }}
-                  <a href="/{{get_type_url details.type }}/{{id}}" title="{{name}}">
+                  <a href="/{{get_type_url details.type }}/{{id}}" title="Proveedor: {{name}}">
                       {{{get_classification_icon details.type details.classification details.subclassification details.govLevel }}}
                       {{name }} 
                     {{#ifCond result.supplier_count ">" 1 }}
@@ -72,20 +74,20 @@
           </div>
           <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}">
-                <i class="fas fa-dollar-sign"></i> 
+              <p class="index-list-element" title="Monto: {{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}">
+                <i class="fas fa-dollar-sign"></i>
                   {{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}">
-                <i class="fas fa-calendar-alt" title="Fecha"></i> 
+              <p class="index-list-element" title="Fecha: {{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}">
+                <i class="fas fa-calendar-alt"></i>
                   {{moment result.startDate date lang="es" format="L"}} al {{moment result.endDate date lang="es" format="L"}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{result.compiledRelease.tender.procurementMethodDetails}}">
-                <i class="fas fa-clipboard-list" title="Tipo de procedimiento"></i> 
+              <p class="index-list-element" title="Tipo de procedimiento: {{result.compiledRelease.tender.procurementMethodDetails}}">
+                <i class="fas fa-clipboard-list"></i>
                   {{result.compiledRelease.tender.procurementMethodDetails}}
               </p>
             </div>
@@ -102,14 +104,14 @@
           <div class="right-elements col-lg-4 col-md-4 col-md-4 col-sm-4 col-4">
             <div class="col-lg-7 p-0">
               <p class="index-list-element">
-                <a href="">
+                <a href="" title="Nombre de la bolsa de valores">
                   <i class="fas fa-chart-line"></i> Nombre de la bolsa de valores</a>
               </p>
             </div>
             {{#if area }}
             <div class="col-lg-5 p-0">
               <p class="index-list-element">
-                <a href="/paises/{{area.0.id}}"><i class="fas fa-flag"></i> {{ area.0.name }}</a>
+                <a href="/paises/{{area.0.id}}" title="País: {{ area.0.name }}"><i class="fas fa-flag"></i> {{ area.0.name }}</a>
               </p>
             </div>
             {{/if}}
@@ -125,46 +127,47 @@
 
         {{!-- PAISES --}}
         {{# ifCond collection "==" "countries" }}
-          <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
-            <div class="col-lg-4 p-0">
+          <div class="left-elements col-lg-12 col-md-12 col-md-12 col-sm-12 col-12">
+            <div class="col-lg-2 p-0">
               <p class="index-list-element">
-                <a href="?collection=persons&pais={{id}}">
+                <a href="?collection=persons&pais={{id}}" title="{{format_number summaries.persons_count}} personas">
                 <i class="fas fa-users"></i> {{format_number summaries.persons_count}} personas
                 </a>
               </p>
             </div>
-            <div class="col-lg-4 p-0">
+            <div class="col-lg-2 p-0">
               <p class="index-list-element">
-                <a href="?collection=companies&pais={{id}}">
+                <a href="?collection=companies&pais={{id}}" title="{{format_number summaries.companies_count}} empresas">
                   <i class="fas fa-building"></i> 
                   {{format_number summaries.companies_count}} empresas
                 </a>
               </p>
             </div>
             {{# if compiledRelease.summaries.states_count }}
-            <div class="col-lg-4 p-0">
-              <p class="index-list-element"><i class="fas fa-map-marked"></i> {{format_number summaries.states_count}} <span>estados</span>
+            <div class="col-lg-2 p-0">
+              <p class="index-list-element" title="{{format_number summaries.states_count}} estados"><i class="fas fa-map-marked"></i> {{format_number summaries.states_count}} <span>estados</span>
               </p>
             </div>
             {{/if }}
-          </div>
-          <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
-            <div class="col-lg-6 p-0">
+            <div class="col-lg-2 p-0">
               <p class="index-list-element">
-                <a href="/paises/{{id}}#genero">
+                <a href="/paises/{{id}}#genero" title="{{format_number  summaries.stock_exchanges_count }} Bolsa de Valores">
                   <i class="fas fa-chart-line"></i> {{format_number  summaries.stock_exchanges_count }} <span>Bolsa de Valores</span>
                 </a>
               </p>
             </div>
-            <div class="col-lg-6 p-0">
+            <div class="col-lg-4 p-0">
               <p class="index-list-element">
-                <a href="/paises/{{id}}/mujeresenlabolsa">
+                <a href="/paises/{{id}}/mujeresenlabolsa" title="{{format_number summaries.mujeres_ranking }}  posición en ranking">
                   <i class="fas fa-hashtag"></i> {{format_number summaries.mujeres_ranking }} 
                   <span>posición en ranking</span>
                 </a>
               </p>
             </div>
           </div>
+          {{!-- <div class="right-elements col-lg-5 col-md-6 col-md-6 col-sm-6 col-6">
+
+          </div> --}}
         {{/ifCond}}
       </div>
     </div>

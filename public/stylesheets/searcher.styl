@@ -69,9 +69,9 @@
             overflow hidden
             white-space nowrap
             text-overflow ellipsis !important
-        i 
+        i
             margin-left 2px
-            
+
     .filter-title-simple
         display block
         padding 0.5rem 1rem
@@ -95,7 +95,7 @@
         padding 0.25rem 1.5rem
     .btn-filter-states
         background-color #ffffff !important
-    
+
     input.input-string
         width 70%
         margin-left 0.5rem
@@ -164,7 +164,11 @@
     align-content center!important
 
 .with-value
-    background-color #cfcfcf
+    background-color $darkgray
+    color #ffffff
+    .close
+        color #ffffff
+        margin-top -2px
 
 .filter-selected
     overflow hidden
@@ -347,9 +351,9 @@
         padding-right 0
 
 @media screen and (max-width: 767px)
-    .index-list-elements
-        span 
-            display none
+    // .index-list-elements
+    //     span 
+    //         display none
         // -webkit-box-orient vertical
         // -webkit-box-direction normal
         // -webkit-flex-direction column

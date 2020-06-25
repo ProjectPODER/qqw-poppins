@@ -1,4 +1,4 @@
-<section>
+<section class="mt-3">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 col-sm-12 page-break">
@@ -29,10 +29,10 @@
       <div class="col-md-3 col-sm-12 text-right page-results">
         <h6>RESULTADO POR PÁGINA</h5>
         <div class="form-group">
-          <select class="form-control form-control-lg float-right w-50" id="index_length">
-            <option value="25" {{#ifCond filters.size.value "==" "25" }}selected="selected"{{/ifCond}}>25</option>
-            <option value="50" {{#ifCond filters.size.value "==" "50" }}selected="selected"{{/ifCond}}>50</option>
-            <option value="100" {{#ifCond filters.size.value "==" "100" }}selected="selected"{{/ifCond}}>100</option>
+          <select class="form-control form-control-lg float-right w-50" id="indexLength">
+            <option value="25" {{#ifCond result.limit "==" "25" }}selected="selected"{{/ifCond}}>25</option>
+            <option value="50" {{#ifCond result.limit "==" "50" }}selected="selected"{{/ifCond}}>50</option>
+            <option value="100" {{#ifCond result.limit "==" "100" }}selected="selected"{{/ifCond}}>100</option>
           </select>
         </div>
       </div>
