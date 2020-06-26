@@ -150,8 +150,26 @@ h6 {
     width: 40%;
   }
 }
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
 #content {
   min-height: 100%;
+  margin: 0 auto -150px;
+}
+#content-searcher {
+  min-height: 100%;
+  margin: 0 auto -50px;
+}
+@media (max-width: 768px) {
+  #content {
+    margin: 0 auto;
+  }
+  #content-searcher {
+    margin: 0 auto;
+  }
 }
 .buyer-text,
 .buyer-text a {
@@ -1149,7 +1167,6 @@ input[type=submit].landing-search-inputtext {
   margin: auto;
 }
 .page-results {
-  margin-top: 2rem;
   text-align: center !important;
 }
 .page-results .form-group select {
@@ -2534,6 +2551,7 @@ section.country-mujeres {
 .about-sidebar ul a {
   text-decoration: none !important;
   font-weight: bold;
+  transition: none;
 }
 .about-sidebar ul a li {
   list-style: none;

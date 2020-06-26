@@ -1,6 +1,6 @@
 {{#ifCond filter.hidden '!=' true }}
   <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
-    {{# ifCond filter.type "!=" "toggle"}}
+    {{#ifCond filter.type "!=" "toggle"}}
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
     {{else}}
       {{#with (filter_array filter.options "value" value ) }}
@@ -11,7 +11,6 @@
     {{#ifCond filter.htmlFieldName "==" "collection"}}
       <input type="hidden" name="{{filter.htmlFieldName}}" value="{{collection}}">
       <div class="selector-filter-type">
-
           <p class="text-center emphasis-color-text mb-0" title="">{{ get_type_plural collection true }}</p>
       </div>
       <div class="dropdown-menu filter-dropdown-menu">
@@ -61,7 +60,7 @@
           </button>
       </div>
     {{else}}
-      {{# ifCond filter.type "!=" "toggle" }}
+      {{#ifCond filter.type "!=" "toggle" }}
         <div class="selection-filter-box {{#if value }}with-value{{/if}}">
           <p class="filter-selected" title="">
             {{#ifCond filter.type "==" "select" }}

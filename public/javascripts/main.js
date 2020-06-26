@@ -276,25 +276,6 @@ function copyClipboard() {
   document.execCommand("copy");
 }
 
- // Function to set the height
-//  function autoHeight() {
-//    $('.footer-bottom').css('min-height', 0);
-//    $('.footer-bottom').css('min-height', (
-//      $(document).height()
-//      - $('footer').height()
-//    ));
-//  }
-
-//  // onDocumentReady function bind
-//  $(document).ready(function() {
-//    autoHeight();
-//  });
-
-//  // onResize bind of the function
-//  $(window).resize(function() {
-//    autoHeight();
-//  });
-
 // Contact form about/contact.hbs
 $("#send_email").click(function (e) {
   var to, name, subjectMail, email, text;

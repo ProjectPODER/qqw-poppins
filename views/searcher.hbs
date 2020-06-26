@@ -89,7 +89,7 @@
 </section>
 
 {{#ifCond result.data.length ">" 0 }}
-  <section class="results-list">
+  <section class="results-list" id="content-searcher">
       <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-m-12">
@@ -111,12 +111,10 @@
             </div>
         </div>
       </div>
-
-
-{{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
+      {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
   </section>
 {{else}}
-  <section class="error">
+  <section class="error" id="content">
     <h2>
       <i class="fa fa-search"></i>
       Búsqueda sin resultados
