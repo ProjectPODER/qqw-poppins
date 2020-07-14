@@ -1,21 +1,43 @@
-<div class="container error-template">
-  <h1>Error {{error.status}}: Nos vamos a recuperar de esta.</h1>
-  <p>Por favor intente de nuevo, refresque la página con F5 o vuelva atrás y reintente. </p>
-  <p>Si el error persiste por favor contáctenos con los detalles del error.</p>
-  <p>
-  {{#if error.stack }}
-    <a href="#" onclick="$('#detalles-del-error').toggle()">Ver detalles del error</a>
-  </p>
-  <div id="detalles-del-error" style="display:none">
-
-    <h2>Detalles del error</h2>
-    <h3>{{message}}</h3>
-    <pre>{{error.stack}}</pre>
+<section>
+  <div class="container error-template">
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-wrap align-content-center">
+        <div class="col-lg-12">
+          <h1>Error {{error.status}}: Nos vamos a recuperar de esta.</h1>
+          <p>Por favor intenta de nuevo, refresca la página con F5 o vuelve atrás y reintenta. </p>
+          <p>Si el error persiste por favor <a href="/contacto">contáctanos</a> con los detalles del error.</p>
+          <p>
+          {{#if error.stack }}
+            <a href="#" onclick="$('#detalles-del-error').toggle()">Ver detalles del error</a>
+          </p>
+          <div id="detalles-del-error" style="display:none">
+            <h2>Detalles del error</h2>
+            <h3>{{message}}</h3>
+            <pre>{{error.stack}}</pre>
+          </div>
+          {{/if}}
+        </div>
+        <div class="col-lg-12 mt-3">
+          <p><b>¿Cómo puedes seguir?</b></p>
+          <p>Te recomendamos usar nuestro buscador por nombres de empresas, instituciones públicas, empresarios, funcionarios, contratos o países:</p>
+          <ul>
+            <a class="" href="/buscador?&collection=contracts"><li>Buscar Contratos</li></a>
+            <a class="" href="/buscador?&collection=persons"><li>Buscar Personas</li></a>
+            <a class="" href="/buscador?&collection=companies"><li>Buscar Empresas y Sociedades</li></a>
+            <a class="" href="/buscador?&collection=institutions"><li> Buscar Instituciones Públicas</li></a>
+            <a class="" href="/buscador?&collection=countries"><li>Buscar Países y estados</li></a>
+          </ul>
+          <p class="mt-4">
+            O
+            <a href="/">
+              vuelve al inicio
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6 d-flex flex-wrap align-content-center">
+        <img class="img-fluid engranes" src="../images/engranes.png" alt="">
+      </div>
+    </div>
   </div>
-  {{/if}}
-  <p class="mt-2">
-    <a class="button-link" href="/" style="color: white">
-      Volver a inicio
-    </a>
-  </p>
-</div>
+</section>

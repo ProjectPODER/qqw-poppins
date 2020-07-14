@@ -163,7 +163,7 @@ body {
   min-height: 100%;
   margin: 0 auto -50px;
 }
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   #content {
     margin: 0 auto;
   }
@@ -191,6 +191,9 @@ body {
 }
 .text-darkblue {
   color: #2d1c9d;
+}
+.text-verydarkblue {
+  color: #110046;
 }
 .text-overflow {
   overflow: hidden;
@@ -1147,12 +1150,16 @@ input[type=submit].landing-search-inputtext {
   border-left: 1px solid #dee2e6;
   border-right: 1px solid #dee2e6;
 }
+.error-img img {
+  width: 80%;
+}
 @media (min-width: 576px) {
   .filters .form-inline .form-control {
     width: 50%;
   }
 }
 @media (max-width: 576px) {
+  .error,
   .results-list {
     padding-left: 0;
     padding-right: 0;
