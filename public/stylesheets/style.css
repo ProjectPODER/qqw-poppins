@@ -960,10 +960,7 @@ input[type=submit].landing-search-inputtext {
 .filters input.input-date {
   width: 200px !important;
   margin-right: 0.5rem;
-  padding: 5px 5px 5px 25px;
-  background-image: url("../images/calendar.png");
-  background-repeat: no-repeat;
-  background-position: 6px;
+  padding: 5px;
   border-width: 1px;
   border-color: #d3d3d3;
   border-style: solid;
@@ -1149,9 +1146,6 @@ input[type=submit].landing-search-inputtext {
   background-color: #fff;
   border-left: 1px solid #dee2e6;
   border-right: 1px solid #dee2e6;
-}
-.error-img img {
-  width: 80%;
 }
 @media (min-width: 576px) {
   .filters .form-inline .form-control {
