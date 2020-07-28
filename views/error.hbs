@@ -3,36 +3,37 @@
     <div class="row">
       <div class="col-lg-6 d-flex flex-wrap align-content-center">
         <div class="col-lg-12">
-          <h1>Error {{error.status}}: Nos vamos a recuperar de esta.</h1>
-          <p>Por favor intenta de nuevo, refresca la página con F5 o vuelve atrás y reintenta. </p>
-          <p>Si el error persiste por favor <a href="/contacto">contáctanos</a> con los detalles del error.</p>
-          <p>
+          <h1>Nos vamos a recuperar de esta.</h1>
           {{#if error.stack }}
+            <h5> Error: {{error.status}}</h5>
+          {{/if}}
+          {{#if error.stack }}
+          <p>
             <a href="#" onclick="$('#detalles-del-error').toggle()">Ver detalles del error</a>
           </p>
           <div id="detalles-del-error" style="display:none">
-            <h2>Detalles del error</h2>
-            <h3>{{message}}</h3>
+            <h5>Detalles del error</h5>
+            <p>{{message}}</p>
             <pre>{{error.stack}}</pre>
           </div>
           {{/if}}
+          <p>Por favor, refresca la página con F5 o vuelve atrás y reintenta.</p>
+          <p>Si el error persiste, <a href="/contacto?&subject=Mensaje desde página de error">contáctanos</a> con los detalles del error.</p>
+          <p>
         </div>
         <div class="col-lg-12 mt-3">
-          <p><b>¿Cómo puedes seguir?</b></p>
-          <p>Te recomendamos usar nuestro buscador por nombres de empresas, instituciones públicas, empresarios, funcionarios, contratos o países:</p>
+          <h5>¿Cómo puedes seguir?</h5>
           <ul>
-            <a class="" href="/buscador?&collection=contracts"><li>Buscar Contratos</li></a>
-            <a class="" href="/buscador?&collection=persons"><li>Buscar Personas</li></a>
-            <a class="" href="/buscador?&collection=companies"><li>Buscar Empresas y Sociedades</li></a>
-            <a class="" href="/buscador?&collection=institutions"><li> Buscar Instituciones Públicas</li></a>
-            <a class="" href="/buscador?&collection=countries"><li>Buscar Países y estados</li></a>
+            <li>
+              Si estás investigando algo en QQW, utiliza nuestro <a class="" href="/buscador">buscador</a>.
+            </li>
+            <li>
+              Si quieres saber más sobre QQW, visita la sección <a href="/sobre-qqw">Sobre QQW</a>.
+            </li>
+            <li>
+              O <a href="/">vuelve al inicio</a>.
+            </li>
           </ul>
-          <p class="mt-4">
-            O
-            <a href="/">
-              vuelve al inicio
-            </a>
-          </p>
         </div>
       </div>
       <div class="col-lg-6 d-flex flex-wrap align-content-center">
