@@ -34,7 +34,7 @@
                 <a href="/personas">
                   <h3>
                     <strong>
-                      {{format_number stats.persons.count }}
+                      {{format_number stats.persons.count }} 
                     </strong>
                   </h3>
                   <h3 class="card-h3">Personas</h3>
@@ -63,7 +63,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-6 mb-4 mb-md-0">
+          <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
                 <a href="/instituciones-publicas">
@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-6">
+          <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
                 <a href="/empresas">
@@ -94,6 +94,36 @@
                 {{!-- <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
                 <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
                 <p class="triplet-last-update">Actualización: {{ moment stats.company.lastModified date lang="es" format="LL"}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 mb-4 mb-md-0">
+            <div class="card-border explore-card">
+              <div class="card-pad text-center">
+                <a href="/empresas">
+                  <h3>
+                    <strong>
+                      {{format_number stats.state.count}}
+                    </strong>
+                  </h3>
+                  <h3 class="card-h3">Estados</h3>
+                </a>
+                <p class="triplet-last-update">Actualización: {{ moment stats.state.lastModified date lang="es" format="LL"}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="card-border explore-card">
+              <div class="card-pad text-center">
+                <a href="/empresas">
+                  <h3>
+                    <strong>
+                      {{format_number stats.municipality.count}}
+                    </strong>
+                  </h3>
+                  <h3 class="card-h3">Municipios</h3>
+                </a>
+                <p class="triplet-last-update">Actualización: {{ moment stats.municipality.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>

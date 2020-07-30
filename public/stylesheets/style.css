@@ -339,7 +339,6 @@ h2 .card-image-container.document-title {
 }
 .landing-header {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(88%, rgba(255,255,255,0)), color-stop(100%, #fff)), url("../images/fondo-home.png") no-repeat top left #def /* safari4+,chrome */;
-  height: 100%;
   width: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -2537,6 +2536,17 @@ section.country-mujeres {
   margin-bottom: 3rem;
   padding: 1rem 1.5rem 0 0;
   font-size: 1.1rem;
+}
+.about-template div.card-pad h5 {
+  color: #2d1c9d;
+  text-align: center;
+  margin-top: 0.7rem;
+}
+.about-template .card-pad {
+  padding: 1rem !important;
+}
+.about-template .card-border {
+  margin-bottom: 1rem;
 }
 .about-sidebar {
   position: fixed;

@@ -37,7 +37,7 @@ router.get('/paises/:id', lib.entityPage("countries","country","id"));
 router.get('/sobre-qqw', lib.staticPage("about"));
 
 /* GET about/sources */
-router.get('/entidades-y-fuentes', lib.staticPage("sources"));
+router.get('/entidades-y-fuentes', lib.sourcesPage("sources"));
 
 /* GET apis */
 router.get('/herramientas', lib.staticPage("apis"));
