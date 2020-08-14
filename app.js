@@ -11,12 +11,13 @@ var _ = require('lodash');
 var dotenv = require('dotenv');
 var dotenvExpand = require('dotenv-expand');
 var myEnv = dotenv.config();
-const util = require('util');
+const https = require("https");
 
 
 dotenvExpand(myEnv)
 
 var indexRouter = require('./routes/index');
+const { all } = require('./routes/index');
 
 var app = express();
 
@@ -30,13 +31,50 @@ app.engine('.hbs', hbs({
         //  path to your partials
         path.join(__dirname, 'views/partials'),
     ],
-    helpers: require("./lib/helpers.js").helpers
+    helpers: require("./lib/helpers.js").helpers,
 }));
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+// Get settings from csv and set to app.set
+
+
+// Configuración general: id-conf, valor
+// Buscadores: tipo-buscador, id-elemento
+// Estáticos home: id-elemento, valor
+// Notas en perfiles: id-perfil, url-nota, titulo-nota, fecha-nota, medio, autor, explicacion-relacion
+
+function appLocalsFromCSV(namespace,CSVurl) {
+  app.locals[namespace] = {};
+
+  https.get(CSVurl, response => {
+    // var stream = response.pipe(file);
+    response.on("data", function(data) {
+      let csvlines = data.toString().split("\n");
+      
+      // console.log("appLocalsFromCSV data",CSVurl,data,csv);      
+      for(line in csvlines) {
+        //TODO: Parse quoted lines and multiple fields
+        linearray = csvlines[line].split(",");
+        if (linearray[0]) {
+          app.locals[namespace][linearray[0].trim()] = linearray[1].trim();
+        }
+      }
+      // console.log("appLocalsFromCSV app locals",app.locals)
+    });
+  });
+}
+
+
+appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
+appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
+appLocalsFromCSV("home","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
+appLocalsFromCSV("profile-links","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
+console.log("app locals",app.locals)
+
 
 app.use(cacheControl());
 
