@@ -63,7 +63,7 @@ function appLocalsFromCSV(namespace,CSVurl) {
           app.locals[namespace][linearray[0].trim()] = linearray[1].trim();
         }
       }
-      // console.log("appLocalsFromCSV app locals",app.locals)
+      console.log("appLocalsFromCSV app locals",namespace, app.locals[namespace])
     });
   });
 }
@@ -73,7 +73,7 @@ appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/downloa
 appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
 appLocalsFromCSV("home","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
 appLocalsFromCSV("profile-links","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
-console.log("app locals",app.locals)
+// console.log("app locals",app.locals)
 
 
 app.use(cacheControl());
