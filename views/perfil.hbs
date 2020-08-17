@@ -18,7 +18,7 @@
             {{#if id }}
               <li class="breadcrumb-item">
                 <a href="/regiones/{{id}}">
-                  {{translate_area id}}
+                  {{translate_area name}}
                 </a>
               </li>
             {{/if}}
@@ -104,6 +104,13 @@
     <li>
       <a href="#ubicacion" class="anchor">
         <i class="fas fa-map-marker"></i> Ubicacion
+      </a>
+    </li>
+    {{/if}}
+    {{#if (lookup notas result.compiledRelease.id) }}
+    <li>
+      <a href="#notas" class="anchor">
+        <i class="fas fa-map-marker"></i> Notas
       </a>
     </li>
     {{/if}}
@@ -376,7 +383,43 @@
                   {{#ifCond classification '==' 'state'}}Estado{{/ifCond}}
                 </p>
                 <p class="js-data">
-                  {{translate_area id}}
+                  <a href="/region/{{id}}">
+                    {{translate_area name}}
+                  </a>
+                </p>
+              </div>
+          {{/each}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+{{/if}}
+
+{{!-- Notas --}}
+{{#if (lookup notas result.compiledRelease.id) }}
+<section class="profile" id="notas">
+  <div class="profile-content">
+    <div class="row">
+
+      <div class="col-9 col-m-9">
+        <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> Notas</h4>
+        <div class="row flex">
+
+          {{#each (lookup notas result.compiledRelease.id) }}
+              <div class="col-m-5 col-5">
+                <p class="js-title-data">
+                  <a href="{{url}}">
+                    {{titulo}} 
+                  </a>
+                </p>
+                <p class="js-data">
+                    {{medio}} {{fecha}} {{autor}}
+                </p>
+                <p class="js-data">
+                    {{explicacion_es}}
                 </p>
               </div>
           {{/each}}
@@ -435,7 +478,7 @@
                     {{/ifCond}}
                   {{/ifCond}}
 
-                  {{#ifCond scheme '==' 'RUPC'}} <a data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>{{/ifCond}}
+                  {{#ifCond scheme '==' 'RUPC'}} <i class="fa fa-info" data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"></i>{{/ifCond}}
                 {{/each}}</p>
             </div>
           {{/if}}

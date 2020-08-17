@@ -1,21 +1,44 @@
-<div class="container error-template">
-  <h1>Error {{error.status}}: Nos vamos a recuperar de esta.</h1>
-  <p>Por favor intente de nuevo, refresque la página con F5 o vuelva atrás y reintente. </p>
-  <p>Si el error persiste por favor contáctenos con los detalles del error.</p>
-  <p>
-  {{#if error.stack }}
-    <a href="#" onclick="$('#detalles-del-error').toggle()">Ver detalles del error</a>
-  </p>
-  <div id="detalles-del-error" style="display:none">
-
-    <h2>Detalles del error</h2>
-    <h3>{{message}}</h3>
-    <pre>{{error.stack}}</pre>
+<section>
+  <div class="container error-template">
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-wrap align-content-center">
+        <div class="col-lg-12">
+          <h1>Nos vamos a recuperar de esta.</h1>
+          {{#if error.stack }}
+            <h5> Error: {{error.status}}</h5>
+          {{/if}}
+          {{#if error.stack }}
+          <p>
+            <a href="#" onclick="$('#detalles-del-error').toggle()">Ver detalles del error</a>
+          </p>
+          <div id="detalles-del-error" style="display:none">
+            <h5>Detalles del error</h5>
+            <p>{{message}}</p>
+            <pre>{{error.stack}}</pre>
+          </div>
+          {{/if}}
+          <p>Por favor, refresca la página con F5 o vuelve atrás y reintenta.</p>
+          <p>Si el error persiste, <a href="/contacto?&subject=Mensaje desde página de error">contáctanos</a> con los detalles del error.</p>
+          <p>
+        </div>
+        <div class="col-lg-12 mt-3">
+          <h5>¿Cómo puedes seguir?</h5>
+          <ul>
+            <li>
+              Si estás investigando algo en QQW, utiliza nuestro <a class="" href="/buscador">buscador</a>.
+            </li>
+            <li>
+              Si quieres saber más sobre QQW, visita la sección <a href="/sobre-qqw">Sobre QQW</a>.
+            </li>
+            <li>
+              O <a href="/">vuelve al inicio</a>.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6 d-flex flex-wrap align-content-center">
+        <img class="img-fluid engranes" src="../images/engranes.png" alt="">
+      </div>
+    </div>
   </div>
-  {{/if}}
-  <p class="mt-2">
-    <a class="button-link" href="/" style="color: white">
-      Volver a inicio
-    </a>
-  </p>
-</div>
+</section>

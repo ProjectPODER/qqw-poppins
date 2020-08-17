@@ -1,4 +1,4 @@
-<section class="landing-header">
+<section class="landing-header pb-1">
   <div class="container-fluid">
     <div class="row">
       <div class="col">
@@ -34,7 +34,7 @@
                 <a href="/personas">
                   <h3>
                     <strong>
-                      {{format_number stats.persons.count }}
+                      {{format_number stats.persons.count }} 
                     </strong>
                   </h3>
                   <h3 class="card-h3">Personas</h3>
@@ -63,7 +63,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-6 mb-4 mb-md-0">
+          <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
                 <a href="/instituciones-publicas">
@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-6">
+          <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
                 <a href="/empresas">
@@ -94,6 +94,36 @@
                 {{!-- <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
                 <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
                 <p class="triplet-last-update">Actualización: {{ moment stats.company.lastModified date lang="es" format="LL"}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 mb-4 mb-md-0">
+            <div class="card-border explore-card">
+              <div class="card-pad text-center">
+                <a href="/empresas">
+                  <h3>
+                    <strong>
+                      {{format_number stats.state.count}}
+                    </strong>
+                  </h3>
+                  <h3 class="card-h3">Estados</h3>
+                </a>
+                <p class="triplet-last-update">Actualización: {{ moment stats.state.lastModified date lang="es" format="LL"}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6">
+            <div class="card-border explore-card">
+              <div class="card-pad text-center">
+                <a href="/empresas">
+                  <h3>
+                    <strong>
+                      {{format_number stats.municipality.count}}
+                    </strong>
+                  </h3>
+                  <h3 class="card-h3">Municipios</h3>
+                </a>
+                <p class="triplet-last-update">Actualización: {{ moment stats.municipality.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>
@@ -134,7 +164,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-12 text-center">
-        <img src="images/search-file.svg" alt="Investigaciones propias" class="sources-icons mb-2">
+        <img src="images/search-file.svg" alt="Investigaciones propias" class="sources-icons mb-4">
         <h2>Cómo usar QQW para investigar</h2>
         <p class="text-darkblue">Como cualquier herramienta, <a href="https://quienesquien.wiki/" target="_blank">QuiénEsQuién.Wiki</a> tiene sus mañas. Con base en las mejores experiencias, hemos preparado un manual para que investigadores y periodistas puedan hacer búsquedas complejas y sacarle el máximo provecho.</p>
       </div>
@@ -187,7 +217,7 @@
           <div id="mc_embed_signup">
             <form action="https://projectpoder.us15.list-manage.com/subscribe/post?u=2717e723ef63df492f38fc669&amp;id=62bed77118" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
               <div id="mc_embed_signup_scroll">
-                <input  type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Ingresa tu email" required>
+                <input  type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Ingresa tu email" aria-label="Ingresa tu email" required>
                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2717e723ef63df492f38fc669_62bed77118" tabindex="-1" value=""></div>
                 <input type="submit" value="Recibir newsletter" name="suscribirse" id="mc-embedded-subscribe" class="button button-link">

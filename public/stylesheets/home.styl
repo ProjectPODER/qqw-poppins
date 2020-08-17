@@ -9,6 +9,15 @@ section.explore-data
     background-repeat no-repeat
     background-position center top
 
+img
+  &.logo
+      width 714px
+      margin auto
+  &.name
+      width 25rem
+      vertical-align middle
+      margin-left 1rem
+
 .tools-img
     width 150px
 
@@ -21,7 +30,7 @@ div.card-pad h3
 
 .triplet-last-update
   font-size .7rem
-  color #808080
+  color #595959
   bottom 0
 
 .sources-icons
@@ -60,7 +69,7 @@ h2 .card-image-container
 
 .landing-header
   background -webkit-gradient(linear, left top, left bottom, color-stop(88%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1))), url(../images/fondo-home.png) no-repeat top left #def /* safari4+,chrome */
-  height 100%
+  // height 100%
   width 100%
   -webkit-background-size cover
   -moz-background-size cover
@@ -68,38 +77,57 @@ h2 .card-image-container
   background-size cover
   background-blend-mode lighten
 
-.qqw-home section
-  &.landing-header,&.explore-data,&.proyectos,&.investigaciones,&.bg-gray
-    padding-top 5rem
-    padding-bottom 5rem
-  &.profile
-    padding-top 2rem
-    padding-bottom 2rem
-  &.profile-header
-    padding-top 3rem
-    padding-bottom 1rem
-  &.country-mujeres
-    padding-top 0
-    padding-bottom 0
-  &.data-sources
-    background-color #f7f7f7
-  &.proyectos
-    background-color #110046
-  &.investigaciones
-    border-top 2px dotted #3a32f9
-    h2
-      font-weight bold
-      text-align center
-  &.tabs
-    margin-top 2rem
-    min-height 100vh
-    h3
-      font-size 1.5rem
-      color #3a32f9
-      margin-bottom 2rem
-    h1
-      font-size 2rem
-      margin-bottom 2rem
+.qqw-home 
+  font-family 'Montserrat', sans-serif
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3
+    margin-top 20px
+    margin-bottom 10px
+
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6
+    margin-top 10px
+    margin-bottom 10px
+  section
+    &.landing-header,&.explore-data,&.proyectos,&.investigaciones,&.bg-gray
+      padding-top 5rem
+      padding-bottom 5rem
+    &.profile
+      padding-top 2rem
+      padding-bottom 2rem
+    &.profile-header
+      padding-top 3rem
+      padding-bottom 1rem
+    &.country-mujeres
+      padding-top 0
+      padding-bottom 0
+    &.data-sources
+      background-color #f7f7f7
+    &.proyectos
+      background-color #110046
+    &.investigaciones
+      border-top 2px dotted #3a32f9
+      h2
+        font-weight bold
+        text-align center
+    &.tabs
+      margin-top 2rem
+      min-height 100vh
+      h3
+        font-size 1.5rem
+        color #3a32f9
+        margin-bottom 2rem
+      h1
+        font-size 2rem
+        margin-bottom 2rem
 
 
 
@@ -119,6 +147,7 @@ div
       font-size 1.5rem
       color #5c5c5c
       text-align center
+      // font-family 'Montserrat', sans-serif
   &.landing-search
     text-align left
     p
@@ -208,7 +237,7 @@ div
     width 85%
 
 .card-h3
-  margin-top -10px
+  margin-top 0 !important
 
 .proyectos
   h2

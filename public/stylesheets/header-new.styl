@@ -1,44 +1,101 @@
-.menu-bar
-    background #110046
-    height 60px
-    position fixed
-    width 100%  
-    z-index 100
+.navbar
+  img
+    &.logo-horizontal
+      width 10rem
+  li.active a:after
+    content ''
+    position absolute
+    bottom 4px
+    left 50%
+    width 80%
+    height 2px
+    background #fff
 
-#search-header
-    display: inline-block;
-    width: calc(100% - 500px);
-    position: relative;
-    top: -15px;
-    max-width: 50em;    
+.bg-mainmenu
+  background $verydarkblue
 
-.navbar-header
-    img
-        &.logo-horizontal
-            width 10rem
-            margin 1.1rem 1em 
-        &.logo
-            width 714px
-            margin auto
-        &.name
-            width 25rem
-            vertical-align middle
-            margin-left 1rem
+.navbar-toggler
+  font-size: 1.5rem;
+
+.navbar-dark .navbar-nav .nav-link
+  font-size 1.1rem
+  color rgba(255, 255, 255, 0.8)
+  text-align center
+  &:hover
+    color rgba(255, 255, 255, 1)
+
+.navbar-nav
+  a
+    display block
+    position relative
+    &:after
+      content ''
+      position absolute
+      bottom 4px
+      left 50%
+      width 0%
+      transform translateX(-50%)
+      height 2px
+      background #fff
+      transition 0.35s
+    &:hover:after
+      width 80%
+
+@media (max-width: 991px)
+  .navbar-nav
+    a
+      &:hover:after
+        width 40%
+  .navbar
+    li.active a:after
+      width 40%
+
+// .menu-bar
+//     background #110046
+//     height 60px
+//     position fixed
+//     width 100%
+//     z-index 100
+
+// #search-header
+//     display: inline-block;
+//     width: calc(100% - 500px);
+//     position: relative;
+//     top: -12px;
+//     max-width: 50em;
+
+// .navbar-header
+//     img
+//         &.logo-horizontal
+//             width 10rem
+//             margin 1.1rem 1em 
+//         &.logo
+//             width 714px
+//             margin auto
+//         &.name
+//             width 25rem
+//             vertical-align middle
+//             margin-left 1rem
             
-    .icon-navbar
-        width 20px
-        margin-right 10px
-        margin-top -6px
+//     .icon-navbar
+//         width 20px
+//         margin-right 10px
+//         margin-top -6px
 
-    nav 
-        float: right
-        margin 20px 20px 0 0
+//     nav
+//         float: right
+//         margin 12px 20px 0 0
 
-    nav ul, nav li 
-        display inline-block
-        margin: 0
-        padding: 0
-        list-style: none
+//     nav ul, nav li 
+//         display inline-block
+//         margin: 0
+//         padding: 0
+//         list-style: none
+
+//     nav li.active a 
+//         background-color #ffffff !important
+//         border-color $link-hover-color !important
+//         color $link-hover-color !important    
 
 // .button_container 
 //     position absolute

@@ -1,43 +1,39 @@
-<section>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3 col-sm-12 page-break">
-        <h6>SALTAR A LA PÁGINA</h5>
-        <div class="input-group input-group-lg mb-3 w-50">
-          <input type="text" class="form-control" placeholder="Número">
-          <div class="input-group-append">
-            <button class="btn btn-secondary" type="submit">IR</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-12 text-center">
-        <h6>PÁGINAS</h5>
-        <ul class="pagination justify-content-center">
-            {{#each pagesArray}}
-                {{#ifCond type "==" "next5"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
-                {{#ifCond type "==" "next10"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
-                <li class="page-item {{#if enabled}}{{else}}disabled{{/if}} {{#ifCond type "==" "current"}}active{{else}}{{/ifCond}}">
-                  <a class="page-link page-{{type}}" {{#if enabled}}href="{{../current_url}}&page={{value}}"{{/if}}>
-                      {{!-- {{type}} {{value}} {{enable}} --}}
-                      {{title}}
-                  </a>
-                </li>
-                {{#ifCond type "==" "prev5"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
-                {{#ifCond type "==" "prev10"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
-            {{/each}}
-        </ul>
-      </div>
-      <div class="col-md-3 col-sm-12 text-right page-results">
-        <h6>RESULTADO POR PÁGINA</h5>
-        <div class="form-group ">
-          <select class="form-control form-control-lg float-right w-50" id="sel1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-md-3 col-sm-12 page-break">
+      <h6>SALTAR A LA PÁGINA</h5>
+      <div class="input-group input-group-lg mb-3 w-50">
+        <input type="text" class="form-control" placeholder="Número">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="submit">IR</button>
         </div>
       </div>
     </div>
+    <div class="col-md-6 col-sm-12 text-center">
+      <h6>PÁGINAS</h5>
+      <ul class="pagination justify-content-center">
+          {{#each pagesArray}}
+              {{#ifCond type "==" "next5"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
+              {{#ifCond type "==" "next10"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
+              <li class="page-item {{#if enabled}}{{else}}disabled{{/if}} {{#ifCond type "==" "current"}}active{{else}}{{/ifCond}}">
+                <a class="page-link page-{{type}}" {{#if enabled}}href="{{../current_url}}&page={{value}}"{{/if}}>
+                  {{title}}
+                </a>
+              </li>
+              {{#ifCond type "==" "prev5"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
+              {{#ifCond type "==" "prev10"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
+          {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-3 col-sm-12 text-right page-results">
+      <h6>RESULTADO POR PÁGINA</h5>
+      <div class="form-group">
+        <select class="form-control form-control-lg float-right w-50" id="indexLength">
+          <option value="25" {{#ifCond result.limit "==" "25" }}selected="selected"{{/ifCond}}>25</option>
+          <option value="50" {{#ifCond result.limit "==" "50" }}selected="selected"{{/ifCond}}>50</option>
+          <option value="100" {{#ifCond result.limit "==" "100" }}selected="selected"{{/ifCond}}>100</option>
+        </select>
+      </div>
+    </div>
   </div>
-</section>
+</div>

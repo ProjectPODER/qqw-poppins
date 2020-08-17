@@ -11,12 +11,13 @@ var _ = require('lodash');
 var dotenv = require('dotenv');
 var dotenvExpand = require('dotenv-expand');
 var myEnv = dotenv.config();
-const util = require('util');
-
+const https = require("https");
+var csv = require('@vanillaes/csv');
 
 dotenvExpand(myEnv)
 
 var indexRouter = require('./routes/index');
+const { all } = require('./routes/index');
 
 var app = express();
 
@@ -31,15 +32,79 @@ app.engine('.hbs', hbs({
         path.join(__dirname, 'views/partials'),
     ],
     helpers: require("./lib/helpers.js").helpers,
-    data: {
-      test: "true"
-    }
 }));
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+// Get settings from csv and set to app.locals.
+// Parameters:
+// - namespace: string, representing the name of the property used to store the values of this CSV file
+// - CSVurl: URL from which to retrieve the CSV file
+// - fields: array with column names for the CSV, each line in the CSV will be an object in an array of values. First field is the index.
+function appLocalsFromCSV(namespace,CSVurl,fields) {
+
+  //Creat the namespace object
+  app.locals[namespace] = {};
+
+  //Perform request
+  https.get(CSVurl, response => {
+    // var stream = response.pipe(file);
+    response.on("data", function(data) {
+      parsedCSV = csv.parse(data);
+
+      //Split CSV in lines
+      let csvlines = data.toString().split("\n");
+      
+      // console.log("appLocalsFromCSV data",CSVurl,data,csv);      
+      for(line in parsedCSV) {
+        //Only parse lines with a first value present, and ignore the first one
+        if (line > 0 && parsedCSV[line][0]) {
+
+          //Create values object for this line
+          const values = {}
+
+          //Iterate each field
+          for (f in fields) {
+            // console.log(f,fields,linearray);
+            //Only parse existent values
+            if (parsedCSV[line][f]) {
+              //First field is the id
+              if (f==0) {
+                id = parsedCSV[line][f];
+              }
+              //All other fields are part of the values object
+              else {
+                values[fields[f]] = parsedCSV[line][f];
+              }
+            }
+            else {
+              console.error("appLocalsFromCSV","Field '",f,fields[f],"' not present in CSV line",line,"when loading",namespace,"from",CSVurl);
+            }
+          }
+          //Add the values object to the array for this id 
+          if (!app.locals[namespace][id]) { app.locals[namespace][id] = [] }
+          app.locals[namespace][id].push(values);
+        }
+      }
+      console.log("appLocalsFromCSV app locals",namespace, app.locals[namespace])
+    });
+  });
+}
+
+
+// Configuración general: id-conf, valor
+// Buscadores: tipo-buscador, id-elemento
+// Estáticos home: id-elemento, valor
+// Notas en perfiles: id-perfil, url-nota, titulo-nota, fecha-nota, medio, autor, explicacion-relacion
+appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","es","en"]);
+appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/7i8BkJ9sxbHJHnr/download",["tipo-buscador","id"]);
+// appLocalsFromCSV("home","https://share.mayfirst.org/s/W2QY4Ga7d3oQbXw/download",["id","es","en"]);
+appLocalsFromCSV("notas","https://share.mayfirst.org/s/oTMJGnMdawxDGFH/download",["id","url","titulo","fecha","medio","autor","explicacion_es","explicacion_en"]);
+// console.log("app locals",app.locals)
+
 
 app.use(cacheControl());
 
@@ -83,7 +148,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
 
   console.error("/!\\ QuienEsQuien.Wiki APP Error at URL: ",req.url);
-  console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err.message);
 
   res.cacheControl = {
     noStore: true

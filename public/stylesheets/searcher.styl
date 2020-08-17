@@ -2,7 +2,7 @@
 
 .filters
     position fixed
-    top 60px
+    top 57px
     z-index 1
     width 100%
     padding-top 0
@@ -50,7 +50,7 @@
         border-top 1px solid #ffffff
     .filter-title, .filter-title-simple
         color $light-text-color
-        font-size 0.9rem
+        font-size 0.8rem
         border-radius 0
         border-bottom 2px solid transparent
         overflow hidden
@@ -69,22 +69,22 @@
             overflow hidden
             white-space nowrap
             text-overflow ellipsis !important
-        i 
+        i
             margin-left 2px
-            
+
     .filter-title-simple
         display block
         padding 0.5rem 1rem
         margin 0
     .filter-selected
         &.simple
-            padding 4px 8px 2px
+            padding 4px 1rem
             overflow hidden
             white-space nowrap
             text-overflow ellipsis
             max-width 200px
-            display flex !important
-            align-content center !important
+            // display flex !important
+            // align-content center !important
     .filter-title:hover
         background-color #e6e6e6
     .nav-pills .show > .nav-link
@@ -95,7 +95,7 @@
         padding 0.25rem 1.5rem
     .btn-filter-states
         background-color #ffffff !important
-    
+
     input.input-string
         width 70%
         margin-left 0.5rem
@@ -107,14 +107,13 @@
     input.input-date
         width 200px !important
         margin-right 0.5rem
-        padding: 5px 5px 5px 25px;
-        width: 100%;
-        background-image: url(../images/calendar.png);
-        background-repeat: no-repeat;
-        background-position: 6px;
-        border-width: 1px;
-        border-color: #d3d3d3;
-        border-style: solid;
+        padding 5px
+        // background-image url(../images/calendar.png)
+        // background-repeat no-repeat
+        // background-position 6px
+        border-width 1px
+        border-color #d3d3d3
+        border-style solid
 
     //Hide all filters, then show only filters ofr the current collection
     .filter-element
@@ -136,13 +135,13 @@
       display block
     
     ul.filter-active-collection-areas .filter-collection-areas
-      display: block
+      display block
  
     .left-box 
-        overflow: hidden;
-        width: calc(100% - 400px);
+        overflow hidden
+        width calc(100% - 400px)
         #filtersList 
-            flex-wrap: nowrap;
+            flex-wrap nowrap
 
 
 .selector-filter-type
@@ -162,7 +161,14 @@
     text-overflow ellipsis
     max-width 200px
     display: flex !important;
-    align-content: center!important;
+    align-content center!important
+
+.with-value
+    background-color $darkgray
+    color #ffffff
+    .close
+        color #ffffff
+        margin-top -2px
 
 .filter-selected
     overflow hidden
@@ -174,7 +180,7 @@
 // RESULTS
 .error
 .results-list
-    padding 14rem 5rem 0
+    padding 12rem 5rem 0
 
 .index-list-title
     margin-bottom 0.4rem
@@ -199,10 +205,10 @@
     -webkit-justify-content space-between
     -ms-flex-pack justify
     justify-content space-between
-    -webkit-box-align center
-    -webkit-align-items center
-    -ms-flex-align center
-    align-items center
+    -webkit-box-align start
+    -webkit-align-items start
+    -ms-flex-align start
+    align-items start
     font-size 0.9em
     p 
         color $gray
@@ -213,15 +219,17 @@
     .full-elements
     .left-elements
     .right-elements
-        display -webkit-box
-        display -webkit-flex
-        display -ms-flexbox
-        display flex
-        max-width: 100%
+        // display -webkit-box
+        // display -webkit-flex
+        // display -ms-flexbox
+        // display flex
+        // max-width: 100%
 
     .left-elements
     .right-elements
-        max-width: 50%
+        padding 0
+        // max-width: 50%
+
 
         // -webkit-box-pack justify
         // -webkit-justify-content space-between
@@ -321,14 +329,16 @@
     z-index 0
 
 .page-ellipsis 
-    position: relative;
-    display: block;
-    padding: 0.5rem 0.2rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    background-color: #fff;
-    border-left: 1px solid #dee2e6;
-    border-right: 1px solid #dee2e6;
+    position relative
+    display block
+    padding 0.5rem 0.2rem
+    margin-left -1px
+    line-height 1.25
+    background-color #fff
+    border-left 1px solid #dee2e6
+    border-right 1px solid #dee2e6
+
+
 
 // RESPONSIVE VIEWS
 
@@ -338,14 +348,14 @@
             width 50%
 
 @media (max-width: 576px)
-    .results-list
+    .error, .results-list
         padding-left 0
         padding-right 0
 
 @media screen and (max-width: 767px)
-    .index-list-elements
-        span 
-            display none
+    // .index-list-elements
+    //     span 
+    //         display none
         // -webkit-box-orient vertical
         // -webkit-box-direction normal
         // -webkit-flex-direction column
@@ -362,16 +372,16 @@
         .input-group
             margin auto
     .page-results
-        margin-top 2rem
+        // margin-top 2rem
         text-align center !important
         .form-group
             select 
                 float none !important
                 margin auto
     
-    .left-elements
-    .right-elements
-        max-width: 50%
+    // .left-elements
+    // .right-elements
+    //     max-width: 50%
         // -webkit-box-orient vertical
         // -webkit-box-direction normal
         // -webkit-flex-direction column

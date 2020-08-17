@@ -59,6 +59,13 @@
             Entre el {{moment result.records.0.startDate date lang="es" format="LL"}} y el {{moment result.records.0.endDate date lang="es" format="LL"}}
         </div>
 
+        {{#if result.records.0.description }}
+        <div class="col-m-6 col-6">
+            <p class="js-title-data">Descripción</p>
+            <p class="js-data">{{result.records.0.description}}</p>
+        </div>
+        {{/if}}
+
         <div class="col-6">
             <p class="js-title-data">Cantidad de contratos</p>
             {{ result.records.0.compiledRelease.awards.length }}
@@ -66,12 +73,6 @@
 
 
 
-        {{#if result.records.0.description }}
-        <div class="col-m-4 col-4">
-            <p class="js-title-data">Descripción</p>
-            <p class="js-data">{{result.records.0.description}}</p>
-        </div>
-        {{/if}}
 
 
         <div class="col-m-12 col-12 link-lf-contracts">
@@ -166,6 +167,8 @@
               {{/with}}
             {{else}}
               <p>Aún no hemos realizado la evaluación de este contrato.</p>
+              <p>Para detalles sobre nuestra metodología de evaluación por favor revise <a href="https://www.todosloscontratos.mx/#metodologia">TodosLosContratos.mx</a></p>
+
             {{/if}}
           </div>
         <div class="col-12">
@@ -459,7 +462,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                   <i class="fa fa-info"></i> Este contrato ha sido archivado<br>
                 {{/if}}
                 {{#if multiyearContractMxCnet }}
-                  <i class="fa fa-info"></i> Este contrato plurianual<br>
+                  <i class="fa fa-info"></i> Este contrato es plurianual<br>
                 {{/if}}
                 {{#if hasFramework }}
                   <i class="fa fa-info"></i> Este contrato fue realizado como parte de un convenio marco<br>
