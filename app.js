@@ -39,28 +39,60 @@ app.engine('.hbs', hbs({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// Get settings from csv and set to app.set
+// Get settings from csv and set to app.locals.
+// Parameters:
+// - namespace: string, representing the name of the property used to store the values of this CSV file
+// - CSVurl: URL from which to retrieve the CSV file
+// - fields: array with column names for the CSV, each line in the CSV will be an object in an array of values. First field is the index.
+function appLocalsFromCSV(namespace,CSVurl,fields) {
 
-
-// Configuración general: id-conf, valor
-// Buscadores: tipo-buscador, id-elemento
-// Estáticos home: id-elemento, valor
-// Notas en perfiles: id-perfil, url-nota, titulo-nota, fecha-nota, medio, autor, explicacion-relacion
-
-function appLocalsFromCSV(namespace,CSVurl) {
+  //Creat the namespace object
   app.locals[namespace] = {};
 
+  //Perform request
   https.get(CSVurl, response => {
     // var stream = response.pipe(file);
     response.on("data", function(data) {
+
+      //Split CSV in lines
       let csvlines = data.toString().split("\n");
       
       // console.log("appLocalsFromCSV data",CSVurl,data,csv);      
       for(line in csvlines) {
-        //TODO: Parse quoted lines and multiple fields
+        //Split lines with commas
+        //TODO: Parse quoted lines
         linearray = csvlines[line].split(",");
+
+        //Only parse lines with a first value present
         if (linearray[0]) {
-          app.locals[namespace][linearray[0].trim()] = linearray[1].trim();
+
+          //Create values object for this line
+          const values = {}
+
+          //Iterate each field
+          for (f in fields) {
+            // console.log(f,fields,linearray);
+            //Only parse existent values
+            if (linearray[f]) {
+              //Trim values
+              let trimmedValue = linearray[f].trim()
+  
+              //First field is the id
+              if (f==0) {
+                id = trimmedValue;
+              }
+              //All other fields are part of the values object
+              else {
+                values[fields[f]] = trimmedValue;
+              }
+            }
+            else {
+              console.error("appLocalsFromCSV","Field '",fields[f],"' not present in CSV when loading",namespace,"from",CSVurl);
+            }
+          }
+          //Add the values object to the array for this id 
+          if (!app.locals[namespace][id]) { app.locals[namespace][id] = [] }
+          app.locals[namespace][id].push(values);
         }
       }
       console.log("appLocalsFromCSV app locals",namespace, app.locals[namespace])
@@ -69,10 +101,14 @@ function appLocalsFromCSV(namespace,CSVurl) {
 }
 
 
-appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
-appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
-appLocalsFromCSV("home","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
-appLocalsFromCSV("profile-links","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download");
+// Configuración general: id-conf, valor
+// Buscadores: tipo-buscador, id-elemento
+// Estáticos home: id-elemento, valor
+// Notas en perfiles: id-perfil, url-nota, titulo-nota, fecha-nota, medio, autor, explicacion-relacion
+appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","value"]);
+appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["tipo-buscador","id"]);
+appLocalsFromCSV("home","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","valor"]);
+appLocalsFromCSV("profile-links","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","url","titulo","fecha","medio","autor","explicacion"]);
 // console.log("app locals",app.locals)
 
 
