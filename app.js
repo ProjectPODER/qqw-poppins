@@ -12,7 +12,7 @@ var dotenv = require('dotenv');
 var dotenvExpand = require('dotenv-expand');
 var myEnv = dotenv.config();
 const https = require("https");
-
+var csv = require('@vanillaes/csv');
 
 dotenvExpand(myEnv)
 
@@ -53,18 +53,15 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
   https.get(CSVurl, response => {
     // var stream = response.pipe(file);
     response.on("data", function(data) {
+      parsedCSV = csv.parse(data);
 
       //Split CSV in lines
       let csvlines = data.toString().split("\n");
       
       // console.log("appLocalsFromCSV data",CSVurl,data,csv);      
-      for(line in csvlines) {
-        //Split lines with commas
-        //TODO: Parse quoted lines
-        linearray = csvlines[line].split(",");
-
+      for(line in parsedCSV) {
         //Only parse lines with a first value present, and ignore the first one
-        if (line > 0 && linearray[0]) {
+        if (line > 0 && parsedCSV[line][0]) {
 
           //Create values object for this line
           const values = {}
@@ -73,17 +70,14 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
           for (f in fields) {
             // console.log(f,fields,linearray);
             //Only parse existent values
-            if (linearray[f]) {
-              //Trim values
-              let trimmedValue = linearray[f].trim()
-  
+            if (parsedCSV[line][f]) {
               //First field is the id
               if (f==0) {
-                id = trimmedValue;
+                id = parsedCSV[line][f];
               }
               //All other fields are part of the values object
               else {
-                values[fields[f]] = trimmedValue;
+                values[fields[f]] = parsedCSV[line][f];
               }
             }
             else {
