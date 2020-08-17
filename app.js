@@ -63,8 +63,8 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
         //TODO: Parse quoted lines
         linearray = csvlines[line].split(",");
 
-        //Only parse lines with a first value present
-        if (linearray[0]) {
+        //Only parse lines with a first value present, and ignore the first one
+        if (line > 0 && linearray[0]) {
 
           //Create values object for this line
           const values = {}
@@ -87,7 +87,7 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
               }
             }
             else {
-              console.error("appLocalsFromCSV","Field '",fields[f],"' not present in CSV when loading",namespace,"from",CSVurl);
+              console.error("appLocalsFromCSV","Field '",f,fields[f],"' not present in CSV line",line,"when loading",namespace,"from",CSVurl);
             }
           }
           //Add the values object to the array for this id 
@@ -105,10 +105,10 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
 // Buscadores: tipo-buscador, id-elemento
 // Estáticos home: id-elemento, valor
 // Notas en perfiles: id-perfil, url-nota, titulo-nota, fecha-nota, medio, autor, explicacion-relacion
-appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","value"]);
-appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["tipo-buscador","id"]);
-appLocalsFromCSV("home","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","valor"]);
-appLocalsFromCSV("profile-links","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","url","titulo","fecha","medio","autor","explicacion"]);
+appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","es","en"]);
+appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/7i8BkJ9sxbHJHnr/download",["tipo-buscador","id"]);
+// appLocalsFromCSV("home","https://share.mayfirst.org/s/W2QY4Ga7d3oQbXw/download",["id","es","en"]);
+appLocalsFromCSV("notas","https://share.mayfirst.org/s/oTMJGnMdawxDGFH/download",["id","url","titulo","fecha","medio","autor","explicacion_es","explicacion_en"]);
 // console.log("app locals",app.locals)
 
 

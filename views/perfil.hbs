@@ -107,6 +107,13 @@
       </a>
     </li>
     {{/if}}
+    {{#if (lookup notas result.compiledRelease.id) }}
+    <li>
+      <a href="#notas" class="anchor">
+        <i class="fas fa-map-marker"></i> Notas
+      </a>
+    </li>
+    {{/if}}
 
     <li>
       <a href="#informacion-general" class="anchor">
@@ -379,6 +386,40 @@
                   <a href="/region/{{id}}">
                     {{translate_area name}}
                   </a>
+                </p>
+              </div>
+          {{/each}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+{{/if}}
+
+{{!-- Notas --}}
+{{#if (lookup notas result.compiledRelease.id) }}
+<section class="profile" id="notas">
+  <div class="profile-content">
+    <div class="row">
+
+      <div class="col-9 col-m-9">
+        <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> Notas</h4>
+        <div class="row flex">
+
+          {{#each (lookup notas result.compiledRelease.id) }}
+              <div class="col-m-5 col-5">
+                <p class="js-title-data">
+                  <a href="{{url}}">
+                    {{titulo}} 
+                  </a>
+                </p>
+                <p class="js-data">
+                    {{medio}} {{fecha}} {{autor}}
+                </p>
+                <p class="js-data">
+                    {{explicacion_es}}
                 </p>
               </div>
           {{/each}}
