@@ -8,7 +8,6 @@ router.get('/', lib.homePage());
 /* Redirect old search pages */
 router.get('/personas', lib.redirectToSearch("persons"));
 router.get('/contratos', lib.redirectToSearch("contracts"));
-// //Don't bring UCs
 router.get('/instituciones-publicas', lib.redirectToSearch("institutions"));
 router.get('/unidades-compradoras', lib.redirectToSearch("institutions-uc"));
 router.get('/empresas', lib.redirectToSearch("companies"));
