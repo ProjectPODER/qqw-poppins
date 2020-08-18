@@ -1,9 +1,9 @@
 <div class="dataTables_length" >
-  <label>Mostrar 
+  <label>{{_ "Mostrar" }} 
     <select id="index_length" class="form-control input-sm">
       <option value="25" {{#ifCond filters.size.value "==" "25" }}selected="selected"{{/ifCond}}>25</option>
       <option value="50" {{#ifCond filters.size.value "==" "50" }}selected="selected"{{/ifCond}}>50</option>
       <option value="100" {{#ifCond filters.size.value "==" "100" }}selected="selected"{{/ifCond}}>100</option>
-    </select> resultados
+    </select> {{_ "resultados" }}
   </label>
 </div>

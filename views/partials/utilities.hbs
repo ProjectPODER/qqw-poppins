@@ -1,65 +1,65 @@
 <li class="nav-item dropdown general-filters text-center">
-    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="DATOS">
-        DATOS <br>
+    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="{{_ "DATOS" }}">
+        {{_ "DATOS" }} <br>
         <i class="fas fa-download icon-tools"></i>
     </a>
     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
         <a class="btn btn-primary w-100 mb-2" href="{{api_url}}">
             <i class="fas fa-code"></i>
-            Descargar JSON
-            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="Datos estructurados completos de esta página."></i>
+            {{_ "Descargar JSON" }}
+            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ "Datos estructurados completos de esta página." }}"></i>
         </a>
         <a class="btn btn-primary w-100" href="{{url_csv api_url}}" download="datos-QQW.csv" target="_blank">
             <i class="fas fa-file-csv"></i>
-            Descargar CSV 
-            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="Listado resumido, no disonible en todas las colecciones."></i>
+            {{_ "Descargar CSV" }}
+            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ "Listado resumido, no disonible en todas las colecciones." }}"></i>
         </a>
         <div class="mt-2">
-            <a href="https://quienesquienapi.readthedocs.io/es/latest/" class="doc-download-link">Ver documentación</a>
+            <a href="https://quienesquienapi.readthedocs.io/es/latest/" class="doc-download-link">{{_ "Ver documentación" }}</a>
         </div>
     </div>
 </li>
 <li class="nav-item dropdown general-filters text-center">
-    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="COMPARTIR">
-        COMPARTIR <br>
+    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="{{_ "COMPARTIR" }}">
+        {{_ "COMPARTIR" }} <br>
         <i class="fas fa-share-alt icon-tools"></i>
     </a>
     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
         <div class="social-share-icons">
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.quienesquien.wiki{{share_url}}&t=QuienesQuienWiki" target="_blank"><i class="fab fa-facebook-square"></i></a>
-            <a href="https://twitter.com/intent/tweet?text=Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas&url=https://www.quienesquien.wiki{{share_url}}&via=ProjectPODER" target="_blank"><i class="fab fa-twitter-square"></i></a>
-            <a href="whatsapp://send?text=Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas+en+https://www.quienesquien.wiki{{share_url}}" target="_blank"><i class="fab fa-whatsapp-square"></i></a>
+            <a href="https://twitter.com/intent/tweet?text={{_ "Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas&url=https://www.quienesquien.wiki{share_url}&via=ProjectPODER" share_url=share_url }}" target="_blank"><i class="fab fa-twitter-square"></i></a>
+            <a href="whatsapp://send?text={{_ "Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas+en+https://www.quienesquien.wiki{share_url}" share_url=share_url }}" target="_blank"><i class="fab fa-whatsapp-square"></i></a>
         </div>
-        <button class="btn btn-primary w-10" onclick="copyClipboard()" title="Copiar URL">
-            URL <input class="w-50 mb-0" id="pageUrl" type="text" name="destinatario" value="https://www.quienesquien.wiki/{{share_url}}">
+        <button class="btn btn-primary w-10" onclick="copyClipboard()" title="{{_ "Copiar URL" }}">
+            {{_ "URL " }}<input class="w-50 mb-0" id="pageUrl" type="text" name="destinatario" value="https://www.quienesquien.wiki/{{share_url}}">
             <i class="fas fa-copy"></i>
         </button>
     </div>
 </li>
 <li class="nav-item dropdown general-filters text-center">
-    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="REPORTAR">
-        REPORTAR <br>
+    <a class="nav-link dropdown-toggle filter-title dropdown-tools" data-toggle="dropdown" href="#" title="{{_ "REPORTAR" }}">
+        {{_ "REPORTAR" }} <br>
         <i class="fas fa-comment icon-tools"></i>
     </a>
     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
-        <p>¿Qué deseas reportar?</p>
+        <p>{{_ "¿Qué deseas reportar?" }}</p>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportInfo">
-            La información no es precisa
+            {{_ "La información no es precisa" }}
         </button>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportBug">
-            Algo no funciona
+            {{_ "Algo no funciona" }}
         </button>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportAdd">
-            Tengo información adicional 
+            {{_ "Tengo información adicional" }}
         </button>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportUse">
-            Quiero republicar esta información 
+            {{_ "Quiero republicar esta información" }}
         </button>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportAsk">
-            Quiero información adicional 
+            {{_ "Quiero información adicional" }}
         </button>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportOther">
-            Otros temas
+            {{_ "Otros temas" }}
         </button>
 
     </div>

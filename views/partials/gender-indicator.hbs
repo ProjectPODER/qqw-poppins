@@ -2,13 +2,13 @@
 
     <div class="col-12 col-m-12 bg-purple gender-indicator-container">
         <div class="gender-grid grid">
-            <img src="../images/mujeresenlabolsa-blanco.png" alt="Mujeres en la bolsa" class="img-fluid mujeres-logo-white">
+            <img src="../images/mujeresenlabolsa-blanco.png" alt="{{_ "Mujeres en la bolsa" }}" class="img-fluid mujeres-logo-white">
             <div class="data-icon">
                 <i class="fas fa-venus"></i>
                 <div>
                     <p class="js-data"> {{ this.summaries.f }} </p>
-                    <p class="js-title-data">Consejeras activas
-                    <a data-toggle="tooltip" data-placement="right" title="Cantidad de asientos del consejo ocupados por mujeres. El listado de abajo incluye también inactivos."><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
+                    <p class="js-title-data">{{_ "Consejeras activas" }}
+                    <a data-toggle="tooltip" data-placement="right" title="{{_ "Cantidad de asientos del consejo ocupados por mujeres. El listado de abajo incluye también inactivos." }}"><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
 
                     </p>
                 </div>
@@ -17,8 +17,8 @@
                 <i class="fas fa-mars"></i>
                 <div>
                     <p class="js-data">{{ this.summaries.m }} </p>
-                    <p class="js-title-data">Consejeros activos
-                    <a data-toggle="tooltip" data-placement="right" title="Cantidad de asientos del consejo ocupados por hombres. El listado de abajo incluye también inactivos."><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
+                    <p class="js-title-data">{{_ "Consejeros activos" }}
+                    <a data-toggle="tooltip" data-placement="right" title="{{_ "Cantidad de asientos del consejo ocupados por hombres. El listado de abajo incluye también inactivos." }}"><img src="/images/icons/info.svg" style="filter: brightness(0%) invert(100%);" alt="icon" class="info-icon"></a>
 
                     </p>
                 </div>
@@ -27,19 +27,19 @@
                 <img src="../images/icons/porcentaje-mujeres-icon-white.png" alt="" class="gender-icons">
                 <div>
                     <p class="js-data">{{ format_number (math 100 "*" (math this.summaries.f "/" (math this.summaries.f "+" this.summaries.m ))) }}%</p>
-                    <p class="js-title-data">de mujeres en el consejo</p>
+                    <p class="js-title-data">{{_ "de mujeres en el consejo" }}</p>
                 </div>
             </div>
             <div class="data-icon">
                 <img src="../images/icons/media.png" alt="" class="gender-icons">
                 <div>
                     <p class="js-data">{{ format_number (math 100 "*" (math  ../country_data.0.summaries.2020.consejeres.f "/" (math  ../country_data.0.summaries.2020.consejeres.f "+" (math  ../country_data.0.summaries.2020.consejeres.m "+" ../country_data.0.summaries.2020.consejeres.nd)))) }}%</p>
-                    <p class="js-title-data">Media del país (<a href="/paises/{{../country_data.0.id}}/mujeresenlabolsa" class="gender-country-link">{{../country_data.0.name}}</a>)</p>
+                    <p class="js-title-data">{{_ "Media del país (<a href="/paises/{{../country_data.0.id}}/mujeresenlabolsa" class="gender-country-link">{{../country_data.0.name}}</a>)</p>
                 </div>
             </div>
         </div>
         <div class="container-button-gender">
-            <a href="https://mujeresenlabolsa.org/" class="button-link stockexchange-out">VER MUJERESENLABOLSA.ORG</a>
+            <a href="https://mujeresenlabolsa.org/" class="button-link stockexchange-out">{{_ "VER MUJERESENLABOLSA.ORG" }}</a>
         </div>
     </div>
 {{/with }}
