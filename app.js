@@ -45,6 +45,10 @@ app.set('view engine', 'hbs');
 // - CSVurl: URL from which to retrieve the CSV file
 // - fields: array with column names for the CSV, each line in the CSV will be an object in an array of values. First field is the index.
 function appLocalsFromCSV(namespace,CSVurl,fields) {
+  if (!CSVurl) {
+    console.error("appLocalsFromCSV error: Missing CSVurl for namespace",namespace);
+    return false;
+  }
 
   //Creat the namespace object
   app.locals[namespace] = {};
@@ -55,9 +59,6 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
     response.on("data", function(data) {
       parsedCSV = csv.parse(data);
 
-      //Split CSV in lines
-      let csvlines = data.toString().split("\n");
-      
       // console.log("appLocalsFromCSV data",CSVurl,data,csv);      
       for(line in parsedCSV) {
         //Only parse lines with a first value present, and ignore the first one
@@ -99,10 +100,9 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
 // Buscadores: tipo-buscador, id-elemento
 // Estáticos home: id-elemento, valor
 // Notas en perfiles: id-perfil, url-nota, titulo-nota, fecha-nota, medio, autor, explicacion-relacion
-appLocalsFromCSV("general","https://share.mayfirst.org/s/z5p7CL9qxFJrgDD/download",["id","es","en"]);
-appLocalsFromCSV("buscadores","https://share.mayfirst.org/s/7i8BkJ9sxbHJHnr/download",["tipo-buscador","id"]);
-// appLocalsFromCSV("home","https://share.mayfirst.org/s/W2QY4Ga7d3oQbXw/download",["id","es","en"]);
-appLocalsFromCSV("notas","https://share.mayfirst.org/s/oTMJGnMdawxDGFH/download",["id","url","titulo","fecha","medio","autor","explicacion_es","explicacion_en"]);
+appLocalsFromCSV("general",process.env.CSVSETTINGS_GENERAL_URL,["id","es","en"]);
+appLocalsFromCSV("buscadores",process.env.CSVSETTINGS_BUSCADORES_URL,["tipo-buscador","id"]);
+appLocalsFromCSV("notas",process.env.CSVSETTINGS_NOTAS_URL,["id","url","titulo","fecha","medio","autor","explicacion_es","explicacion_en"]);
 // console.log("app locals",app.locals)
 
 
