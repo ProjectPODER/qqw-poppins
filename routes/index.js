@@ -4,12 +4,14 @@ var lib = require('../lib/lib.js');
 
 function createMultiLangRoutes(es,en,callback) {
     router.get(es, lib.redirectToLanguage(es,en));
-    router.get('/es'+es, callback);
-    router.get('/en'+en, callback);
+    router.get('/:lang'+es, callback);
+    router.get('/:lang'+en, callback);
 }
 
 /* GET home page. */
-createMultiLangRoutes('/', "/", lib.homePage());
+createMultiLangRoutes('/inicio', "/home", lib.homePage());
+
+router.get('/', lib.redirectToLanguage("/inicio","/home"));
 
 /* Redirect old search pages */
 router.get('/personas', lib.redirectToSearch("persons"));
