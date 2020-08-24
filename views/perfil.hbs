@@ -12,7 +12,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-              <a href="/">Inicio</a>
+              <a href="/">{{{_ "Inicio"}}}</a>
           </li>
           {{#each result.compiledRelease.area }}
             {{#if id }}
@@ -44,28 +44,28 @@
     {{#if result.summaries.buyer.total.count }}
     <li>
       <a href="#summary-buyer" class="anchor">
-        <i class="fas fa-money-check-alt"></i> Compras
+        <i class="fas fa-money-check-alt"></i> {{_ "Compras"}}
       </a>
     </li>
     {{/if}}
     {{#if result.summaries.supplier.total.count }}
     <li>
       <a href="#summary-supplier" class="anchor">
-        <i class="fas fa-dolly"></i> Proveedor
+        <i class="fas fa-dolly"></i> {{{_ "Proveedor"}}}
       </a>
     </li>
     {{/if}}
     {{#if result.summaries.funder.total.count }}
     <li>
       <a href="#summary-funder" class="anchor">
-        <i class="fas fa-donate"></i> Financiación
+        <i class="fas fa-donate"></i> {{{_ "Financiación"}}}
       </a>
     </li>
     {{/if}}
     {{#ifCond result.summaries.relation.nodes.length ">" 0}}
     <li>
       <a href="#flujos-monetarios" class="anchor">
-        <i class="fas fa-chart-pie"></i> Flujos monetarios
+        <i class="fas fa-chart-pie"></i> {{{_ "Flujos monetarios"}}}
       </a>
     </li>
     {{/ifCond}}
@@ -75,7 +75,7 @@
     {{#if result.flags }}
     <li>
       <a href="#evaluacion" class="anchor evaluacion">
-        <i class="fas fa-file-signature"></i> Evaluación
+        <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
       </a>
     </li>
     {{/if}}
@@ -103,21 +103,21 @@
     {{#if result.compiledRelease.area.length }}
     <li>
       <a href="#ubicacion" class="anchor">
-        <i class="fas fa-map-marker"></i> Ubicacion
+        <i class="fas fa-map-marker"></i> {{{_ "Ubicacion"}}}
       </a>
     </li>
     {{/if}}
     {{#if (lookup notas result.compiledRelease.id) }}
     <li>
       <a href="#notas" class="anchor">
-        <i class="fas fa-map-marker"></i> Notas
+        <i class="fas fa-map-marker"></i> {{{_ "Notas"}}}
       </a>
     </li>
     {{/if}}
 
     <li>
       <a href="#informacion-general" class="anchor">
-        <i class="fas fa-folder-open"></i> Información
+        <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
       </a>
     </li>
 
@@ -132,7 +132,7 @@
           {{#ifCond type '==' 'persons'}}
             {{#ifCond result.compiledRelease.contract_count.buyer '>' '0'}}
               <div class="col-12 col-m-12">
-                <p class="description-data-amount">Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.</p>
+                <p class="description-data-amount">{{{_ "Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato."}}}</p>
               </div>
             {{/ifCond}}
           {{/ifCond}}
@@ -209,7 +209,7 @@
     <div class="row">
       <div  class="col-m-9 col-9">
         <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> FLUJOS MONETARIOS</h4>
+          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> {{{_ "FLUJOS MONETARIOS"}}}</h4>
           <div id="graph-container">
           </div>
         </div>
@@ -235,15 +235,15 @@
       <div  class="col-m-9 col-9" bg-gray>
         <div class="row">
           <div class="col-6 col-m-6">
-            <h4 class="description-data-subtitle"><i class="fas fa-file-signature"></i> EVALUACIÓN Y RECOMENDACIONES</h4>
+            <h4 class="description-data-subtitle"><i class="fas fa-file-signature"></i> {{{_ "EVALUACIÓN Y RECOMENDACIONES"}}}</h4>
           </div>
           <div class="col-m-6 col-6 text-right-">
             <h4 class="amount-data">
-              Puntaje total: {{ format_score result.flags.0.total_score }}
+              {{{_ "Puntaje total:"}}} {{ format_score result.flags.0.total_score }}
             </h4>
           </div>
           <div class="col-12 col-m-12">
-            <p>A partir de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la puntuación final el sistema también tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede consultarse en <a href="https://www.TodosLosContratos.mx/#metodologia">TodosLosContratos.mx</a>.</p>
+            <p>{{{_ "A partir de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la puntuación final el sistema también tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede consultarse en <a href='https://www.TodosLosContratos.mx/#metodologia'>TodosLosContratos.mx</a>"}}}.</p>
           </div>
         </div>
         <div class="col-12-col-m-12">
@@ -271,50 +271,50 @@
           <div class="col-12-col-m-12 mt-60">
             {{# each (flag_recommendations result.flags flag_count) }}
             <div class="col-4 col-m-12 category-profile">
-              <p><b>Categoría:</b> {{category}}</p>
-              <p><b>Problema:</b> {{description}}</p>
-              <p><b>Puntaje:</b> {{format_score score }}</p>
-              <p><b>Recomendación:</b> {{uc_string}}</p>
+              <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
+              <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
+              <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
+              <p><b>{{{_ "Recomendación"}}}:</b> {{uc_string}}</p>
             </div>
             {{/each}}
           </div>
       </div>
       <div class="col-12 text-center">
-          <button class="btn button-link" onclick="$('#profile-send-info').toggle()">Solcitar informe detallado</button>
+          <button class="btn button-link" onclick="$('#profile-send-info').toggle()">{{{_ "Solcitar informe detallado"}}}</button>
       </div>
       </div>
     </div>
     <div class="row" style="display: none" id="profile-send-info">
       <div  class="col-m-9 col-9">
         <div  class="">
-          <h3>Solicitar más información</h3>
-          <p>Con el objetivo de que las dependencias y las Unidades Compradoras puedan mejorar la calidad de los datos de contrataciones destacamos las tres banderas que dieron un resultado más bajo y como pueden mejorar. Para tener la lista completa contáctanos a través del formulario. </p>
+          <h3>{{{_ "Solicitar más información"}}}</h3>
+          <p>{{{_ "Con el objetivo de que las dependencias y las Unidades Compradoras puedan mejorar la calidad de los datos de contrataciones destacamos las tres banderas que dieron un resultado más bajo y como pueden mejorar. Para tener la lista completa contáctanos a través del formulario."}}} </p>
           <form class="sendinfo-form mt-2">
             <fieldset>
               <div class="form-group" data-required="true">
-                <label for="name" class="control-label"><b>Nombre</b></label>
+                <label for="name" class="control-label"><b>{{{_ "Nombre"}}}</b></label>
                 <input type="text" name="name" id="name" maxlength="50" class="form-control">
                 <span class="help-block"></span>
               </div>
               <div class="form-group">
-                <label for="institution" class="control-label"><b>Institución</b></label>
+                <label for="institution" class="control-label"><b>{{{_ "Institución"}}}</b></label>
                 <input type="text" name="subject" id="institution" class="form-control">
                 <span class="help-block"></span>
               </div>
               <div class="form-group" data-required="true">
-                <label for="email" class="control-label"><b>Correo electrónico</b></label>
+                <label for="email" class="control-label"><b>{{{_ "Correo electrónico"}}}</b></label>
                 <input id="email" type="email" name="contact-email" class="form-control">
                 <span class="help-block"></span>
               </div>
             </fieldset>
             <input id="uc_id_message" type="hidden" name="message" value="{{result.id}}">
             <div class="centered">
-                <button id="send_info_uc" type="submit" class="btn button-link contact-submit">Enviar</button>
+                <button id="send_info_uc" type="submit" class="btn button-link contact-submit">{{_ "Enviar"}}</button>
             </div>
           </form>
           <div id="thanks-column" style="display: none;" class="mt-2">
-            <h4>Mensaje enviado</h4>
-            <p>Muchas gracias, pronto le enviaremos la información correspondiente.</p>
+            <h4>{{{_ "Mensaje enviado"}}}</h4>
+            <p>{{{_ "Muchas gracias, pronto le enviaremos la información correspondiente."}}}</p>
           </div>
         </div>
       </div>
@@ -374,13 +374,13 @@
           {{#each result.compiledRelease.area }}
               <div class="col-m-1 col-1 pd-nonleft">
                 <p class="js-title-data">
-                  {{#ifCond classification '==' 'country'}}País
-                    {{#ifCond subclassification '==' 'country-born'}}de nacimiento{{/ifCond}}
-                    {{#ifCond subclassification '==' 'country-of-residence'}}de residencia{{/ifCond}}
+                  {{#ifCond classification '==' 'country'}}{{{_ "País"}}}
+                    {{#ifCond subclassification '==' 'country-born'}}{{{_ "de nacimiento"}}}{{/ifCond}}
+                    {{#ifCond subclassification '==' 'country-of-residence'}}{{{_ "de residencia"}}}{{/ifCond}}
                   {{/ifCond}}
-                  {{#ifCond classification '==' 'city'}}Ciudad{{/ifCond}}
-                  {{#ifCond classification '==' 'region'}}Región{{/ifCond}}
-                  {{#ifCond classification '==' 'state'}}Estado{{/ifCond}}
+                  {{#ifCond classification '==' 'city'}}{{{_ "Ciudad"}}}{{/ifCond}}
+                  {{#ifCond classification '==' 'region'}}{{{_ "Región"}}}{{/ifCond}}
+                  {{#ifCond classification '==' 'state'}}{{{_ "Estado"}}}{{/ifCond}}
                 </p>
                 <p class="js-data">
                   <a href="/region/{{id}}">
@@ -405,7 +405,7 @@
     <div class="row">
 
       <div class="col-9 col-m-9">
-        <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> Notas</h4>
+        <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> {{{_ "Notas"}}}</h4>
         <div class="row flex">
 
           {{#each (lookup notas result.compiledRelease.id) }}
@@ -438,12 +438,12 @@
     <div class="row">
 
       <div class="col-9 col-m-9">
-        <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> INFORMACIÓN GENERAL</h4>
+        <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> {{{_ "INFORMACIÓN GENERAL"}}}</h4>
         <div class="row flex">
 
           {{#if result.compiledRelease.other_names.length }}
             <div class="col-m-5 col-5 pd-nonleft">
-              <p class="js-title-data">Nombres alternativos</p>
+              <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
               <ul class="js-data">
                 {{#each result.compiledRelease.other_names}}
                 <li class="{{#ifCond @index ">" 2}}profile-list-hidden{{/ifCond}}">
@@ -453,7 +453,7 @@
               </ul>
               {{#ifCond result.compiledRelease.other_names.length '>' 2}}
               <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-              <a class="profile-list-toggle">Ver todos ({{result.compiledRelease.other_names.length}})</a>
+              <a class="profile-list-toggle">{{{_ "Ver todos"}}} ({{result.compiledRelease.other_names.length}})</a>
               </div>
               {{/ifCond}}
             </div>
@@ -462,14 +462,14 @@
 
           {{#if result.compiledRelease.subclassification}}
             <div class="col-m-3 col-3">
-              <p class="js-title-data">Tipo de entidad</p>
+              <p class="js-title-data">{{{_ "Tipo de entidad"}}}</p>
               <p class="js-data">{{result.compiledRelease.subclassification}}</p>
             </div>
           {{/if}}
 
           {{#if result.compiledRelease.identifiers }}
             <div class="col-m-3 col-3 pd-nonleft">
-              <p class="js-title-data">Identificadores</p>
+              <p class="js-title-data">{{{_ "Identificadores"}}}</p>
               {{#each result.compiledRelease.identifiers}}
                 <p class="js-data">
                   {{#ifCond identifier '!=' '#ĦVALOR!'}}
@@ -478,14 +478,14 @@
                     {{/ifCond}}
                   {{/ifCond}}
 
-                  {{#ifCond scheme '==' 'RUPC'}} <i class="fa fa-info" data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"></i>{{/ifCond}}
+                  {{#ifCond scheme '==' 'RUPC'}} <i class="fa fa-info" data-toggle="tooltip" data-placement="right" title="{{{_ "Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"}}}"></i>{{/ifCond}}
                 {{/each}}</p>
             </div>
           {{/if}}
 
           {{#if result.compiledRelease.links}}
             <div class="col-m-3 col-3 pd-nonleft">
-              <p class="js-title-data">Link(s)</p>
+              <p class="js-title-data">{{{_ "Link(s)"}}}</p>
               {{#each result.compiledRelease.links}}
                 <p class="js-data"><a href="{{this.id}}" target="_blank">{{this.id}}</a></p>
               {{/each}}
@@ -497,14 +497,14 @@
         <div class="row flex">
           {{#if result.compiledRelease.date}}
             <div class="col-m-3 col-3 pd-nonleft">
-              <p class="js-title-data">Fecha de actualización</p>
+              <p class="js-title-data">{{{_ "Fecha de actualización"}}}</p>
               <p class="js-data">{{moment result.compiledRelease.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
 
           {{#if result.compiledRelease.source}}
             <div class="col-m-3 col-3 pd-nonleft">
-              <p class="js-title-data">Fuente(s)</p>
+              <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
               <p class="js-data">{{#each result.compiledRelease.source}} <a href="/entidades-y-fuentes#{{this.id}}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}

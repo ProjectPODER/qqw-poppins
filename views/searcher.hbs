@@ -61,7 +61,7 @@
           <form class="advance-filters">
             <ul class="nav nav-pills filter-active-collection-{{collection}}" id="filtersList">
               {{# each filter_elements }}
-                {{#with (or (get_object_element ../filter_values this.htmlFieldName) this.default) }}
+                {{#with (or (lookup ../filter_values this.htmlFieldName) this.default) }}
                   {{> filter_element filter=../this value=this.value collection=../../collection }}
                 {{/with}}
               {{/each }}
@@ -79,7 +79,7 @@
         <div class="right-box ml-auto">
             <ul class="nav nav-pills d-flex flex-nowrap">
                 <li class="nav-item filter-dropdown general-filters">
-                    <p class="filter-title-simple" href="#" title="RESULTADOS">RESULTADOS</p>
+                    <p class="filter-title-simple" href="#" title="RESULTADOS">{{{_ "RESULTADOS"}}}</p>
                     <p class="filter-selected simple text-right" title="{{ format_number result.count }}">{{ format_number result.count }}</p>
                 </li>
                 {{>utilities api_url=result.api_url share_url=share_url }}
@@ -118,40 +118,40 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-7 d-flex flex-wrap align-content-center">
-          <h1 class="text-verydarkblue">Búsqueda sin resultados</h1>
+          <h1 class="text-verydarkblue">{{{_ "Búsqueda sin resultados"}}}</h1>
           <p>
-            Aquí te damos algunas opciones para solucionarlo:
+            {{{_ "Aquí te damos algunas opciones para solucionarlo:"}}}
           </p>
           <ul>
             <li>
-              La búsqueda de todos los tipos no funciona durante la etapa de Beta. Por favor elige un tipo para realizar tu búsqueda.
+              {{{_ "La búsqueda de todos los tipos no funciona durante la etapa de Beta. Por favor elige un tipo para realizar tu búsqueda."}}}
             </li>
             <li>
-              Busca las empresas sin la terminación legal y solo los apellidos de las personas.
+              {{{_ "Busca las empresas sin la terminación legal y solo los apellidos de las personas."}}}
             </li>
             <li>
-              No uses siglas como CFE, desarrolla el nombre completo: Comisión Federal de Electricidad.
+              {{{_ "No uses siglas como CFE, desarrolla el nombre completo: Comisión Federal de Electricidad."}}}
             </li>
             <li>
-              Prueba borrando todos los filtros:
+              {{{_ "Prueba borrando todos los filtros:"}}}
               <div class="text-center mt-3 mb-3">
-                <a class="btn btn-primary" href="/buscador">Eliminar todos los filtros</a>
+                <a class="btn btn-primary" href="/buscador">{{{_ "Eliminar todos los filtros"}}}</a>
               </div>
             </li>
           </ul>
           <h4>Aprende a usar QQW</h4>
           <ul>
             <li>
-              Consulta el <a href="/manual">Manual de Investigación</a>.
+              {{{_ "Consulta el <a href='/manual'>Manual de Investigación</a>."}}}
             </li>
             <li>
-              Consulta la <a href="https://quienesquienapi.readthedocs.io/es/latest/">documentación de nuestra API</a>.
+              {{{_ "Consulta la <a href='https://quienesquienapi.readthedocs.io/es/latest/'>documentación de nuestra API</a>."}}}
             </li>
             <li>
-              Consulta nuestro <a href="/entidades-y-fuentes">listado de fuentes</a> para saber sobre qué bases estás búscando.
+              {{{_ "Consulta nuestro <a href='/entidades-y-fuentes'>listado de fuentes</a> para saber sobre qué bases estás búscando."}}}
             </li>
           </ul>
-          <p>Si necesitas ayuda en la búsqueda, <a href="/contacto?&subject=Sin resultados de búsqueda">contáctanos</a>.</p>
+          <p>{{{_ "Si necesitas ayuda en la búsqueda, <a href='/contacto?&subject=Sin resultados de búsqueda'>contáctanos</a>."}}}</p>
         </div>
         <div class="col-lg-5 text-center error-img justify-content-center d-flex flex-wrap align-content-center">
           <img class="img-fluid mb-4" src="../images/error-img.png" alt="Error">
