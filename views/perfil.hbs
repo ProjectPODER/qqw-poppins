@@ -3,9 +3,9 @@
 <section class="profile-header">
   <div class="wrap bg-gray" id="wrap">
     <div class="description-data-title">
-      <h3 title="{{ result.compiledRelease.name}}">
-        {{{ get_classification_icon type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
-        {{ result.compiledRelease.name}}
+      <h3 title="{{ result.name}}">
+        {{{ get_classification_icon type result.classification result.subclassification result.govLevel}}}
+        {{ result.name}}
       </h3>
     </div>
     <div class="profile-breadcrumb">
@@ -14,7 +14,7 @@
           <li class="breadcrumb-item">
               <a href="/">{{{_ "Inicio"}}}</a>
           </li>
-          {{#each result.compiledRelease.area }}
+          {{#each result.area }}
             {{#if id }}
               <li class="breadcrumb-item">
                 <a href="/regiones/{{id}}">
@@ -24,7 +24,7 @@
             {{/if}}
           {{/each}}
           <li class="breadcrumb-item">
-            <a href="/{{get_type_url type}}">{{ get_classification_name type result.compiledRelease.classification result.compiledRelease.subclassification result.compiledRelease.govLevel }}</a>
+            <a href="/{{get_type_url type}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
           </li>
 
         </ol>        
@@ -100,14 +100,14 @@
     </li>
     {{/each}}
     {{/if}}
-    {{#if result.compiledRelease.area.length }}
+    {{#if result.area.length }}
     <li>
       <a href="#ubicacion" class="anchor">
         <i class="fas fa-map-marker"></i> {{{_ "Ubicacion"}}}
       </a>
     </li>
     {{/if}}
-    {{#if (lookup notas result.compiledRelease.id) }}
+    {{#if (lookup notas result.id) }}
     <li>
       <a href="#notas" class="anchor">
         <i class="fas fa-map-marker"></i> {{{_ "Notas"}}}
@@ -130,7 +130,7 @@
     <div class="row">
       <div class="col-9 col-m-9">
           {{#ifCond type '==' 'persons'}}
-            {{#ifCond result.compiledRelease.contract_count.buyer '>' '0'}}
+            {{#ifCond result.contract_count.buyer '>' '0'}}
               <div class="col-12 col-m-12">
                 <p class="description-data-amount">{{{_ "Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato."}}}</p>
               </div>
@@ -138,7 +138,7 @@
           {{/ifCond}}
 
         {{#ifCond type "==" "companies"}}
-        {{> gender-indicator result_name=result.compiledRelease.name country_data=result.countryData }}
+        {{> gender-indicator result_name=result.name country_data=result.countryData }}
         {{/ifCond}}
       </div>
     </div>
@@ -362,7 +362,7 @@
   </div>
 </div>
 
-{{#if result.compiledRelease.area.length }}
+{{#if result.area.length }}
 <section class="profile" id="ubicacion">
   <div class="profile-content">
     <div class="row">
@@ -371,7 +371,7 @@
         <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> Ubicación</h4>
         <div class="row flex">
 
-          {{#each result.compiledRelease.area }}
+          {{#each result.area }}
               <div class="col-m-1 col-1 pd-nonleft">
                 <p class="js-title-data">
                   {{#ifCond classification '==' 'country'}}{{{_ "País"}}}
@@ -399,7 +399,7 @@
 {{/if}}
 
 {{!-- Notas --}}
-{{#if (lookup notas result.compiledRelease.id) }}
+{{#if (lookup notas result.id) }}
 <section class="profile" id="notas">
   <div class="profile-content">
     <div class="row">
@@ -408,7 +408,7 @@
         <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> {{{_ "Notas"}}}</h4>
         <div class="row flex">
 
-          {{#each (lookup notas result.compiledRelease.id) }}
+          {{#each (lookup notas result.id) }}
               <div class="col-m-5 col-5">
                 <p class="js-title-data">
                   <a href="{{url}}">
@@ -441,36 +441,36 @@
         <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> {{{_ "INFORMACIÓN GENERAL"}}}</h4>
         <div class="row flex">
 
-          {{#if result.compiledRelease.other_names.length }}
+          {{#if result.other_names.length }}
             <div class="col-m-5 col-5 pd-nonleft">
               <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
               <ul class="js-data">
-                {{#each result.compiledRelease.other_names}}
+                {{#each result.other_names}}
                 <li class="{{#ifCond @index ">" 2}}profile-list-hidden{{/ifCond}}">
                     {{name}}
                 </li>
                 {{/each}}
               </ul>
-              {{#ifCond result.compiledRelease.other_names.length '>' 2}}
+              {{#ifCond result.other_names.length '>' 2}}
               <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-              <a class="profile-list-toggle">{{{_ "Ver todos"}}} ({{result.compiledRelease.other_names.length}})</a>
+              <a class="profile-list-toggle">{{{_ "Ver todos"}}} ({{result.other_names.length}})</a>
               </div>
               {{/ifCond}}
             </div>
           {{/if}}
 
 
-          {{#if result.compiledRelease.subclassification}}
+          {{#if result.subclassification}}
             <div class="col-m-3 col-3">
               <p class="js-title-data">{{{_ "Tipo de entidad"}}}</p>
-              <p class="js-data">{{result.compiledRelease.subclassification}}</p>
+              <p class="js-data">{{result.subclassification}}</p>
             </div>
           {{/if}}
 
-          {{#if result.compiledRelease.identifiers }}
+          {{#if result.identifiers }}
             <div class="col-m-3 col-3 pd-nonleft">
               <p class="js-title-data">{{{_ "Identificadores"}}}</p>
-              {{#each result.compiledRelease.identifiers}}
+              {{#each result.identifiers}}
                 <p class="js-data">
                   {{#ifCond identifier '!=' '#ĦVALOR!'}}
                     {{#ifCond scheme '!=' 'CIQ'}}
@@ -483,10 +483,10 @@
             </div>
           {{/if}}
 
-          {{#if result.compiledRelease.links}}
+          {{#if result.links}}
             <div class="col-m-3 col-3 pd-nonleft">
               <p class="js-title-data">{{{_ "Link(s)"}}}</p>
-              {{#each result.compiledRelease.links}}
+              {{#each result.links}}
                 <p class="js-data"><a href="{{this.id}}" target="_blank">{{this.id}}</a></p>
               {{/each}}
             </div>
@@ -495,17 +495,17 @@
         </div>
 
         <div class="row flex">
-          {{#if result.compiledRelease.date}}
+          {{#if result.date}}
             <div class="col-m-3 col-3 pd-nonleft">
               <p class="js-title-data">{{{_ "Fecha de actualización"}}}</p>
-              <p class="js-data">{{moment result.compiledRelease.date date lang="es" format="LL"}}</p>
+              <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
 
-          {{#if result.compiledRelease.source}}
+          {{#if result.source}}
             <div class="col-m-3 col-3 pd-nonleft">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.compiledRelease.source}} <a href="/entidades-y-fuentes#{{this.id}}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.source}} <a href="/entidades-y-fuentes#{{this.id}}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
         </div>

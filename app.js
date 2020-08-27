@@ -90,7 +90,8 @@ function appLocalsFromCSV(namespace,CSVurl,fields) {
           app.locals[namespace][id].push(values);
         }
       }
-      console.log("appLocalsFromCSV app locals",namespace, app.locals[namespace])
+      // console.log("appLocalsFromCSV app locals",namespace, app.locals[namespace])
+      console.log("Loaded config")
     });
   });
 }
@@ -148,7 +149,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
 
   console.error("/!\\ QuienEsQuien.Wiki APP Error at URL: ",req.url);
-  console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err.message);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err);
 
   res.cacheControl = {
     noStore: true

@@ -95,17 +95,13 @@
             <div class="col-12 col-m-12">
             {{#each result.data}}
                 {{#ifCond ../collection "==" "contracts"}}
-                  {{#each records}}
-                      {{> result  collection=../../collection filter_values=../../filter_values result=this }}
-                  {{/each}}
+                    {{> result  collection=../collection filter_values=../../filter_values result=this }}
                 {{else}}
-                {{#with compiledRelease }}
-                    {{#ifCond collection "==" "all"}}
-                      {{> result  collection=type result=this }}
-                    {{else}}
-                      {{> result  collection=../../collection filter_values=../../filter_values result=this }}
-                    {{/ifCond}}
-                {{/with}}
+                  {{#ifCond collection "==" "all"}}
+                    {{> result  collection=type result=this }}
+                  {{else}}
+                    {{> result  collection=../collection filter_values=../../filter_values result=this }}
+                  {{/ifCond}}
                 {{/ifCond}}
             {{/each}}
             </div>

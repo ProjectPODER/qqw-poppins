@@ -61,10 +61,10 @@
       </div>
     {{else}}
       {{#ifCond filter.type "!=" "toggle" }}
-        <div class="selection-filter-box {{#if value }}with-value{{/if}}">
+        <div class="selection-filter-box {{#if value }}with-value{{/if}}" data-toggle="dropdown">
           <p class="filter-selected" title="">
             {{#ifCond filter.type "==" "select" }}
-              {{get_object_element filter.options value}}
+              {{lookup filter.options value}}
             {{else}}
               {{#if (or value.min value.max) }}
                 {{value.min}} a {{value.max}}

@@ -1,10 +1,10 @@
 <div class="index-list-item">
     <div class="index-list-group">
       <div class="index-list-title">
-        <a href="/{{get_type_url collection}}/{{ or result.ocid result.id }}">
-          <p class="text-overflow" title="{{or result.name result.compiledRelease.contracts.0.title}}">
-            {{{ get_classification_icon collection (or result.compiledRelease.classification result.details.type) result.compiledRelease.subclassification result.compiledRelease.govLevel}}}
-            {{or result.name result.title}}
+        <a href="/{{get_type_url collection}}/{{ result.id }}">
+          <p class="text-overflow" title="{{or result.name result.contracts.title}}">
+            {{{ get_classification_icon collection (or result.classification result.details.type) result.subclassification result.govLevel}}}
+            {{or result.name result.contracts.title}}
           </p>
         </a>
       </div>
@@ -43,7 +43,7 @@
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
-                {{#with (get_party this compiledRelease.parties.0.id)}}
+                {{#with (get_party this parties.0.id)}}
                 {{#if memberOf.0.id }}
                     <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}" title="{{_ "Comprador" }}: {{memberOf.0.name}}">
                       {{{get_classification_icon "institutions" details.type details.classification details.subclassification details.govLevel }}}
@@ -60,7 +60,7 @@
             </div> 
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
-                {{#with (get_party this result.compiledRelease.awards.[0].suppliers.[0].id) }}
+                {{#with (get_party this result.awards.suppliers.[0].id) }}
                   <a href="/{{get_type_url details.type }}/{{id}}" title="{{_ "Proveedor:" }} {{name}}">
                       {{{get_classification_icon details.type details.classification details.subclassification details.govLevel }}}
                       {{name }} 
@@ -74,21 +74,21 @@
           </div>
           <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}">
+              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.contracts.value.amount}} {{format_currency result.contracts.value.currency}}">
                 <i class="fas fa-dollar-sign"></i>
-                  {{format_amount result.compiledRelease.total_amount}} {{format_currency result.compiledRelease.contracts.0.value.currency}}
+                  {{format_amount result.contracts.value.amount}} {{format_currency result.contracts.value.currency}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{_ "Fecha" }}: {{moment result.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.endDate date lang="es" format="L"}}">
+              <p class="index-list-element" title="{{_ "Fecha" }}: {{moment result.contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.contracts.period.endDate date lang="es" format="L"}}">
                 <i class="fas fa-calendar-alt"></i>
-                  {{moment result.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.endDate date lang="es" format="L"}}
+                  {{moment result.contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.contracts.period.endDate date lang="es" format="L"}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{_ "Tipo de procedimiento"}}: {{result.compiledRelease.tender.procurementMethodDetails}}">
+              <p class="index-list-element" title="{{_ "Tipo de procedimiento"}}: {{result.tender.procurementMethodDetails}}">
                 <i class="fas fa-clipboard-list"></i>
-                  {{result.compiledRelease.tender.procurementMethodDetails}}
+                  {{result.tender.procurementMethodDetails}}
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@
                 </a>
               </p>
             </div>
-            {{# if compiledRelease.summaries.states_count }}
+            {{# if summaries.states_count }}
             <div class="col-lg-2 p-0">
               <p class="index-list-element" title="{{format_number summaries.states_count}} {{_ "estados" }}"><i class="fas fa-map-marked"></i> {{format_number summaries.states_count}} <span>{{_ "estados" }}</span>
               </p>
