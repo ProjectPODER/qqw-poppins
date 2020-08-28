@@ -34,14 +34,14 @@
                 <a href="/personas">
                   <h3>
                     <strong>
-                      {{format_number stats.persons.count }} 
+                      {{format_number stats.index.persons.count }} 
                     </strong>
                   </h3>
                   <h3 class="card-h3">{{{_ "Personas"}}}</h3>
                 </a>
                 {{!-- <p class="serif-gray">Funcionarios, empresarios y proveedores del Estado, qué negocios tienen, con quién se asocian y cómo consiguen sus contratos públicos.</p>
                 <a href="/persons" class="button-link">VER PERSONAS</a> --}}
-                <p class="triplet-last-update">{{{_ "Actualización:"}}} {{ moment stats.persons.lastModified date lang="es" format="LL" }} </p>
+                <p class="triplet-last-update">{{{_ "Actualización:"}}} {{ moment stats.index.persons.lastModified date lang="es" format="LL" }} </p>
               </div>
             </div>
           </div>
@@ -51,15 +51,15 @@
                 <a href="/contratos">
                   <h3>
                     <strong>
-                      {{format_number stats.contracts.count}}
+                      {{format_number stats.index.contracts.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Procesos de contratación"}}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Los procesos de contratación pueden contener más de un contrato"}}}"><i class="fas fa-info-circle"></i></a>
+                  <h3 class="card-h3">{{{_ "Contratos"}}}
                 </h3>
                 </a>
                 {{!-- <p class="serif-gray">Explora los importes, años, dependencias, sas proveedoras y otras características de más de un millón de contratos.</p>
                 <a href="/contracts" class="button-link">VER CONTRATOS</a> --}}
-                <p class="triplet-last-update">{{{_ "Actualización:"}}} {{ moment stats.contracts.lastModified date lang="es" format="LL"}} </p>
+                <p class="triplet-last-update">{{{_ "Actualización:"}}} {{ moment stats.index.contracts.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>
@@ -69,14 +69,14 @@
                 <a href="/instituciones-publicas">
                   <h3>
                     <strong>
-                      {{format_number stats.institution.count}}
+                      {{format_number stats.classification.institution.count}}
                     </strong>
                   </h3>
                   <h3 class="card-h3">{{{_ "Instituciones"}}}</h3>
                 </a>
               {{!--  <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
                 <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
-                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.institution.lastModified date lang="es" format="LL" }} </p>
+                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.institution.lastModified date lang="es" format="LL" }} </p>
               </div>
             </div>
           </div>
@@ -86,14 +86,14 @@
                 <a href="/empresas">
                   <h3>
                     <strong>
-                      {{format_number stats.company.count}}
+                      {{format_number stats.classification.company.count}}
                     </strong>
                   </h3>
                   <h3 class="card-h3">{{{_ "Empresas"}}}</h3>
                 </a>
                 {{!-- <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
                 <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
-                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.company.lastModified date lang="es" format="LL"}} </p>
+                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.company.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>
@@ -103,12 +103,12 @@
                 <a href="/empresas">
                   <h3>
                     <strong>
-                      {{format_number stats.state.count}}
+                      {{format_number stats.classification.state.count}}
                     </strong>
                   </h3>
                   <h3 class="card-h3">{{{_ "Estados"}}}</h3>
                 </a>
-                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.state.lastModified date lang="es" format="LL"}} </p>
+                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.state.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>
@@ -118,12 +118,12 @@
                 <a href="/empresas">
                   <h3>
                     <strong>
-                      {{format_number stats.municipality.count}}
+                      {{format_number stats.classification.municipality.count}}
                     </strong>
                   </h3>
                   <h3 class="card-h3">{{{_ "Municipios"}}}</h3>
                 </a>
-                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.municipality.lastModified date lang="es" format="LL"}} </p>
+                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.municipality.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>
