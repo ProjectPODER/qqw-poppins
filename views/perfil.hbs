@@ -38,31 +38,30 @@
   </div>
 </section>
 
-
 <nav id="right-menu" class="menu-profile">
   <ul class="right-menu-profile nav-stacked nav">
-    {{#if result.summaries.buyer.total.count }}
+    {{#if summaries.buyer.total.count }}
     <li>
       <a href="#summary-buyer" class="anchor">
         <i class="fas fa-money-check-alt"></i> {{_ "Compras"}}
       </a>
     </li>
     {{/if}}
-    {{#if result.summaries.supplier.total.count }}
+    {{#if summaries.supplier.total.count }}
     <li>
       <a href="#summary-supplier" class="anchor">
         <i class="fas fa-dolly"></i> {{{_ "Proveedor"}}}
       </a>
     </li>
     {{/if}}
-    {{#if result.summaries.funder.total.count }}
+    {{#if summaries.funder.total.count }}
     <li>
       <a href="#summary-funder" class="anchor">
         <i class="fas fa-donate"></i> {{{_ "Financiación"}}}
       </a>
     </li>
     {{/if}}
-    {{#ifCond result.summaries.relation.nodes.length ">" 0}}
+    {{#ifCond summaries.relation.nodes.length ">" 0}}
     <li>
       <a href="#flujos-monetarios" class="anchor">
         <i class="fas fa-chart-pie"></i> {{{_ "Flujos monetarios"}}}
@@ -168,8 +167,8 @@
 {{/if}}
 
 {{!-- SUMMARIES --}}
-{{#if result.summaries.buyer.total.count }}
-{{>summary result=result summary="buyer" data=result.summaries.buyer }}
+{{#if summaries.buyer.total.count }}
+{{>summary result=result summary="buyer" data=summaries.buyer }}
 {{/if}}
 
 {{!-- Unidades compradoras --}}
@@ -194,16 +193,16 @@
 
 
 
-{{#if result.summaries.supplier.total.count }}
-{{>summary result=result summary="supplier" data=result.summaries.supplier }}
+{{#if summaries.supplier.total.count }}
+{{>summary result=result summary="supplier" data=summaries.supplier }}
 {{/if}}
 
-{{#if result.summaries.funder.total.count }}
-{{>summary result=result summary="funder" data=result.summaries.funder }}
+{{#if summaries.funder.total.count }}
+{{>summary result=result summary="funder" data=summaries.funder }}
 {{/if}}
 
 
-{{#ifCond result.summaries.relation.nodes.length ">" 0}}
+{{#ifCond summaries.relation.nodes.length ">" 0}}
 <section class="profile" id="flujos-monetarios">
   <div class="profile-content">
     <div class="row">
@@ -223,7 +222,7 @@
 {{/ifCond}}
 
 <script>
-  tiza.moneyFlow({target: "graph-container", data: {{{j result.summaries.relation}}} });
+  tiza.moneyFlow({target: "graph-container", data: {{{j summaries.relation}}} });
 </script>
 
 

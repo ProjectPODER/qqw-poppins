@@ -1,74 +1,17 @@
 
 
 <section class="filters bg-gray">
-  {{!-- <nav class="navbar navbar-expand navbar-dark bg-info mt-5">
-    <div class="container-fluid">
-      <a class="navbar-brand pb-2" href="#">Bootstrap 4</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-          <ul class="navbar-nav align-self-end" id="nav">
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 4</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 5</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 6</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 7</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 8</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 9</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 10</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 11</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 12</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Item 13</a>
-              </li>
-              <li class="nav-item dropdown d-none">
-                  <a class="nav-link dropdown-toggl" href="#" id="navbarDropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="navbar-toggler-icon"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-right bg-info" aria-labelledby="navbarDropdownMenu">
-                  </ul>
-              </li>
-          </ul>
-      </div>
-    </div>
-  </nav> --}}
     <div class="d-flex flex-nowrap">
         <div class="left-box">
           <form class="advance-filters">
             <ul class="nav nav-pills filter-active-collection-{{collection}}" id="filtersList">
-              {{# each filter_elements }}
-                {{#with (or (lookup ../filter_values this.htmlFieldName) this.default) }}
-                  {{> filter_element filter=../this value=this.value collection=../../collection }}
-                {{/with}}
+              {{# each filters }}
+                {{> filter_element filter=this collection=../collection }}
               {{/each }}
 
               <li class="nav-item dropdown more-filters-dropdown d-none">
                 <a class="nav-link dropdown-toggle" href="#" id="moreFilters" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Más filtros
+                  {{_ "Más filtros" }}
                 </a>
                 <ul class="dropdown-menu-morefilters dropdown-menu-right bg-dark" aria-labelledby="moreFilters">
                 </ul>
@@ -80,7 +23,7 @@
             <ul class="nav nav-pills d-flex flex-nowrap">
                 <li class="nav-item filter-dropdown general-filters">
                     <p class="filter-title-simple" href="#" title="RESULTADOS">{{{_ "RESULTADOS"}}}</p>
-                    <p class="filter-selected simple text-right" title="{{ format_number result.count }}">{{ format_number result.count }}</p>
+                    <p class="filter-selected simple text-right" title="{{ format_number result.count }}">{{#ifCond result.count_precission "==" "gte"}} {{_ "más de" }} {{/ifCond}}{{ format_number result.count }}</p>
                 </li>
                 {{>utilities api_url=result.api_url share_url=share_url }}
             </ul>
@@ -94,15 +37,7 @@
         <div class="row">
             <div class="col-12 col-m-12">
             {{#each result.data}}
-                {{#ifCond ../collection "==" "contracts"}}
-                    {{> result  collection=../collection filter_values=../../filter_values result=this }}
-                {{else}}
-                  {{#ifCond collection "==" "all"}}
-                    {{> result  collection=type result=this }}
-                  {{else}}
-                    {{> result  collection=../collection filter_values=../../filter_values result=this }}
-                  {{/ifCond}}
-                {{/ifCond}}
+                {{> result  collection=../collection filter_values=../../filter_values result=this }}
             {{/each}}
             </div>
         </div>

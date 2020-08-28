@@ -17,21 +17,21 @@ $('#left-sidebar').click(function() {
 var qqw_suggest = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  prefetch: AUTOCOMPLETE_URL+"/\"\"",
+  prefetch: AUTOCOMPLETE_URL,
   remote: {
     url: AUTOCOMPLETE_URL+'/%QUERY',
     wildcard: '%QUERY',
     transform: function(response) {
-      // console.log("blood",response.data);
+      console.log("blood",response.data);
       return response.data;
     }
   }
 });
 
-const emptyFooter = '<hr><div class="tt-footer"><a href="/personas">Buscar personas</a></div>' +
-'<div class="tt-footer orgs"><a href="/instituciones-publicas">Buscar instituciones</a></div>' +
-'<div class="tt-footer orgs"><a href="/empresas">Buscar empresas</a></div>' +
-'<div class="tt-footer contracts"><a href="/contratos">Buscar contratos </a></div>';
+// const emptyFooter = '<hr><div class="tt-footer"><a href="/personas">Buscar personas</a></div>' +
+// '<div class="tt-footer orgs"><a href="/instituciones-publicas">Buscar instituciones</a></div>' +
+// '<div class="tt-footer orgs"><a href="/empresas">Buscar empresas</a></div>' +
+// '<div class="tt-footer contracts"><a href="/contratos">Buscar contratos </a></div>';
 
 //Search
 $('.easy-search-input').typeahead(
@@ -47,70 +47,60 @@ $('.easy-search-input').typeahead(
   templates: {
       empty: [
         '<div class="empty-message">',
-          'No hay resultados para la búsqueda.',
-        '</div>' + emptyFooter
+          'No hay resultados para la búsqueda, pero seguro lo encontrarás.',
+        '</div>'
       ].join('\n'),
       suggestion: function(data){
-        let type = "";
-        let id = "";
-        let text = "";
-        switch (data.type) {
-            case "contract":
-              type = "contratos";
-              id = data.compiledRelease.ocid;
-              text = data.compiledRelease.contracts[0].title;
-            break;
-            case "person":
-              type = "personas";
-              id = data.id;
-              text = data.name;
-              break;
-            case "institution":
-              type = "instituciones-publicas";
-              id = data.id;
-              text = data.name;
-              break;
-            case "company":
-              type = "empresas";
-              id = data.id;
-              text = data.name;
-              break;
+        let type = data.type;
+        if (type == "organizations") {
+          type = data.classification;
         }
-        return '<a class="suggestion" href="/' + type + '/' + id + '"><div>' + text + '</div></a>';
-      },
-      footer: function(data){
-        if (data.query) {
-          return '<hr><div class="tt-footer"><a href="/personas?filtername=' + data.query + '"' + '>' + 'Buscar personas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
-          '<div class="tt-footer orgs"><a href="/instituciones-publicas?filtername=' + data.query + '"' + '>' + 'Buscar instituciones con '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
-          '<div class="tt-footer orgs"><a href="/empresas?filtername=' + data.query + '"' + '>' + 'Buscar empresas con '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
-          '<div class="tt-footer contracts"><a href="/contratos?proveedor=' + data.query + '">' + 'Buscar contratos comprados por '+ '"<b>' + data.query + '</b>"' + '</a></div>' +
-          '<div class="tt-footer contracts"><a href="/contratos?dependencia=' + data.query + '">' + 'Buscar contratos provistos por '+ '"<b>' + data.query + '</b>"' + '</a></div>';
-        }
-        else {
-          return emptyFooter;
-        }
+        let id = data.id;
+        let text = data.name || data.contracts.title;
+        return '<a class="suggestion" href="/' + get_type_url(type) + '/' + id + '"><div>' + text + '</div></a>';
       },
     }
   }
 );
 
+get_type_url = function(type) {
+  //TODO: i18n
+  switch(type) {
+    case "institutions": return "instituciones-publicas";
+    case "institution": return "instituciones-publicas";
+    case "municipality": return "instituciones-publicas";
+    case "state": return "instituciones-publicas";
+    case "company": return "empresas";
+    case "companies": return "empresas";
+    case "contract": return "contratos";
+    case "contracts": return "contratos";
+    case "persons": return "personas";
+    case "person": return "personas";
+    case "funder": return "instituciones-publicas";
+    case "countries": return "paises";
+    default: console.log("get_type_url",type); return "unknown";
+  }
+}
+
+
+
 $(".twitter-typeahead").css("width","100%");
 
-$('.easy-search-input').keypress(function(e) {
-  var keycode = (e.keyCode ? e.keyCode : e.which);
-  // console.log("esi keypress", keycode)
-  if (keycode == 13 || keycode === undefined) {
-    e.preventDefault();
-    console.log("esi keypress 13",$(".easy-search-input.landing-search-inputtext.tt-input").val(),$("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')"))
-    const newLocation = $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
-    if (newLocation) {
-      location.href= newLocation;
-    }
-    else {
-      alert("Por favor ingrese un término y seleccione una opción.")
-    }
-  }
-})
+// $('.easy-search-input').keypress(function(e) {
+//   var keycode = (e.keyCode ? e.keyCode : e.which);
+//   // console.log("esi keypress", keycode)
+//   if (keycode == 13 || keycode === undefined) {
+//     e.preventDefault();
+//     console.log("esi keypress 13",$(".easy-search-input.landing-search-inputtext.tt-input").val(),$("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')"))
+//     const newLocation = $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
+//     if (newLocation) {
+//       location.href= newLocation;
+//     }
+//     else {
+//       alert("Por favor ingrese un término y seleccione una opción.")
+//     }
+//   }
+// })
 
 $('.easy-search-input').bind('typeahead:select', function(ev, suggestion) {
   console.log('Selection: ' + suggestion);

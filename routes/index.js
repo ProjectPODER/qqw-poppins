@@ -31,8 +31,8 @@ createMultiLangRoutes('/empresas/:id', '/companies/:id', lib.entityPage("compani
 createMultiLangRoutes('/regiones/:id', '/areas/:id', lib.entityPage("areas","perfil","id"));
 
 /* GET contract pages. */
-//TODO: Agregar páginas de expediente
-createMultiLangRoutes('/contratos/:id', '/contracts/:id', lib.entityPage("contracts","contract","ocid"));
+createMultiLangRoutes('/contratos/:id', '/contracts/:id', lib.entityPage("contracts","contract","id"));
+createMultiLangRoutes('/expediente/:id', '/record/:id', lib.entityPage("record","record","ocid"));
 
 //TODO: Ver cómo hacemos con paises y regiones
 createMultiLangRoutes('/paises/:id/mujeresenlabolsa', '/countries/:id/women-in-the-stock-exchange', lib.entityPage("countries","country-mujeres","id"));

@@ -1,16 +1,16 @@
 <div class="index-list-item">
     <div class="index-list-group">
       <div class="index-list-title">
-        <a href="/{{get_type_url collection}}/{{ result.id }}">
+        <a href="/{{get_type_url result.type result.classification}}/{{ result.id }}">
           <p class="text-overflow" title="{{or result.name result.contracts.title}}">
-            {{{ get_classification_icon collection (or result.classification result.details.type) result.subclassification result.govLevel}}}
+            {{{ get_classification_icon result.type (or result.classification result.details.type) result.subclassification result.govLevel}}}
             {{or result.name result.contracts.title}}
           </p>
         </a>
       </div>
       <div class="index-list-elements">
         {{!-- PERSONAS --}}
-        {{#ifCond collection "==" "persons" }}
+        {{#ifCond result.type "==" "persons" }}
           {{!-- <div class="justify-content-start"> --}}
             <div class="left-elements col-lg-4 col-md-6 col-md-6 col-sm-6 col-6">
               <div class="col-lg-12 p-0">
@@ -39,7 +39,7 @@
         {{/ifCond}}
 
         {{!-- CONTRATOS --}}
-        {{#ifCond collection "==" "contracts" }}
+        {{#ifCond result.type "==" "contracts" }}
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
@@ -95,7 +95,7 @@
         {{/ifCond}}
 
         {{!-- EMPRESAS --}}
-        {{#ifCond collection "==" "companies" }}
+        {{#ifCond result.classification "==" "company" }}
           <div class="left-elements col-lg-8 col-md-8 col-md-8 col-sm-8 col-8">
             <div class="col-lg-12 p-0">
              {{> result-contracts this }}
@@ -119,14 +119,14 @@
         {{/ifCond}}
 
         {{!-- INSTITUCIONES --}}
-        {{#ifCond collection "==" "institutions" }}
+        {{#ifCond result.classification "==" "institution" }}
           <div class="full-elements col-lg-12 p-0">
              {{> result-contracts this }}
           </div>
         {{/ifCond}}
 
         {{!-- PAISES --}}
-        {{# ifCond collection "==" "countries" }}
+        {{# ifCond result.type "==" "areas" }}
           <div class="left-elements col-lg-12 col-md-12 col-md-12 col-sm-12 col-12">
             <div class="col-lg-2 p-0">
               <p class="index-list-element">
@@ -172,7 +172,7 @@
       </div>
     </div>
     <div class="index-list-button">
-        <a href="/{{get_type_url collection }}/{{ or result.ocid result.id }}"><i class="far fa-arrow-alt-circle-right"></i></a>
+        <a href="/{{get_type_url result.type  result.classification}}/{{ result.id }}"><i class="far fa-arrow-alt-circle-right"></i></a>
     </div>
 </div>
 <hr class="hr-index">

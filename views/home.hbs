@@ -7,9 +7,10 @@
           <p>{{{_ "Explora <strong>conexiones y contratos entre empresarios, políticos, empresas e instituciones públicas</strong>. Esta herramienta facilita el acceso de investigadores, periodistas y ciudadanos a varias fuentes de datos abiertos para sumar a la transparencia y rendición de cuentas."}}}</p>
           <div class="landing-search">
             <p>{{{_ "Puedes buscar nombres de <a href='/empresas'>empresas</a>, <a href='/instituciones-publicas'>instituciones públicas</a>, <a href='/personas'>empresarios, funcionarios</a> o <a href='/contratos'>contratos</a>"}}}.</p>
-            <div class="landing-search-form" method="get">
+            <form class="landing-search-form" method="get" action="/buscador">
               {{> main_search }}
-            </div>
+              <button class="btn">Buscar</button>
+            </form>
           </div>
         </div>
       </div>
