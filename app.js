@@ -159,4 +159,14 @@ app.use(function(err, req, res, next) {
   res.render('error', { error: true });
 });
 
+//Last resource error handler.
+app.use(function(err, req, res, next) {
+  res.status(500);
+  res.json({
+    en: "We will recover from this too. Please reload the page. If this message repeats, please let us know.",
+    es: "Nos vamos a recuperar de esta. Por favor refresque la página. Si este mensaje se repite por favor infórmenos."
+  });
+});
+
+
 module.exports = app;
