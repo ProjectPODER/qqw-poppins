@@ -1,4 +1,5 @@
-{{#ifCond filter.hidden '!=' true }}
+{{#if (show_filter filter collection) }}
+
   <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
     {{#ifCond filter.type "!=" "toggle"}}
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
@@ -119,5 +120,7 @@
     {{/ifCond}}
   </li>
 {{ else }}
+  {{#if filter.hidden }}
   <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
-{{/ifCond}}
+  {{/if}}
+{{/if}}
