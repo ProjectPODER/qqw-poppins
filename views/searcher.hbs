@@ -23,14 +23,18 @@
             <ul class="nav nav-pills d-flex flex-nowrap">
                 <li class="nav-item filter-dropdown general-filters">
                     <p class="filter-title-simple" href="#" title="RESULTADOS">{{{_ "RESULTADOS"}}}</p>
-                    <p class="filter-selected simple text-right" title="{{ format_number result.count }}">{{#ifCond result.count_precission "==" "gte"}} {{_ "más de" }} {{/ifCond}}{{ format_number result.count }}</p>
+                    <p class="filter-selected simple text-right" title="{{ format_number result.count }}">
+                      {{ format_number result.count }}
+                      {{#ifCond result.count_precission "==" "gte"}} 
+                      <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Esta búsqueda tiene muchos resultados. Sólo mostraremos los primeros 10.000. Mejora tus filtros o utiliza la descarga."></i>
+                      {{/ifCond}}
+                    </p>
                 </li>
                 {{>utilities api_url=result.api_url share_url=share_url }}
             </ul>
         </div>
     </div>
 </section>
-
 {{#ifCond result.data.length ">" 0 }}
   <section class="results-list" id="content-searcher">
       <div class="container-fluid">
@@ -45,6 +49,54 @@
       {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
   </section>
 {{else}}
+  {{#if morethan10k}}
+  <section class="error">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 d-flex flex-wrap align-content-center">
+          <h1 class="text-verydarkblue">{{{_ "Búsqueda con demasiados resultados"}}}</h1>
+          <p>
+            {{{_ "Esta búsqueda ha generado más de 10,000 resultados, no podemos mostrarte resultados más allá de este número. Te ofrecemos algunas alternativas:"}}}
+          </p>
+          <ul>
+            <li>
+              {{{_ "Aplica los filtros en la barra superior para obtener menos resultados."}}}
+            </li>
+            <li>
+              {{{_ "Invierte el orden de los resultados para ver primero los que ahora aparecen al final."}}}
+            </li>
+            <li>
+              {{{_ "Si necesitas más de 10,000 resultados, descárgalos como datos para poder abrirlos en otra herramienta."}}}
+            </li>
+            <li>
+              {{{_ "Prueba borrando todos los filtros:"}}}
+              <div class="text-center mt-3 mb-3">
+                <a class="btn btn-primary" href="/buscador">{{{_ "Eliminar todos los filtros"}}}</a>
+              </div>
+            </li>
+          </ul>
+          <h4>Aprende a usar QQW</h4>
+          <ul>
+            <li>
+              {{{_ "Consulta el <a href='/manual'>Manual de Investigación</a>."}}}
+            </li>
+            <li>
+              {{{_ "Consulta la <a href='https://quienesquienapi.readthedocs.io/es/latest/'>documentación de nuestra API</a>."}}}
+            </li>
+            <li>
+              {{{_ "Consulta nuestro <a href='/entidades-y-fuentes'>listado de fuentes</a> para saber sobre qué bases estás búscando."}}}
+            </li>
+          </ul>
+          <p>{{{_ "Si necesitas ayuda en la búsqueda, <a href='/contacto?&subject=Más de 10,000 resultados'>contáctanos</a>."}}}</p>
+        </div>
+        <div class="col-lg-5 text-center error-img justify-content-center d-flex flex-wrap align-content-center">
+          <img class="img-fluid mb-4" src="../images/error-img.png" alt="Error">
+        </div>
+      </div>
+      {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
+    </div>
+  </section>
+  {{else}}
   <section class="error">
     <div class="container">
       <div class="row">
@@ -54,9 +106,6 @@
             {{{_ "Aquí te damos algunas opciones para solucionarlo:"}}}
           </p>
           <ul>
-            <li>
-              {{{_ "La búsqueda de todos los tipos no funciona durante la etapa de Beta. Por favor elige un tipo para realizar tu búsqueda."}}}
-            </li>
             <li>
               {{{_ "Busca las empresas sin la terminación legal y solo los apellidos de las personas."}}}
             </li>
@@ -90,6 +139,7 @@
       </div>
     </div>
   </section>
+  {{/if}}
 {{/ifCond}}
 
 {{> report_modals }}
