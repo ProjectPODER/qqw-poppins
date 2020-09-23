@@ -1,4 +1,8 @@
-{{#ifCond filter.hidden '!=' true }}
+{{#if filter.hidden }}
+  <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
+{{ else }}
+{{#if filter.applies }}
+
   <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
     {{#ifCond filter.type "!=" "toggle"}}
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
@@ -50,7 +54,7 @@
               </p>
           </button>
           <div class="dropdown-divider"></div>
-          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="countries">
+          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="areas">
               <p>
                 <strong class="emphasis-color-text">Países y estados</strong>
                 <span class="filter-type-description">
@@ -61,8 +65,10 @@
       </div>
     {{else}}
       {{#ifCond filter.type "!=" "toggle" }}
-        <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}" data-toggle="dropdown">
-          <p class="filter-selected" title="">
+        <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}">
+          <p class="filter-selected" 
+          title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}" 
+          data-toggle="dropdown">
             {{#ifCond filter.type "==" "select" }}
               {{lookup filter.options filter.value}}
             {{else}}
@@ -74,50 +80,50 @@
             {{/ifCond}}
           </p>
           {{#if filter.value }}
-          <button type="button" onclick="$('#{{filter.htmlFieldName}},#{{filter.htmlFieldName}}-min,#{{filter.htmlFieldName}}-max').val('')[0].form.submit()" class="close ml-auto">&times;</button>
+          <button type="button" onclick="$('#{{filter.htmlFieldName}},#{{filter.htmlFieldName}}-min,#{{filter.htmlFieldName}}-max').val('')[0].form.submit();" class="close ml-auto">&times;</button>
           {{/if}}
+          
+          <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
+            <h6 class="ml-2"><b>{{filter.fieldLabel}}</b></h6>
+            <p class="ml-2">{{filter.guidanceText}}</p>
+            <fieldset>
+              {{# ifCond filter.type "==" "string" }}
+                <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
+                <button type="submit" class="btn btn-light d-inline-block">APLICAR</button>
+              {{/ifCond}}
+              {{# ifCond filter.type "==" "id" }}
+                <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
+                <button type="submit" class="btn btn-light d-inline-block">APLICAR</button>
+              {{/ifCond}}
+              {{# ifCond filter.type "==" "select" }}
+                {{#each filter.options}}
+                  <button class="btn btn-light" type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{this}}</button>
+                {{/each}}
+                <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
+              {{/ifCond}}
+              {{# ifCond filter.type "==" "minmax" }}
+                {{#each filter.options}}
+                  <button class="btn btn-light mb-3" onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</button>
+                {{/each}}
+                <form class="form-inline justify-content-center">
+                  <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount form-control input-minmax" value="{{filter.value.min }}">
+                  <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount form-control input-minmax mr-2" value="{{filter.value.max }}">
+                  <button type="submit" class="btn btn-light">APLICAR</button>
+                </form>
+              {{/ifCond}}
+              {{# ifCond filter.type "==" "date" }}
+                <form class="form-inline justify-content-center">
+                  <input type="date" id="from_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-min" value="{{filter.value.min }}" min="2002-01-01">
+                  <input type="date" id="to_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-max" value="{{filter.value.max }}" min="2002-01-01">
+                  <button type="submit" class="btn btn-light">APLICAR</button>
+                </form>
+              {{/ifCond}}
+            </fieldset>
+          </div>
         </div>
 
-        <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
-          <h6 class="ml-2"><b>{{filter.fieldLabel}}</b></h6>
-          <p class="ml-2">{{filter.guidanceText}}</p>
-          <fieldset>
-            {{# ifCond filter.type "==" "string" }}
-              <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
-              <button type="submit" class="btn btn-light d-inline-block">APLICAR</button>
-            {{/ifCond}}
-            {{# ifCond filter.type "==" "id" }}
-              <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
-              <button type="submit" class="btn btn-light d-inline-block">APLICAR</button>
-            {{/ifCond}}
-            {{# ifCond filter.type "==" "select" }}
-              {{#each filter.options}}
-                <button class="btn btn-light" type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{this}}</button>
-              {{/each}}
-              <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
-            {{/ifCond}}
-            {{# ifCond filter.type "==" "minmax" }}
-              {{#each filter.options}}
-                <button class="btn btn-light mb-3" onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</button>
-              {{/each}}
-              <form class="form-inline justify-content-center">
-                <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount form-control input-minmax" value="{{filter.value.min }}">
-                <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount form-control input-minmax mr-2" value="{{filter.value.max }}">
-                <button type="submit" class="btn btn-light">APLICAR</button>
-              </form>
-            {{/ifCond}}
-            {{# ifCond filter.type "==" "date" }}
-              <form class="form-inline justify-content-center">
-                <input type="date" id="from_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-min" value="{{filter.value.min }}" min="2002-01-01">
-                <input type="date" id="to_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-max" value="{{filter.value.max }}" min="2002-01-01">
-                <button type="submit" class="btn btn-light">APLICAR</button>
-              </form>
-            {{/ifCond}}
-          </fieldset>
-        </div>
       {{/ifCond}}
     {{/ifCond}}
   </li>
-{{ else }}
-  <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
-{{/ifCond}}
+{{/if}}
+{{/if}}

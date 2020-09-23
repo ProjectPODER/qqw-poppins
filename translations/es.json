@@ -265,5 +265,8 @@
 "Consulta nuestro <a href='/entidades-y-fuentes'>listado de fuentes</a> para saber sobre qué bases estás búscando.": "Consulta nuestro <a href='/entidades-y-fuentes'>listado de fuentes</a> para saber sobre qué bases estás búscando.",
 "Si necesitas ayuda en la búsqueda, <a href='/contacto?&subject=Sin resultados de búsqueda'>contáctanos</a>.": "Si necesitas ayuda en la búsqueda, <a href='/contacto?&subject=Sin resultados de búsqueda'>contáctanos</a>.",
 "País": "País",
-"paises": "paises"
+"paises": "paises",
+"empresas": "empresas",
+"Bolsa de Valores": "Bolsa de Valores",
+"posición en ranking": "posición en ranking"
 }
