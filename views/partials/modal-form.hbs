@@ -5,40 +5,40 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h3 class="modal-title">Solicitar información</h3>
+        <h3 class="modal-title">{{_ "Solicitar información"}}</h3>
       </div>
       <div class="modal-body flexbox-container-modal">
         <div class="column-50 column-left">
           <form class="sendinfo-form">
             <fieldset>
               <div class="form-group" data-required="true">
-                <label for="name" class="control-label"><b>Nombre</b></label>
+                <label for="name" class="control-label"><b>{{_ "Nombre"}}</b></label>
                 <input type="text" name="name" id="name" maxlength="50" class="form-control">
                 <span class="help-block"></span>
               </div>
               <div class="form-group">
-                <label for="institution" class="control-label"><b>Institución</b></label>
+                <label for="institution" class="control-label"><b>{{_ "Institución"}}</b></label>
                 <input type="text" name="subject" id="institution" class="form-control">
                 <span class="help-block"></span>
               </div>
               <div class="form-group" data-required="true">
-                <label for="email" class="control-label"><b>Correo electrónico</b></label>
+                <label for="email" class="control-label"><b>{{_ "Correo electrónico"}}</b></label>
                 <input id="email" type="email" name="contact-email" class="form-control">
                 <span class="help-block"></span>
               </div>
             </fieldset>
             <input id="uc_id_message" type="hidden" name="message" value="true">
             <div class="centered">
-                <button id="send_info_uc" type="submit" class="btn contact-submit">Enviar</button>
+                <button id="send_info_uc" type="submit" class="btn contact-submit">{{_ "Enviar"}}</button>
             </div>
           </form>
           <div id="thanks-column" style="display: none;">
-            <h4>Mensaje enviado</h4>
-            <p>Muchas gracias, pronto le enviaremos la información correspondiente.</p>
+            <h4>{{_ "Mensaje enviado"}}</h4>
+            <p>{{_ "Muchas gracias, pronto le enviaremos la información correspondiente."}}</p>
           </div>
         </div>
         <div class="column-50 column-right">
-          <p>Con el objetivo de que las dependencias y las Unidades Compradoras puedan mejorar la calidad de los datos de contrataciones destacamos las tres banderas que dieron un resultado más bajo y como pueden mejorar. Para tener la lista completa contáctanos a través del formulario. </p>
+          <p>{{_ "Con el objetivo de que las dependencias y las Unidades Compradoras puedan mejorar la calidad de los datos de contrataciones destacamos las tres banderas que dieron un resultado más bajo y como pueden mejorar. Para tener la lista completa contáctanos a través del formulario."}} </p>
         </div>
       </div>
     </div>

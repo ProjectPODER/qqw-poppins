@@ -2,11 +2,11 @@
   <div class="container block text-center">
     <div class="row">
       <div class="col-12">
-        <span>Proyecto promovido por</span>
+        <span>{{_ "Proyecto promovido por" }}</span>
         <a href="https://www.projectpoder.org/es" target="_blank" class="ml-2 mr-2">
           <img src="../../../images/logo-poder.png" class="logofooter-poder" alt="Project PODER">
         </a>
-        <span>con el apoyo de</span>
+        <span>{{_ "con el apoyo de" }}</span>
         <a href="https://luminategroup.com" target="_blank" class="ml-2">
           <img class="logofooter-pl" src="../../../images/luminate_logo.png" alt="Luminate">,
         </a>
@@ -14,12 +14,12 @@
           <img class="logofooter-ml" src="../../../images/hivoslogo-blanco.png" alt="Hivos">
         </a>
         <span>
-          <a class="anchor-scroll" href="/aliados">y <u>aliados</u>.</a>
+          <a class="anchor-scroll" href="/aliados">{{{_ "y <u>aliados</u>" }}}.</a>
         </span>
       </div>
     </div>
     <div class="pageStats">
-      {{pageStats}}
+      {{pageStats}} {{lang}}
     </div>
   </div>
 </footer>

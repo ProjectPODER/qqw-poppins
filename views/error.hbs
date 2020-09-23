@@ -3,41 +3,41 @@
     <div class="row">
       <div class="col-lg-6 d-flex flex-wrap align-content-center">
         <div class="col-lg-12">
-          <h1>Nos vamos a recuperar de esta.</h1>
+          <h1>{{{_ "Nos vamos a recuperar de esta."}}}</h1>
           {{#if error.stack }}
-            <h5> Error: {{error.status}}</h5>
+            <h5> {{{_ "Error:"}}} {{error.status}}</h5>
           {{/if}}
           {{#if error.stack }}
           <p>
-            <a href="#" onclick="$('#detalles-del-error').toggle()">Ver detalles del error</a>
+            <a href="#" onclick="$('#detalles-del-error').toggle()">{{{_ "Ver detalles del error"}}}</a>
           </p>
           <div id="detalles-del-error" style="display:none">
-            <h5>Detalles del error</h5>
+            <h5>{{{_ "Detalles del error"}}}</h5>
             <p>{{message}}</p>
             <pre>{{error.stack}}</pre>
           </div>
           {{/if}}
-          <p>Por favor, refresca la página con F5 o vuelve atrás y reintenta.</p>
-          <p>Si el error persiste, <a href="/contacto?&subject=Mensaje desde página de error">contáctanos</a> con los detalles del error.</p>
+          <p>{{{_ "Por favor, refresca la página con F5 o vuelve atrás y reintenta."}}}</p>
+          <p>{{{_ "Si el error persiste, <a href='/contacto?&subject=Mensaje desde página de error'>contáctanos</a> con los detalles del error."}}}</p>
           <p>
         </div>
         <div class="col-lg-12 mt-3">
-          <h5>¿Cómo puedes seguir?</h5>
+          <h5>{{{_ "¿Cómo puedes seguir?"}}}</h5>
           <ul>
             <li>
-              Si estás investigando algo en QQW, utiliza nuestro <a class="" href="/buscador">buscador</a>.
+              {{{_ "Si estás investigando algo en QQW, utiliza nuestro <a class='' href='/buscador'>buscador</a>"}}}.
             </li>
             <li>
-              Si quieres saber más sobre QQW, visita la sección <a href="/sobre-qqw">Sobre QQW</a>.
+              {{{_ "Si quieres saber más sobre QQW, visita la sección <a href='/sobre-qqw'>Sobre QQW</a>"}}}.
             </li>
             <li>
-              O <a href="/">vuelve al inicio</a>.
+              {{{_ "O <a href='/'>vuelve al inicio</a>"}}}.
             </li>
           </ul>
         </div>
       </div>
       <div class="col-lg-6 d-flex flex-wrap align-content-center">
-        <img class="img-fluid engranes" src="../images/engranes.png" alt="">
+        <img class="img-fluid engranes" src="/images/engranes.png" alt="">
       </div>
     </div>
   </div>

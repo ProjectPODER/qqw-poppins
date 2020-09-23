@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportUseLabel">Usar información de QuienEsQuien.wiki</h5>
+                <h5 class="modal-title" id="reportUseLabel">{{_ "Usar información de QuienEsQuien.wiki" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,20 +11,20 @@
             <div class="modal-body">
                 <p>
 
-                Puedes utilizar cualquier información en QuienEsQuien.wiki sin pedirnos autorización, siempre y cuando cumplas con los términos de nuestra <a href="/licencia">licencia PPL</a>. 
+                {{_ "Puedes utilizar cualquier información en QuienEsQuien.wiki sin pedirnos autorización, siempre y cuando cumplas con los términos de nuestra <a href='/licencia'>licencia PPL</a>. " }}
                 </p>
                 <p>
 
-                En resúmen: citar la fuente, utilizar la misma licencia para tu contenido y no hacer explotación capitalista.
+                {{_ "En resúmen: citar la fuente, utilizar la misma licencia para tu contenido y no hacer explotación capitalista." }}
                 </p>
                 <p>
 
-                Si quieres utilizar la información y no puedes cumplir con la licencia, por favor contáctanos y cuéntanos sobre tu proyecto.
+                {{_ "Si quieres utilizar la información y no puedes cumplir con la licencia, por favor contáctanos y cuéntanos sobre tu proyecto." }}
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="/contacto?subject=Usar info de {{title}}">Contáctanos</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
+                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Usar info de {title}" title=title }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportInfoLabel">Correcciones a la información</h5>
+                <h5 class="modal-title" id="reportInfoLabel">{{_ "Correcciones a la información" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -44,16 +44,16 @@
             <div class="modal-body">
                 <p>
 
-                La información recopilada en QuiénEsQuién.Wiki proviene de fuentes públicas y oficiales, como Compranet y la BMV, si encuentras que no es precisa o tiene errores, se trata de errores de las fuentes de origen, con las que no tenemos contacto. Sin embargo, agradecemos que nos informes sobre esto y lo documentaremos apropiadamente.
+                {{_ "La información recopilada en QuiénEsQuién.Wiki proviene de fuentes públicas y oficiales, como Compranet y la BMV, si encuentras que no es precisa o tiene errores, se trata de errores de las fuentes de origen, con las que no tenemos contacto. Sin embargo, agradecemos que nos informes sobre esto y lo documentaremos apropiadamente." }}
                 </p>
                 <p>
 
-                Si la información presentada sobre "{{title}}" no es correcta, por favor contáctanos reportando la información errónea y dónde podemos conseguir la información correcta.
+                {{_ "Si la información presentada sobre '{title}' no es correcta, por favor contáctanos reportando la información errónea y dónde podemos conseguir la información correcta." title=title }}
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="/contacto?subject=Correcciones a {{title}}">Contáctanos</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
+                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Correcciones a {title}" title=title }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -63,17 +63,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportAddLabel">Aportar información</h5>
+                <h5 class="modal-title" id="reportAddLabel">{{_ "Aportar información" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-              Agradecemos todos los aportes. Si tienes información adicional sobre "{{title}}" y quieres que esta le llegue a los periodistas de PODER, por favor contáctcanos.
+              {{_ "Agradecemos todos los aportes. Si tienes información adicional sobre '{title}' y quieres que esta le llegue a los periodistas de PODER, por favor contáctcanos." title=title }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="/contacto?subject=Aporte de información sobre {{title}}">Contáctanos</a>
+                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Aporte de información sobre {title}" title=title }}">Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -83,22 +83,22 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportAskLabel">Solicitar información adicional</h5>
+                <h5 class="modal-title" id="reportAskLabel">{{_ "Solicitar información adicional" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <p>
-                    La información que encuentras en el perfil de cada persona o empresa proviene de diferentes fuentes públicas y oficiales, que al mismo tiempo están documentadas en nuestro portal. Nosotros no somos una dependencia de gobierno ni empresa que realice actividades de compra. Tampoco tenemos contacto con las personas o empresas mencionadas en estos perfiles. 
+                    {{_ "La información que encuentras en el perfil de cada persona o empresa proviene de diferentes fuentes públicas y oficiales, que al mismo tiempo están documentadas en nuestro portal. Nosotros no somos una dependencia de gobierno ni empresa que realice actividades de compra. Tampoco tenemos contacto con las personas o empresas mencionadas en estos perfiles." }}
                 </p>
                 <p>
-                    Si tu duda no ha sido resuelta con esta respuesta, te invitamos a que nos contactes y haremos nuestro mejor esfuerzo para responderte.
+                    {{_ "Si tu duda no ha sido resuelta con esta respuesta, te invitamos a que nos contactes y haremos nuestro mejor esfuerzo para responderte." }}
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="/contacto?subject=Solicito información de {{title}}">Contáctanos</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
+                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Solicito información de {title}" title=title }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -109,17 +109,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportBugLabel">Reporte de errores</h5>
+                <h5 class="modal-title" id="reportBugLabel">{{_ "Reporte de errores" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                    Agradecemos mucho que te tomes el tiempo de reportarnos errores y proponernos mejoras, por favor llena este formulario.
+                    {{_ "Agradecemos mucho que te tomes el tiempo de reportarnos errores y proponernos mejoras, por favor llena este formulario." }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="/contacto?subject=Errores en {{share_url}}">Contáctanos</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
+                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Errores en {share_url}" share_url=share_url }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -131,17 +131,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportOtherLabel">Otros temas</h5>
+                <h5 class="modal-title" id="reportOtherLabel">{{_ "Otros temas" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-              Si lo que preguntas o solicitas no tiene relación con el trabajo de PODER ni los datos en QuiénEsQuién.Wiki, no vamos a podemos resolver tu cuestión. Si aún quieres contactarnos, por favor presiona el botón azul.
+              {{_ "Si lo que preguntas o solicitas no tiene relación con el trabajo de PODER ni los datos en QuiénEsQuién.Wiki, no vamos a podemos resolver tu cuestión. Si aún quieres contactarnos, por favor presiona el botón azul." }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="/contacto?subject=Otros temas">Contáctanos</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
+                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Otros temas" }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>

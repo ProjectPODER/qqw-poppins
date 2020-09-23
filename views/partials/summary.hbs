@@ -14,47 +14,47 @@
             fa-donate
             {{/ifCond}}
             "></i> 
-            Resúmen de actividad como {{summary}}
+            {{_ "Resúmen de actividad como {summary} " summary=summary}}
         </h4>
         <div class="profile-summary-content">
             <div class="summary-total {{summary}}-text">
                 <i class="fas fa-file-alt"></i>
-                {{format_number data.total.count}} contratos como {{summary}} por un total de <strong>{{ format_amount data.total.value }} MXN</strong>
-                entre los años {{ get_first_year data.year }} y {{ get_last_year data.year }}.
+                {{{_ "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>" cant_countratos=data.total.count summary=summary amount_contratos=data.total.value }}}
+                {{_ "entre los años {first_year} y {last_year}." first_year=data.year last_year=data.year }}
             </div>
             <div class="row">
 
                 <div  class="col-m-12 col-4 mb-5">
-                <h5 class="description-data-subname">Evolución anual de contratos</h5>
+                <h5 class="description-data-subname">{{_ "Evolución anual de contratos" }}</h5>
                 <div id="chart-year-{{summary}}" class="summary-chart"></div>
                 </div>
                 <div class="col-m-12 col-4 mb-5">
-                <h5 class="description-data-subname">Tipo de procedimiento</h5>
+                <h5 class="description-data-subname">{{_ "Tipo de procedimiento" }}</h5>
                 <div id="chart-type-{{summary}}" class="summary-chart"></div>
                 </div>
 
                 <div class="col-m-12 col-4">
-                    <h5 class="description-data-subname">Entidades principales</h5>
+                    <h5 class="description-data-subname">{{_ "Entidades principales" }}</h5>
                     {{#each data.top_entities }}
                         {{>result result=this collection=(get_type_collection this.details.type) }}
                     {{/each}}
 
-                    <h5 class="description-data-subname">Mayores contratos</h5>
+                    <h5 class="description-data-subname">{{_ "Mayores contratos" }}</h5>
                     {{#each data.top_contracts }}
                         {{>result collection="contracts" result=this }}
                     {{/each}}
                     <div class="contract-button">
                         {{#ifCond type '==' 'persons'}}
                           {{#ifCond summary '==' 'buyer'}}
-                            <a href="/contratos?responsable={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos de este responsable</a>
+                            <a href="/contratos?responsable={{result.compiledRelease.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este responsable" }}</a>
                           {{else }}
-                            <a href="/contratos?proveedor={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos de este proveedor</a>
+                            <a href="/contratos?proveedor={{result.compiledRelease.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
                           {{/ifCond }}
                         {{else }}
                         {{#ifCond result.compiledRelease.subclassification "==" "unidad-compradora"}}
-                            <a href="/contratos?uc_id={{result.compiledRelease.id}}" class="button-link {{summary}}-button">Ver todos los contratos de esta UC</a>
+                            <a href="/contratos?uc_id={{result.compiledRelease.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta UC" }}</a>
                         {{else }}
-                            <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link {{summary}}-button">Ver todos los contratos</a>
+                            <a href="/contratos?dependencia={{result.compiledRelease.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos" }}</a>
                         {{/ifCond}}
                         {{/ifCond }}
 
@@ -80,11 +80,11 @@
     target: "#chart-type-{{summary}}", 
     type: "{{summary}}", 
     nameLabels: {
-        "open": "Licitación abierta",
-        "direct": "Adjudicación Directa",
-        "limited": "Invitación a tres",
-        "undefined": "Sin definir",
-        "": "Sin información"
+        "open": "{{_ "Licitación abierta" }}",
+        "direct": "{{_ "Adjudicación Directa" }}",
+        "limited": "{{_ "Invitación a tres" }}",
+        "undefined": "{{_ "Sin definir" }}",
+        "": "{{_ "Sin información" }}"
     },
     procurementColors: tiza.procurementColors["{{summary}}"],
     data: {{{j data.type }}} 
@@ -92,11 +92,11 @@
 
   tiza.yearlyContractsBar({
     target: "#chart-year-{{summary}}", 
-    amountKeyName: "Importe",
-    countKeyName: "Cantidad",
+    amountKeyName: "{{_ "Importe" }}",
+    countKeyName: "{{_ "Cantidad" }}",
     barColors: {
-        "Importe": tiza.barColors["{{summary}}"].amount,
-        "Cantidad": tiza.barColors["{{summary}}"].count
+        "{{_ "Importe" }}": tiza.barColors["{{summary}}"].amount,
+        "{{_ "Cantidad" }}": tiza.barColors["{{summary}}"].count
     },
     type: "{{summary}}", 
     data: {{{j data.year }}} 

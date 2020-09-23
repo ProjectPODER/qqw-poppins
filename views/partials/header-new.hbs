@@ -11,7 +11,7 @@
     <ul>
       <li class="{{#ifCond templateName "==" "searcher" }}active{{/ifCond}}">
         <a href="/buscador" class="btn btn-primary mr-2"><i class="fas fa-file-alt"></i> Buscador</a>
-      </li>
+      </li> 
       <li class="{{#ifCond currentTemplate "==" "about" }}active{{/ifCond}}"><a href="/sobre-qqw" class="btn btn-primary">Sobre QQW</a></li>
     </ul>
   </nav>
@@ -28,11 +28,17 @@
   <div class="collapse navbar-collapse" id="mainMenu">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item {{#ifCond templateName "==" "searcher" }}active{{/ifCond}}">
-        <a class="nav-link" href="/buscador"><i class="fas fa-search"></i></i> Buscador</a>
+        <a class="nav-link" href="/buscador"><i class="fas fa-search"></i></i> {{_ "Buscador"}}</a>
       </li>
       <li class="nav-item {{#ifCond currentTemplate "==" "about" }}active{{/ifCond}}">
-        <a class="nav-link" href="/sobre-qqw"><i class="fas fa-info-circle"></i> Sobre QQW</a>
+        <a class="nav-link" href="/sobre-qqw"><i class="fas fa-info-circle"></i> {{_ "Sobre QQW"}}</a>
       </li>
     </ul>
   </div>
 </nav>
+
+{{#if general.notificacion}}
+<div class="navbar bg-dark text-white fixed-top" style="margin-top: 50px;">
+  {{{ lookup general.notificacion.[0] lang}}}
+</div>
+{{/if}}
