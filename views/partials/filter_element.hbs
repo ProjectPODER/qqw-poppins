@@ -2,13 +2,12 @@
   <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
 {{ else }}
 {{#if filter.applies }}
-
   <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
     {{#ifCond filter.type "!=" "toggle"}}
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
     {{else}}
-      {{#with (filter_array filter.options "value" filter.value ) }}
-        <button type="button" class="btn btn-light btn-sm ml-auto" onclick="$('{{filter.htmlFieldName}}').val('{{ othervalue }}')[0].form.submit();"><i class="fas {{ icon }}" title="{{../filter.fieldLabel}} - {{label}}"></i></button>
+      {{#with (filter_array filter.options "value" (or filter.value filter.default.value) ) }}
+        <button type="button" class="btn btn-light btn-sm ml-auto" onclick="$('#{{../filter.htmlFieldName}}').val('{{# ifCond value "==" "desc"  }}asc{{/ifCond}}')[0].form.submit();"><i class="fas {{ icon }}" title="{{../filter.fieldLabel}} - {{label}}"></i></button>
       {{/with}}
       <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
     {{/ifCond}}
@@ -18,56 +17,23 @@
           <p class="text-center emphasis-color-text mb-0" title="">{{ get_type_plural collection true }}</p>
       </div>
       <div class="dropdown-menu filter-dropdown-menu">
-          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="contracts">
+        {{#each filter.options }}
+          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="{{this.id}}">
               <p>
-                <strong class="emphasis-color-text">Contratos</strong>
+                <strong class="emphasis-color-text">{{this.label}}</strong>
                 <span class="filter-type-description">
-                  Explora los importes, años, dependencias, empresas proveedoras y otras características de más de tres millones de contratos de México.
+                  {{this.description}}
                 </span>
               </p>
           </button>
           <div class="dropdown-divider"></div>
-          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="persons">
-              <p>
-                <strong class="emphasis-color-text">Personas</strong>
-                <span class="filter-type-description">
-                  Conoce cómo se relacionan los personajes de las élites políticas y económicas en México.
-                </span>
-              </p>
-          </button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="companies">
-              <p>
-                <strong class="emphasis-color-text">Empresas y Sociedades</strong>
-                <span class="filter-type-description">
-                  Empresas proveedoras del estado, titulares de marcas y cotizando en la bolsa. Ordenadas por importe total de contrataciones como proveedor del estado.
-                </span>
-              </p>
-          </button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="institutions">
-              <p>
-                <strong class="emphasis-color-text">Instituciones públicas</strong>
-                <span class="filter-type-description">
-                  Entidades y dependencias del gobierno, incluyendo empresas productivas del estado. Ordenadas por el importe total de contratos como comprador, de mayor a menor.
-                </span>
-              </p>
-          </button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="areas">
-              <p>
-                <strong class="emphasis-color-text">Países y estados</strong>
-                <span class="filter-type-description">
-                  Estados en los cuales tenemos personas, empresas, instituciones públicas y contratos.
-                </span>
-              </p>
-          </button>
+        {{/each }}
       </div>
     {{else}}
       {{#ifCond filter.type "!=" "toggle" }}
         <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}">
           <p class="filter-selected" 
-          title="{{#ifCond filter.type "==" "select" }}{{get_object_element filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}" 
+          title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}" 
           data-toggle="dropdown">
             {{#ifCond filter.type "==" "select" }}
               {{lookup filter.options (or filter.value filter.default.value)}}
@@ -89,11 +55,11 @@
             <fieldset>
               {{# ifCond filter.type "==" "string" }}
                 <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
-                <button type="submit" class="btn btn-light d-inline-block">APLICAR</button>
+                <button type="submit" class="btn btn-light d-inline-block">{{_ "APLICAR"}}</button>
               {{/ifCond}}
               {{# ifCond filter.type "==" "id" }}
                 <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
-                <button type="submit" class="btn btn-light d-inline-block">APLICAR</button>
+                <button type="submit" class="btn btn-light d-inline-block">{{_ "APLICAR"}}</button>
               {{/ifCond}}
               {{# ifCond filter.type "==" "select" }}
                 {{#each filter.options}}
@@ -105,18 +71,18 @@
                 {{#each filter.options}}
                   <button class="btn btn-light mb-3" onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</button>
                 {{/each}}
-                <form class="form-inline justify-content-center">
+                <div class="form-inline justify-content-center">
                   <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount form-control input-minmax" value="{{filter.value.min }}">
                   <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount form-control input-minmax mr-2" value="{{filter.value.max }}">
-                  <button type="submit" class="btn btn-light">APLICAR</button>
-                </form>
+                  <button type="submit" class="btn btn-light">{{_ "APLICAR"}}</button>
+                </div>
               {{/ifCond}}
               {{# ifCond filter.type "==" "date" }}
-                <form class="form-inline justify-content-center">
+                <div class="form-inline justify-content-center">
                   <input type="date" id="from_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-min" value="{{filter.value.min }}" min="2002-01-01">
                   <input type="date" id="to_date_contracts_index" class="form-control input-date" name="{{ filter.htmlFieldName }}-max" value="{{filter.value.max }}" min="2002-01-01">
-                  <button type="submit" class="btn btn-light">APLICAR</button>
-                </form>
+                  <button type="submit" class="btn btn-light">"{{_ "APLICAR"}}"</button>
+                </div>
               {{/ifCond}}
             </fieldset>
           </div>
