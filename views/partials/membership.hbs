@@ -1,33 +1,33 @@
 <div class="index-list-item">
-    {{#ifCond directionality "==" "parent"}}
+    {{#ifCond directionality "==" "child"}}
         <div class="index-list-group">
             <div class="index-list-title">
-                <a href="/{{get_type_url (or result.compiledRelease.organization_class "person")}}/{{ or result.compiledRelease.organization_id result.compiledRelease.person_id }}">
-                <p class="text-overflow" title="{{or result.compiledRelease.organization_name result.compiledRelease.person_name}}">
-                    {{{ get_classification_icon (get_type_collection (or result.compiledRelease.organization_class "person")) (or result.compiledRelease.organization_class "person")  result.compiledRelease.organization_subclass  result.compiledRelease.govLevel}}}
-                    {{or result.compiledRelease.organization_name result.compiledRelease.person_name}}
+                <a href="/{{get_type_url (or result.organization_class "person")}}/{{ or result.organization_id result.person_id }}">
+                <p class="text-overflow" title="{{or result.organization_name result.person_name}}">
+                    {{{ get_classification_icon (get_type_collection (or result.organization_class "person")) (or result.organization_class "person")  result.organization_subclass  result.govLevel}}}
+                    {{or result.organization_name result.person_name}}
                 </p>
                 </a>
             </div>
         </div>
         <div class="index-list-button">
-                <a href="/{{get_type_url (or result.compiledRelease.organization_class "person")}}/{{ or result.compiledRelease.organization_id result.compiledRelease.person_id }}">
+                <a href="/{{get_type_url (or result.organization_class "person")}}/{{ or result.organization_id result.person_id }}">
                 <i class="far fa-arrow-alt-circle-right"></i>
             </a>
         </div>
     {{else}}
         <div class="index-list-group">
             <div class="index-list-title">
-                <a href="/{{get_type_url result.compiledRelease.parent_class}}/{{ result.compiledRelease.parent_id }}">
-                <p class="text-overflow" title="{{result.compiledRelease.parent_name}}">
-                    {{{ get_classification_icon (get_type_collection result.compiledRelease.parent_class) result.compiledRelease.parent_class result.compiledRelease.parent_subclass result.compiledRelease.govLevel}}}
-                    {{result.compiledRelease.parent_name}}
+                <a href="/{{get_type_url result.parent_class}}/{{ result.parent_id }}">
+                <p class="text-overflow" title="{{result.parent_name}}">
+                    {{{ get_classification_icon (get_type_collection result.parent_class) result.parent_class result.parent_subclass result.govLevel}}}
+                    {{result.parent_name}}
                 </p>
                 </a>
             </div>
         </div>
         <div class="index-list-button">
-            <a href="/{{get_type_url result.compiledRelease.parent_class}}/{{ result.compiledRelease.parent_id }}">
+            <a href="/{{get_type_url result.parent_class}}/{{ result.parent_id }}">
                 <i class="far fa-arrow-alt-circle-right"></i>
             </a>
         </div>
