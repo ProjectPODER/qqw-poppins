@@ -413,6 +413,9 @@ h2 .card-image-container.document-title {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
+.btn-search {
+  padding: 13.6px 20px;
+}
 div.landing-header-content {
   padding: 4rem;
   width: 75%;
