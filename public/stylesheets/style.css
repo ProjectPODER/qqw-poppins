@@ -707,7 +707,7 @@ div.content {
 .autosuggest {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 85%;
 }
 .autosuggest .search-input-spinner {
   position: absolute;
@@ -825,13 +825,19 @@ input[type=submit].landing-search-inputtext {
 .supplier-list-item {
   margin-bottom: 0.1em;
 }
+@media only screen and (max-width: 1049px) {
+  .autosuggest {
+    width: 80% !important;
+  }
+}
 @media only screen and (max-width: 700px) {
   input[type=submit].landing-search-inputtext {
     float: none;
     margin-top: 5px;
     width: 100%;
   }
-  .autosuggest {
+  .autosuggest,
+  .btn-search {
     width: 100% !important;
   }
 }

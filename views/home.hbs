@@ -6,11 +6,12 @@
           <img class="logo img-fluid" src="/images/single.png" alt="Logo">
           <p>{{{_ "Explora <strong>conexiones y contratos entre empresarios, políticos, empresas e instituciones públicas</strong>. Esta herramienta facilita el acceso de investigadores, periodistas y ciudadanos a varias fuentes de datos abiertos para sumar a la transparencia y rendición de cuentas."}}}</p>
           <div class="landing-search">
-            <p>{{{_ "Puedes buscar nombres de <a href='/empresas'>empresas</a>, <a href='/instituciones-publicas'>instituciones públicas</a>, <a href='/personas'>empresarios, funcionarios</a> o <a href='/contratos'>contratos</a>"}}}.</p>
-            <form class="landing-search-form" method="get" action="/buscador">
+            <p>{{{_ "Puedes buscar nombres de <a href='/buscador?&collection=companies'>empresas</a>, <a href='/buscador?&collection=institutions'>instituciones públicas</a>, <a href='/buscador?&collection=persons'>empresarios o funcionarios</a>"}}}.</p>
+            <form class="landing-search-form form-inline" method="get" action="/buscador">
               {{> main_search }}
-              <button class="btn">Buscar</button>
+              <button class="button-link important-button-link btn-search">Buscar</button>
             </form>
+            <p>{{{_ "Para buscar contratos, ve a nuestro <a href='/buscador?&collection=contracts'>buscador avanzado de contratos</a>"}}}.</p>
           </div>
         </div>
       </div>

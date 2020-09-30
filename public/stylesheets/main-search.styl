@@ -3,7 +3,7 @@
 .autosuggest
   position relative
   display inline-block
-  width 100%
+  width 85%
   .search-input-spinner
     position absolute
     right 15px
@@ -21,6 +21,8 @@
       margin .5em .5em .5em 1em
       i
         margin-right 5pt
+
+
 
 header .navbar .autosuggest a, .autosuggest a
   color auxColor
@@ -112,13 +114,15 @@ input[type=submit].landing-search-inputtext
 .supplier-list-item
   margin-bottom 0.1em
 
-// .button-search
-//
+
+@media only screen and (max-width: 1049px)
+  .autosuggest
+    width 80% !important
 
 @media only screen and (max-width: 700px)
   input[type=submit].landing-search-inputtext
     float none
     margin-top 5px
     width 100%
-  .autosuggest
+  .autosuggest, .btn-search
     width 100% !important
