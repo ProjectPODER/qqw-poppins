@@ -14,12 +14,12 @@
             fa-donate
             {{/ifCond}}
             "></i> 
-            {{_ "Resúmen de actividad como {summary} " summary=summary}}
+            {{_ "Resúmen de actividad como {summary} " summary=(_ summary)}}
         </h4>
         <div class="profile-summary-content">
             <div class="summary-total {{summary}}-text">
                 <i class="fas fa-file-alt"></i>
-                {{{_ "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>" cant_countratos=data.total.count summary=summary amount_contratos=(format_amount data.total.value) }}}
+                {{{_ "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>" cant_countratos=(format_amount data.total.count) summary=(_ summary) amount_contratos=(format_amount data.total.value) }}}
                 {{_ "entre los años {first_year} y {last_year}." first_year=(first_key data.year) last_year=(last_key data.year) }}
             </div>
             <div class="row">
