@@ -979,6 +979,9 @@ input[type=submit].landing-search-inputtext {
 .filters .filter-collection-all {
   display: block;
 }
+.filters ul.filter-active-collection-all .filter-collection-all-only {
+  display: block;
+}
 .filters ul.filter-active-collection-companies .filter-collection-companies {
   display: block;
 }
