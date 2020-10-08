@@ -28,8 +28,7 @@
               <h4 class="mt-5"><a id="user-content-{{@key}}" class="anchor" name="#{{@key}}" aria-hidden="true"></a>·  <a href="/buscador/?fuente={{ @key }}" rel="nofollow noreferrer noopener" target="_blank">
               {{_ @key}}
               </a></h4>
-              {{ j notas }}
-              <p> {{ locals.general.["source_description_{@key}"] }}</p>
+              <p> {{{ get_source_description @key }}}</p>
               <div class="row">
                 {{#each this }}
                 <div class="col-md-4 col-12">
@@ -406,7 +405,12 @@
               <p>{{{_ "“Cargografías es una herramienta experimental que requiere de un equipo multidisciplinario que consiga los datos (del país en cuestión) y mejore la forma de visualizarlos (la plataforma online de visualización de datos que todas las instancias comparten)”, según su propia definición. Por el momento en QuiénEsQuién.Wiki se encuentras los datos de políticos de Argentina, aunque la plataforma también cuenta con datos de Brasil, Uruguay y Paraguay."}}}</p>
             </div>
               --}}
+
+
+
             <div class="col-md-12 col-12">
+              <h3 class="mt-5"><a id="user-content-otras-bases-de-datos" class="anchor" href="#otras-bases-de-datos" aria-hidden="true"></a>{{{_ "OTRAS BASES DE DATOS"}}}</h3>
+              <p>{{{_ "QuiénEsQuién.Wiki es una plataforma colaborativa, es por ello que PODER apoya dando Back-End a proyectos que si bien no tienen una perspectiva empresarial, ayudan a mostrar la captura del estado"}}}.</p>
               <h3>
               <a id="user-content-estandares-de-datos" class="anchor" href="#estandares-de-datos" aria-hidden="true"></a>{{{_ "ESTÁNDARES DE DATOS"}}}</h3>
               <p>{{{_ "Los datos que recabamos están en múltiples esquemas. Para no crear el enésimo esquema de datos, optamos por sistematizarlo todo en un esquema propio que combina los dos principales estándares que usa la comunidad de datos abiertos de América Latina."}}}</p>
