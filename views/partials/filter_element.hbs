@@ -48,13 +48,13 @@
           {{#if filter.value }}
           <button type="button" onclick="$('#{{filter.htmlFieldName}},#{{filter.htmlFieldName}}-min,#{{filter.htmlFieldName}}-max').val('')[0].form.submit();" class="close ml-auto">&times;</button>
           {{/if}}
-          
+
           <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
             <h6 class="ml-2"><b>{{filter.fieldLabel}}</b></h6>
             <p class="ml-2">{{filter.guidanceText}}</p>
             <fieldset>
               {{# ifCond filter.type "==" "string" }}
-                <input type="text" class="form-control input-string" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
+                <input type="text" class="form-control input-string {{#if filter.autocomplete_enabled}}easy-search-input{{/if}}" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}" data-autocomplete-parameters="{{ filter.autocomplete_parameters }}">
                 <button type="submit" class="btn btn-light d-inline-block">{{_ "APLICAR"}}</button>
               {{/ifCond}}
               {{# ifCond filter.type "==" "id" }}

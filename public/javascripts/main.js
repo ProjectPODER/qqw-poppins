@@ -21,6 +21,14 @@ var qqw_suggest = new Bloodhound({
   remote: {
     url: AUTOCOMPLETE_URL+'/%QUERY',
     wildcard: '%QUERY',
+    prepare: function(query, settings){
+      
+      let input= $('.easy-search-input').filter(function(){return this.value==query});
+      let autocomplete_parameters= input.data("autocomplete-parameters") || "";
+      settings.url= settings.url.replace("%QUERY", query+"?"+autocomplete_parameters)
+      console.log(query, settings, autocomplete_parameters);
+      return(settings);
+    },
     transform: function(response) {
       console.log("blood",response.data);
       return response.data;
@@ -38,7 +46,7 @@ $('.easy-search-input').typeahead(
   {
     hint: true,
     highlight: true,
-    minLength: 0
+    minLength: 2
   },
   {
   name: 'qqw',
