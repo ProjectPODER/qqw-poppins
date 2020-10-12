@@ -23,15 +23,10 @@
               <h3 class="mt-5"><a id="user-content-investigaciones-propias" class="anchor" href="#investigaciones-propias" aria-hidden="true"></a>{{{_ "INVESTIGACIONES PROPIAS"}}}</h3>
               <p>{{{_ "Las investigaciones de PODER en muchos casos son impulsadas por datos o con el objetivo de conseguir un mapeo exhaustivo de un caso concreto. Parte de nuestra metodología es registrar estos datos en una hoja de cálculo para después importarlos, este proceso nos sirve tanto para incrementar la profundidad de QuiénEsQuién.Wiki como para poder extraer los datos de la API y hacer la visualización."}}}</p>
 
-              <h3 class="mt-5"><a id="user-content-fuentes" class="anchor" href="#fuentes" aria-hidden="true"></a>{{{_ "FUENTES"}}}</h3>
-              {{#if source}}
-                {{#each source }}
-                  <h4 class="mt-5"><a id="user-content-{{@key}}" class="anchor" name="#{{@key}}" aria-hidden="true"></a>·  <a href="/buscador/?fuente={{ @key }}" rel="nofollow noreferrer noopener" target="_blank">
-                  {{_ @key}}
-                  </a></h4>
-                  <p> {{{ get_source_description @key }}}</p>
-                  <div class="row">
-                    {{#each this }}
+              <h3 class="mt-5"><a id="user-content-fuentes" class="anchor" href="#fuentes" aria-hidden="true"></a>{{{_ "ENTIDADES"}}}</h3>
+              {{#if response.classification}}
+                <div class="row">
+                {{#each response.classification }}
                     <div class="col-md-4 col-12">
                       <div class="card-border explore-card">
                         <div class="card-pad text-center">
@@ -40,8 +35,38 @@
                               {{format_number count}}
                             </strong>
                           </h5>
-                          <h5 class="card-h3"><a href="/buscador/?fuente={{@../key}}&subclassification={{@key}}">{{{_ @key }}}</a></h5>
+                          
                           <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment lastModified date lang="es" format="LL"}} </p>
+
+                          <h5 class="card-h3"><a href="{{url view="buscador" classification=@key }}">{{{_ @key }}}</a></h5>
+                        </div>
+                      </div>
+                    </div>                
+                {{/each}}
+                </div>
+              {{/if}}
+
+              <h3 class="mt-5"><a id="user-content-fuentes" class="anchor" href="#fuentes" aria-hidden="true"></a>{{{_ "FUENTES"}}}</h3>
+              {{#if response.sources}}
+                {{#each response.sources }}
+                  <h4 class="mt-5"><a id="user-content-{{@key}}" class="anchor" name="#{{@key}}" aria-hidden="true"></a>·  <a href="{{url view="buscador" fuente=../key }}" rel="nofollow noreferrer noopener" target="_blank">
+                  {{_ @key}}
+                  </a></h4>
+                  <p> {{{ get_source_description @key }}}</p>
+                  <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment lastModified date lang="es" format="LL"}} </p>
+                  <div class="row">
+                    {{#each this.classification }}
+                    <div class="col-md-4 col-12">
+                      <div class="card-border explore-card">
+                        <div class="card-pad text-center">
+                          <h5>
+                            <strong>
+                              {{format_number count}}
+                            </strong>
+                          </h5>
+                          
+
+                          <h5 class="card-h3"><a href="{{url view="buscador" classification=@key fuente=@../key }}">{{{_ @key }}}</a></h5>
                         </div>
                       </div>
                     </div>
