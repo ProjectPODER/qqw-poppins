@@ -13,7 +13,7 @@ function createMultiLangRoutes(es,en,callback) {
 
 /* Create all multilang routes */
 constants.qqw_routes.map(route => {
-    createMultiLangRoutes('/'+route.es, "/"+route.en, lib[route.view].call(route.params));
+    createMultiLangRoutes('/'+route.es, "/"+route.en, lib[route.view](route.params[0],route.params[1],route.params[2]));
 })
 
 router.get('/', lib.redirectToLanguage("/inicio","/home"));
