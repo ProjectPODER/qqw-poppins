@@ -2,7 +2,7 @@
     {{#ifCond directionality "==" "child"}}
         <div class="index-list-group">
             <div class="index-list-title">
-                <a href="/{{get_type_url (or result.organization_class "person")}}/{{ or result.organization_id result.person_id }}">
+                <a href="{{ url view=(get_type_url (or result.organization_class "person")) _id=(or result.organization_id result.person_id) }}">
                 <p class="text-overflow" title="{{or result.organization_name result.person_name}}">
                     {{{ get_classification_icon (get_type_collection (or result.organization_class "person")) (or result.organization_class "person")  result.organization_subclass  result.govLevel}}}
                     {{or result.organization_name result.person_name}}
@@ -11,14 +11,14 @@
             </div>
         </div>
         <div class="index-list-button">
-                <a href="/{{get_type_url (or result.organization_class "person")}}/{{ or result.organization_id result.person_id }}">
+                <a href="{{ url view=(get_type_url (or result.organization_class "person")) _id=(or result.organization_id result.person_id) }}">
                 <i class="far fa-arrow-alt-circle-right"></i>
             </a>
         </div>
     {{else}}
         <div class="index-list-group">
             <div class="index-list-title">
-                <a href="/{{get_type_url result.parent_class}}/{{ result.parent_id }}">
+                <a href="{{ url view=(get_type_url result.parent_class) _id=result.parent_id }}">
                 <p class="text-overflow" title="{{result.parent_name}}">
                     {{{ get_classification_icon (get_type_collection result.parent_class) result.parent_class result.parent_subclass result.govLevel}}}
                     {{result.parent_name}}
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="index-list-button">
-            <a href="/{{get_type_url result.parent_class}}/{{ result.parent_id }}">
+            <a href="{{ url view=(get_type_url result.parent_class) _id=result.parent_id }}">
                 <i class="far fa-arrow-alt-circle-right"></i>
             </a>
         </div>

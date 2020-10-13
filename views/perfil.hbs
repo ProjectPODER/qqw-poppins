@@ -12,19 +12,19 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-              <a href="/">{{{_ "Inicio"}}}</a>
+              <a href="{{url view="home"}}">{{{_ "Inicio"}}}</a>
           </li>
           {{#each result.area }}
             {{#if id }}
               <li class="breadcrumb-item">
-                <a href="/regiones/{{id}}">
+                <a href="{{url view="regiones/:id" _id=id}}">
                   {{translate_area name}}
                 </a>
               </li>
             {{/if}}
           {{/each}}
           <li class="breadcrumb-item">
-            <a href="/{{get_type_url type}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
+            <a href="{{url view="buscador" collection=type subtipo=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
           </li>
 
         </ol>        
@@ -367,7 +367,7 @@
                   {{#ifCond classification '==' 'state'}}{{{_ "Estado"}}}{{/ifCond}}
                 </p>
                 <p class="js-data">
-                  <a href="/region/{{id}}">
+                  <a href="{{url view="areas/:id" _id=id }}">
                     {{translate_area name}}
                   </a>
                 </p>
@@ -489,7 +489,7 @@
           {{#if result.source}}
             <div class="col-m-3 col-3 pd-nonleft">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.source}} <a href="/entidades-y-fuentes#{{this.id}}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
         </div>

@@ -16,7 +16,7 @@
               {{#ifCond type "==" "next5"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
               {{#ifCond type "==" "next10"}} <li class="page-item"><span class="page-ellipsis">&hellip;</span></li> {{/ifCond}}
               <li class="page-item {{#if enabled}}{{else}}disabled{{/if}} {{#ifCond type "==" "current"}}active{{else}}{{/ifCond}}">
-                <a class="page-link page-{{type}}" {{#if enabled}}href="{{../current_url}}&page={{value}}"{{/if}}>
+                <a class="page-link page-{{type}}" {{#if enabled}}href="{{ url page=value}}"{{/if}}>
                   {{title}}
                 </a>
               </li>
@@ -28,7 +28,7 @@
     <div class="col-md-3 col-sm-12 text-right page-results">
       <h6>{{_ "RESULTADO POR PÁGINA" }}</h5>
       <div class="form-group">
-        <select class="form-control form-control-lg float-right w-50" id="indexLength">
+        <select class="form-control form-control-lg float-right w-50" id="indexLength" onchange="window.location.href='{{url size=25 }}'.replace(25,this.value)">
           <option value="25" {{#ifCond result.size "==" "25" }}selected="selected"{{/ifCond}}>25</option>
           <option value="50" {{#ifCond result.size "==" "50" }}selected="selected"{{/ifCond}}>50</option>
           <option value="100" {{#ifCond result.size "==" "100" }}selected="selected"{{/ifCond}}>100</option>

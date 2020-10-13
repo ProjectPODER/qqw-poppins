@@ -6,8 +6,8 @@
           {{result.contracts.title}}
       </h3>
     <div class="profile-breadcrumb">
-      <a href="/">{{{_ "Inicio"}}}</a> &gt; 
-      <a href="/{{{_ "contratos" }}}">{{{_ "Contratos" }}}</a>
+      <a href="{{url view="home"}}">{{{_ "Inicio"}}}</a> &gt; 
+      <a href="{{url view="contratos" }}">{{{_ "Contratos" }}}</a>
     </div>
     <div class="right-box ml-auto filters">
         <ul class="nav nav-pills d-flex flex-nowrap">
@@ -80,15 +80,15 @@
             <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."}}}">
               {{{ get_classification_icon "institutions" result.parties.0.details.type result.parties.0.details.classification result.parties.0.details.govLevel}}}
             </a>
-            <a href="/{{{_ "instituciones-publicas"}}}/{{result.buyer.id }}">{{result.buyer.name}}</a>
+            <a href="{{ url view="instituciones-publicas/:id" _id=result.buyer.id }}">{{result.buyer.name}}</a>
 
-            perteneciente a 
 
-            {{#with (get_party result.records.[0] result.parties.0.memberOf.0.id) }}
+            {{#with (get_party result result.parties.0.memberOf.0.id) }}
+              perteneciente a 
               <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación.">
               {{{ get_classification_icon "institutions" ../result.parties.0.details.type "dependencia" result.parties.0.details.govLevel}}}
               </a>
-              <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}">{{memberOf.0.name}}</a>
+              <a href="{{url view="institutions/:id" _id=memberOf.0.id}}">{{memberOf.0.name}}</a>
             {{/with}}
             {{#if result.parties.0.details.govLevel }} {{{_ "de nivel"}}} {{ get_govlevel_name result.parties.0.details.govLevel }}{{/if}}
 
@@ -102,7 +102,7 @@
           <p class="js-title-data">Proveedor(es)</p>
           {{#each result.records.0.supplier_summary }}
             {{#with (get_party ../result.records.[0] id) }}
-              <a class="supplier-list-item" href="/{{get_type_url details.type }}/{{id}}">
+              <a class="supplier-list-item" href="{{url view=(get_type_url details.type) }}/{{id}}">
               {{{ get_classification_icon "companies" result.parties.0.details.type result.parties.0.details.classification result.parties.0.details.govLevel}}}
               {{name}}
               </a> 
@@ -188,7 +188,7 @@
           <div class="col-m-12 col-12 mb-2">
             <span class="js-title-data">{{{_ "Financiador:"}}} </span>
             {{#with (get_party ../result id)}}
-            <span class="js-data"><a href="/{{get_type_url details.type}}/{{id}}">{{name}}</a>
+            <span class="js-data"><a href="{{ url view=(get_type_url details.type) }}/{{id}}">{{name}}</a>
             </span>
             {{/with}}
           </div>
@@ -246,7 +246,7 @@
             <p class="js-title-data">{{{_ "Dependencia" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación." }}}"><i class="fas fa-info"></i></a></p>
             {{!-- {{#each result.parties.0.memberOf.0.name}} --}}
             {{#with (get_party result.records.[0] result.parties.0.memberOf.0.id) }}
-              <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}"><p class="js-data">{{memberOf.0.name}}</p></a>
+              <a href="{{url view=(get_type_url details.type) }}/{{memberOf.0.id}}"><p class="js-data">{{memberOf.0.name}}</p></a>
             {{/with}}
             {{!-- {{/each}} --}}
         </div>
@@ -261,7 +261,7 @@
         <div class="col-m-6 col-6 pr-1">
           <p class="js-title-data">{{{_ "Unidad compradora" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet." }}}"><i class="fas fa-info"></i></a></p>
           <p class="js-data">
-            <a href="/{{{_ "instituciones-publicas" }}}/{{result.buyer.id }}">
+            <a href="{{ url view="instituciones-publicas/:id" _id=result.buyer.id }}">
               {{result.buyer.name}}
             </a>
             {{#if result.parties.0.identifier.id }}
@@ -277,7 +277,7 @@
         {{#if result.parties.0.contactPoint }}
         <div class="col-m-6 col-6 link-lf-contracts">
             <p class="js-title-data">{{{_ "Responsable" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe." }}}"><i class="fas fa-info"></i></i></a></p>
-            <p class="js-data"><a href="/{{{_ "personas" }}}/{{result.parties.0.contactPoint.id}}">{{result.parties.0.contactPoint.name}}</a></p>
+            <p class="js-data"><a href="{{ url view="personas/:id" _id=result.parties.0.contactPoint.id}}">{{result.parties.0.contactPoint.name}}</a></p>
         </div>
         {{/if}}
 
@@ -401,7 +401,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                 {{#each suppliers }}
                 {{#with (get_party ../../result.records.[0] id) }}
                 <p class="js-data mb-1">
-                  <a href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
+                  <a href="{{url view=(get_type_url details.type) }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
                 </p>
                 {{/with}}
                 {{/each}}
@@ -543,7 +543,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
           {{#if result.source}}
             <div class="col-m-3 col-3 pd-nonleft">
               <p class="js-title-data">{{{_ "Fuente(s)" }}}</p>
-              <p class="js-data">{{#each result.source}} <a href="/entidades-y-fuentes#{{this.id}}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{url view="entidades-y-fuentes" _anchor=this.id}}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
         </div>
@@ -555,4 +555,4 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
 
 </div>
 
-<a href="/{{_ "expediente" }}/{{result.ocid}}">Ver expediente {{result.ocid }}</a>
+<a href="{{ url view="expediente/:id" _id=result.ocid}}">Ver expediente {{result.ocid }}</a>

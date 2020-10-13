@@ -33,7 +33,7 @@
           <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="/buscador?&collection=persons">
+                <a href="{{url view="buscador" collection="persons"}}">
                   <h3>
                     <strong>
                       {{format_number stats.index.persons.count }} 
@@ -50,7 +50,7 @@
           <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="/buscador?&collection=contracts">
+                <a href="{{url view="buscador" collection="contracts"}}">
                   <h3>
                     <strong>
                       {{format_number stats.index.contracts.count}}
@@ -68,7 +68,7 @@
           <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="/buscador?&collection=institutions">
+                <a href="{{url view="buscador" collection="institutions"}}">
                   <h3>
                     <strong>
                       {{format_number stats.classification.institution.count}}
@@ -85,7 +85,7 @@
           <div class="col-12 col-md-6 col-lg-6 mb-4">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="/buscador?&collection=companies">
+                <a href="{{url view="buscador" collection="companies"}}">
                   <h3>
                     <strong>
                       {{format_number stats.classification.company.count}}
@@ -102,7 +102,7 @@
           <div class="col-12 col-md-6 col-lg-6 mb-4 mb-md-0">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="/buscador/?collection=institutions&tipo-institucion=state">
+                <a href="{{url view="buscador" collection="areas" tipo-area="state" }}">
                   <h3>
                     <strong>
                       {{format_number stats.classification.state.count}}
@@ -117,7 +117,7 @@
           <div class="col-12 col-md-6 col-lg-6">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="/">
+                <a href="{{url view="areas" tipo-area="municipality"}}">
                   <h3>
                     <strong>
                       {{format_number stats.classification.municipality.count}}
@@ -157,7 +157,7 @@
         </div>
       </div>
       <div class="col-12 col-m-12 text-center mt-4">
-        <a class="button-link important-button-link" type="button" href="/entidades-y-fuentes">{{{_ "VER FUENTES DE DATOS"}}}</a>
+        <a class="button-link important-button-link" type="button" href="{{url view="entidades-y-fuentes"}}">{{{_ "VER FUENTES DE DATOS"}}}</a>
       </div>
     </div>
   </div>
@@ -171,7 +171,7 @@
         <p class="text-darkblue">{{{_ "Como cualquier herramienta, <a href='https://quienesquien.wiki/'>QuiénEsQuién.Wiki</a> tiene sus mañas. Con base en las mejores experiencias, hemos preparado un manual para que investigadores y periodistas puedan hacer búsquedas complejas y sacarle el máximo provecho."}}}</p>
       </div>
       <div class="col-12 col-md-12 text-center mt-2">
-        <a class="button-link important-button-link" type="button" href="/manual">{{{_ "VER MANUAL"}}}</a>
+        <a class="button-link important-button-link" type="button" href="{{url view="manual"}}">{{{_ "VER MANUAL"}}}</a>
       </div>
     </div>
   </div>
@@ -229,7 +229,7 @@
         </div>
       </div>
       <div class="col-12 col-md-12 text-center mt-4">
-        <a class="button-link important-button-link" type="button" href="/investigaciones">{{{_ "VER TODAS LAS INVESTIGACIONES"}}}</a>
+        <a class="button-link important-button-link" type="button" href="{{url view="investigaciones"}}">{{{_ "VER TODAS LAS INVESTIGACIONES"}}}</a>
       </div>
     </div>
   </div>
@@ -299,7 +299,7 @@
         </div>
       </div>
       <div class="col-12 col-m-12 text-center mt-60">
-        <a class="button-link important-button-link" type="button" href="herramientas">{{{_ "VER TODAS LAS HERRAMIENTAS"}}}</a>
+        <a class="button-link important-button-link" type="button" href="{{url view="herramientas"}}">{{{_ "VER TODAS LAS HERRAMIENTAS"}}}</a>
       </div>
     </div>
   </div>

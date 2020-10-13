@@ -49,7 +49,7 @@
               <h3 class="mt-5"><a id="user-content-fuentes" class="anchor" href="#fuentes" aria-hidden="true"></a>{{{_ "FUENTES"}}}</h3>
               {{#if response.sources}}
                 {{#each response.sources }}
-                  <h4 class="mt-5"><a id="user-content-{{@key}}" class="anchor" name="#{{@key}}" aria-hidden="true"></a>·  <a href="{{url view="buscador" fuente=@key }}" rel="nofollow noreferrer noopener" target="_blank">
+                  <h4 class="mt-5"><a id="user-content-{{@key}}" class="anchor" name="{{@key}}" aria-hidden="true"></a>·  <a href="{{url view="buscador" fuente=@key }}" rel="nofollow noreferrer noopener" target="_blank">
                   {{_ @key}}
                   </a></h4>
                   <p> {{{ get_source_description @key }}}</p>
