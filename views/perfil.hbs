@@ -128,16 +128,8 @@
   <div class="profile-content">
     <div class="row">
       <div class="col-9 col-m-9">
-          {{#ifCond type '==' 'persons'}}
-            {{#ifCond result.contract_count.buyer '>' '0'}}
-              <div class="col-12 col-m-12">
-                <p class="description-data-amount">{{{_ "Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato."}}}</p>
-              </div>
-            {{/ifCond}}
-          {{/ifCond}}
-
         {{#ifCond type "==" "companies"}}
-        {{> gender-indicator result_name=result.name country_data=result.countryData }}
+          {{> gender-indicator result_name=result.name country_data=result.countryData }}
         {{/ifCond}}
       </div>
     </div>
@@ -169,6 +161,11 @@
 {{!-- SUMMARIES --}}
 {{#if summaries.buyer.total.count }}
 {{>summary result=result summary="buyer" data=summaries.buyer }}
+{{/if}}
+
+
+{{#if summaries.contactPoint.total.count }}
+{{>summary result=result summary="contactPoint" data=summaries.contactPoint }}
 {{/if}}
 
 {{!-- Unidades compradoras --}}

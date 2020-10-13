@@ -18,9 +18,18 @@
         </h4>
         <div class="profile-summary-content">
             <div class="summary-total {{summary}}-text">
-                <i class="fas fa-file-alt"></i>
-                {{{_ "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>" cant_countratos=(format_amount data.total.count) summary=(_ summary) amount_contratos=(format_amount data.total.value) }}}
-                {{_ "entre los años {first_year} y {last_year}." first_year=(first_key data.year) last_year=(last_key data.year) }}
+                <p>
+                  <i class="fas fa-file-alt"></i>
+                  {{{_ "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>" cant_countratos=(format_amount data.total.count) summary=(_ summary) amount_contratos=(format_amount data.total.value) }}}
+                  {{_ "entre los años {first_year} y {last_year}." first_year=(first_key data.year) last_year=(last_key data.year) }}
+                </p>
+
+                {{#ifCond summary '==' 'contactPoint'}}
+                  <p class="description-data-amount">
+                    <i class="fas fa-info-circle"></i>
+                    {{{_ "Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato."}}}
+                  </p>
+                {{/ifCond}}
             </div>
             <div class="row">
 
@@ -45,7 +54,7 @@
                     {{/each}}
                     <div class="contract-button">
                         {{#ifCond type '==' 'persons'}}
-                          {{#ifCond summary '==' 'buyer'}}
+                          {{#ifCond summary '==' 'contactPoint'}}
                             <a href="{{ url view="buscador" collection="contracts" responsable=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este responsable" }}</a>
                           {{else }}
                             <a href="{{ url view="buscador" collection="contracts" proveedor=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
