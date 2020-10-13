@@ -280,6 +280,7 @@
     "Ubicacion": "Ubicacion",
     "Información": "Información",
     "supplier": "supplier",
+    "buyer": "buyer",
     "Resúmen de actividad como {summary} ": "Resúmen de actividad como {summary} ",
     "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>": "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>",
     "entre los años {first_year} y {last_year}.": "entre los años {first_year} y {last_year}.",
