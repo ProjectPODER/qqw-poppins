@@ -38,10 +38,26 @@
 {{#ifCond result.data.length ">" 0 }}
   <section class="results-list" id="content-searcher">
       <div class="container-fluid">
+        {{#if result.summary }}
+        <div class="row">
+          <div class="col-3">
+            Importe total: {{format_amount result.summary.value }}
+          </div>
+          <div class="col-6">
+
+            Resultados por año: {{#each result.summary.year }}{{@key}}: {{ format_number count}} - {{/each}}
+          </div>
+          <div class="col-3">
+            Resultados por tipo de procedimiento: {{#each result.summary.type }}{{@key}}: {{format_number count}} - {{/each}}
+
+          </div>
+        </div>
+        {{/if}}
+
         <div class="row">
             <div class="col-12 col-m-12">
             {{#each result.data}}
-                {{> result  collection=../collection filter_values=../../filter_values result=this }}
+                {{> result filter_values=../../filter_values result=this }}
             {{/each}}
             </div>
         </div>

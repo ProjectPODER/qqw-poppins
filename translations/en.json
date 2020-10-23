@@ -342,7 +342,15 @@
     "Popolo Project es un estándar inicialmente pensado para registrar instituciones públicas y políticos. Con una mínima alternación pudimos usar su lógica de sistema de personas, organizaciones y membresías para el sector privado.": "Popolo Project es un estándar inicialmente pensado para registrar instituciones públicas y políticos. Con una mínima alternación pudimos usar su lógica de sistema de personas, organizaciones y membresías para el sector privado.",
     "El Estándar para las Contrataciones Abiertas (OCDS en sus siglas en inglés) es un esquema de datos abiertos promovido por la Open Contracting Parnership para la publicación de información estructurada de todas las etapas de un proceso de contratación: de la planeación a la implementación. QuiénEsQuién.Wiki hace un uso propio del estándar, añadiendo y creando extensiones, que puede consultarse en <a href='https://github.com/ProjectPODER' rel='nofollow noreferrer noopener' target='_blank'>nuestro Github</a>": "El Estándar para las Contrataciones Abiertas (OCDS en sus siglas en inglés) es un esquema de datos abiertos promovido por la Open Contracting Parnership para la publicación de información estructurada de todas las etapas de un proceso de contratación: de la planeación a la implementación. QuiénEsQuién.Wiki hace un uso propio del estándar, añadiendo y creando extensiones, que puede consultarse en <a href='https://github.com/ProjectPODER' rel='nofollow noreferrer noopener' target='_blank'>nuestro Github</a>",
     "OTRAS BASES DE DATOS":"OTRAS BASES DE DATOS",
-    "QuiénEsQuién.Wiki es una plataforma colaborativa, es por ello que PODER apoya dando Back-End a proyectos que si bien no tienen una perspectiva empresarial, ayudan a mostrar la captura del estado": "QuiénEsQuién.Wiki es una plataforma colaborativa, es por ello que PODER apoya dando Back-End a proyectos que si bien no tienen una perspectiva empresarial, ayudan a mostrar la captura del estado"
-    
-    
+    "QuiénEsQuién.Wiki es una plataforma colaborativa, es por ello que PODER apoya dando Back-End a proyectos que si bien no tienen una perspectiva empresarial, ayudan a mostrar la captura del estado": "QuiénEsQuién.Wiki es una plataforma colaborativa, es por ello que PODER apoya dando Back-End a proyectos que si bien no tienen una perspectiva empresarial, ayudan a mostrar la captura del estado",
+    "Proveedor:":"Proveedor:",
+    "Comprador":"Comprador",
+    "Fecha":"Fecha",
+    "al":"al",
+    "RESULTADO POR PÁGINA":"RESULTADO POR PÁGINA",
+    "Todos":"Todos",
+    "APLICAR":"APLICAR",
+    "Más filtros":"Más filtros",
+    "Datos estructurados de esta página.":"Datos estructurados de esta página.",
+    "País:":"País:"    
 }

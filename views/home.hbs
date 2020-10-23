@@ -53,7 +53,7 @@
                 <a href="{{url view="buscador" collection="contracts"}}">
                   <h3>
                     <strong>
-                      {{format_number stats.index.contracts.count}}
+                      {{format_number stats.classification.contract.count}}
                     </strong>
                   </h3>
                   <h3 class="card-h3">{{{_ "Contratos"}}}
@@ -61,7 +61,7 @@
                 </a>
                 {{!-- <p class="serif-gray">Explora los importes, años, dependencias, sas proveedoras y otras características de más de un millón de contratos.</p>
                 <a href="/contracts" class="button-link">VER CONTRATOS</a> --}}
-                <p class="triplet-last-update">{{{_ "Actualización:"}}} {{ moment stats.index.contracts.lastModified date lang="es" format="LL"}} </p>
+                <p class="triplet-last-update">{{{_ "Actualización:"}}} {{ moment stats.classification.contract.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>
@@ -102,15 +102,15 @@
           <div class="col-12 col-md-6 col-lg-6 mb-4 mb-md-0">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="{{url view="buscador" collection="areas" tipo-area="state" }}">
+                <a href="{{url view="buscador" collection="areas" tipo-area="country" }}">
                   <h3>
                     <strong>
-                      {{format_number stats.classification.state.count}}
+                      {{format_number stats.classification.country.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Estados"}}}</h3>
+                  <h3 class="card-h3">{{{_ "Países"}}}</h3>
                 </a>
-                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.state.lastModified date lang="es" format="LL"}} </p>
+                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.country.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>

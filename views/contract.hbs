@@ -51,70 +51,75 @@
 
         <div class="col-m-6 col-6 contract-total-amount">
           <p class="js-title-data">{{{_ "Importe total"}}}</p>
-          <p class="js-data">{{format_amount result.total_amount}}</p>
+          <p class="js-data">{{format_amount result.contracts.value.amount}} {{result.contracts.value.currency}}</p>
         </div>
 
         <div class="col-6">
             <p class="js-title-data">{{{_ "Período de contrato(s)"}}}</p>
-            {{{_ "Entre el {start} y el {end}" start=(moment result.records.0.startDate date lang="es" format="LL") end=(moment result.records.0.endDate date lang="es" format="LL") }}}
+            {{{_ "Entre el {start} y el {end}" start=(moment result.contracts.period.startDate date lang="es" format="LL") end=(moment result.contracts.period.endDate date lang="es" format="LL") }}}
         </div>
 
-        {{#if result.records.0.description }}
+        {{#if result.contracts.description }}
         <div class="col-m-6 col-6">
             <p class="js-title-data">{{{_ "Descripción"}}}</p>
-            <p class="js-data">{{result.records.0.description}}</p>
+            <p class="js-data">{{result.contracts.description}}</p>
         </div>
         {{/if}}
-
-        <div class="col-6">
-            <p class="js-title-data">{{{_ "Cantidad de contratos"}}}</p>
-            {{ result.awards.length }}
-        </div>
-
-
-
-
 
         <div class="col-m-12 col-12 link-lf-contracts">
             <p class="js-title-data">{{{_ "Unidad compradora"}}}</p>
             <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."}}}">
-              {{{ get_classification_icon "institutions" result.parties.0.details.type result.parties.0.details.classification result.parties.0.details.govLevel}}}
+              {{{ get_classification_icon "institutions" result.parties.buyer.details.type result.parties.buyer.details.classification result.parties.buyer.details.govLevel}}}
             </a>
             <a href="{{ url view="instituciones-publicas/:id" _id=result.buyer.id }}">{{result.buyer.name}}</a>
 
 
-            {{#with (get_party result result.parties.0.memberOf.0.id) }}
+            {{#with result.parties.buyer }}
               perteneciente a 
               <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación.">
-              {{{ get_classification_icon "institutions" ../result.parties.0.details.type "dependencia" result.parties.0.details.govLevel}}}
+              {{{ get_classification_icon "institutions" details.type "dependencia" details.govLevel}}}
               </a>
-              <a href="{{url view="institutions/:id" _id=memberOf.0.id}}">{{memberOf.0.name}}</a>
+              <a href="{{url view="institutions/:id" _id=memberOf.id}}">{{memberOf.name}}</a>
             {{/with}}
-            {{#if result.parties.0.details.govLevel }} {{{_ "de nivel"}}} {{ get_govlevel_name result.parties.0.details.govLevel }}{{/if}}
+            {{#if result.parties.buyer.details.govLevel }} {{{_ "de nivel"}}} {{ get_govlevel_name result.parties.buyer.details.govLevel }}{{/if}}
 
 
 
         </div>
 
 
-        {{#if result.supplier_summary }}
+        {{#if result.parties.suppliers.list }}
         <div class="col-m-12 col-12 ">
           <p class="js-title-data">Proveedor(es)</p>
-          {{#each result.records.0.supplier_summary }}
-            {{#with (get_party ../result.records.[0] id) }}
-              <a class="supplier-list-item" href="{{url view=(get_type_url details.type) }}/{{id}}">
-              {{{ get_classification_icon "companies" result.parties.0.details.type result.parties.0.details.classification result.parties.0.details.govLevel}}}
+          {{#each result.parties.suppliers.list }}
+              <a class="supplier-list-item" href="{{url view=(get_type_url details.type) _id=id}}">
+              {{{ get_classification_icon details.type details.type details.classification details.govLevel}}}
               {{name}}
               </a> 
 
               {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}} 
-              {{{_ "por"}}}
-              {{format_amount ../contract_amount}} MXN.
               <br>
-            {{/with}}
           {{/each}}
         </div>
         {{/if}}
+
+        {{# each result.parties.funder }}
+        <div class="col-m-12 col-12 mb-2">
+          <p class="js-title-data">{{{_ "Financiador(as):"}}} </p>
+          <span class="js-data">
+              {{{ get_classification_icon details.type details.type details.classification details.govLevel}}}
+
+            <a href="{{ url view=(get_type_url details.type) _id=id}}">{{name}}</a>
+          </span>
+        </div>
+        {{/each}}
+
+        <div class="col-m-12 col-12 mt-5">
+          <p>{{_ "Este contrato es parte de un expediente."}}
+
+          <a href="{{ url view="expediente/:id" _id=result.ocid}}">{{_ "Ver expediente"}} {{result.ocid }}</a> {{_ "en formato Open Contracting Data Standard"}}.
+          </p>
+        </div>
 
         <div class="col-12">
           <hr>
@@ -182,23 +187,12 @@
     <div class="col-9 col-m-9">
           <h4 class="description-data-subtitle"><i class="fas fa-caret-square-right"></i> {{{_ "PLANEACIÓN"}}}</h4>
       <div class="row flex">
-        <!-- agregar aca el funder si hay -->
-        {{# if (get_contract_funder result) }}
-          {{# with (get_contract_funder result) }}
-          <div class="col-m-12 col-12 mb-2">
-            <span class="js-title-data">{{{_ "Financiador:"}}} </span>
-            {{#with (get_party ../result id)}}
-            <span class="js-data"><a href="{{ url view=(get_type_url details.type) }}/{{id}}">{{name}}</a>
-            </span>
-            {{/with}}
-          </div>
-          {{/with}}
-        {{/if}}
+      
         {{#if result.planning }}
+          {{# if result.planning.budget.budgetBreakdown.description }}
           <div class="col-m-12 col-12">
               <p class="js-data mt-2">{{{_ "PRESUPUESTO"}}}</p>
           </div>
-          {{# if result.planning.budget.budgetBreakdown.description }}
           <div class="col-m-12 col-12 mb-2">
             <span class="js-title-data">{{{_ "Descripción de los fondos"}}}: </span>
             <span class="js-data">          {{ result.planning.budget.budgetBreakdown.description }}
@@ -241,20 +235,22 @@
       <h4 class="description-data-subtitle"><i class="fas fa-envelope"></i> {{{_ "CONVOCATORIA"}}}</h4>
       <div class="row flex">
 
-        {{#if result.parties.length }}
         <div class="col-m-6 col-6 link-lf-contracts">
-            <p class="js-title-data">{{{_ "Dependencia" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación." }}}"><i class="fas fa-info"></i></a></p>
-            {{!-- {{#each result.parties.0.memberOf.0.name}} --}}
-            {{#with (get_party result.records.[0] result.parties.0.memberOf.0.id) }}
-              <a href="{{url view=(get_type_url details.type) }}/{{memberOf.0.id}}"><p class="js-data">{{memberOf.0.name}}</p></a>
-            {{/with}}
-            {{!-- {{/each}} --}}
+            <p class="js-title-data">
+              {{{_ "Dependencia" }}} 
+              <a data-toggle="tooltip" data-placement="right" title="{{{_ "Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación." }}}"><i class="fas fa-info"></i>
+              </a>
+            </p>
+            <p class="js-data">
+              <a href="{{url view=(get_type_url result.parties.buyer.details.type) _id=result.parties.buyer.memberOf.0.id}}">
+                {{result.parties.buyer.memberOf.name}}
+              </a>
+            </p>
         </div>
-        {{/if}}
-        {{#if result.parties.0.details.govLevel }}
+        {{#if result.parties.buyer.details.govLevel }}
         <div class="col-m-3 col-3 link-lf-contracts">
             <p class="js-title-data">{{{_ "Nivel de gobierno" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Si la unidad compradora pertenece al nivel municipal, estatal o federal" }}}"><i class="fas fa-info"></i></i></a></p>
-            <p class="js-data">{{ get_govlevel_name result.parties.0.details.govLevel }}</p>
+            <p class="js-data">{{ _ result.parties.buyer.details.govLevel }}</p>
         </div>
         {{/if}}
         {{#if result.buyer }}
@@ -264,9 +260,9 @@
             <a href="{{ url view="instituciones-publicas/:id" _id=result.buyer.id }}">
               {{result.buyer.name}}
             </a>
-            {{#if result.parties.0.identifier.id }}
+            {{#if result.parties.buyer.identifier.id }}
               ({{{_ "Clave" }}}:
-              {{result.parties.0.identifier.id}}
+              {{result.parties.buyer.identifier.id}}
               <a data-toggle="tooltip" data-placement="right" title="{{{_ "Clave de identificación de la Unidad Compradora en Compranet 3.0." }}}"><i class="fas fa-info"></i></a>
               )
               
@@ -274,10 +270,10 @@
           </p>
         </div>
         {{/if}}
-        {{#if result.parties.0.contactPoint }}
+        {{#if result.parties.buyer.contactPoint }}
         <div class="col-m-6 col-6 link-lf-contracts">
             <p class="js-title-data">{{{_ "Responsable" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe." }}}"><i class="fas fa-info"></i></i></a></p>
-            <p class="js-data"><a href="{{ url view="personas/:id" _id=result.parties.0.contactPoint.id}}">{{result.parties.0.contactPoint.name}}</a></p>
+            <p class="js-data"><a href="{{ url view="personas/:id" _id=result.parties.buyer.contactPoint.id}}">{{result.parties.buyer.contactPoint.name}}</a></p>
         </div>
         {{/if}}
 
@@ -327,7 +323,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
         {{#if result.tender.submissionMethod }}
         <div class="col-m-6 col-6 mb-2">
             <p class="js-title-data">{{{_ "Formas de envío" }}}: </p>
-            <p class="js-data">{{result.tender.submissionMethod}}</p>
+            <p class="js-data">{{#each result.tender.submissionMethod}}{{_ @this}}{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
         </div>
         {{/if}}
         {{#if result.tender.tenderPeriod.startDate }}
@@ -363,7 +359,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
         {{#if result.tender.status }}
         <div class="col-m-6 col-6">
             <p class="js-title-data">{{{_ "Estado de la convocatoria" }}}</p>
-            <p class="js-data">{{result.tender.status}}</p>
+            <p class="js-data">{{_ result.tender.status}}</p>
         </div>
         {{/if}}
 
@@ -375,112 +371,116 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
   </section>
   <section class="profile row" id="adjudicaciones">
     <div class="col-9 col-m-9">
-      <h4 class="description-data-subtitle"><i class="fas fa-gavel"></i> {{{_ "ADJUDICACIONES Y CONTRATOS" }}}</h4>
-      <div class="row flex">
-        {{#with result.awards }}
-        <div class="contract-award-item col-12">
-          <div class="row">
+      <h4 class="description-data-subtitle"><i class="fas fa-gavel"></i> {{{_ "ADJUDICACIÓN Y CONTRATO" }}}</h4>
+      <div class="row">
 
-            <div class="col-12 contract-award-title description-data-subname ">
-              {{{_ "Contrato adjudicado código {id}" id=id }}}
-            </div>
-
-            <div class="col-m-12 col-12">
-                <p class="js-title-data">{{{_ "Título" }}}</p>
-                <p class="js-data">{{contract.title}}</p>
-            </div>
-            {{#if description }}
-            <div class="col-m-12 col-12">
-                <p class="js-title-data">{{{_ "Descripción" }}}</p>
-                <p class="js-data mb-1" >{{description}}</p>
-            </div>
-            {{/if}}
-            {{#if suppliers }}
-            <div class="col-m-6 col-6">
-                <p class="js-title-data">{{{_ "Proveedor(es)" }}}</p>
-                {{#each suppliers }}
-                {{#with (get_party ../../result.records.[0] id) }}
-                <p class="js-data mb-1">
-                  <a href="{{url view=(get_type_url details.type) }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
-                </p>
-                {{/with}}
-                {{/each}}
-            </div>
-            {{/if}}
-            {{#if value }}
-            <div class="col-m-6 col-6">
-                <p class="js-title-data">{{{_ "Monto" }}}</p>
-                <p class="js-data mb-1" >{{format_amount value.amount}} {{ value.currency}}</p>
-            </div>
-            {{/if}}
-            {{#if status }}
-            <div class="col-m-6 col-6">
-                <p class="js-title-data">{{{_ "Estatus de la adjudicación" }}}</p>
-                <p class="js-data mb-1" >{{ status}}</p>
-            </div>
-            {{/if}}
-            {{#if date }}
-            <div class="col-m-6 col-6">
-                <p class="js-title-data">{{{_ "Fecha de fallo" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato." }}}"><i class="fas fa-info"></i></a></p>
-                <p class="js-data mb-1" >{{moment date date lang="es" format="LL"}}</p>
-            </div>
-            {{/if}}
-            {{#with contract }}
-              {{#if dateSigned }}
-              <div class="col-m-6 col-6">
-                  <p class="js-title-data">{{{_ "Fecha de firma" }}}</p>
-                  <p class="js-data">{{moment dateSigned date lang="es" format="LL"}}</p>
-              </div>
-              {{/if}}
-              {{#if period }}
-              <div class="col-m-6 col-6">
-                  <p class="js-title-data">{{{_ "Período de ejecución" }}}</p>
-                  <p class="js-data">{{moment period.startDate date lang="es" format="LL"}} {{{_ "a" }}} {{moment period.endDate date lang="es" format="LL"}}
-                    {{!-- #if (contract_has_flag id "temp-dl") }}{{> bandera flag_id="temp-dl"}}{{/if --}}
-                  </p>
-              </div>
-              {{/if}}
-
-              {{#if ../documents.length }}
-              <div class="col-12">
-                <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
-                  {{#each ../documents }}
-                    <a href="{{url}}">
-                      <i class="fas fa-external-link-alt"></i>
-                      {{{_ "Ver {documentType} {index} en sitio oficial" documentType=documentType index=(math @../index "+" 1) }}} 
-                    </a>
-                  <br>
-                  {{/each}}
-              </div>
-              {{/if}}
-
-              <div class="col-m-12 col-12 contract-award-notes">
-                {{#if status }}
-                  <i class="fa fa-info"></i> {{{_ "Este contrato está {statusMxCnet} ({status})" statusMxCnet=statusMxCnet status=status }}}<br>
-                {{/if}}
-                {{#if filedMxCnet }}
-                  <i class="fa fa-info"></i> {{{_ "Este contrato ha sido archivado" }}}<br>
-                {{/if}}
-                {{#if multiyearContractMxCnet }}
-                  <i class="fa fa-info"></i> {{{_ "Este contrato es plurianual" }}}<br>
-                {{/if}}
-                {{#if hasFramework }}
-                  <i class="fa fa-info"></i> {{{_ "Este contrato fue realizado como parte de un convenio marco" }}}<br>
-                {{/if}}
-                {{#if hasAmendments }}
-                  <i class="fa fa-info"></i> {{{_ "Este contrato es una extensión, tiene correcciones o enmiendas" }}}<br>
-                {{/if}}
-              </div>
-            {{/with }}
-          </div>
+        <div class="col-m-12 col-12">
+            <p class="js-title-data">{{{_ "Título de la convocatoria" }}}</p>
+            <p class="js-data">{{result.tender.title}}</p>
         </div>
-        {{/with }}
+        <div class="col-m-12 col-12">
+            <p class="js-title-data">{{{_ "Título de la adjudicación" }}}</p>
+            <p class="js-data">{{result.awards.title}}</p>
+        </div>
+        {{#if description }}
+        <div class="col-m-12 col-12">
+            <p class="js-title-data">{{{_ "Descripción de la adjudicación" }}}</p>
+            <p class="js-data mb-1" >{{result.awards.description}}</p>
+        </div>
+        {{/if}}
+        <div class="col-m-12 col-12">
+            <p class="js-title-data">{{{_ "Título del contrato" }}}</p>
+            <p class="js-data">{{result.contracts.title}}</p>
+        </div>
+        {{#if description }}
+        <div class="col-m-12 col-12">
+            <p class="js-title-data">{{{_ "Descripción del contrato" }}}</p>
+            <p class="js-data mb-1" >{{result.contracts.description}}</p>
+        </div>
+        {{/if}}
+        <div class="col-m-6 col-6">
+            <p class="js-title-data">{{{_ "Proveedor(es)" }}}</p>
+            {{#each result.parties.suppliers.list }}
+            <p class="js-data mb-1">
+              <a href="{{url view=(get_type_url details.type) _id=id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
+            </p>
+            {{/each}}
+        </div>
+        {{#if result.awards.value }}
+        <div class="col-m-6 col-6">
+            <p class="js-title-data">{{{_ "Monto" }}}</p>
+            <p class="js-data mb-1" >{{format_amount result.awards.value.amount}} {{ result.awards.value.currency}}</p>
+        </div>
+        {{/if}}
+        {{#if status }}
+        <div class="col-m-6 col-6">
+            <p class="js-title-data">{{{_ "Estatus de la adjudicación" }}}</p>
+            <p class="js-data mb-1" >{{_ result.awards.status}}</p>
+        </div>
+        {{/if}}
+        {{#if result.awards.date }}
+        <div class="col-m-6 col-6">
+            <p class="js-title-data">{{{_ "Fecha de fallo" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato." }}}"><i class="fas fa-info"></i></a></p>
+            <p class="js-data mb-1" >{{moment result.awards.date lang="es" format="LL"}}</p>
+        </div>
+        {{/if}}
+        {{#with result.contracts }}
+          {{#if dateSigned }}
+          <div class="col-m-6 col-6">
+              <p class="js-title-data">{{{_ "Fecha de firma" }}}</p>
+              <p class="js-data">{{moment dateSigned date lang="es" format="LL"}}</p>
+          </div>
+          {{/if}}
+          {{#if period }}
+          <div class="col-m-6 col-6">
+              <p class="js-title-data">{{{_ "Período de ejecución" }}}</p>
+              <p class="js-data">{{moment period.startDate date lang="es" format="LL"}} {{{_ "a" }}} {{moment period.endDate date lang="es" format="LL"}}
+                {{!-- #if (contract_has_flag id "temp-dl") }}{{> bandera flag_id="temp-dl"}}{{/if --}}
+              </p>
+          </div>
+          {{/if}}
+          <div class="col-m-6 col-6">
+              <p class="js-title-data">{{{_ "Código interno de la adjudicación" }}}</p>
+              <p class="js-data mb-1" >{{../result.awards.id}}</p>
+          </div>
 
-        <div class="col-12">
-          <hr>
-        </div>    
+          {{#if ../result.awards.documents.list.length }}
+          <div class="col-12">
+            <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
+              {{#each ../result.awards.documents.list }}
+                <a href="{{this.url}}">
+                  <i class="fas fa-external-link-alt"></i>
+                  {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} 
+                </a>
+              <br>
+              {{/each}}
+          </div>
+          {{/if}}
+
+          <div class="col-m-12 col-12 mt-5">
+            {{#if status }}
+              <i class="fa fa-info"></i> {{{_ "Este contrato está {statusMxCnet} ({status})" statusMxCnet=statusMxCnet status=status }}}<br>
+            {{/if}}
+            {{#if filedMxCnet }}
+              <i class="fa fa-info"></i> {{{_ "Este contrato ha sido archivado" }}}<br>
+            {{/if}}
+            {{#if multiyearContractMxCnet }}
+              <i class="fa fa-info"></i> {{{_ "Este contrato es plurianual" }}}<br>
+            {{/if}}
+            {{#if hasFramework }}
+              <i class="fa fa-info"></i> {{{_ "Este contrato fue realizado como parte de un convenio marco" }}}<br>
+            {{/if}}
+            {{#if hasAmendments }}
+              <i class="fa fa-info"></i> {{{_ "Este contrato es una extensión, tiene correcciones o enmiendas" }}}<br>
+            {{/if}}
+          </div>
+        {{/with }}
       </div>
     </div>
+
+    <div class="col-12">
+      <hr>
+    </div>    
   </section>
 
   <section class="profile row" id="implementacion">
@@ -555,4 +555,3 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
 
 </div>
 
-<a href="{{ url view="expediente/:id" _id=result.ocid}}">Ver expediente {{result.ocid }}</a>
