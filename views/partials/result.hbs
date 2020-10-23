@@ -4,7 +4,11 @@
         <a href="{{url view=(get_type_url result.details.type result.classification) _id=result.id }}">
           <p class="text-overflow" title="{{or result.name result.contracts.title}}">
             {{{ get_classification_icon (or result.classification result.details.type) result.subclassification result.govLevel}}}
-            {{or result.name result.contracts.title}}
+            {{#ifCond result.classification "==" "country" }}
+              {{translate_area result.id }}
+            {{else}}
+              {{or result.name result.contracts.title}}
+            {{/ifCond}}
           </p>
         </a>
       </div>
@@ -118,7 +122,9 @@
         {{!-- PAISES --}}
         {{#ifCond (get_classification_type result.classification) "==" "area" }}
           <div class="left-elements col-lg-12 col-md-12 col-md-12 col-sm-12 col-12">
-            <div class="col-lg-2 p-0">
+             {{> result-contracts this }}
+
+            {{!-- <div class="col-lg-2 p-0">
               <p class="index-list-element">
                 <a href="{{url view="buscador" collection="persons" pais=id}}" title="{{format_number summaries.persons_count}} {{_ "personas" }}">
                 <i class="fas fa-users"></i> {{format_number summaries.persons_count}} {{_ "personas" }}
@@ -153,7 +159,7 @@
                   <span>{{_ "posición en ranking" }}</span>
                 </a>
               </p>
-            </div>
+            </div> --}}
           </div>
           {{!-- <div class="right-elements col-lg-5 col-md-6 col-md-6 col-sm-6 col-6">
 

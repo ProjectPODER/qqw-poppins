@@ -5,7 +5,11 @@
     <div class="description-data-title">
       <h3 title="{{ result.name}}">
         {{{ get_classification_icon result.classification result.subclassification result.govLevel}}}
-        {{ result.name}}
+        {{#ifCond result.classification "==" "country" }}
+          {{translate_area result.id }}
+        {{else}}
+          {{result.name}}
+        {{/ifCond}}
       </h3>
     </div>
     <div class="profile-breadcrumb">

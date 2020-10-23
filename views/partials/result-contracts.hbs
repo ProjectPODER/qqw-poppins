@@ -19,3 +19,12 @@
         </a>
     </p>
 {{/if}}
+{{#ifCond (get_classification_type result.classification) "==" "area" }}
+    {{# if contract_count }}
+        <p class="index-list-element area-text">
+            <a href="?collection=contracts&country={{name}}" title="{{format_number contract_count}} contrato(s) por un total de {{format_amount contract_amount}} MXN">
+                <i class="fas fa-file-alt"></i> {{format_number contract_count}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{format_amount contract_amount}} MXN
+            </a>
+        </p>
+    {{/if}}
+{{/ifCond}}
