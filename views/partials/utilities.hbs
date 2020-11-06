@@ -7,8 +7,15 @@
         <a class="btn btn-primary w-100 mb-2" href="{{api_url}}">
             <i class="fas fa-code"></i>
             {{_ "Descargar JSON" }}
-            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ "Datos estructurados completos de esta página." }}"></i>
+            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ "Datos estructurados de esta página." }}"></i>
         </a>
+        {{#if api_summary_url}}
+        <a class="btn btn-primary w-100 mb-2" href="{{api_summary_url}}">
+            <i class="fas fa-code"></i>
+            {{_ "Descargar resúmenes JSON" }}
+            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ "Datos estructurados de los resúmenes de esta entidad." }}"></i>
+        </a>
+        {{/if}}
         <a class="btn btn-primary w-100" href="{{url_csv api_url}}" download="datos-QQW.csv" target="_blank">
             <i class="fas fa-file-csv"></i>
             {{_ "Descargar CSV" }}
