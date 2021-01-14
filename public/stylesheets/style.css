@@ -1001,9 +1001,6 @@ input[type=submit].landing-search-inputtext {
   overflow: hidden;
   width: calc(100% - 400px);
 }
-.filters .left-box #filtersList {
-  flex-wrap: nowrap;
-}
 .selector-filter-type {
   padding: 4px 8px 2px;
   font-weight: bold;

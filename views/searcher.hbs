@@ -8,19 +8,22 @@
               {{# each filters }}
                 {{> filter_element filter=this collection=../collection }}
               {{/each }}
-
               <li class="nav-item dropdown more-filters-dropdown d-none">
                 <a class="nav-link dropdown-toggle" href="#" id="moreFilters" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{_ "Más filtros" }}
                 </a>
-                <ul class="dropdown-menu-morefilters dropdown-menu-right bg-dark" aria-labelledby="moreFilters">
+                <ul class="dropdown-menu-morefilters dropdown d-none dropdown-menu-right bg-dark" aria-labelledby="moreFilters">
+                  <li></li>
                 </ul>
-              </li>
+            </ul>
+ 
+              </li>              
             </ul>
           </form>
         </div>
         <div class="right-box ml-auto">
             <ul class="nav nav-pills d-flex flex-nowrap">
+
                 <li class="nav-item filter-dropdown general-filters">
                     <p class="filter-title-simple" href="#" title="RESULTADOS">{{{_ "RESULTADOS"}}}</p>
                     <p class="filter-selected simple text-right" title="{{ format_number result.count }}">

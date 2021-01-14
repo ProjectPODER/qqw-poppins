@@ -122,51 +122,62 @@ $("#first-search").click(function() {
 
 // //Collapsing filters ul
 var autocollapse = function (menu,maxHeight) {
-    
+  if (autocollapse_moves > 100) { console.error("autocollapse","moves exceeded"); return false; }
   var nav = $(menu);
   var navHeight = nav.innerHeight();
-  if (navHeight >= maxHeight) {
+
+  // console.log("autocollapse",nav,navHeight,autocollapse_moves);
+
+  if (navHeight >= maxHeight && autocollapse_moves < 100) {
     
       $(menu + ' .more-filters-dropdown').removeClass('d-none');
-      $("#filtersList").removeClass('w-auto').addClass("w-100");
+      $(menu).removeClass('w-auto').addClass("w-100");
       
-      while (navHeight > maxHeight) {
+      while (navHeight > maxHeight && autocollapse_moves < 100) {
           //  add child to dropdown
-          var children = nav.children(menu + ' li:not(:last-child)');
+          var children = nav.children(menu + ' > li:not(:last-child)');
           var count = children.length;
+          // console.log("autocollapse moving", autocollapse_moves, $(children[count - 1]));
           $(children[count - 1]).prependTo(menu + ' .dropdown-menu-morefilters');
           navHeight = nav.innerHeight();
+          autocollapse_moves++;
+
       }
-      $("#filtersList").addClass("w-auto").removeClass('w-100');
-      alert("Hello! I am an alert box if!!");
+      $(menu).addClass("w-auto").removeClass('w-100');
+      // alert("Hello! I am an alert box if!!");
   }
   else {
     // alert("Hello! I am an alert box else!!");
-      var collapsed = $(menu + ' .dropdown-menu-morefilters').children(menu + ' li');
+      var collapsed = $(menu + ' .dropdown-menu-morefilters').children(menu + ' > li');
     
       if (collapsed.length===0) {
-        $(menu + ' .more-filters-dropdown').addClass('d-none');
+        $('.more-filters-dropdown').addClass('d-none');
       }
     
-      while (navHeight < maxHeight && (nav.children(menu + ' li').length > 0) && collapsed.length > 0) {
+      while (navHeight < maxHeight && (nav.children(menu + ' > li').length > 0) && collapsed.length > 0 && autocollapse_moves < 100) {
           //  remove child from dropdown
           collapsed = $(menu + ' .dropdown-menu-morefilters').children('li');
-          $(collapsed[0]).insertBefore(nav.children(menu + ' li:last-child'));
+          // console.log("autocollapse moving back", autocollapse_moves, collapsed[0]);
+          $(collapsed[0]).insertBefore(nav.children(menu + ' > li:last-child'));
           navHeight = nav.innerHeight();
+          autocollapse_moves++;
       }
 
-      if (navHeight > maxHeight) { 
+      if (navHeight > maxHeight && autocollapse_moves < 100) { 
           autocollapse(menu,maxHeight);
       }
       
   }
 };
-$(document).ready(function () {
+
+let autocollapse_moves = 0;
+jQuery(function() {
   // when the page loads
-  autocollapse(); 
+  autocollapse("#filtersList",80); 
   // when the window is resized
   $(window).on('resize', function () {
-      autocollapse(); 
+    autocollapse_moves = 0;
+    autocollapse("#filtersList",80); 
   });
 });
 // var autocollapse = function (menu,maxHeight) {
