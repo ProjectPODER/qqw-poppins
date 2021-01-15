@@ -156,14 +156,14 @@
 <section class="profile" id="memberships-child-uc">
   <div class="profile-content">
     <div class="row memberships">
-          <div class="box-title-section">
-            <div class="box-title-icon">
-              {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
-            </div>
-            <h4 class="description-data-subtitle">
-              {{get_role_name result.membership_uc_child.role result.membership_uc_child.directionality}}
-            </h4>
-          </div>
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
+        </div>
+        <h4 class="description-data-subtitle">
+          {{get_role_name result.membership_uc_child.role result.membership_uc_child.directionality}}
+        </h4>
+      </div>
       <div class="col-12 col-m-12">
         <div  class=" profile-list">
           {{#each result.membership_uc_child.memberships}}
@@ -191,11 +191,16 @@
 <section class="profile" id="memberships-parent-uc">
   <div class="profile-content">
     <div class="row memberships">
-      <div class="col-9 col-m-9">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
+        </div>
+        <h4 class="description-data-subtitle">
+          {{{get_role_icon result.membership_uc_parent.role result.membership_uc_parent.directionality}}}{{get_role_name result.membership_uc_parent.role result.membership_uc_parent.directionality}}
+        </h4>
+      </div>
+      <div class="col-12 col-m-12">
         <div  class=" profile-list">
-          <h4 class="description-data-subtitle">
-            {{{get_role_icon result.membership_uc_parent.role result.membership_uc_parent.directionality}}}{{get_role_name result.membership_uc_parent.role result.membership_uc_parent.directionality}}
-          </h4>
           {{#each result.membership_uc_parent.memberships}}
             {{>membership result=this directionality=../result.membership_uc_parent.directionality}}
           {{/each}}
@@ -221,15 +226,17 @@
 <section class="profile" id="flujos-monetarios">
   <div class="profile-content">
     <div class="row">
-      <div  class="col-m-9 col-9">
-        <div class="col-m-12 col-12">
-          <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> {{{_ "FLUJOS MONETARIOS"}}}</h4>
-          <div id="graph-container">
-          </div>
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
         </div>
-        <div class="col-12">
-          <hr>
-        </div>
+        <h4 class="description-data-subtitle">
+          {{{_ "Flujos monetarios"}}}
+        </h4>
+      </div>
+      <div class="col-m-12 col-12">
+        <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> {{{_ "FLUJOS MONETARIOS"}}}</h4>
+        <div id="graph-container"></div>
       </div>
     </div>
   </div>
@@ -246,7 +253,7 @@
 <section class="profile" id="evaluacion">
   <div class="profile-content">
     <div class="row">
-      <div  class="col-m-9 col-9" bg-gray>
+      <div  class="col-m-12 col-12" bg-gray>
         <div class="row">
           <div class="col-6 col-m-6">
             <h4 class="description-data-subtitle"><i class="fas fa-file-signature"></i> {{{_ "EVALUACIÓN Y RECOMENDACIONES"}}}</h4>
@@ -340,26 +347,29 @@
 
 
 {{!-- memberships --}}
-<div class="profile-content">
-  <div class="row memberships">
-    <div class="col-9 col-m-9">
-      {{#if result.memberships }}
-        {{#each result.memberships }}
-        <section class="profile" id="memberships-parent-{{@index}}">
-          <div  class=" profile-list">
-            <h4 class="description-data-subtitle">
-              {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.direction}}
-            </h4>
-            {{#each this.memberships}}
-              {{>membership result=this directionality=direction}}
-            {{/each}}
+{{#if result.memberships }}
+  {{#each result.memberships }}
+  <section class="profile" id="memberships-parent-{{@index}}">
+    <div class="profile-content">
+      <div class="row">
+        <div class="box-title-section">
+          <div class="box-title-icon">
+            {{{get_role_icon this.role this.directionality}}}
           </div>
-        </section>
-        {{/each}}
-      {{/if}}
+          <h4 class="description-data-subtitle">
+            {{get_role_name this.role this.direction}}
+          </h4>
+        </div>
+        <div class="col-12 col-m-12">
+          {{#each this.memberships}}
+            {{>membership result=this directionality=direction}}
+          {{/each}}
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
+  {{/each}}
+{{/if}}
 
 {{#if result.area.length }}
 <section class="profile" id="ubicacion">
@@ -369,7 +379,7 @@
         <div class="box-title-icon">
           <i class="fas fa-map-marker"></i>
         </div>
-        <h4 class="description-data-subtitle"> Ubicación</h4>
+        <h4 class="description-data-subtitle"> {{{_ "Ubicación"}}}</h4>
       </div>
       <div class="col-12 col-m-12">
         <div class="row flex">
@@ -405,27 +415,32 @@
 <section class="profile" id="notas">
   <div class="profile-content">
     <div class="row">
-      <div class="col-9 col-m-9">
-        <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> {{{_ "Notas"}}}</h4>
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="far fa-newspaper"></i>
+        </div>
+        <h4 class="description-data-subtitle"> {{{_ "Notas"}}}</h4>
+      </div>
+      <div class="col-12 col-m-12">
         <div class="row flex">
-
           {{#each (lookup notas result.id) }}
-              <div class="col-m-5 col-5">
-                <p class="js-title-data">
-                  <a href="{{url}}">
-                    {{titulo}} 
-                  </a>
-                </p>
-                <p class="js-data">
-                    {{medio}} {{fecha}} {{autor}}
-                </p>
-                <p class="js-data">
-                    {{explicacion_es}}
-                </p>
+              <div class="col-m-6 col-6">
+                <div class="news-container">
+                  <p class="js-title-data">
+                    <a href="{{url}}">
+                      {{titulo}} 
+                    </a>
+                  </p>
+                  <p class="js-data">
+                      {{medio}} {{fecha}} {{autor}}
+                  </p>
+                  <p class="js-data">
+                      {{explicacion_es}}
+                  </p>
+                </div>
               </div>
           {{/each}}
         </div>
-
       </div>
     </div>
   </div>
