@@ -63,7 +63,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: inherit;
   font-weight: bold;
   line-height: 1.2;
   color: inherit;
@@ -209,6 +208,9 @@ body {
 }
 .bg-darkblue {
   background-color: #110046;
+}
+.bg-white {
+  background-color: #fff;
 }
 .btn {
   border-radius: 0;
@@ -1747,23 +1749,24 @@ input[type=submit].landing-search-inputtext {
     margin-right: 0;
   }
 }
+.profile {
+  margin: 1rem;
+}
 .profile-content {
   padding: 0 5rem;
   width: 100%;
 }
+.profile-content .row {
+  background-color: #fff;
+}
 #right-menu {
   list-style-type: none;
   text-transform: uppercase;
-  font-size: 1.3rem;
-  margin-top: 1.5rem;
-  margin-left: 40px;
-  position: fixed;
-  top: 9em;
-  right: 1em;
-  width: 14em;
   font-size: 1.2rem;
   white-space: nowrap;
   overflow: hidden;
+  background-color: rgba(45,28,157,0.1);
+  margin-top: 10px;
 }
 #right-menu ul {
   padding: 0 5px;
@@ -1771,6 +1774,9 @@ input[type=submit].landing-search-inputtext {
 #right-menu li {
   color: #9b9b9b;
   text-decoration: none;
+  background-color: #fff;
+  margin: 12px 5px;
+  padding: 5px;
 }
 #right-menu li a {
   color: #9b9b9b;
@@ -1780,17 +1786,26 @@ input[type=submit].landing-search-inputtext {
 #right-menu li a i {
   width: 25px;
 }
+#right-menu .active > .anchor,
+#right-menu .active > .evaluacion i {
+  background-color: #2b00f7 !important;
+  color: #fff;
+}
 .breadcrumb {
   background: none;
   padding: 0;
   margin: 0;
 }
-.menu-profile {
-  margin-top: 0 !important;
+.box-title-section {
+  background-color: rgba(45,28,157,0.1);
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
-.affix {
-  top: 197px;
-  position: fixed !important;
+.box-title-icon {
+  background-color: rgba(45,28,157,0.12);
+  padding: 18px;
+  display: inline-block;
+  color: #2d1c9d;
 }
 .addinfo {
   margin-top: 6rem;
@@ -1973,16 +1988,36 @@ input[type=submit].landing-search-inputtext {
   -moz-transition: font-size 0.35s;
   transition: font-size 0.35s;
   width: 100%;
-  padding: 0.5em 1em;
+  -webkit-box-shadow: 0px 4px 10px -3px #b0b0b0;
+  -moz-box-shadow: 0px 4px 10px -3px #b0b0b0;
+  box-shadow: 0px 4px 10px -3px #b0b0b0;
+}
+.description-data-title {
+  padding: 0.5em;
 }
 .description-data-title h3 {
   width: calc(100% - 305px);
+  margin-bottom: 0;
+}
+.right-menu-profile {
+  display: -webkit-box;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 .fixed-title,
 .fixed-title-contract {
   position: fixed !important;
   margin-top: -1px;
   z-index: 1;
+}
+.fixed-title li,
+.fixed-title-contract li {
+  font-size: 0.9rem;
+}
+.fixed-title li a i,
+.fixed-title-contract li a i {
+  width: 18px !important;
 }
 .fixed-title .profile-breadcrumb,
 .fixed-title-contract .profile-breadcrumb {
@@ -2027,6 +2062,10 @@ input[type=submit].landing-search-inputtext {
 .fixed-title a.filter-title,
 .fixed-title-contract a.filter-title {
   font-size: 0.7em;
+}
+.fixed-title .filters .icon-tools,
+.fixed-title-contract .filters .icon-tools {
+  font-size: 1.2rem;
 }
 .fixed-title-contract {
   height: 70px;
@@ -2128,8 +2167,9 @@ p.document-description {
   margin-right: 0;
 }
 section.profile-header {
-  padding-top: 3.8rem;
+  padding-top: 57px;
   padding-bottom: 1rem;
+  background-color: #f7f7f7;
 }
 section.profile-header .right-box {
   position: absolute;
@@ -2150,7 +2190,6 @@ section.country-mujeres {
 .profile-summary .profile-summary-content .summary-total {
   font-size: 1.1em;
   font-weight: bold;
-  padding: 0 0 1em 2em;
 }
 .profile-summary .profile-summary-content .contract-button {
   margin-top: 0rem;
@@ -2179,9 +2218,10 @@ section.country-mujeres {
   color: #2d1c9d;
   font-weight: bold;
   font-size: 1.3rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
   text-transform: uppercase;
+  padding: 15px 10px;
+  display: inline-block;
+  margin-bottom: 0 !important;
 }
 .description-data-subname {
   font-size: 1.15rem;

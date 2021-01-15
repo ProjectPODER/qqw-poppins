@@ -1,18 +1,31 @@
 <script src="/tiza/tiza.js"></script>
 
+<div style="background-color: #F7F7F7;">
 <section class="profile-header">
-  <div class="wrap bg-gray" id="wrap">
+  <div class="wrap bg-white" id="wrap">
     <div class="description-data-title">
       <h3 title="{{ result.name}}">
         {{{ get_classification_icon result.classification result.subclassification result.govLevel}}}
+         {{!-- Type --}}
+        <a href="{{url view="buscador" collection=type subtipo=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
+
         {{#ifCond result.classification "==" "country" }}
           {{translate_area result.id }}
         {{else}}
           {{result.name}}
         {{/ifCond}}
+        {{!-- Area --}}
+        {{#each result.area }}
+          {{#if id }}
+          en 
+            <a href="{{url view="regiones/:id" _id=id}}">
+              {{translate_area name}}
+            </a>
+          {{/if}}
+        {{/each}}
       </h3>
     </div>
-    <div class="profile-breadcrumb">
+    {{!-- <div class="profile-breadcrumb">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -33,112 +46,108 @@
 
         </ol>        
       </nav>      
-    </div>
+    </div> --}}
     <div class="right-box ml-auto filters">
-        <ul class="nav nav-pills d-flex flex-nowrap">
-            {{>utilities api_url=result.api_url share_url=share_url api_summary_url=result.api_summary_url }}                
-        </ul>
+      <ul class="nav nav-pills d-flex flex-nowrap">
+        {{>utilities api_url=result.api_url share_url=share_url api_summary_url=result.api_summary_url }}                
+      </ul>
     </div>
+    <nav id="right-menu" class="menu-profile">
+      <ul class="right-menu-profile nav d-flex flex-nowrap">
+        {{#if summaries.buyer.total.count }}
+        <li>
+          <a href="#summary-buyer" class="anchor">
+            <i class="fas fa-money-check-alt"></i> {{_ "Compras"}}
+          </a>
+        </li>
+        {{/if}}
+        {{#if summaries.supplier.total.count }}
+        <li>
+          <a href="#summary-supplier" class="anchor">
+            <i class="fas fa-dolly"></i> {{{_ "Proveedor"}}}
+          </a>
+        </li>
+        {{/if}}
+        {{#if summaries.funder.total.count }}
+        <li>
+          <a href="#summary-funder" class="anchor">
+            <i class="fas fa-donate"></i> {{{_ "Financiación"}}}
+          </a>
+        </li>
+        {{/if}}
+        {{#ifCond summaries.relation.nodes.length ">" 0}}
+        <li>
+          <a href="#flujos-monetarios" class="anchor">
+            <i class="fas fa-chart-pie"></i> {{{_ "Flujos monetarios"}}}
+          </a>
+        </li>
+        {{/ifCond}}
+
+        {{#ifCond type '!=' 'companies'}}
+        {{#if result.flags }}
+        <li>
+          <a href="#evaluacion" class="anchor evaluacion">
+            <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
+          </a>
+        </li>
+        {{/if}}
+        {{/ifCond}}
+
+        {{#if result.memberships.parent}}
+        {{#each result.memberships.parent }}
+        <li>
+          <a href="#memberships-parent-{{@index}}" class="anchor">
+            {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+          </a>
+        </li>
+        {{/each}}
+        {{/if}}
+        {{#if result.memberships.child}}
+        {{#each result.memberships.child }}
+        <li>
+          <a href="#memberships-child-{{@index}}" class="anchor">
+            {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+          </a>
+        </li>
+        {{/each}}
+        {{/if}}
+        {{#if result.area.length }}
+        <li>
+          <a href="#ubicacion" class="anchor">
+            <i class="fas fa-map-marker"></i> {{{_ "Ubicacion"}}}
+          </a>
+        </li>
+        {{/if}}
+        {{#if (lookup notas result.id) }}
+        <li>
+          <a href="#notas" class="anchor">
+            <i class="fas fa-map-marker"></i> {{{_ "Notas"}}}
+          </a>
+        </li>
+        {{/if}}
+
+        <li>
+          <a href="#informacion-general" class="anchor">
+            <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
+          </a>
+        </li>
+
+      </ul>
+    </nav>
   </div>
 </section>
-
-<nav id="right-menu" class="menu-profile">
-  <ul class="right-menu-profile nav-stacked nav">
-    {{#if summaries.buyer.total.count }}
-    <li>
-      <a href="#summary-buyer" class="anchor">
-        <i class="fas fa-money-check-alt"></i> {{_ "Compras"}}
-      </a>
-    </li>
-    {{/if}}
-    {{#if summaries.supplier.total.count }}
-    <li>
-      <a href="#summary-supplier" class="anchor">
-        <i class="fas fa-dolly"></i> {{{_ "Proveedor"}}}
-      </a>
-    </li>
-    {{/if}}
-    {{#if summaries.funder.total.count }}
-    <li>
-      <a href="#summary-funder" class="anchor">
-        <i class="fas fa-donate"></i> {{{_ "Financiación"}}}
-      </a>
-    </li>
-    {{/if}}
-    {{#ifCond summaries.relation.nodes.length ">" 0}}
-    <li>
-      <a href="#flujos-monetarios" class="anchor">
-        <i class="fas fa-chart-pie"></i> {{{_ "Flujos monetarios"}}}
-      </a>
-    </li>
-    {{/ifCond}}
-
-
-    {{#ifCond type '!=' 'companies'}}
-    {{#if result.flags }}
-    <li>
-      <a href="#evaluacion" class="anchor evaluacion">
-        <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
-      </a>
-    </li>
-    {{/if}}
-    {{/ifCond}}
-
-
-    {{#if result.memberships.parent}}
-    {{#each result.memberships.parent }}
-    <li>
-      <a href="#memberships-parent-{{@index}}" class="anchor">
-        {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
-      </a>
-    </li>
-    {{/each}}
-    {{/if}}
-    {{#if result.memberships.child}}
-    {{#each result.memberships.child }}
-    <li>
-      <a href="#memberships-child-{{@index}}" class="anchor">
-        {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
-      </a>
-    </li>
-    {{/each}}
-    {{/if}}
-    {{#if result.area.length }}
-    <li>
-      <a href="#ubicacion" class="anchor">
-        <i class="fas fa-map-marker"></i> {{{_ "Ubicacion"}}}
-      </a>
-    </li>
-    {{/if}}
-    {{#if (lookup notas result.id) }}
-    <li>
-      <a href="#notas" class="anchor">
-        <i class="fas fa-map-marker"></i> {{{_ "Notas"}}}
-      </a>
-    </li>
-    {{/if}}
-
-    <li>
-      <a href="#informacion-general" class="anchor">
-        <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
-      </a>
-    </li>
-
-  </ul>
-</nav>
 
 
 <section class="profile" id="top-nonsense">
   <div class="profile-content">
     <div class="row">
-      <div class="col-9 col-m-9">
+      <div class="col-12 col-m-12">
         {{#ifCond type "==" "companies"}}
           {{> gender-indicator result_name=result.name country_data=result.countryData }}
         {{/ifCond}}
       </div>
     </div>
   </div>
-
 </section>
 
 
@@ -147,11 +156,16 @@
 <section class="profile" id="memberships-child-uc">
   <div class="profile-content">
     <div class="row memberships">
-      <div class="col-9 col-m-9">
+          <div class="box-title-section">
+            <div class="box-title-icon">
+              {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
+            </div>
+            <h4 class="description-data-subtitle">
+              {{get_role_name result.membership_uc_child.role result.membership_uc_child.directionality}}
+            </h4>
+          </div>
+      <div class="col-12 col-m-12">
         <div  class=" profile-list">
-          <h4 class="description-data-subtitle">
-            {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}{{get_role_name result.membership_uc_child.role result.membership_uc_child.directionality}}
-          </h4>
           {{#each result.membership_uc_child.memberships}}
             {{>membership result=this directionality=../result.membership_uc_child.directionality}}
           {{/each}}
@@ -351,11 +365,14 @@
 <section class="profile" id="ubicacion">
   <div class="profile-content">
     <div class="row">
-
-      <div class="col-9 col-m-9">
-        <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> Ubicación</h4>
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-map-marker"></i>
+        </div>
+        <h4 class="description-data-subtitle"> Ubicación</h4>
+      </div>
+      <div class="col-12 col-m-12">
         <div class="row flex">
-
           {{#each result.area }}
               <div class="col-m-1 col-1 pd-nonleft">
                 <p class="js-title-data">
@@ -388,7 +405,6 @@
 <section class="profile" id="notas">
   <div class="profile-content">
     <div class="row">
-
       <div class="col-9 col-m-9">
         <h4 class="description-data-subtitle"><i class="fas fa-map-marker"></i> {{{_ "Notas"}}}</h4>
         <div class="row flex">
@@ -421,9 +437,13 @@
 <section class="profile" id="informacion-general">
   <div class="profile-content">
     <div class="row">
-
-      <div class="col-9 col-m-9">
-        <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> {{{_ "INFORMACIÓN GENERAL"}}}</h4>
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-folder-open"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
+      </div>
+      <div class="col-12 col-m-12">
         <div class="row flex">
 
           {{#if result.other_names.length }}
@@ -502,3 +522,5 @@
 </section>
 
 {{> report_modals }}
+
+</div>

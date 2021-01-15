@@ -1,26 +1,28 @@
+.profile
+  margin 1rem
+
 .profile-content 
   padding 0 5rem
   width 100%
+  .row
+    background-color #ffffff
 
 #right-menu
   list-style-type none
   text-transform uppercase
-  font-size 1.3rem
-  margin-top 1.5rem
-  margin-left 40px
-  position fixed 
-  top 9em
-  right 1em
-  width 14em
   font-size: 1.2rem;
   white-space: nowrap;  
   overflow hidden
-
+  background-color rgba(45,28,157,0.10)
+  margin-top 10px
   & ul
     padding 0 5px
   & li
     color #9b9b9b
     text-decoration none
+    background-color #ffffff
+    margin 12px 5px
+    padding 5px
     & a
       color #9b9b9b
       text-decoration none
@@ -28,17 +30,31 @@
       i
         width 25px
 
+  .active > .anchor, .active > .evaluacion i
+    background-color #2b00f7 !important
+    color #ffffff
+
 .breadcrumb 
   background none
   padding 0
   margin 0
 
-.menu-profile
-  margin-top 0 !important
+// .menu-profile
+//   margin-top 0 !important
+// .affix
+//   top 197px
+//   position fixed !important
 
-.affix
-  top 197px
-  position fixed !important
+.box-title-section
+  background-color rgba(45,28,157,0.10)
+  width 100%
+  margin-bottom 1.5rem
+
+.box-title-icon
+  background-color rgba(45,28,157,0.12)
+  padding 18px
+  display inline-block
+  color #2d1c9d
 
 // FORM PERFIL
 .addinfo
@@ -193,20 +209,33 @@
   -webkit-transition font-size .35s
   -moz-transition font-size .35s
   transition font-size .35s
-
   width 100%
-  padding 0.5em 1em
+  // padding 0.5em 1em
+  -webkit-box-shadow: 0px 4px 10px -3px rgba(176,176,176,1);
+  -moz-box-shadow: 0px 4px 10px -3px rgba(176,176,176,1);
+  box-shadow: 0px 4px 10px -3px rgba(176,176,176,1);
 
 .description-data-title
+  padding 0.5em
   h3
     width calc(100% - 305px)
+    margin-bottom 0
 
+.right-menu-profile
+  display: -webkit-box;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: auto;
 
 .fixed-title,
 .fixed-title-contract
   position fixed !important
   margin-top: -1px
   z-index 1
+  & li
+    font-size 0.9rem
+    & a i
+      width 18px !important
 
   .profile-breadcrumb
     // padding-top 0
@@ -247,6 +276,8 @@
     margin-top 0 !important
   a.filter-title
     font-size 0.7em
+  .filters .icon-tools
+    font-size: 1.2rem;
 
 
 .fixed-title-contract
@@ -345,8 +376,9 @@ p.document-description
 // limpiar, se usa para perfiles
 section
   &.profile-header
-    padding-top 3.8rem
+    padding-top 57px
     padding-bottom 1rem
+    background-color #f7f7f7
     
     .right-box 
       position absolute 
@@ -368,7 +400,6 @@ section
     .summary-total
       font-size: 1.1em
       font-weight: bold
-      padding: 0 0 1em 2em
     .contract-button
       margin-top 0rem
       height 2em
@@ -396,9 +427,10 @@ section
   color #2d1c9d
   font-weight bold
   font-size 1.3rem
-  margin-bottom 1rem
-  margin-top 2rem
   text-transform: uppercase
+  padding 15px 10px
+  display inline-block
+  margin-bottom 0 !important
 
 .description-data-subname
   font-size 1.15rem

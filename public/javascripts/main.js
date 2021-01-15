@@ -22,10 +22,11 @@ var qqw_suggest = new Bloodhound({
     url: AUTOCOMPLETE_URL+'/%QUERY',
     wildcard: '%QUERY',
     prepare: function(query, settings){
-      
-      let input= $('.easy-search-input').filter(function(){return this.value==query});
-      let autocomplete_parameters= input.data("autocomplete-parameters") || "";
-      settings.url= settings.url.replace("%QUERY", query+"?"+autocomplete_parameters)
+      let input = $('.easy-search-input').filter(function(){
+        return this.value==query
+      });
+      let autocomplete_parameters = input.data("autocomplete-parameters") || "";
+      settings.url = settings.url.replace("%QUERY", query+"?"+autocomplete_parameters)
       console.log(query, settings, autocomplete_parameters);
       return(settings);
     },
@@ -235,20 +236,20 @@ jQuery(function() {
 
 
 //Anchors animation
-$('a.page-scroll').bind('click', function(event) {
-    var $anchor = $(this);
-    let element = $($anchor.attr('href').replace(" ","\ "));
-    if (element.length > 0) {
-      let dest = (element.offset().top - 240);
-      $('html, body').stop().animate({
-          scrollTop: dest
-      }, 1250, 'easeInOutExpo');
-      event.preventDefault();
-    }
-});
+// $('a.page-scroll').bind('click', function(event) {
+//     var $anchor = $(this);
+//     let element = $($anchor.attr('href').replace(" ","\ "));
+//     if (element.length > 0) {
+//       let dest = (element.offset().top - 240);
+//       $('html, body').stop().animate({
+//           scrollTop: dest
+//       }, 1250, 'easeInOutExpo');
+//       event.preventDefault();
+//     }
+// });
 
   // Add scrollspy to <body> in Contract perfil
-$('body').scrollspy({target: "#right-menu", offset: 250});
+$('body').scrollspy({target: "#right-menu", offset: 150});
 
 // Add smooth scrolling on all links inside the navbar
 $("#right-menu a").on('click', function(event) {
@@ -268,6 +269,7 @@ $("#right-menu a").on('click', function(event) {
     });
   }  // End if
 });
+
 // Add hash (#) to URL when scrolling
 $(window).on('activate.bs.scrollspy', function (e) {
   history.replaceState({}, "", $("a[href^='#']", e.target).attr("href"));
