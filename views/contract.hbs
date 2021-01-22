@@ -1,73 +1,75 @@
 <section class="profile-header">
-  <div class="wrap bg-gray" id="wrap">
+  <div class="wrap bg-white" id="wrap">
     <div class="description-data-title">
       <h3 title="{{result.contracts.title}}">
         <i class="fas fa-file-alt"></i>
-          {{result.contracts.title}}
+        <a href="{{url view="contratos" }}">{{{_ "Contrato" }}}</a>
+        {{result.contracts.title}}
       </h3>
-    <div class="profile-breadcrumb">
+    {{!-- <div class="profile-breadcrumb">
       <a href="{{url view="home"}}">{{{_ "Inicio"}}}</a> &gt; 
       <a href="{{url view="contratos" }}">{{{_ "Contratos" }}}</a>
-    </div>
-    <div class="right-box ml-auto filters">
-        <ul class="nav nav-pills d-flex flex-nowrap">
-            {{>utilities api_url=result.api_url share_url=share_url }}                
-        </ul>
-    </div>
-    <nav id="right-menu" class="menu-profile">
-      <ul class="right-menu-profile nav d-flex flex-nowrap">
-          <li>
-              <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> {{{_ "Resumen"}}}</a>
-          </li>
-          <li>
-              <a class="anchor" href="#calidad"><i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}</a>
-          </li>
-          <li>
-              <a class="anchor" href="#planeacion"><i class="fas fa-caret-square-right"></i> {{{_ "Planeación"}}}</a>
-          </li>
-          <li>
-              <a class="anchor" href="#licitacion"><i class="fas fa-envelope"></i> {{{_ "Convocatoria"}}}</a>
-          </li>
-          <li>
-              <a class="anchor" href="#adjudicaciones"><i class="fas fa-gavel"></i> {{{_ "Adjudicaciones"}}}</a>
-          </li>
-          <li>
-              <a class="anchor" href="#implementacion"><i class="fas fa-truck-moving"></i> {{{_ "Implementación"}}}</a>
-          </li>
-          <li>
-              <a class="anchor" href="#informacion-general"><i class="fas fa-folder-open"></i> {{{_ "Informacion general"}}}</a>
-          </li>
-      </ul>
-    </nav>
+    </div> --}}
   </div>
+  <div class="right-box ml-auto filters">
+    <ul class="nav nav-pills d-flex flex-nowrap">
+        {{>utilities api_url=result.api_url share_url=share_url }}
+    </ul>
+  </div>
+  <nav id="right-menu" class="menu-profile">
+    <ul class="right-menu-profile nav d-flex flex-nowrap">
+        <li>
+            <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> {{{_ "Resumen"}}}</a>
+        </li>
+        <li>
+            <a class="anchor" href="#calidad"><i class="fas fa-file-signature"></i> {{{_ "Calidad"}}}</a>
+        </li>
+        <li>
+            <a class="anchor" href="#planeacion"><i class="fas fa-caret-square-right"></i> {{{_ "Planeación"}}}</a>
+        </li>
+        <li>
+            <a class="anchor" href="#convocatoria"><i class="fas fa-envelope"></i> {{{_ "Convocatoria"}}}</a>
+        </li>
+        <li>
+            <a class="anchor" href="#adjudicaciones"><i class="fas fa-gavel"></i> {{{_ "Adjudicaciones"}}}</a>
+        </li>
+        <li>
+            <a class="anchor" href="#implementacion"><i class="fas fa-truck-moving"></i> {{{_ "Implementación"}}}</a>
+        </li>
+        <li>
+            <a class="anchor" href="#informacion-general"><i class="fas fa-folder-open"></i> {{{_ "Informacion general"}}}</a>
+        </li>
+    </ul>
+  </nav>
 </section>
 
 
 
 <div class="profile-content">
   <section class="profile row" id="datosgenerales">
-    <div class="col-9 col-m-9">
-      <h4 class="description-data-subtitle"><i class="fas fa-file"></i> {{{_ "RESUMEN DEL CONTRATO"}}} {{result.id}}</h4>
+    <div class="box-title-section">
+      <div class="box-title-icon">
+        <i class="fas fa-file"></i>
+      </div>
+      <h4 class="description-data-subtitle">{{{_ "RESUMEN DEL CONTRATO"}}} {{result.id}}</h4>
+    </div>
+    <div class="col-12 col-m-12">
       <div class="row flex">
-
-        <div class="col-m-6 col-6 contract-total-amount">
+        <div class="col-m-6 col-6 contract-total-amount pb-3">
           <p class="js-title-data">{{{_ "Importe total"}}}</p>
           <p class="js-data">{{format_amount result.contracts.value.amount}} {{result.contracts.value.currency}}</p>
         </div>
-
-        <div class="col-6">
+        <div class="col-6 pb-3">
             <p class="js-title-data">{{{_ "Período de contrato(s)"}}}</p>
             {{{_ "Entre el {start} y el {end}" start=(moment result.contracts.period.startDate date lang="es" format="LL") end=(moment result.contracts.period.endDate date lang="es" format="LL") }}}
         </div>
-
         {{#if result.contracts.description }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Descripción"}}}</p>
             <p class="js-data">{{result.contracts.description}}</p>
         </div>
         {{/if}}
-
-        <div class="col-m-12 col-12 link-lf-contracts">
+        <div class="col-m-12 col-12 link-lf-contracts pb-3">
             <p class="js-title-data">{{{_ "Unidad compradora"}}}</p>
             <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."}}}">
               {{{ get_classification_icon result.parties.buyer.details.type result.parties.buyer.details.classification result.parties.buyer.details.govLevel}}}
@@ -90,7 +92,7 @@
 
 
         {{#if result.parties.suppliers.list }}
-        <div class="col-m-12 col-12 ">
+        <div class="col-m-12 col-12 pb-3">
           <p class="js-title-data">Proveedor(es)</p>
           {{#each result.parties.suppliers.list }}
               <a class="supplier-list-item" href="{{url view=(get_type_url details.type) _id=id}}">
@@ -121,18 +123,18 @@
           <a href="{{ url view="expediente/:id" _id=result.ocid}}">{{_ "Ver expediente"}} {{result.ocid }}</a> {{_ "en formato Open Contracting Data Standard"}}.
           </p>
         </div>
-
-        <div class="col-12">
-          <hr>
-        </div>    
-
       </div>
     </div>
   </section>
 
   <section class="profile row" id="calidad">
-    <div class="col-9 col-m-9 party_flags">
-      <h4 class="description-data-subtitle"><i class="fas fa-file-signature"></i> {{{_ "CALIDAD DE CONTRATO"}}}</h4>
+    <div class="box-title-section">
+      <div class="box-title-icon">
+        <i class="fas fa-file-signature"></i>
+      </div>
+      <h4 class="description-data-subtitle">{{{_ "CALIDAD DE CONTRATO"}}}</h4>
+    </div>
+    <div class="col-12 col-m-12 party_flags">
       <div class="row flex">
         <div class="col-12 col-m-12">
           {{#if result.flags.length }}
@@ -177,18 +179,18 @@
 
             {{/if}}
           </div>
-        <div class="col-12">
-          <hr>
-        </div>    
-
       </div>
     </div>
   </section>
   <section class="profile row" id="planeacion">
-    <div class="col-9 col-m-9">
-          <h4 class="description-data-subtitle"><i class="fas fa-caret-square-right"></i> {{{_ "PLANEACIÓN"}}}</h4>
+    <div class="box-title-section">
+      <div class="box-title-icon">
+        <i class="fas fa-caret-square-right"></i>
+      </div>
+      <h4 class="description-data-subtitle">{{{_ "PLANEACIÓN"}}}</h4>
+    </div>
+    <div class="col-12 col-m-12">
       <div class="row flex">
-      
         {{#if result.planning }}
           {{# if result.planning.budget.budgetBreakdown.description }}
           <div class="col-m-12 col-12">
@@ -225,18 +227,19 @@
             {{{_ "No hay datos" }}}
           </div>
         {{/if}}
-        <div class="col-12">
-          <hr>
-        </div>    
       </div>
     </div>
   </section>
-  <section class="profile row" id="licitacion">
-    <div class="col-9 col-m-9">
-      <h4 class="description-data-subtitle"><i class="fas fa-envelope"></i> {{{_ "CONVOCATORIA"}}}</h4>
+  <section class="profile row" id="convocatoria">
+    <div class="box-title-section">
+      <div class="box-title-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <h4 class="description-data-subtitle">{{{_ "CONVOCATORIA"}}}</h4>
+    </div>
+    <div class="col-12 col-m-12">
       <div class="row flex">
-
-        <div class="col-m-6 col-6 link-lf-contracts">
+        <div class="col-m-6 col-6 link-lf-contracts pb-3">
             <p class="js-title-data">
               {{{_ "Dependencia" }}} 
               <a data-toggle="tooltip" data-placement="right" title="{{{_ "Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación." }}}"><i class="fas fa-info"></i>
@@ -249,13 +252,13 @@
             </p>
         </div>
         {{#if result.parties.buyer.details.govLevel }}
-        <div class="col-m-3 col-3 link-lf-contracts">
+        <div class="col-m-3 col-3 link-lf-contracts pb-3">
             <p class="js-title-data">{{{_ "Nivel de gobierno" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Si la unidad compradora pertenece al nivel municipal, estatal o federal" }}}"><i class="fas fa-info"></i></i></a></p>
             <p class="js-data">{{ _ result.parties.buyer.details.govLevel }}</p>
         </div>
         {{/if}}
         {{#if result.buyer }}
-        <div class="col-m-6 col-6 pr-1">
+        <div class="col-m-6 col-6 pr-1 pb-3">
           <p class="js-title-data">{{{_ "Unidad compradora" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet." }}}"><i class="fas fa-info"></i></a></p>
           <p class="js-data">
             <a href="{{ url view="instituciones-publicas/:id" _id=result.buyer.id }}">
@@ -272,14 +275,14 @@
         </div>
         {{/if}}
         {{#if result.parties.buyer.contactPoint }}
-        <div class="col-m-6 col-6 link-lf-contracts">
+        <div class="col-m-6 col-6 link-lf-contracts pb-3">
             <p class="js-title-data">{{{_ "Responsable" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Titular del área contratante o del área responsable de la contratación a nivel central o del servidor público que éste designe." }}}"><i class="fas fa-info"></i></i></a></p>
             <p class="js-data"><a href="{{ url view="personas/:id" _id=result.parties.buyer.contactPoint.id}}">{{result.parties.buyer.contactPoint.name}}</a></p>
         </div>
         {{/if}}
 
         {{#if result.tender.procurementMethodDetails }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Tipo de convocatoria" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Refiere al tipo de procedimiento:
 - Licitación Pública: Procedimiento por regla general que debiera utilizarse para la adquisición de bienes y servicios.
 - Invitación a cuando menos tres proveedores o contratistas.
@@ -301,7 +304,7 @@
         </div>
         {{/if}}
         {{#if result.tender.procurementMethodCharacterMxCnet }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Ámbito" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Indica si el procedimiento es I) Nacional, II) Internacional o III) Internacional bajo TLC
 - Nacional: sólo pueden participar personas de nacionalidad mexicana y los bienes a adquirir sean productos del país y cuenten, por lo menos, con un 50% de contenido nacional.
 - Internacional abiertas: podrán participar licitantes mexicanos y extranjeros, cualquiera que sea el origen de los bienes a adquirir.
@@ -312,7 +315,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
         {{/if}}
 
         {{#if result.tender.procurementCategoryMxCnet }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Tipo de compra" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Muestra el tipo de contratación:
 - Adquisiciones: adquisiciones, arrendamientos y servicios.
 - Obra Pública: obras públicas y los servicios relacionados con las mismas.
@@ -358,48 +361,48 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
           {{/if}}
         {{/if}}
         {{#if result.tender.status }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 mb-2">
             <p class="js-title-data">{{{_ "Estado de la convocatoria" }}}</p>
             <p class="js-data">{{_ result.tender.status}}</p>
         </div>
         {{/if}}
-
-        <div class="col-12">
-          <hr>
-        </div>    
       </div>
     </div>
   </section>
   <section class="profile row" id="adjudicaciones">
-    <div class="col-9 col-m-9">
-      <h4 class="description-data-subtitle"><i class="fas fa-gavel"></i> {{{_ "ADJUDICACIÓN Y CONTRATO" }}}</h4>
+    <div class="box-title-section">
+      <div class="box-title-icon">
+        <i class="fas fa-gavel"></i>
+      </div>
+      <h4 class="description-data-subtitle">{{{_ "ADJUDICACIÓN Y CONTRATO" }}}</h4>
+    </div>
+    <div class="col-12 col-m-12">
       <div class="row">
-
-        <div class="col-m-12 col-12">
+        <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Título de la convocatoria" }}}</p>
             <p class="js-data">{{result.tender.title}}</p>
         </div>
-        <div class="col-m-12 col-12">
+        <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Título de la adjudicación" }}}</p>
             <p class="js-data">{{result.awards.title}}</p>
         </div>
         {{#if description }}
-        <div class="col-m-12 col-12">
+        <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Descripción de la adjudicación" }}}</p>
             <p class="js-data mb-1" >{{result.awards.description}}</p>
         </div>
         {{/if}}
-        <div class="col-m-12 col-12">
+        <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Título del contrato" }}}</p>
             <p class="js-data">{{result.contracts.title}}</p>
         </div>
         {{#if description }}
-        <div class="col-m-12 col-12">
+        <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Descripción del contrato" }}}</p>
             <p class="js-data mb-1" >{{result.contracts.description}}</p>
         </div>
         {{/if}}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Proveedor(es)" }}}</p>
             {{#each result.parties.suppliers.list }}
             <p class="js-data mb-1">
@@ -408,45 +411,45 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
             {{/each}}
         </div>
         {{#if result.awards.value }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Monto" }}}</p>
             <p class="js-data mb-1" >{{format_amount result.awards.value.amount}} {{ result.awards.value.currency}}</p>
         </div>
         {{/if}}
         {{#if status }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Estatus de la adjudicación" }}}</p>
             <p class="js-data mb-1" >{{_ result.awards.status}}</p>
         </div>
         {{/if}}
         {{#if result.awards.date }}
-        <div class="col-m-6 col-6">
+        <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Fecha de fallo" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato." }}}"><i class="fas fa-info"></i></a></p>
             <p class="js-data mb-1" >{{moment result.awards.date lang="es" format="LL"}}</p>
         </div>
         {{/if}}
         {{#with result.contracts }}
           {{#if dateSigned }}
-          <div class="col-m-6 col-6">
+          <div class="col-m-6 col-6 pb-3">
               <p class="js-title-data">{{{_ "Fecha de firma" }}}</p>
               <p class="js-data">{{moment dateSigned date lang="es" format="LL"}}</p>
           </div>
           {{/if}}
           {{#if period }}
-          <div class="col-m-6 col-6">
+          <div class="col-m-6 col-6 pb-3">
               <p class="js-title-data">{{{_ "Período de ejecución" }}}</p>
               <p class="js-data">{{moment period.startDate date lang="es" format="LL"}} {{{_ "a" }}} {{moment period.endDate date lang="es" format="LL"}}
                 {{!-- #if (contract_has_flag id "temp-dl") }}{{> bandera flag_id="temp-dl"}}{{/if --}}
               </p>
           </div>
           {{/if}}
-          <div class="col-m-6 col-6">
+          <div class="col-m-6 col-6 pb-3">
               <p class="js-title-data">{{{_ "Código interno de la adjudicación" }}}</p>
               <p class="js-data mb-1" >{{../result.awards.id}}</p>
           </div>
 
           {{#if ../result.awards.documents.list.length }}
-          <div class="col-12">
+          <div class="col-12 pb-3">
             <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
               {{#each ../result.awards.documents.list }}
                 <a href="{{this.url}}">
@@ -478,32 +481,33 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
         {{/with }}
       </div>
     </div>
-
-    <div class="col-12">
-      <hr>
-    </div>    
   </section>
 
   <section class="profile row" id="implementacion">
-    <div class="col-9 col-m-9">
-      <h4 class="description-data-subtitle"><i class="fas fa-truck-moving"></i> {{{_ "IMPLEMENTACIÓN" }}}</h4>
+    <div class="box-title-section">
+      <div class="box-title-icon">
+        <i class="fas fa-truck-moving"></i>
+      </div>
+      <h4 class="description-data-subtitle">{{{_ "IMPLEMENTACIÓN" }}}</h4>
+    </div>
+    <div class="col-12 col-m-12">
       <div class="row flex">
         <div class="col-12">
           <p class="js-title-data">{{{_ "No hay datos" }}}</p>
-        </div>    
-        <div class="col-12">
-          <hr>
-        </div>    
+        </div>
       </div>
     </div>
   </section>
 
 {{!-- info --}}
-  <section class="profile" id="informacion-general">
-    <div class="row">
-
-      <div class="col-9 col-m-9">
-        <h4 class="description-data-subtitle"><i class="fas fa-folder-open"></i> {{{_ "INFORMACIÓN GENERAL" }}}</h4>
+  <section class="profile row" id="informacion-general">
+    <div class="box-title-section">
+      <div class="box-title-icon">
+        <i class="fas fa-folder-open"></i>
+      </div>
+      <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL" }}}</h4>
+    </div>
+      <div class="col-12 col-m-12">
         {{!-- <div class="row flex">
 
           {{#if result.identifiers }}
@@ -550,8 +554,6 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
         </div>
 
       </div>
-    </div>
- 
   </section>
 
 </div>
