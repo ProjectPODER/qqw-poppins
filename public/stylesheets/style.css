@@ -1750,7 +1750,7 @@ input[type=submit].landing-search-inputtext {
   }
 }
 .profile {
-  margin: 1rem;
+  margin: 2rem 1rem;
 }
 .profile-content {
   padding: 0 5rem;
@@ -1758,6 +1758,7 @@ input[type=submit].landing-search-inputtext {
 }
 .profile-content .row {
   background-color: #fff;
+  padding-bottom: 1rem;
 }
 #right-menu {
   list-style-type: none;
@@ -1766,7 +1767,7 @@ input[type=submit].landing-search-inputtext {
   white-space: nowrap;
   overflow: hidden;
   background-color: rgba(45,28,157,0.1);
-  margin-top: 10px;
+  margin-top: 20px;
 }
 #right-menu ul {
   padding: 0 5px;
@@ -1775,8 +1776,8 @@ input[type=submit].landing-search-inputtext {
   color: #9b9b9b;
   text-decoration: none;
   background-color: #fff;
-  margin: 12px 5px;
-  padding: 5px;
+  margin: 6px 5px;
+  padding: 3px;
 }
 #right-menu li a {
   color: #9b9b9b;
@@ -2184,20 +2185,31 @@ section.country-mujeres {
 .category-profile {
   padding: 1rem 1.5rem 0 0;
 }
-.profile-summary .profile-summary-content {
-  font-size: 0.9em;
+.profile-summary .profile-summary-content,
+.profile-memberships .profile-summary-content,
+.profile-summary .profile-memberships-content,
+.profile-memberships .profile-memberships-content {
+  font-size: 1em;
 }
-.profile-summary .profile-summary-content .summary-total {
+.profile-summary .profile-summary-content .summary-total,
+.profile-memberships .profile-summary-content .summary-total,
+.profile-summary .profile-memberships-content .summary-total,
+.profile-memberships .profile-memberships-content .summary-total {
   font-size: 1.1em;
   font-weight: bold;
 }
-.profile-summary .profile-summary-content .contract-button {
-  margin-top: 0rem;
+.profile-summary .profile-summary-content .contract-button,
+.profile-memberships .profile-summary-content .contract-button,
+.profile-summary .profile-memberships-content .contract-button,
+.profile-memberships .profile-memberships-content .contract-button {
+  margin-top: 1.5rem;
   height: 2em;
-  margin-bottom: 1em;
 }
-.profile-summary .profile-summary-content .index-list-title a {
-  font-size: 1em;
+.profile-summary .profile-summary-content .index-list-title a,
+.profile-memberships .profile-summary-content .index-list-title a,
+.profile-summary .profile-memberships-content .index-list-title a,
+.profile-memberships .profile-memberships-content .index-list-title a {
+  font-size: 1.1em;
   font-weight: normal;
 }
 .memberships .index-list-title a {
@@ -2207,12 +2219,15 @@ section.country-mujeres {
   margin-top: 4em;
 }
 .js-title-data {
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 0.5em;
-  font-size: 0.8em;
+  font-size: 1rem;
+  color: #4e4e4e;
+  font-family: 'Montserrat', sans-serif;
 }
 .js-data {
   font-size: 1.1em;
+  margin-bottom: 0;
 }
 .description-data-subtitle {
   color: #2d1c9d;
@@ -2228,6 +2243,10 @@ section.country-mujeres {
   color: #5c5c5c;
   font-weight: bold;
   margin-top: 2rem;
+  margin-bottom: 1rem;
+  background-color: #f7f7f7;
+  text-transform: uppercase;
+  padding: 10px;
 }
 .amount-data {
   color: #2d1c9d;
@@ -2252,12 +2271,93 @@ section.country-mujeres {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
+.profile-news-container {
+  background-color: #f7f7f7;
+  padding: 1.5rem;
+}
+.profile-news-title {
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.profile-news-info {
+  color: #5c5c5c;
+  font-style: italic;
+  font-size: 1rem;
+}
+.profile-news-text {
+  font-size: 17.6px;
+}
+@media only screen and (max-width: 1440px) {
+  .description-data-title h3 {
+    font-size: 1.5rem;
+  }
+  #right-menu li {
+    font-size: 1rem;
+  }
+  #right-menu li a i {
+    width: 15px;
+  }
+  .description-data-subtitle {
+    font-size: 1.2rem;
+  }
+  .profile-news-title {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 1366px) {
+  .description-data-title h3 {
+    font-size: 1.3rem;
+  }
+  #right-menu li {
+    font-size: 1rem;
+  }
+  #right-menu li a i {
+    width: 15px;
+  }
+  .description-data-subtitle {
+    font-size: 1.1rem;
+  }
+  .profile-news-title {
+    font-size: 18px;
+  }
+}
 @media screen and (max-width: 1149px) {
   .grid {
     -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: 1.5fr 1.5fr 1fr;
     -ms-grid-rows: auto auto;
     grid-template-rows: auto auto;
+  }
+}
+@media only screen and (max-width: 992px) {
+  #right-menu {
+    font-size: 1rem;
+  }
+  #right-menu li a i {
+    margin-right: 5px;
+  }
+  section.profile-header .filters .nav-item {
+    margin-left: 0;
+    min-width: fit-content;
+  }
+  section.profile-header .right-box .nav-link {
+    padding: 0.5rem;
+  }
+  .profile-content {
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .tools-section .dropdown {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .description-data-subname {
+    font-size: 1rem;
+  }
+  .nodesChart {
+    transform: translate(0, 40px);
   }
 }
 @media screen and (max-width: 578px) {
@@ -2270,24 +2370,42 @@ section.country-mujeres {
   .gender-indicator-container {
     padding: 30px;
   }
-}
-@media only screen and (max-width: 768px) {
-  .tools-section .dropdown {
-    text-align: center;
-    margin-bottom: 10px;
+  .description-data-title h3 {
+    width: 100%;
+    margin-top: 55px;
   }
-}
-@media only screen and (max-width: 768px) {
-  .nodesChart {
-    transform: translate(0, 40px);
+  section.profile-header .filters {
+    margin: auto;
   }
-}
-@media only screen and (max-width: 992px) {
+  .description-data-title h3 {
+    font-size: 1.1rem;
+  }
+  .profile-header a.filter-title {
+    font-size: 0.7em;
+  }
+  .profile-header .filters .icon-tools {
+    font-size: 1.2rem;
+  }
   #right-menu {
-    font-size: 1rem;
+    margin-top: 5px;
   }
-  #right-menu li a i {
-    margin-right: 5px;
+  .fixed-title .description-data-title h3,
+  .fixed-title-contract .description-data-title h3 {
+    width: 100%;
+    margin-top: 50px;
+    font-size: 0.9rem;
+  }
+  .fixed-title #right-menu,
+  .fixed-title-contract #right-menu {
+    margin-top: 0;
+  }
+  .fixed-title #right-menu li,
+  .fixed-title-contract #right-menu li {
+    font-size: 0.9rem;
+  }
+  .fixed-title #right-menu li a i,
+  .fixed-title-contract #right-menu li a i {
+    width: 15px;
   }
 }
 .flag_name {
@@ -2570,6 +2688,9 @@ section.country-mujeres {
   color: #fff;
   background-color: #2b00f7;
 }
+.about-template {
+  background-color: #fff;
+}
 .about-template div.proyecto {
   background-color: #f7f7f7;
   padding: 1rem;
@@ -2772,7 +2893,6 @@ section.country-mujeres {
   }
 }
 footer {
-  margin-top: 2rem;
   background-color: #21018b;
   padding: 2rem;
   clear: both;

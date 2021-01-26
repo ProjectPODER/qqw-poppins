@@ -1,11 +1,12 @@
 .profile
-  margin 1rem
+  margin 2rem 1rem
 
 .profile-content 
   padding 0 5rem
   width 100%
   .row
     background-color #ffffff
+    padding-bottom 1rem
 
 #right-menu
   list-style-type none
@@ -14,15 +15,15 @@
   white-space: nowrap;  
   overflow hidden
   background-color rgba(45,28,157,0.10)
-  margin-top 10px
+  margin-top 20px
   & ul
     padding 0 5px
   & li
     color #9b9b9b
     text-decoration none
     background-color #ffffff
-    margin 12px 5px
-    padding 5px
+    margin 6px 5px
+    padding 3px
     & a
       color #9b9b9b
       text-decoration none
@@ -394,18 +395,19 @@ section
 // limpiar acaba
 
 //SUMMARIES 
-.profile-summary
-  .profile-summary-content
-    font-size: 0.9em
+.profile-summary,
+.profile-memberships
+  .profile-summary-content,
+  .profile-memberships-content
+    font-size: 1em
     .summary-total
       font-size: 1.1em
       font-weight: bold
     .contract-button
-      margin-top 0rem
+      margin-top 1.5rem
       height 2em
-      margin-bottom 1em
     .index-list-title a
-      font-size: 1.0em
+      font-size: 1.1em
       font-weight: normal
 
 .memberships
@@ -416,12 +418,15 @@ section
   margin-top 4em
 
 .js-title-data
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 0.5em; 
-  font-size: 0.8em 
+  font-size: 1rem 
+  color #4e4e4e
+  font-family: 'Montserrat', sans-serif;
 
 .js-data 
   font-size 1.1em
+  margin-bottom 0
 
 .description-data-subtitle
   color #2d1c9d
@@ -437,6 +442,10 @@ section
   color #5c5c5c
   font-weight bold
   margin-top 2rem
+  margin-bottom 1rem
+  background-color #f7f7f7
+  text-transform uppercase
+  padding 10px
 
 .amount-data
   color #2d1c9d
@@ -461,6 +470,46 @@ section
     padding-top: 0.5em
     padding-bottom: 0.5em
 
+
+// News
+.profile-news-container
+  background-color #f7f7f7
+  padding 1.5rem
+.profile-news-title
+  font-size 22px
+  font-weight bold
+  text-transform uppercase
+.profile-news-info
+  color #5c5c5c
+  font-style italic
+  font-size 1rem
+.profile-news-text
+  font-size 17.6px
+
+@media only screen and (max-width: 1440px)
+  .description-data-title h3
+    font-size 1.5rem
+  #right-menu li
+    font-size 1rem
+    a i
+      width 15px
+  .description-data-subtitle
+    font-size 1.2rem
+  .profile-news-title
+    font-size 20px
+
+@media only screen and (max-width: 1366px)
+  .description-data-title h3
+    font-size 1.3rem
+  #right-menu li
+    font-size 1rem
+    a i
+      width 15px
+  .description-data-subtitle
+    font-size 1.1rem
+  .profile-news-title
+    font-size 18px
+
 @media screen and (max-width: 1149px)
   .grid
     -ms-grid-columns 1fr 1fr 1fr
@@ -468,31 +517,68 @@ section
     -ms-grid-rows auto auto
     grid-template-rows auto auto
 
-@media screen and (max-width: 578px)
-  .grid
-    -ms-grid-columns 1fr
-    grid-template-columns 1fr
-    -ms-grid-rows auto auto auto auto auto
-    grid-template-rows auto auto auto auto auto
-
-  .gender-indicator-container
-    padding 30px
+@media only screen and (max-width: 992px)
+  #right-menu
+    font-size 1rem
+    & li a i
+      margin-right 5px
+  section
+    &.profile-header
+      .filters .nav-item
+        margin-left 0
+        min-width fit-content
+      .right-box 
+        .nav-link
+          padding 0.5rem
+  .profile-content
+    padding: 10px
 
 @media only screen and (max-width: 768px)
   .tools-section
     .dropdown
       text-align center
       margin-bottom 10px
-
-@media only screen and (max-width: 768px)
+  .description-data-subname
+    font-size: 1rem;
   .nodesChart
     transform: translate(0, 40px);
 
-@media only screen and (max-width: 992px)
+@media screen and (max-width: 578px)
+  .grid
+    -ms-grid-columns 1fr
+    grid-template-columns 1fr
+    -ms-grid-rows auto auto auto auto auto
+    grid-template-rows auto auto auto auto auto
+  .gender-indicator-container
+    padding 30px
+  // section.profile-header .right-box 
+  .description-data-title h3
+    width 100%
+    margin-top 55px
+  section.profile-header .filters 
+    margin auto
+  .description-data-title h3
+    font-size 1.1rem
+  .profile-header
+    a.filter-title
+      font-size 0.7em
+    .filters .icon-tools
+      font-size: 1.2rem;
+  #right-menu
+      margin-top 5px
+  .fixed-title,
+  .fixed-title-contract
+    .description-data-title
+      h3
+        width 100%
+        margin-top 50px
+        font-size 0.9rem
     #right-menu
-      font-size 1rem
-      & li a i
-        margin-right 5px
+      margin-top 0
+      li
+        font-size 0.9rem
+        a i
+          width 15px
 
 // FLAGS
 .flags_graph_bar {

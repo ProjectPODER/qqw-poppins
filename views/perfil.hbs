@@ -1,6 +1,5 @@
 <script src="/tiza/tiza.js"></script>
 
-<div style="background-color: #F7F7F7;">
 <section class="profile-header">
   <div class="wrap bg-white" id="wrap">
     <div class="description-data-title">
@@ -349,7 +348,7 @@
 {{!-- memberships --}}
 {{#if result.memberships }}
   {{#each result.memberships }}
-  <section class="profile" id="memberships-parent-{{@index}}">
+  <section class="profile profile-memberships" id="memberships-parent-{{@index}}">
     <div class="profile-content">
       <div class="row">
         <div class="box-title-section">
@@ -361,9 +360,11 @@
           </h4>
         </div>
         <div class="col-12 col-m-12">
-          {{#each this.memberships}}
-            {{>membership result=this directionality=direction}}
-          {{/each}}
+          <div class="profile-memberships-content">
+            {{#each this.memberships}}
+              {{>membership result=this directionality=direction}}
+            {{/each}}
+          </div>
         </div>
       </div>
     </div>
@@ -425,18 +426,21 @@
         <div class="row flex">
           {{#each (lookup notas result.id) }}
               <div class="col-m-6 col-6">
-                <div class="news-container">
-                  <p class="js-title-data">
-                    <a href="{{url}}">
-                      {{titulo}} 
-                    </a>
+                <div class="profile-news-container">
+                  <a href="{{url}}" class="profile-news-title">
+                    {{titulo}} 
+                  </a>
+                  <p class="profile-news-info">
+                      {{medio}} {{fecha}} por {{autor}}
                   </p>
-                  <p class="js-data">
-                      {{medio}} {{fecha}} {{autor}}
-                  </p>
-                  <p class="js-data">
+                  <p class="profile-news-text">
                       {{explicacion_es}}
                   </p>
+                  <div class="text-center">
+                    <a href="{{url}}" class="btn btn-primary">
+                      LEER NOTA
+                    </a>
+                  </div>
                 </div>
               </div>
           {{/each}}
@@ -462,7 +466,7 @@
         <div class="row flex">
 
           {{#if result.other_names.length }}
-            <div class="col-m-5 col-5 pd-nonleft">
+            <div class="col-m-6 col-6 pd-nonleft">
               <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
               <ul class="js-data">
                 {{#each result.other_names}}
@@ -511,7 +515,6 @@
               {{/each}}
             </div>
           {{/if}}
-
         </div>
 
         <div class="row flex">
@@ -537,5 +540,3 @@
 </section>
 
 {{> report_modals }}
-
-</div>

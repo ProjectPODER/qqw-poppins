@@ -181,75 +181,9 @@ jQuery(function() {
     autocollapse("#filtersList",80); 
   });
 });
-// var autocollapse = function (menu,maxHeight) {
-    
-//   var nav = $(menu);
-//   var navHeight = nav.innerHeight();
-//   if (navHeight >= maxHeight) {
-      
-//       $(menu + ' .dropdown').removeClass('d-none');
-//       $(".navbar-nav").removeClass('w-auto').addClass("w-100");
-      
-//       while (navHeight > maxHeight) {
-//           //  add child to dropdown
-//           var children = nav.children(menu + ' li:not(:last-child)');
-//           var count = children.length;
-//           $(children[count - 1]).prependTo(menu + ' .dropdown-menu');
-//           navHeight = nav.innerHeight();
-//       }
-//       $(".navbar-nav").addClass("w-auto").removeClass('w-100');
-      
-//   }
-//   else {
-//       var collapsed = $(menu + ' .dropdown-menu').children(menu + ' li');
-    
-//       if (collapsed.length===0) {
-//         $(menu + ' .dropdown').addClass('d-none');
-//       }
-    
-//       while (navHeight < maxHeight && (nav.children(menu + ' li').length > 0) && collapsed.length > 0) {
-//           //  remove child from dropdown
-//           collapsed = $(menu + ' .dropdown-menu').children('li');
-//           $(collapsed[0]).insertBefore(nav.children(menu + ' li:last-child'));
-//           navHeight = nav.innerHeight();
-//       }
-
-//       if (navHeight > maxHeight) { 
-//           autocollapse(menu,maxHeight);
-//       }
-      
-//   }
-// };
-
-
-// $(document).ready(function () {
-
-//   // when the page loads
-//   autocollapse('#nav',50); 
-  
-//   // when the window is resized
-//   $(window).on('resize', function () {
-//       autocollapse('#nav',50); 
-//   });
-
-// });
-
-
-//Anchors animation
-// $('a.page-scroll').bind('click', function(event) {
-//     var $anchor = $(this);
-//     let element = $($anchor.attr('href').replace(" ","\ "));
-//     if (element.length > 0) {
-//       let dest = (element.offset().top - 240);
-//       $('html, body').stop().animate({
-//           scrollTop: dest
-//       }, 1250, 'easeInOutExpo');
-//       event.preventDefault();
-//     }
-// });
 
   // Add scrollspy to <body> in Contract perfil
-$('body').scrollspy({target: "#right-menu", offset: 150});
+$('body').scrollspy({target: "#right-menu", offset: 250});
 
 // Add smooth scrolling on all links inside the navbar
 $("#right-menu a").on('click', function(event) {
@@ -264,7 +198,7 @@ $("#right-menu a").on('click', function(event) {
     // Using jQuery's animate() method to add smooth page scroll
     // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
     $('html, body').animate({
-      scrollTop: $(hash).offset().top - 150
+      scrollTop: $(hash).offset().top - 300
     }, 800, function(){
     });
   }  // End if
