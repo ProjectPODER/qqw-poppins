@@ -1,10 +1,10 @@
 <div class="index-list-item">
-    {{#ifCond directionality "==" "child"}}
+    {{#ifCond directionality "==" "parent"}}
         <div class="index-list-group">
             <div class="index-list-title">
                 <a href="{{ url view=(get_type_url (or result.organization_class "person")) _id=(or result.organization_id result.person_id) }}">
                 <p class="text-overflow" title="{{or result.organization_name result.person_name}}">
-                    {{{ get_classification_icon (get_type_collection (or result.organization_class "person")) (or result.organization_class "person")  result.organization_subclass  result.govLevel}}}
+                    {{{ get_classification_icon (or result.organization_class "person")  result.organization_subclass  result.govLevel}}}
                     {{or result.organization_name result.person_name}}
                 </p>
                 </a>
@@ -20,7 +20,7 @@
             <div class="index-list-title">
                 <a href="{{ url view=(get_type_url result.parent_class) _id=result.parent_id }}">
                 <p class="text-overflow" title="{{result.parent_name}}">
-                    {{{ get_classification_icon (get_type_collection result.parent_class) result.parent_class result.parent_subclass result.govLevel}}}
+                    {{{ get_classification_icon result.parent_class result.parent_subclass result.govLevel}}}
                     {{result.parent_name}}
                 </p>
                 </a>

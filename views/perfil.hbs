@@ -185,7 +185,7 @@
 {{>summary result=result summary="contactPoint" data=summaries.contactPoint }}
 {{/if}}
 
-{{!-- Unidades compradoras --}}
+{{!-- Unidades compradoras CREO QUE ESTO ES BASURA --}}
 {{#if result.membership_uc_parent }}
 <section class="profile" id="memberships-parent-uc">
   <div class="profile-content">
@@ -347,29 +347,18 @@
 
 {{!-- memberships --}}
 {{#if result.memberships }}
-  {{#each result.memberships }}
-  <section class="profile profile-memberships" id="memberships-parent-{{@index}}">
-    <div class="profile-content">
-      <div class="row">
-        <div class="box-title-section">
-          <div class="box-title-icon">
-            {{{get_role_icon this.role this.directionality}}}
-          </div>
-          <h4 class="description-data-subtitle">
-            {{get_role_name this.role this.direction}}
-          </h4>
-        </div>
-        <div class="col-12 col-m-12">
-          <div class="profile-memberships-content">
-            {{#each this.memberships}}
-              {{>membership result=this directionality=direction}}
-            {{/each}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  {{#each result.memberships.parent }}
+    <section class="profile profile-memberships" id="memberships-parent-{{@index}}">
+      {{>membership_list this}}
+    </section>
   {{/each}}
+
+  {{#each result.memberships.child }}
+      <section class="profile profile-memberships" id="memberships-child-{{@index}}">
+      {{>membership_list this}}
+      </section>
+  {{/each}}
+
 {{/if}}
 
 {{#if result.area.length }}

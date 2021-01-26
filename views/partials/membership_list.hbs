@@ -1,0 +1,19 @@
+      <div class="profile-content">
+        <div class="row">
+          <div class="box-title-section">
+            <div class="box-title-icon">
+              {{{get_role_icon this.role this.direction}}}
+            </div>
+            <h4 class="description-data-subtitle">
+              {{get_role_name this.role this.direction}}
+            </h4>
+          </div>
+          <div class="col-12 col-m-12">
+            <div class="profile-memberships-content">
+              {{#each this.memberships}}
+                {{>membership result=this directionality=this.direction}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
