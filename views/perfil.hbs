@@ -24,31 +24,9 @@
         {{/each}}
       </h3>
     </div>
-    {{!-- <div class="profile-breadcrumb">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-              <a href="{{url view="home"}}">{{{_ "Inicio"}}}</a>
-          </li>
-          {{#each result.area }}
-            {{#if id }}
-              <li class="breadcrumb-item">
-                <a href="{{url view="regiones/:id" _id=id}}">
-                  {{translate_area name}}
-                </a>
-              </li>
-            {{/if}}
-          {{/each}}
-          <li class="breadcrumb-item">
-            <a href="{{url view="buscador" collection=type subtipo=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
-          </li>
-
-        </ol>        
-      </nav>      
-    </div> --}}
     <div class="right-box ml-auto filters">
       <ul class="nav nav-pills d-flex flex-nowrap">
-        {{>utilities api_url=result.api_url share_url=share_url api_summary_url=result.api_summary_url }}                
+        {{>utilities api_url=result.api_url share_url=share_url api_summary_url=result.api_summary_url }}
       </ul>
     </div>
     <nav id="right-menu" class="menu-profile">
@@ -71,6 +49,14 @@
         <li>
           <a href="#summary-funder" class="anchor">
             <i class="fas fa-donate"></i> {{{_ "Financiación"}}}
+          </a>
+        </li>
+        {{/if}}
+        {{#if summaries.contactPoint.total.count }}
+        <li>
+          <a href="#summary-contactPoint" class="anchor">
+            {{!-- {{{get_role_icon this.role this.directionality}}} {{get_role_name this.role this.directionality}} --}}
+            <i class="fas fa-shopping-cart"></i>{{_ "Punto de contacto"}}
           </a>
         </li>
         {{/if}}
@@ -140,7 +126,7 @@
 <section class="profile" id="top-nonsense">
   <div class="profile-content">
     <div class="row">
-      <div class="col-12 col-m-12">
+      <div class="col-12 col-md-12">
         {{#ifCond type "==" "companies"}}
           {{> gender-indicator result_name=result.name country_data=result.countryData }}
         {{/ifCond}}
@@ -163,7 +149,7 @@
           {{get_role_name result.membership_uc_child.role result.membership_uc_child.directionality}}
         </h4>
       </div>
-      <div class="col-12 col-m-12">
+      <div class="col-12 col-md-12">
         <div  class=" profile-list">
           {{#each result.membership_uc_child.memberships}}
             {{>membership result=this directionality=../result.membership_uc_child.directionality}}
@@ -192,13 +178,13 @@
     <div class="row memberships">
       <div class="box-title-section">
         <div class="box-title-icon">
-          {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
+          {{{get_role_icon result.membership_uc_parent.role result.membership_uc_parent.directionality}}}
         </div>
         <h4 class="description-data-subtitle">
-          {{{get_role_icon result.membership_uc_parent.role result.membership_uc_parent.directionality}}}{{get_role_name result.membership_uc_parent.role result.membership_uc_parent.directionality}}
+          {{get_role_name result.membership_uc_parent.role result.membership_uc_parent.directionality}}
         </h4>
       </div>
-      <div class="col-12 col-m-12">
+      <div class="col-12 col-md-12">
         <div  class=" profile-list">
           {{#each result.membership_uc_parent.memberships}}
             {{>membership result=this directionality=../result.membership_uc_parent.directionality}}
@@ -227,14 +213,13 @@
     <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
-          {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
+          <i class="fas fa-chart-pie"></i>
         </div>
         <h4 class="description-data-subtitle">
           {{{_ "Flujos monetarios"}}}
         </h4>
       </div>
-      <div class="col-m-12 col-12">
-        <h4 class="description-data-subtitle"><i class="fas fa-chart-pie"></i> {{{_ "FLUJOS MONETARIOS"}}}</h4>
+      <div class="col-md-12 col-12">
         <div id="graph-container"></div>
       </div>
     </div>
@@ -252,28 +237,31 @@
 <section class="profile" id="evaluacion">
   <div class="profile-content">
     <div class="row">
-      <div  class="col-m-12 col-12" bg-gray>
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-file-signature"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "EVALUACIÓN Y RECOMENDACIONES"}}}</h4>
+      </div>
+      <div  class="col-md-12 col-12">
         <div class="row">
-          <div class="col-6 col-m-6">
-            <h4 class="description-data-subtitle"><i class="fas fa-file-signature"></i> {{{_ "EVALUACIÓN Y RECOMENDACIONES"}}}</h4>
-          </div>
-          <div class="col-m-6 col-6 text-right-">
+          <div class="col-md-12 col-12 text-center">
             <h4 class="amount-data">
               {{{_ "Puntaje total:"}}} {{ format_score result.flags.0.total_score }}
             </h4>
           </div>
-          <div class="col-12 col-m-12">
+          <div class="col-12 col-md-12">
             <p>{{{_ "A partir de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la puntuación final el sistema también tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede consultarse en <a href='https://www.TodosLosContratos.mx/#metodologia'>TodosLosContratos.mx</a>"}}}.</p>
           </div>
         </div>
-        <div class="col-12-col-m-12">
+        <div class="col-12-col-md-12">
           {{#each (get_party_categories result.flags.[0]) }}
           <div class="flags_graph_bar">
             <div class="flag_name">
                {{#with (flag_name @key) }}
                   {{name}} 
                   <a data-toggle="tooltip" data-placement="right" title="{{info}}">
-                    <i class="fas fa-info"></i>
+                    <i class="fas fa-info-circle"></i>
                   </a>
                {{/with}}
             </div>
@@ -288,9 +276,9 @@
               </div>
           </div>
           {{/each}}
-          <div class="col-12-col-m-12 mt-60">
+          <div class="col-12 col-md-12 mt-60">
             {{# each (flag_recommendations result.flags flag_count) }}
-            <div class="col-4 col-m-12 category-profile">
+            <div class="col-12 col-md-6 category-profile">
               <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
               <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
               <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
@@ -299,15 +287,15 @@
             {{/each}}
           </div>
       </div>
-      <div class="col-12 text-center">
+      <div class="col-12 col-md-12 text-center">
           <button class="btn button-link" onclick="$('#profile-send-info').toggle()">{{{_ "Solcitar informe detallado"}}}</button>
       </div>
       </div>
     </div>
     <div class="row" style="display: none" id="profile-send-info">
-      <div  class="col-m-9 col-9">
+      <div  class="col-md-12 col-12">
         <div  class="">
-          <h3>{{{_ "Solicitar más información"}}}</h3>
+          <h5 class="description-data-subname">{{{_ "Solicitar más información"}}}</h5>
           <p>{{{_ "Con el objetivo de que las dependencias y las Unidades Compradoras puedan mejorar la calidad de los datos de contrataciones destacamos las tres banderas que dieron un resultado más bajo y como pueden mejorar. Para tener la lista completa contáctanos a través del formulario."}}} </p>
           <form class="sendinfo-form mt-2">
             <fieldset>
@@ -328,7 +316,7 @@
               </div>
             </fieldset>
             <input id="uc_id_message" type="hidden" name="message" value="{{result.id}}">
-            <div class="centered">
+            <div class="text-center">
                 <button id="send_info_uc" type="submit" class="btn button-link contact-submit">{{_ "Enviar"}}</button>
             </div>
           </form>
@@ -371,10 +359,10 @@
         </div>
         <h4 class="description-data-subtitle"> {{{_ "Ubicación"}}}</h4>
       </div>
-      <div class="col-12 col-m-12">
+      <div class="col-12 col-md-12">
         <div class="row flex">
           {{#each result.area }}
-              <div class="col-m-1 col-1 pd-nonleft">
+              <div class="col-md-1 col-1 pd-nonleft">
                 <p class="js-title-data">
                   {{#ifCond classification '==' 'country'}}{{{_ "País"}}}
                     {{#ifCond subclassification '==' 'country-born'}}{{{_ "de nacimiento"}}}{{/ifCond}}
@@ -411,7 +399,7 @@
         </div>
         <h4 class="description-data-subtitle"> {{{_ "Notas"}}}</h4>
       </div>
-      <div class="col-12 col-m-12">
+      <div class="col-12 col-md-12">
         <div class="row flex">
           {{#each (lookup notas result.id) }}
               <div class="col-m-6 col-6">
@@ -451,11 +439,11 @@
         </div>
         <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
       </div>
-      <div class="col-12 col-m-12">
+      <div class="col-12 col-md-12">
         <div class="row flex">
 
           {{#if result.other_names.length }}
-            <div class="col-m-6 col-6 pd-nonleft">
+            <div class="col-md-6 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
               <ul class="js-data">
                 {{#each result.other_names}}
@@ -474,14 +462,14 @@
 
 
           {{#if result.subclassification}}
-            <div class="col-m-3 col-3">
+            <div class="col-md-3 col-12">
               <p class="js-title-data">{{{_ "Tipo de entidad"}}}</p>
               <p class="js-data">{{ _ result.subclassification}}</p>
             </div>
           {{/if}}
 
           {{#if result.identifiers }}
-            <div class="col-m-3 col-3 pd-nonleft">
+            <div class="col-md-3 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Identificadores"}}}</p>
               {{#each result.identifiers}}
                 <p class="js-data">
@@ -497,7 +485,7 @@
           {{/if}}
 
           {{#if result.links}}
-            <div class="col-m-6 col-6 pd-nonleft">
+            <div class="col-md-6 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Link(s)"}}}</p>
               {{#each result.links}}
                 <p class="js-data"><a href="{{this.id}}" target="_blank">{{this.id}}</a></p>
@@ -508,14 +496,14 @@
 
         <div class="row flex">
           {{#if result.date}}
-            <div class="col-m-3 col-3 pd-nonleft">
+            <div class="col-md-3 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Fecha de actualización"}}}</p>
               <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
 
           {{#if result.source}}
-            <div class="col-m-3 col-3 pd-nonleft">
+            <div class="col-md-3 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
               <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>

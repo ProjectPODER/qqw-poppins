@@ -2252,12 +2252,12 @@ section.country-mujeres {
   color: #2d1c9d;
   font-size: 2rem;
   font-weight: bold;
-  margin: 23px 0 5px;
+  margin-bottom: 1rem;
 }
 .contract-award-item {
   border: 1px solid #ccc;
-  padding: 0 1em;
-  margin: 1em;
+  width: 100%;
+  margin: 0 1rem 1rem;
 }
 .contract-award-item .contract-award-title {
   background: #eee;

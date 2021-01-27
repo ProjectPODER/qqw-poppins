@@ -13,13 +13,16 @@
           {{#ifCond summary "==" "funder"}}
           fa-donate
           {{/ifCond}}
+          {{#ifCond summary "==" "contactPoint"}}
+          fa-shopping-cart
+          {{/ifCond}}
           "></i> 
         </div>
         <h4 class="description-data-subtitle">
           {{_ "Resúmen de actividad como {summary} " summary=(_ summary)}}
         </h4>
       </div>
-      <div  class="col-m-12 col-12">
+      <div  class="col-md-12 col-12">
         <div class="profile-summary-content">
             <div class="summary-total {{summary}}-text">
                 <p>
@@ -36,16 +39,16 @@
                 {{/ifCond}}
             </div>
             <div class="row">
-                <div  class="col-m-12 col-6 mb-6">
+                <div  class="col-md-6 col-12 mb-6">
                 <h5 class="description-data-subname">{{_ "Evolución anual de contratos" }}</h5>
                 <div id="chart-year-{{summary}}" class="summary-chart"></div>
                 </div>
-                <div class="col-m-12 col-6 mb-6">
+                <div class="col-md-6 col-12 mb-6">
                 <h5 class="description-data-subname">{{_ "Tipo de procedimiento" }}</h5>
                 <div id="chart-type-{{summary}}" class="summary-chart"></div>
                 </div>
 
-                <div class="col-m-12 col-12">
+                <div class="col-md-12 col-12">
                     <h5 class="description-data-subname">{{_ "Entidades principales" }}</h5>
                     {{#each data.top_entities }}
                         {{>result result=this collection=(get_type_collection this.details.type) }}
