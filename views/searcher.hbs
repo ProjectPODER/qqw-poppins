@@ -8,16 +8,15 @@
               {{# each filters }}
                 {{> filter_element filter=this collection=../collection }}
               {{/each }}
-              <li class="nav-item dropdown more-filters-dropdown d-none">
-                <a class="nav-link dropdown-toggle" href="#" id="moreFilters" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{_ "Más filtros" }}
+              <li class="nav-item more-filters-dropdown d-none text-center">
+                <a class=" filter-title dropdown-tools nav-link" href="#" id="moreFilters" role="button" aria-haspopup="true" aria-expanded="false">
+                  {{_ "Más filtros" }} <br>
+                  <i class="fas fa-filter icon-tools"></i>
                 </a>
-                <ul class="dropdown-menu-morefilters dropdown d-none dropdown-menu-right bg-dark" aria-labelledby="moreFilters">
+                <ul class="dropdown-menu-morefilters d-none" aria-labelledby="moreFilters">
                   <li></li>
                 </ul>
-            </ul>
- 
-              </li>              
+              </li>
             </ul>
           </form>
         </div>
@@ -43,23 +42,15 @@
       <div class="container-fluid">
         {{#if result.summary }}
         <div class="row">
-          <div class="col-3">
-            Importe total: {{format_amount result.summary.value }}
-          </div>
-          <div class="col-6">
-
-            Resultados por año: {{#each result.summary.year }}{{@key}}: {{ format_number count}} - {{/each}}
-          </div>
-          <div class="col-3">
-            Resultados por tipo de procedimiento: {{#each result.summary.type }}{{@key}}: {{format_number count}} - {{/each}}
-
+          <div class="col-12 mb-2 text-right">
+            Mostrando {{format_number result.summary.count }} contratos por un total de {{format_amount result.summary.value }} MXN.
           </div>
         </div>
         {{/if}}
 
-        <h1>
+        {{!-- <h1>
           {{title}}
-        </h1>
+        </h1> --}}
 
         <div class="row">
             <div class="col-12 col-m-12">

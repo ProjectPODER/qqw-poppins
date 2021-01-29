@@ -3,9 +3,9 @@
     <div class="col-md-3 col-sm-12 page-break">
       <h6>SALTAR A LA PÁGINA</h5>
       <div class="input-group input-group-lg mb-3 w-50">
-        <input type="text" class="form-control" placeholder="Número">
+        <input type="text" class="form-control" placeholder="Número" id="page-jump">
         <div class="input-group-append">
-          <button class="btn btn-secondary" type="submit">IR</button>
+          <button class="btn btn-secondary" type="submit"  onclick="window.location.href='{{url page="!!page!!" }}'.replace('!!page!!',parseInt($('#page-jump').val())-1)">IR</button>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="col-md-3 col-sm-12 text-right page-results">
       <h6>{{_ "RESULTADO POR PÁGINA" }}</h5>
       <div class="form-group">
-        <select class="form-control form-control-lg float-right w-50" id="indexLength" onchange="window.location.href='{{url size=25 }}'.replace(25,this.value)">
+        <select class="form-control form-control-lg float-right w-50" id="indexLength" onchange="window.location.href='{{url size="!!size!!" }}'.replace('!!size!!',this.value)">
           <option value="25" {{#ifCond result.size "==" "25" }}selected="selected"{{/ifCond}}>25</option>
           <option value="50" {{#ifCond result.size "==" "50" }}selected="selected"{{/ifCond}}>50</option>
           <option value="100" {{#ifCond result.size "==" "100" }}selected="selected"{{/ifCond}}>100</option>

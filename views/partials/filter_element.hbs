@@ -12,19 +12,14 @@
       <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
     {{/ifCond}}
     {{#ifCond filter.htmlFieldName "==" "collection"}}
-      <input type="hidden" name="{{filter.htmlFieldName}}" value="{{collection}}">
-      <div class="selector-filter-type">
-          <p class="text-center emphasis-color-text mb-0" title="">{{ get_type_plural collection true }}</p>
+      <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{collection}}">
+      <div class="selector-filter-type" data-toggle="dropdown">
+          <p class="text-center emphasis-color-text mb-0">{{ get_type_plural collection true }}</p>
       </div>
-      <div class="dropdown-menu filter-dropdown-menu">
+      <div class="dropdown-menu">
         {{#each filter.options }}
-          <button class="dropdown-item filter-dropdown-item" type="button" data-collection="{{this.id}}">
-              <p>
-                <strong class="emphasis-color-text">{{this.label}}</strong>
-                <span class="filter-type-description">
-                  {{this.description}}
-                </span>
-              </p>
+          <button  onclick="$('#{{../filter.htmlFieldName}}').val('{{this.id}}')[0].form.submit();"  class="dropdown-item filter-dropdown-item" type="button">
+              {{this.label}} <i class="fas fa-info-circle text-darkgray" data-toggle="tooltip" data-placement="right" title="{{this.description}}"></i>
           </button>
           <div class="dropdown-divider"></div>
         {{/each }}
