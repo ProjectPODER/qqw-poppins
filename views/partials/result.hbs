@@ -13,7 +13,7 @@
         </a>
       </div>
       <div class="index-list-elements">
-        {{#ifCond (get_classification_type result.classification) "==" "person" }}
+        {{#ifCond (get_classification_type result.classification) "==" "persons" }}
           {{!-- <div class="justify-content-start"> --}}
             <div class="left-elements col-lg-8 col-md-8 col-md-8 col-sm-8 col-8">
               <div class="col-lg-12 p-0">
@@ -42,7 +42,7 @@
         {{/ifCond}}
 
         {{!-- CONTRATOS --}}
-        {{#ifCond (get_classification_type result.classification) "==" "contract" }}
+        {{#ifCond (get_classification_type result.classification) "==" "contracts" }}
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
@@ -89,7 +89,7 @@
         {{/ifCond}}
 
         {{!-- EMPRESAS --}}
-        {{#ifCond (get_classification_type result.classification) "==" "company" }}
+        {{#ifCond (get_classification_type result.classification) "==" "companies" }}
           <div class="left-elements col-lg-8 col-md-8 col-md-8 col-sm-8 col-8">
             <div class="col-lg-12 p-0">
              {{> result-contracts this }}
@@ -111,53 +111,29 @@
         {{/ifCond}}
 
         {{!-- INSTITUCIONES --}}
-        {{#ifCond (get_classification_type result.classification) "==" "institution" }}        
+        {{#ifCond (get_classification_type result.classification) "==" "institutions" }}        
           <div class="full-elements col-lg-12 p-0">
              {{> result-contracts this }}
           </div>
         {{/ifCond}}
 
         {{!-- PAISES --}}
-        {{#ifCond (get_classification_type result.classification) "==" "area" }}
-          <div class="left-elements col-lg-12 col-md-12 col-md-12 col-sm-12 col-12">
+        {{#ifCond (get_classification_type result.classification) "==" "areas" }}
+          <div class="left-elements col-lg-4 col-md-4 col-md-6 col-sm-6 col-6">
+            <div class="col-lg-12 p-0">
              {{> result-contracts this }}
-
-            {{!-- <div class="col-lg-2 p-0">
-              <p class="index-list-element">
-                <a href="{{url view="buscador" collection="persons" pais=id}}" title="{{format_number summaries.persons_count}} {{_ "personas" }}">
-                <i class="fas fa-users"></i> {{format_number summaries.persons_count}} {{_ "personas" }}
-                </a>
-              </p>
             </div>
+          </div>
+          <div class="right-elements col-lg-8 col-md-8 col-md-6 col-sm-6 col-6">
+            {{#each result.summaries.classification}}
             <div class="col-lg-2 p-0">
               <p class="index-list-element">
-                <a href="{{url view="buscador" collection="companies" pais=id}}" title="{{format_number summaries.companies_count}} {{_ "empresas" }}">
-                  <i class="fas fa-building"></i> 
-                  {{format_number summaries.companies_count}} {{_ "empresas" }}
+                <a href="{{url view="buscador" collection=(get_classification_type @key) sort-cpi="" classification=@key area=../id}}" title="{{format_number this}} {{_ @key }}">
+                {{{ get_classification_icon @key }}} {{format_number this}} {{_ @key }}
                 </a>
               </p>
             </div>
-            {{# if summaries.states_count }}
-            <div class="col-lg-2 p-0">
-              <p class="index-list-element" title="{{format_number summaries.states_count}} {{_ "estados" }}"><i class="fas fa-map-marked"></i> {{format_number summaries.states_count}} <span>{{_ "estados" }}</span>
-              </p>
-            </div>
-            {{/if }}
-            <div class="col-lg-2 p-0">
-              <p class="index-list-element">
-                <a href="{{ url view="areas/:id" _id=id _anchor="genero"}}" title="{{format_number  summaries.stock_exchanges_count }} {{_ "Bolsa de Valores" }}">
-                  <i class="fas fa-chart-line"></i> {{format_number  summaries.stock_exchanges_count }} <span>{{_ "Bolsa de Valores" }}</span>
-                </a>
-              </p>
-            </div>
-            <div class="col-lg-4 p-0">
-              <p class="index-list-element">
-                <a href="/{{ url view="regiones/:id/mujeresenlabolsa" _id=id}}" title="{{format_number summaries.mujeres_ranking }}  {{_ "posición en ranking" }}">
-                  <i class="fas fa-hashtag"></i> {{format_number summaries.mujeres_ranking }} 
-                  <span>{{_ "posición en ranking" }}</span>
-                </a>
-              </p>
-            </div> --}}
+            {{/each}}
           </div>
           {{!-- <div class="right-elements col-lg-5 col-md-6 col-md-6 col-sm-6 col-6">
 

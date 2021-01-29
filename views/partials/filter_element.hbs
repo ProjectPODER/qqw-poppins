@@ -31,7 +31,7 @@
           title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}" 
           data-toggle="dropdown">
             {{#ifCond filter.type "==" "select" }}
-              {{lookup filter.options (or filter.value filter.default.value)}}
+              {{_ (lookup filter.options (or filter.value filter.default.value))}}
             {{else}}
               {{#if (or filter.value.min filter.value.max) }}
                 {{filter.value.min}} a {{filter.value.max}}
@@ -58,7 +58,7 @@
               {{/ifCond}}
               {{# ifCond filter.type "==" "select" }}
                 {{#each filter.options}}
-                  <button class="btn btn-light" type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{this}}</button>
+                  <button class="btn btn-light" type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{_ this}}</button>
                 {{/each}}
                 <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
               {{/ifCond}}

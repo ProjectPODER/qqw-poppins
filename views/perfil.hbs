@@ -464,7 +464,7 @@
           {{#if result.subclassification}}
             <div class="col-md-3 col-12">
               <p class="js-title-data">{{{_ "Tipo de entidad"}}}</p>
-              <p class="js-data">{{ _ result.subclassification}}</p>
+              <p class="js-data">{{_ result.subclassification}}</p>
             </div>
           {{/if}}
 
@@ -505,7 +505,7 @@
           {{#if result.source}}
             <div class="col-md-3 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
         </div>
