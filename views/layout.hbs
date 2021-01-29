@@ -23,10 +23,10 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' {{api_domain}}  manualinvestigarcontrataciones.readthedocs.io; img-src *.rindecuentas.org  www.google-analytics.com buenacubera.projectpoder.org 'self'; font-src fonts.gstatic.com 'self'; style-src 'self' cdn.datatables.net 'unsafe-inline' fonts.googleapis.com; connect-src www.google-analytics.com {{api_domain}} 'self';  script-src-elem www.google-analytics.com www.googletagmanager.com buenacubera.projectpoder.org cdn.datatables.net 'self' 'unsafe-inline'; script-src www.google-analytics.com www.googletagmanager.com cdn.datatables.net buenacubera.projectpoder.org ssl.google-analytics.com 'self' 'unsafe-inline' 'unsafe-eval';">
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.css'>
     <link rel='stylesheet' href='/stylesheets/style.css'>
-    <link rel="preload" href="{{autocomplete_url}}">
-    <link rel="preload" href="/fonts/fa/fa-regular-400.woff2">
-    <link rel="preload" href="/fonts/fa/fa-solid-900.woff2">
-    <link rel="preload" href="/fonts/Montserrat/Montserrat-Regular.ttf">
+    <link rel="preload" href="{{autocomplete_url}}"  as="fetch">
+    <link rel="preload" href="/fonts/fa/fa-regular-400.woff2" as="font">
+    <link rel="preload" href="/fonts/fa/fa-solid-900.woff2" as="font">
+    <link rel="preload" href="/fonts/Montserrat/Montserrat-Regular.ttf" as="font">
     <link rel="dns-prefetch" href="https://www.poderlatam.org">
     <link rel="dns-prefetch" href="https://buenacubera.projectpoder.org">
     <script type="text/javascript">
