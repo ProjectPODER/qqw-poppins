@@ -24,7 +24,7 @@
               {{#if area }}
               <div class="col-lg-3 p-0">
                 <p class="index-list-element">
-                  <a href="{{ url view="areas/:id" _id=area.0.id}}" title="{{_ "País:" }} {{area.0.name}}"><i class="fas fa-flag"></i> {{area.0.name}}</a>
+                  <i class="fas fa-flag"></i>{{#each area }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
                 </p>
               </div>
               {{/if}}
@@ -103,7 +103,7 @@
             {{#if area }}
             <div class="col-lg-3 p-0">
               <p class="index-list-element">
-                <a href="{{ url view="areas/:id" _id=area.0.id}}" title="{{_ "País" }}: {{ area.0.name }}"><i class="fas fa-flag"></i> {{ area.0.name }}</a>
+                  <i class="fas fa-flag"></i>{{#each area }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
               </p>
             </div>
             {{/if}}
