@@ -13,6 +13,47 @@
         max-width 150px
         text-align left
         min-width 100px
+    .dropdown-menu-morefilters
+        border 1px solid 
+        background-color #e6e6e6
+        width calc(100% - 20px)
+        position absolute
+        left 5px
+        padding 0 
+        margin 0
+        max-height calc(100vh - 140px)
+        overflow auto
+        .selection-filter-box
+            max-width: none
+            overflow visible
+            display none
+            .filter-selected 
+                display none
+            &.with-value
+                margin: 0 0 0.5rem 1rem;
+                display inline-block !important
+                .filter-selected
+                    display inline
+                .dropdown-menu 
+                    margin-top -22px !important
+
+        .dropdown-menu 
+            transform: none !important
+            position static !important
+            width 100% !important 
+            background-color #e6e6e6
+            border none !important
+            padding 0 !important
+            margin-bottom 1em
+            h6 
+                display none
+        .nav-item
+            max-width none
+            width calc(100% - 20px)
+            border-bottom 4px solid
+            border-color white
+            overflow hidden
+
     .type-filter
         border-right 3px solid $main-color
         margin-left 0
@@ -140,11 +181,11 @@
     ul.filter-active-collection-areas .filter-collection-areas
       display block
  
-    .left-box 
-        overflow hidden
-        width calc(100% - 400px)
-        #filtersList 
-            // flex-wrap nowrap
+    // .left-box 
+    //     overflow hidden
+    //     width calc(100% - 400px)
+    //     #filtersList 
+    //         // flex-wrap nowrap
 
 
 .selector-filter-type
@@ -231,6 +272,9 @@
     .left-elements
     .right-elements
         padding 0
+
+        div
+            float right
         // max-width: 50%
 
 

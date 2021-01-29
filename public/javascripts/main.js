@@ -138,8 +138,9 @@ var autocollapse = function (menu,maxHeight) {
           //  add child to dropdown
           var children = nav.children(menu + ' > li:not(:last-child)');
           var count = children.length;
-          // console.log("autocollapse moving", autocollapse_moves, $(children[count - 1]));
-          $(children[count - 1]).prependTo(menu + ' .dropdown-menu-morefilters');
+          let movingElement = $(children[count - 1]);
+          // console.log("autocollapse moving", autocollapse_moves, movingElement);
+          movingElement.prependTo(menu + ' .dropdown-menu-morefilters');
           navHeight = nav.innerHeight();
           autocollapse_moves++;
 
@@ -149,7 +150,8 @@ var autocollapse = function (menu,maxHeight) {
   }
   else {
     // alert("Hello! I am an alert box else!!");
-      var collapsed = $(menu + ' .dropdown-menu-morefilters').children(menu + ' > li');
+      // console.log("else",$(menu + ' .dropdown-menu-morefilters').children('li'));
+      var collapsed = $(menu + ' .dropdown-menu-morefilters').children('li');
     
       if (collapsed.length===0) {
         $('.more-filters-dropdown').addClass('d-none');
@@ -174,13 +176,18 @@ var autocollapse = function (menu,maxHeight) {
 let autocollapse_moves = 0;
 jQuery(function() {
   // when the page loads
-  autocollapse("#filtersList",80); 
+  autocollapse("#filtersList",81); 
   // when the window is resized
   $(window).on('resize', function () {
     autocollapse_moves = 0;
-    autocollapse("#filtersList",80); 
+    autocollapse("#filtersList",81); 
   });
 });
+
+$("#moreFilters").on("click", function() {
+  // console.log("moreFilters click");
+  $(".dropdown-menu-morefilters").toggleClass("d-none");
+})
 
   // Add scrollspy to <body> in Contract perfil
 $('body').scrollspy({target: "#right-menu", offset: 250});
@@ -209,17 +216,17 @@ $(window).on('activate.bs.scrollspy', function (e) {
   history.replaceState({}, "", $("a[href^='#']", e.target).attr("href"));
 });
 
-// Copy clipboard
-function copyClipboard() {
-  var copyText = document.getElementById("apiUrl");
-  copyText.select();
-  document.execCommand("copy");
-}
-function copyClipboard() {
-  var copyText = document.getElementById("pageUrl");
-  copyText.select();
-  document.execCommand("copy");
-}
+// // Copy clipboard
+// function copyClipboard() {
+//   var copyText = document.getElementById("apiUrl");
+//   copyText.select();
+//   document.execCommand("copy");
+// }
+// function copyClipboard() {
+//   var copyText = document.getElementById("pageUrl");
+//   copyText.select();
+//   document.execCommand("copy");
+// }
 
 // Contact form about/contact.hbs
 $("#send_email").click(function (e) {
@@ -328,99 +335,85 @@ $("#send_info_uc").click(function (e) {
 //** FILTERS **//
 
 //Type filter
-$(".dropdown-menu").on("click","button.filter-dropdown-item", function(e) {
-  let collection = $(e.currentTarget).data("collection");
+// $(".dropdown-menu").on("click","button.filter-dropdown-item", function(e) {
+//   let collection = $(e.currentTarget).data("collection");
 
-  location.search= removeQueryField("collection") + "&collection="+collection;
-  console.log(location.search);
-})
+//   location.search= removeQueryField("collection") + "&collection="+collection;
+//   console.log(location.search);
+// })
 
 //set amount and count filters
-$('.bucket').click(function(event) {
-  const item = $(event.target).parent(".bucket");
-  const bucketName = $(item).data("bucketName")
-  const bucketType = $(item).data("bucketType")
-  const bucketId = bucketName + "-" + bucketType;
-  let bucketData;
+// $('.bucket').click(function(event) {
+//   const item = $(event.target).parent(".bucket");
+//   const bucketName = $(item).data("bucketName")
+//   const bucketType = $(item).data("bucketType")
+//   const bucketId = bucketName + "-" + bucketType;
+//   let bucketData;
 
-  // Si ya estaba seleccionado, borrar
-  if (item.hasClass("selected")) {
-    item.removeClass("selected");
-    bucketData = ["",""]
-  }
-  else {
-    bucketData = $(item).data("bucket").split("-");
-    item.parent().find(".bucket").removeClass("selected");
-    item.addClass("selected");
-  }
-  console.log(bucketId,bucketData,$("#minimo-"+bucketId));
-  $("#minimo-"+bucketId).val(bucketData[0]);
-  $("#maximo-"+bucketId).val(bucketData[1]);
-});
+//   // Si ya estaba seleccionado, borrar
+//   if (item.hasClass("selected")) {
+//     item.removeClass("selected");
+//     bucketData = ["",""]
+//   }
+//   else {
+//     bucketData = $(item).data("bucket").split("-");
+//     item.parent().find(".bucket").removeClass("selected");
+//     item.addClass("selected");
+//   }
+//   console.log(bucketId,bucketData,$("#minimo-"+bucketId));
+//   $("#minimo-"+bucketId).val(bucketData[0]);
+//   $("#maximo-"+bucketId).val(bucketData[1]);
+// });
 
 //Hilight selected option for amount filters
-let dataFilter = "";
-$(".search-amount").each(function(i,element) {
-  if (dataFilter == "") {
-  dataFilter = element.value + "-";
-  }
-  else {
-    dataFilter += element.value;
-    $(".bucket[data-bucket="+dataFilter+"]").addClass("selected");
-    dataFilter = "";
-  }
-})
+// let dataFilter = "";
+// $(".search-amount").each(function(i,element) {
+//   if (dataFilter == "") {
+//   dataFilter = element.value + "-";
+//   }
+//   else {
+//     dataFilter += element.value;
+//     $(".bucket[data-bucket="+dataFilter+"]").addClass("selected");
+//     dataFilter = "";
+//   }
+// })
 
 //set bool filters
-$(".bool-filter").click(function(e) {
-  const target = $(e.currentTarget);
-  const realFieldId = target.data("realFieldId")
-  const realField = $("#"+realFieldId);
-  const realFieldValue = realField.val();
+// $(".bool-filter").click(function(e) {
+//   const target = $(e.currentTarget);
+//   const realFieldId = target.data("realFieldId")
+//   const realField = $("#"+realFieldId);
+//   const realFieldValue = realField.val();
 
-  if (realFieldValue == "true") {
-    realField.val("false");
-  }
-  else {
-    realField.val("true");
-  }
-  // console.log(target.data(),realFieldId,realField);
-})
+//   if (realFieldValue == "true") {
+//     realField.val("false");
+//   }
+//   else {
+//     realField.val("true");
+//   }
+//   // console.log(target.data(),realFieldId,realField);
+// })
 
-$('.delete-blob-filter').click(function(event, instance) {
-  let field = $(event.target).parents(".blob").data("field");
-  console.log("delete blob filter",field)
-  location.search = removeQueryField(field);
-  console.log(location.search,field,re);
-})
+// $("#indexLength").change(function(){
+//  var selected = $('#indexLength').val();
+//     location.search= removeQueryField("size") + "&size="+selected;
+// });
 
-$('.supplier-list-toggle,.profile-list-toggle').click(function(event, instance) {
-  let parent = $(event.target).parents(".js-suppliers,.profile-list");
-  // console.log("supplier toggle",parent);
-  parent.find(".supplier-hidden,.profile-list-hidden").toggle();
-})
-
-
-$("#indexLength").change(function(){
- var selected = $('#indexLength').val();
-    location.search= removeQueryField("size") + "&size="+selected;
-});
-
-//TODO: we need better management of URL parameters
-function removeQueryField(field) {
-  re = new RegExp('([\?&])' + field+"=[^&]*([&#]*)");
-  return location.search.replace(re,"$1$2")
-}
+// //TODO: we need better management of URL parameters
+// function removeQueryField(field) {
+//   re = new RegExp('([\?&])' + field+"=[^&]*([&#]*)");
+//   return location.search.replace(re,"$1$2")
+// }
 
 
 $(document).on("click",".hide-alert-bar",{},function(e) {
   $(e.target).parent(".alert-bar").fadeOut()
 });
 
-// Advance filters
-$('.filters-link-sm').click(function() {
-  $('.advance-filters').toggleClass('open');
-});
+// // Advance filters
+// $('.filters-link-sm').click(function() {
+//   $('.advance-filters').toggleClass('open');
+// });
 
 //Fixed perfil title
 $(window).scroll(function(e) {
@@ -448,38 +441,40 @@ $(window).scroll(function(e) {
 });
 
 //Mujeres pais
-$(document).ready( function () {
-    $('#empresas-mujeres-table').DataTable({
-      pageLength: 100,
-      lengthChange: false,
-      language: {
-    "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ empresas",
-                "sZeroRecords":    "No se encontraron empresas",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
-                "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ empresas",
-                "sInfoEmpty":      "Mostrando empresas del 0 al 0 de un total de 0 empresas",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ empresas)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar por nombre:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                },
-                "buttons": {
-                    "copy": "Copiar",
-                    "colvis": "Visibilidad"
-                }
-            }
-    });
-} );
+//Deshabilitado temporalmente
+
+// $(document).ready( function () {
+//     $('#empresas-mujeres-table').DataTable({
+//       pageLength: 100,
+//       lengthChange: false,
+//       language: {
+//     "sProcessing":     "Procesando...",
+//                 "sLengthMenu":     "Mostrar _MENU_ empresas",
+//                 "sZeroRecords":    "No se encontraron empresas",
+//                 "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+//                 "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ empresas",
+//                 "sInfoEmpty":      "Mostrando empresas del 0 al 0 de un total de 0 empresas",
+//                 "sInfoFiltered":   "(filtrado de un total de _MAX_ empresas)",
+//                 "sInfoPostFix":    "",
+//                 "sSearch":         "Buscar por nombre:",
+//                 "sUrl":            "",
+//                 "sInfoThousands":  ",",
+//                 "sLoadingRecords": "Cargando...",
+//                 "oPaginate": {
+//                     "sFirst":    "Primero",
+//                     "sLast":     "Último",
+//                     "sNext":     "Siguiente",
+//                     "sPrevious": "Anterior"
+//                 },
+//                 "oAria": {
+//                     "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+//                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+//                 },
+//                 "buttons": {
+//                     "copy": "Copiar",
+//                     "colvis": "Visibilidad"
+//                 }
+//             }
+//     });
+// } );
 

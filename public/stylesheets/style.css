@@ -3,6 +3,7 @@
 }
 @font-face {
   font-family: Montserrat;
+  font-display: swap;
   src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 body {
@@ -268,6 +269,11 @@ input[type="email"] {
 [class*="col-"] {
   width: 100%;
   float: left;
+}
+@media screen and (max-width: 576px) {
+  body {
+    font-size: 0.8em;
+  }
 }
 section.explore-data {
   padding-top: 0;
@@ -861,6 +867,54 @@ input[type=submit].landing-search-inputtext {
   text-align: left;
   min-width: 100px;
 }
+.filters .dropdown-menu-morefilters {
+  border: 1px solid;
+  background-color: #e6e6e6;
+  width: calc(100% - 20px);
+  position: absolute;
+  left: 5px;
+  padding: 0;
+  margin: 0;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+}
+.filters .dropdown-menu-morefilters .selection-filter-box {
+  max-width: none;
+  overflow: visible;
+  display: none;
+}
+.filters .dropdown-menu-morefilters .selection-filter-box .filter-selected {
+  display: none;
+}
+.filters .dropdown-menu-morefilters .selection-filter-box.with-value {
+  margin: 0 0 0.5rem 1rem;
+  display: inline-block !important;
+}
+.filters .dropdown-menu-morefilters .selection-filter-box.with-value .filter-selected {
+  display: inline;
+}
+.filters .dropdown-menu-morefilters .selection-filter-box.with-value .dropdown-menu {
+  margin-top: -22px !important;
+}
+.filters .dropdown-menu-morefilters .dropdown-menu {
+  transform: none !important;
+  position: static !important;
+  width: 100% !important;
+  background-color: #e6e6e6;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 1em;
+}
+.filters .dropdown-menu-morefilters .dropdown-menu h6 {
+  display: none;
+}
+.filters .dropdown-menu-morefilters .nav-item {
+  max-width: none;
+  width: calc(100% - 20px);
+  border-bottom: 4px solid;
+  border-color: #fff;
+  overflow: hidden;
+}
 .filters .type-filter {
   border-right: 3px solid #2d1c9d;
   margin-left: 0;
@@ -999,10 +1053,6 @@ input[type=submit].landing-search-inputtext {
 .filters ul.filter-active-collection-areas .filter-collection-areas {
   display: block;
 }
-.filters .left-box {
-  overflow: hidden;
-  width: calc(100% - 400px);
-}
 .selector-filter-type {
   padding: 4px 8px 2px;
   font-weight: bold;
@@ -1079,6 +1129,10 @@ input[type=submit].landing-search-inputtext {
 .index-list-elements .left-elements,
 .index-list-elements .right-elements {
   padding: 0;
+}
+.index-list-elements .left-elements div,
+.index-list-elements .right-elements div {
+  float: right;
 }
 .index-list-element {
   margin-right: 1em;
@@ -7307,8 +7361,8 @@ footer .pageStats {
   font-style: normal;
   font-weight: normal;
   font-display: auto;
-  src: url("../webfonts/fa-brands-400.eot");
-  src: url("../webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-brands-400.woff2") format("woff2"), url("../webfonts/fa-brands-400.woff") format("woff"), url("../webfonts/fa-brands-400.ttf") format("truetype"), url("../webfonts/fa-brands-400.svg#fontawesome") format("svg");
+  src: url("../fonts/fa/fa-brands-400.eot");
+  src: url("../fonts/fa/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("../fonts/fa/fa-brands-400.woff2") format("woff2"), url("../fonts/fa/fa-brands-400.woff") format("woff"), url("../fonts/fa/fa-brands-400.ttf") format("truetype"), url("../fonts/fa/fa-brands-400.svg#fontawesome") format("svg");
 }
 .fab {
   font-family: 'Font Awesome 5 Brands';
@@ -7318,8 +7372,8 @@ footer .pageStats {
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url("../webfonts/fa-regular-400.eot");
-  src: url("../webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.woff") format("woff"), url("../webfonts/fa-regular-400.ttf") format("truetype"), url("../webfonts/fa-regular-400.svg#fontawesome") format("svg");
+  src: url("../fonts/fa/fa-regular-400.eot");
+  src: url("../fonts/fa/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../fonts/fa/fa-regular-400.woff2") format("woff2"), url("../fonts/fa/fa-regular-400.woff") format("woff"), url("../fonts/fa/fa-regular-400.ttf") format("truetype"), url("../fonts/fa/fa-regular-400.svg#fontawesome") format("svg");
 }
 .far {
   font-family: 'Font Awesome 5 Free';
@@ -7330,16 +7384,16 @@ footer .pageStats {
   font-style: normal;
   font-weight: 900;
   font-display: auto;
-  src: url("../webfonts/fa-solid-900.eot");
-  src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("../webfonts/fa-solid-900.svg#fontawesome") format("svg");
+  src: url("../fonts/fa/fa-solid-900.eot");
+  src: url("../fonts/fa/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../fonts/fa/fa-solid-900.woff2") format("woff2"), url("../fonts/fa/fa-solid-900.woff") format("woff"), url("../fonts/fa/fa-solid-900.ttf") format("truetype"), url("../fonts/fa/fa-solid-900.svg#fontawesome") format("svg");
 }
 @font-face {
   font-family: 'FontAwesome';
   font-style: normal;
   font-weight: 900;
   font-display: auto;
-  src: url("../webfonts/fa-solid-900.eot");
-  src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("../webfonts/fa-solid-900.svg#fontawesome") format("svg");
+  src: url("../fonts/fa/fa-solid-900.eot");
+  src: url("../fonts/fa/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../fonts/fa/fa-solid-900.woff2") format("woff2"), url("../fonts/fa/fa-solid-900.woff") format("woff"), url("../fonts/fa/fa-solid-900.ttf") format("truetype"), url("../fonts/fa/fa-solid-900.svg#fontawesome") format("svg");
 }
 .fa,
 .fas {
