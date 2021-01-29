@@ -29,7 +29,7 @@
         {{>utilities api_url=result.api_url share_url=share_url api_summary_url=result.api_summary_url }}
       </ul>
     </div>
-    <nav id="right-menu" class="menu-profile">
+    <nav id="right-menu">
       <ul class="right-menu-profile nav d-flex flex-nowrap">
         {{#if summaries.buyer.total.count }}
         <li>
@@ -82,7 +82,7 @@
         {{#each result.memberships.parent }}
         <li>
           <a href="#memberships-parent-{{@index}}" class="anchor">
-            {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+            {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
           </a>
         </li>
         {{/each}}
@@ -91,11 +91,12 @@
         {{#each result.memberships.child }}
         <li>
           <a href="#memberships-child-{{@index}}" class="anchor">
-            {{{get_role_icon this.role this.directionality}}}{{get_role_name this.role this.directionality}}
+            {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
           </a>
         </li>
         {{/each}}
         {{/if}}
+
         {{#if result.area.length }}
         <li>
           <a href="#ubicacion" class="anchor">
@@ -123,7 +124,7 @@
 </section>
 
 
-<section class="profile" id="top-nonsense">
+{{!-- <section class="profile" id="top-nonsense">
   <div class="profile-content">
     <div class="row">
       <div class="col-12 col-md-12">
@@ -133,7 +134,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> --}}
 
 
 {{!-- Dependencia --}}

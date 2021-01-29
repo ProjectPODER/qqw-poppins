@@ -190,7 +190,7 @@ $("#moreFilters").on("click", function() {
 })
 
   // Add scrollspy to <body> in Contract perfil
-$('body').scrollspy({target: "#right-menu", offset: 250});
+$('body').scrollspy({target: "#right-menu", offset: 200});
 
 // Add smooth scrolling on all links inside the navbar
 $("#right-menu a").on('click', function(event) {
@@ -205,7 +205,7 @@ $("#right-menu a").on('click', function(event) {
     // Using jQuery's animate() method to add smooth page scroll
     // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
     $('html, body').animate({
-      scrollTop: $(hash).offset().top - 300
+      scrollTop: $(hash).offset().top - 200
     }, 800, function(){
     });
   }  // End if

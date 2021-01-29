@@ -7,7 +7,7 @@
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
     {{else}}
       {{#with (filter_array filter.options "value" (or filter.value filter.default.value) ) }}
-        <button type="button" class="btn btn-light btn-sm ml-auto" onclick="$('#{{../filter.htmlFieldName}}').val('{{# ifCond value "==" "desc"  }}asc{{/ifCond}}')[0].form.submit();"><i class="fas {{ icon }}" title="{{../filter.fieldLabel}} - {{label}}"></i></button>
+        <button type="button" class="btn btn-light btn-sm ml-auto mb-2" onclick="$('#{{../filter.htmlFieldName}}').val('{{# ifCond value "==" "desc"  }}asc{{/ifCond}}')[0].form.submit();"><i class="fas {{ icon }}" title="{{../filter.fieldLabel}} - {{label}}"></i></button>
       {{/with}}
       <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
     {{/ifCond}}
@@ -43,9 +43,9 @@
           {{#if filter.value }}
           <button type="button" onclick="$('#{{filter.htmlFieldName}},#{{filter.htmlFieldName}}-min,#{{filter.htmlFieldName}}-max').val('')[0].form.submit();" class="close ml-auto">&times;</button>
           {{/if}}
-
-          <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
-            <h6 class="ml-2"><b>{{filter.fieldLabel}}</b></h6>
+        </div>
+        <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
+            <h6 class="ml-2 {{#ifCond filter.type "==" "minmax" }}text-center{{/ifCond}}"><b>{{filter.fieldLabel}}</b></h6>
             <p class="ml-2">{{filter.guidanceText}}</p>
             <fieldset>
               {{# ifCond filter.type "==" "string" }}
@@ -58,15 +58,17 @@
               {{/ifCond}}
               {{# ifCond filter.type "==" "select" }}
                 {{#each filter.options}}
-                  <button class="btn btn-light" type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{_ this}}</button>
+                  <button class="btn btn-light mb-1" type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{_ this}}</button>
                 {{/each}}
                 <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
               {{/ifCond}}
-              {{# ifCond filter.type "==" "minmax" }}
-                {{#each filter.options}}
-                  <button class="btn btn-light mb-3" onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</button>
-                {{/each}}
+              {{#ifCond filter.type "==" "minmax" }}
                 <div class="form-inline justify-content-center">
+                  {{#each filter.options}}
+                    <button class="btn btn-light mb-1 mr-1" onclick="$('#{{../filter.htmlFieldName}}-max').val('{{max}}');$('#{{../filter.htmlFieldName}}-min').val('{{min}}')[0].form.submit()">{{label}}</button>
+                  {{/each}}
+                </div>
+                <div class="form-inline justify-content-center mt-2">
                   <input type="text" name="{{ filter.htmlFieldName }}-min" id="{{ filter.htmlFieldName }}-min" placeholder="Mínimo" class="search-amount form-control input-minmax" value="{{filter.value.min }}">
                   <input type="text" name="{{ filter.htmlFieldName }}-max" id="{{ filter.htmlFieldName }}-max" placeholder="Máximo" class="search-amount form-control input-minmax mr-2" value="{{filter.value.max }}">
                   <button type="submit" class="btn btn-light">{{_ "APLICAR"}}</button>
@@ -81,8 +83,6 @@
               {{/ifCond}}
             </fieldset>
           </div>
-        </div>
-
       {{/ifCond}}
     {{/ifCond}}
   </li>

@@ -201,7 +201,7 @@
     background-color #e6e6e6
     padding 4px 8px 2px
     overflow hidden
-    white-space nowrap
+    // white-space nowrap
     text-overflow ellipsis
     max-width 200px
     display: flex !important;
@@ -219,7 +219,6 @@
     white-space nowrap
     text-overflow ellipsis
     margin 1px 0 0
-
 
 // RESULTS
 .error
@@ -385,19 +384,22 @@
     border-left 1px solid #dee2e6
     border-right 1px solid #dee2e6
 
+.dropdown-menu
+    .easy-search-input
+        width 99% !important
+        margin-top -6.5px
+    .twitter-typeahead
+        width 70% !important
 
+.center
+    text-align center
 
 // RESPONSIVE VIEWS
 
-@media (min-width: 576px)
+@media screen and (max-width: 991px)
     .filters
-        .form-inline .form-control
-            width 50%
+        top 56px
 
-@media (max-width: 576px)
-    .error, .results-list
-        padding-left 0
-        padding-right 0
 
 @media screen and (max-width: 767px)
     // .index-list-elements
@@ -425,52 +427,7 @@
             select 
                 float none !important
                 margin auto
-    
-    // .left-elements
-    // .right-elements
-    //     max-width: 50%
-        // -webkit-box-orient vertical
-        // -webkit-box-direction normal
-        // -webkit-flex-direction column
-        // -ms-flex-direction column
-        // flex-direction column
-        // -webkit-box-pack justify
-        // -webkit-justify-content space-between
-        // -ms-flex-pack justify
-        // justify-content space-between
-        // -webkit-box-align start
-        // -webkit-align-items flex-start
-        // -ms-flex-align start
-        // align-items flex-start
 
-
-        // -webkit-box-orient vertical
-        // -webkit-box-direction normal
-        // -webkit-flex-direction column
-        // -ms-flex-direction column
-        // flex-direction column
-        // -webkit-box-pack justify
-        // -webkit-justify-content space-between
-        // -ms-flex-pack justify
-        // justify-content space-between
-        // -webkit-box-align start
-        // -webkit-align-items flex-start
-        // -ms-flex-align start
-        // align-items flex-start
-    // .index-list-elements
-    //     -webkit-box-orient vertical
-    //     -webkit-box-direction normal
-    //     -webkit-flex-direction column
-    //     -ms-flex-direction column
-    //     flex-direction column
-    //     -webkit-box-pack justify
-    //     -webkit-justify-content space-between
-    //     -ms-flex-pack justify
-    //     justify-content space-between
-    //     -webkit-box-align start
-    //     -webkit-align-items flex-start
-    //     -ms-flex-align start
-    //     align-items flex-start
     .index-list-item
         display -webkit-box
         display -webkit-flex
@@ -500,3 +457,46 @@
         -webkit-flex-direction column
         -ms-flex-direction column
         flex-direction column
+
+@media screen and (max-width: 590px)
+    .filters 
+        .filter-selected.simple
+            font-size 0.8rem
+            margin-top -4px
+        .filter-title.dropdown-tools, .filters .filter-title-simple.dropdown-tools
+            font-size 0.7rem
+            .icon-tools
+                font-size 1.3rem
+        .nav-item.general-filters
+            margin-left 0
+            max-width none
+            min-width auto
+
+@media (min-width: 576px)
+    .filters
+        .form-inline .form-control
+            width 50%
+
+@media (max-width: 576px)
+    .error, .results-list
+        padding-left 0
+        padding-right 0
+
+@media screen and (max-width: 492px)
+    .results-items
+        display none
+    .nav-item.more-filters-dropdown
+        margin-left 0
+        max-width none
+        min-width auto
+@media screen and (max-width: 364px)
+    .filters 
+        .filter-selected.simple
+            font-size 0.6rem
+            margin-top -4px
+        .filter-title.dropdown-tools, .filters .filter-title-simple.dropdown-tools
+            font-size 0.6rem
+            .icon-tools
+                font-size 1.2rem
+        .nav-link.dropdown-tools
+            padding: 0.5rem

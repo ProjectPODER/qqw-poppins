@@ -15,14 +15,15 @@
   white-space: nowrap;  
   overflow hidden
   background-color rgba(45,28,157,0.10)
-  margin-top 20px
+  margin-top 7px
+  position relative
   & ul
     padding 0 5px
   & li
     color #9b9b9b
     text-decoration none
     background-color #ffffff
-    margin 6px 5px
+    margin 5px 2.5px
     padding 3px
     & a
       color #9b9b9b
@@ -31,9 +32,10 @@
       i
         width 25px
 
-  .active > .anchor, .active > .evaluacion i
+  .active 
     background-color #2b00f7 !important
-    color #ffffff
+    & > .anchor
+      color #ffffff
 
 .breadcrumb 
   background none
@@ -50,6 +52,7 @@
   background-color rgba(45,28,157,0.10)
   width 100%
   margin-bottom 1.5rem
+  display flex
 
 .box-title-icon
   background-color rgba(45,28,157,0.12)
@@ -217,7 +220,7 @@
   box-shadow: 0px 4px 10px -3px rgba(176,176,176,1);
 
 .description-data-title
-  padding 0.5em
+  padding 1.15em 0.5em 0.5em
   h3
     width calc(100% - 305px)
     margin-bottom 0
@@ -382,6 +385,15 @@ section
       right 0em
       top 0em
       width auto
+      // a.filter-title
+      // i 
+    .filters
+      .nav-item
+        margin 0
+      .icon-tools
+        font-size 1.5rem
+
+
   &.country-mujeres
     padding-top 0
     padding-bottom 0
@@ -432,6 +444,9 @@ section
   padding 15px 10px
   display inline-block
   margin-bottom 0 !important
+  overflow: hidden;
+  white-space nowrap
+  text-overflow ellipsis !important
 
 .description-data-subname
   font-size 1.15rem

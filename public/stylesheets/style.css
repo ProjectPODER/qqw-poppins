@@ -1067,7 +1067,6 @@ input[type=submit].landing-search-inputtext {
   background-color: #e6e6e6;
   padding: 4px 8px 2px;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 200px;
   display: flex !important;
@@ -1211,16 +1210,19 @@ input[type=submit].landing-search-inputtext {
   border-left: 1px solid #dee2e6;
   border-right: 1px solid #dee2e6;
 }
-@media (min-width: 576px) {
-  .filters .form-inline .form-control {
-    width: 50%;
-  }
+.dropdown-menu .easy-search-input {
+  width: 99% !important;
+  margin-top: -6.5px;
 }
-@media (max-width: 576px) {
-  .error,
-  .results-list {
-    padding-left: 0;
-    padding-right: 0;
+.dropdown-menu .twitter-typeahead {
+  width: 70% !important;
+}
+.center {
+  text-align: center;
+}
+@media screen and (max-width: 991px) {
+  .filters {
+    top: 56px;
   }
 }
 .page-break {
@@ -1269,6 +1271,64 @@ input[type=submit].landing-search-inputtext {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+@media screen and (max-width: 590px) {
+  .filters .filter-selected.simple {
+    font-size: 0.8rem;
+    margin-top: -4px;
+  }
+  .filters .filter-title.dropdown-tools,
+  .filters .filters .filter-title-simple.dropdown-tools {
+    font-size: 0.7rem;
+  }
+  .filters .filter-title.dropdown-tools .icon-tools,
+  .filters .filters .filter-title-simple.dropdown-tools .icon-tools {
+    font-size: 1.3rem;
+  }
+  .filters .nav-item.general-filters {
+    margin-left: 0;
+    max-width: none;
+    min-width: auto;
+  }
+}
+@media (min-width: 576px) {
+  .filters .form-inline .form-control {
+    width: 50%;
+  }
+}
+@media (max-width: 576px) {
+  .error,
+  .results-list {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 492px) {
+  .results-items {
+    display: none;
+  }
+  .nav-item.more-filters-dropdown {
+    margin-left: 0;
+    max-width: none;
+    min-width: auto;
+  }
+}
+@media screen and (max-width: 364px) {
+  .filters .filter-selected.simple {
+    font-size: 0.6rem;
+    margin-top: -4px;
+  }
+  .filters .filter-title.dropdown-tools,
+  .filters .filters .filter-title-simple.dropdown-tools {
+    font-size: 0.6rem;
+  }
+  .filters .filter-title.dropdown-tools .icon-tools,
+  .filters .filters .filter-title-simple.dropdown-tools .icon-tools {
+    font-size: 1.2rem;
+  }
+  .filters .nav-link.dropdown-tools {
+    padding: 0.5rem;
+  }
 }
 .social-share-icons a {
   font-size: 2.5rem;
@@ -1821,7 +1881,8 @@ input[type=submit].landing-search-inputtext {
   white-space: nowrap;
   overflow: hidden;
   background-color: rgba(45,28,157,0.1);
-  margin-top: 20px;
+  margin-top: 7px;
+  position: relative;
 }
 #right-menu ul {
   padding: 0 5px;
@@ -1830,7 +1891,7 @@ input[type=submit].landing-search-inputtext {
   color: #9b9b9b;
   text-decoration: none;
   background-color: #fff;
-  margin: 6px 5px;
+  margin: 5px 2.5px;
   padding: 3px;
 }
 #right-menu li a {
@@ -1841,9 +1902,10 @@ input[type=submit].landing-search-inputtext {
 #right-menu li a i {
   width: 25px;
 }
-#right-menu .active > .anchor,
-#right-menu .active > .evaluacion i {
+#right-menu .active {
   background-color: #2b00f7 !important;
+}
+#right-menu .active > .anchor {
   color: #fff;
 }
 .breadcrumb {
@@ -1855,6 +1917,7 @@ input[type=submit].landing-search-inputtext {
   background-color: rgba(45,28,157,0.1);
   width: 100%;
   margin-bottom: 1.5rem;
+  display: flex;
 }
 .box-title-icon {
   background-color: rgba(45,28,157,0.12);
@@ -2048,7 +2111,7 @@ input[type=submit].landing-search-inputtext {
   box-shadow: 0px 4px 10px -3px #b0b0b0;
 }
 .description-data-title {
-  padding: 0.5em;
+  padding: 1.15em 0.5em 0.5em;
 }
 .description-data-title h3 {
   width: calc(100% - 305px);
@@ -2229,6 +2292,12 @@ section.profile-header .right-box {
   top: 0em;
   width: auto;
 }
+section.profile-header .filters .nav-item {
+  margin: 0;
+}
+section.profile-header .filters .icon-tools {
+  font-size: 1.5rem;
+}
 section.country-mujeres {
   padding-top: 0;
   padding-bottom: 0;
@@ -2288,6 +2357,9 @@ section.country-mujeres {
   padding: 15px 10px;
   display: inline-block;
   margin-bottom: 0 !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
 }
 .description-data-subname {
   font-size: 1.15rem;
