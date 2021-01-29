@@ -2129,9 +2129,6 @@ input[type=submit].landing-search-inputtext {
   width: 65%;
   float: left;
 }
-.profile-menu-margin {
-  margin-top: 10rem;
-}
 .contract-margin {
   margin-top: 11.5rem;
 }
@@ -2306,12 +2303,12 @@ section.country-mujeres {
   color: #2d1c9d;
   font-size: 2rem;
   font-weight: bold;
-  margin: 23px 0 5px;
+  margin-bottom: 1rem;
 }
 .contract-award-item {
   border: 1px solid #ccc;
-  padding: 0 1em;
-  margin: 1em;
+  width: 100%;
+  margin: 0 1rem 1rem;
 }
 .contract-award-item .contract-award-title {
   background: #eee;
@@ -2328,6 +2325,7 @@ section.country-mujeres {
 .profile-news-container {
   background-color: #f7f7f7;
   padding: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 .profile-news-title {
   font-size: 22px;
@@ -2446,7 +2444,7 @@ section.country-mujeres {
   .fixed-title .description-data-title h3,
   .fixed-title-contract .description-data-title h3 {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 3px;
     font-size: 0.9rem;
   }
   .fixed-title #right-menu,
@@ -2460,6 +2458,10 @@ section.country-mujeres {
   .fixed-title #right-menu li a i,
   .fixed-title-contract #right-menu li a i {
     width: 15px;
+  }
+  .fixed-title .right-box,
+  .fixed-title-contract .right-box {
+    display: none;
   }
 }
 .flag_name {
