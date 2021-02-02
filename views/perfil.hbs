@@ -443,6 +443,22 @@
         <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
       </div>
       <div class="col-12 col-md-12">
+        {{!-- areas summaries --}}
+        {{#if result.summaries.classification }}
+        <div class="row">
+          {{#each result.summaries.classification}}
+          <div class="col-lg-2">
+            <p class="">
+              <a href="{{url view="buscador" collection=(get_classification_type @key) sort-cpi="" classification=@key area=../id}}" title="{{format_number this}} {{_ @key }}">
+              {{{ get_classification_icon @key }}} {{format_number this}} {{_ @key }}
+              </a>
+            </p>
+          </div>
+          {{/each}}
+        </div>
+        {{/if}}
+
+
         <div class="row flex">
 
           {{#if result.other_names.length }}
