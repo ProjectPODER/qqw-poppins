@@ -207,6 +207,7 @@ $("#right-menu a").on('click', function(event) {
     $('html, body').animate({
       scrollTop: $(hash).offset().top - 200
     }, 800, function(){
+      console.log("scroll spy animate",$(hash).offset().top)
     });
   }  // End if
 });

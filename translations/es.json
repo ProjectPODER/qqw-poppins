@@ -351,5 +351,16 @@
 "Más filtros":"Más filtros",
 "Datos estructurados de esta página.":"Datos estructurados de esta página.",
 "País:":"País:",
-"unidad-compradora": "Unidad compradora"
+"unidad-compradora": "Unidad compradora",
+"Funcionario": "Funcionario/a",
+"Descargar resúmenes JSON": "Descargar resúmenes JSON",
+"Datos estructurados de los resúmenes de esta entidad.": "Datos estructurados de los resúmenes de esta entidad.",
+"Punto de contacto": "Responsable de compras",
+"contactPoint": "Responsable de compras",
+"Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato.": "Ésta persona es (o ha sido) responsable de una Unidad Compradora, se indican todos los contratos que sucedieron bajo su mandato según las fuentes.",
+"Ver todos los contratos de este responsable": "Ver todos los contratos de este responsable",
+"Ubicación": "Ubicación",
+"Pais": "País",
+"country-of-residence": "País de residencia"
+
 }

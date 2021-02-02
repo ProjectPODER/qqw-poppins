@@ -8,6 +8,9 @@
                     {{or result.organization_name result.person_name}}
                 </p>
                 </a>
+                {{#ifCond result.parent_class "==" "institution"}}
+                   {{ result.parent_name }}
+                {{/ifCond}}
             </div>
         </div>
         <div class="index-list-button">

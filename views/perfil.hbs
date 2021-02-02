@@ -228,10 +228,12 @@
 </section>
 {{/ifCond}}
 
+{{#ifCond summaries.relation.nodes.length ">" 0 }} 
 <script>
   tiza.moneyFlow({target: "graph-container", data: {{{j summaries.relation}}} });
+  
 </script>
-
+{{/ifCond }}
 
 {{#ifCond type '!=' 'companies'}}
 {{#if result.flags }}
@@ -448,16 +450,11 @@
               <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
               <ul class="js-data">
                 {{#each result.other_names}}
-                <li class="{{#ifCond @index ">" 2}}profile-list-hidden{{/ifCond}}">
+                <li class="">
                     {{name}}
                 </li>
                 {{/each}}
               </ul>
-              {{#ifCond result.other_names.length '>' 2}}
-              <div style="margin-top: 1rem; margin-bottom: 0.5rem">
-              <a class="profile-list-toggle">{{{_ "Ver todos"}}} ({{result.other_names.length}})</a>
-              </div>
-              {{/ifCond}}
             </div>
           {{/if}}
 
@@ -504,9 +501,9 @@
           {{/if}}
 
           {{#if result.source}}
-            <div class="col-md-3 col-12 pd-nonleft">
+            <div class="col-md-4 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
         </div>
