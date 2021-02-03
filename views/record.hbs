@@ -82,8 +82,8 @@
             <a href="/{{{_ "instituciones-publicas"}}}/{{result.records.compiledRelease.buyer.id }}">{{result.records.compiledRelease.buyer.name}}</a>
 
             perteneciente a 
-
-            {{#with (get_party result.records.[0] result.records.compiledRelease.parties.0.memberOf.0.id) }}
+            {{#with (get_party ../result.records result.records.compiledRelease.parties.0.memberOf.0.id) }}
+            {{j this}}
               <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación.">
               {{{ get_classification_icon "institutions" ../result.records.compiledRelease.parties.0.details.type "dependencia" result.records.compiledRelease.parties.0.details.govLevel}}}
               </a>

@@ -449,7 +449,7 @@
           {{#each result.summaries.classification}}
           <div class="col-lg-2">
             <p class="">
-              <a href="{{url view="buscador" collection=(get_classification_type @key) sort-cpi="" classification=@key area=../id}}" title="{{format_number this}} {{_ @key }}">
+              <a href="{{url view="buscador" collection=(get_classification_type @key) sort-cpi="" classification=@key pais=../result.id}}" title="{{format_number this}} {{_ @key }}">
               {{{ get_classification_icon @key }}} {{format_number this}} {{_ @key }}
               </a>
             </p>
@@ -502,7 +502,7 @@
             <div class="col-md-6 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Link(s)"}}}</p>
               {{#each result.links}}
-                <p class="js-data"><a href="{{this.id}}" target="_blank">{{this.id}}</a></p>
+                <p class="js-data"><a href="{{this.id}}" target="_blank"> <i class="fas fa-external"></i> {{ get_domain this.id}}</a></p>
               {{/each}}
             </div>
           {{/if}}
