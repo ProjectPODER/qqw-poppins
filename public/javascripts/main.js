@@ -60,38 +60,37 @@ $('.easy-search-input').typeahead(
         '</div>'
       ].join('\n'),
       suggestion: function(data){
-        let type = data.type;
-        if (type == "organizations") {
-          type = data.classification;
-        }
         let id = data.id;
         let text = data.name || data.contracts.title;
-        return '<a class="suggestion" href="/' + get_type_url(type) + '/' + id + '"><div>' + text + '</div></a>';
+        return '<a class="suggestion" href="/' + get_classification_url(data.classification) + '/' + id + '"><div>' + text + '</div></a>';
       },
     }
   }
 );
 
-get_type_url = function(type) {
+get_classification_url = function(classification) {
   //TODO: i18n
-  switch(type) {
-    case "institutions": return "instituciones-publicas";
-    case "institution": return "instituciones-publicas";
-    case "municipality": return "instituciones-publicas";
-    case "state": return "instituciones-publicas";
-    case "company": return "empresas";
-    case "companies": return "empresas";
-    case "contract": return "contratos";
-    case "contracts": return "contratos";
-    case "persons": return "personas";
-    case "person": return "personas";
-    case "funder": return "instituciones-publicas";
-    case "countries": return "paises";
-    default: console.log("get_type_url",type); return "unknown";
+  switch (classification) {
+    case "person": return "persons";
+    case "funcionario": return "persons";
+    case "proveedor": return "persons";
+    case "owner": return "persons";
+    case "contract": return "contracts";
+    case "company": return "companies";
+    case "banco": return "companies";
+    case "institution": return "institutions";
+    case "dependencia": return "institutions";
+    case "unidad-compradora": return "institutions";
+    case "city": return "areas";
+    case "municipality": return "areas";
+    case "state": return "areas";
+    case "country": return "areas";
+    case "Medicina": return "products";
+    default:
+      console.error("get_classification_url: Unknown classification:",classification);
+      return false;
   }
 }
-
-
 
 $(".twitter-typeahead").css("width","100%");
 
