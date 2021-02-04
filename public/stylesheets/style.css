@@ -1053,6 +1053,9 @@ input[type=submit].landing-search-inputtext {
 .filters ul.filter-active-collection-areas .filter-collection-areas {
   display: block;
 }
+.filters ul.filter-active-collection-products .filter-collection-products {
+  display: block;
+}
 .selector-filter-type {
   padding: 4px 8px 2px;
   font-weight: bold;

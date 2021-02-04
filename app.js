@@ -83,7 +83,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
 
   console.error("/!\\ QuienEsQuien.Wiki APP Error at URL: ",req.url);
-  console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err.name);
+  console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err);
 
   res.cacheControl = {
     noStore: true

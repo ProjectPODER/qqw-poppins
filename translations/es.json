@@ -371,5 +371,13 @@
 "Hombre":"Hombre",
 "Mujer":"Mujer",
 "Puedes verficar el estado de nuestra API en la página de <a href='https://status.quienesquien.wiki'>estado de los servicios</a>.": "Puedes verficar el estado de nuestra API en la página de <a href='https://status.quienesquien.wiki'>estado de los servicios</a>.",
-"Mensaje desde página de error": "Mensaje desde página de error"
+"Mensaje desde página de error": "Mensaje desde página de error",
+"Entidades": "Entidades",
+"Entidad": "Entidad",
+"Municipio": "Municipio",
+"Estado o provincia": "Estado o provincia",
+"Todas": "Todas",
+"Productos": "Productos",
+"Medicamento": "Medicamento"
+
 }
