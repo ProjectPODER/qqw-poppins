@@ -369,6 +369,7 @@
 "owner": "Dueños/as",
 "Género:":"Género:",
 "Hombre":"Hombre",
-"Mujer":"Mujer"
-
+"Mujer":"Mujer",
+"Puedes verficar el estado de nuestra API en la página de <a href='https://status.quienesquien.wiki'>estado de los servicios</a>.": "Puedes verficar el estado de nuestra API en la página de <a href='https://status.quienesquien.wiki'>estado de los servicios</a>.",
+"Mensaje desde página de error": "Mensaje desde página de error"
 }
