@@ -135,7 +135,7 @@ var autocollapse = function (menu,maxHeight) {
       
       while (navHeight > maxHeight && autocollapse_moves < 100) {
           //  add child to dropdown
-          var children = nav.children(menu + ' > li:not(:last-child)');
+          var children = $.merge($(menu +" > li.active").toArray(),nav.children(menu + ' > li:not(:last-child):not(.active)'))
           var count = children.length;
           let movingElement = $(children[count - 1]);
           // console.log("autocollapse moving", autocollapse_moves, movingElement);

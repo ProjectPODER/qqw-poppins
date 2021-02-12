@@ -2,7 +2,7 @@
   <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
 {{ else }}
 {{#if filter.applies }}
-  <li class="nav-item dropdown filter-element filter-dropdown {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
+  <li class="nav-item dropdown filter-element filter-dropdown {{#if filter.value }}active{{/if}} {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
     {{#ifCond filter.type "!=" "toggle"}}
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
     {{else}}
