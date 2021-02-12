@@ -18,10 +18,15 @@
       </div>
       <div class="dropdown-menu">
         {{#each filter.options }}
-          <button  onclick="$('#{{../filter.htmlFieldName}}').val('{{this.id}}')[0].form.submit();"  class="dropdown-item filter-dropdown-item" type="button">
-              {{this.label}} <i class="fas fa-info-circle text-darkgray" data-toggle="tooltip" data-placement="right" title="{{this.description}}"></i>
-          </button>
-          <div class="dropdown-divider"></div>
+
+          {{#with (or (lookup @root.general condition.variable) "works without condition too") }}
+            {{#ifCond this.0.es "==" ../condition.value }}           
+              <button  onclick="$('#{{../../filter.htmlFieldName}}').val('{{../id}}')[0].form.submit();"  class="dropdown-item filter-dropdown-item" type="button">
+                  {{../label}} <i class="fas fa-info-circle text-darkgray" data-toggle="tooltip" data-placement="right" title="{{../description}}"></i>
+              </button>
+              <div class="dropdown-divider"></div>
+            {{/ifCond}}
+          {{/with}}
         {{/each }}
       </div>
     {{else}}
