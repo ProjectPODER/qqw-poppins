@@ -43,6 +43,15 @@
       <div class="container-fluid">
         {{#if result.summary }}
         <div class="row">
+          {{!-- <div class="col-6">
+            Resultados por año: {{#each result.summary.year }}{{@key}}: {{ format_number count}} - {{/each}}
+          </div>
+          <div class="col-3">
+            Resultados por tipo de procedimiento:  {{#each result.summary.type }}{{@key}}: {{format_number count}} - {{/each}}
+          </div>
+          <div class="col-3">
+            Resultados por fuente:  {{#each result.sources }}{{@key}}: {{format_number count}} - {{/each}}
+          </div> --}}
           <div class="col-12 mb-2 text-right">
             Mostrando {{format_number result.summary.count }} contratos por un total de {{format_amount result.summary.value }} MXN.
           </div>
