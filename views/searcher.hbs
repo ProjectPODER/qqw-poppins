@@ -37,6 +37,7 @@
         </div>
     </div>
 </section>
+
 {{#ifCond result.data.length ">" 0 }}
   <section class="results-list" id="content-searcher" style="background-color: #ffffff;">
       <div class="container-fluid">
@@ -48,9 +49,9 @@
         </div>
         {{/if}}
 
-        {{!-- <h1>
-          {{title}}
-        </h1> --}}
+        <h1>
+          {{title.collection}} {{ title.filters }}
+        </h1>
 
         <div class="row">
             <div class="col-12 col-m-12">
