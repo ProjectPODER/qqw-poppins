@@ -502,7 +502,9 @@
             <div class="col-md-6 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Link(s)"}}}</p>
               {{#each result.links}}
-                <p class="js-data"><a href="{{this.id}}" target="_blank"> <i class="fas fa-external"></i> {{ get_domain this.id}}</a></p>
+                {{#with (fix_url this.id) }}
+                  <p class="js-data"><a href="{{url}}" target="_blank"> <i class="fas fa-external"></i> {{ domain }}</a></p>
+                {{/with}}
               {{/each}}
             </div>
           {{/if}}
