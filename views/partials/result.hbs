@@ -103,7 +103,7 @@
             {{#if area }}
             <div class="col-lg-3 p-0">
               <p class="index-list-element">
-                  <i class="fas fa-flag"></i>{{#each area }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
+                  <i class="fas fa-flag"></i>{{#each (get_countries area) }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
               </p>
             </div>
             {{/if}}
@@ -128,7 +128,7 @@
             {{#each result.summaries.classification}}
             <div class="col-lg-2 p-0">
               <p class="index-list-element">
-                <a href="{{url view="buscador" collection=(get_classification_type @key) sort-cpi="" classification=@key area=../id}}" title="{{format_number this}} {{_ @key }}">
+                <a href="{{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" classification=@key pais=../id}}" title="{{format_number this}} {{_ @key }}">
                 {{{ get_classification_icon @key }}} {{format_number this}} {{_ @key }}
                 </a>
               </p>
