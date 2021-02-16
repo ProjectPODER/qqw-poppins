@@ -378,6 +378,17 @@
 "Estado o provincia": "Estado o provincia",
 "Todas": "Todas",
 "Productos": "Productos",
-"Medicamento": "Medicamento"
+"Medicamento": "Medicamento",
+"Responsable de la unidad": "Responsable de la unidad",
+"Estado al que pertenece": "Estado al que pertenece",
+"Pertenece a la dependencia": "Pertenece a la dependencia",
+"Región": "Región",
+"Estado": "Estado",
+"Municipios": "Municipios",
+"Dependencias del Estado": "Dependencias del Estado",
+"Pertenece a país": "Pertenece a país",
+"Unidad compradora estatal": "Unidad compradora estatal",
+"Compras": "Compras"
+
 
 }

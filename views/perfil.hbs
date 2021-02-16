@@ -16,7 +16,7 @@
         {{!-- Area --}}
         {{#each result.area }}
           {{#if id }}
-          en 
+            {{#ifCond @key "==" 0}}en{{else}},{{/ifCond}}
             <a href="{{url view="regiones/:id" _id=id}}">
               {{translate_area name}}
             </a>
