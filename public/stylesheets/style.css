@@ -1089,9 +1089,17 @@ input[type=submit].landing-search-inputtext {
   text-overflow: ellipsis;
   margin: 1px 0 0;
 }
+.collection-title {
+  color: #2d1c9d;
+  font-size: 2rem;
+}
 .error,
 .results-list {
-  padding: 12rem 5rem 0;
+  padding: 10rem 5rem 0;
+}
+.sources-list {
+  padding: 1rem 5rem 3rem;
+  background-color: #fff;
 }
 .index-list-title {
   margin-bottom: 0.4rem;
@@ -1301,7 +1309,8 @@ input[type=submit].landing-search-inputtext {
 }
 @media (max-width: 576px) {
   .error,
-  .results-list {
+  .results-list,
+  .sources-list {
     padding-left: 0;
     padding-right: 0;
   }
