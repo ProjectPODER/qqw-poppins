@@ -2322,6 +2322,8 @@ section.country-mujeres {
 .profile-summary .profile-memberships-content,
 .profile-memberships .profile-memberships-content {
   font-size: 1em;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 .profile-summary .profile-summary-content .summary-total,
 .profile-memberships .profile-summary-content .summary-total,
