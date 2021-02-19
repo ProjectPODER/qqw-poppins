@@ -51,11 +51,26 @@
         {{#if result.summary }}
         <div class="row">
           <div class="col-12 mb-2">
-            {{#ifCond title.collection "==" "Contratos" }}
-            <p>Mostrando {{format_number result.summary.count }} contratos por un total de {{format_amount result.summary.amount }} MXN, disponibles descargando nuestros datos.</p>
-            {{else}}
-            <p>Listado de XXX empresas por mayor importe de contratos como proveedor de 10 países, disponibles descargando nuestros datos.</p>
-            {{/ifCond}}
+            <p>
+              Listado de {{format_number result.summary.count }} {{title.collection}}
+              {{#ifCond title.collection "==" "Contratos" }}
+                por un total de {{format_amount result.summary.amount }} MXN (no todos los contratos están en esta moneda)
+              {{else}}
+                por
+                {{#with (filter_array filters "apiFilterName" "sort") }}
+                    {{ lookup options (or value default.value) }}
+                {{/with}}
+
+                de
+                {{#with (filter_array filters "apiFilterName" "sort_direction") }}
+                  {{#with (filter_array options "value" (or value default.value) ) }}
+                    {{label }}
+                  {{/with}}
+                {{/with}}
+                
+              {{/ifCond}}
+              en {{format_number result.summary.areas.country }} países.
+            </p>
             {{#if title.filters }}
             <p>Filtrado por: {{ title.filters }}</p>
             {{/if}}
