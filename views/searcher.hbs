@@ -209,7 +209,8 @@
         <p><b>Fuente de los resultados:</b></p>
         <ul>
         {{#each result.summary.sources }}
-          <li>{{@key}}: {{format_number count}}</li>
+          <li><a href="{{ url view="entidades-y-fuentes" _anchor=@key }}">{{_ @key}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description @key }}}" data-placement="right"></i> : {{format_number this}}</li>
+
         {{/each}}
         </ul>
         <p>En QuiénEsQuién.Wiki usamos datos que proporcionan entes gubernamentales, bursátiles o que han sido investigados a fondo por Organizaciones de la Sociedad Civil, puedes encontrar más información sobre <a href="/es/entidades-y-fuentes/" target="_blank">nuestras fuentes aquí</a>.</p>
