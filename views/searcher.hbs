@@ -52,24 +52,28 @@
         <div class="row">
           <div class="col-12 mb-2">
             <p>
-              Listado de {{format_number result.summary.count }} {{title.collection}}
+              Listado de <strong>{{format_number result.summary.count }} {{lower title.collection}}</strong>
               {{#ifCond title.collection "==" "Contratos" }}
                 por un total de {{format_amount result.summary.amount }} MXN (no todos los contratos están en esta moneda)
               {{else}}
-                por
                 {{#with (filter_array filters "apiFilterName" "sort") }}
-                    {{ lookup options (or value default.value) }}
+                  por
+                  {{ lower (lookup options (or value default.value)) }}
                 {{/with}}
 
-                de
                 {{#with (filter_array filters "apiFilterName" "sort_direction") }}
                   {{#with (filter_array options "value" (or value default.value) ) }}
-                    {{label }}
+                    de
+                    {{lower label }}
                   {{/with}}
                 {{/with}}
                 
               {{/ifCond}}
-              en {{format_number result.summary.areas.country }} países.
+              {{#if (math result.summary.areas "+" 1)  }}
+                en 
+                {{format_number result.summary.areas }} 
+                regiones.
+              {{/if}}
             </p>
             {{#if title.filters }}
             <p>Filtrado por: {{ title.filters }}</p>
@@ -104,6 +108,24 @@
       </div>
       {{> pagination result=result pagesArray=pagesArray current_url=current_url current_page=current_page}}
   </section>
+
+  <section class="sources-list">
+    <div class="container-fluid">
+      <div class="row bg-gray pt-3">
+        <div class="col-12 col-md-12">
+          <p><b>Fuente de los resultados:</b></p>
+          <ul>
+          {{#each result.summary.sources }}
+            <li><a href="{{ url view="entidades-y-fuentes" _anchor=@key }}">{{_ @key}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description @key  }}}" data-placement="right"></i> : {{format_number this}}</li>
+
+          {{/each}}
+          </ul>
+          <p>En QuiénEsQuién.Wiki usamos datos que proporcionan entes gubernamentales, bursátiles o que han sido investigados a fondo por Organizaciones de la Sociedad Civil, puedes encontrar más información sobre <a href="/es/entidades-y-fuentes/" target="_blank">nuestras fuentes aquí</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {{else}}
   {{#if morethan10k}}
   <section class="error">
@@ -202,22 +224,6 @@
   {{/if}}
 {{/ifCond}}
 
-<section class="sources-list">
-  <div class="container-fluid">
-    <div class="row bg-gray pt-3">
-      <div class="col-12 col-md-12">
-        <p><b>Fuente de los resultados:</b></p>
-        <ul>
-        {{#each result.summary.sources }}
-          <li><a href="{{ url view="entidades-y-fuentes" _anchor=@key }}">{{_ @key}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description @key }}}" data-placement="right"></i> : {{format_number this}}</li>
-
-        {{/each}}
-        </ul>
-        <p>En QuiénEsQuién.Wiki usamos datos que proporcionan entes gubernamentales, bursátiles o que han sido investigados a fondo por Organizaciones de la Sociedad Civil, puedes encontrar más información sobre <a href="/es/entidades-y-fuentes/" target="_blank">nuestras fuentes aquí</a>.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 {{!-- {{ j result.summary }} --}}
 {{> report_modals }}
