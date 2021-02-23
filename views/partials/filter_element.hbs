@@ -1,5 +1,7 @@
 {{#if filter.hidden }}
-  <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
+  {{#ifCond filter.htmlFieldName "!="  "page" }}
+    <input type="hidden" name="{{filter.htmlFieldName}}" value="{{filter.value}}">
+  {{/ifCond}}
 {{ else }}
 {{#if filter.applies }}
   <li class="nav-item dropdown filter-element filter-dropdown {{#if filter.value }}active{{/if}} {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">

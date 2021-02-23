@@ -533,7 +533,7 @@
               <p class="js-title-data">{{{_ "Link(s)"}}}</p>
               {{#each result.links}}
                 {{#with (fix_url this.id) }}
-                  <p class="js-data"><a href="{{url}}" target="_blank"> <i class="fas fa-external"></i> {{ domain }}</a></p>
+                  <p class="js-data"><a href="{{href}}" target="_blank"> <i class="fas fa-external-link-alt"></i> {{ host }}</a></p>
                 {{/with}}
               {{/each}}
             </div>
