@@ -2317,13 +2317,16 @@ section.country-mujeres {
 .category-profile {
   padding: 1rem 1.5rem 0 0;
 }
+.profile-summary .profile-memberships-content,
+.profile-memberships .profile-memberships-content {
+  max-height: 500px;
+  overflow-y: scroll;
+}
 .profile-summary .profile-summary-content,
 .profile-memberships .profile-summary-content,
 .profile-summary .profile-memberships-content,
 .profile-memberships .profile-memberships-content {
   font-size: 1em;
-  max-height: 500px;
-  overflow-y: scroll;
 }
 .profile-summary .profile-summary-content .summary-total,
 .profile-memberships .profile-summary-content .summary-total,
