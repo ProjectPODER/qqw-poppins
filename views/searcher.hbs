@@ -86,7 +86,7 @@
             <p><b>Resultados por año:</b></p>
             <div style="width: 100%; display: flex;">
               {{#each result.summary.year }}
-              <div style=" display: flex; overflow: hidden; background: black; color: white; height: {{math (math this "/" (last_value ../result.summary.year)) "*" 50 }}px; display: table-cell; margin: 2px;" title="{{ format_number count}} contratos">
+              <div style=" display: flex; overflow: hidden; background: #2d1c9d; color: white; height: {{math (math this "/" (last_value ../result.summary.year)) "*" 50 }}px; display: table-cell; margin: 2px;" title="{{ format_number count}} contratos">
                 {{moment @key "YYYY"}}
               </div>
               {{/each}}
@@ -234,3 +234,5 @@
 
 {{!-- {{ j result.summary }} --}}
 {{> report_modals }}
+
+{{> how-use-data-modal }}
