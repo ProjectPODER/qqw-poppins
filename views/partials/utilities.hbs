@@ -27,46 +27,6 @@
             {{_ "Cómo usar los datos" }}
         </button>
 
-            {{!-- gsheets: =IMPORTCSV("{{url_csv api_url}}")
-        libreoffice es: =SERVICIOWEB("{{url_csv api_url}}") + texto a columnas 
-        libreoffice en: =WEBSERVICE("{{url_csv api_url}}") + texto a columnas 
-        excel
-        R (json)
-            library(rjson)
-            #Read QuienEsQuien.wiki JSON data into R
-            #{{title}}
-            data <- fromJSON(file="https://calc.mayfirst.org/xigc2jl1r73b.json")
-        R (csv)
-            #Read QuienEsQuien.wiki CSV data into R
-            #{{title}}
-            datos<-read.csv("/home/qlz/Documentos/COVID/26ene/Contratos2021_26ene.csv")
-        Python (csv)
-            import csv, urllib2
-
-            #Read QuienEsQuien.wiki CSV data into python
-            #{{title}}
-            response = urllib2.urlopen('{{url_csv api_url}}')
-            data = csv.reader(response)
-        Python (pandas, csv)
-            import pandas as pd
-
-            #Read QuienEsQuien.wiki CSV data into pandas
-            #{{title}}
-            df = pd.read_csv ('{{url_csv api_url}}')
-        Python (json)
-            import json, urllib
-
-            #Read QuienEsQuien.wiki JSON data into python
-            #{{title}}
-            response = urllib2.urlopen('{{api_url}}')
-            data = json.loads(response.read())
-        Python (pandas, json)
-            import pandas as pd
-
-            #Read QuienEsQuien.wiki JSON data into pandas
-            #{{title}}
-            df = pd.read_json('{{api_url}}') --}}
-
         <div class="mt-2">
             <a href="https://quienesquienapi.readthedocs.io/es/latest/" class="doc-download-link">{{_ "Ver documentación" }}</a>
         </div>
