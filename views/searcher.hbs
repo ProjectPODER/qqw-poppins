@@ -76,7 +76,7 @@
               {{/if}}
             </p>
             {{#if title.filters }}
-            <p>Filtrado por: {{ title.filters }}</p>
+            <p>Filtrado por: {{#each title.filters }} {{this}}{{#if @last}}{{else}},{{/if}} {{/each}}</p>
             {{/if}}
           </div>
         </div>
