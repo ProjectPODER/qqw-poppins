@@ -130,44 +130,22 @@
   </div>
 </section>
 
+{{!-- SHORT memberships --}}
+{{#each result.memberships.parent }}
+    {{#ifCond memberships.length "<=" 2 }}
+      <section class="profile profile-memberships" id="memberships-parent-{{@index}}">
+        {{>membership_list this}}
+      </section>
+    {{/ifCond}}
+{{/each}}
+{{#each result.memberships.child }}
+    {{#ifCond memberships.length "<=" 2 }}
+      <section class="profile profile-memberships" id="memberships-child-{{@index}}">
+        {{>membership_list this}}
+      </section>
+    {{/ifCond}}
+{{/each}}
 
-{{!-- <section class="profile" id="top-nonsense">
-  <div class="profile-content">
-    <div class="row">
-      <div class="col-12 col-md-12">
-        {{#ifCond type "==" "companies"}}
-          {{> gender-indicator result_name=result.name country_data=result.countryData }}
-        {{/ifCond}}
-      </div>
-    </div>
-  </div>
-</section> --}}
-
-
-{{!-- Dependencia --}}
-{{#if result.membership_uc_child }}
-<section class="profile" id="memberships-child-uc">
-  <div class="profile-content">
-    <div class="row memberships">
-      <div class="box-title-section">
-        <div class="box-title-icon">
-          {{{get_role_icon result.membership_uc_child.role result.membership_uc_child.directionality}}}
-        </div>
-        <h4 class="description-data-subtitle">
-          {{get_role_name result.membership_uc_child.role result.membership_uc_child.directionality}}
-        </h4>
-      </div>
-      <div class="col-12 col-md-12">
-        <div  class=" profile-list">
-          {{#each result.membership_uc_child.memberships}}
-            {{>membership result=this directionality=../result.membership_uc_child.directionality}}
-          {{/each}}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/if}}
 
 {{!-- SUMMARIES --}}
 {{#if summaries.buyer.total.count }}
@@ -178,33 +156,6 @@
 {{#if summaries.contactPoint.total.count }}
 {{>summary result=result summary="contactPoint" data=summaries.contactPoint }}
 {{/if}}
-
-{{!-- Unidades compradoras CREO QUE ESTO ES BASURA --}}
-{{#if result.membership_uc_parent }}
-<section class="profile" id="memberships-parent-uc">
-  <div class="profile-content">
-    <div class="row memberships">
-      <div class="box-title-section">
-        <div class="box-title-icon">
-          {{{get_role_icon result.membership_uc_parent.role result.membership_uc_parent.directionality}}}
-        </div>
-        <h4 class="description-data-subtitle">
-          {{get_role_name result.membership_uc_parent.role result.membership_uc_parent.directionality}}
-        </h4>
-      </div>
-      <div class="col-12 col-md-12">
-        <div  class=" profile-list">
-          {{#each result.membership_uc_parent.memberships}}
-            {{>membership result=this directionality=../result.membership_uc_parent.directionality}}
-          {{/each}}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/if}}
-
-
 
 {{#if summaries.supplier.total.count }}
 {{>summary result=result summary="supplier" data=summaries.supplier }}
@@ -382,21 +333,21 @@
 {{/ifCond}}
 
 
-{{!-- memberships --}}
-{{#if result.memberships }}
-  {{#each result.memberships.parent }}
-    <section class="profile profile-memberships" id="memberships-parent-{{@index}}">
-      {{>membership_list this}}
-    </section>
-  {{/each}}
-
-  {{#each result.memberships.child }}
-      <section class="profile profile-memberships" id="memberships-child-{{@index}}">
-      {{>membership_list this}}
+{{!-- LONG memberships --}}
+{{#each result.memberships.parent }}
+    {{#ifCond memberships.length ">" 2 }}
+      <section class="profile profile-memberships" id="memberships-parent-{{@index}}">
+        {{>membership_list this}}
       </section>
-  {{/each}}
-
-{{/if}}
+    {{/ifCond}}
+{{/each}}
+{{#each result.memberships.child }}
+    {{#ifCond memberships.length ">" 2 }}
+      <section class="profile profile-memberships" id="memberships-child-{{@index}}">
+        {{>membership_list this}}
+      </section>
+    {{/ifCond}}
+{{/each}}
 
 {{#if result.area.length }}
 <section class="profile" id="ubicacion">
