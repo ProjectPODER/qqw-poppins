@@ -3,7 +3,7 @@
 <section class="profile-header">
   <div class="wrap bg-white" id="wrap">
     <div class="description-data-title">
-      <h3 title="{{ result.name}}">
+      <h3 title="{{ result.name}}" style="word-break: break-word;">
         {{{ get_classification_icon result.classification result.subclassification result.govLevel}}}
          {{!-- Type --}}
         <a href="{{url view="buscador" collection=type subtipo=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
