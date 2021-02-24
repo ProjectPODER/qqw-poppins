@@ -5,8 +5,7 @@ $('#toggle').click(function() {
  });
 
 //Tooltips
-$('[data-toggle="tooltip"]').tooltip(
-);
+$('[data-toggle="tooltip"]').tooltip();
 
 // Left sidebar about
 $('#left-sidebar').click(function() {
@@ -27,94 +26,104 @@ var qqw_suggest = new Bloodhound({
       });
       let autocomplete_parameters = input.data("autocomplete-parameters") || "";
       settings.url = settings.url.replace("%QUERY", query+"?"+autocomplete_parameters)
-      console.log(query, settings, autocomplete_parameters);
+      // console.log(query, settings, autocomplete_parameters);
       return(settings);
     },
     transform: function(response) {
-      console.log("blood",response.data);
-      return response.data;
+      // console.log("blood",response.data);
+      return response.data.map(function(el) { if(el.classification=="contract") { el.name = el.contracts.title } return el })
+      // return response.data;
     }
   }
 });
 
-// const emptyFooter = '<hr><div class="tt-footer"><a href="/personas">Buscar personas</a></div>' +
-// '<div class="tt-footer orgs"><a href="/instituciones-publicas">Buscar instituciones</a></div>' +
-// '<div class="tt-footer orgs"><a href="/empresas">Buscar empresas</a></div>' +
-// '<div class="tt-footer contracts"><a href="/contratos">Buscar contratos </a></div>';
+let typeahead_suggestion = function(data){
+  let id = data.id;
+  let text = data.name;
+  return '<a class="suggestion" style="display: block" href="/' + get_classification_url(data.classification) + '/' + id + '">'+text+'</a>';
+}
+
+let typeahead_suggestion_filter = function(data){
+  let text = data.name;
+  let span = '<a style="display: block">' + text + '</a>';
+  return span;
+}
+
+let typeadhead_config =   {
+  hint: true,
+  highlight: true,
+  minLength: 2
+};
 
 //Search
-$('.easy-search-input').typeahead(
+$('.easy-search-input').typeahead(typeadhead_config,
   {
-    hint: true,
-    highlight: true,
-    minLength: 2
-  },
-  {
-  name: 'qqw',
-  display: 'name',
-  source: qqw_suggest,
-  templates: {
-      empty: [
-        '<div class="empty-message">',
-          'No hay resultados para la búsqueda, pero seguro lo encontrarás.',
-        '</div>'
-      ].join('\n'),
-      suggestion: function(data){
-        let id = data.id;
-        let text = data.name || data.contracts.title;
-        return '<a class="suggestion" href="/' + get_classification_url(data.classification) + '/' + id + '"><div>' + text + '</div></a>';
-      },
+    name: 'qqw',
+    display: 'name',
+    source: qqw_suggest,
+    templates: {
+        empty: [
+          '<div class="empty-message">',
+            'No hay resultados para la búsqueda, pero seguro lo encontrarás.',
+          '</div>'
+        ].join('\n'),
+        suggestion: typeahead_suggestion
+      }
     }
-  }
-);
+  );
+
+$('.easy-search-input-filter').typeahead(typeadhead_config,
+  {
+    name: 'qqw',
+    display: 'name',
+    source: qqw_suggest,
+    templates: {
+        empty: [
+          '<div class="empty-message">',
+            'Ningún elemento coincide con este término. Prueba de nuevo.',
+          '</div>'
+        ].join('\n'),
+        suggestion: typeahead_suggestion_filter
+
+      }
+    }
+  );
 
 get_classification_url = function(classification) {
   //TODO: i18n
   switch (classification) {
-    case "person": return "persons";
-    case "funcionario": return "persons";
-    case "proveedor": return "persons";
-    case "owner": return "persons";
-    case "contract": return "contracts";
-    case "company": return "companies";
-    case "banco": return "companies";
-    case "institution": return "institutions";
-    case "dependencia": return "institutions";
-    case "unidad-compradora": return "institutions";
-    case "city": return "areas";
-    case "municipality": return "areas";
-    case "state": return "areas";
-    case "country": return "areas";
-    case "Medicina": return "products";
+    case "person": return "es/personas";
+    case "funcionario": return "es/personas";
+    case "proveedor": return "es/personas";
+    case "owner": return "es/personas";
+    case "contract": return "es/contratos";
+    case "company": return "es/empresas";
+    case "banco": return "es/empresas";
+    case "institution": return "es/instituciones";
+    case "dependencia": return "es/instituciones";
+    case "unidad-compradora": return "es/instituciones";
+    case "city": return "es/regiones";
+    case "municipality": return "es/regiones";
+    case "state": return "es/regiones";
+    case "country": return "es/regiones";
+    case "Medicina": return "es/productos";
     default:
       console.error("get_classification_url: Unknown classification:",classification);
       return false;
   }
 }
 
-$(".twitter-typeahead").css("width","100%");
+$(".qqw-home .twitter-typeahead").css("width","100%");
 
-// $('.easy-search-input').keypress(function(e) {
-//   var keycode = (e.keyCode ? e.keyCode : e.which);
-//   // console.log("esi keypress", keycode)
-//   if (keycode == 13 || keycode === undefined) {
-//     e.preventDefault();
-//     console.log("esi keypress 13",$(".easy-search-input.landing-search-inputtext.tt-input").val(),$("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')"))
-//     const newLocation = $("a.suggestion:contains('"+$(".easy-search-input.landing-search-inputtext.tt-input").val()+"')").attr("href");
-//     if (newLocation) {
-//       location.href= newLocation;
-//     }
-//     else {
-//       alert("Por favor ingrese un término y seleccione una opción.")
-//     }
-//   }
-// })
+// $('.easy-search-input-filter').bind('typeahead:select', function(ev, suggestion) {
+//   console.log('Selection: ' + suggestion);
+//   $(".easy-search-input-filter.tt-input").val(suggestion);
+// });
 
 $('.easy-search-input').bind('typeahead:select', function(ev, suggestion) {
   console.log('Selection: ' + suggestion);
   $(".easy-search-input.landing-search-inputtext.tt-input").val(suggestion);
 });
-
 
 $("#first-search").click(function() {
   $('.easy-search-input').trigger("keypress",13);
@@ -215,18 +224,6 @@ $("#right-menu a").on('click', function(event) {
 $(window).on('activate.bs.scrollspy', function (e) {
   history.replaceState({}, "", $("a[href^='#']", e.target).attr("href"));
 });
-
-// // Copy clipboard
-// function copyClipboard() {
-//   var copyText = document.getElementById("apiUrl");
-//   copyText.select();
-//   document.execCommand("copy");
-// }
-// function copyClipboard() {
-//   var copyText = document.getElementById("pageUrl");
-//   copyText.select();
-//   document.execCommand("copy");
-// }
 
 // Contact form about/contact.hbs
 $("#send_email").click(function (e) {
@@ -332,88 +329,9 @@ $("#send_info_uc").click(function (e) {
   return false;
 });
 
-//** FILTERS **//
-
-//Type filter
-// $(".dropdown-menu").on("click","button.filter-dropdown-item", function(e) {
-//   let collection = $(e.currentTarget).data("collection");
-
-//   location.search= removeQueryField("collection") + "&collection="+collection;
-//   console.log(location.search);
-// })
-
-//set amount and count filters
-// $('.bucket').click(function(event) {
-//   const item = $(event.target).parent(".bucket");
-//   const bucketName = $(item).data("bucketName")
-//   const bucketType = $(item).data("bucketType")
-//   const bucketId = bucketName + "-" + bucketType;
-//   let bucketData;
-
-//   // Si ya estaba seleccionado, borrar
-//   if (item.hasClass("selected")) {
-//     item.removeClass("selected");
-//     bucketData = ["",""]
-//   }
-//   else {
-//     bucketData = $(item).data("bucket").split("-");
-//     item.parent().find(".bucket").removeClass("selected");
-//     item.addClass("selected");
-//   }
-//   console.log(bucketId,bucketData,$("#minimo-"+bucketId));
-//   $("#minimo-"+bucketId).val(bucketData[0]);
-//   $("#maximo-"+bucketId).val(bucketData[1]);
-// });
-
-//Hilight selected option for amount filters
-// let dataFilter = "";
-// $(".search-amount").each(function(i,element) {
-//   if (dataFilter == "") {
-//   dataFilter = element.value + "-";
-//   }
-//   else {
-//     dataFilter += element.value;
-//     $(".bucket[data-bucket="+dataFilter+"]").addClass("selected");
-//     dataFilter = "";
-//   }
-// })
-
-//set bool filters
-// $(".bool-filter").click(function(e) {
-//   const target = $(e.currentTarget);
-//   const realFieldId = target.data("realFieldId")
-//   const realField = $("#"+realFieldId);
-//   const realFieldValue = realField.val();
-
-//   if (realFieldValue == "true") {
-//     realField.val("false");
-//   }
-//   else {
-//     realField.val("true");
-//   }
-//   // console.log(target.data(),realFieldId,realField);
-// })
-
-// $("#indexLength").change(function(){
-//  var selected = $('#indexLength').val();
-//     location.search= removeQueryField("size") + "&size="+selected;
-// });
-
-// //TODO: we need better management of URL parameters
-// function removeQueryField(field) {
-//   re = new RegExp('([\?&])' + field+"=[^&]*([&#]*)");
-//   return location.search.replace(re,"$1$2")
-// }
-
-
 $(document).on("click",".hide-alert-bar",{},function(e) {
   $(e.target).parent(".alert-bar").fadeOut()
 });
-
-// // Advance filters
-// $('.filters-link-sm').click(function() {
-//   $('.advance-filters').toggleClass('open');
-// });
 
 //Fixed perfil title
 $(window).scroll(function(e) {
