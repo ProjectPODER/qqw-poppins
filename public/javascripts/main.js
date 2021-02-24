@@ -394,3 +394,8 @@ $(window).scroll(function(e) {
 //     });
 // } );
 
+$('.filter-dropdown').on('hide.bs.dropdown', function (e) {
+  if (e.clickEvent) {
+    e.preventDefault();
+  }
+});
