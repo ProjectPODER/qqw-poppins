@@ -1231,6 +1231,11 @@ input[type=submit].landing-search-inputtext {
 .center {
   text-align: center;
 }
+.btn-light:not(:disabled):not(.disabled).active {
+  color: #fff;
+  background-color: #2d1c9d;
+  border-color: #2d1c9d;
+}
 @media screen and (max-width: 991px) {
   .filters {
     top: 56px;
