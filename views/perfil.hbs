@@ -31,6 +31,30 @@
     </div>
     <nav id="right-menu">
       <ul class="right-menu-profile nav d-flex flex-nowrap">
+        {{!-- SHORT memberships --}}
+        {{#if result.memberships.parent}}
+        {{#each result.memberships.parent }}
+        {{#ifCond memberships.length "<=" 2 }}
+          <li>
+            <a href="#memberships-parent-{{@index}}" class="anchor">
+              {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
+            </a>
+          </li>
+        {{/ifCond}}
+        {{/each}}
+        {{/if}}
+        {{#if result.memberships.child}}
+        {{#each result.memberships.child }}
+        {{#ifCond memberships.length "<=" 2 }}
+          <li>
+            <a href="#memberships-child-{{@index}}" class="anchor">
+              {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
+            </a>
+          </li>
+        {{/ifCond}}
+        {{/each}}
+        {{/if}}
+        {{!-- Summaries --}}
         {{#if summaries.buyer.total.count }}
         <li>
           <a href="#summary-buyer" class="anchor">
@@ -74,7 +98,7 @@
           </a>
         </li>
         {{/if}}
-
+        {{!-- Flags --}}
         {{#ifCond type '!=' 'companies'}}
         {{#if result.flags }}
         <li>
@@ -84,23 +108,27 @@
         </li>
         {{/if}}
         {{/ifCond}}
-
+        {{!-- LONG memberships --}}
         {{#if result.memberships.parent}}
         {{#each result.memberships.parent }}
-        <li>
-          <a href="#memberships-parent-{{@index}}" class="anchor">
-            {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
-          </a>
-        </li>
+        {{#ifCond memberships.length ">" 2 }}
+          <li>
+            <a href="#memberships-parent-{{@index}}" class="anchor">
+              {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
+            </a>
+          </li>
+        {{/ifCond}}
         {{/each}}
         {{/if}}
         {{#if result.memberships.child}}
         {{#each result.memberships.child }}
-        <li>
-          <a href="#memberships-child-{{@index}}" class="anchor">
-            {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
-          </a>
-        </li>
+        {{#ifCond memberships.length ">" 2 }}
+          <li>
+            <a href="#memberships-child-{{@index}}" class="anchor">
+              {{{get_role_icon this.role this.direction}}}{{get_role_name this.role this.direction}}
+            </a>
+          </li>
+        {{/ifCond}}
         {{/each}}
         {{/if}}
 
