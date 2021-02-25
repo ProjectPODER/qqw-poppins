@@ -2330,7 +2330,8 @@ section.country-mujeres {
 .profile-summary .profile-memberships-content,
 .profile-memberships .profile-memberships-content {
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  padding-right: 1em;
 }
 .profile-summary .profile-summary-content,
 .profile-memberships .profile-summary-content,
@@ -2619,7 +2620,8 @@ section.country-mujeres {
 }
 .summary-chart svg {
   height: 500px;
-  width: 100%;
+  width: 97%;
+  font-size: 0.7em;
 }
 .nvd3 .nv-axis line {
   fill: none;
