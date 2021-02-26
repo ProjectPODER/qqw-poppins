@@ -9,21 +9,27 @@
           <div class="row">
             <div class="col-md-12 col-12">
               <h1><a id="user-content-fuentes" class="anchor" href="#fuentes" aria-hidden="true"></a>{{{_ "Entidades y fuentes"}}}</h1>
-              <p>{{{_ "En QuiénEsQuién.Wiki usamos datos que proporcionan entes gubernamentales, bursátiles o que han sido investigados a fondo por Organizaciones de la Sociedad Civil. Si conoces una base de datos sobre contratos o beneficiarios reales que no estamos usando escríbenos a <a href='mailto:info@quienequien.wiki'>info@quienequien.wiki</a> y la pondremos en nuestra (muy larga) lista de datasets a importar."}}}</p>
-              <p>{{_ "También puedes usar nuestra base de datos como back-end gratuito para cualquier proyecto que muestre datos de captura del estado. Escríbenos con algo de tiempo e importaremos tus datos para que puedas recuperarlos a través de nuestra API  (de consultas automatizadas) y solo tendrás que ocuparte del diseño de tu sitio."}}</p>
+              <p>{{{_ "En QuiénEsQuién.Wiki usamos datos que proporcionan entes gubernamentales, bursátiles o que han sido investigados a fondo por Organizaciones de la Sociedad Civil. Nuestra prioridades al momento de importar los datos son:"}}}</p>
 
-              <h3><a id="user-content-contratos" class="anchor" href="#contratos" aria-hidden="true"></a>CONTRATOS</h3>
+              <h4><a id="user-content-contratos" class="anchor" href="#contratos" aria-hidden="true"></a>CONTRATOS</h4>
               <p>{{{_ "“En el 57% de los casos de corrupción internacional procesados, según la Convención Antisoborno de la OCDE, hubo sobornos para obtener los contratos públicos”, explica la <a href='https://www.open-contracting.org/' rel='nofollow noreferrer noopener' target='_blank'>Open Contracting Parnertship</a>. La transferencia de capital del sector público a la iniciativa privada, si bien necesaria para la forma de funcionar de nuestras sociedades, es uno de los espacios donde se muestra de manera sofisticada la captura del estado: corrupción, cohecho, contratos a modo, licitaciones amañadas, fraude, entre otros delitos."}}}</p>
-              <p>{{{_ "QuiénEsQuién.Wiki concentra contratos de tres fuentes mexicanas:"}}}</p>
 
-              <h3 class="mt-5"><a id="user-content-beneficiarios-reales" class="anchor" href="#beneficiarios-reales" aria-hidden="true"></a>{{{_ "BENEFICIARIOS REALES"}}}</h3>
+              <h4 class="mt-5"><a id="user-content-beneficiarios-reales" class="anchor" href="#beneficiarios-reales" aria-hidden="true"></a>{{{_ "BENEFICIARIOS REALES"}}}</h4>
               <p>{{{_ "“Existe una amplia gama de sectores (financiero, bancario, inmobiliario, etc.) [..que...] cuentan con distintas figuras legales para ocultar a sus beneficiarios –se habla de fondos multilaterales, agentes no financieros (DFNBP, por sus siglas en inglés), representantes legales y consultores, entre otros– quienes más allá de ejercer el control directo sobre la empresa son correas de mando de quienes deciden y se benefician de un vehículo corporativo”, explican <a href='https://www.colaboratorio.org/beneficiarios-reales-en-mexico/' target='_blank'>Anna Ma. Nunenmann y Oscar Pineda en el informe “Beneficiarios Reales en México”</a> de PODER. "}}}</p>
-              <p>{{{_ "Conseguir datos de beneficiarios reales en América Latina (y en el mundo) es muy complicado, en el mejor de los casos se encuentran bases de datos dispersas que permiten añadir piezas a un rompecabezas inacabable."}}}</p>
 
-              <h3 class="mt-5"><a id="user-content-investigaciones-propias" class="anchor" href="#investigaciones-propias" aria-hidden="true"></a>{{{_ "INVESTIGACIONES PROPIAS"}}}</h3>
+              <h4 class="mt-5"><a id="user-content-investigaciones-propias" class="anchor" href="#investigaciones-propias" aria-hidden="true"></a>{{{_ "INVESTIGACIONES PROPIAS"}}}</h4>
               <p>{{{_ "Las investigaciones de PODER en muchos casos son impulsadas por datos o con el objetivo de conseguir un mapeo exhaustivo de un caso concreto. Parte de nuestra metodología es registrar estos datos en una hoja de cálculo para después importarlos, este proceso nos sirve tanto para incrementar la profundidad de QuiénEsQuién.Wiki como para poder extraer los datos de la API y hacer la visualización."}}}</p>
 
-              <h3 class="mt-5"><a id="user-content-fuentes" class="anchor" href="#fuentes" aria-hidden="true"></a>{{{_ "ENTIDADES"}}}</h3>
+              <p>{{{_ "Si conoces una base de datos sobre contratos o beneficiarios reales que no estamos usando escríbenos a <a href='mailto:info@quienequien.wiki'>info@quienequien.wiki</a> y la pondremos en nuestra (muy larga) lista de datasets a importar."}}}</p>
+
+              <div class="col-12 col-md-12 text-center mb-4">
+                  <hr class="hr-apis">
+              </div>
+
+              <h3><a id="user-content-estandares-de-datos" class="anchor" href="#estandares-de-datos" aria-hidden="true"></a>{{{_ "ESTÁNDARES DE DATOS"}}}</h3>
+              <p>{{{_ "Los datos que recabamos están en múltiples esquemas. Para no crear el enésimo esquema de datos, optamos por sistematizarlo todo en un esquema propio que combina los dos principales estándares que usa la comunidad de datos abiertos de América Latina."}}}</p>
+              
+              <h3 class="mt-5"><a id="user-content-fuentes" class="anchor" href="#fuentes" aria-hidden="true"></a>{{{_ "RECUENTO DE ENTIDADES"}}}</h3>
               {{#if response.classification}}
                 <div class="row">
                 {{#each response.classification }}
@@ -35,13 +41,13 @@
                               {{format_number count}}
                             </strong>
                           </h5>
-                          
                           <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment lastModified date lang="es" format="LL"}} </p>
-
-                          <h5 class="card-h3"><a href="{{url view="buscador" tipo-entidad=@key }}">{{{_ @key }}}</a></h5>
+                          <h5 class="card-h3">
+                            <a href="{{url view="buscador" tipo-entidad=@key }}">{{{_ @key }}}</a>
+                          </h5>
                         </div>
                       </div>
-                    </div>                
+                    </div>
                 {{/each}}
                 </div>
               {{/if}}
@@ -78,20 +84,13 @@
               {{/if}}
           </div>
           <div class="col-md-12 col-12">
-            <h3 class="mt-5"><a id="user-content-otras-bases-de-datos" class="anchor" href="#otras-bases-de-datos" aria-hidden="true"></a>{{{_ "OTRAS BASES DE DATOS"}}}</h3>
-            <p>{{{_ "QuiénEsQuién.Wiki es una plataforma colaborativa, es por ello que PODER apoya dando Back-End a proyectos que si bien no tienen una perspectiva empresarial, ayudan a mostrar la captura del estado"}}}.</p>
-            <h3>
-            <a id="user-content-estandares-de-datos" class="anchor" href="#estandares-de-datos" aria-hidden="true"></a>{{{_ "ESTÁNDARES DE DATOS"}}}</h3>
-            <p>{{{_ "Los datos que recabamos están en múltiples esquemas. Para no crear el enésimo esquema de datos, optamos por sistematizarlo todo en un esquema propio que combina los dos principales estándares que usa la comunidad de datos abiertos de América Latina."}}}</p>
-
-            <h4>
-            <a id="user-content-popolo-project" class="anchor" href="#popolo-project" aria-hidden="true"></a><a href="http://www.popoloproject.com/" rel="nofollow noreferrer noopener" target="_blank">Popolo Project</a>
+            <h4><a id="user-content-popolo-project" class="anchor" href="#popolo-project" aria-hidden="true"></a><a href="http://www.popoloproject.com/" rel="nofollow noreferrer noopener" target="_blank">Popolo Project</a>
             </h4>
             <p>{{{_ "Popolo Project es un estándar inicialmente pensado para registrar instituciones públicas y políticos. Con una mínima alternación pudimos usar su lógica de sistema de personas, organizaciones y membresías para el sector privado."}}}</p>
 
             <h4><a id="user-content-open-contracting-data-standart" class="anchor" href="#open-contracting-data-standart" aria-hidden="true"></a><a href="http://standard.open-contracting.org/latest/en/getting_started/" rel="nofollow noreferrer noopener" target="_blank">Open Contracting Data Standard</a>
             </h4>
-            <p>{{{_ "El Estándar para las Contrataciones Abiertas (OCDS en sus siglas en inglés) es un esquema de datos abiertos promovido por la Open Contracting Parnership para la publicación de información estructurada de todas las etapas de un proceso de contratación: de la planeación a la implementación. QuiénEsQuién.Wiki hace un uso propio del estándar, añadiendo y creando extensiones, que puede consultarse en <a href='https://github.com/ProjectPODER' rel='nofollow noreferrer noopener' target='_blank'>nuestro Github</a>"}}}. </p>
+            <p class="mb-5">{{{_ "El Estándar para las Contrataciones Abiertas (OCDS en sus siglas en inglés) es un esquema de datos abiertos promovido por la Open Contracting Parnership para la publicación de información estructurada de todas las etapas de un proceso de contratación: de la planeación a la implementación. QuiénEsQuién.Wiki hace un uso propio del estándar, añadiendo y creando extensiones, que puede consultarse en <a href='https://github.com/ProjectPODER' rel='nofollow noreferrer noopener' target='_blank'>nuestro Github</a>"}}}. </p>
           </div>
 
         </div>
