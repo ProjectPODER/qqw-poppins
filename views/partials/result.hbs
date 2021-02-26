@@ -127,10 +127,13 @@
           <div class="right-elements col-lg-8 col-md-8 col-md-6 col-sm-6 col-6">
             {{#each result.summaries.classification}}
             <div class="col-lg-2 p-0">
-              <p class="index-list-element">{{../classification}}
+              <p class="index-list-element">
                 <a href="
                 {{#ifCond ../classification "==" "country"}}
                   {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key pais=../id}}
+                {{/ifCond}}
+                {{#ifCond ../classification "==" "state"}}
+                  {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key estado=../id}}
                 {{/ifCond}}
                 " title="{{format_number this}} {{_ @key }}">
                 {{{ get_classification_icon @key }}} {{format_number this}} {{_ @key }}
