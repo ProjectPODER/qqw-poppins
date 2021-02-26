@@ -11,12 +11,6 @@ function createMultiLangRoutes(es,en,callback) {
     router.get('/:lang'+en, callback);
 }
 
-/* Create all multilang routes */
-constants.qqw_routes.map(route => {
-    createMultiLangRoutes('/'+route.es, "/"+route.en, lib[route.view](route.params[0],route.params[1],route.params[2]));
-})
-
-router.get('/', lib.redirectToLanguage("/inicio","/home"));
 
 /* Redirect old search pages */
 router.get('/personas', lib.redirectToSearch("persons"));
@@ -25,5 +19,22 @@ router.get('/instituciones-publicas', lib.redirectToSearch("institutions"));
 router.get('/unidades-compradoras', lib.redirectToSearch("institutions-uc"));
 router.get('/empresas', lib.redirectToSearch("companies"));
 router.get('/paises', lib.redirectToSearch("countries"));
+
+/* Redirect old profile pages */
+router.get('/personas/:id', lib.redirectToSearch("persons"));
+router.get('/contratos/:id', lib.redirectToSearch("contracts"));
+router.get('/instituciones-publicas/:id', lib.redirectToSearch("institutions"));
+router.get('/unidades-compradoras/:id', lib.redirectToSearch("institutions-uc"));
+router.get('/empresas/:id', lib.redirectToSearch("companies"));
+router.get('/paises/:id', lib.redirectToSearch("countries"));
+
+
+/* Create all multilang routes */
+constants.qqw_routes.map(route => {
+    createMultiLangRoutes('/'+route.es, "/"+route.en, lib[route.view](route.params[0],route.params[1],route.params[2]));
+})
+
+router.get('/', lib.redirectToLanguage("/inicio","/home"));
+
 
 module.exports = router;
