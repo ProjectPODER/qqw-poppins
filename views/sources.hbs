@@ -43,7 +43,7 @@
                           </h5>
                           <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment lastModified date lang="es" format="LL"}} </p>
                           <h5 class="card-h3">
-                            <a href="{{url view="buscador" tipo-entidad=@key }}">{{{_ @key }}}</a>
+                            <a href="{{url view="buscador" tipo-entidad=@key }}">{{{ get_classification_icon @key }}} {{{_ @key }}}</a>
                           </h5>
                         </div>
                       </div>
@@ -72,7 +72,7 @@
                           </h5>
                           
 
-                          <h5 class="card-h3"><a href="{{url view="buscador" tipo-entidad=@key fuente=@../key }}">{{{_ @key }}}</a></h5>
+                          <h5 class="card-h3"><a href="{{url view="buscador" tipo-entidad=@key fuente=@../key }}">{{{ get_classification_icon @key }}} {{{_ @key }}}</a></h5>
                         </div>
                       </div>
                     </div>
