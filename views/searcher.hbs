@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-12 mb-2">
             <p>
-              Listado de <strong>{{format_number result.summary.count }} {{lower title.collection}}</strong>
+              Listado de <strong>{{format_number result.summary.count }} {{#each result.summary.classification  }} <a href="{{url tipo-entidad=@key}}">{{lower (_ @key)}}</a>{{#if @last}}{{else}},{{/if}} {{/each}}</strong>
               {{#ifCond title.collection "==" "Contratos" }}
                 por un total de {{format_amount result.summary.amount }} MXN (no todos los contratos están en esta moneda)
               {{else}}
@@ -72,7 +72,7 @@
               {{#if (math result.summary.areas "+" 1)  }}
                 en 
                 {{format_number result.summary.areas }} 
-                regiones.
+                áreas.
               {{/if}}
             </p>
             {{#if title.filters }}
