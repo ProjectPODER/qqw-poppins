@@ -39,7 +39,7 @@
                       {{format_number stats.index.persons.count }} 
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Personas"}}}</h3>
+                  <h3 class="card-h3"><i class="fas fa-user"></i> {{{_ "Personas"}}}</h3>
                 </a>
                 {{!-- <p class="serif-gray">Funcionarios, empresarios y proveedores del Estado, qué negocios tienen, con quién se asocian y cómo consiguen sus contratos públicos.</p>
                 <a href="/persons" class="button-link">VER PERSONAS</a> --}}
@@ -56,7 +56,7 @@
                       {{format_number stats.classification.contract.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Contratos"}}}
+                  <h3 class="card-h3"><i class="fas fa-file-alt"></i> {{{_ "Contratos"}}}
                 </h3>
                 </a>
                 {{!-- <p class="serif-gray">Explora los importes, años, dependencias, sas proveedoras y otras características de más de un millón de contratos.</p>
@@ -74,7 +74,7 @@
                       {{format_number stats.classification.institution.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Instituciones"}}}</h3>
+                  <h3 class="card-h3"><i class="fas fa-landmark"></i> {{{_ "Instituciones"}}}</h3>
                 </a>
               {{!--  <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
                 <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
@@ -91,7 +91,7 @@
                       {{format_number stats.classification.company.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Empresas"}}}</h3>
+                  <h3 class="card-h3"><i class="fas fa-building"></i> {{{_ "Empresas"}}}</h3>
                 </a>
                 {{!-- <p class="serif-gray">Nuestra base de datos la conforman empresas proveedoras del gobierno, firmas que cotizan en el mercado bursátil y otros tipos de instituciones.</p>
                 <a href="/orgs" class="button-link">VER ORGANIZACIONES</a> --}}
@@ -108,7 +108,7 @@
                       {{format_number stats.classification.country.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Países"}}}</h3>
+                  <h3 class="card-h3"><i class="fas fa-flag"></i> {{{_ "Países"}}}</h3>
                 </a>
                 <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.country.lastModified date lang="es" format="LL"}} </p>
               </div>
@@ -123,7 +123,7 @@
                       {{format_number stats.classification.municipality.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3">{{{_ "Municipios"}}}</h3>
+                  <h3 class="card-h3"><i class="fas fa-city"></i> {{{_ "Municipios"}}}</h3>
                 </a>
                 <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.municipality.lastModified date lang="es" format="LL"}} </p>
               </div>
