@@ -4,6 +4,12 @@
         <i class="fas fa-download icon-tools"></i>
     </a>
     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
+        <a class="btn btn-primary w-100 mb-2" href="{{url_csv api_url}}" download="datos-QQW.csv" target="_blank">
+            <i class="fas fa-file-csv"></i>
+            {{_ "Descargar CSV" }}
+            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ " Listado resumido,
+                no disonible en todas las colecciones." }}"></i>
+        </a>
         <a class="btn btn-primary w-100 mb-2" href="{{api_url}}">
             <i class="fas fa-code"></i>
             {{_ "Descargar JSON" }}
@@ -16,11 +22,6 @@
             <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ "Datos estructurados de los resúmenes de esta entidad." }}"></i>
         </a>
         {{/if}}
-        <a class="btn btn-primary w-100 mb-2" href="{{url_csv api_url}}" download="datos-QQW.csv" target="_blank">
-            <i class="fas fa-file-csv"></i>
-            {{_ "Descargar CSV" }}
-            <i class="fas fa-info-circle" alt="icon" data-toggle="tooltip" data-placement="right" title="{{_ "Listado resumido, no disonible en todas las colecciones." }}"></i>
-        </a>
 
         <!-- Button to Open the Modal -->
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#dataHow">
