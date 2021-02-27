@@ -75,7 +75,7 @@
 
 
             {{#with result.parties.buyer }}
-              perteneciente a 
+              perteneciente a
               <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación.">
               {{{ get_classification_icon details.type "dependencia" details.govLevel}}}
               </a>
@@ -95,9 +95,9 @@
               <a class="supplier-list-item" href="{{url view=(get_type_url details.type) _id=id}}">
               {{{ get_classification_icon details.type details.classification details.govLevel}}}
               {{name}}
-              </a> 
+              </a>
 
-              {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}} 
+              {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}}
               <br>
           {{/each}}
         </div>
@@ -238,7 +238,7 @@
       <div class="row flex">
         <div class="col-m-6 col-6 link-lf-contracts pb-3">
             <p class="js-title-data">
-              {{{_ "Dependencia" }}} 
+              {{{_ "Dependencia" }}}
               <a data-toggle="tooltip" data-placement="right" title="{{{_ "Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación." }}}"><i class="fas fa-info-circle"></i>
               </a>
             </p>
@@ -266,7 +266,7 @@
               {{result.parties.buyer.identifier.id}}
               <a data-toggle="tooltip" data-placement="right" title="{{{_ "Clave de identificación de la Unidad Compradora en Compranet 3.0." }}}"><i class="fas fa-info-circle"></i></a>
               )
-              
+
             {{/if}}
           </p>
         </div>
@@ -451,7 +451,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               {{#each ../result.awards.documents.list }}
                 <a href="{{this.url}}">
                   <i class="fas fa-external-link-alt"></i>
-                  {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} 
+                  {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}}
                 </a>
               <br>
               {{/each}}
@@ -555,3 +555,6 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
 
 </div>
 
+{{> report_modals }}
+
+{{> how-use-data-modal }}
