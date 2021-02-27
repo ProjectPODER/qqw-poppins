@@ -9,7 +9,7 @@
     </div>
     <div class="right-box ml-auto filters">
         <ul class="nav nav-pills d-flex flex-nowrap">
-            {{>utilities api_url=result.api_url share_url=share_url }}                
+            {{>utilities api_url=result.api_url share_url=share_url }}
         </ul>
     </div>
     <nav id="right-menu">
@@ -81,7 +81,7 @@
             </a>
             <a href="/{{{_ "instituciones-publicas"}}}/{{result.records.compiledRelease.buyer.id }}">{{result.records.compiledRelease.buyer.name}}</a>
 
-            perteneciente a 
+            perteneciente a
             {{#with (get_party ../result.records result.records.compiledRelease.parties.0.memberOf.0.id) }}
             {{j this}}
               <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación.">
@@ -104,9 +104,9 @@
               <a class="supplier-list-item" href="/{{get_type_url details.type }}/{{id}}">
               {{{ get_classification_icon "companies" result.records.compiledRelease.parties.0.details.type result.records.compiledRelease.parties.0.details.classification result.records.compiledRelease.parties.0.details.govLevel}}}
               {{name}}
-              </a> 
+              </a>
 
-              {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}} 
+              {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}}
               {{{_ "por"}}}
               {{format_amount ../contract_amount}} MXN.
               <br>
@@ -178,7 +178,7 @@
   <section class="profile row" id="planeacion">
     <div class="box-title-section">
       <div class="box-title-icon">
-        <i class="fas fa-caret-square-right"></i> 
+        <i class="fas fa-caret-square-right"></i>
       </div>
       <h4 class="description-data-subtitle">{{{_ "PLANEACIÓN"}}}</h4>
     </div>
@@ -273,7 +273,7 @@
               {{result.records.compiledRelease.parties.0.identifier.id}}
               <a data-toggle="tooltip" data-placement="right" title="{{{_ "Clave de identificación de la Unidad Compradora en Compranet 3.0." }}}"><i class="fas fa-info"></i></a>
               )
-              
+
             {{/if}}
           </p>
         </div>
@@ -453,7 +453,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                     {{#each ../documents }}
                       <a href="{{url}}">
                         <i class="fas fa-external-link-alt"></i>
-                        {{{_ "Ver {documentType} {index} en sitio oficial" documentType=documentType index=(math @../index "+" 1) }}} 
+                        {{{_ "Ver {documentType} {index} en sitio oficial" documentType=documentType index=(math @../index "+" 1) }}}
                       </a>
                     <br>
                     {{/each}}
@@ -498,7 +498,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
       <div class="row flex">
         <div class="col-12">
           <p class="js-title-data">{{{_ "No hay datos" }}}</p>
-        </div>    
+        </div>
       </div>
     </div>
   </section>
@@ -560,8 +560,11 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
 
       </div>
     </div>
- 
+
   </section>
 
 </div>
 
+{{> report_modals }}
+
+{{> how-use-data-modal }}
