@@ -82,12 +82,12 @@
 
               {{{ get_classification_icon result.records.compiledRelease.parties.0.details.type result.records.compiledRelease.parties.0.details.classification result.records.compiledRelease.parties.0.details.govLevel}}}
 
-            <a href="/{{{_ "instituciones-publicas"}}}/{{result.records.compiledRelease.buyer.id }}">{{result.records.compiledRelease.buyer.name}}</a>
+            <a href="{{ url view=(get_type_url result.records.compiledRelease.parties.0.details.type) _id=result.records.compiledRelease.buyer.id }}">{{result.records.compiledRelease.buyer.name}}</a>
 
             perteneciente a
             {{{ get_classification_icon result.records.compiledRelease.parties.0.details.type "dependencia" result.records.compiledRelease.parties.0.details.govLevel}}}
             </a>
-            <a href="/{{get_type_url result.records.compiledRelease.parties.0.details.type }}/{{result.records.compiledRelease.parties.0.memberOf.0.id}}">{{result.records.compiledRelease.parties.0.memberOf.0.name}}</a>
+            <a href="{{url view=(get_type_url result.records.compiledRelease.parties.0.details.type) _id=result.records.compiledRelease.parties.0.memberOf.0.id}}">{{result.records.compiledRelease.parties.0.memberOf.0.name}}</a>
             {{#if result.records.compiledRelease.parties.0.details.govLevel }} {{{_ "de nivel"}}} {{ get_govlevel_name result.records.compiledRelease.parties.0.details.govLevel }}{{/if}}
 
 
@@ -263,7 +263,7 @@
         <div class="col-m-6 col-6 pr-1 pb-3">
           <p class="js-title-data">{{{_ "Unidad compradora" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet." }}}"><i class="fas fa-info-circle"></i></a></p>
           <p class="js-data">
-            <a href="/{{{_ "instituciones-publicas" }}}/{{result.records.compiledRelease.buyer.id }}">
+            <a href="{{ url view=(get_type_url result.records.compiledRelease.parties.0.details.type ) _id=result.records.compiledRelease.buyer.id }}">
               {{result.records.compiledRelease.buyer.name}}
             </a>
             {{#if result.records.compiledRelease.parties.0.identifier.id }}
@@ -393,6 +393,9 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                   <p class="js-title-data">{{{_ "Título" }}}</p>
                   <p class="js-data">{{title}}</p>
               </div>
+              <div class="col-12">
+                <a href="{{url view="contratos/:id" _id=../result.records.compiledRelease.id }}" class="btn btn-primary">Ver contrato</a>
+              </div>              
               {{#if description }}
               <div class="col-m-12 col-12">
                   <p class="js-title-data">{{{_ "Descripción" }}}</p>
@@ -459,6 +462,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                     {{/each}}
                 </div>
                 {{/if}}
+
 
                 <div class="col-m-12 col-12 contract-award-notes">
                   {{#if status }}
