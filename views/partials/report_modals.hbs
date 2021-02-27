@@ -24,7 +24,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
-                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Usar info de {title}" title=title }}">{{_ "Contáctanos" }}</a>
+                <a type="button" class="btn btn-primary" href="/contacto?subject={{_ "Usar info de {title}" title=(or title.full title) }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -48,12 +48,12 @@
                 </p>
                 <p>
 
-                {{_ "Si la información presentada sobre '{title}' no es correcta, por favor contáctanos reportando la información errónea y dónde podemos conseguir la información correcta." title=title }}
+                {{_ "Si la información presentada sobre '{title}' no es correcta, por favor contáctanos reportando la información errónea y dónde podemos conseguir la información correcta." title=(or title.full title) }}
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
-                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Correcciones a {title}" title=title) }}">{{_ "Contáctanos" }}</a>
+                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Correcciones a {title}" title=(or title.full title)) }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -69,11 +69,11 @@
                 </button>
             </div>
             <div class="modal-body">
-              {{_ "Agradecemos todos los aportes. Si tienes información adicional sobre '{title}' y quieres que esta le llegue al área de periodismo de PODER, por favor contáctanos." title=title }}
+              {{_ "Agradecemos todos los aportes. Si tienes información adicional sobre '{title}' y quieres que esta le llegue al área de periodismo de PODER, por favor contáctanos." title=(or title.full title) }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Aporte de información sobre {title}" title=title) }}">{{ _ "Contáctanos" }}</a>
+                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Aporte de información sobre {title}" title=(or title.full title)) }}">{{ _ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
-                <a type="button" class="btn btn-primary" href="{{url view="contacto" subject=(_ "Solicito información de {title}" title=title) }}">{{_ "Contáctanos" }}</a>
+                <a type="button" class="btn btn-primary" href="{{url view="contacto" subject=(_ "Solicito información de {title}" title=(or title.full title)) }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>

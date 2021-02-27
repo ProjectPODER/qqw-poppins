@@ -89,7 +89,7 @@
               {{#each result.summary.year }}
               <div style=" overflow: hidden; background:rgba(45,28,157,0.3); color:#212529; height: {{math (math this "/" (last_value ../result.summary.year)) "*" 50 }}px; display: table-cell; margin: 2px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="
               {{moment @key "YYYY"}}  con 
-              {{ format_number count}} contratos
+              {{ format_number this}} contratos
               ">
                 <p class="date-graph">{{moment @key "YYYY"}}</p>
               </div>
