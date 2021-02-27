@@ -54,10 +54,10 @@
       <div class="row flex">
         <div class="col-m-6 col-6 contract-total-amount pb-3">
           <p class="js-title-data">{{{_ "Importe total"}}}</p>
-          <p class="js-data">{{format_amount result.records.compiledRelease.total_amount}}</p>
+          <p class="js-data">{{format_amount result.records.compiledRelease.total_amount}} <i class="fas fa-info-circle text-gray"  title="Este importe es una suma de valores que podrían estar en varias monedas, revise cada contrato para ver su moneda."></i> </p>
         </div>
 
-        <div class="col-6 pb-3">
+        {{!-- <div class="col-6 pb-3">
             <p class="js-title-data">{{{_ "Período de contrato(s)"}}}</p>
             {{{_ "Entre el {start} y el {end}" start=(moment result.records.startDate date lang="es" format="LL") end=(moment result.records.endDate date lang="es" format="LL") }}}
         </div>
@@ -67,28 +67,27 @@
             <p class="js-title-data">{{{_ "Descripción"}}}</p>
             <p class="js-data">{{result.records.description}}</p>
         </div>
-        {{/if}}
+        {{/if}} --}}
 
         <div class="col-6 pb-3">
             <p class="js-title-data">{{{_ "Cantidad de contratos"}}}</p>
-            {{ result.records.compiledRelease.awards.length }}
+            {{ result.records.compiledRelease.awards.length }} <i class="fas fa-info-circle text-gray" title="Los expedientes unifican todo el proceso de contratación por su identificador. Puede contener más de un contrato."></i>
         </div>
 
         <div class="col-m-12 col-12 link-lf-contracts pb-3">
-            <p class="js-title-data">{{{_ "Unidad compradora"}}}</p>
-            <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."}}}">
-              {{{ get_classification_icon "institutions" result.records.compiledRelease.parties.0.details.type result.records.compiledRelease.parties.0.details.classification result.records.compiledRelease.parties.0.details.govLevel}}}
-            </a>
+            <p class="js-title-data">{{{_ "Unidad compradora"}}}
+
+            <i class="fas fa-info-circle text-gray" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet. Perteneciente a Dependencia, Entidad Federativa o Municipio que realiza la contratación."}}}"></i>
+            </p>
+
+              {{{ get_classification_icon result.records.compiledRelease.parties.0.details.type result.records.compiledRelease.parties.0.details.classification result.records.compiledRelease.parties.0.details.govLevel}}}
+
             <a href="/{{{_ "instituciones-publicas"}}}/{{result.records.compiledRelease.buyer.id }}">{{result.records.compiledRelease.buyer.name}}</a>
 
             perteneciente a
-            {{#with (get_party ../result.records result.records.compiledRelease.parties.0.memberOf.0.id) }}
-            {{j this}}
-              <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación.">
-              {{{ get_classification_icon "institutions" ../result.records.compiledRelease.parties.0.details.type "dependencia" result.records.compiledRelease.parties.0.details.govLevel}}}
-              </a>
-              <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}">{{memberOf.0.name}}</a>
-            {{/with}}
+            {{{ get_classification_icon result.records.compiledRelease.parties.0.details.type "dependencia" result.records.compiledRelease.parties.0.details.govLevel}}}
+            </a>
+            <a href="/{{get_type_url result.records.compiledRelease.parties.0.details.type }}/{{result.records.compiledRelease.parties.0.memberOf.0.id}}">{{result.records.compiledRelease.parties.0.memberOf.0.name}}</a>
             {{#if result.records.compiledRelease.parties.0.details.govLevel }} {{{_ "de nivel"}}} {{ get_govlevel_name result.records.compiledRelease.parties.0.details.govLevel }}{{/if}}
 
 
@@ -118,7 +117,7 @@
       </div>
     </div>
   </section>
-
+{{!-- 
   <section class="profile row" id="calidad">
     <div class="box-title-section">
       <div class="box-title-icon">
@@ -160,7 +159,6 @@
               <h4 class="description-data-subname" id="contract_problemas_destacados">{{{_ "PROBLEMAS DESTACADOS"}}}</h4>
               <ul class="party_flags_recommendations_list">
                 {{# each this.rules}}
-                {{!-- {{j this }} --}}
                     <li class="party_flags_recommendations_item">{{#with (contract_recommendations name) }}{{ contract_string }}{{/with}}</li>
                 {{/each}}
               </ul>
@@ -174,7 +172,7 @@
 
       </div>
     </div>
-  </section>
+  </section> --}}
   <section class="profile row" id="planeacion">
     <div class="box-title-section">
       <div class="box-title-icon">
@@ -200,13 +198,13 @@
           <div class="col-m-12 col-12">
               <p class="js-data mt-2">{{{_ "PRESUPUESTO"}}}</p>
           </div>
-          {{# if result.records.compiledRelease.planning.budget.budgetBreakdown.description }}
+          {{#if result.records.compiledRelease.planning.budget.budgetBreakdown.description }}
           <div class="col-m-12 col-12 mb-2">
             <span class="js-title-data">{{{_ "Descripción de los fondos"}}}: </span>
             <span class="js-data">          {{ result.records.compiledRelease.planning.budget.budgetBreakdown.description }}
           </div>
           {{/if}}
-          {{# if result.records.compiledRelease.planning.budget.projectID }}
+          {{#if result.records.compiledRelease.planning.budget.projectID }}
           <div class="col-m-6 col-6 mb-2">
               <span class="js-title-data">{{{_ "Proyecto"}}}: </span>
               <span class="js-data"> {{ result.records.compiledRelease.planning.budget.projectID }} ({{ result.records.compiledRelease.planning.budget.project }})
@@ -248,11 +246,11 @@
         {{#if result.records.compiledRelease.parties.length }}
         <div class="col-m-6 col-6 link-lf-contracts pb-3">
             <p class="js-title-data">{{{_ "Dependencia" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación." }}}"><i class="fas fa-info-circle"></i></a></p>
-            {{!-- {{#each result.records.compiledRelease.parties.0.memberOf.0.name}} --}}
-            {{#with (get_party result.records.[0] result.records.compiledRelease.parties.0.memberOf.0.id) }}
-              <a href="/{{get_type_url details.type }}/{{memberOf.0.id}}"><p class="js-data">{{memberOf.0.name}}</p></a>
-            {{/with}}
-            {{!-- {{/each}} --}}
+            <p class="js-data">
+              <a href="{{url view=(get_type_url result.records.compiledRelease.parties.0.details.type) _id=result.records.compiledRelease.parties.0.memberOf.0.id}}">
+                {{result.records.compiledRelease.parties.0.memberOf.0.name}}
+              </a>
+              </p>
         </div>
         {{/if}}
         {{#if result.records.compiledRelease.parties.0.details.govLevel }}
@@ -393,7 +391,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               </div>
               <div class="col-m-12 col-12">
                   <p class="js-title-data">{{{_ "Título" }}}</p>
-                  <p class="js-data">{{contract.title}}</p>
+                  <p class="js-data">{{title}}</p>
               </div>
               {{#if description }}
               <div class="col-m-12 col-12">
@@ -405,9 +403,9 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               <div class="col-m-6 col-6">
                   <p class="js-title-data">{{{_ "Proveedor(es)" }}}</p>
                   {{#each suppliers }}
-                  {{#with (get_party ../../result.records.[0] id) }}
+                  {{#with (get_party ../../result.records.compiledRelease id) }}
                   <p class="js-data mb-1">
-                    <a href="/{{get_type_url details.type }}/{{id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
+                    <a href="{{ url view=(get_type_url details.type) _id=id }}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
                   </p>
                   {{/with}}
                   {{/each}}
@@ -431,7 +429,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                   <p class="js-data mb-1" >{{moment date date lang="es" format="LL"}}</p>
               </div>
               {{/if}}
-              {{#with contract }}
+              {{#with (get_contract_by_awardid ../result.records.compiledRelease.contracts id) }}
                 {{#if dateSigned }}
                 <div class="col-m-6 col-6">
                     <p class="js-title-data">{{{_ "Fecha de firma" }}}</p>
@@ -447,13 +445,15 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                 </div>
                 {{/if}}
 
+
+
                 {{#if ../documents.length }}
                 <div class="col-12">
                   <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
                     {{#each ../documents }}
-                      <a href="{{url}}">
+                      <a href="{{this.url}}">
                         <i class="fas fa-external-link-alt"></i>
-                        {{{_ "Ver {documentType} {index} en sitio oficial" documentType=documentType index=(math @../index "+" 1) }}}
+                  {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} {{#with (fix_url this.url) }}{{host}}{{/with}}
                       </a>
                     <br>
                     {{/each}}

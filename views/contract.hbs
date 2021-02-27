@@ -451,7 +451,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               {{#each ../result.awards.documents.list }}
                 <a href="{{this.url}}">
                   <i class="fas fa-external-link-alt"></i>
-                  {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}}
+                  {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} {{#with (fix_url this.url) }}{{host}}{{/with}}
                 </a>
               <br>
               {{/each}}
@@ -542,12 +542,26 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
             </div>
           {{/if}}
 
+          {{#if result.awards.documents.list.length }}
+          <div class="col-12 pb-3">
+            <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
+              {{#each result.awards.documents.list }}
+                <a href="{{this.url}}">
+                  <i class="fas fa-external-link-alt"></i>
+                  {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} {{#with (fix_url this.url) }}{{host}}{{/with}}
+                </a>
+              <br>
+              {{/each}}
+          </div>
+          {{/if}}
+
           {{#if result.source}}
             <div class="col-md-4 col-12 pd-nonleft">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
               <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
+
         </div>
 
       </div>
