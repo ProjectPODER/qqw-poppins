@@ -5,7 +5,8 @@
               {{{get_role_icon this.role this.direction}}}
             </div>
             <h4 class="description-data-subtitle">
-              {{get_role_name this.role this.direction}}
+              {{#ifCond this.memberships.length ">" 5}} <strong>{{this.memberships.length}}</strong>{{/ifCond}}
+              {{get_role_name this.role this.direction}} 
             </h4>
           </div>
           <div class="col-12 col-m-12">
