@@ -152,10 +152,10 @@ var autocollapse = function (menu,maxHeight) {
   // console.log("autocollapse",nav,navHeight,autocollapse_moves);
 
   if (navHeight >= maxHeight && autocollapse_moves < 100) {
-    
+
       $(menu + ' .more-filters-dropdown').removeClass('d-none');
       $(menu).removeClass('w-auto').addClass("w-100");
-      
+
       while (navHeight > maxHeight && autocollapse_moves < 100) {
           //  add child to dropdown
           var children = $.merge($(menu +" > li.active").toArray(),nav.children(menu + ' > li:not(:last-child):not(.active)'))
@@ -174,11 +174,11 @@ var autocollapse = function (menu,maxHeight) {
     // alert("Hello! I am an alert box else!!");
       // console.log("else",$(menu + ' .dropdown-menu-morefilters').children('li'));
       var collapsed = $(menu + ' .dropdown-menu-morefilters').children('li');
-    
+
       if (collapsed.length===0) {
         $('.more-filters-dropdown').addClass('d-none');
       }
-    
+
       while (navHeight < maxHeight && (nav.children(menu + ' > li').length > 0) && collapsed.length > 0 && autocollapse_moves < 100) {
           //  remove child from dropdown
           collapsed = $(menu + ' .dropdown-menu-morefilters').children('li');
@@ -188,21 +188,21 @@ var autocollapse = function (menu,maxHeight) {
           autocollapse_moves++;
       }
 
-      if (navHeight > maxHeight && autocollapse_moves < 100) { 
+      if (navHeight > maxHeight && autocollapse_moves < 100) {
           autocollapse(menu,maxHeight);
       }
-      
+
   }
 };
 
 let autocollapse_moves = 0;
 jQuery(function() {
   // when the page loads
-  autocollapse("#filtersList",81); 
+  autocollapse("#filtersList",81);
   // when the window is resized
   $(window).on('resize', function () {
     autocollapse_moves = 0;
-    autocollapse("#filtersList",81); 
+    autocollapse("#filtersList",81);
   });
 });
 
@@ -211,8 +211,9 @@ $("#moreFilters").on("click", function() {
   $(".dropdown-menu-morefilters").toggleClass("d-none");
 })
 
-  // Add scrollspy to <body> in Contract perfil
+  // Add scrollspy to <body> in perfil
 $('body').scrollspy({target: "#right-menu", offset: 200});
+
 
 // Add smooth scrolling on all links inside the navbar
 $("#right-menu a").on('click', function(event) {
@@ -227,7 +228,7 @@ $("#right-menu a").on('click', function(event) {
     // Using jQuery's animate() method to add smooth page scroll
     // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
     $('html, body').animate({
-      scrollTop: $(hash).offset().top - 200
+      scrollTop: $(hash).offset().top - 150
     }, 800, function(){
       console.log("scroll spy animate",$(hash).offset().top)
     });
@@ -352,17 +353,19 @@ $(window).scroll(function(e) {
     // alert("scroll");
   if ($(this).scrollTop() > 20) {
     $("#wrap").addClass("fixed-title");
-    $("#wrap-contract").addClass("fixed-title-contract");
+    // $("#wrap-contract").addClass("fixed-title-contract");
     $("#currency-contract").css("display", "none");
-    $(".contract_detail").addClass("contract-margin");
+    $(".first-profile-section").addClass("profile-margin");
+    $(".first-contract-section").addClass("contract-margin");
     $("#informacion-general").addClass("profile-margin");
     $("#mujeresenlabolsa").addClass("profile-margin");
     $("#variaciones").addClass("profile-margin");
   } else {
     $("#wrap").removeClass("fixed-title");
-    $("#wrap-contract").removeClass("fixed-title-contract");
+    // $("#wrap-contract").removeClass("fixed-title-contract");
     $("#currency-contract").css("display", "block");
-    $(".contract_detail").removeClass("contract-margin");
+    $(".first-profile-section").removeClass("profile-margin");
+    $(".first-contract-section").removeClass("contract-margin");
     $("#informacion-general").removeClass("profile-margin");
     $("#mujeresenlabolsa").removeClass("profile-margin");
     $("#variaciones").removeClass("profile-margin");
