@@ -318,9 +318,6 @@
 "company": "Empresas",
 "municipality": "Municipios",
 "state": "Estados",
-"contract": "Contratos",
-"city": "Ciudades",
-"country": "Países",
 "Actualización": "Actualización",
 "person": "Personas",
 "proveedor": "Proveedores",
@@ -394,7 +391,8 @@
 "Dependencias del Estado": "Dependencias del Estado",
 "Pertenece a país": "Pertenece a país",
 "Unidad compradora estatal": "Unidad compradora estatal",
-"Compras": "Compras"
+"Compras": "Compras",
+"awardNotice": "resolución de adjudicación"
 
 
 }
