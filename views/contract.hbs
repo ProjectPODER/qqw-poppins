@@ -543,9 +543,9 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
           {{/if}}
 
           {{#if result.source}}
-            <div class="col-m-3 col-3 pd-nonleft">
-              <p class="js-title-data">{{{_ "Fuente(s)" }}}</p>
-              <p class="js-data">{{#each result.source}} <a href="{{url view="entidades-y-fuentes" _anchor=this.id}}">{{this.id}}</a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+            <div class="col-md-4 col-12 pd-nonleft">
+              <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
         </div>
