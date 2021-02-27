@@ -42,7 +42,7 @@
 
 
 
-<div class="profile-content">
+<div class="profile-content first-contract-section">
   <section class="profile row" id="datosgenerales">
     <div class="box-title-section">
       <div class="box-title-icon">
@@ -555,7 +555,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
               <p class="js-data">{{#each result.records.compiledRelease.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
-          {{/if}}          
+          {{/if}}
         </div>
 
       </div>

@@ -2214,8 +2214,11 @@ input[type=submit].landing-search-inputtext {
   width: 65%;
   float: left;
 }
-.contract-margin {
+.profile-margin {
   margin-top: 11.5rem;
+}
+.contract-margin {
+  margin-top: 13.5rem;
 }
 .gender-indicator-container {
   padding: 20px;
