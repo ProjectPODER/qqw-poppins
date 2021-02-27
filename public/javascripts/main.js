@@ -129,6 +129,20 @@ $("#first-search").click(function() {
   $('.easy-search-input').trigger("keypress",13);
 })
 
+
+// Copy clipboard
+function copyClipboard(id) {
+  // var copyText = document.getElementById("pageUrl");
+  // copyText.select();
+  // document.execCommand("copy");
+  // // alert("Copied the text: " + copyText.value);
+
+  const textToCopy = document.getElementById(id).value;
+  navigator.clipboard.writeText(textToCopy)
+    // .then(() => { alert(`Copied!`) })
+    .catch((error) => { alert(`Esta es la dirección para compartir: ${textToCopy}`) })
+}
+
 // //Collapsing filters ul
 var autocollapse = function (menu,maxHeight) {
   if (autocollapse_moves > 100) { console.error("autocollapse","moves exceeded"); return false; }

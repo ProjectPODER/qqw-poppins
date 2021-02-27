@@ -42,11 +42,11 @@
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.quienesquien.wiki{{share_url}}&t=QuienesQuienWiki" target="_blank"><i class="fab fa-facebook-square"></i></a>
             <a href="https://twitter.com/intent/tweet?text={{_ "Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas&url=https://www.quienesquien.wiki{share_url}&via=ProjectPODER" share_url=share_url }}" target="_blank"><i class="fab fa-twitter-square"></i></a>
             <a href="whatsapp://send?text={{_ "Explora+conexiones+y+contratos+entre+empresarios%2c+pol%c3%adticos%2c+empresas+e+instituciones+p%c3%bablicas+en+https://www.quienesquien.wiki{share_url}" share_url=share_url }}" target="_blank"><i class="fab fa-whatsapp-square"></i></a>
+            <button class="btn btn-primary" onclick="copyClipboard('pageUrl')" title="{{_ "Copiar URL" }}">
+                <input class="w-50 mb-0" id="pageUrl" type="hidden" name="destinatario" value="https://www.quienesquien.wiki{{share_url}}">
+                <i class="fas fa-copy"></i>
+            </button>
         </div>
-        <button class="btn btn-primary w-10" onclick="copyClipboard()" title="{{_ "Copiar URL" }}">
-            {{_ "URL " }}<input class="w-50 mb-0" id="pageUrl" type="text" name="destinatario" value="https://www.quienesquien.wiki/{{share_url}}">
-            <i class="fas fa-copy"></i>
-        </button>
     </div>
 </li>
 <li class="nav-item dropdown general-filters text-center">
