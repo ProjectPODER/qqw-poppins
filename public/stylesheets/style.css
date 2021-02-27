@@ -2159,6 +2159,10 @@ input[type=submit].landing-search-inputtext {
 .fixed-title-contract li a i {
   width: 18px !important;
 }
+.fixed-title .social-share-icons a i,
+.fixed-title-contract .social-share-icons a i {
+  width: 2.5rem !important;
+}
 .fixed-title .profile-breadcrumb,
 .fixed-title-contract .profile-breadcrumb {
   font-size: 0.8rem;
