@@ -42,13 +42,14 @@
         {{/ifCond}}
 
         {{!-- CONTRATOS --}}
-        {{#ifCond (get_classification_type result.classification) "==" "contracts" }}
+        {{#ifCond (get_classification_type result.classification) "==" "contracts" }}         
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.memberOf.id}}" title="{{_ "Comprador" }}: {{parties.buyer.memberOf.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
-                    {{{hilight ../../filter_values.dependencia.value parties.buyer.memberOf.name}}}
+                    {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
+                    {{parties.buyer.memberOf.name}}
                 </a>
               </p>
             </div> 
@@ -117,7 +118,7 @@
           </div>
         {{/ifCond}}
 
-        {{!-- PAISES --}}
+        {{!-- AREAS --}}
         {{#ifCond (get_classification_type result.classification) "==" "areas" }}
           <div class="left-elements col-lg-4 col-md-4 col-md-6 col-sm-6 col-6">
             <div class="col-lg-12 p-0">
@@ -134,6 +135,9 @@
                 {{/ifCond}}
                 {{#ifCond ../classification "==" "state"}}
                   {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key estado=../id}}
+                {{/ifCond}}
+                {{#ifCond ../classification "==" "city"}}
+                  {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key ciudad=../id}}
                 {{/ifCond}}
                 " title="{{format_number this}} {{_ @key }}">
                 {{{ get_classification_icon @key }}} {{format_number this}} {{_ @key }}

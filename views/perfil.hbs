@@ -245,8 +245,22 @@
                     {{format_number this}}
                   </strong>
                 </h5>
-                <h5 class="card-h3"><a href="{{url view="buscador" collection=(get_classification_type @key) sort-cpi="" classification=@key pais=../result.id}}" title="{{format_number this}} {{_ @key }}">
-            {{{ get_classification_icon @key }}} {{_ @key }}</a></h5>
+                <h5 class="card-h3">
+                                  <a href="
+                {{#ifCond ../result.classification "==" "country"}}
+                  {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key pais=../result.id}}
+                {{/ifCond}}
+                {{#ifCond ../result.classification "==" "state"}}
+                  {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key estado=../result.id}}
+                {{/ifCond}}
+                {{#ifCond ../result.classification "==" "city"}}
+                  {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key ciudad=../result.id}}
+                {{/ifCond}}
+                " title="{{format_number this}} {{_ @key }}">
+                {{{ get_classification_icon @key }}} {{_ @key }}
+                </a>
+
+                </h5>
               </div>
             </div>
           </div>
