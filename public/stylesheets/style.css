@@ -1145,40 +1145,40 @@ input[type=submit].landing-search-inputtext {
 .index-list-elements .right-elements div {
   float: right;
 }
-.index-list-elements .left-elements .area-institution,
-.index-list-elements .right-elements .area-institution {
-  position: absolute;
-  right: calc(60px + 13% * 5);
-  text-align: right;
-}
-.index-list-elements .left-elements .area-owner,
-.index-list-elements .right-elements .area-owner {
-  position: absolute;
-  right: calc(60px + 13% * 3);
-  text-align: right;
-}
 .index-list-elements .left-elements .area-company,
 .index-list-elements .right-elements .area-company {
   position: absolute;
   right: calc(60px + 13% * 0);
   text-align: right;
 }
-.index-list-elements .left-elements .area-proveedor,
-.index-list-elements .right-elements .area-proveedor {
-  position: absolute;
-  right: calc(60px + 13% * 2);
-  text-align: right;
-}
 .index-list-elements .left-elements .area-person,
 .index-list-elements .right-elements .area-person {
   position: absolute;
-  right: calc(60px + 13% * 1);
+  right: calc(60px + 14% * 1);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-proveedor,
+.index-list-elements .right-elements .area-proveedor {
+  position: absolute;
+  right: calc(60px + 14% * 2);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-owner,
+.index-list-elements .right-elements .area-owner {
+  position: absolute;
+  right: calc(60px + 14% * 3);
   text-align: right;
 }
 .index-list-elements .left-elements .area-funcionario,
 .index-list-elements .right-elements .area-funcionario {
   position: absolute;
-  right: calc(60px + 13% * 4);
+  right: calc(60px + 14% * 4);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-institution,
+.index-list-elements .right-elements .area-institution {
+  position: absolute;
+  right: calc(60px + 14% * 5);
   text-align: right;
 }
 .index-list-element {
@@ -1281,12 +1281,37 @@ input[type=submit].landing-search-inputtext {
   text-align: center;
   width: 100%;
 }
+@media screen and (max-width: 1270px) {
+  .index-list-elements .right-elements .area-person {
+    right: calc(60px + 15.5% * 1);
+  }
+  .index-list-elements .right-elements .area-proveedor {
+    right: calc(60px + 15% * 2);
+  }
+  .index-list-elements .right-elements .area-owner {
+    right: calc(60px + 15.5% * 3);
+  }
+  .index-list-elements .right-elements .area-funcionario {
+    right: calc(60px + 15% * 4);
+  }
+  .index-list-elements .right-elements .area-institution {
+    right: calc(60px + 15% * 5);
+  }
+}
 @media screen and (max-width: 991px) {
   .filters {
     top: 56px;
   }
   .index-list-elements .right-elements {
     padding-right: 20px;
+  }
+  .index-list-elements .right-elements .area-institution,
+  .index-list-elements .right-elements .area-owner,
+  .index-list-elements .right-elements .area-company,
+  .index-list-elements .right-elements .area-proveedor,
+  .index-list-elements .right-elements .area-person,
+  .index-list-elements .right-elements .area-funcionario {
+    position: static;
   }
 }
 .page-break {
