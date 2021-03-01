@@ -394,7 +394,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                   <p class="js-data">{{title}}</p>
               </div>
               <div class="col-12">
-                <a href="{{url view="contratos/:id" _id=../result.records.compiledRelease.id }}" class="btn btn-primary">Ver contrato</a>
+                <a href="{{url view="contratos/:id" _id=../result.records.compiledRelease.id }}-{{id}}" class="btn btn-primary">Ver contrato</a>
               </div>              
               {{#if description }}
               <div class="col-m-12 col-12">
@@ -443,7 +443,6 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                 <div class="col-m-6 col-6">
                     <p class="js-title-data">{{{_ "Período de ejecución" }}}</p>
                     <p class="js-data">{{moment period.startDate date lang="es" format="LL"}} {{{_ "a" }}} {{moment period.endDate date lang="es" format="LL"}}
-                      {{!-- #if (contract_has_flag id "temp-dl") }}{{> bandera flag_id="temp-dl"}}{{/if --}}
                     </p>
                 </div>
                 {{/if}}

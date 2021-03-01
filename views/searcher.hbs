@@ -87,7 +87,7 @@
             <p><b>Resultados por año:</b></p>
             <div style="width: 100%; display: flex;">
               {{#each result.summary.year }}
-              <div style=" overflow: hidden; background:rgba(45,28,157,0.3); color:#212529; height: {{math (math this "/" (last_value ../result.summary.year)) "*" 50 }}px; display: table-cell; margin: 2px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="
+              <div style=" overflow: hidden; background:rgba(45,28,157,0.3); color:#212529; height: {{math (math this "/" (last_value ../result.summary.year)) "*" 150 }}px; display: table-cell; margin: 2px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="
               {{moment @key "YYYY"}}  con 
               {{ format_number this}} contratos
               ">

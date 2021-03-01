@@ -66,14 +66,15 @@
                             <a href="{{ url view="buscador" collection="contracts" proveedor=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
                           {{/ifCond }}
                         {{else }}
-                        {{#ifCond result.compiledRelease.classification "==" "company"}}
-                            <a href="{{ url view="buscador" collection="contracts" proveedor=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
-                        {{/ifCond}}
-                        {{#ifCond result.compiledRelease.subclassification "==" "unidad-compradora"}}
-                            <a href="{{ url view="buscador" collection="contracts" uc_id=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta UC" }}</a>
-                        {{else }}
-                            <a href="{{ url view="buscador" collection="contracts" dependencia=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta dependencia" }}</a>
-                        {{/ifCond}}
+                          {{#ifCond result.classification "==" "company"}}
+                              <a href="{{ url view="buscador" collection="contracts" proveedor=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
+                            {{else}}
+                            {{#ifCond result.subclassification "==" "unidad-compradora"}}
+                                <a href="{{ url view="buscador" collection="contracts" uc_id=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta UC" }}</a>
+                            {{else }}
+                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta dependencia" }}</a>
+                            {{/ifCond}}
+                          {{/ifCond}}
                         {{/ifCond }}
                     </div>
                 </div>
