@@ -1276,7 +1276,7 @@ input[type=submit].landing-search-inputtext {
 .date-graph {
   transform: rotate(90deg);
   white-space: nowrap;
-  margin: 10px auto 0 auto;
+  margin: 15px auto 0 auto;
   display: inline-block;
   text-align: center;
   width: 100%;
