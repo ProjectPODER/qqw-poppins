@@ -1138,11 +1138,48 @@ input[type=submit].landing-search-inputtext {
 }
 .index-list-elements .left-elements,
 .index-list-elements .right-elements {
+  position: static;
   padding: 0;
 }
 .index-list-elements .left-elements div,
 .index-list-elements .right-elements div {
   float: right;
+}
+.index-list-elements .left-elements .area-institution,
+.index-list-elements .right-elements .area-institution {
+  position: absolute;
+  right: calc(60px + 13% * 5);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-owner,
+.index-list-elements .right-elements .area-owner {
+  position: absolute;
+  right: calc(60px + 13% * 3);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-company,
+.index-list-elements .right-elements .area-company {
+  position: absolute;
+  right: calc(60px + 13% * 0);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-proveedor,
+.index-list-elements .right-elements .area-proveedor {
+  position: absolute;
+  right: calc(60px + 13% * 2);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-person,
+.index-list-elements .right-elements .area-person {
+  position: absolute;
+  right: calc(60px + 13% * 1);
+  text-align: right;
+}
+.index-list-elements .left-elements .area-funcionario,
+.index-list-elements .right-elements .area-funcionario {
+  position: absolute;
+  right: calc(60px + 13% * 4);
+  text-align: right;
 }
 .index-list-element {
   margin-right: 1em;
@@ -1239,11 +1276,17 @@ input[type=submit].landing-search-inputtext {
 .date-graph {
   transform: rotate(90deg);
   white-space: nowrap;
-  margin: 10px 0 0 0;
+  margin: 10px auto 0 auto;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
 }
 @media screen and (max-width: 991px) {
   .filters {
     top: 56px;
+  }
+  .index-list-elements .right-elements {
+    padding-right: 20px;
   }
 }
 .page-break {
