@@ -115,11 +115,6 @@ get_classification_url = function(classification) {
 
 $(".qqw-home .twitter-typeahead").css("width","100%");
 
-// $('.easy-search-input-filter').bind('typeahead:select', function(ev, suggestion) {
-//   console.log('Selection: ' + suggestion);
-//   $(".easy-search-input-filter.tt-input").val(suggestion);
-// });
-
 $('.easy-search-input').bind('typeahead:select', function(ev, suggestion) {
   console.log('Selection: ' + suggestion);
   $(".easy-search-input.landing-search-inputtext.tt-input").val(suggestion);
