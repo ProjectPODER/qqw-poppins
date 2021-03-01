@@ -318,29 +318,29 @@
         // -ms-flex 0 auto
         // flex 0 auto
         // float right
-        .area-institution
-            position absolute
-            right calc(60px + 13% * 5)
-            text-align: right
-        .area-owner
-            position absolute
-            right calc(60px + 13% * 3)
-            text-align: right
         .area-company
             position absolute
             right calc(60px + 13% * 0)
             text-align: right
-        .area-proveedor
-            position absolute
-            right calc(60px + 13% * 2)
-            text-align: right
         .area-person
             position absolute
-            right calc(60px + 13% * 1)
+            right calc(60px + 14% * 1)
+            text-align: right
+        .area-proveedor
+            position absolute
+            right calc(60px + 14% * 2)
+            text-align: right
+        .area-owner
+            position absolute
+            right calc(60px + 14% * 3)
             text-align: right
         .area-funcionario
             position absolute
-            right calc(60px + 13% * 4)
+            right calc(60px + 14% * 4)
+            text-align: right
+        .area-institution
+            position absolute
+            right calc(60px + 14% * 5)
             text-align: right
 
 
@@ -445,6 +445,19 @@
     width: 100%;
 
 // RESPONSIVE VIEWS
+@media screen and (max-width: 1270px)
+    .index-list-elements
+        .right-elements
+            .area-person
+                right calc(60px + 15.5% * 1)
+            .area-proveedor
+                right calc(60px + 15% * 2)
+            .area-owner
+                right calc(60px + 15.5% * 3)
+            .area-funcionario
+                right calc(60px + 15% * 4)
+            .area-institution
+                right calc(60px + 15% * 5)
 
 @media screen and (max-width: 991px)
     .filters
@@ -452,6 +465,13 @@
     .index-list-elements
         .right-elements
             padding-right: 20px
+            .area-institution,
+            .area-owner,
+            .area-company,
+            .area-proveedor,
+            .area-person,
+            .area-funcionario
+                position static
 
 
 @media screen and (max-width: 767px)
