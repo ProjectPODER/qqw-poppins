@@ -352,7 +352,6 @@ $(window).scroll(function(e) {
     $("#currency-contract").css("display", "none");
     $(".first-profile-section").addClass("profile-margin");
     $(".first-contract-section").addClass("contract-margin");
-    $("#informacion-general").addClass("profile-margin");
     $("#mujeresenlabolsa").addClass("profile-margin");
     $("#variaciones").addClass("profile-margin");
   } else {
@@ -361,7 +360,6 @@ $(window).scroll(function(e) {
     $("#currency-contract").css("display", "block");
     $(".first-profile-section").removeClass("profile-margin");
     $(".first-contract-section").removeClass("contract-margin");
-    $("#informacion-general").removeClass("profile-margin");
     $("#mujeresenlabolsa").removeClass("profile-margin");
     $("#variaciones").removeClass("profile-margin");
   }
