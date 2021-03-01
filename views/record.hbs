@@ -394,7 +394,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
                   <p class="js-data">{{title}}</p>
               </div>
               <div class="col-12">
-                <a href="{{url view="contratos/:id" _id=../result.records.compiledRelease.id }}" class="btn btn-primary">Ver contrato</a>
+                <a href="{{url view="contratos/:id" _id=(../result.records.compiledRelease.id) }}-{{id}}" class="btn btn-primary">Ver contrato</a>
               </div>              
               {{#if description }}
               <div class="col-m-12 col-12">
