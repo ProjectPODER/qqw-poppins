@@ -36,7 +36,7 @@
                 <a href="{{url view="buscador" collection="persons"}}">
                   <h3>
                     <strong>
-                      {{format_number stats.index.persons.count }} 
+                      {{format_number stats.index.persons.count }}
                     </strong>
                   </h3>
                   <h3 class="card-h3"><i class="fas fa-user"></i> {{{_ "Personas"}}}</h3>
@@ -117,15 +117,15 @@
           <div class="col-12 col-md-6 col-lg-6">
             <div class="card-border explore-card">
               <div class="card-pad text-center">
-                <a href="{{url view="buscador" tipo-entidad="municipality" }}">
+                <a href="{{url view="buscador" tipo-entidad="city" }}">
                   <h3>
                     <strong>
-                      {{format_number stats.classification.municipality.count}}
+                      {{format_number stats.classification.city.count}}
                     </strong>
                   </h3>
-                  <h3 class="card-h3"><i class="fas fa-city"></i> {{{_ "Municipios"}}}</h3>
+                  <h3 class="card-h3"><i class="fas fa-city"></i> {{{_ "Ciudades"}}}</h3>
                 </a>
-                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.municipality.lastModified date lang="es" format="LL"}} </p>
+                <p class="triplet-last-update">{{{_ "Actualización"}}}: {{ moment stats.classification.city.lastModified date lang="es" format="LL"}} </p>
               </div>
             </div>
           </div>

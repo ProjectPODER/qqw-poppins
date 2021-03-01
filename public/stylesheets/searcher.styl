@@ -458,6 +458,9 @@
                 right calc(60px + 15% * 4)
             .area-institution
                 right calc(60px + 15% * 5)
+    .pagination-container
+        .w-50
+            width: 100% !important
 
 @media screen and (max-width: 991px)
     .filters
@@ -475,26 +478,25 @@
 
 
 @media screen and (max-width: 767px)
-    // .index-list-elements
-    //     span
-    //         display none
-        // -webkit-box-orient vertical
-        // -webkit-box-direction normal
-        // -webkit-flex-direction column
-        // -ms-flex-direction column
-        // flex-direction column
-        // -webkit-box-align stretch
-        // -webkit-align-items stretch
-        // -ms-flex-align stretch
-        // align-items stretch
     .page-break
         margin-bottom 2rem !important
         text-align center
         margin auto
         .input-group
             margin auto
+    .pagination-container
+        h6
+            font-size 0.8rem
+        .input-group-lg
+            & > .form-control
+                font-size 1rem
+            .input-group-append > .btn
+                font-size 1rem
+        .form-control-lg
+            font-size 1rem
+
     .page-results
-        // margin-top 2rem
+        margin-top 2rem
         text-align center !important
         .form-group
             select
@@ -554,6 +556,8 @@
     .error, .results-list, .sources-list
         padding-left 0
         padding-right 0
+    .index-list-title a
+        font-size 0.9rem
 
 @media screen and (max-width: 492px)
     .results-items
@@ -562,6 +566,7 @@
         margin-left 0
         max-width none
         min-width auto
+
 @media screen and (max-width: 364px)
     .filters
         .filter-selected.simple
