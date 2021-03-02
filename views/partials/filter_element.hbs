@@ -22,7 +22,7 @@
         {{#each filter.options }}
 
           {{#with (or (lookup @root.general condition.variable) "works without condition too") }}
-            {{#ifCond this.0.es "==" ../condition.value }}           
+            {{#ifCond this.0.es "==" ../condition.value }}
               <button  onclick="$('#{{../../filter.htmlFieldName}}').val('{{../id}}')[0].form.submit();"  class="dropdown-item filter-dropdown-item" type="button">
                   {{../label}} <i class="fas fa-info-circle text-darkgray" data-toggle="tooltip" data-placement="right" title="{{../description}}"></i>
               </button>
@@ -34,8 +34,8 @@
     {{else}}
       {{#ifCond filter.type "!=" "toggle" }}
         <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}">
-          <p class="filter-selected" 
-          title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}" 
+          <p class="filter-selected"
+          title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}"
           data-toggle="dropdown">
             {{#ifCond filter.type "==" "select" }}
               {{_ (lookup filter.options (or filter.value filter.default.value))}}
@@ -53,7 +53,7 @@
         </div>
         <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
             <h6 class="ml-2 {{#ifCond filter.type "==" "minmax" }}text-center{{/ifCond}}"><strong>{{filter.fieldLabel}}</strong></h6>
-            <p class="ml-2">{{filter.guidanceText}}</p>
+            <p class="ml-2 {{#ifCond filter.htmlFieldName "==" "importe-contrato"}}text-center{{/ifCond}}">{{filter.guidanceText}}</p>
             <fieldset>
               {{# ifCond filter.type "==" "string" }}
                 <input type="text" class="form-control input-string {{#if filter.autocomplete_enabled}}easy-search-input-filter{{/if}}" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}" data-autocomplete-parameters="{{ filter.autocomplete_parameters }}">

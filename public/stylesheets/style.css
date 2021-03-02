@@ -976,6 +976,7 @@ input[type=submit].landing-search-inputtext {
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  font-weight: bold;
 }
 .filters .filter-title span {
   overflow: hidden;
