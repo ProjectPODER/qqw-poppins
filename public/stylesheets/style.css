@@ -157,17 +157,10 @@ body {
 }
 #content {
   min-height: 100%;
-  margin: 0 auto -150px;
-}
-#content-searcher {
-  min-height: 100%;
-  margin: 0 auto -50px;
+  margin: 0 auto -100px;
 }
 @media (max-width: 991px) {
   #content {
-    margin: 0 auto;
-  }
-  #content-searcher {
     margin: 0 auto;
   }
 }
