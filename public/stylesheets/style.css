@@ -98,6 +98,13 @@ h6 {
   background-color: #9b9b9b;
   border-color: #9b9b9b;
 }
+.cobranding-logo img {
+  height: 24px;
+}
+.fixed-title img,
+.cobranding-logo img {
+  height: 18px;
+}
 .navbar img.logo-horizontal {
   width: 10rem;
 }
