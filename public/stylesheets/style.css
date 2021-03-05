@@ -2800,6 +2800,43 @@ section.country-mujeres {
 .nodesChart {
   transform: translate(0, 20px);
 }
+.warning-data {
+  border: 2px solid #db2828;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.warning-data h5 {
+  margin-top: 1rem;
+}
+.warning-data .warning-title::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+.warning-data .warning-title:hover {
+  cursor: pointer;
+}
+.warning-data .disclaimer {
+  background: rgba(255,199,0,0.25);
+  padding: 10px;
+}
+.warning-data .disclaimer p {
+  margin-bottom: 0;
+}
+#all-contracts {
+  margin: 2rem 0;
+  padding: 2rem 1rem 1rem;
+  -webkit-box-shadow: 0px 4px 10px -3px #b0b0b0;
+  -moz-box-shadow: 0px 4px 10px -3px #b0b0b0;
+  box-shadow: 0px 4px 10px -3px #b0b0b0;
+}
 .error-template,
 .about-template,
 .privacy-template {

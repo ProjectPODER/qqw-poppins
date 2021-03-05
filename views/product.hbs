@@ -1,0 +1,272 @@
+<script src="/tiza/tiza.js"></script>
+
+<section class="profile-header">
+  <div class="wrap bg-white" id="wrap">
+    <div class="description-data-title">
+      <h3 title="{{result.products.title}}">
+        <i class="fas fa-prescription-bottle"></i>
+        <a href="{{url view=" buscador" collection="products" }}">{{{_ "Producto" }}}</a>
+        {{result.products.title}}
+      </h3>
+    </div>
+    <div class="right-box ml-auto filters">
+      <ul class="nav nav-pills d-flex flex-nowrap">
+        {{>utilities api_url=result.api_url share_url=share_url api_summary_url=result.api_summary_url title=result.name
+        }}
+      </ul>
+    </div>
+    <nav id="right-menu">
+      <ul class="right-menu-profile nav d-flex flex-nowrap">
+        {{!-- Co-Branding --}}
+        {{!-- {{#if result.}}
+        {{#each result. }} --}}
+        <li>
+          <a href="" class="anchor cobranding-logo" target="_blank" title="Con datos de TodoslosContratos.mx">
+            <img src="/images/co-branding/todosloscontratosmx.png" alt="Todos los Contratos Mx">
+          </a>
+        </li>
+        {{!-- {{/each}}
+        {{/if}} --}}
+
+            <li>
+              <a href="#informacion-general" class="anchor">
+                <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
+              </a>
+            </li>
+
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<div class="first-profile-section">
+{{!-- General info --}}
+<section class="profile" id="general-info">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-folder-open"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+          <div class="col-md-9 col-12">
+            <p class="js-title-data">{{{_ "Descripción"}}}</p>
+            <p class="js-data">TABLETA Cada tableta contiene: Cabergolina 0.5 mg.</p>
+          </div>
+          <div class="col-md-3 col-12 text-left text-md-right">
+            <p class="js-title-data">{{{_ "Precio promedio"}}}</p>
+            <p class="js-data text-darkblue">$1,054.20 MXN</p>
+          </div>
+        </div>
+        <div class="row flex">
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Unidad"}}}</p>
+            <p class="js-data">1 Pza.</p>
+          </div>
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Clasificación"}}}</p>
+            <p class="js-data">Medicamento</p>
+          </div>
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Grupo"}}}</p>
+            <p class="js-data">Gineco-obstetricia</p>
+          </div>
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Clave de producto IMSS"}}}</p>
+            <p class="js-data">01000017610101</p>
+          </div>
+        </div>
+        <div class="row flex">
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Presentación"}}}</p>
+            <p class="js-data">Envase con 2 tabletas</p>
+          </div>
+          <div class="col-md-6 col-12">
+            <p class="js-title-data">{{{_ "Indicaciones"}}}</p>
+            <p class="js-data">Inhibición y supresión de la lactancia., Tratamiento de la hiperprolactinemia.</p>
+          </div>
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Medicamentos relacionados"}}}</p>
+            <p class="js-data">
+              <a href="">Nombre</a>
+            </p>
+          </div>
+        </div>
+        <div class="row flex mt-5">
+          <div class="col-md-12 col-12">
+            <div class="warning-data">
+              <h5 data-toggle="collapse" data-target="#generalities" class="description-data-subname warning-title">{{{_ "DOSIS Y GENERALIDADES"}}}</h5>
+              <div id="generalities" class="collapse">
+                <div class="disclaimer">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquam hic, architecto esse alias exercitationem cumque laboriosam fugiat at excepturi ad? Nobis aut adipisci dolore sapiente expedita omnis deleniti temporibus.</p>
+                </div>
+                <p class="js-title-data mt-4">{{{_ "Dosis"}}}</p>
+                <p class="js-data">Oral. Adultos: Inhibición: 2 tabletas como dosis única, después del parto. Supresión: 0.25 mg cada 12 horas, por dos días. Hiperprolactinemia: iniciar con una tableta cada 24 horas y después de una semana, administrar una tableta dos veces por semana en días diferentes.</p>
+                <p class="js-title-data mt-4">{{{_ "Generalidades"}}}</p>
+                <p class="js-data mb-4">Generalidades Derivado de la ergolina, medicamento dopaminérgico que actúa por medio de estimulación directa de los receptores D2. Riesgo en el Embarazo B Efectos adversos Mareo, vértigo, cefalea, náusea, dolor abdominal, somnolencia, hipotensión postural, vómito, astenia y bochornos. Contraindicaciones y Precauciones Contraindicaciones: Hipersensibilidad al fármaco. Interacciones Los medicamentos antagonistas de la dopamina disminuyen su efecto hipoprolactinémico, los antibióticos macrólidos aumentan su biodisponibilidad.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- Price dispersion --}}
+<section class="profile" id="price-dispersion">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-chart-area"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "DISPERSIÓN DE PRECIOS"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+          <div class="col-md-6 col-12">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- States table--}}
+<section class="profile" id="states-table">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-map"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "TABLA POR ESTADO"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+          <table width="100%" class="display" id="product-states" cellspacing="0">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Salary</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Salary</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- Suppliers table --}}
+<section class="profile" id="suppliers-table">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-dolly"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "PROVEEDORES QUE LO HAN VENDIDO A SOBREPRECIO"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+          <table width="100%" class="display" id="product-suppliers" cellspacing="0">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Salary</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Salary</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- Contracts --}}
+<section class="profile text-center bg-white" id="all-contracts">
+  <div class="profile-content">
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <h5>{{{_ "Hay <b>XXX</b> contratos en total de este medicamento."}}}</h5>
+        <a class="btn btn-primary" href="">{{{_ "VER TODOS LOS CONTRATOS"}}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- Desabasto --}}
+<section class="profile" id="desabasto">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-times"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "DESABASTO"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- Desabasto Form --}}
+<section class="profile" id="desabasto-form">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-folder-plus"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "ACABEMOS JUNTXS CON EL DESABASTO DE MEDICAMENTOS"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <h5 class="description-data-subname">{{{_ "AGREGA UN REPORTE DE DESABASTO DE MEDICAMENTOS O INSUMOS"}}}</h5>
+        <div class="text-center">
+          <h6>{{{_ "¿Cuál es tu perfil?"}}}</h6>
+          <button class="btn btn-primary mb-3"><i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}</button>
+          <button class="btn btn-primary mb-3"><i class="fas fa-user-md"></i> {{{_ "Profesional de la salud"}}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+{{> report_modals }}
+
+{{> how-use-data-modal api_url=result.api_url title=result.name }}
