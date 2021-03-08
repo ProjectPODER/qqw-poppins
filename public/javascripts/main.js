@@ -245,7 +245,7 @@ $("#send_email").click(function (e) {
   email = $("#contactEmail").val();
   text = $("#message").val();
   // $("#message").text("Sending E-mail...Please wait");
-  $.post("/send", {
+  $.post("/es/enviar", {
       to: to,
       name: name,
       subjectMail: subjectMail,
@@ -276,7 +276,7 @@ $("#send_info_email").click(function (e) {
   message = $("#message_info").val();
   source = $("#source_info").val();
   email = $("#email_info").val();
-  $.post("/send", {
+  $.post("/es/enviar", {
       to: to,
       message: message,
       source: source,
@@ -315,7 +315,7 @@ $("#send_info_uc").click(function (e) {
   institution = $("#institution").val();
   message = $("#uc_id_message").val();
   email = $("#email").val();
-  $.post("/send", {
+  $.post("/es/enviar", {
       to: to,
       name: name,
       institution: institution,

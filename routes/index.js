@@ -5,10 +5,21 @@ var constants = require('../lib/const.js');
 
 // console.log(constants.qqw_routes);
 
-function createMultiLangRoutes(es,en,callback) {
+function createMultiLangRoutes(es,en,callback,method) {
     router.get(es, lib.redirectToLanguage(es,en));
-    router.get('/:lang'+es, callback);
-    router.get('/:lang'+en, callback);
+
+    if (method == "post") {
+        console.log("creating post route",es)
+        router.post('/:lang'+es, callback);
+        router.post('/:lang'+en, callback);
+    
+    }
+    else {
+        console.log("creating get route",es)
+        router.get('/:lang'+es, callback);
+        router.get('/:lang'+en, callback);
+    
+    }
 }
 
 
@@ -31,7 +42,7 @@ router.get('/paises/:id', lib.redirectToSearch("countries"));
 
 /* Create all multilang routes */
 constants.qqw_routes.map(route => {
-    createMultiLangRoutes('/'+route.es, "/"+route.en, lib[route.view](route.params[0],route.params[1],route.params[2]));
+    createMultiLangRoutes('/'+route.es, "/"+route.en, lib[route.view](route.params[0],route.params[1],route.params[2]), route.method);
 })
 
 router.get('/', lib.redirectToLanguage("/inicio","/home"));
