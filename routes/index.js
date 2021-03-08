@@ -9,13 +9,13 @@ function createMultiLangRoutes(es,en,callback,method) {
     router.get(es, lib.redirectToLanguage(es,en));
 
     if (method == "post") {
-        console.log("creating post route",es)
+        // console.log("creating post route",es)
         router.post('/:lang'+es, callback);
         router.post('/:lang'+en, callback);
     
     }
     else {
-        console.log("creating get route",es)
+        // console.log("creating get route",es)
         router.get('/:lang'+es, callback);
         router.get('/:lang'+en, callback);
     
