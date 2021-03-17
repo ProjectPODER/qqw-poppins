@@ -6,7 +6,7 @@
       <h3 title="{{ result.name}}" style="word-break: break-word;">
         {{{ get_classification_icon result.classification result.subclassification result.govLevel}}}
          {{!-- Type --}}
-        <a href="{{url view="buscador" collection=type subtipo=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
+        <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
 
         {{#ifCond result.classification "==" "country" }}
           {{translate_area result.id }}
