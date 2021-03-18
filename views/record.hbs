@@ -117,7 +117,7 @@
       </div>
     </div>
   </section>
-{{!-- 
+{{!--
   <section class="profile row" id="calidad">
     <div class="box-title-section">
       <div class="box-title-icon">
@@ -395,7 +395,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               </div>
               <div class="col-12">
                 <a href="{{url view="contratos/:id" _id=../result.records.compiledRelease.id }}-{{id}}" class="btn btn-primary">Ver contrato</a>
-              </div>              
+              </div>
               {{#if description }}
               <div class="col-m-12 col-12">
                   <p class="js-title-data">{{{_ "Descripción" }}}</p>
@@ -547,14 +547,14 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
 
         <div class="row flex">
           {{#if result.records.compiledRelease.date}}
-            <div class="col-m-3 col-3 pd-nonleft">
+            <div class="col-m-3 col-3">
               <p class="js-title-data">{{{_ "Fecha de actualización" }}}</p>
               <p class="js-data">{{moment result.records.compiledRelease.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
 
           {{#if result.records.compiledRelease.source}}
-            <div class="col-md-4 col-12 pd-nonleft">
+            <div class="col-md-4 col-12">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
               <p class="js-data">{{#each result.records.compiledRelease.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>

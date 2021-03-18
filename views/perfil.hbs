@@ -31,6 +31,16 @@
     </div>
     <nav id="right-menu">
       <ul class="right-menu-profile nav d-flex flex-nowrap">
+        {{!-- Co-Branding --}}
+        {{!-- {{#if result.}}
+        {{#each result. }} --}}
+          <li>
+            <a href="" class="anchor cobranding-logo" target="_blank" title="Con datos de TodoslosContratos.mx">
+              <img src="/images/co-branding/todosloscontratosmx.png" alt="Todos los Contratos Mx">
+            </a>
+          </li>
+          {{!-- {{/each}}
+          {{/if}} --}}
         {{!-- SHORT memberships --}}
         {{#if result.memberships.parent}}
         {{#each result.memberships.parent }}
@@ -142,7 +152,7 @@
         {{#if (lookup notas result.id) }}
         <li>
           <a href="#notas" class="anchor">
-            <i class="fas fa-map-marker"></i> {{{_ "Notas"}}}
+            <i class="far fa-newspaper"></i> {{{_ "Notas"}}}
           </a>
         </li>
         {{/if}}
@@ -405,7 +415,7 @@
       <div class="col-12 col-md-12">
         <div class="row flex">
           {{#each result.area }}
-              <div class="col-md-1 col-1 pd-nonleft">
+              <div class="col-md-1 col-1">
                 <p class="js-title-data">
                   {{#ifCond classification '==' 'country'}}{{{_ "País"}}}
                     {{#ifCond subclassification '==' 'country-born'}}{{{_ "de nacimiento"}}}{{/ifCond}}
@@ -486,7 +496,7 @@
         <div class="row flex">
 
           {{#if result.other_names.length }}
-            <div class="col-md-6 col-12 pd-nonleft">
+            <div class="col-md-6 col-12">
               <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
               <ul class="js-data">
                 {{#each result.other_names}}
@@ -507,7 +517,7 @@
           {{/if}}
 
           {{#if result.identifiers }}
-            <div class="col-md-3 col-12 pd-nonleft">
+            <div class="col-md-3 col-12">
               <p class="js-title-data">{{{_ "Identificadores"}}}</p>
               {{#each result.identifiers}}
                 <p class="js-data">
@@ -523,7 +533,7 @@
           {{/if}}
 
           {{#if result.links}}
-            <div class="col-md-6 col-12 pd-nonleft">
+            <div class="col-md-6 col-12">
               <p class="js-title-data">{{{_ "Link(s)"}}}</p>
               {{#each result.links}}
                 {{#with (fix_url this.id) }}
@@ -536,20 +546,30 @@
 
         <div class="row flex">
           {{#if result.date}}
-            <div class="col-md-3 col-12 pd-nonleft">
+            <div class="col-md-2 col-12">
               <p class="js-title-data">{{{_ "Fecha de actualización"}}}</p>
               <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
             </div>
           {{/if}}
 
           {{#if result.source}}
-            <div class="col-md-4 col-12 pd-nonleft">
+            <div class="col-md-4 col-12">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
               <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
           {{/if}}
-        </div>
 
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Datos importados en el proyecto"}}}</p>
+            <p class="js-data"><a href="">TodoslosContratos.Mx</a></p>
+          </div>
+
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Organización responsable de la importación"}}}</p>
+            <p class="js-data"><a href="">PODER</a></p>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>

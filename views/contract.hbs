@@ -536,7 +536,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
 
         <div class="row flex">
           {{#if result.date}}
-            <div class="col-m-3 col-3 pd-nonleft">
+            <div class="col-m-3 col-3">
               <p class="js-title-data">{{{_ "Fecha de actualización" }}}</p>
               <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
             </div>
@@ -556,7 +556,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
           {{/if}}
 
           {{#if result.source}}
-            <div class="col-md-4 col-12 pd-nonleft">
+            <div class="col-md-4 col-12">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
               <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
