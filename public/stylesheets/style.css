@@ -2837,6 +2837,19 @@ section.country-mujeres {
   -moz-box-shadow: 0px 4px 10px -3px #b0b0b0;
   box-shadow: 0px 4px 10px -3px #b0b0b0;
 }
+#product-profile,
+.card-header {
+  border-bottom: 0;
+}
+.embed-responsive-customized::before {
+  padding-top: 57%;
+}
+@media (max-width: 1440px) {
+  #product-profile,
+  .embed-responsive-customized::before {
+    padding-top: 85%;
+  }
+}
 .error-template,
 .about-template,
 .privacy-template {

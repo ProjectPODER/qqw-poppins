@@ -39,7 +39,7 @@
   </div>
 </section>
 
-<div class="first-profile-section">
+<div class="first-profile-section" id="product-profile">
 {{!-- General info --}}
 <section class="profile" id="general-info">
   <div class="profile-content">
@@ -258,13 +258,52 @@
         <h5 class="description-data-subname">{{{_ "AGREGA UN REPORTE DE DESABASTO DE MEDICAMENTOS O INSUMOS"}}}</h5>
         <div class="text-center">
           <h6>{{{_ "¿Cuál es tu perfil?"}}}</h6>
-          <button class="btn btn-primary mb-3"><i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}</button>
-          <button class="btn btn-primary mb-3"><i class="fas fa-user-md"></i> {{{_ "Profesional de la salud"}}}</button>
+
+          <div id="desabasto-form-accordion">
+            <div>
+              <div class="card-header">
+                <h5 class="mb-0">
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#desabasto-form-patient"
+                    aria-expanded="false" aria-controls="desabasto-form-patient">
+                    <i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}
+                  </button>
+                </h5>
+              </div>
+              <div id="desabasto-form-patient" class="collapse" aria-labelledby="desabasto-form-patient" data-parent="#desabasto-form-accordion">
+                <div class="card-body">
+                  <div class="embed-responsive embed-responsive-customized">
+                    <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?entidad=12&perfil=paciente"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="card-header">
+                <h5 class="mb-0">
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#desabasto-form-professional">
+                    <i class="fas fa-user-md"></i> {{{_ "Profesional de la salud"}}}
+                  </button>
+                </h5>
+              </div>
+              <div id="desabasto-form-professional" class="collapse" aria-labelledby="desabasto-form-professional" data-parent="#desabasto-form-accordion">
+                <div class="card-body">
+                  <div class="embed-responsive embed-responsive-customized">
+                    <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?entidad=12&perfil=profesional"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 </div>
 {{> report_modals }}
