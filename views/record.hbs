@@ -13,7 +13,7 @@
         </ul>
     </div>
     <nav id="right-menu">
-      <ul class="right-menu-profile nav-stacked nav">
+      <ul class="right-menu-profile nav d-flex flex-nowrap">
           <li>
               <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> {{{_ "Resumen"}}}</a>
           </li>
@@ -269,7 +269,7 @@
             {{#if result.records.compiledRelease.parties.0.identifier.id }}
               ({{{_ "Clave" }}}:
               {{result.records.compiledRelease.parties.0.identifier.id}}
-              <a data-toggle="tooltip" data-placement="right" title="{{{_ "Clave de identificación de la Unidad Compradora en Compranet 3.0." }}}"><i class="fas fa-info"></i></a>
+              <a data-toggle="tooltip" data-placement="right" title="{{{_ "Clave de identificación de la Unidad Compradora en Compranet 3.0." }}}"><i class="fas fa-info-circle"></i></a>
               )
 
             {{/if}}
@@ -428,7 +428,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               {{/if}}
               {{#if date }}
               <div class="col-m-6 col-6">
-                  <p class="js-title-data">{{{_ "Fecha de fallo" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato." }}}"><i class="fas fa-info"></i></a></p>
+                  <p class="js-title-data">{{{_ "Fecha de fallo" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Fecha del acto de fallo, en formato ISO 86019. La emisión del fallo es el acto concluyente de un proceso de contratación que determina a quien se adjudica el contrato." }}}"><i class="fas fa-info-circle"></i></a></p>
                   <p class="js-data mb-1" >{{moment date date lang="es" format="LL"}}</p>
               </div>
               {{/if}}
