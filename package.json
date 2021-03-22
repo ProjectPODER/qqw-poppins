@@ -29,10 +29,10 @@
     "morgan": "~1.9.1",
     "nodemailer": "^6.2.1",
     "popper.js": "^1.16.0",
-    "qqw": "git+http://gitlab.rindecuentas.org/equipo-qqw/node-qqw.git#v0.2.3",
+    "qqw": "git+http://github.com/projectpoder/node-qqw.git#v0.2.3",
     "rss-parser": "3.7.0",
     "stylus": "0.54.5",
-    "tiza": "git+http://gitlab.rindecuentas.org/equipo-qqw/tiza.git#master"
+    "tiza": "git+github.com/projectpoder/tiza.git#main"
   },
   "tiza": "git+http://gitlab.rindecuentas.org/equipo-qqw/tiza.git#master",
   "qqw": "file:../node-qqw"

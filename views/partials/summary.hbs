@@ -61,18 +61,18 @@
                     <div class="contract-button">
                         {{#ifCond type '==' 'persons'}}
                           {{#ifCond summary '==' 'contactPoint'}}
-                            <a href="{{ url view="buscador" collection="contracts" responsable=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este responsable" }}</a>
+                            <a href="{{ url view="buscador" collection="contracts" responsable=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este responsable" }}</a>
                           {{else }}
-                            <a href="{{ url view="buscador" collection="contracts" proveedor=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
+                            <a href="{{ url view="buscador" collection="contracts" proveedor=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
                           {{/ifCond }}
                         {{else }}
                           {{#ifCond result.classification "==" "company"}}
                               <a href="{{ url view="buscador" collection="contracts" proveedor=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
                             {{else}}
                             {{#ifCond result.subclassification "==" "unidad-compradora"}}
-                                <a href="{{ url view="buscador" collection="contracts" uc_id=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta UC" }}</a>
+                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta UC" }}</a>
                             {{else }}
-                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.name}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta dependencia" }}</a>
+                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta dependencia" }}</a>
                             {{/ifCond}}
                           {{/ifCond}}
                         {{/ifCond }}
