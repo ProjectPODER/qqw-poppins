@@ -896,6 +896,9 @@ input[type=submit].landing-search-inputtext {
 .filters .dropdown-menu-morefilters .selection-filter-box.with-value .dropdown-menu {
   margin-top: -22px !important;
 }
+.filters .dropdown-menu-morefilters .filter-title {
+  font-weight: bold;
+}
 .filters .dropdown-menu-morefilters .dropdown-menu {
   transform: none !important;
   position: static !important;
@@ -976,7 +979,6 @@ input[type=submit].landing-search-inputtext {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  font-weight: bold;
 }
 .filters .filter-title span {
   overflow: hidden;
