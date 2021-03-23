@@ -151,8 +151,8 @@
         {{/if}}
         {{#if (lookup notas result.id) }}
         <li>
-          <a href="#notas" class="anchor">
-            <i class="far fa-newspaper"></i> {{{_ "Notas"}}}
+          <a href="#investigaciones" class="anchor">
+            <i class="far fa-newspaper"></i> {{{_ "Investigaciones periodísticas"}}}
           </a>
         </li>
         {{/if}}
@@ -443,21 +443,21 @@
 
 {{!-- Notas --}}
 {{#if (lookup notas result.id) }}
-<section class="profile" id="notas">
+<section class="profile" id="investigaciones">
   <div class="profile-content">
     <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
           <i class="far fa-newspaper"></i>
         </div>
-        <h4 class="description-data-subtitle"> {{{_ "Notas"}}}</h4>
+        <h4 class="description-data-subtitle"> {{{_ "Investigaciones periodísticas"}}}</h4>
       </div>
       <div class="col-12 col-md-12">
         <div class="row flex">
           {{#each (lookup notas result.id) }}
               <div class="col-md-6 col-12">
                 <div class="profile-news-container">
-                  <a href="{{url}}" class="profile-news-title">
+                  <a href="{{this.url}}" class="profile-news-title" target="_blank">
                     {{titulo}}
                   </a>
                   <p class="profile-news-info">
@@ -467,7 +467,7 @@
                       {{explicacion_es}}
                   </p>
                   <div class="text-center">
-                    <a href="{{this.url}}" class="btn btn-primary">
+                    <a href="{{this.url}}" class="btn btn-primary" target="_blank">
                       LEER NOTA
                     </a>
                   </div>
