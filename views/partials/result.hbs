@@ -55,15 +55,15 @@
             </div>
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
-                {{#each parties.suppliers.list }}
+                {{#with parties.suppliers.list.[0] }}
                   <a href="{{ url view=(get_type_url details.type) _id=id }}" title="{{_ "Proveedor:" }} {{name}}">
                       {{{get_classification_icon details.type details.classification details.govLevel }}}
-                      {{name }}
-                    {{#ifCond parties.suppliers.list.length ">" 1 }}
-                      {{_ "(y {sc} mas)" sc=result.supplier_count }}
-                    {{/ifCond}}
+                      {{ name }}
                   </a>
-                {{/each}}
+                {{/with}}
+                {{#ifCond parties.suppliers.list.length ">" 1 }}
+                  {{_ "(y {sc} mas)" sc=(math parties.suppliers.list.length "-" 1 ) }}
+                {{/ifCond}}
               </p>
             </div>
           </div>

@@ -21,12 +21,12 @@ var qqw_suggest = new Bloodhound({
     url: AUTOCOMPLETE_URL+'/%QUERY',
     wildcard: '%QUERY',
     prepare: function(query, settings){
-      let input = $('.easy-search-input').filter(function(){
+      let input = $('.easy-search-input,.easy-search-input-filter').filter(function(){
         return this.value==query
       });
       let autocomplete_parameters = input.data("autocomplete-parameters") || "";
-      settings.url = settings.url.replace("%QUERY", query+"?"+autocomplete_parameters)
-      // console.log(query, settings, autocomplete_parameters);
+      settings.url = settings.url.replace("%QUERY", query+autocomplete_parameters)
+      console.log(query, settings, autocomplete_parameters, input);
       return(settings);
     },
     transform: function(response) {

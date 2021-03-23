@@ -56,7 +56,11 @@
             <p class="ml-2 {{#ifCond filter.htmlFieldName "==" "importe-contrato"}}text-center{{/ifCond}}">{{filter.guidanceText}}</p>
             <fieldset>
               {{# ifCond filter.type "==" "string" }}
-                <input type="text" class="form-control input-string {{#if filter.autocomplete_enabled}}easy-search-input-filter{{/if}}" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}" data-autocomplete-parameters="{{ filter.autocomplete_parameters }}">
+
+
+
+
+                <input type="text" class="form-control input-string {{#if filter.autocomplete_enabled}}easy-search-input-filter{{/if}}" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}" data-autocomplete-parameters="?collection={{collection}}&{{ filter.autocomplete_parameters }}">
                 <button type="submit" class="btn btn-light d-inline-block">{{_ "APLICAR"}}</button>
               {{/ifCond}}
               {{# ifCond filter.type "==" "id" }}
