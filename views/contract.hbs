@@ -114,25 +114,23 @@
         </div>
         {{/each}}
 
+        <div class="col-m-12 col-12 mt-5">
+          <p>{{_ "Este contrato es parte de un expediente."}}
+          <a href="{{ url view="expediente/:id" _id=result.ocid}}">{{_ "Ver expediente"}} {{result.ocid }}</a> {{_ "en formato Open Contracting Data Standard"}}.
+          </p>
+        </div>
+
         {{#if result.awards.documents.list.length }}
-        <div class="col-12 pb-3">
-          <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
+        <div class="col-12 text-center mt-4">
             {{#each result.awards.documents.list }}
-              <a href="{{this.url}}">
+              <a class="button-link" href="{{this.url}}" target="_blank">
                 <i class="fas fa-external-link-alt"></i>
-                {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} {{#with (fix_url this.url) }}{{host}}{{/with}}
+                {{{_ "Ver contrato en" }}} <b>{{#with (fix_url this.url) }}{{host}}{{/with}}</b>
               </a>
             <br>
             {{/each}}
         </div>
         {{/if}}
-
-        <div class="col-m-12 col-12 mt-5">
-          <p>{{_ "Este contrato es parte de un expediente."}}
-
-          <a href="{{ url view="expediente/:id" _id=result.ocid}}">{{_ "Ver expediente"}} {{result.ocid }}</a> {{_ "en formato Open Contracting Data Standard"}}.
-          </p>
-        </div>
       </div>
     </div>
   </section>
