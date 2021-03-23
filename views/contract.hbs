@@ -114,6 +114,19 @@
         </div>
         {{/each}}
 
+        {{#if result.awards.documents.list.length }}
+        <div class="col-12 pb-3">
+          <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
+            {{#each result.awards.documents.list }}
+              <a href="{{this.url}}">
+                <i class="fas fa-external-link-alt"></i>
+                {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} {{#with (fix_url this.url) }}{{host}}{{/with}}
+              </a>
+            <br>
+            {{/each}}
+        </div>
+        {{/if}}
+
         <div class="col-m-12 col-12 mt-5">
           <p>{{_ "Este contrato es parte de un expediente."}}
 
@@ -536,7 +549,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
 
         <div class="row flex">
           {{#if result.date}}
-            <div class="col-m-3 col-3">
+            <div class="col-m-3 col-3 pb-3">
               <p class="js-title-data">{{{_ "Fecha de actualización" }}}</p>
               <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
             </div>
