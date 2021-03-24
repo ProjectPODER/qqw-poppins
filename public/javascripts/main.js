@@ -38,9 +38,10 @@ var qqw_suggest = new Bloodhound({
 });
 
 let typeahead_suggestion = function(data){
-  let id = data.id;
-  let text = data.name;
-  return '<a class="suggestion" style="display: block" href="/' + get_classification_url(data.classification) + '/' + id + '">'+text+'</a>';
+  const id = data.id;
+  const text = data.name;
+  const classificaton = get_classification(data.classification || data.type)
+  return '<a class="suggestion" style="display: block" href="/' + classificaton.url + '/' + id + '"><i style="color: #666" class="fas '+classificaton.icon+'"></i> '+text+' ('+classificaton.name+')</a>';
 }
 
 let typeahead_suggestion_filter = function(data){
@@ -89,27 +90,41 @@ $('.easy-search-input-filter').typeahead(typeadhead_config,
     }
   );
 
-get_classification_url = function(classification) {
+
+
+
+get_classification = function(classification) {
   //TODO: i18n
+
+  //Fix ["proveedor"]
+  if (classification.length == 1) {
+    classification = classification[0];
+  }
+  const array_proveedor_funcionario = [ 'funcionario', 'proveedor' ];
+  const array_funcionario_proveedor = [ 'proveedor', 'funcionario' ];
+
   switch (classification) {
-    case "person": return "es/personas";
-    case "funcionario": return "es/personas";
-    case "proveedor": return "es/personas";
-    case "owner": return "es/personas";
-    case "contract": return "es/contratos";
-    case "company": return "es/empresas";
-    case "banco": return "es/empresas";
-    case "institution": return "es/instituciones";
-    case "dependencia": return "es/instituciones";
-    case "unidad-compradora": return "es/instituciones";
-    case "city": return "es/regiones";
-    case "municipality": return "es/regiones";
-    case "state": return "es/regiones";
-    case "country": return "es/regiones";
-    case "Medicina": return "es/productos";
+    case "person": return {name: "persona", icon:"fa-user", url: "es/personas"};
+    case "persons": return {name: "persona", icon:"fa-user", url: "es/personas"};
+    case "funcionario": return {name: "funcionario/a", icon:"fa-user-tie", url: "es/personas"};
+    case "proveedor": return {name: "proveedor/a", icon:"fa-user-cog", url: "es/personas"};
+    case array_proveedor_funcionario: return {name: "proveedor/a", icon:"fa-user-friends", url: "es/personas"};
+    case array_funcionario_proveedor: return {name: "proveedor/a", icon:"fa-user-friends", url: "es/personas"};
+    case "owner": return {name: "dueño/a", icon:"fa-user", url: "es/personas"};
+    case "contract": return {name: "contrato", icon:"fa-file-alt", url: "es/contratos"};
+    case "company": return {name: "empresa", icon:"fa-building", url: "es/empresas"};
+    case "banco": return {name: "banco", icon:"fa-building", url: "es/empresas"};
+    case "institution": return {name: "institución", icon:"fa-landmark", url: "es/instituciones"};
+    case "dependencia": return {name: "dependencia", icon:"fa-landmark", url: "es/instituciones"};
+    case "unidad-compradora": return {name: "unidad compradora", icon:"fa-shopping-cart", url: "es/instituciones"};
+    case "city": return {name: "ciudad", icon:"fa-city", url: "es/regiones"};
+    case "municipality": return {name: "municipalio", icon:"fa-city", url: "es/regiones"};
+    case "state": return {name: "estado", icon:"fa-map-marked", url: "es/regiones"};
+    case "country": return {name: "país", icon:"fa-flag", url: "es/regiones"};
+    case "Medicina": return {name: "producto", icon:"fa-prescription-bottle", url: "es/productos"};
     default:
-      console.error("get_classification_url: Unknown classification:",classification);
-      return false;
+      console.error("get_classification: Unknown classification:",classification);
+      return {name: "desconocido", icon:"fa-circle", url: "es/unknown"};;
   }
 }
 
