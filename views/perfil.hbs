@@ -4,7 +4,7 @@
   <div class="wrap bg-white" id="wrap">
     <div class="description-data-title">
       <h3 title="{{ result.name}}" style="word-break: break-word;">
-        {{{ get_classification_icon result.classification result.subclassification result.govLevel}}}
+        {{{ get_classification_icon ( or result.type result.classification) result.subclassification result.govLevel}}}
          {{!-- Type --}}
         <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
 
