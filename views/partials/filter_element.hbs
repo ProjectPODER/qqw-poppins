@@ -33,10 +33,9 @@
       </div>
     {{else}}
       {{#ifCond filter.type "!=" "toggle" }}
-        <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}">
-          <p class="filter-selected"
-          title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}"
-          data-toggle="dropdown">
+        <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}" >
+          <p data-toggle="dropdown" class="filter-selected"
+          title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}">
             {{#ifCond filter.type "==" "select" }}
               {{_ (lookup filter.options (or filter.value filter.default.value))}}
             {{else}}

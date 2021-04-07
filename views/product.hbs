@@ -252,50 +252,41 @@
         <div class="box-title-icon">
           <i class="fas fa-folder-plus"></i>
         </div>
-        <h4 class="description-data-subtitle">{{{_ "ACABEMOS JUNTXS CON EL DESABASTO DE MEDICAMENTOS"}}}</h4>
+        <h4 class="description-data-subtitle">{{{_ "¿Quieres crear un reporte de desabasto?"}}}</h4>
       </div>
       <div class="col-12 col-md-12">
-        <h5 class="description-data-subname">{{{_ "AGREGA UN REPORTE DE DESABASTO DE MEDICAMENTOS O INSUMOS"}}}</h5>
+        <p>{{{_ "Estarás compartiendo tu reporte a través de el portal de Cero Desabasto que es un colectivo impulsado por Nosotrxs que reúne a pacientes, familiares de pacientes, médicos, organizaciones, académicos y autoridades para lograr el acceso efectivo a medicamentos e insumos médicos con el fin de garantizar el derecho a la salud."}}}</p>
+        <p>{{{_ "Generamos información y reportamos directamente a las instituciones de salud para que garanticen el acceso efectivo a medicamentos e insumos de manera oportuna y de calidad."}}}</p>
+        <p>{{{_ "Todos tus datos están protegidos y se manejarán de manera anónima."}}}</p>
         <div class="text-center">
-          <h6>{{{_ "¿Cuál es tu perfil?"}}}</h6>
+          <h6>{{{_ "¿CUÁL ES TU PERFIL?"}}}</h6>
 
-          <div id="desabasto-form-accordion">
-            <div>
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#desabasto-form-patient"
-                    aria-expanded="false" aria-controls="desabasto-form-patient">
-                    <i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}
-                  </button>
-                </h5>
+            <ul class="nav nav-pills justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#desabastoformpatient">
+                  <i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#desabastoformprofessional">
+                  <i class="fas fa-user-md"></i> {{{_ "Profesional de la salud"}}}
+                </a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane fade" id="desabastoformpatient">
+                <div class="embed-responsive embed-responsive-customized">
+                  <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?entidad=12&perfil=paciente"></iframe>
+                </div>
               </div>
-              <div id="desabasto-form-patient" class="collapse" aria-labelledby="desabasto-form-patient" data-parent="#desabasto-form-accordion">
-                <div class="card-body">
-                  <div class="embed-responsive embed-responsive-customized">
-                    <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?entidad=12&perfil=paciente"></iframe>
-                  </div>
+              <div class="tab-pane fade" id="desabastoformprofessional">
+                <div class="embed-responsive embed-responsive-customized">
+                  <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?entidad=12&perfil=profesional"></iframe>
                 </div>
               </div>
             </div>
-
-            <div>
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#desabasto-form-professional">
-                    <i class="fas fa-user-md"></i> {{{_ "Profesional de la salud"}}}
-                  </button>
-                </h5>
-              </div>
-              <div id="desabasto-form-professional" class="collapse" aria-labelledby="desabasto-form-professional" data-parent="#desabasto-form-accordion">
-                <div class="card-body">
-                  <div class="embed-responsive embed-responsive-customized">
-                    <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?entidad=12&perfil=profesional"></iframe>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
 
         </div>
       </div>
