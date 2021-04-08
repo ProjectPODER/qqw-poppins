@@ -62,7 +62,8 @@ function initApp(appLocals) {
   app.use('/jQuery', express.static(__dirname + '/node_modules/jquery/dist/'));
   app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
   app.use('/tiza', express.static(__dirname + '/node_modules/tiza'));
-
+  app.use('/datatables', express.static(__dirname + '/node_modules/datatables.net/js'));
+  
   app.use('/', indexRouter);
 
   console.log("App started, server listening");
