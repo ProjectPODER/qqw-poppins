@@ -33,8 +33,8 @@
       </div>
     {{else}}
       {{#ifCond filter.type "!=" "toggle" }}
-        <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}" >
-          <p data-toggle="dropdown" class="filter-selected"
+        <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}" data-toggle="dropdown">
+          <p class="filter-selected"
           title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}">
             {{#ifCond filter.type "==" "select" }}
               {{_ (lookup filter.options (or filter.value filter.default.value))}}
@@ -47,7 +47,7 @@
             {{/ifCond}}
           </p>
           {{#if filter.value }}
-          <button type="button" onclick="$('#{{filter.htmlFieldName}},#{{filter.htmlFieldName}}-min,#{{filter.htmlFieldName}}-max').val('')[0].form.submit();" class="close ml-auto">&times;</button>
+          <button type="button" class="close ml-auto filter-close" data-htmlFieldName="{{filter.htmlFieldName}}">&times;</button>
           {{/if}}
         </div>
         <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
