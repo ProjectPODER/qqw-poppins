@@ -90,7 +90,7 @@
         {{/ifCond}}
 
         {{!-- EMPRESAS --}}
-        {{#ifCond (get_classification_type result.classification) "==" "companies" }}
+        {{#ifCond (or (get_classification_type result.classification) result.type) "==" "companies" }}
           <div class="left-elements col-lg-8 col-md-8 col-md-8 col-sm-8 col-8">
             <div class="col-lg-12 p-0">
              {{> result-contracts this }}
@@ -112,10 +112,13 @@
         {{/ifCond}}
 
         {{!-- INSTITUCIONES --}}
-        {{#ifCond (get_classification_type result.classification) "==" "institutions" }}
-          <div class="full-elements col-lg-12 p-0">
+        {{#ifCond (or (get_classification_type result.classification) result.type) "==" "institutions" }}
+          <div class="left-elements col-6">
              {{> result-contracts this }}
           </div>
+            <div class="right-elements col-6">
+              {{ result.memberOf.name  }}
+            </div>
         {{/ifCond}}
 
         {{!-- AREAS --}}
