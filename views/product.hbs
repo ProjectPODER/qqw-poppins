@@ -107,7 +107,7 @@
           </div>
           {{/if }}
           {{#if result.guideline.indicationsMxIMSS }}
-          <div class="col-md-6 col-12">
+          <div class="col-md-3 col-12">
             <p class="js-title-data">{{{_ "Indicaciones"}}}</p>
             <p class="js-data">
               {{#each result.guideline.indicationsMxIMSS }}
@@ -116,15 +116,17 @@
             </p>
           </div>
           {{/if }}
-          {{#if result.relatedProdcuts }}
-          <div class="col-md-3 col-12">
+          {{#if result.relatedProducts }}
+          <div class="col-md-5 col-12">
             <p class="js-title-data">{{{_ "Medicamentos relacionados"}}}</p>
-            <p class="js-data">
-              <a href="">Nombre</a>
-            </p>
+            {{#each result.relatedProducts}}
+            {{> result result=this}}
+            {{/each}}
           </div>
           {{/if }}
         </div>
+
+        {{#if result.drugClass.name }}
         <div class="row flex mt-5">
           <div class="col-md-12 col-12">
             <div class="warning-data">
@@ -173,6 +175,8 @@
             </div>
           </div>
         </div>
+        {{/if}}
+
       </div>
     </div>
   </div>
