@@ -268,12 +268,51 @@
       </div>
       <div class="col-12 col-md-12">
         <div class="row flex">
+          <div id="desabasto-loading">
 
+            Cargando....
+          </div>
+          <div id="desabasto-empty" style="display: none;">
+            No existen reportes de desabasto...
+          </div>
+          <div id="desabasto-show" style="display: none;">
+
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+window.onload = function() {
+  getDesabasto("{{result.id}}")
+}
+function getDesabasto(clave) {
+
+  console.log("Consultando reportes de desabasto",clave)
+  
+  let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?clave="+clave+"&format=json";
+  $.get(reports_url, function(data) {
+    console.log("Respuesta reportes de desabasto", data);
+    if (data.count == 0) {
+      $("#desabasto-loading").hide();
+      $("#desabasto-empty").show();
+    }
+
+    else {
+      $("#desabasto-loading").hide();
+      $("#desabasto-show").show();
+      initDesabasto(data.data);
+
+    }
+  })
+}
+function initDesabasto(data) {
+  $("#desabasto-show").text(JSON.stringify(data));
+}         
+</script>
+
 
 {{!-- Desabasto Form --}}
 <section class="profile" id="desabasto-form">

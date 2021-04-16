@@ -433,6 +433,11 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
 });
 
 
+//PRODUCT PAGE 
+
+
+
+
 $(document).ready(function () {
 
   var table = $('#product-states').DataTable({
