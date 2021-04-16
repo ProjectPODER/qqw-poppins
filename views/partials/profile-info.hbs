@@ -1,0 +1,111 @@
+{{!-- info --}}
+<section class="profile" id="informacion-general">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-folder-open"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+
+          {{#if result.other_names.length }}
+            <div class="col-md-6 col-12">
+              <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
+              <ul class="js-data">
+                {{#each result.other_names}}
+                <li class="">
+                    {{name}}
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+
+
+          {{#if result.subclassification}}
+            <div class="col-md-3 col-12">
+              <p class="js-title-data">{{{_ "Tipo de entidad"}}}</p>
+              <p class="js-data">{{_ result.subclassification}}</p>
+            </div>
+          {{/if}}
+
+          {{#if result.identifiers }}
+            <div class="col-md-3 col-12">
+              <p class="js-title-data">{{{_ "Identificadores"}}}</p>
+              {{#each result.identifiers}}
+                <p class="js-data">
+                  {{#ifCond identifier '!=' '#ĦVALOR!'}}
+                    {{#ifCond scheme '!=' 'CIQ'}}
+                      {{scheme}}: {{id}}{{identifier}}
+                    {{/ifCond}}
+                  {{/ifCond}}
+
+                  {{#ifCond scheme '==' 'RUPC'}} <i class="fa fa-info" data-toggle="tooltip" data-placement="right" title="{{{_ "Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"}}}"></i>{{/ifCond}}
+                {{/each}}</p>
+            </div>
+          {{/if}}
+
+          {{#if result.links}}
+            <div class="col-md-6 col-12">
+              <p class="js-title-data">{{{_ "Link(s)"}}}</p>
+              {{#each result.links}}
+                {{#with (fix_url this.id) }}
+                  <p class="js-data"><a href="{{href}}" target="_blank"> <i class="fas fa-external-link-alt"></i> {{ host }}</a></p>
+                {{/with}}
+              {{/each}}
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="row flex">
+          {{#if result.date}}
+            <div class="col-md-2 col-12">
+              <p class="js-title-data">{{{_ "Fecha de actualización"}}}</p>
+              <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
+            </div>
+          {{/if}}
+
+
+            {{#if result.awards.documents.list.length }}
+            <div class="col-12 pb-3">
+                <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
+                {{#each result.awards.documents.list }}
+                    <a href="{{this.url}}">
+                    <i class="fas fa-external-link-alt"></i>
+                    {{{_ "Ver {documentType} {index} en sitio oficial" documentType=(_ documentType) index=(math @index "+" 1) }}} {{#with (fix_url this.url) }}{{host}}{{/with}}
+                    </a>
+                <br>
+                {{/each}}
+            </div>
+            {{/if}}
+            
+          {{#if result.source}}
+            <div class="col-md-4 col-12">
+              <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+            </div>
+          {{/if}}
+          {{#with (cobranding result.source) }}
+
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Datos importados en el proyecto"}}}</p>
+            <p class="js-data"><a href="{{url}}">{{name}}</a></p>
+          </div>
+
+          <div class="col-md-3 col-12">
+            <p class="js-title-data">{{{_ "Organización responsable de la importación"}}}</p>
+            <p class="js-data"><a href="https://poderlatam.org">PODER</a></p>
+          </div>
+          {{/with}}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+

@@ -1,19 +1,4 @@
-<section class="profile-header">
-  <div class="wrap bg-white" id="wrap">
-    <div class="description-data-title">
-      <h3 title="{{result.records.compiledRelease.contracts.0.title}}">
-        <i class="fas fa-file-alt"></i>
-        <a href="/{{{_ "contratos" }}}">{{{_ "Expediente" }}}</a>
-          {{result.records.compiledRelease.contracts.0.title}}
-      </h3>
-    </div>
-    <div class="right-box ml-auto filters">
-        <ul class="nav nav-pills d-flex flex-nowrap">
-            {{>utilities api_url=result.api_url share_url=share_url  share_url_encoded=share_url_encoded title=result.records.compiledRelease.contracts.0.title }}
-        </ul>
-    </div>
-    <nav id="right-menu">
-      <ul class="right-menu-profile nav d-flex flex-nowrap">
+{{>profile-header result=result.records.compiledRelease }}
           <li>
               <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> {{{_ "Resumen"}}}</a>
           </li>
@@ -36,9 +21,7 @@
               <a class="anchor" href="#informacion-general"><i class="fas fa-folder-open"></i> {{{_ "Informacion general"}}}</a>
           </li>
       </ul>
-    </nav>
-  </div>
-</section>
+{{>profile-header-end }}
 
 
 
@@ -506,67 +489,9 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
     </div>
   </section>
 
-{{!-- info --}}
-  <section class="profile" id="informacion-general">
-    <div class="box-title-section">
-      <div class="box-title-icon">
-        <i class="fas fa-folder-open"></i>
-      </div>
-      <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL" }}}</h4>
-    </div>
-    <div class="row">
-      <div class="col-12 col-m-12">
-        {{!-- <div class="row flex">
-
-          {{#if result.records.compiledRelease.identifiers }}
-            <div class="col-m-3 col-3 pd-nonleft">
-              <p class="js-title-data">Identificadores</p>
-              {{#each result.records.compiledRelease.identifiers}}
-                <p class="js-data">
-                  {{#ifCond identifier '!=' '#ĦVALOR!'}}
-                    {{#ifCond scheme '!=' 'CIQ'}}
-                      {{scheme}}: {{id}}{{identifier}}
-                    {{/ifCond}}
-                  {{/ifCond}}
-
-                  {{#ifCond scheme '==' 'RUPC'}} <a data-toggle="tooltip" data-placement="right" title="Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"><img src="../images/icons/info.svg" alt="icon" class="info-icon"></a>{{/ifCond}}
-                {{/each}}</p>
-            </div>
-          {{/if}}
-
-          {{#if result.records.compiledRelease.links}}
-            <div class="col-m-3 col-3 pd-nonleft">
-              <p class="js-title-data">Link(s)</p>
-              {{#each result.records.compiledRelease.links}}
-                <p class="js-data"><a href="{{this.id}}" target="_blank">{{this.id}}</a></p>
-              {{/each}}
-            </div>
-          {{/if}}
-
-        </div> --}}
-
-        <div class="row flex">
-          {{#if result.records.compiledRelease.date}}
-            <div class="col-m-3 col-3">
-              <p class="js-title-data">{{{_ "Fecha de actualización" }}}</p>
-              <p class="js-data">{{moment result.records.compiledRelease.date date lang="es" format="LL"}}</p>
-            </div>
-          {{/if}}
-
-          {{#if result.records.compiledRelease.source}}
-            <div class="col-md-4 col-12">
-              <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.records.compiledRelease.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
-            </div>
-          {{/if}}
-        </div>
-
-      </div>
-    </div>
-
-  </section>
 
 </div>
+{{>profile-info result=result.records.compiledRelease }}
 
 {{> report_modals }}
 

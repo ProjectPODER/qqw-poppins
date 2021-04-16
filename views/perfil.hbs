@@ -1,46 +1,6 @@
 <script src="/tiza/tiza.js"></script>
 
-<section class="profile-header">
-  <div class="wrap bg-white" id="wrap">
-    <div class="description-data-title">
-      <h3 title="{{ result.name}}" style="word-break: break-word;">
-        {{{ get_classification_icon ( or result.type result.classification) result.subclassification result.govLevel}}}
-         {{!-- Type --}}
-        <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">{{ get_classification_name type result.classification result.subclassification result.govLevel }}</a>
-
-        {{#ifCond result.classification "==" "country" }}
-          {{translate_area result.id }}
-        {{else}}
-          {{result.name}}
-        {{/ifCond}}
-        {{!-- Area --}}
-        {{#each result.area }}
-          {{#if id }}
-            {{#ifCond @key "==" 0}}en{{else}},{{/ifCond}}
-            <a href="{{url view="regiones/:id" _id=id}}">
-              {{translate_area name}}
-            </a>
-          {{/if}}
-        {{/each}}
-      </h3>
-    </div>
-    <div class="right-box ml-auto filters">
-      <ul class="nav nav-pills d-flex flex-nowrap">
-        {{>utilities api_url=result.api_url share_url=share_url share_url_encoded=share_url_encoded api_summary_url=result.api_summary_url title=result.name }}
-      </ul>
-    </div>
-    <nav id="right-menu">
-      <ul class="right-menu-profile nav d-flex flex-nowrap">
-        {{!-- Co-Branding --}}
-        {{!-- {{#if result.}}
-        {{#each result. }} --}}
-          <li>
-            <a href="" class="anchor cobranding-logo" target="_blank" title="Con datos de TodoslosContratos.mx">
-              <img src="/images/co-branding/todosloscontratosmx.png" alt="Todos los Contratos Mx">
-            </a>
-          </li>
-          {{!-- {{/each}}
-          {{/if}} --}}
+{{>profile-header result=result }}
         {{!-- SHORT memberships --}}
         {{#if result.memberships.parent}}
         {{#each result.memberships.parent }}
@@ -162,11 +122,7 @@
             <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
           </a>
         </li>
-
-      </ul>
-    </nav>
-  </div>
-</section>
+{{>profile-header-end }}
 
 <div class="first-profile-section">
 {{!-- SHORT memberships --}}
@@ -482,99 +438,7 @@
 </section>
 {{/if}}
 
-{{!-- info --}}
-<section class="profile" id="informacion-general">
-  <div class="profile-content">
-    <div class="row">
-      <div class="box-title-section">
-        <div class="box-title-icon">
-          <i class="fas fa-folder-open"></i>
-        </div>
-        <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
-      </div>
-      <div class="col-12 col-md-12">
-        <div class="row flex">
-
-          {{#if result.other_names.length }}
-            <div class="col-md-6 col-12">
-              <p class="js-title-data">{{{_ "Nombres alternativos"}}}</p>
-              <ul class="js-data">
-                {{#each result.other_names}}
-                <li class="">
-                    {{name}}
-                </li>
-                {{/each}}
-              </ul>
-            </div>
-          {{/if}}
-
-
-          {{#if result.subclassification}}
-            <div class="col-md-3 col-12">
-              <p class="js-title-data">{{{_ "Tipo de entidad"}}}</p>
-              <p class="js-data">{{_ result.subclassification}}</p>
-            </div>
-          {{/if}}
-
-          {{#if result.identifiers }}
-            <div class="col-md-3 col-12">
-              <p class="js-title-data">{{{_ "Identificadores"}}}</p>
-              {{#each result.identifiers}}
-                <p class="js-data">
-                  {{#ifCond identifier '!=' '#ĦVALOR!'}}
-                    {{#ifCond scheme '!=' 'CIQ'}}
-                      {{scheme}}: {{id}}{{identifier}}
-                    {{/ifCond}}
-                  {{/ifCond}}
-
-                  {{#ifCond scheme '==' 'RUPC'}} <i class="fa fa-info" data-toggle="tooltip" data-placement="right" title="{{{_ "Folio asignado por la SFP a la persona física o moral que fue inscrita al Registro Único de Registro Único de Proveedores y Contratistas (RUPC) por un ente público con el que celebró algún contrato"}}}"></i>{{/ifCond}}
-                {{/each}}</p>
-            </div>
-          {{/if}}
-
-          {{#if result.links}}
-            <div class="col-md-6 col-12">
-              <p class="js-title-data">{{{_ "Link(s)"}}}</p>
-              {{#each result.links}}
-                {{#with (fix_url this.id) }}
-                  <p class="js-data"><a href="{{href}}" target="_blank"> <i class="fas fa-external-link-alt"></i> {{ host }}</a></p>
-                {{/with}}
-              {{/each}}
-            </div>
-          {{/if}}
-        </div>
-
-        <div class="row flex">
-          {{#if result.date}}
-            <div class="col-md-2 col-12">
-              <p class="js-title-data">{{{_ "Fecha de actualización"}}}</p>
-              <p class="js-data">{{moment result.date date lang="es" format="LL"}}</p>
-            </div>
-          {{/if}}
-
-          {{#if result.source}}
-            <div class="col-md-4 col-12">
-              <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
-            </div>
-          {{/if}}
-
-          <div class="col-md-3 col-12">
-            <p class="js-title-data">{{{_ "Datos importados en el proyecto"}}}</p>
-            <p class="js-data"><a href="">TodoslosContratos.Mx</a></p>
-          </div>
-
-          <div class="col-md-3 col-12">
-            <p class="js-title-data">{{{_ "Organización responsable de la importación"}}}</p>
-            <p class="js-data"><a href="">PODER</a></p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
+{{>profile-info result=result }}
 
 </div>
 {{> report_modals }}

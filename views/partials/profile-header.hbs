@@ -1,0 +1,41 @@
+<section class="profile-header">
+  <div class="wrap bg-white" id="wrap">
+    <div class="description-data-title">
+      <h3 title="{{ result.name}}" style="word-break: break-word;">
+        {{{ get_classification_icon (or result.classification (or result.type "record")) result.subclassification result.govLevel}}}
+         {{!-- Type --}}
+        <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">
+            {{ get_classification_name type result.classification result.subclassification result.govLevel }}
+        </a>
+
+        {{#ifCond result.classification "==" "country" }}
+          {{translate_area result.id }}
+        {{else}}
+          {{ or result.name (or result.contracts.title result.contracts.[0].title) }}
+        {{/ifCond}}
+        {{!-- Area --}}
+        {{#each result.area }}
+          {{#if id }}
+            {{#ifCond @key "==" 0}}en{{else}},{{/ifCond}}
+            <a href="{{url view="regiones/:id" _id=id}}">
+              {{translate_area name}}
+            </a>
+          {{/if}}
+        {{/each}}
+      </h3>
+    </div>
+    <div class="right-box ml-auto filters">
+      <ul class="nav nav-pills d-flex flex-nowrap">
+        {{>utilities api_url=result.api_url share_url=share_url share_url_encoded=share_url_encoded api_summary_url=result.api_summary_url title=result.name }}
+      </ul>
+    </div>
+    <nav id="right-menu">
+      <ul class="right-menu-profile nav d-flex flex-nowrap">
+        {{#with (cobranding result.source )}}
+        {{!-- Co-Branding --}}
+          <li>
+            <a href="" class="anchor cobranding-logo" target="_blank" title="{{ description }}">
+              <img src="{{image}}" alt="{{name }}">
+            </a>
+          </li>
+        {{/with}}
