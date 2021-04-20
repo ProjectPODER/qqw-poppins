@@ -81,16 +81,18 @@
             </p>
           </div>
           {{/if }}
+        </div>
+        <div class="row flex">
           {{#if result.relatedProducts }}
-          <div class="col-md-5 col-12">
-            <p class="js-title-data">{{{_ "Productos relacionados"}}}</p>
+          <div class="col-md-12 col-12 related-products">
+            {{!-- <p class="js-title-data">{{{_ "Productos relacionados"}}}</p> --}}
+            <h5 class="description-data-subname">{{{_ "Productos relacionados"}}}</h5>
             {{#each result.relatedProducts}}
             {{> result result=this}}
             {{/each}}
           </div>
           {{/if }}
         </div>
-
         {{#if result.drugClass.name }}
         <div class="row flex mt-5">
           <div class="col-md-12 col-12">

@@ -2846,6 +2846,10 @@ section.country-mujeres {
   color: #fff;
   background-color: #2b00f7;
 }
+.related-products .index-list-title a {
+  font-size: 1.1em;
+  font-weight: normal;
+}
 @media (max-width: 1440px) {
   #product-profile,
   .embed-responsive-customized::before {
