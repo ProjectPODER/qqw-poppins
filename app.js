@@ -63,6 +63,7 @@ function initApp(appLocals) {
   app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
   app.use('/tiza', express.static(__dirname + '/node_modules/tiza'));
   app.use('/datatables', express.static(__dirname + '/node_modules/datatables.net/js'));
+  app.use('/datatables-styles', express.static(__dirname + '/node_modules/datatables.net-dt/css'));
   
   app.use('/', indexRouter);
 
