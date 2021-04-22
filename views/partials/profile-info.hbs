@@ -1,3 +1,99 @@
+{{!-- Notas --}}
+{{#if (lookup notas result.id) }}
+<section class="profile" id="investigaciones">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="far fa-newspaper"></i>
+        </div>
+        <h4 class="description-data-subtitle"> {{{_ "Investigaciones periodísticas"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+          {{#each (lookup notas result.id) }}
+              <div class="col-md-6 col-12">
+                <div class="profile-news-container">
+                  <a href="{{this.url}}" class="profile-news-title" target="_blank">
+                    {{titulo}}
+                  </a>
+                  <p class="profile-news-info">
+                      {{medio}} {{fecha}} por {{autor}}
+                  </p>
+                  <p class="profile-news-text">
+                      {{explicacion_es}}
+                  </p>
+                  <div class="text-center">
+                    <a href="{{this.url}}" class="btn btn-primary" target="_blank">
+                      LEER NOTA
+                    </a>
+                  </div>
+                </div>
+              </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+{{/if}}
+
+{{!-- Notas memberships --}}
+{{#if result.memberships.child }}
+<section class="profile" id="investigaciones-memberships" style="display: none">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="far fa-newspaper"></i>
+        </div>
+        <h4 class="description-data-subtitle"> {{{_ "Investigaciones periodísticas relacionadas"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <div class="row flex">
+        {{#each result.memberships.child }}
+          {{#each this.memberships}}
+            {{#each (lookup ../../notas parent_id) }}
+            <script>
+              window.onload = function() {
+                $("#investigaciones-memberships").show()
+                $("#investigaciones-memberships-menu").show()
+              }
+            </script>
+                <div class="col-md-6 col-12">
+                  <div class="profile-news-container">
+                    <p class="profile-news-info">
+                      {{../parent_name}}
+                    </p>
+                    <a href="{{this.url}}" class="profile-news-title" target="_blank">
+                      {{titulo}}
+                    </a>
+                    <p class="profile-news-info">
+                        {{medio}} {{fecha}} por {{autor}}
+                    </p>
+                    <p class="profile-news-text">
+                        {{explicacion_es}}
+                    </p>
+                    <div class="text-center">
+                      <a href="{{this.url}}" class="btn btn-primary" target="_blank">
+                        LEER NOTA
+                      </a>
+                    </div>
+                  </div>
+                </div>
+            {{/each}}
+          {{/each}}
+        {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+{{/if}}
+
+
 {{!-- info --}}
 <section class="profile" id="informacion-general">
   <div class="profile-content">

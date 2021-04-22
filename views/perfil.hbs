@@ -109,19 +109,6 @@
           </a>
         </li>
         {{/if}}
-        {{#if (lookup notas result.id) }}
-        <li>
-          <a href="#investigaciones" class="anchor">
-            <i class="far fa-newspaper"></i> {{{_ "Investigaciones periodísticas"}}}
-          </a>
-        </li>
-        {{/if}}
-
-        <li>
-          <a href="#informacion-general" class="anchor">
-            <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
-          </a>
-        </li>
 {{>profile-header-end }}
 
 <div class="first-profile-section">
@@ -390,47 +377,6 @@
           {{/each}}
         </div>
 
-      </div>
-    </div>
-  </div>
-
-</section>
-{{/if}}
-
-{{!-- Notas --}}
-{{#if (lookup notas result.id) }}
-<section class="profile" id="investigaciones">
-  <div class="profile-content">
-    <div class="row">
-      <div class="box-title-section">
-        <div class="box-title-icon">
-          <i class="far fa-newspaper"></i>
-        </div>
-        <h4 class="description-data-subtitle"> {{{_ "Investigaciones periodísticas"}}}</h4>
-      </div>
-      <div class="col-12 col-md-12">
-        <div class="row flex">
-          {{#each (lookup notas result.id) }}
-              <div class="col-md-6 col-12">
-                <div class="profile-news-container">
-                  <a href="{{this.url}}" class="profile-news-title" target="_blank">
-                    {{titulo}}
-                  </a>
-                  <p class="profile-news-info">
-                      {{medio}} {{fecha}} por {{autor}}
-                  </p>
-                  <p class="profile-news-text">
-                      {{explicacion_es}}
-                  </p>
-                  <div class="text-center">
-                    <a href="{{this.url}}" class="btn btn-primary" target="_blank">
-                      LEER NOTA
-                    </a>
-                  </div>
-                </div>
-              </div>
-          {{/each}}
-        </div>
       </div>
     </div>
   </div>
