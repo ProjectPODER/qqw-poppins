@@ -54,7 +54,7 @@
       <div class="row flex">
         <div class="col-m-6 col-6 contract-total-amount pb-3">
           <p class="js-title-data">{{{_ "Importe total"}}}</p>
-          <p class="js-data">{{format_amount result.records.compiledRelease.total_amount}} <i class="fas fa-info-circle text-gray"  title="Este importe es una suma de valores que podrían estar en varias monedas, revise cada contrato para ver su moneda."></i> </p>
+          <p class="js-data">{{{format_amount result.records.compiledRelease.total_amount}}} </p>
         </div>
 
         {{!-- <div class="col-6 pb-3">
@@ -107,7 +107,7 @@
 
               {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}}
               {{{_ "por"}}}
-              {{format_amount ../contract_amount}} MXN.
+              {{{format_amount ../contract_amount}}}.
               <br>
             {{/with}}
           {{/each}}
@@ -221,7 +221,7 @@
           {{# if result.records.compiledRelease.planning.budget.budgetBreakdown.amount.amount }}
           <div class="col-m-12 col-12 mb-2">
             <span class="js-title-data">{{{_ "Importe"}}}: </span>
-            <span class="js-data">          {{ format_amount result.records.compiledRelease.planning.budget.budgetBreakdown.amount.amount }} {{ result.records.compiledRelease.planning.budget.budgetBreakdown.amount.currency }}
+            <span class="js-data">          {{{ format_amount result.records.compiledRelease.planning.budget.budgetBreakdown.amount.amount  result.records.compiledRelease.planning.budget.budgetBreakdown.amount.currency }}} 
             </span>
           </div>
           {{/if}}
@@ -417,7 +417,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               {{#if value }}
               <div class="col-m-6 col-6">
                   <p class="js-title-data">{{{_ "Monto" }}}</p>
-                  <p class="js-data mb-1" >{{format_amount value.amount}} {{ value.currency}}</p>
+                  <p class="js-data mb-1" >{{{format_amount value.amount value.currency}}}</p>
               </div>
               {{/if}}
               {{#if status }}

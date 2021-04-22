@@ -27,7 +27,8 @@
             <div class="summary-total {{summary}}-text">
                 <p>
                   <i class="fas fa-file-alt"></i>
-                  {{{_ "{cant_countratos} contratos como {summary} por un total de <strong>{amount_contratos} MXN</strong>" cant_countratos=(format_amount data.total.count) summary=(_ summary) amount_contratos=(format_amount data.total.value) }}}
+                  {{{_ "{cant_contratos} contratos como {summary} por un total de <strong>{amount_contratos}</strong>" 
+                  cant_contratos=(format_number data.total.count) summary=(_ summary) amount_contratos=(format_amount data.total.value) }}}
                   {{_ "entre los años {first_year} y {last_year}." first_year=(first_key data.year) last_year=(last_key data.year) }}
                 </p>
 
