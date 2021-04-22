@@ -1,7 +1,37 @@
 {{> profile-header result=result }}
             <li>
-              <a href="#informacion-general" class="anchor">
+              <a href="#general-info" class="anchor">
                 <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
+              </a>
+            </li>
+            <li>
+              <a href="#price-dispersion" class="anchor">
+                <i class="fas fa-chart-area"></i> {{{_ "Dispersión de precios"}}}
+              </a>
+            </li>
+            <li>
+              <a href="#states-table" class="anchor">
+                <i class="fas fa-map"></i> {{{_ "Sobrecosto por Estados"}}}
+              </a>
+            </li>
+            <li>
+              <a href="#suppliers-table" class="anchor">
+                <i class="fas fa-dolly"></i> {{{_ "Sobrecosto de proveedores"}}}
+              </a>
+            </li>
+            <li>
+              <a href="#all-contracts" class="anchor">
+                <i class="fas fa-file-alt"></i> {{{_ "Contratos"}}}
+              </a>
+            </li>
+            <li>
+              <a href="#desabasto" class="anchor">
+                <i class="fas fa-times"></i> {{{_ "Desabasto"}}}
+              </a>
+            </li>
+            <li>
+              <a href="#desabasto-form" class="anchor">
+                <i class="fas fa-folder-plus"></i> {{{_ "Reportar desabasto"}}}
               </a>
             </li>
 {{> profile-header-end }}
@@ -182,26 +212,40 @@
       </div>
       <div class="col-12 col-md-12">
         <div class="row flex">
-          <table width="100%" class="display" id="product-states" cellspacing="0">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Salary</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Salary</th>
-              </tr>
-            </tfoot>
-          </table>
+          <div class="table-responsive">
+            <table width="100%" id="product-states" class="table row-border">
+              <thead>
+                <tr>
+                  <th>{{{_ "ESTADO"}}}</th>
+                  <th>{{{_ "CANTIDAD"}}}</th>
+                  <th>{{{_ "MONTO TOTAL"}}}</th>
+                  <th>{{{_ "SOBRECOSTO (Monto)"}}}</th>
+                  <th>{{{_ "SOBRECOSTO (Porcentaje)"}}}</th>
+                  <th>{{{_ "CANTIDAD PERDIDA"}}}
+                    <a data-toggle="tooltip" data-placement="right" title="{{{_ " Cantidad perdida explicación"}}}">
+                      <i class="fas fa-info-circle"></i>
+                    </a>
+                  </th>
+                  <th>{{{_ "FECHA DE ÚLTIMO DESABASTO"}}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{!-- {{#each result }} --}}
+                {{!-- <tr>
+                  <td>
+                    <a href=""><i class="fas fa-map-marked"></i> <a href="/regiones/{{id}}" title="">Estado</a>
+                  </td>
+                  <td>Cantidad</td>
+                  <td>Monto</td>
+                  <td>Sobrecosto</td>
+                  <td>Sobrecosto</td>
+                  <td>Cantidad</td>
+                  <td>Fecha</td>
+                </tr> --}}
+                {{!-- {{/each}} --}}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -220,26 +264,39 @@
       </div>
       <div class="col-12 col-md-12">
         <div class="row flex">
-          <table width="100%" class="display" id="product-suppliers" cellspacing="0">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Salary</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Salary</th>
-              </tr>
-            </tfoot>
-          </table>
+          <div class="table-responsive">
+            <table width="100%" id="product-suppliers" class="row-border">
+              <thead>
+                <tr>
+                  <th>{{{_ "PROVEEDOR"}}}</th>
+                  <th>{{{_ "UNIDAD"}}}</th>
+                  <th>{{{_ "SOBRECOSTO (Monto)"}}}</th>
+                  <th>{{{_ "SOBRECOSTO (Porcentaje)"}}}</th>
+                  <th>{{{_ "PERIODO DE TIEMPO"}}}</th>
+                  <th>{{{_ "CANTIDAD PERDIDA"}}}
+                    <a data-toggle="tooltip" data-placement="right" title="{{{_ " Cantidad perdida explicación"}}}">
+                      <i class="fas fa-info-circle"></i>
+                    </a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {{!-- {{#each result }} --}}
+                {{!-- <tr>
+                  <td>
+                    <a href=""><i class="fas fa-map-marked"></i> <a href="/regiones/{{id}}" title="">Estado</a>
+                  </td>
+                  <td>Cantidad</td>
+                  <td>Monto</td>
+                  <td>Sobrecosto</td>
+                  <td>Sobrecosto</td>
+                  <td>Cantidad</td>
+                  <td>Fecha</td>
+                </tr> --}}
+                {{!-- {{/each}} --}}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -269,18 +326,29 @@
         <h4 class="description-data-subtitle">{{{_ "DESABASTO"}}}</h4>
       </div>
       <div class="col-12 col-md-12">
-        <div class="row flex">
-          <div id="desabasto-loading">
-
-            Cargando....
-          </div>
-          <div id="desabasto-empty" style="display: none;">
-            No existen reportes de desabasto...
-          </div>
-          <div id="desabasto-show" style="display: none;">
-
-          </div>
+        <div class="table-responsive">
+          <table width="100%" id="desabasto-table" class="row-border dt-responsive" style="display: none;">
+            <thead>
+              <tr>
+                <th>{{{_ "FECHA"}}}</th>
+                <th>{{{_ "ENTIDAD"}}}</th>
+                <th>{{{_ "CLAVE"}}}</th>
+                <th>{{{_ "INSTITUCIÓN"}}}</th>
+                <th>{{{_ "NOMBRE DEL HOSPITAL"}}}</th>
+                {{!-- <th>{{{_ "DIRECCIÓN"}}}</th>
+                <th>{{{_ "RELATO DE CORRUPCIÓN"}}}</th> --}}
+              </tr>
+            </thead>
+          </table>
         </div>
+        <div id="desabasto-loading">
+          Cargando....
+        </div>
+        <div id="desabasto-empty" style="display: none;">
+          No existen reportes de desabasto...
+        </div>
+        {{!-- <div id="desabasto-show" style="display: none;">
+        </div> --}}
       </div>
     </div>
   </div>
@@ -293,18 +361,20 @@ window.onload = function() {
 function getDesabasto(clave) {
 
   console.log("Consultando reportes de desabasto",clave)
-  
+
   let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?clave="+clave+"&format=json";
   $.get(reports_url, function(data) {
     console.log("Respuesta reportes de desabasto", data);
     if (data.count == 0) {
       $("#desabasto-loading").hide();
       $("#desabasto-empty").show();
+      $("#desabasto-table").hide();
     }
 
     else {
       $("#desabasto-loading").hide();
       $("#desabasto-show").show();
+      $("#desabasto-table").show();
       initDesabasto(data.data);
 
     }
@@ -312,7 +382,47 @@ function getDesabasto(clave) {
 }
 function initDesabasto(data) {
   $("#desabasto-show").text(JSON.stringify(data));
-}         
+  // Desabasto table
+  $('#desabasto-table').DataTable({
+    data: data,
+    responsive: true,
+    columns: [
+      { "data": "created" },
+      { "data": "state.name" },
+      { "data": "institution.id" },
+      { "data": "institution.name" },
+      { "data": "hospital_name_raw" }
+    ],
+    language: {
+      "sProcessing":     "Procesando...",
+      "sLengthMenu":     "Mostrar _MENU_ entidades",
+      "sZeroRecords":    "No se encontraron entidades",
+      "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+      "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ entidades",
+      "sInfoEmpty":      "Mostrando entidades del 0 al 0 de un total de 0 empresas",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ entidades)",
+      "sInfoPostFix":    "",
+      "sSearch":         "Buscar por nombre:",
+      "sUrl":            "",
+      "sInfoThousands":  ",",
+      "sLoadingRecords": "Cargando...",
+      "oPaginate": {
+          "sFirst":    "Primero",
+          "sLast":     "Último",
+          "sNext":     "Siguiente",
+          "sPrevious": "Anterior"
+      },
+      "oAria": {
+          "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+      },
+      "buttons": {
+          "copy": "Copiar",
+          "colvis": "Visibilidad"
+      }
+    }
+  });
+}
 </script>
 
 
