@@ -432,6 +432,15 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
   }
 });
 
+$(".advance-filters").on("submit", function() {
+  console.log("submit",gtag)
+  gtag('event', "search", {
+    'event_category': "engagement",
+    'event_label': "TEST Envió formulario",
+    'value': 1
+  });
+  
+})
 
 //PRODUCT PAGE 
 
