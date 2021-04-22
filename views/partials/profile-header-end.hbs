@@ -1,3 +1,25 @@
+        {{#if (lookup notas result.id) }}
+        <li>
+          <a href="#investigaciones" class="anchor">
+            <i class="far fa-newspaper"></i> {{{_ "Investigaciones periodísticas"}}}
+          </a>
+        </li>
+        {{/if}}
+
+
+        {{#if result.memberships.child }}
+        <li style="display: none;" id="investigaciones-memberships-menu">
+          <a href="#investigaciones-memberships" class="anchor">
+            <i class="far fa-newspaper"></i> {{{_ "Investigaciones relacionadas"}}}
+          </a>
+        </li>
+        {{/if}}
+
+        <li>
+          <a href="#informacion-general" class="anchor">
+            <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
+          </a>
+        </li>
 
       </ul>
     </nav>
