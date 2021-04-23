@@ -33,7 +33,7 @@
       <div class="row flex">
         <div class="col-m-6 col-6 contract-total-amount pb-3">
           <p class="js-title-data">{{{_ "Importe total"}}}</p>
-          <p class="js-data">{{format_amount result.contracts.value.amount}} {{result.contracts.value.currency}}</p>
+          <p class="js-data">{{{format_amount result.contracts.value.amount result.contracts.value.currency}}}</p>
         </div>
         <div class="col-6 pb-3">
             <p class="js-title-data">{{{_ "Período de contrato(s)"}}}</p>
@@ -205,7 +205,7 @@
           {{# if result.planning.budget.budgetBreakdown.amount.amount }}
           <div class="col-m-12 col-12 mb-2">
             <span class="js-title-data">{{{_ "Importe"}}}: </span>
-            <span class="js-data">          {{ format_amount result.planning.budget.budgetBreakdown.amount.amount }} {{ result.planning.budget.budgetBreakdown.amount.currency }}
+            <span class="js-data">          {{{ format_amount result.planning.budget.budgetBreakdown.amount.amount  result.planning.budget.budgetBreakdown.amount.currency }}}
             </span>
           </div>
           {{/if}}
@@ -400,7 +400,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
         {{#if result.awards.value }}
         <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Monto" }}}</p>
-            <p class="js-data mb-1" >{{format_amount result.awards.value.amount}} {{ result.awards.value.currency}}</p>
+            <p class="js-data mb-1" >{{{format_amount result.awards.value.amount result.awards.value.currency}}}</p>
         </div>
         {{/if}}
         {{#if status }}

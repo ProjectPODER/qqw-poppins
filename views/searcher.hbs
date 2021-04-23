@@ -54,7 +54,7 @@
             <p>
               Listado de <strong>{{format_number result.summary.count }} {{#each result.summary.classification  }} <a href="{{url tipo-entidad=@key}}">{{lower (_ @key)}}</a>{{#if @last}}{{else}},{{/if}} {{/each}}</strong>
               {{#ifCond title.collection "==" "Contratos" }}
-                por un total de {{format_amount result.summary.amount }} MXN (no todos los contratos están en esta moneda)
+                por un total de ${{{format_amount result.summary.amount }}}
               {{else}}
                 {{#with (filter_array filters "apiFilterName" "sort") }}
                   por
