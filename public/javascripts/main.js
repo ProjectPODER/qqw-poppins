@@ -439,7 +439,7 @@ $(".advance-filters").on("submit", function() {
     'event_label': "TEST Envió formulario",
     'value': 1
   });
-  
+
 })
 
 //PRODUCT PAGE

@@ -112,6 +112,8 @@
 {{>profile-header-end }}
 
 <div class="first-profile-section">
+  {{>sadico-banner }}
+
 {{!-- SHORT memberships --}}
 {{#each result.memberships.parent }}
     {{#ifCond memberships.length "<=" 2 }}
