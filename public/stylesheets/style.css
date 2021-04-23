@@ -2851,8 +2851,7 @@ section.country-mujeres {
   font-weight: normal;
 }
 @media (max-width: 1440px) {
-  #product-profile,
-  .embed-responsive-customized::before {
+  #product-profile .embed-responsive-customized::before {
     padding-top: 85%;
   }
 }
