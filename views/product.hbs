@@ -50,16 +50,18 @@
         <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
       </div>
 
-Cantidad de contratos {{ format_number result.contract_count}}
-Importe de contratos {{ format_amount result.contract_amount "MXN"}}
-Calidad de contratos {{ format_number result.contract_quantity}}
-Cantidad perdida {{ format_number result.quantity_lost}}
-Importe sobrecosto {{ format_amount result.amount_over "MXN" }}
-Primera compra {{ moment result.first_purchase_date "LL" }}
-Última compra {{ moment result.last_purchase_date "LL" }}
-
       <div class="col-12 col-md-12">
         <div class="row flex">
+          <div class="col-md-12 col-12">
+            {{{_ "Este producto tuvo {cant_contratos} compras ({cant_unidades} unidades) por un total de <strong>{amount_contratos}</strong>" 
+            cant_contratos=(format_number result.contract_count) cant_unidades=(format_number result.contract_quantity) amount_contratos=(format_amount result.contract_amount "MXN") }}}
+
+            {{_ "entre los años {first_year} y {last_year}" first_year=(moment result.first_purchase_date "Y") last_year=(moment result.last_purchase_date "Y") }}
+
+            {{_ "con un sobrecosto de {amount_over} que hubiera permitido comprar {quantity_lost} unidades adicionales." amount_over=(format_amount result.amount_over "MXN") quantity_lost=(format_number result.quantity_lost) }}
+          </div>
+
+
           {{#if result.description }}
           <div class="col-md-9 col-12">
             <p class="js-title-data">{{{_ "Descripción"}}}</p>
@@ -80,10 +82,10 @@ Primera compra {{ moment result.first_purchase_date "LL" }}
             <p class="js-data">{{result.drugUnit }}</p>
           </div>
           {{/if }}
-          {{#if result.category }}
+          {{#if result.classification }}
           <div class="col-md-3 col-12">
             <p class="js-title-data">{{{_ "Clasificación"}}}</p>
-            <p class="js-data">{{result.category}}{{result.classification}}{{result.subclassification}}</p>
+            <p class="js-data">{{result.classification}}. {{result.subclassification}}</p>
           </div>
           {{/if }}
           {{#if result.drugClass.name }}
@@ -241,19 +243,38 @@ Primera compra {{ moment result.first_purchase_date "LL" }}
                 </tr>
               </thead>
               <tbody>
-                {{!-- {{#each result }} --}}
-                {{!-- <tr>
+                {{#each result.contracts_summaries.buyers }} 
+                <tr>
                   <td>
-                    <a href=""><i class="fas fa-map-marked"></i> <a href="/regiones/{{id}}" title="">Estado</a>
+                    <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="areas" _id=estado.parties.buyer.address.region }}" title="">{{estado.parties.buyer.address.region}}</a>
                   </td>
+                  <td>{{doc_count}}</td>
+                  <td>{{format_amount monto_total "MXN"}}</td>
+                  <td>{{format_amount monto_total_sobrecosto "MXN"}}</td>
+                  <td>{{format_number  (math sobrecosto "*" 100)}} %</td>
                   <td>Cantidad</td>
-                  <td>Monto</td>
-                  <td>Sobrecosto</td>
-                  <td>Sobrecosto</td>
-                  <td>Cantidad</td>
-                  <td>Fecha</td>
-                </tr> --}}
-                {{!-- {{/each}} --}}
+                  <td>{{moment ultima_compra "LL"}}</td>
+                </tr>
+{{!-- 
+"doc_count": 1,
+"estado": {
+
+    "parties": {
+        "buyer": {
+            "address": {
+                "region": "Jalisco"
+            }
+        }
+    },
+    "buyer": {
+        "name": "H. de Especialidades, \"Lic. Ignacio García Tellez\" Centro Médico Nacional de Occidente, Jalisco Umae Especialidades Jalisco"
+    }
+
+},
+"monto_total": 8936.1201171875,
+"ultima_compra": 1514764800000,
+"sobrecosto": 0.14317765831947327                 --}}
+                {{/each}}
               </tbody>
             </table>
           </div>
@@ -292,19 +313,19 @@ Primera compra {{ moment result.first_purchase_date "LL" }}
                 </tr>
               </thead>
               <tbody>
-                {{!-- {{#each result }} --}}
-                {{!-- <tr>
+                {{#each result.contracts_summaries.suppliers }} 
+                <tr>
                   <td>
-                    <a href=""><i class="fas fa-map-marked"></i> <a href="/regiones/{{id}}" title="">Estado</a>
+                    
+                    <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="empresas" _id=key}}" title="">{{nombre.awards.suppliers.[0].name}}</a>
                   </td>
-                  <td>Cantidad</td>
-                  <td>Monto</td>
-                  <td>Sobrecosto</td>
-                  <td>Sobrecosto</td>
-                  <td>Cantidad</td>
-                  <td>Fecha</td>
-                </tr> --}}
-                {{!-- {{/each}} --}}
+                  <td>{{format_number doc_count}}</td>
+                  <td>{{format_amount monto_total_sobrecosto "MXN"}}</td>
+                  <td>{{format_number  (math sobrecosto "*" 100)}} %</td>
+
+                  <td>{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
+                </tr> 
+                {{/each}}
               </tbody>
             </table>
           </div>
