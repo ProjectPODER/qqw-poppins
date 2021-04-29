@@ -327,6 +327,8 @@
 "institution": "Instituciones públicas",
 "contracts": "Contratos",
 "source_description_compranet": "Bases de datos de 2010 al día de hoy de los contratos de la Administración Pública Federal y de los contratos con aportación federal que realizan estados y municipios de México publicada por la Secretaría de la Función Pública, pero bajo el control de la Secretaría de Hacienda y Crédito Público desde 2019. CompraNet Plus solo publica el nombre de la empresa, cualquier dato de propiedad, dirección o represente legal se obtiene a partir del cruce con otras bases de datos. Orígen https://sites.google.com/site/cnetuc/contrataciones",
+"comprasimss": "Compras IMSS",
+"source_description_comprasimss": "Bases de datos de 2008 a 2018 de las compras relizadas por el Instituto Mexicano del Seguro Social.. Orígen: https://compras.imss.gob.mx",
 "compranet3": "CompraNet 3.0",
 "source_description_compranet3": "Bases de datos de 2002 a 2011 de los contratos de la Administración Pública Federal y de los contratos con aportación federal que realizan estados y municipios de México publicada por la Secretaría de la Función Pública, pero bajo el control de la Secretaría de Hacienda y Crédito Público desde 2019. CompraNet 3.0 solo publica el nombre de la empresa, cualquier dato de propiedad, dirección o represente legal se obtiene a partir del cruce con otras bases de datos. Orígen: https://sites.google.com/site/cnetuc/contratos_cnet_3",
 "latam_offshore": "América Latina Offshore",
