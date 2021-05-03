@@ -14,6 +14,11 @@
           <li>
               <a class="anchor" href="#adjudicaciones"><i class="fas fa-gavel"></i> {{{_ "Adjudicaciones"}}}</a>
           </li>
+          {{#if result.contracts.items }}
+          <li>
+              <a class="anchor" href="#productos"><i class="fas fa-gavel"></i> {{{_ "Productos"}}}</a>
+          </li>
+          {{/if}}
           <li>
               <a class="anchor" href="#implementacion"><i class="fas fa-truck-moving"></i> {{{_ "Implementación"}}}</a>
           </li>
@@ -76,7 +81,7 @@
               {{name}}
               </a>
 
-              {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}}
+              {{#if additionalIdentifiers}}({{#with additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/with}}){{/if}}
               <br>
           {{/each}}
         </div>
@@ -365,14 +370,20 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
     </div>
     <div class="col-12 col-m-12">
       <div class="row">
+        {{#if result.tender.title }}
+
         <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Título de la convocatoria" }}}</p>
             <p class="js-data">{{result.tender.title}}</p>
         </div>
+        {{/if}}
+        {{#if result.awards.title }}
+
         <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Título de la adjudicación" }}}</p>
             <p class="js-data">{{result.awards.title}}</p>
         </div>
+        {{/if}}
         {{#if description }}
         <div class="col-m-12 col-12 pb-3">
             <p class="js-title-data">{{{_ "Descripción de la adjudicación" }}}</p>
@@ -393,7 +404,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
             <p class="js-title-data">{{{_ "Proveedor(es)" }}}</p>
             {{#each result.parties.suppliers.list }}
             <p class="js-data mb-1">
-              <a href="{{url view=(get_type_url details.type) _id=id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#each additionalIdentifiers}}{{scheme}}: {{id}}{{/each}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
+              <a href="{{url view=(get_type_url details.type) _id=id}}">{{name}}</a> {{#if additionalIdentifiers}}({{#with additionalIdentifiers}}{{scheme}}: {{id}}{{/with}}{{#if @last}}{{else}}, {{/if}}){{/if}}{{#if @last}}{{else}},{{/if}}
             </p>
             {{/each}}
         </div>
@@ -403,6 +414,21 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
             <p class="js-data mb-1" >{{{format_amount result.awards.value.amount result.awards.value.currency}}}</p>
         </div>
         {{/if}}
+        {{#if result.contracts.items.unit.value.amountCalculatedMxIMSS }}
+        <div class="col-m-6 col-6 pb-3">
+            <p class="js-title-data">{{{_ "Monto estimado sin sobrecosto" }}}</p>
+            <p class="js-data mb-1" >{{{format_amount result.contracts.items.unit.value.amountCalculatedMxIMSS result.awards.value.currency}}}</p>
+        </div>
+        {{/if}}
+
+        {{#if result.contracts.items.unit.value.amountOverpriceMxIMSS }}
+        <div class="col-m-6 col-6 pb-3">
+            <p class="js-title-data">{{{_ "Sobrecosto estimado" }}}</p>
+            <p class="js-data mb-1" >{{{format_amount result.contracts.items.unit.value.amountOverpriceMxIMSS result.awards.value.currency}}} 
+              ({{format_percentage result.contracts.items.unit.value.percentageOverpriceMxIMSS}})</p>
+        </div>
+        {{/if}}
+
         {{#if status }}
         <div class="col-m-6 col-6 pb-3">
             <p class="js-title-data">{{{_ "Estatus de la adjudicación" }}}</p>
@@ -435,6 +461,65 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               <p class="js-data mb-1" >{{../result.awards.id}}</p>
           </div>
 
+          {{#with items }}
+        <div class="col-12 col-m-12">
+          <div class="row">
+            <div class="contract-award-item">
+              <div class="col-12 pr-0 pl-0">
+                <div class="contract-award-title description-data-subname ">
+                  {{{_ "Productos" }}}
+                </div>
+              </div>
+              <div class="col-m-12 col-12">
+                  <p class="js-title-data">{{{_ "Nombre" }}}</p>
+                  <p class="js-data"><a href="{{url view="products/:id" _id=(or classification.id id) }}">{{description}}</a></p>
+              </div>
+              {{#if classification.descriptionMxIMSS }}
+                {{#ifCond classification.descriptionMxIMSS "!=" description }}
+                <div class="col-m-12 col-12">
+                    <p class="js-title-data">{{{_ "Descripción del producto" }}}</p>
+                    <p class="js-data mb-1" >{{classification.descriptionMxIMSS}}</p>
+                </div>
+                {{/ifCond}}
+              {{/if}}
+
+              {{#if classification.presentationMxIMSS }}
+              <div class="col-m-12 col-12">
+                  <p class="js-title-data">{{{_ "Presentación del producto" }}}</p>
+                  <p class="js-data mb-1" >{{classification.presentationMxIMSS}}</p>
+              </div>
+              {{/if}}
+              {{#if quantity }}
+              <div class="col-m-12 col-12">
+                  <p class="js-title-data">{{{_ "Cantidad" }}}</p>
+                  <p class="js-data mb-1" >{{format_number quantity}} {{unit.name}}</p>
+              </div>
+              {{/if}}
+              {{#if unit.value.amount }}
+              <div class="col-m-12 col-12">
+                  <p class="js-title-data">{{{_ "Precio unitario" }}}</p>
+                  <p class="js-data mb-1" >{{format_amount unit.value.amount "MXN"}}</p>
+              </div>
+              {{/if}}
+              {{#if unit.value.valueAverageMxIMSS }}
+              <div class="col-m-12 col-12">
+                  <p class="js-title-data">{{{_ "Precio unitario mínimo del año" }}}<i>i</i></p>
+                  <p class="js-data mb-1" >{{format_amount unit.value.valueAverageMxIMSS "MXN"}} ({{_ "año" }} {{ yearMxIMSS }})</p>
+              </div>
+              {{/if}}
+              {{#if unit.value.overpriceMxIMSS }}
+              <div class="col-m-12 col-12">
+                  <p class="js-title-data">{{{_ "Sobrecosto en precio unitario" }}}</p>
+                  <p class="js-data mb-1" >{{format_amount unit.value.overpriceMxIMSS "MXN"}}</p>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+
+
+          {{/with}}
+          
           {{#if ../result.awards.documents.list.length }}
           <div class="col-12 pb-3">
             <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
@@ -447,8 +532,16 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
               {{/each}}
           </div>
           {{/if}}
-
           <div class="col-m-12 col-12 mt-5">
+
+
+            {{#if items.unit.value.hasOverpriceMxIMSS }}
+              <i class="fas fa-info-circle"></i> {{{_ "Este contrato tiene sobrecosto"  }}}<br>
+            {{/if}}
+
+            {{#if items.contractStatusMxIMSS }}
+              <i class="fas fa-info-circle"></i> {{{_ "Este contrato está {contractStatusMxIMSS}" contractStatusMxIMSS=items.contractStatusMxIMSS  }}}<br>
+            {{/if}}
             {{#if status }}
               <i class="fas fa-info-circle"></i> {{{_ "Este contrato está {statusMxCnet} ({status})" statusMxCnet=statusMxCnet status=status }}}<br>
             {{/if}}
@@ -469,6 +562,7 @@ Para más información revisar la Ley de Adquisiciones, Arrendamientos y Servici
       </div>
     </div>
   </section>
+
 
   <section class="profile row" id="implementacion">
     <div class="box-title-section">

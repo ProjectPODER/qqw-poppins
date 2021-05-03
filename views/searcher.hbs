@@ -86,11 +86,12 @@
           <div class="col-12 col-md-12">
             <p><b>Resultados por año:</b></p>
             <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center;">
+              {{!-- {{ j  result.summary.year }} --}}
               {{#each result.summary.year }}
-              {{#ifCond (math (math this "/" (last_value ../result.summary.year)) "*" 150)">"1}}
-              <div style=" width: 5%; overflow: hidden; background:rgba(45,28,157,0.3); color:#212529; height: {{math (math this "/" (last_value ../result.summary.year)) "*" 150 }}px; margin: 2px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="
+              {{#ifCond (math (math this.doc_count "/" (last_value ../result.summary.year "doc_count")) "*" 150)">"1}}
+              <div style=" width: 5%; overflow: hidden; background:rgba(45,28,157,0.3); color:#212529; height: {{math (math this.doc_count "/" (last_value ../result.summary.year  "doc_count")) "*" 150 }}px; margin: 2px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="
               {{moment @key "YYYY"}}  con
-              {{ format_number this}} contratos
+              {{ format_number this.doc_count}} contratos
               ">
                 <p class="date-graph">{{moment @key "YYYY"}}</p>
               </div>
