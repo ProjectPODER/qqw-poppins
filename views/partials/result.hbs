@@ -167,8 +167,8 @@
           <div class="right-elements col-lg-8 col-md-6 col-sm-6 col-6">
             
             {{format_number contract_count}} contratos ({{format_number contract_quantity}} unidades)
-            por un total de {{format_amount contract_amount "MXN"}}
-            
+            por un total de {{format_amount contract_amount "MXN"}} entre
+            {{ moment first_purchase_date "Y" }}  y {{ moment last_purchase_date "Y" }}
           </div>
           {{!-- <div class="right-elements col-lg-5 col-md-6 col-md-6 col-sm-6 col-6">
 
