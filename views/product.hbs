@@ -53,7 +53,7 @@
       <div class="col-12 col-md-12">
         <div class="row flex">
           <div class="col-md-12 col-12">
-            {{{_ "Este producto tuvo {cant_contratos} compras ({cant_unidades} unidades) por un total de <strong>{amount_contratos}</strong>" 
+            {{{_ "Este producto tuvo {cant_contratos} compras ({cant_unidades} unidades) por un total de <strong>{amount_contratos}</strong>"
             cant_contratos=(format_number result.contract_count) cant_unidades=(format_number result.contract_quantity) amount_contratos=(format_amount result.contract_amount "MXN") }}}
 
             {{_ "entre los años {first_year} y {last_year}" first_year=(moment result.first_purchase_date "Y") last_year=(moment result.last_purchase_date "Y") }}
@@ -205,6 +205,13 @@
       <div class="col-12 col-md-12">
         <div class="row flex">
           <div class="col-12">
+            <p> {{{_ "Cada círculo representa una de las {cant_contratos} compras de {name} realizadas por el IMSS"
+            cant_contratos=(format_number result.contract_count) name=result.name }}}
+
+            {{_ "entre los años {first_year} y {last_year}" first_year=(moment result.first_purchase_date "Y") last_year=(moment
+            result.last_purchase_date "Y") }}
+
+            </p>
             <svg id="grafica-sobrecosto"></svg>
           </div>
         </div>
@@ -243,7 +250,7 @@
                 </tr>
               </thead>
               <tbody>
-                {{#each result.contracts_summaries.buyers }} 
+                {{#each result.contracts_summaries.buyers }}
                 <tr>
                   <td>
                     <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="areas" _id=estado.parties.buyer.address.region }}" title="">{{estado.parties.buyer.address.region}}</a>
@@ -255,7 +262,7 @@
                   <td>Cantidad</td>
                   <td>{{moment ultima_compra "LL"}}</td>
                 </tr>
-{{!-- 
+{{!--
 "doc_count": 1,
 "estado": {
 
@@ -313,10 +320,10 @@
                 </tr>
               </thead>
               <tbody>
-                {{#each result.contracts_summaries.suppliers }} 
+                {{#each result.contracts_summaries.suppliers }}
                 <tr>
                   <td>
-                    
+
                     <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="empresas" _id=key}}" title="">{{nombre.awards.suppliers.[0].name}}</a>
                   </td>
                   <td>{{format_number doc_count}}</td>
@@ -324,7 +331,7 @@
                   <td>{{format_percentage sobrecosto  }}</td>
 
                   <td>{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
-                </tr> 
+                </tr>
                 {{/each}}
               </tbody>
             </table>
@@ -392,7 +399,7 @@
 
 //DATA
 const product_contracts_data = {{{ j result.contracts }}};
-//Events 
+//Events
 window.onload = function() {
   getDesabasto("{{result.id}}")
   initSobrecosto();
@@ -400,11 +407,11 @@ window.onload = function() {
 
 function initSobrecosto() {
   let width = 800;
-  let height = 400;
-  const margin = ({top: 80, right: 20, bottom: 20, left: 60})  
+  let height = 350;
+  const margin = ({top: 40, right: 20, bottom: 20, left: 60})
 
   let svg = d4.select("#grafica-sobrecosto")
-  
+
   svg.attr("viewBox", [0, 0, width, height]);
 
   let cleanJSON = (json) => {
@@ -425,8 +432,8 @@ function initSobrecosto() {
     let droug = {}
     let hits = cleanJSON(product_contracts_data)
     console.log("newHits",hits)
-    droug.hits = hits.map(hit=> 
-      ({ ...hit, 
+    droug.hits = hits.map(hit=>
+      ({ ...hit,
         ...{ date: timeParse(hit.fecha_inicio),
              overprice: hit.precio_unitario / hit.precio_ponderado }
       }) )
@@ -439,12 +446,12 @@ function initSobrecosto() {
     //droug.years_prices = d4.sort(years_prices, d=>d.year)
     droug.years_prices = years_prices.sort((a, b)=> a.year - b.year);
     //droug.years_prices = years_prices
-    
+
     droug.years_prices2 = droug.years_prices.reduce((arr, x) =>{
       let curr_range = ["01-01","12-31"].map(y=>(
         {date: timeParse(`${x.year}-${y}`), value: x.ponderado} ))
       return [...arr, ...curr_range]
-      },[])  
+      },[])
 
     return droug
   }
@@ -454,7 +461,7 @@ function initSobrecosto() {
   let domain_hits = d4.extent(data_diam, d => d.date)
   let extent_years = domain_hits.map(d=>  d.getFullYear())
   let x_ticks = extent_years[1] - extent_years[0] + 1
-  let sorted_price = data_diam.map(x=>x.precio_unitario).sort(d4.ascending)  
+  let sorted_price = data_diam.map(x=>x.precio_unitario).sort(d4.ascending)
   let sorted_overprice = data_diam.map(x=>x.overprice).sort(d4.ascending)
 
   let domain_x = d4.extent(data_diam, d => d.date)
@@ -527,7 +534,7 @@ function initSobrecosto() {
       .call(yAxis);
 
   svg.append("g")
-    .attr("fill-opacity", 0.3) 
+    .attr("fill-opacity", 0.3)
     .selectAll("circle")
     .data(data.hits)
     .enter().append("circle")
@@ -539,7 +546,7 @@ function initSobrecosto() {
       .each( function(p){
         const current_color = colorCircles(y_overprice(p.overprice))
         d4.select(this)
-          .attr("stroke", d=> current_color)  
+          .attr("stroke", d=> current_color)
           .style("fill", d=> current_color)
       })
 
@@ -568,7 +575,7 @@ function initSobrecosto() {
   const xCircle = 320
   const xLabel = xCircle - 60
   const yCircle = 70
-  
+
   svg
     .append('rect')
     .attr("width", "180")
@@ -576,45 +583,45 @@ function initSobrecosto() {
     .attr("transform", "translate(185, 0)")
     .style("fill", "#ffffff")
     .style("stroke-width", 1)
-    .style("stroke", "grey");
+    .style("stroke", "#bfbfbf");
 
   var legends = svg.selectAll("legend")
     .data(valuesToShow)
     .enter()
     .append("g")
-  
+
   legends
     .append("circle")
       .attr("cx", xCircle)
-      .attr("cy", d => yCircle - r_bubble(d) * 2 )
-      .attr("r", d => r_bubble(d) * 2 )
+      .attr("cy", d => yCircle - r_bubble(d) )
+      .attr("r", d => r_bubble(d))
       .style("fill", "none")
       .attr("stroke", "#4E4E4E")
-  
+
   legends
     .append("line")
-      .attr('x1', function(d){ return xCircle - r_bubble(d) * 2 } )
+      .attr('x1', function(d){ return xCircle - r_bubble(d) } )
       .attr('x2', xLabel)
-      .attr('y1', function(d){ return yCircle - r_bubble(d) * 2 } )
-      .attr('y2', function(d){ return yCircle - r_bubble(d) * 2 } )
+      .attr('y1', function(d){ return yCircle - r_bubble(d) } )
+      .attr('y2', function(d){ return yCircle - r_bubble(d) } )
       .attr('stroke', '#4E4E4E')
       .style('stroke-dasharray', ('2,2'))
-  
+
   legends
     .append("text")
       .attr('x', xLabel - 5)
-      .attr('y', function(d){ return yCircle - (r_bubble(d) * 2) } )
+      .attr('y', function(d){ return yCircle - (r_bubble(d)) } )
       .text( d =>  formatLegend(d/1000)  )
-      .style("font-size", 10)
+      .style("font-size", 7)
       .attr('alignment-baseline', 'middle')
       .attr('text-anchor', 'end')
       .style("fill", "#4E4E4E");
-  
-    legends
+
+    svg
       .append("text")
         .attr('x', 190)
         .attr("y", 10)
-        .text("Cantidad consolidada")
+        .text("Unidades compradas")
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
         .style("font-family", "sans-serif")
@@ -622,7 +629,7 @@ function initSobrecosto() {
         .style("fill", "#4E4E4E");
 
   const right_legend_line = 400
-  
+
   svg
     .append('rect')
       .attr("width", 180)
@@ -631,16 +638,16 @@ function initSobrecosto() {
       .style("fill", "#ffffff")
       .style("stroke-width", 1)
       .style("stroke", "#bfbfbf");
-  
+
   const legend_line = svg.append("g")
     .attr("transform", `translate(${right_legend_line}, 0)`)
-  
+
   const border_padding = 5;
   const item_padding = 16;
   const text_offset = 0;
   const width_line = 100;
   const height_line = 4;
-  
+
   // Line
   legend_line
     .append("rect")
@@ -649,7 +656,7 @@ function initSobrecosto() {
       .attr("width", width_line)
       .attr("height", height_line)
       .style("fill", (d) => colorCircles(y_overprice(1)));
-  
+
   // Labels
   legend_line
     .append("text")
@@ -693,7 +700,7 @@ function initDesabasto(data) {
   let height = 300;
 
   let svg = d4.select("#grafica-desabasto")
-  
+
   svg.attr("viewBox", [0, 0, width, height]);
 
   svg.append("circle")
@@ -701,7 +708,7 @@ function initDesabasto(data) {
     .attr("cx", width/2)
     .attr("cy", height/2)
     .attr("r", 40)
-    .attr("fill", "#ffb3a2")  
+    .attr("fill", "#ffb3a2")
 
 
   // Desabasto table
@@ -765,7 +772,7 @@ function initDesabasto(data) {
         <div class="text-center">
           <h6>{{{_ "¿CUÁL ES TU PERFIL?"}}}</h6>
 
-            <ul class="nav nav-pills justify-content-center">
+            <ul class="nav nav-pills justify-content-center"  id="reportTabs">
               <li class="nav-item">
                 <a class="nav-link" data-toggle="pill" href="#desabastoformpatient">
                   <i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}
@@ -782,12 +789,12 @@ function initDesabasto(data) {
             <div class="tab-content">
               <div class="tab-pane fade" id="desabastoformpatient">
                 <div class="embed-responsive embed-responsive-customized">
-                  <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?clave={{id}}&perfil=paciente"></iframe>
+                  <iframe class="embed-responsive-item" data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=paciente" loading="lazy"></iframe>
                 </div>
               </div>
               <div class="tab-pane fade" id="desabastoformprofessional">
                 <div class="embed-responsive embed-responsive-customized">
-                  <iframe class="embed-responsive-item" src="https://cerodesabasto.org/report?clave={{id}}&perfil=profesional"></iframe>
+                  <iframe class="embed-responsive-item" data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=profesional" loading="lazy"></iframe>
                 </div>
               </div>
             </div>

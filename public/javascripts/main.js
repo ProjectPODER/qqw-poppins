@@ -395,36 +395,36 @@ $(window).scroll(function(e) {
 //     $('#empresas-mujeres-table').DataTable({
 //       pageLength: 100,
 //       lengthChange: false,
-//       language: {
-//     "sProcessing":     "Procesando...",
-//                 "sLengthMenu":     "Mostrar _MENU_ empresas",
-//                 "sZeroRecords":    "No se encontraron empresas",
-//                 "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
-//                 "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ empresas",
-//                 "sInfoEmpty":      "Mostrando empresas del 0 al 0 de un total de 0 empresas",
-//                 "sInfoFiltered":   "(filtrado de un total de _MAX_ empresas)",
-//                 "sInfoPostFix":    "",
-//                 "sSearch":         "Buscar por nombre:",
-//                 "sUrl":            "",
-//                 "sInfoThousands":  ",",
-//                 "sLoadingRecords": "Cargando...",
-//                 "oPaginate": {
-//                     "sFirst":    "Primero",
-//                     "sLast":     "Último",
-//                     "sNext":     "Siguiente",
-//                     "sPrevious": "Anterior"
-//                 },
-//                 "oAria": {
-//                     "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-//                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-//                 },
-//                 "buttons": {
-//                     "copy": "Copiar",
-//                     "colvis": "Visibilidad"
-//                 }
-//             }
-//     });
 // } );
+
+const datatablesLang =  {
+  "sProcessing":     "Procesando...",
+  "sLengthMenu":     "Mostrar _MENU_ elementos",
+  "sZeroRecords":    "No se encontraron elementos",
+  "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+  "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ elementos",
+  "sInfoEmpty":      "Mostrando empresas del 0 al 0 de un total de 0 elementos",
+  "sInfoFiltered":   "(filtrado de un total de _MAX_ elementos)",
+  "sInfoPostFix":    "",
+  "sSearch":         "Buscar por nombre:",
+  "sUrl":            "",
+  "sInfoThousands":  ",",
+  "sLoadingRecords": "Cargando...",
+  "oPaginate": {
+    "sFirst":    "Primero",
+    "sLast":     "Último",
+    "sNext":     "Siguiente",
+    "sPrevious": "Anterior"
+            },
+  "oAria": {
+    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+  "buttons": {
+    "copy": "Copiar",
+    "colvis": "Visibilidad"
+            }
+}
 
 $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
   if (e.clickEvent) {
@@ -465,19 +465,20 @@ function format ( d ) {
 }
 $(document).ready(function () {
 
-  
-  var table2 = $('#product-suppliers').DataTable({
-    select: "single",
-    responsive: true,
-    // "columns": [
 
-    // ],
-    "order": [[1, 'asc']]
-  });
+  // var table2 = $('#product-suppliers').DataTable({
+  //   select: "single",
+  //   responsive: true,
+  //   // "columns": [
+
+  //   // ],
+  //   "order": [[1, 'asc']]
+  // });
 
   var table = $('#product-states').DataTable({
     select: "single",
     responsive: true,
+    language: datatablesLang,
     // "columns": [
     //   {
     //     "className": 'details-control',
@@ -494,7 +495,7 @@ $(document).ready(function () {
     //   // { "data": "office" },
     //   // { "data": "salary" }
     // ],
-    "order": [[1, 'asc']]
+    "order": [[0, 'asc']]
   });
 
   // Add event listener for opening and closing details
@@ -523,5 +524,17 @@ $(document).ready(function () {
     if ($(cell.node()).hasClass("details-control")) {
       e.preventDefault();
     }
+  });
+});
+
+$(document).ready(function () {
+  $('#reportTabs a').on('show.bs.tab', function (a) {
+
+    $($(a.target).attr("href") + " iframe").each((i,e)=>{
+      // console.log(e, b)
+      $(e).attr("src", $(e).data("src"))
+
+    })
+
   });
 });
