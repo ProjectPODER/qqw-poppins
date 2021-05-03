@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-12 mb-2">
             <p>
-              Listado de <strong>{{format_number result.summary.count }} {{#each result.summary.classification  }} <a href="{{url tipo-entidad=@key}}">{{lower (_ @key)}}</a>{{#if @last}}{{else}},{{/if}} {{/each}}</strong>
+              Listado de <strong>{{format_number result.summary.count }}</strong> {{#ifCond result.summary.count ">" 100000  }} de {{/ifCond}} <strong>{{#each result.summary.classification  }} <a href="{{url tipo-entidad=@key}}">{{lower (_ @key)}}</a>{{#if @last}}{{else}},{{/if}} {{/each}}</strong>
               {{#ifCond title.collection "==" "Contratos" }}
                 por un total de ${{{format_amount result.summary.amount }}}
               {{else}}
