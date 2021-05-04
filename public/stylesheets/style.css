@@ -2853,12 +2853,22 @@ section.country-mujeres {
 .bg-sadico {
   background: #f6f1df !important;
 }
+.bg-sadico .box-title-section {
+  background: rgba(225,174,90,0.333);
+}
+.bg-sadico .box-title-icon {
+  color: #564102;
+  background: #f2b707;
+}
+.bg-sadico .description-data-subtitle {
+  color: #564102;
+}
 .bg-sadico .media {
   padding-top: 1.2rem;
 }
 .bg-sadico .sadico-logo img {
   width: 250px;
-  margin: 0 1rem 0 0;
+  margin: 0 2rem 0 0;
 }
 .bg-sadico .banner-text {
   font-size: 1.1rem;
