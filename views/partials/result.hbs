@@ -17,7 +17,8 @@
           {{!-- <div class="justify-content-start"> --}}
             <div class="left-elements col-lg-8 col-md-8 col-md-8 col-sm-8 col-8">
               <div class="col-lg-12 p-0">
-                {{> result-contracts this }}
+                {{!-- para los que no so proveedores ni contratistas mostrar acá classification --}}
+                {{> result-contracts result=this membership_name=membership_name}}
               </div>
             </div>
             <div class="right-elements col-lg-4 col-md-4 col-md-4 col-sm-4 col-4">
@@ -104,7 +105,7 @@
             {{#if area }}
             <div class="col-lg-3 p-0">
               <p class="index-list-element">
-                  <i class="fas fa-flag"></i>{{#each (get_countries area) }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
+                <i class="fas fa-flag"></i>{{#each area }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
               </p>
             </div>
             {{/if}}
@@ -118,6 +119,13 @@
           </div>
             <div class="right-elements col-6">
               {{ result.memberOf.name  }}
+              {{#if area }}
+              <div class="col-lg-3 p-0">
+                <p class="index-list-element">
+                  <i class="fas fa-flag"></i>{{#each area }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
+                </p>
+              </div>
+              {{/if}}              
             </div>
         {{/ifCond}}
 

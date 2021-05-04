@@ -7,7 +7,10 @@
           {{#ifCond summary "==" "buyer"}}
           fa-money-check-alt
           {{/ifCond}}
-          {{#ifCond summary "==" "supplier"}}
+          {{#ifCond summary "==" "supplier_contract"}}
+          fa-dolly
+          {{/ifCond}}
+          {{#ifCond summary "==" "supplier_purchase"}}
           fa-dolly
           {{/ifCond}}
           {{#ifCond summary "==" "funder"}}
@@ -52,7 +55,7 @@
                 <div class="col-md-12 col-12">
                     <h5 class="description-data-subname">{{_ "Entidades principales" }}</h5>
                     {{#each data.top_entities }}
-                        {{>result result=this }}
+                        {{>result result=this membership_name=../result.name }}
                     {{/each}}
 
                     <h5 class="description-data-subname">{{_ "Mayores contratos" }}</h5>
