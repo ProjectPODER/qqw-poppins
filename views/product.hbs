@@ -207,10 +207,8 @@
           <div class="col-12">
             <p> {{{_ "Cada círculo representa una de las {cant_contratos} compras de {name} realizadas por el IMSS"
             cant_contratos=(format_number result.contract_count) name=result.name }}}
-
-            {{_ "entre los años {first_year} y {last_year}" first_year=(moment result.first_purchase_date "Y") last_year=(moment
+            {{_ "entre los años {first_year} y {last_year}." first_year=(moment result.first_purchase_date "Y") last_year=(moment
             result.last_purchase_date "Y") }}
-
             </p>
             <svg id="grafica-sobrecosto"></svg>
           </div>
@@ -260,7 +258,7 @@
                   <td>{{format_number monto_total_sobrecosto }} MXN</td>
                   <td>{{format_percentage sobrecosto }}</td>
                   <td>Cantidad</td>
-                  <td>{{moment ultima_compra "LL"}}</td>
+                  <td>{{moment ultima_compra date lang="es" format="LL"}}</td>
                 </tr>
 {{!--
 "doc_count": 1,
