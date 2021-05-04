@@ -1,30 +1,40 @@
-{{# if contract_count.supplier }}
-    <p class="index-list-element supplier-text">
-        <a href="?collection=contracts&proveedor={{name}}" title="Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de {{{format_number contract_amount.supplier}}}">
-            <i class="fas fa-file-alt"></i> Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.supplier}}}
-        </a>
-    </p>
-{{/if}}
-{{# if contract_count.buyer }}
-    <p class="index-list-element buyer-text">
-        <a href="?collection=contracts&comprador={{name}}" title="Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de {{format_number contract_amount.buyer}}">
-            <i class="fas fa-file-alt"></i> Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.buyer}}}
-        </a>
-    </p>
-{{/if}}
-{{# if contract_count.funder }}
-    <p class="index-list-element funder-text">
-        <a href="?collection=contracts&financiador={{name}}" title="Financiador en {{format_number contract_count.funder}} contrato(s) por un total de {{format_number contract_amount.funder}}">
-            <i class="fas fa-file-alt"></i> Financiador en {{format_number contract_count.funder}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.funder}}}
-        </a>
-    </p>
-{{/if}}
-{{#ifCond (get_classification_type result.classification) "==" "area" }}
-    {{# if contract_count }}
-        <p class="index-list-element area-text">
-            <a href="?collection=contracts&country={{name}}" title="{{format_number contract_count}} contrato(s) por un total de {{format_number contract_amount}}">
-                <i class="fas fa-file-alt"></i> {{format_number contract_count}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount}}}
+{{#if contract_count }}
+    {{# if contract_count.supplier }}
+        <p class="index-list-element supplier-text">
+            <a href="{{ url view="search" collection="contracts" proveedor=id}}" title="Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de {{{format_number contract_amount.supplier}}}">
+                <i class="fas fa-file-alt"></i> Proveedor en {{format_number contract_count.supplier}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.supplier}}}
+                {{#if membership_name}} con {{membership_name}}{{/if}}
             </a>
         </p>
     {{/if}}
-{{/ifCond}}
+    {{# if contract_count.buyer }}
+        <p class="index-list-element buyer-text">
+            <a href="{{ url view="search" collection="contracts" dependencia=id}}" title="Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de {{format_number contract_amount.buyer}}">
+                <i class="fas fa-file-alt"></i> Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.buyer}}}
+                {{#if membership_name}} con {{membership_name}}{{/if}}
+
+            </a>
+        </p>
+    {{/if}}
+    {{# if contract_count.funder }}
+        <p class="index-list-element funder-text">
+            <a href="{{ url view="search" collection="contracts" financiador=id}}" title="Financiador en {{format_number contract_count.funder}} contrato(s) por un total de {{format_number contract_amount.funder}}">
+                <i class="fas fa-file-alt"></i> Financiador en {{format_number contract_count.funder}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.funder}}}
+                {{#if membership_name}} con {{membership_name}}{{/if}}
+            </a>
+        </p>
+    {{/if}}
+    {{#ifCond (get_classification_type result.classification) "==" "area" }}
+        {{# if contract_count }}
+            <p class="index-list-element area-text">
+                <a href="{{ url view="search" collection="contracts" country=id}}" title="{{format_number contract_count}} contrato(s) por un total de {{format_number contract_amount}}">
+                    <i class="fas fa-file-alt"></i> {{format_number contract_count}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount}}}
+                {{#if membership_name}} con {{membership_name}}{{/if}}
+
+                </a>
+            </p>
+        {{/if}}
+    {{/ifCond}}
+{{else}}
+    {{ get_classification_name type result.classification result.subclassification result.govLevel }}
+{{/if}}
