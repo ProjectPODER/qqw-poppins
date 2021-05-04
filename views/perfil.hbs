@@ -25,16 +25,30 @@
         {{/each}}
         {{/if}}
         {{!-- Summaries --}}
-        {{#if summaries.buyer.total.count }}
+        {{#if summaries.buyer_contract.total.count }}
         <li>
-          <a href="#summary-buyer" class="anchor">
-            <i class="fas fa-money-check-alt"></i> {{_ "Compras"}}
+          <a href="#summary-buyer_contract" class="anchor">
+            <i class="fas fa-money-check-alt"></i> {{_ "Comprador"}}
           </a>
         </li>
         {{/if}}
-        {{#if summaries.supplier.total.count }}
+        {{#if summaries.buyer_purchase.total.count }}
         <li>
-          <a href="#summary-supplier" class="anchor">
+          <a href="#summary-buyer_purchase" class="anchor">
+            <i class="fas fa-money-check-alt"></i> {{_ "Comprador"}}
+          </a>
+        </li>
+        {{/if}}
+        {{#if summaries.supplier_purchase.total.count }}
+        <li>
+          <a href="#summary-supplier_purchase" class="anchor">
+            <i class="fas fa-dolly"></i> {{{_ "Proveedor"}}}
+          </a>
+        </li>
+        {{/if}}
+        {{#if summaries.supplier_contract.total.count }}
+        <li>
+          <a href="#summary-supplier_contract" class="anchor">
             <i class="fas fa-dolly"></i> {{{_ "Proveedor"}}}
           </a>
         </li>
@@ -132,8 +146,11 @@
 
 
 {{!-- SUMMARIES --}}
-{{#if summaries.buyer.total.count }}
-{{>summary result=result summary="buyer" data=summaries.buyer }}
+{{#if summaries.buyer_purchase.total.count }}
+{{>summary result=result summary="buyer_purchase" data=summaries.buyer_purchase }}
+{{/if}}
+{{#if summaries.buyer_contract.total.count }}
+{{>summary result=result summary="buyer_contract" data=summaries.buyer_contract }}
 {{/if}}
 
 
@@ -141,9 +158,14 @@
 {{>summary result=result summary="contactPoint" data=summaries.contactPoint }}
 {{/if}}
 
-{{#if summaries.supplier.total.count }}
-{{>summary result=result summary="supplier" data=summaries.supplier }}
+{{#if summaries.supplier_purchase.total.count }}
+{{>summary result=result summary="supplier_purchase" data=summaries.supplier_purchase }}
 {{/if}}
+
+{{#if summaries.supplier_contract.total.count }}
+{{>summary result=result summary="supplier_contract" data=summaries.supplier_contract }}
+{{/if}}
+
 
 {{#if summaries.funder.total.count }}
 {{>summary result=result summary="funder" data=summaries.funder }}
