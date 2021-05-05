@@ -124,7 +124,7 @@
           {{#if result.subclassification}}
             <div class="col-md-3 col-12">
               <p class="js-title-data">{{{_ "Tipo de entidad"}}}</p>
-              <p class="js-data">{{_ result.subclassification}}</p>
+              <p class="js-data">{{#each result.subclassification }}{{_ this}}{{/each}}</p>
             </div>
           {{/if}}
 
@@ -181,22 +181,31 @@
           {{#if result.source}}
             <div class="col-md-4 col-12">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>  {{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
+
+            {{#with (cobranding result.source "data_name") }}
+            <div class="col-md-3 col-12">
+              <p class="js-title-data">{{{_ "Forman parte del proyecto"}}}</p>
+              <p class="js-data">
+              {{#each this }}
+                    <a href="{{data_url}}">{{data_name}}</a>{{#if @last}}{{else}}, {{/if}}  
+              {{/each}}
+              </p>
+            </div>
+            {{/with}}
+
+            {{#with (cobranding result.source "org_name") }}
+            <div class="col-md-3 col-12">
+              <p class="js-title-data">{{{_ "Organización responsable de la importación"}}}</p>
+              <p class="js-data">
+                {{#each this }}
+                    <a href="{{org_url}}">{{org_name}}</a>{{#if @last}}{{else}}, {{/if}}
+                {{/each}}
+                </p>
+            </div>
+            {{/with}}
           {{/if}}
-          {{#with (cobranding result.source) }}
-
-          <div class="col-md-3 col-12">
-            <p class="js-title-data">{{{_ "Datos importados en el proyecto"}}}</p>
-            <p class="js-data"><a href="{{url}}">{{name}}</a></p>
-          </div>
-
-          <div class="col-md-3 col-12">
-            <p class="js-title-data">{{{_ "Organización responsable de la importación"}}}</p>
-            <p class="js-data"><a href="https://poderlatam.org">PODER</a></p>
-          </div>
-          {{/with}}
-
         </div>
       </div>
     </div>

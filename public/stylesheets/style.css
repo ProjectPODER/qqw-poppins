@@ -860,6 +860,16 @@ input[type=submit].landing-search-inputtext {
   padding-top: 0;
   padding-bottom: 0;
 }
+.filters .collection-filter {
+  border: 1px solid #370bc2;
+  border-radius: 3px;
+  background: #eef;
+  margin-top: 5px;
+  margin-bottom: 4px !important;
+}
+.filters .collection-filter a span {
+  font-weight: bold;
+}
 .filters .nav-item {
   margin-left: 10px;
   margin-bottom: 10px;
