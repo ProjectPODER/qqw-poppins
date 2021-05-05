@@ -231,6 +231,10 @@ $(".filter-close").on("click", function (e) {
   // Add scrollspy to <body> in perfil
 $('body').scrollspy({target: "#right-menu", offset: 200});
 
+//Scroll menu horizontally for mobile
+$('#right-menu').on('activate.bs.scrollspy', function (e) {
+  $(e.target).parent().scrollLeft((e.target).offsetLeft)
+})
 
 // Add smooth scrolling on all links inside the navbar
 $("#right-menu a").on('click', function(event) {
