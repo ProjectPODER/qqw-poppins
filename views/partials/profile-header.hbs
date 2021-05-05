@@ -31,11 +31,11 @@
     </div>
     <nav id="right-menu">
       <ul class="right-menu-profile nav d-flex flex-nowrap">
-        {{#with (cobranding result.source )}}
         {{!-- Co-Branding --}}
+        {{#each (cobranding result.source "data_name")}}
           <li>
-            <a href="" class="anchor cobranding-logo" target="_blank" title="{{ description }}">
-              <img src="{{image}}" alt="{{name }}">
-            </a>
+            <span class="anchor cobranding-logo" title="{{ description }}">
+              <img src="{{image}}" alt="{{data_name }}">
+            </span>
           </li>
-        {{/with}}
+        {{/each}}
