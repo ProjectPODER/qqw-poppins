@@ -1,5 +1,4 @@
 <script src="/tiza/tiza.js"></script>
-{{general.products_active.[0].[env]}}
 {{>profile-header result=result }}
         {{!-- SHORT memberships --}}
         {{#if result.memberships.parent}}
@@ -26,8 +25,7 @@
         {{/if}}
         
         {{!-- Summaries --}}
-
-        {{#ifCond general.products_active.[0].[env]  "==" "true"}}
+        {{#ifCond (conf "products_active")  "==" "true"}}
           {{#if summaries.buyer_purchase.total.count }}
           <li>
             <a href="#summary-buyer_purchase" class="anchor">
@@ -131,9 +129,9 @@
         {{/if}}
 {{>profile-header-end }}
 
+
 <div class="first-profile-section">
   {{>sadico-banner }}
-
 {{!-- SHORT memberships --}}
 {{#each result.memberships.parent }}
     {{#ifCond memberships.length "<=" 2 }}
@@ -152,7 +150,7 @@
 
 
 {{!-- SUMMARIES --}}
-{{#ifCond general.products_active.[0].es  "==" "true"}}
+{{#ifCond (conf "products_active")  "==" "true"}}
   {{#if summaries.buyer_purchase.total.count }}
   {{>summary result=result role="buyer" classification="purchase" data=summaries.buyer_purchase }}
   {{/if}}
