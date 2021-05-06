@@ -35,7 +35,5 @@
     "rss-parser": "3.7.0",
     "stylus": "0.54.5",
     "tiza": "github:projectpoder/tiza.git#main"
-  },
-  "tiza": "git+http://gitlab.rindecuentas.org/equipo-qqw/tiza.git#main",
-  "qqw": "file:../node-qqw"
+  }
 }
