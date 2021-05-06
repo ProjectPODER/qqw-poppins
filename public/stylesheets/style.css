@@ -877,6 +877,9 @@ input[type=submit].landing-search-inputtext {
   text-align: left;
   min-width: 100px;
 }
+.filters .sortDirection-filter {
+  min-width: auto !important;
+}
 .filters .dropdown-menu-morefilters {
   border: 1px solid;
   background-color: #e6e6e6;
