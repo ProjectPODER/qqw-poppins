@@ -131,7 +131,7 @@
           <ul>
           {{#each result.summary.sources }}
             <li>
-              <a title="Filtrar por {{_ @key}}" href="{{ url view="search" source=this.id }}">{{_ @key}}</a>
+              <a title="Filtrar por {{_ @key}}" href="{{ url view="search" fuente=@key }}">{{_ @key}}</a>
               <i class="fas fa-info-circle text-gray" title="{{{ get_source_description @key  }}}" data-placement="right"></i> : {{format_number this}}
             </li>
           {{/each}}
