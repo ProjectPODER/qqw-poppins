@@ -10,11 +10,19 @@
               {{or result.name result.contracts.title}}
             {{/ifCond}}
             {{#if result.memberOf.name }}
-            <span style="text-transform: lowercase;">
-
-              {{{_ "de" }}} 
-            </span>
+              <span style="font-size: 0.7em;">
+                (
+              <span style="text-transform: lowercase;">
+                {{{_ "de" }}} 
+              </span>
               {{ result.memberOf.name  }}
+                )
+              </span>
+            {{/if}}
+            {{#if result.parent_name }}
+              <span style="font-size: 0.7em;">
+              ({{ result.parent_name  }})
+              </span>
             {{/if}}
           </p>
         </a>
