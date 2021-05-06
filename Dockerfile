@@ -1,5 +1,5 @@
-FROM mhart/alpine-node:14
-MAINTAINER Kronops <kronops@kronops.com.mx>
+FROM mhart/alpine-node:10
+MAINTAINER Martín Szyszlican <msz@poderlatam.org>
 
 ENV PORT=${PORT:-8080}
 ENV NODE_ENV=production
@@ -21,7 +21,6 @@ RUN chown -R node:node /src
 EXPOSE $PORT
 
 USER node
-#RUN npm install --silent
 RUN npm install
 
 ENTRYPOINT ["/sbin/tini", "--"]
