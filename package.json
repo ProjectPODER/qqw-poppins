@@ -31,7 +31,7 @@
     "morgan": "~1.9.1",
     "nodemailer": "^6.2.1",
     "popper.js": "^1.16.0",
-    "qqw": "github:projectpoder/node-qqw.git#v0.2.3",
+    "qqw": "git+http://git@github.com/projectpoder/node-qqw#v0.2.3",
     "rss-parser": "3.7.0",
     "stylus": "0.54.5",
     "tiza": "github:projectpoder/tiza.git#main"
