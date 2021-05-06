@@ -1,5 +1,5 @@
 <script src="/tiza/tiza.js"></script>
-
+{{general.products_active.[0].[env]}}
 {{>profile-header result=result }}
         {{!-- SHORT memberships --}}
         {{#if result.memberships.parent}}
@@ -27,7 +27,7 @@
         
         {{!-- Summaries --}}
 
-        {{#ifCond general.products_active.[0].es  "==" "true"}}
+        {{#ifCond general.products_active.[0].[env]  "==" "true"}}
           {{#if summaries.buyer_purchase.total.count }}
           <li>
             <a href="#summary-buyer_purchase" class="anchor">
