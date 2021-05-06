@@ -1328,7 +1328,9 @@ input[type=submit].landing-search-inputtext {
   .index-list-elements .right-elements .area-company,
   .index-list-elements .right-elements .area-proveedor,
   .index-list-elements .right-elements .area-person,
-  .index-list-elements .right-elements .area-funcionario {
+  .index-list-elements .right-elements .area-funcionario,
+  .index-list-elements .right-elements .area-boardmember,
+  .index-list-elements .right-elements .area-shareholder {
     position: static;
   }
 }
