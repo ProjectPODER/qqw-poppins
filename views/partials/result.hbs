@@ -9,6 +9,13 @@
             {{else}}
               {{or result.name result.contracts.title}}
             {{/ifCond}}
+            {{#if result.memberOf.name }}
+            <span style="text-transform: lowercase;">
+
+              {{{_ "de" }}} 
+            </span>
+              {{ result.memberOf.name  }}
+            {{/if}}
           </p>
         </a>
       </div>
@@ -114,11 +121,10 @@
 
         {{!-- INSTITUCIONES --}}
         {{#ifCond (or (get_classification_type result.classification) result.type) "==" "institutions" }}
-          <div class="left-elements col-6">
+          <div class="left-elements col-8">
              {{> result-contracts this }}
           </div>
-            <div class="right-elements col-6">
-              {{ result.memberOf.name  }}
+            <div class="right-elements col-4">
               {{#if area }}
               <div class="col-lg-3 p-0">
                 <p class="index-list-element">
@@ -151,7 +157,7 @@
                   {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key ciudad=../id}}
                 {{/ifCond}}
                 " title="{{format_number this}} {{_ @key }}">
-                {{format_number this}} {{_ @key }} {{{ get_classification_icon @key }}}
+                {{format_number this}} {{_ @key }} {{{ get_classification_icon @key "undefined" "undefined" }}}
                 </a>
               </p>
             </div>

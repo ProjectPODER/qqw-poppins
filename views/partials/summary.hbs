@@ -1,41 +1,38 @@
-<section class="profile profile-summary" id="summary-{{summary}}">
+<section class="profile profile-summary summary-{{role}} summary-{{classification}}" id="summary-{{role}}_{{classification}}">
   <div class="profile-content">
     <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
           <i class="fas 
-          {{#ifCond summary "==" "buyer"}}
+          {{#ifCond role "==" "buyer"}}
           fa-money-check-alt
           {{/ifCond}}
-          {{#ifCond summary "==" "supplier_contract"}}
+          {{#ifCond role "==" "supplier"}}
           fa-dolly
           {{/ifCond}}
-          {{#ifCond summary "==" "supplier_purchase"}}
-          fa-dolly
-          {{/ifCond}}
-          {{#ifCond summary "==" "funder"}}
+          {{#ifCond role "==" "funder"}}
           fa-donate
           {{/ifCond}}
-          {{#ifCond summary "==" "contactPoint"}}
+          {{#ifCond role "==" "contactPoint"}}
           fa-shopping-cart
           {{/ifCond}}
           "></i> 
         </div>
         <h4 class="description-data-subtitle">
-          {{_ "Resúmen de actividad como {summary} " summary=(_ summary)}}
+          {{_ "Resúmen de actividad como {role} de {classification} " role=(_ role) classification=(_ classification)}}
         </h4>
       </div>
       <div  class="col-md-12 col-12">
         <div class="profile-summary-content">
-            <div class="summary-total {{summary}}-text">
+            <div class="summary-total {{role}}-{{classification}}-text">
                 <p>
                   <i class="fas fa-file-alt"></i>
-                  {{{_ "{cant_contratos} contratos como {summary} por un total de <strong>{amount_contratos}</strong>" 
-                  cant_contratos=(format_number data.total.count) summary=(_ summary) amount_contratos=(format_amount data.total.value) }}}
+                  {{{_ "{cant_contratos} {classification} como {role} por un total de <strong>{amount_contratos}</strong>" 
+                  cant_contratos=(format_number data.total.count)  role=(_ role) classification=(_ classification) amount_contratos=(format_amount data.total.value) }}}
                   {{_ "entre los años {first_year} y {last_year}." first_year=(first_key data.year) last_year=(last_key data.year) }}
                 </p>
 
-                {{#ifCond summary '==' 'contactPoint'}}
+                {{#ifCond role '==' 'contactPoint'}}
                   <p class="description-data-amount">
                     <i class="fas fa-info-circle"></i>
                     {{{_ "Ésta persona es (o ha sido) responsable de una Unidad Compradora y con el objetivo de brindar la máxima información disponible lo mostramos como comprador a todos los contratos que sucedieron bajo su mandato."}}}
@@ -44,12 +41,12 @@
             </div>
             <div class="row">
                 <div  class="col-md-6 col-12 mb-6">
-                <h5 class="description-data-subname">{{_ "Evolución anual de contratos" }}</h5>
-                <div id="chart-year-{{summary}}" class="summary-chart"></div>
+                <h5 class="description-data-subname">{{_ "Evolución anual de {classification}" classification=(_ classification)  }}</h5>
+                <div id="chart-year-{{role}}-{{classification}}" class="summary-chart"></div>
                 </div>
                 <div class="col-md-6 col-12 mb-6">
                 <h5 class="description-data-subname">{{_ "Tipo de procedimiento" }}</h5>
-                <div id="chart-type-{{summary}}" class="summary-chart"></div>
+                <div id="chart-type-{{role}}-{{classification}}" class="summary-chart"></div>
                 </div>
 
                 <div class="col-md-12 col-12">
@@ -58,27 +55,29 @@
                         {{>result result=this membership_name=../result.name }}
                     {{/each}}
 
-                    <h5 class="description-data-subname">{{_ "Mayores contratos" }}</h5>
+                    <h5 class="description-data-subname">{{_ "Mayores {classification}"  classification=(_ classification) }}</h5>
                     {{#each data.top_contracts }}
                         {{>result collection="contracts" result=this }}
                     {{/each}}
                     <div class="contract-button">
                         {{#ifCond type '==' 'persons'}}
-                          {{#ifCond summary '==' 'contactPoint'}}
-                            <a href="{{ url view="buscador" collection="contracts" responsable=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este responsable" }}</a>
+                          {{#ifCond role '==' 'contactPoint'}}
+                            <a href="{{ url view="buscador" collection="contracts" responsable=result.id tipo-entidad=classification }}" class="button-link {{role}}-button">
+                            
                           {{else }}
-                            <a href="{{ url view="buscador" collection="contracts" proveedor=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
+                            <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
                           {{/ifCond }}
                         {{else }}
                           {{#ifCond result.classification "==" "company"}}
-                              <a href="{{ url view="buscador" collection="contracts" proveedor=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de este proveedor" }}</a>
+                              <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
                             {{else}}
-                            {{#ifCond result.subclassification "==" "unidad-compradora"}}
-                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta UC" }}</a>
+                            {{#ifCond role "==" "supplier"}}
+                                <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
                             {{else }}
-                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.id}}" class="button-link {{summary}}-button">{{_ "Ver todos los contratos de esta dependencia" }}</a>
+                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
                             {{/ifCond}}
                           {{/ifCond}}
+                            {{_ "Ver todos los {classification} de este {role}" role=(_ role) classification=(_ classification) }}</a>
                         {{/ifCond }}
                     </div>
                 </div>
@@ -92,8 +91,8 @@
 <script>
   
   tiza.contractTypePie({
-    target: "#chart-type-{{summary}}", 
-    type: "{{summary}}", 
+    target: "#chart-type-{{role}}-{{classification}}", 
+    type: "{{role}}_{{classification}}", 
     nameLabels: {
         "open": "{{_ "Licitación abierta" }}",
         "direct": "{{_ "Adjudicación Directa" }}",
@@ -101,19 +100,19 @@
         "undefined": "{{_ "Sin definir" }}",
         "": "{{_ "Sin información" }}"
     },
-    procurementColors: tiza.procurementColors["{{summary}}"],
+    procurementColors: tiza.procurementColors["{{role}}_{{classification}}"],
     data: {{{j data.type }}} 
   });
 
   tiza.yearlyContractsBar({
-    target: "#chart-year-{{summary}}", 
+    target: "#chart-year-{{role}}-{{classification}}", 
     amountKeyName: "{{_ "Importe" }}",
     countKeyName: "{{_ "Cantidad" }}",
     barColors: {
-        "{{_ "Importe" }}": tiza.barColors["{{summary}}"].amount,
-        "{{_ "Cantidad" }}": tiza.barColors["{{summary}}"].count
+        "{{_ "Importe" }}": tiza.barColors["{{role}}_{{classification}}"].amount,
+        "{{_ "Cantidad" }}": tiza.barColors["{{role}}_{{classification}}"].count
     },
-    type: "{{summary}}", 
+    type: "{{role}}_{{classification}}", 
     data: {{{j data.year }}} 
   });
 </script>

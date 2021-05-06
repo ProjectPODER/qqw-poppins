@@ -1163,8 +1163,8 @@ input[type=submit].landing-search-inputtext {
   right: calc(60px + 13% * 0);
   text-align: right;
 }
-.index-list-elements .left-elements .area-person,
-.index-list-elements .right-elements .area-person {
+.index-list-elements .left-elements .area-shareholder,
+.index-list-elements .right-elements .area-shareholder {
   position: absolute;
   right: calc(60px + 14% * 1);
   text-align: right;
@@ -1175,8 +1175,8 @@ input[type=submit].landing-search-inputtext {
   right: calc(60px + 14% * 2);
   text-align: right;
 }
-.index-list-elements .left-elements .area-owner,
-.index-list-elements .right-elements .area-owner {
+.index-list-elements .left-elements .area-boardmember,
+.index-list-elements .right-elements .area-boardmember {
   position: absolute;
   right: calc(60px + 14% * 3);
   text-align: right;
