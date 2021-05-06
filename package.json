@@ -25,17 +25,14 @@
     "intl-messageformat": "5.4.3",
     "jquery": "^3.5.1",
     "jquery.easing": "^1.4.1",
-    "jsonpath": "1.0.2",
+    "jsonpath": "^1.1.1",
     "lodash": "^4.17.20",
     "moment": "^2.24.0",
     "morgan": "~1.9.1",
     "nodemailer": "^6.2.1",
     "popper.js": "^1.16.0",
-    "qqw": "github:projectpoder/node-qqw.git#v0.2.3",
     "rss-parser": "3.7.0",
     "stylus": "0.54.5",
     "tiza": "github:projectpoder/tiza#main"
-  },
-  "tiza": "git+http://gitlab.rindecuentas.org/equipo-qqw/tiza.git#master",
-  "qqw": "file:../node-qqw"
+  }
 }

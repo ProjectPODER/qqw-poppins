@@ -58,7 +58,7 @@
 
             {{_ "entre los años {first_year} y {last_year}" first_year=(moment result.first_purchase_date "Y") last_year=(moment result.last_purchase_date "Y") }}
 
-            {{_ "con un sobrecosto de {amount_over} que hubiera permitido comprar {quantity_lost} unidades adicionales." amount_over=(format_amount result.amount_over "MXN") quantity_lost=(format_number result.quantity_lost) }}
+            {{_ "con un sobrecosto de {amount_over} que hubiera permitido comprar {quantity_lost} unidades adicionales." amount_over=(format_amount result.amount_over_with_overcost "MXN") quantity_lost=(format_number result.quantity_lost_with_overcost) }}
           </div>
 
 
