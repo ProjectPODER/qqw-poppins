@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:12
+FROM mhart/alpine-node:14
 MAINTAINER Martín Szyszlican <msz@poderlatam.org>
 
 ENV PORT=${PORT:-8080}
