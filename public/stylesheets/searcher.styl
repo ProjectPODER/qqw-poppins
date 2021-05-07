@@ -11,8 +11,8 @@
         border: 1px solid #370bc2
         border-radius 3px
         background: #eef
-        margin-top: 5px 
-        margin-bottom: 4px !important 
+        margin-top: 5px
+        margin-bottom: 4px !important
         a span
             font-weight: bold
     .nav-item
@@ -21,6 +21,8 @@
         max-width 150px
         text-align left
         min-width 100px
+    .sortDirection-filter
+        min-width auto !important
     .dropdown-menu-morefilters
         border 1px solid
         background-color #e6e6e6
@@ -458,16 +460,17 @@
 @media screen and (max-width: 1270px)
     .index-list-elements
         .right-elements
-            .area-person
+            .area-shareholder
                 right calc(60px + 15.5% * 1)
             .area-proveedor
                 right calc(60px + 15% * 2)
-            .area-owner
+            .area-boardmember
                 right calc(60px + 15.5% * 3)
             .area-funcionario
                 right calc(60px + 15% * 4)
             .area-institution
                 right calc(60px + 15% * 5)
+
     .pagination-container
         .w-50
             width: 100% !important
@@ -483,7 +486,9 @@
             .area-company,
             .area-proveedor,
             .area-person,
-            .area-funcionario
+            .area-funcionario,
+            .area-boardmember,
+            .area-shareholder
                 position static
 
 

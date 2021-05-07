@@ -164,7 +164,7 @@ body {
 }
 #content {
   min-height: 100%;
-  margin: 0 auto -100px;
+  margin: 0 auto -20px;
 }
 @media (max-width: 991px) {
   #content {
@@ -172,9 +172,13 @@ body {
   }
 }
 .buyer-text,
-.buyer-text a {
+.buyer-text a,
+.buyer-contract-text,
+.buyer-contract-text a {
   color: #db2828 !important;
 }
+.supplier-contract-text,
+.supplier-contract-text a,
 .supplier-text,
 .supplier-text a {
   color: #278529 !important;
@@ -877,6 +881,9 @@ input[type=submit].landing-search-inputtext {
   text-align: left;
   min-width: 100px;
 }
+.filters .sortDirection-filter {
+  min-width: auto !important;
+}
 .filters .dropdown-menu-morefilters {
   border: 1px solid;
   background-color: #e6e6e6;
@@ -1294,13 +1301,13 @@ input[type=submit].landing-search-inputtext {
   width: 100%;
 }
 @media screen and (max-width: 1270px) {
-  .index-list-elements .right-elements .area-person {
+  .index-list-elements .right-elements .area-shareholder {
     right: calc(60px + 15.5% * 1);
   }
   .index-list-elements .right-elements .area-proveedor {
     right: calc(60px + 15% * 2);
   }
-  .index-list-elements .right-elements .area-owner {
+  .index-list-elements .right-elements .area-boardmember {
     right: calc(60px + 15.5% * 3);
   }
   .index-list-elements .right-elements .area-funcionario {
@@ -1325,7 +1332,9 @@ input[type=submit].landing-search-inputtext {
   .index-list-elements .right-elements .area-company,
   .index-list-elements .right-elements .area-proveedor,
   .index-list-elements .right-elements .area-person,
-  .index-list-elements .right-elements .area-funcionario {
+  .index-list-elements .right-elements .area-funcionario,
+  .index-list-elements .right-elements .area-boardmember,
+  .index-list-elements .right-elements .area-shareholder {
     position: static;
   }
 }
