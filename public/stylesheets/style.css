@@ -1297,13 +1297,13 @@ input[type=submit].landing-search-inputtext {
   width: 100%;
 }
 @media screen and (max-width: 1270px) {
-  .index-list-elements .right-elements .area-person {
+  .index-list-elements .right-elements .area-shareholder {
     right: calc(60px + 15.5% * 1);
   }
   .index-list-elements .right-elements .area-proveedor {
     right: calc(60px + 15% * 2);
   }
-  .index-list-elements .right-elements .area-owner {
+  .index-list-elements .right-elements .area-boardmember {
     right: calc(60px + 15.5% * 3);
   }
   .index-list-elements .right-elements .area-funcionario {
