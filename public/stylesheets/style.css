@@ -149,6 +149,17 @@ h6 {
 .navbar-nav a:hover:after {
   width: 80%;
 }
+.notificacion {
+  width: 40%;
+  margin: auto;
+  top: 10px;
+  justify-content: center;
+}
+@media (max-width: 678px) {
+  .notificacion {
+    display: none;
+  }
+}
 @media (max-width: 991px) {
   .navbar-nav a:hover:after {
     width: 40%;
