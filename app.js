@@ -46,32 +46,30 @@ function initApp(appLocals) {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(stylus.middleware(path.join(__dirname, 'public')));
-  app.use("/",
-    express.static(
-      path.join(__dirname, 'public'),
-      {
-        index:false,
-        cacheControl: "no-cache",
-      }
-    )
-  );
+
+  const staticOptions = {
+    index:false,
+    cacheControl: true,
+    maxAge: 6000000
+  };
+
+  app.use("/", express.static(path.join(__dirname, 'public'), staticOptions));
 
   // Bootstrap 4 and libraries
-  app.use('/jQuery', express.static(__dirname + '/node_modules/jquery/dist/'));
-  app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
-  app.use('/tiza', express.static(__dirname + '/node_modules/tiza'));
-  app.use('/datatables', express.static(__dirname + '/node_modules/datatables.net/js'));
-  app.use('/datatables-styles', express.static(__dirname + '/node_modules/datatables.net-dt/css'));
+  app.use('/jQuery', express.static(__dirname + '/node_modules/jquery/dist/',staticOptions));
+  app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/',staticOptions));
+  app.use('/tiza', express.static(__dirname + '/node_modules/tiza',staticOptions));
+  app.use('/datatables', express.static(__dirname + '/node_modules/datatables.net/js',staticOptions));
+  app.use('/datatables-styles', express.static(__dirname + '/node_modules/datatables.net-dt/css',staticOptions));
   
 
 
   app.use(cacheControl({
-    public: true,
-    maxAge: 300,
+    // public: true,
     noCache: true
   }
   ));
-  
+
   app.use('/', indexRouter);
 
   console.log("App started, server listening");
