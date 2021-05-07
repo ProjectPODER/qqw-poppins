@@ -53,7 +53,7 @@
           <div class="col-12 mb-2">
             <p>
               Listado de <strong>{{format_number result.summary.count }}</strong> {{#ifCond result.summary.count ">" 100000  }} de {{/ifCond}} <strong>{{#each result.summary.classification  }} <a href="{{url tipo-entidad=@key}}">{{lower (_ @key)}}</a>{{#if @last}}{{else}},{{/if}} {{/each}}</strong>
-              {{#ifCond title.collection "==" "Contratos" }}
+              {{#ifCond title.collection_short "==" "Contratos" }}
                 por un total de ${{{format_amount result.summary.amount }}}
               {{else}}
                 {{#with (filter_array filters "apiFilterName" "sort") }}
@@ -81,7 +81,7 @@
             <hr>
           </div>
         </div>
-        {{#ifCond title.collection "==" "Contratos" }}
+        {{#ifCond title.collection_short "==" "Contratos" }}
         <div class="row bg-gray pt-3">
           <div class="col-12 col-md-12">
             <p><b>Resultados por año:</b></p>
