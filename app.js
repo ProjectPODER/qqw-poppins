@@ -37,8 +37,6 @@ function initApp(appLocals) {
   app.set('view engine', 'hbs');
 
 
-  app.use(cacheControl());
-
   // log only 4xx and 5xx responses to console
   app.use(morgan('short', {
     skip: function (req, res) { return (res.statusCode < 400 && (req.headers.accept && req.headers.accept.indexOf("html") == -1 )) }
@@ -64,6 +62,15 @@ function initApp(appLocals) {
   app.use('/tiza', express.static(__dirname + '/node_modules/tiza'));
   app.use('/datatables', express.static(__dirname + '/node_modules/datatables.net/js'));
   app.use('/datatables-styles', express.static(__dirname + '/node_modules/datatables.net-dt/css'));
+  
+
+
+  app.use(cacheControl({
+    public: true,
+    maxAge: 300,
+    noCache: true
+  }
+  ));
   
   app.use('/', indexRouter);
 
