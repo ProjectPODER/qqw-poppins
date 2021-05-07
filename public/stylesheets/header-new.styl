@@ -41,6 +41,26 @@
     &:hover:after
       width 80%
 
+//Para acomodar la barra de  notificaciones, borrar cuando ya  no esté la barra
+.notificacion
+  // position: absolute;
+  width: 40%;
+  margin: auto;
+  top: 10px;
+  justify-content: center;
+// .bg-mainmenu
+//     top: 38px
+// .filters
+//     top: 95px !important
+// .error, .results-list
+//     padding: 12rem 5rem 0 !important
+// section.profile-header
+//     padding-top: 95px !important
+@media (max-width: 678px)
+  .notificacion
+    display: none
+// Termina barra de notificaciones
+
 @media (max-width: 991px)
   .navbar-nav
     a
@@ -68,7 +88,7 @@
 //     img
 //         &.logo-horizontal
 //             width 10rem
-//             margin 1.1rem 1em 
+//             margin 1.1rem 1em
 //         &.logo
 //             width 714px
 //             margin auto
@@ -76,7 +96,7 @@
 //             width 25rem
 //             vertical-align middle
 //             margin-left 1rem
-            
+
 //     .icon-navbar
 //         width 20px
 //         margin-right 10px
@@ -86,18 +106,18 @@
 //         float: right
 //         margin 12px 20px 0 0
 
-//     nav ul, nav li 
+//     nav ul, nav li
 //         display inline-block
 //         margin: 0
 //         padding: 0
 //         list-style: none
 
-//     nav li.active a 
+//     nav li.active a
 //         background-color #ffffff !important
 //         border-color $link-hover-color !important
-//         color $link-hover-color !important    
+//         color $link-hover-color !important
 
-// .button_container 
+// .button_container
 //     position absolute
 //     top 16px
 //     right 2%
@@ -106,19 +126,19 @@
 //     cursor pointer
 //     z-index 100
 //     transition opacity 0.25s ease
-//     &:hover 
+//     &:hover
 //         opacity 0.7
-//     &.active 
-//         .top 
+//     &.active
+//         .top
 //             transform translateY(11px) translateX(0) rotate(45deg)
 //             background #fff
-//         .middle 
+//         .middle
 //             opacity 0
 //             background #fff
-//         .bottom 
+//         .bottom
 //             transform translateY(-11px) translateX(0) rotate(-45deg)
 //             background #fff
-//     span 
+//     span
 //         background #fff
 //         border none
 //         height 3px
@@ -128,11 +148,11 @@
 //         left 0
 //         transition all 0.35s ease
 //         cursor pointer
-//         &:nth-of-type(2) 
+//         &:nth-of-type(2)
 //             top 11px
-//         &:nth-of-type(3) 
+//         &:nth-of-type(3)
 //             top 22px
-// .overlay 
+// .overlay
 //     position fixed
 //     background #110046
 //     top 0
@@ -147,24 +167,24 @@
 //     #search-header
 //         padding-top: 70px;
 //         text-align: center;
-//     &.open 
+//     &.open
 //         opacity 1
 //         visibility visible
 //         height 100%
-//         li 
+//         li
 //             animation fadeInRight 0.5s ease forwards
 //             animation-delay 0.35s
-//             &:nth-of-type(2) 
+//             &:nth-of-type(2)
 //                 animation-delay 0.4s
-//             &:nth-of-type(3) 
+//             &:nth-of-type(3)
 //                 animation-delay 0.45s
-//             &:nth-of-type(4) 
+//             &:nth-of-type(4)
 //                 animation-delay 0.5s
-//             &:nth-of-type(5) 
+//             &:nth-of-type(5)
 //                 animation-delay 0.55s
-//             &:nth-of-type(6) 
+//             &:nth-of-type(6)
 //                 animation-delay 0.60s
-//     nav 
+//     nav
 //         position relative
 //         height 70%
 //         top 50%
@@ -173,27 +193,27 @@
 //         font-weight 400
 //         text-align center
 //         text-transform uppercase
-//     ul 
+//     ul
 //         list-style none
 //         padding 0
 //         margin 0 auto
 //         display inline-block
 //         position relative
 //         height 100%
-//         li 
+//         li
 //             display block
 //             height 20%
 //             height calc(100% / 6)
 //             min-height 50px
 //             position relative
 //             opacity 0
-//             a 
+//             a
 //                 display block
 //                 position relative
 //                 color #fff
 //                 text-decoration none
 //                 overflow hidden
-//                 &:after 
+//                 &:after
 //                     content ''
 //                     position absolute
 //                     bottom 0
@@ -203,20 +223,20 @@
 //                     height 3px
 //                     background #fff
 //                     transition 0.35s
-// .overlay ul li a:hover:after, .overlay ul li a:focus:after, .overlay ul li a:active:after 
+// .overlay ul li a:hover:after, .overlay ul li a:focus:after, .overlay ul li a:active:after
 //     width 40%
 
 
 // .icon-navbar-persons
 //     width 35px
 
-    
-// @keyframes fadeInRight 
+
+// @keyframes fadeInRight
 //     0%
 //         opacity 0
 //         left 20%
 
-//     100% 
+//     100%
 //         opacity 1
 //         left 0
 
