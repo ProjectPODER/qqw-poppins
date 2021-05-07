@@ -17,8 +17,8 @@
   </div>
 </nav>
 
-{{#if general.notificacion}}
+{{#if (conf "notificacion_es") }}
 <div class="navbar bg-dark text-white fixed-top" style="margin-top: 50px;">
-  {{{ lookup general.notificacion.[0] lang}}}
+  {{{ conf "notificacion_es" }}}
 </div>
 {{/if}}
