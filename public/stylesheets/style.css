@@ -172,9 +172,13 @@ body {
   }
 }
 .buyer-text,
-.buyer-text a {
+.buyer-text a,
+.buyer-contract-text,
+.buyer-contract-text a {
   color: #db2828 !important;
 }
+.supplier-contract-text,
+.supplier-contract-text a,
 .supplier-text,
 .supplier-text a {
   color: #278529 !important;
