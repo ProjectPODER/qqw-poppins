@@ -114,9 +114,9 @@ get_classification = function(classification) {
     case "contract": return {name: "contrato", icon:"fa-file-alt", url: "es/contratos"};
     case "company": return {name: "empresa", icon:"fa-building", url: "es/empresas"};
     case "banco": return {name: "banco", icon:"fa-building", url: "es/empresas"};
-    case "institution": return {name: "institución", icon:"fa-landmark", url: "es/instituciones"};
-    case "dependencia": return {name: "dependencia", icon:"fa-landmark", url: "es/instituciones"};
-    case "unidad-compradora": return {name: "unidad compradora", icon:"fa-shopping-cart", url: "es/instituciones"};
+    case "institution": return {name: "institución", icon:"fa-landmark", url: "es/instituciones-publicas"};
+    case "dependencia": return {name: "dependencia", icon:"fa-landmark", url: "es/instituciones-publicas"};
+    case "unidad-compradora": return {name: "unidad compradora", icon:"fa-shopping-cart", url: "es/instituciones-publicas"};
     case "city": return {name: "ciudad", icon:"fa-city", url: "es/regiones"};
     case "municipality": return {name: "municipalio", icon:"fa-city", url: "es/regiones"};
     case "state": return {name: "estado", icon:"fa-map-marked", url: "es/regiones"};
