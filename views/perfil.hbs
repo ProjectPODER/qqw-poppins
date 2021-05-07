@@ -238,7 +238,7 @@
                   {{url view="buscador" collection=(get_classification_type @key) sort-cpi="" sort-a="" tipo-entidad=@key ciudad=../result.id}}
                 {{/ifCond}}
                 " title="{{format_number this}} {{_ @key }}">
-                {{{ get_classification_icon @key }}} {{_ @key }}
+                {{{ get_classification_icon @key "undefined" "undefined" }}} {{_ @key }}
                 </a>
 
                 </h5>
