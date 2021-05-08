@@ -259,7 +259,7 @@
                   <td>{{format_number monto_total}} MXN</td>
                   <td>{{format_number monto_total_sobrecosto }} MXN</td>
                   <td>{{format_percentage sobrecosto }}</td>
-                  <td>Cantidad</td>
+                  <td>{{format_number cantidad_perdida }}</td>
                   <td>{{moment ultima_compra date lang="es" format="LL"}}</td>
                 </tr>
 {{!--
@@ -329,8 +329,8 @@
                   <td>{{format_number doc_count}}</td>
                   <td>{{format_number monto_total_sobrecosto }} MXN</td>
                   <td>{{format_percentage sobrecosto  }}</td>
-
                   <td>{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
+                  <td>{{format_number cantidad_perdida }}</td>
                 </tr>
                 {{/each}}
               </tbody>
