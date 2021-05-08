@@ -68,10 +68,10 @@
             <p class="js-data">{{result.description}} </p>
           </div>
           {{/if }}
-          {{#if result.averagePrice }}
+          {{#if result.avgUnitPrice }}
           <div class="col-md-3 col-12 text-left text-md-right">
             <p class="js-title-data">{{{_ "Precio promedio"}}}</p>
-            <p class="js-data text-darkblue">$1,054.20 MXN</p>
+            <p class="js-data text-darkblue">{{ format_amount result.avgUnitPrice "MXN" }}</p>
           </div>
           {{/if }}
         </div>
@@ -348,7 +348,7 @@
     <div class="row">
       <div class="col-12 col-md-12">
         <h5>{{{_ "Hay <b>XXX</b> contratos en total de este medicamento."}}}</h5>
-        <a class="btn btn-primary" href="">{{{_ "VER TODOS LOS CONTRATOS"}}}</a>
+        <a class="btn btn-primary" href="{{url view="buscador" collection="contracts" tipo-entidad="purchase" producto=result.id }}">{{{_ "VER TODOS LOS CONTRATOS"}}}</a>
       </div>
     </div>
   </div>
