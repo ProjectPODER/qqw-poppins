@@ -1,0 +1,459 @@
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.image {
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.body {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+}
+
+.main-bg {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  min-height: 500px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #292424;
+}
+
+.main-cover-logo {
+  margin-top: 0px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.main-container {
+  position: absolute;
+  left: 0%;
+  top: auto;
+  right: 0%;
+  bottom: 0%;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main-paragraph {
+  font-family: Montserrat, sans-serif;
+  color: #fff;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.form {
+  display: block;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.field-label {
+  display: block;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  color: #fff;
+  text-align: left;
+}
+
+.input-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.newsletter-form {
+  margin-top: 40px;
+}
+
+.submit-button {
+  height: 45px;
+  border-radius: 20px;
+  background-color: #f2b707;
+  -webkit-transition: background-color 200ms ease, -webkit-transform 200ms ease;
+  transition: background-color 200ms ease, -webkit-transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
+  color: #333;
+  font-weight: 700;
+}
+
+.submit-button:hover {
+  background-color: #e6ae07;
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+.text-field {
+  height: 45px;
+  margin-right: 5px;
+  border-radius: 20px;
+}
+
+.arrow-down {
+  width: 30px;
+  margin-top: 10px;
+}
+
+.section.main-bg {
+  min-height: 800px;
+  background-color: #f534ac;
+  background-image: url('../images/_ORIGINAL-PODER-MX---IMSS-1300-x800-FULL.jpg');
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.25)), to(rgba(0, 0, 0, 0.25))), url('../images/_ORIGINAL-PODER-MX---IMSS-1300-x800-FULL.jpg');
+  background-image: linear-gradient(
+  180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('../images/_ORIGINAL-PODER-MX---IMSS-1300-x800-FULL.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+.container {
+  padding-top: 20px;
+  text-align: left;
+}
+
+.heading {
+  text-align: center;
+}
+
+.btn-primary {
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 20px;
+  background-color: #f2b707;
+  -webkit-transition: background-color 200ms ease, -webkit-transform 200ms ease;
+  transition: background-color 200ms ease, -webkit-transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: #e6ae07;
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+  color: #333;
+}
+
+.news-title {
+  margin-bottom: 5px;
+  line-height: 46px;
+}
+
+.news-text {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.news-img {
+  width: 100%;
+  height: 300px;
+  background-image: url('../images/_ORIGINAL-PODER-MX---IMSS-1300-x800-FULL.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  box-shadow: 10px 10px 0 1px #f2b707;
+}
+
+.columns {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.bg-gray {
+  background-color: #ecf0f2;
+}
+
+.bg-gray.single-news {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 40px;
+  padding-bottom: 70px;
+}
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #333;
+}
+
+.footer-text {
+  color: #ecf0f2;
+}
+
+.column {
+  text-align: center;
+}
+
+.logo-poder {
+  width: 100px;
+}
+
+.column-2 {
+  text-align: center;
+}
+
+.news-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.info-line {
+  width: 25px;
+  height: 4px;
+  margin-right: 10px;
+  padding-right: 0px;
+  background-color: #f2b707;
+}
+
+.text-block {
+  color: #686868;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.column-4 {
+  text-align: center;
+}
+
+.div-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 20px;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.logo-nosotrxs {
+  width: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.logo-cerodesabasto {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.logo-ocp {
+  width: 150px;
+  padding-top: 15px;
+}
+
+.div-block-2 {
+  text-align: center;
+}
+
+.main-text-link {
+  color: #ffffff;
+
+}
+
+@media screen and (max-width: 991px) {
+  .logo-cerodesabasto {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .body {
+    font-size: 14px;
+  }
+
+  .main-container {
+    position: static;
+    left: 0%;
+    top: auto;
+    right: 0%;
+    bottom: 0%;
+    padding-top: 40px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .main-paragraph {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .section.main-bg {
+    display: block;
+  }
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .news-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .news-text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .columns {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+
+  .logo-poder {
+    padding-bottom: 20px;
+  }
+
+  .text-block {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .container-2 {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .column-3 {
+    padding-bottom: 10px;
+  }
+
+  .div-block {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+
+  .logo-ocp {
+    padding-top: 0px;
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-height: 640px) {
+  .main-container {
+    position: static;
+    left: 0%;
+    top: auto;
+    right: 0%;
+    bottom: 0%;
+    padding-top: 40px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .section.main-bg {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .input-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+
+  .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .news-title {
+    font-size: 25px;
+    line-height: 31px;
+  }
+
+  .div-block {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
