@@ -50,7 +50,7 @@ function initApp(appLocals) {
   const staticOptions = {
     index:false,
     cacheControl: true,
-    maxAge: 6000000
+    maxAge: 60000000
   };
 
   app.use("/", express.static(path.join(__dirname, 'public'), staticOptions));
