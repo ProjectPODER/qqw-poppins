@@ -50,7 +50,7 @@ function initApp(appLocals) {
   const staticOptions = {
     index:false,
     cacheControl: true,
-    maxAge: 6000000
+    maxAge: 60000000
   };
 
   app.use("/", express.static(path.join(__dirname, 'public'), staticOptions));
@@ -81,12 +81,15 @@ function initApp(appLocals) {
 
   // error handler
   app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-    res.locals.message = err.message;
-
-    console.error("/!\\ QuienEsQuien.Wiki APP Error at URL: ",req.url);
-    console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err);
+    //Don't show trace for 404 errors
+    if (err.message!="Not Found") {
+      // set locals, only providing error in development
+      res.locals.error = req.app.get('env') === 'development' ? err : {};
+      res.locals.message = err.message;
+  
+      console.error("/!\\ QuienEsQuien.Wiki APP Error at URL: ",req.url);
+      console.error("/!\\ QuienEsQuien.Wiki APP Error: ",err);
+    }
 
     res.cacheControl = {
       noStore: true
@@ -98,7 +101,7 @@ function initApp(appLocals) {
 
   //Last resource error handler.
   app.use(function(err, req, res, next) {
-    res.status(500);
+    res.status(404);
     res.json({
       en: "We will recover from this too. Please reload the page. If this message repeats, please let us know.",
       es: "Nos vamos a recuperar de esta. Por favor refresque la página. Si este mensaje se repite por favor infórmenos."
