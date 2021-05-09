@@ -60,6 +60,11 @@
                         {{>result collection="contracts" result=this }}
                     {{/each}}
 
+                      <h5 class="description-data-subname">{{_ "Sobrecosto total" }}</h5>
+                    {{#if data.total.sobrecosto_total }}
+                    {{ format_amount data.total.sobrecosto_total "MXN"}} {{ format_percentage data.total.sobrecosto_porcentaje}}
+                    {{/if}}
+
                     {{#if data.top_products }}
                       <h5 class="description-data-subname">{{_ "Productos principales" }}</h5>
                       <table>
