@@ -1,0 +1,55 @@
+<section class="profile" id="reportar-desabasto">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-folder-plus"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "¿Quieres crear un reporte de desabasto?"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <p>{{{_ "Estarás compartiendo tu reporte a través de el portal de Cero Desabasto que es un colectivo impulsado
+          por Nosotrxs que reúne a pacientes, familiares de pacientes, médicos, organizaciones, académicos y autoridades
+          para lograr el acceso efectivo a medicamentos e insumos médicos con el fin de garantizar el derecho a la
+          salud."}}}</p>
+        <p>{{{_ "Generamos información y reportamos directamente a las instituciones de salud para que garanticen el
+          acceso efectivo a medicamentos e insumos de manera oportuna y de calidad."}}}</p>
+        <p>{{{_ "Todos tus datos están protegidos y se manejarán de manera anónima."}}}</p>
+        <div class="text-center">
+          <h6>{{{_ "¿CUÁL ES TU PERFIL?"}}}</h6>
+
+          <ul class="nav nav-pills justify-content-center" id="reportTabs">
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#desabastoformpatient">
+                <i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="pill" href="#desabastoformprofessional">
+                <i class="fas fa-user-md"></i> {{{_ "Profesional de la salud"}}}
+              </a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane fade" id="desabastoformpatient">
+              <div class="embed-responsive embed-responsive-customized">
+                <iframe class="embed-responsive-item"
+                  data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=paciente" loading="lazy"></iframe>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="desabastoformprofessional">
+              <div class="embed-responsive embed-responsive-customized">
+                <iframe class="embed-responsive-item"
+                  data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=profesional"
+                  loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

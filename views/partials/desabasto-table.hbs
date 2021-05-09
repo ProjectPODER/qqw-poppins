@@ -1,0 +1,114 @@
+<section class="profile" id="desabasto-reportado">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-times"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "DESABASTO REPORTADO"}}}</h4>
+      </div>
+      <div class="col-12 col-md-12">
+        <p>{{{_ "Con datos de Cero Desabasto, que es un colectivo impulsado por Nosotrxs que reúne a pacientes,
+          familiares de pacientes, médicos, organizaciones, académicos y autoridades para lograr el acceso efectivo a
+          medicamentos e insumos médicos con el fin de garantizar el derecho a la salud."}}}</p>
+        <div class="table-responsive">
+          <table width="100%" id="desabasto-table" class="row-border dt-responsive" style="display: none;">
+            <thead>
+              <tr>
+                <th>{{{_ "FECHA"}}}</th>
+                <th>{{{_ "ESTADO"}}}</th>
+                <th>{{{_ "INSTITUCIÓN"}}}</th>
+                <th>{{{_ "NOMBRE DEL HOSPITAL"}}}</th>
+                {{!-- <th>{{{_ "DIRECCIÓN"}}}</th>
+                <th>{{{_ "RELATO DE CORRUPCIÓN"}}}</th> --}}
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div id="desabasto-loading">
+          Cargando....
+        </div>
+        <div id="desabasto-empty" style="display: none;">
+          No existen reportes de desabasto...
+        </div>
+        <div id="desabasto-show" style="display: none;">
+          <svg id="grafica-desabasto"></svg>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+
+  //Events
+  window.addEventListener('load', function () {
+    getDesabasto("{{result.id}}")
+  })
+
+
+  function getDesabasto(clave) {
+
+    console.log("Consultando reportes de desabasto", clave)
+
+    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?clave=" + clave + "&format=json";
+    $.get(reports_url, function (data) {
+      console.log("Respuesta reportes de desabasto", data);
+      if (data.count == 0) {
+        $("#desabasto-loading").hide();
+        $("#desabasto-empty").show();
+        $("#desabasto-table").hide();
+      }
+
+      else {
+        $("#desabasto-loading").hide();
+        $("#desabasto-show").show();
+        $("#desabasto-table").show();
+        initDesabasto(data.data);
+
+      }
+    })
+  }
+  function initDesabasto(data) {
+
+    let width = 599;
+    let height = 300;
+
+    let svg = d4.select("#grafica-desabasto")
+
+    svg.attr("viewBox", [0, 0, width, height]);
+
+    svg.append("circle")
+      .attr("id", "circle2")
+      .attr("cx", width / 2)
+      .attr("cy", height / 2)
+      .attr("r", 40)
+      .attr("fill", "#ffb3a2")
+
+
+    // Desabasto table
+    $('#desabasto-table').DataTable({
+      data: data,
+      responsive: true,
+      columns: [
+        { "data": "created", render: function (data) {
+            let date = new Date(data)
+            return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear()
+          }
+        },
+        { "data": "state.name" },
+        { "data": "institution.name" },
+        { "data": "hospital_name_raw", render: function (data) {
+          if (data.length < 1) {
+            return "(no reportado)"
+          } else {
+            return data
+          }
+        }}
+      ],
+      language: datatablesLang,
+      "order": [[0, 'desc']]
+    });
+  }
+</script>

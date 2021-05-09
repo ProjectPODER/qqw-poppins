@@ -13,7 +13,7 @@
               <span style="font-size: 0.7em;">
                 (
               <span style="text-transform: lowercase;">
-                {{{_ "de" }}} 
+                {{{_ "de" }}}
               </span>
               {{ result.memberOf.name  }}
                 )
@@ -139,7 +139,7 @@
                   <i class="fas fa-flag"></i>{{#each area }} <a href="{{ url view="areas/:id" _id=id}}" title="{{_ "País:" }} {{name}}">{{name}}</a>{{/each}}
                 </p>
               </div>
-              {{/if}}              
+              {{/if}}
             </div>
         {{/ifCond}}
 
@@ -186,9 +186,9 @@
             </div>
           </div>
           <div class="right-elements col-lg-8 col-md-6 col-sm-6 col-6">
-
-            {{format_number contract_count}} contratos ({{format_number contract_quantity}} unidades)
-            por un total de {{format_amount contract_amount "MXN"}} entre
+            <i class="fas fa-file-alt"></i>
+            {{format_number contract_count}} compras ({{format_number contract_quantity}} unidades)
+            por un total de <i class="fas fa-dollar-sign"></i>{{format_amount contract_amount "MXN"}} entre
             {{ moment first_purchase_date "Y" }}  y {{ moment last_purchase_date "Y" }}
           </div>
           {{!-- <div class="right-elements col-lg-5 col-md-6 col-md-6 col-sm-6 col-6">

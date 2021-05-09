@@ -2,54 +2,54 @@
 
 {{> profile-header result=result }}
             <li>
-              <a href="#general-info" class="anchor">
-                <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
+              <a href="#resumen-producto" class="anchor">
+                <i class="fas fa-folder-open"></i> {{{_ "Resumen"}}}
               </a>
             </li>
             {{# if result.contracts }}
             <li>
-              <a href="#price-dispersion" class="anchor">
-                <i class="fas fa-chart-area"></i> {{{_ "Dispersión de precios"}}}
+              <a href="#dispersion-precios" class="anchor">
+                <i class="fas fa-chart-area"></i> {{{_ "Precios"}}}
               </a>
             </li>
-          {{/if}}            
+          {{/if}}
             <li>
-              <a href="#states-table" class="anchor">
-                <i class="fas fa-map"></i> {{{_ "Sobrecosto por Estados"}}}
-              </a>
-            </li>
-            <li>
-              <a href="#suppliers-table" class="anchor">
-                <i class="fas fa-dolly"></i> {{{_ "Sobrecosto de proveedores"}}}
+              <a href="#sobrecosto-estados" class="anchor">
+                <i class="fas fa-map"></i> {{{_ "Instituciones"}}}
               </a>
             </li>
             <li>
-              <a href="#all-contracts" class="anchor">
-                <i class="fas fa-file-alt"></i> {{{_ "Contratos"}}}
+              <a href="#sobrecosto-proveedores" class="anchor">
+                <i class="fas fa-dolly"></i> {{{_ "Proveedores"}}}
               </a>
             </li>
             <li>
-              <a href="#desabasto" class="anchor">
+              <a href="#compras" class="anchor">
+                <i class="fas fa-file-alt"></i> {{{_ "Compras"}}}
+              </a>
+            </li>
+            <li>
+              <a href="#desabasto-reportado" class="anchor">
                 <i class="fas fa-times"></i> {{{_ "Desabasto"}}}
               </a>
             </li>
             <li>
-              <a href="#desabasto-form" class="anchor">
-                <i class="fas fa-folder-plus"></i> {{{_ "Reportar desabasto"}}}
+              <a href="#reportar-desabasto" class="anchor">
+                <i class="fas fa-folder-plus"></i> {{{_ "Reportar"}}}
               </a>
             </li>
 {{> profile-header-end }}
 
 <div class="first-profile-section" id="product-profile">
 {{!-- General info --}}
-<section class="profile" id="general-info">
+<section class="profile" id="resumen-producto">
   <div class="profile-content">
     <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
           <i class="fas fa-folder-open"></i>
         </div>
-        <h4 class="description-data-subtitle">{{{_ "INFORMACIÓN GENERAL"}}}</h4>
+        <h4 class="description-data-subtitle">{{{_ "RESUMEN DEL PRODUCTO"}}}</h4>
       </div>
 
       <div class="col-12 col-md-12">
@@ -198,7 +198,7 @@
 
 {{!-- Price dispersion --}}
 {{# if result.contracts }}
-<section class="profile" id="price-dispersion">
+<section class="profile" id="dispersion-precios">
   <div class="profile-content">
     <div class="row">
       <div class="box-title-section">
@@ -224,16 +224,15 @@
 </section>
 {{/if}}
 {{!-- States table--}}
-
-{{#if result.contracts_summaries.buyers }}
-<section class="profile" id="states-table">
+{{#if result.contracts_summaries.buyers}}
+<section class="profile" id="sobrecosto-estados">
   <div class="profile-content">
     <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
           <i class="fas fa-map"></i>
         </div>
-        <h4 class="description-data-subtitle">{{{_ "TABLA POR ESTADO"}}}</h4>
+        <h4 class="description-data-subtitle">{{{_ "SOBRECOSTO POR INSTITUCIÓN"}}}</h4>
       </div>
       <div class="col-12 col-md-12">
         <div class="row flex">
@@ -241,31 +240,31 @@
             <table width="100%" id="product-states" class="table row-border">
               <thead>
                 <tr>
+                  <th>{{{_ "INSTITUCIÓN"}}}</th>
                   <th>{{{_ "ESTADO"}}}</th>
                   <th>{{{_ "CANTIDAD"}}}</th>
                   <th>{{{_ "MONTO TOTAL"}}}</th>
-                  <th>{{{_ "SOBRECOSTO (Monto)"}}}</th>
-                  <th>{{{_ "SOBRECOSTO (Porcentaje)"}}}</th>
+                  <th>{{{_ "SOBRECOSTO EN MXN"}}}</th>
+                  <th>{{{_ "SOBRECOSTO EN %"}}}</th>
                   <th>{{{_ "CANTIDAD PERDIDA"}}}
                     <a data-toggle="tooltip" data-placement="right" title="{{{_ " Cantidad perdida explicación"}}}">
                       <i class="fas fa-info-circle"></i>
                     </a>
                   </th>
-                  <th>{{{_ "FECHA DE ÚLTIMO DESABASTO"}}}</th>
+                  <th>{{{_ "ÚLTIMO DESABASTO"}}}</th>
                 </tr>
               </thead>
               <tbody>
                 {{#each result.contracts_summaries.buyers }}
                 <tr>
-                  <td>
-                    <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="areas" _id=estado.parties.buyer.address.region }}" title="">{{estado.parties.buyer.address.region}}</a>
-                  </td>
-                  <td>{{doc_count}}</td>
-                  <td>{{format_number monto_total}} MXN</td>
-                  <td>{{format_number monto_total_sobrecosto }} MXN</td>
-                  <td>{{format_percentage sobrecosto }}</td>
-                  <td>{{format_number cantidad_perdida }}</td>
-                  <td>{{moment ultima_compra date lang="es" format="LL"}}</td>
+                  <td title="{{estado.buyer.name}}"><span style="display: inline-block;  max-width: 18em; text-overflow:ellipsis; white-space:nowrap; overflow:hidden">{{estado.buyer.name}}</span></td>
+                  <td>{{estado.parties.buyer.address.region}}</td>
+                  <td class="text-right">{{doc_count}}</td>
+                  <td class="text-right" data-order="{{monto_total}}">{{format_number monto_total}} MXN</td>
+                  <td class="text-right" data-order="{{monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
+                  <td class="text-right" data-order="{{sobrecosto}}">{{format_percentage sobrecosto }}</td>
+                  <td class="text-right" data-order="{{cantidad_perdida}}">{{format_number cantidad_perdida }}</td>
+                  <td class="text-right" data-order="{{ultima_compra}}">{{moment ultima_compra date lang="es" format="LL"}}</td>
                 </tr>
 {{!--
 "doc_count": 1,
@@ -299,7 +298,7 @@
 
 {{#if result.contracts_summaries.suppliers}}
 {{!-- Suppliers table --}}
-<section class="profile" id="suppliers-table">
+<section class="profile" id="sobrecosto-proveedores">
   <div class="profile-content">
     <div class="row">
       <div class="box-title-section">
@@ -311,33 +310,32 @@
       <div class="col-12 col-md-12">
         <div class="row flex">
           <div class="table-responsive">
-            <table width="100%" id="product-suppliers" class="row-border">
+            <table width="100%" id="product-suppliers" class="table row-border">
               <thead>
                 <tr>
                   <th>{{{_ "PROVEEDOR"}}}</th>
-                  <th>{{{_ "UNIDAD"}}}</th>
-                  <th>{{{_ "SOBRECOSTO (Monto)"}}}</th>
-                  <th>{{{_ "SOBRECOSTO (Porcentaje)"}}}</th>
-                  <th>{{{_ "PERIODO DE TIEMPO"}}}</th>
+                  <th>{{{_ "COMPRAS"}}}</th>
+                  <th>{{{_ "SOBRECOSTO EN MXN"}}}</th>
+                  <th>{{{_ "SOBRECOSTO EN %"}}}</th>
                   <th>{{{_ "CANTIDAD PERDIDA"}}}
                     <a data-toggle="tooltip" data-placement="right" title="{{{_ " Cantidad perdida explicación"}}}">
                       <i class="fas fa-info-circle"></i>
                     </a>
                   </th>
+                  <th>{{{_ "PERIODO DE TIEMPO"}}}</th>
                 </tr>
               </thead>
               <tbody>
                 {{#each result.contracts_summaries.suppliers }}
                 <tr>
                   <td>
-
                     <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="empresas" _id=key}}" title="">{{nombre.awards.suppliers.[0].name}}</a>
                   </td>
-                  <td>{{format_number doc_count}}</td>
-                  <td>{{format_number monto_total_sobrecosto }} MXN</td>
-                  <td>{{format_percentage sobrecosto  }}</td>
-                  <td>{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
-                  <td>{{format_number cantidad_perdida }}</td>
+                  <td class="text-right">{{format_number doc_count}}</td>
+                  <td class="text-right">{{format_number monto_total_sobrecosto }} MXN</td>
+                  <td class="text-right">{{format_percentage sobrecosto  }}</td>
+                  <td class="text-right">{{format_number cantidad_perdida }}</td>
+                  <td class="text-right">{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
                 </tr>
                 {{/each}}
               </tbody>
@@ -354,63 +352,25 @@
   <div class="profile-content">
     <div class="row">
       <div class="col-12 col-md-12">
-        <h5>{{{_ "Hay <b>XXX</b> contratos en total de este medicamento."}}}</h5>
-        <a class="btn btn-primary" href="{{url view="buscador" collection="contracts" tipo-entidad="purchase" producto=result.id }}">{{{_ "VER TODOS LOS CONTRATOS"}}}</a>
+        <h5>{{{_ "Hay {cant_contratos} compras en total de este medicamento."
+        cant_contratos=(format_number result.contract_count)}}}</h5>
+        <a class="btn btn-primary" href="{{url view=" buscador" collection="contracts" tipo-entidad="purchase" producto=result.id }}">{{{_ "VER TODAS LAS COMPRAS"}}}</a>
       </div>
     </div>
   </div>
 </section>
 
 {{!-- Desabasto --}}
-<section class="profile" id="desabasto">
-  <div class="profile-content">
-    <div class="row">
-      <div class="box-title-section">
-        <div class="box-title-icon">
-          <i class="fas fa-times"></i>
-        </div>
-        <h4 class="description-data-subtitle">{{{_ "DESABASTO"}}}</h4>
-      </div>
-      <div class="col-12 col-md-12">
-        <div class="table-responsive">
-          <table width="100%" id="desabasto-table" class="row-border dt-responsive" style="display: none;">
-            <thead>
-              <tr>
-                <th>{{{_ "FECHA"}}}</th>
-                <th>{{{_ "ENTIDAD"}}}</th>
-                <th>{{{_ "CLAVE"}}}</th>
-                <th>{{{_ "INSTITUCIÓN"}}}</th>
-                <th>{{{_ "NOMBRE DEL HOSPITAL"}}}</th>
-                {{!-- <th>{{{_ "DIRECCIÓN"}}}</th>
-                <th>{{{_ "RELATO DE CORRUPCIÓN"}}}</th> --}}
-              </tr>
-            </thead>
-          </table>
-        </div>
-        <div id="desabasto-loading">
-          Cargando....
-        </div>
-        <div id="desabasto-empty" style="display: none;">
-          No existen reportes de desabasto...
-        </div>
-        <div id="desabasto-show" style="display: none;">
-            <svg id="grafica-desabasto"></svg>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{{> desabasto-table }}
 
 <script type="text/javascript">
 
 //DATA
 const product_contracts_data = {{{ j result.contracts }}};
 //Events
-window.onload = function() {
-  getDesabasto("{{result.id}}")
+window.addEventListener('load', function () {
   initSobrecosto();
-}
+})
 
 function initSobrecosto() {
   let width = 800;
@@ -686,141 +646,13 @@ function initSobrecosto() {
 
 }
 
-function getDesabasto(clave) {
-
-  console.log("Consultando reportes de desabasto",clave)
-
-  let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?clave="+clave+"&format=json";
-  $.get(reports_url, function(data) {
-    console.log("Respuesta reportes de desabasto", data);
-    if (data.count == 0) {
-      $("#desabasto-loading").hide();
-      $("#desabasto-empty").show();
-      $("#desabasto-table").hide();
-    }
-
-    else {
-      $("#desabasto-loading").hide();
-      $("#desabasto-show").show();
-      $("#desabasto-table").show();
-      initDesabasto(data.data);
-
-    }
-  })
-}
-function initDesabasto(data) {
-
-  let width = 599;
-  let height = 300;
-
-  let svg = d4.select("#grafica-desabasto")
-
-  svg.attr("viewBox", [0, 0, width, height]);
-
-  svg.append("circle")
-    .attr("id", "circle2")
-    .attr("cx", width/2)
-    .attr("cy", height/2)
-    .attr("r", 40)
-    .attr("fill", "#ffb3a2")
-
-
-  // Desabasto table
-  $('#desabasto-table').DataTable({
-    data: data,
-    responsive: true,
-    columns: [
-      { "data": "created" },
-      { "data": "state.name" },
-      { "data": "institution.id" },
-      { "data": "institution.name" },
-      { "data": "hospital_name_raw" }
-    ],
-    language: {
-      "sProcessing":     "Procesando...",
-      "sLengthMenu":     "Mostrar _MENU_ entidades",
-      "sZeroRecords":    "No se encontraron entidades",
-      "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
-      "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ entidades",
-      "sInfoEmpty":      "Mostrando entidades del 0 al 0 de un total de 0 empresas",
-      "sInfoFiltered":   "(filtrado de un total de _MAX_ entidades)",
-      "sInfoPostFix":    "",
-      "sSearch":         "Buscar por nombre:",
-      "sUrl":            "",
-      "sInfoThousands":  ",",
-      "sLoadingRecords": "Cargando...",
-      "oPaginate": {
-          "sFirst":    "Primero",
-          "sLast":     "Último",
-          "sNext":     "Siguiente",
-          "sPrevious": "Anterior"
-      },
-      "oAria": {
-          "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-      },
-      "buttons": {
-          "copy": "Copiar",
-          "colvis": "Visibilidad"
-      }
-    }
-  });
-}
 </script>
 
 
 {{!-- Desabasto Form --}}
-<section class="profile" id="desabasto-form">
-  <div class="profile-content">
-    <div class="row">
-      <div class="box-title-section">
-        <div class="box-title-icon">
-          <i class="fas fa-folder-plus"></i>
-        </div>
-        <h4 class="description-data-subtitle">{{{_ "¿Quieres crear un reporte de desabasto?"}}}</h4>
-      </div>
-      <div class="col-12 col-md-12">
-        <p>{{{_ "Estarás compartiendo tu reporte a través de el portal de Cero Desabasto que es un colectivo impulsado por Nosotrxs que reúne a pacientes, familiares de pacientes, médicos, organizaciones, académicos y autoridades para lograr el acceso efectivo a medicamentos e insumos médicos con el fin de garantizar el derecho a la salud."}}}</p>
-        <p>{{{_ "Generamos información y reportamos directamente a las instituciones de salud para que garanticen el acceso efectivo a medicamentos e insumos de manera oportuna y de calidad."}}}</p>
-        <p>{{{_ "Todos tus datos están protegidos y se manejarán de manera anónima."}}}</p>
-        <div class="text-center">
-          <h6>{{{_ "¿CUÁL ES TU PERFIL?"}}}</h6>
-
-            <ul class="nav nav-pills justify-content-center"  id="reportTabs">
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#desabastoformpatient">
-                  <i class="fas fa-user-friends"></i> {{{_ "Paciente o familiar"}}}
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="pill" href="#desabastoformprofessional">
-                  <i class="fas fa-user-md"></i> {{{_ "Profesional de la salud"}}}
-                </a>
-              </li>
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-              <div class="tab-pane fade" id="desabastoformpatient">
-                <div class="embed-responsive embed-responsive-customized">
-                  <iframe class="embed-responsive-item" data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=paciente" loading="lazy"></iframe>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="desabastoformprofessional">
-                <div class="embed-responsive embed-responsive-customized">
-                  <iframe class="embed-responsive-item" data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=profesional" loading="lazy"></iframe>
-                </div>
-              </div>
-            </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{{> desabasto-form }}
 
 {{>profile-info result=result }}
-
 
 </div>
 {{> report_modals }}
