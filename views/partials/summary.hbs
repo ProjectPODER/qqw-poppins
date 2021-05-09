@@ -60,9 +60,9 @@
                         {{>result collection="contracts" result=this }}
                     {{/each}}
 
-                      <h5 class="description-data-subname">{{_ "Sobrecosto total" }}</h5>
                     {{#if data.total.sobrecosto_total }}
-                    {{ format_amount data.total.sobrecosto_total "MXN"}} {{ format_percentage data.total.sobrecosto_porcentaje}}
+                    <h5 class="description-data-subname">{{_ "Sobrecosto total" }}</h5>
+                    Sobrecosto en MXN: {{ format_amount data.total.sobrecosto_total "MXN"}} Sobrecosto en %: {{ format_percentage data.total.sobrecosto_porcentaje}}
                     {{/if}}
 
                     {{#if data.top_products }}
@@ -141,6 +141,10 @@
     </div>
   </div>
 </section>
+
+{{#if data.top_products }}
+{{>desabasto-table}}
+{{/if}}
 
 {{#if data.top_products }}
 {{>desabasto-form}}

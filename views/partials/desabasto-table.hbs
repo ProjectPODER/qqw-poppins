@@ -39,20 +39,25 @@
     </div>
   </div>
 </section>
-
 <script type="text/javascript">
 
   //Events
   window.addEventListener('load', function () {
-    getDesabasto("{{result.id}}")
+    if ("{{result.classification}}" == "institution") {
+      campo = "noseque"
+    }
+    else {
+      campo = "clave";
+    }
+    getDesabasto("{{result.id}}",campo)
   })
 
 
   function getDesabasto(clave) {
 
-    console.log("Consultando reportes de desabasto", clave)
+    console.log("Consultando reportes de desabasto", clave, campo)
 
-    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?clave=" + clave + "&format=json";
+    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?"+campo+"=" + clave + "&format=json";
     $.get(reports_url, function (data) {
       console.log("Respuesta reportes de desabasto", data);
       if (data.count == 0) {
