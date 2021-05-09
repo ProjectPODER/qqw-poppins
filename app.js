@@ -12,6 +12,7 @@ const myEnv = dotenv.config(); dotenvExpand(myEnv)
 const indexRouter = require('./routes/index');
 const lib = require("./lib/lib");
 const app = express();
+const helpers = require("./lib/helpers.js").helpers;
 
 
 function initApp(appLocals) {
@@ -28,7 +29,7 @@ function initApp(appLocals) {
         //  path to your partials
         path.join(__dirname, 'views/partials'),
     ],
-    helpers: require("./lib/helpers.js").helpers,
+    helpers: helpers,
   }));
 
 
@@ -72,7 +73,7 @@ function initApp(appLocals) {
 
   app.use('/', indexRouter);
 
-  console.log("App started, server listening. Env",app.get('env'));
+  console.log("App started, server listening. Env",helpers.env());
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
