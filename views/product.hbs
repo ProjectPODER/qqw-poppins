@@ -72,7 +72,13 @@
           {{/if }}
           {{#if result.avgUnitPrice }}
           <div class="col-md-3 col-12 text-left text-md-right">
-            <p class="js-title-data">{{{_ "Precio promedio"}}}</p>
+            <p class="js-title-data">{{{_ "Precio promedio"}}}
+                      <a  data-toggle="tooltip" data-placement="bottom" title="{{{_ "Este precio es el promedio sin ponderar de todos los contratos del producto de todos los años. Para calcular el precio de referencia se usó un promedio ponderado anual."}}}">
+                      <i class="fas fa-info-circle">
+                      </i>
+                      </a>
+
+            </p>
             <p class="js-data text-darkblue">{{ format_amount result.avgUnitPrice "MXN" }}</p>
           </div>
           {{/if }}

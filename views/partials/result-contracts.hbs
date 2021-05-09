@@ -19,8 +19,26 @@
                 </a>
             </p>
         {{/if}}
+        {{# if purchase_count.product }}
+            <p class="index-list-element purchase-buyer-text">
+                <a href="{{ url view="search" collection="contracts" classification="purchase" producto=id}}" title="Comprador en {{format_number purchase_count.product}} contrato(s) por un total de {{format_number purchase_amount.product}}">
+                    {{{ get_classification_icon "purchase" undefined undefined }}}
+                    {{format_number purchase_count.product}} compras ({{format_number purchase_quantity.product}} unidades)
+                    por un total de <i class="fas fa-dollar-sign"></i>{{format_amount purchase_amount.product "MXN"}} entre
+                    {{ moment first_purchase_date "Y" }}  y {{ moment last_purchase_date "Y" }}
+                </a>
+            </p>
+        {{/if}}
+        {{!-- {{# if purchase_count.area }}
+            <p class="index-list-element purchase-buyer-text">
+                <a href="{{ url view="search" collection="contracts" classification="purchase" dependencia=id}}" title="Comprador en {{format_number purchase_count.area}} contrato(s) por un total de {{format_number purchase_amount.area}}">
+                    {{{ get_classification_icon "purchase" undefined undefined }}}
+                    Comprador en {{format_number purchase_count.area}} compra(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount purchase_amount.area}}}
+                    {{#if membership_name}} con {{membership_name}}{{/if}}
 
-
+                </a>
+            </p>
+        {{/if}} --}}
     {{/if}}
 {{/ifCond}}
 
@@ -53,17 +71,20 @@
             </a>
         </p>
     {{/if}}
-    {{#ifCond (get_classification_type result.classification) "==" "area" }}
-        {{# if contract_count }}
-            <p class="index-list-element area-text">
-                <a href="{{ url view="search" collection="contracts" classification="contract" country=id}}" title="{{format_number contract_count}} contrato(s) por un total de {{format_number contract_amount}}">
-                {{{ get_classification_icon "contract" undefined undefined }}}
-                 {{format_number contract_count}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount}}}
-                {{#if membership_name}} con {{membership_name}}{{/if}}
-                </a>
-            </p>
-        {{/if}}
-    {{/ifCond}}
+    {{# if contract_count.area }}
+        {{ get_classification_name type result.classification result.subclassification result.govLevel }}
+        {{!-- <p class="index-list-element area-text">
+            <a href="{{ url view="search" collection="contracts" classification="contract" country=id}}" title="{{format_number contract_count}} contrato(s) por un total de {{format_number contract_amount}}">
+            {{{ get_classification_icon "contract" undefined undefined }}}
+                {{format_number contract_count.area}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.area}}}
+            {{#if membership_name}} con {{membership_name}}{{/if}}
+            </a>
+        </p> --}}
+    {{/if}}
 {{else}}
-    {{ get_classification_name type result.classification result.subclassification result.govLevel }}
+    {{#if purchase_count}}
+    {{else}}
+        {{ get_classification_name type result.classification result.subclassification result.govLevel }}
+
+    {{/if}}
 {{/if}}
