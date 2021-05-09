@@ -55,7 +55,7 @@
     {{# if contract_count.buyer }}
         <p class="index-list-element buyer-text">
             <a href="{{ url view="search" collection="contracts" classification="contract" dependencia=id}}" title="Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de {{format_number contract_amount.buyer}}">
-                {{{ get_classification_icon "contract" undefined undefined }}}                
+                {{{ get_classification_icon "contract" undefined undefined }}}
                 Comprador en {{format_number contract_count.buyer}} contrato(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount contract_amount.buyer}}}
                 {{#if membership_name}} con {{membership_name}}{{/if}}
 
