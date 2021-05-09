@@ -6,11 +6,13 @@
                 <i class="fas fa-folder-open"></i> {{{_ "Información"}}}
               </a>
             </li>
+            {{# if result.contracts }}
             <li>
               <a href="#price-dispersion" class="anchor">
                 <i class="fas fa-chart-area"></i> {{{_ "Dispersión de precios"}}}
               </a>
             </li>
+          {{/if}}            
             <li>
               <a href="#states-table" class="anchor">
                 <i class="fas fa-map"></i> {{{_ "Sobrecosto por Estados"}}}
@@ -195,6 +197,7 @@
 </section>
 
 {{!-- Price dispersion --}}
+{{# if result.contracts }}
 <section class="profile" id="price-dispersion">
   <div class="profile-content">
     <div class="row">
@@ -219,8 +222,10 @@
     </div>
   </div>
 </section>
-
+{{/if}}
 {{!-- States table--}}
+
+{{#if result.contracts_summaries.buyers }}
 <section class="profile" id="states-table">
   <div class="profile-content">
     <div class="row">
@@ -290,7 +295,9 @@
     </div>
   </div>
 </section>
+{{/if}}
 
+{{#if result.contracts_summaries.suppliers}}
 {{!-- Suppliers table --}}
 <section class="profile" id="suppliers-table">
   <div class="profile-content">
@@ -341,7 +348,7 @@
     </div>
   </div>
 </section>
-
+{{/if}}
 {{!-- Contracts --}}
 <section class="profile text-center bg-white" id="all-contracts">
   <div class="profile-content">
@@ -415,6 +422,7 @@ function initSobrecosto() {
   svg.attr("viewBox", [0, 0, width, height]);
 
   let cleanJSON = (json) => {
+    if (!json) return [];
       return json.map(hit => {
           return {
             fecha_inicio: hit.contracts.period.startDate.substr(0,10),
@@ -427,9 +435,15 @@ function initSobrecosto() {
 
   let timeParse = d4.timeParse("%Y-%m-%d")
   console.log(d4)
+
+  if (!product_contracts_data) {
+    console.error("initSobrecosto","No product contract data")
+    return false;
+  }
   //console.log(d4Array)
   let calc_data = ()=>  {
     let droug = {}
+
     let hits = cleanJSON(product_contracts_data)
     console.log("newHits",hits)
     droug.hits = hits.map(hit=>
