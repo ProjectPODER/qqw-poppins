@@ -401,35 +401,6 @@ $(window).scroll(function(e) {
 //       lengthChange: false,
 // } );
 
-const datatablesLang =  {
-  "sProcessing":     "Procesando...",
-  "sLengthMenu":     "Mostrar _MENU_ elementos",
-  "sZeroRecords":    "No se encontraron elementos",
-  "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
-  "sInfo":           "Mostrando _START_ a _END_, de _TOTAL_ elementos",
-  "sInfoEmpty":      "Mostrando empresas del 0 al 0 de un total de 0 elementos",
-  "sInfoFiltered":   "(filtrado de un total de _MAX_ elementos)",
-  "sInfoPostFix":    "",
-  "sSearch":         "Buscar por nombre:",
-  "sUrl":            "",
-  "sInfoThousands":  ",",
-  "sLoadingRecords": "Cargando...",
-  "oPaginate": {
-    "sFirst":    "Primero",
-    "sLast":     "Último",
-    "sNext":     "Siguiente",
-    "sPrevious": "Anterior"
-            },
-  "oAria": {
-    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-            },
-  "buttons": {
-    "copy": "Copiar",
-    "colvis": "Visibilidad"
-            }
-}
-
 $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
   if (e.clickEvent) {
     e.preventDefault();
@@ -447,6 +418,37 @@ $(".advance-filters").on("submit", function() {
 })
 
 //PRODUCT PAGE
+
+// Start datatables
+
+const datatablesLang = {
+  "sProcessing": "Procesando...",
+  "sLengthMenu": "Mostrar _MENU_ elementos",
+  "sZeroRecords": "No se encontraron elementos",
+  "sEmptyTable": "Ningún dato disponible en esta tabla =(",
+  "sInfo": "Mostrando _START_ a _END_, de _TOTAL_ elementos",
+  "sInfoEmpty": "Mostrando empresas del 0 al 0 de un total de 0 elementos",
+  "sInfoFiltered": "(filtrado de un total de _MAX_ elementos)",
+  "sInfoPostFix": "",
+  "sSearch": "Buscar por nombre:",
+  "sUrl": "",
+  "sInfoThousands": ",",
+  "sLoadingRecords": "Cargando...",
+  "oPaginate": {
+    "sFirst": "Primero",
+    "sLast": "Último",
+    "sNext": "Siguiente",
+    "sPrevious": "Anterior"
+  },
+  "oAria": {
+    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+  },
+  "buttons": {
+    "copy": "Copiar",
+    "colvis": "Visibilidad"
+  }
+}
 
 //States table
 /* Formatting function for row details - modify as you need */
@@ -467,18 +469,8 @@ function format ( d ) {
         '</tr>'+
     '</table>';
 }
+
 $(document).ready(function () {
-
-
-  // var table2 = $('#product-suppliers').DataTable({
-  //   select: "single",
-  //   responsive: true,
-  //   // "columns": [
-
-  //   // ],
-  //   "order": [[1, 'asc']]
-  // });
-
   var table = $('#product-states').DataTable({
     select: "single",
     responsive: true,
@@ -494,10 +486,14 @@ $(document).ready(function () {
     //     },
     //     width: "15px"
     //   },
-    //   // { "data": "name" },
-    //   // { "data": "position" },
-    //   // { "data": "office" },
-    //   // { "data": "salary" }
+    //   { "data": "ESTADO" },
+    //   { "data": "CANTIDAD" },
+    //   { "data": "MONTO TOTAL" },
+    //   { "data": "SOBRECOSTO (Monto)" },
+    //   { "data": "SOBRECOSTO (Monto)" },
+    //   { "data": "SOBRECOSTO (Porcentaje)" },
+    //   { "data": "CANTIDAD PERDIDA" },
+    //   { "data": "FECHA DE ÚLTIMO DESABASTO" }
     // ],
     "order": [[0, 'asc']]
   });
@@ -529,8 +525,22 @@ $(document).ready(function () {
       e.preventDefault();
     }
   });
+
+
+// Suppliers table
+  $('#product-suppliers').DataTable({
+    responsive: true,
+    language: datatablesLang,
+    "order": [[2, 'desc']]
+  });
+
+
 });
 
+
+// End datatables
+
+// Load desabasto iframes
 $(document).ready(function () {
   $('#reportTabs a').on('show.bs.tab', function (a) {
 
