@@ -142,12 +142,13 @@
   </div>
 </section>
 
-{{#if data.top_products }}
-{{>desabasto-table}}
-{{/if}}
 
 {{#if data.top_products }}
-{{>desabasto-form}}
+  {{#ifCond result.classification "==" "institution" }}
+    {{>desabasto-table}}
+  {{/ifCond}}
+
+  {{>desabasto-form}}
 {{/if}}
 
 <script>
