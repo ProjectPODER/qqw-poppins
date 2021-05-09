@@ -59,6 +59,55 @@
                     {{#each data.top_contracts }}
                         {{>result collection="contracts" result=this }}
                     {{/each}}
+
+                    {{#if data.top_products }}
+                      <h5 class="description-data-subname">{{_ "Productos principales" }}</h5>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Producto</th>
+                            <th>Compras</th>
+                            <th>Monto total</th>
+                            <th>Sobrecosto en MXN</th>
+                            <th>Sobrecosto en %</th>
+                            <th>Período</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#each data.top_products }}
+                          <tr>
+                            <td>
+                              <a href="{{url view="productos" _id=this.clave}}">
+                                {{ this.producto}}
+                              </a>
+                            </td>
+                            <td>
+                              {{ format_number this.cantidad }}
+                            </td>
+                            <td>
+                              {{ format_number this.monto_total }} MXN
+                            </td>
+                            <td>
+
+                              {{ format_number this.monto_total_sobrecosto }} MXN
+                            </td>
+                            <td>
+
+                              {{ format_percentage this.sobrecosto}}
+                            </td>
+                            <td>
+
+                              {{ moment this.primera_compra "Y"}}
+                              -
+                              {{ moment this.ultima_compra "Y" }}
+                            </td>                            
+
+                            </td>
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+                    {{/if}}
                     <div class="contract-button">
                         {{#ifCond type '==' 'persons'}}
                           {{#ifCond role '==' 'contactPoint'}}
