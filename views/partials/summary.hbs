@@ -155,7 +155,9 @@
 
 {{#if data.top_products }}
   {{#ifCond result.classification "==" "institution" }}
-    {{>desabasto-table}}
+   {{#if result.clues}}
+      {{>desabasto-table}}
+    {{/if}}
   {{/ifCond}}
 
   {{>desabasto-form}}
