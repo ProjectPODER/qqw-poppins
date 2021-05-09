@@ -451,81 +451,12 @@ const datatablesLang = {
 }
 
 //States table
-/* Formatting function for row details - modify as you need */
-function format ( d ) {
-    // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>Full name:</td>'+
-            '<td>'+d.name+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extension number:</td>'+
-            '<td>'+d.extn+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extra info:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
-        '</tr>'+
-    '</table>';
-}
-
 $(document).ready(function () {
   var table = $('#product-states').DataTable({
-    select: "single",
     responsive: true,
     language: datatablesLang,
-    // "columns": [
-    //   {
-    //     "className": 'details-control',
-    //     "orderable": false,
-    //     "data": null,
-    //     "defaultContent": '',
-    //     "render": function () {
-    //       return '<i class="fa fa-plus-square" aria-hidden="true"></i>';
-    //     },
-    //     width: "15px"
-    //   },
-    //   { "data": "ESTADO" },
-    //   { "data": "CANTIDAD" },
-    //   { "data": "MONTO TOTAL" },
-    //   { "data": "SOBRECOSTO (Monto)" },
-    //   { "data": "SOBRECOSTO (Monto)" },
-    //   { "data": "SOBRECOSTO (Porcentaje)" },
-    //   { "data": "CANTIDAD PERDIDA" },
-    //   { "data": "FECHA DE ÚLTIMO DESABASTO" }
-    // ],
-    "order": [[0, 'asc']]
+    "order": [[3, 'desc']]
   });
-
-  // Add event listener for opening and closing details
-  $('#product-states tbody').on('click', 'td.details-control', function () {
-    var tr = $(this).closest('tr');
-    var tdi = tr.find("i.fa");
-    var row = table.row(tr);
-
-    if (row.child.isShown()) {
-      // This row is already open - close it
-      row.child.hide();
-      tr.removeClass('shown');
-      tdi.first().removeClass('fa-minus-square');
-      tdi.first().addClass('fa-plus-square');
-    }
-    else {
-      // Open this row
-      row.child(format(row.data())).show();
-      tr.addClass('shown');
-      tdi.first().removeClass('fa-plus-square');
-      tdi.first().addClass('fa-minus-square');
-    }
-  });
-
-  table.on("user-select", function (e, dt, type, cell, originalEvent) {
-    if ($(cell.node()).hasClass("details-control")) {
-      e.preventDefault();
-    }
-  });
-
 
 // Suppliers table
   $('#product-suppliers').DataTable({
@@ -536,8 +467,6 @@ $(document).ready(function () {
 
 
 });
-
-
 // End datatables
 
 // Load desabasto iframes

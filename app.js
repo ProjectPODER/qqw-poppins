@@ -72,7 +72,7 @@ function initApp(appLocals) {
 
   app.use('/', indexRouter);
 
-  console.log("App started, server listening");
+  console.log("App started, server listening. Env",app.get('env'));
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
