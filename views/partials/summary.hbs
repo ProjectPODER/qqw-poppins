@@ -76,51 +76,53 @@
                     {{#if data.top_products }}
                       <div class="col-md-12 col-12">
                         <h5 class="description-data-subname">{{_ "Productos principales" }}</h5>
-                        <table width="100%" class="table row-border">
-                          <thead>
-                            <tr>
-                              <th>Producto</th>
-                              <th>Compras</th>
-                              <th>Monto total</th>
-                              <th>Sobrecosto en MXN</th>
-                              <th>Sobrecosto en %</th>
-                              <th>Período</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {{#each data.top_products }}
-                            <tr>
-                              <td>
-                                <a href="{{url view="productos" _id=this.clave}}">
-                                  {{ this.producto}}
-                                </a>
-                              </td>
-                              <td>
-                                {{ format_number this.cantidad }}
-                              </td>
-                              <td>
-                                {{ format_number this.monto_total }} MXN
-                              </td>
-                              <td>
+                        <div class="table-responsive">
+                          <table width="100%" class="table row-border">
+                            <thead>
+                              <tr>
+                                <th>Producto</th>
+                                <th>Compras</th>
+                                <th>Monto total</th>
+                                <th>Sobrecosto en MXN</th>
+                                <th>Sobrecosto en %</th>
+                                <th>Período</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {{#each data.top_products }}
+                              <tr>
+                                <td>
+                                  <a href="{{url view="productos" _id=this.clave}}">
+                                    {{ this.producto}}
+                                  </a>
+                                </td>
+                                <td>
+                                  {{ format_number this.cantidad }}
+                                </td>
+                                <td>
+                                  {{ format_number this.monto_total }} MXN
+                                </td>
+                                <td>
 
-                                {{ format_number this.monto_total_sobrecosto }} MXN
-                              </td>
-                              <td>
+                                  {{ format_number this.monto_total_sobrecosto }} MXN
+                                </td>
+                                <td>
 
-                                {{ format_percentage this.sobrecosto}}
-                              </td>
-                              <td>
+                                  {{ format_percentage this.sobrecosto}}
+                                </td>
+                                <td>
 
-                                {{ moment this.primera_compra "Y"}}
-                                -
-                                {{ moment this.ultima_compra "Y" }}
-                              </td>
+                                  {{ moment this.primera_compra "Y"}}
+                                  -
+                                  {{ moment this.ultima_compra "Y" }}
+                                </td>
 
-                              </td>
-                            </tr>
-                            {{/each}}
-                          </tbody>
-                        </table>
+                                </td>
+                              </tr>
+                              {{/each}}
+                            </tbody>
+                          </table>
+                        </div>
                         <div class="contract-button">
                             {{#ifCond type '==' 'persons'}}
                               {{#ifCond role '==' 'contactPoint'}}

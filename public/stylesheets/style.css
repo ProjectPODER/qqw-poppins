@@ -2877,10 +2877,10 @@ section.country-mujeres {
 #product-profile .embed-responsive-customized::before {
   padding-top: 57%;
 }
-#product-profile .nav-pills .nav-link.active,
-#product-profile .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #2b00f7;
+#reportar-desabasto .nav-pills .desabasto-form-link.active,
+#reportar-desabasto .nav-pills .show > .desabasto-form-link {
+  color: #fff !important;
+  background-color: #2b00f7 !important;
 }
 .related-products .index-list-title a {
   font-size: 1.1em;
