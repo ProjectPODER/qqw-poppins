@@ -257,7 +257,7 @@
                       <i class="fas fa-info-circle"></i>
                     </a>
                   </th>
-                  <th>{{{_ "ÚLTIMO DESABASTO"}}}</th>
+                  <th>{{{_ "ÚLTIMA COMPRA"}}}</th>
                 </tr>
               </thead>
               <tbody>
@@ -338,10 +338,10 @@
                     <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="empresas" _id=key}}" title="">{{nombre.awards.suppliers.[0].name}}</a>
                   </td>
                   <td class="text-right">{{format_number doc_count}}</td>
-                  <td class="text-right">{{format_number monto_total_sobrecosto }} MXN</td>
-                  <td class="text-right">{{format_percentage sobrecosto  }}</td>
-                  <td class="text-right">{{format_number cantidad_perdida }}</td>
-                  <td class="text-right">{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
+                  <td class="text-right" data-order="{{monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
+                  <td class="text-right" data-order="{{sobrecosto}}">{{format_percentage sobrecosto }}</td>
+                  <td class="text-right" data-order="{{cantidad_perdida}}">{{format_number cantidad_perdida }}</td>
+                  <td class="text-right" data-order="{{ultima_compra}}">{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
                 </tr>
                 {{/each}}
               </tbody>

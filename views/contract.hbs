@@ -486,9 +486,14 @@
                     {{{_ "Productos" }}}
                   </div>
                 </div>
+                {{ j hidden_claves }}
                 <div class="col-m-12 col-12">
                     <p class="js-title-data">{{{_ "Nombre" }}}</p>
-                    <p class="js-data"><a href="{{url view="products/:id" _id=(or classification.id id) }}">{{description}}</a></p>
+                    <p class="js-data"><a 
+                    {{#ifCond (indexOf id (hidden_claves)) "==" -1 }}
+                    href="{{url view="products/:id" _id=(or classification.id id) }}"
+                    {{/ifCond}}
+                    >{{description}}</a></p>
                 </div>
                 {{#if classification.descriptionMxIMSS }}
                   {{#ifCond classification.descriptionMxIMSS "!=" description }}
