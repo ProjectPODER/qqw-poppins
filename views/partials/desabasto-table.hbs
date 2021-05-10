@@ -51,20 +51,21 @@
     </div>
   </div>
 </section>
+
 <script type="text/javascript">
 
   //Events
   window.addEventListener('load', function () {
     if ("{{result.classification}}" == "institution") {
-      campo = "clues"
-      valor = "" //TODO: Add CLUES
+      campo = "institucion=imss&estado_nombre="
+      valor = "{{result.area.[0].name}}"
     }
     else {
       campo = "clave";
       valor = "{{result.id}}";
       //valor = "key";
     }
-    getDesabasto(valor,campo)
+    getDesabasto(campo,valor)
 
 
     $("#desabasto-acumulado").click(function(){
@@ -99,11 +100,11 @@
 
   }
 
-  function getDesabasto(clave) {
+  function getDesabasto(campo,valor) {
 
     console.log("Consultando reportes de desabasto", valor, campo)
     //RICARDO acá forcé "clave"
-    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?"+"clave"+"=" + clave + "&format=json";
+    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?"+campo+"=" + valor + "&format=json";
     $.get(reports_url, function (data) {
       console.log("Respuesta reportes de desabasto", data);
       if (data.count == 0) {
