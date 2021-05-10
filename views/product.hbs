@@ -380,8 +380,8 @@ window.addEventListener('load', function () {
 
 function initSobrecosto() {
   let width = 800;
-  let height = 350;
-  const margin = ({top: 40, right: 20, bottom: 20, left: 60})
+  let height = 340;
+  const margin = ({top: 50, right: 20, bottom: 20, left: 70})
 
   let svg = d4.select("#grafica-sobrecosto")
 
@@ -436,7 +436,7 @@ function initSobrecosto() {
     return droug
   }
   let data = calc_data()
-  console.log(data)
+  //console.log(data)
   let data_diam = Object.assign(data.hits, {x: "Fecha", y: "Precio unitario"})
   let domain_hits = d4.extent(data_diam, d => d.date)
   let extent_years = domain_hits.map(d=>  d.getFullYear())
@@ -448,12 +448,14 @@ function initSobrecosto() {
   let x = d4.scaleTime()
       .domain(domain_x)
       .range([margin.left, width - margin.right])
-  let formatX = d4.timeFormat("%b-%y")
+  let formatX = d4.timeFormat("%m/%y")
 
   let y = d4.scalePow().exponent(1 / 8)
       .domain([d4.min(data_diam, d=> d.precio_unitario), d4.quantile(sorted_price, 0.99)])
       .rangeRound([height - margin.bottom, margin.top])
-  let formatY  = d4.format(".0s")
+  //let formatY  = d4.format(".0s")
+  let formatY = (e) => `${d4.format(".0s")(e)} MXN`
+
   let formatLegend  = d4.format(",.0f")
   let y_overprice = d4.scaleSqrt()
     .domain([0, 0.9, 1.1, d4.quantile(sorted_overprice, 0.99)])
@@ -484,16 +486,17 @@ function initSobrecosto() {
     .domain([1,0])
 
   let yAxis = g => g
-    .attr("transform", `translate(${margin.left/2},0)`)
-    .call(d4.axisLeft(y).ticks(x_ticks, formatY))
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d4.axisLeft(y).tickFormat(formatY).ticks(x_ticks))
+    .attr("text-anchor", "end")
     .call(g => g.select(".domain").remove())
     .call(g => g.append("text")
-      .attr("x", 0)
-      .attr("y", margin.top)
+      .attr("x", 5)
+      .attr("y", margin.top )
       .attr("dy", "-.71em")
       .attr("fill", "currentColor")
       .attr("font-weight", "bold")
-      .attr("text-anchor", "start")
+      .attr("text-anchor", "end")
       .text(data_diam.y))
 
   let xAxis = g => g
@@ -502,7 +505,7 @@ function initSobrecosto() {
     .call(g => g.select(".domain").remove())
     .call(g => g.append("text")
       .attr("x", width - margin.right)
-      .attr("y", -6)
+      .attr("y", 23)
       .attr("fill", "currentColor")
       .attr("font-weight", "bold")
       .attr("text-anchor", "end")
@@ -554,16 +557,20 @@ function initSobrecosto() {
   const valuesToShow = [real_max_r/100, real_max_r/4, real_max_r]
   const xCircle = 320
   const xLabel = xCircle - 60
-  const yCircle = 70
+  const yCircle = 40
+  const width_line = 100;
+  const height_legend = 45;
 
   svg
     .append('rect')
     .attr("width", "180")
-    .attr("height", 78)
+    .attr("height", height_legend)
     .attr("transform", "translate(185, 0)")
     .style("fill", "#ffffff")
     .style("stroke-width", 1)
     .style("stroke", "#bfbfbf");
+
+
 
   var legends = svg.selectAll("legend")
     .data(valuesToShow)
@@ -580,17 +587,17 @@ function initSobrecosto() {
 
   legends
     .append("line")
-      .attr('x1', function(d){ return xCircle - r_bubble(d) } )
+      .attr('x1', d => xCircle - r_bubble(d) )
       .attr('x2', xLabel)
-      .attr('y1', function(d){ return yCircle - r_bubble(d) } )
-      .attr('y2', function(d){ return yCircle - r_bubble(d) } )
+      .attr('y1', d => yCircle - r_bubble(d) )
+      .attr('y2', d => yCircle - r_bubble(d) )
       .attr('stroke', '#4E4E4E')
       .style('stroke-dasharray', ('2,2'))
 
   legends
     .append("text")
       .attr('x', xLabel - 5)
-      .attr('y', function(d){ return yCircle - (r_bubble(d)) } )
+      .attr('y', d =>  yCircle - (r_bubble(d)) )
       .text( d =>  formatLegend(d/1000)  )
       .style("font-size", 7)
       .attr('alignment-baseline', 'middle')
@@ -609,11 +616,12 @@ function initSobrecosto() {
         .style("fill", "#4E4E4E");
 
   const right_legend_line = 400
-
+  const height_line = 4;
+  
   svg
     .append('rect')
       .attr("width", 180)
-      .attr("height", 78)
+      .attr("height", height_legend)
       .attr("transform", `translate(${right_legend_line}, 0)`)
       .style("fill", "#ffffff")
       .style("stroke-width", 1)
@@ -625,14 +633,12 @@ function initSobrecosto() {
   const border_padding = 5;
   const item_padding = 16;
   const text_offset = 0;
-  const width_line = 100;
-  const height_line = 4;
 
   // Line
   legend_line
     .append("rect")
       .attr("x", border_padding + 35)
-      .attr("y", border_padding - (height_line / 2) + 37)
+      .attr("y", border_padding - (height_line / 2) + 20)
       .attr("width", width_line)
       .attr("height", height_line)
       .style("fill", (d) => colorCircles(y_overprice(1)));
