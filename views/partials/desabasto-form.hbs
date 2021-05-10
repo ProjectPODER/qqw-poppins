@@ -36,13 +36,13 @@
             <div class="tab-pane fade" id="desabastoformpatient">
               <div class="embed-responsive embed-responsive-customized">
                 <iframe class="embed-responsive-item"
-                  data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=paciente" loading="lazy"></iframe>
+                  data-src="https://cerodesabasto.org/report?key={{#ifCond result.type "==" "products" }}{{result.id}}{{/ifCond}}&perfil=paciente" loading="lazy"></iframe>
               </div>
             </div>
             <div class="tab-pane fade" id="desabastoformprofessional">
               <div class="embed-responsive embed-responsive-customized">
                 <iframe class="embed-responsive-item"
-                  data-src="https://cerodesabasto.org/report?key={{result.id}}&perfil=profesional"
+                  data-src="https://cerodesabasto.org/report?key={{#ifCond result.type "==" "products" }}{{result.id}}{{/ifCond}}&perfil=profesional"
                   loading="lazy"></iframe>
               </div>
             </div>
