@@ -2874,13 +2874,13 @@ section.country-mujeres {
   -moz-box-shadow: 0px 4px 10px -3px #b0b0b0;
   box-shadow: 0px 4px 10px -3px #b0b0b0;
 }
-#product-profile .embed-responsive-customized::before {
-  padding-top: 57%;
-}
 #reportar-desabasto .nav-pills .desabasto-form-link.active,
 #reportar-desabasto .nav-pills .show > .desabasto-form-link {
   color: #fff !important;
   background-color: #2b00f7 !important;
+}
+#reportar-desabasto .embed-responsive-customized::before {
+  padding-top: 57%;
 }
 .related-products .index-list-title a {
   font-size: 1.1em;
