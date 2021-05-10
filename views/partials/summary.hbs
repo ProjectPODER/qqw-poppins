@@ -156,8 +156,8 @@
 
 
 {{#if data.top_products }}
-  {{#ifCond result.classification "==" "institution" }}
-     {{>desabasto-table}}
+  {{#ifCond result.source.id "==" "comprasimss" }}
+    {{>desabasto-table}}
   {{/ifCond}}
 
   {{>desabasto-form}}
