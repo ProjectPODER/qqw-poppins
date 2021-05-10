@@ -3,7 +3,7 @@
     <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
-          <i class="fas 
+          <i class="fas
           {{#ifCond role "==" "buyer"}}
           fa-money-check-alt
           {{/ifCond}}
@@ -16,7 +16,7 @@
           {{#ifCond role "==" "contactPoint"}}
           fa-shopping-cart
           {{/ifCond}}
-          "></i> 
+          "></i>
         </div>
         <h4 class="description-data-subtitle">
           {{_ "Resúmen de actividad como {role} de {classification} " role=(_ role) classification=(_ classification)}}
@@ -27,7 +27,7 @@
             <div class="summary-total {{role}}-{{classification}}-text">
                 <p>
                   <i class="fas fa-file-alt"></i>
-                  {{{_ "{cant_contratos} {classification} como {role} por un total de <strong>{amount_contratos}</strong>" 
+                  {{{_ "{cant_contratos} {classification} como {role} por un total de <strong>{amount_contratos}</strong>"
                   cant_contratos=(format_number data.total.count)  role=(_ role) classification=(_ classification) amount_contratos=(format_amount data.total.value) }}}
                   {{_ "entre los años {first_year} y {last_year}." first_year=(first_key data.year) last_year=(last_key data.year) }}
                 </p>
@@ -62,78 +62,88 @@
 
                     {{#if data.total.sobrecosto_total }}
                     <h5 class="description-data-subname">{{_ "Sobrecosto total" }}</h5>
-                    Sobrecosto en MXN: {{ format_amount data.total.sobrecosto_total "MXN"}} Sobrecosto en %: {{ format_percentage data.total.sobrecosto_porcentaje}}
+                    {{!-- Sobrecosto en MXN: {{ format_amount data.total.sobrecosto_total "MXN"}} Sobrecosto en %: {{ format_percentage data.total.sobrecosto_porcentaje}} --}}
+                    <div class="col-md-6 col-12">
+                      <p class="js-title-data">Sobrecosto en MXN</p>
+                      <p class="js-data">{{ format_amount data.total.sobrecosto_total "MXN"}}</p>
+                    </div>
+                    <div class="col-md-3 col-12">
+                      <p class="js-title-data">Sobrecosto en %</p>
+                      <p class="js-data">{{ format_percentage data.total.sobrecosto_porcentaje}}</p>
+                    </div>
                     {{/if}}
 
                     {{#if data.top_products }}
-                      <h5 class="description-data-subname">{{_ "Productos principales" }}</h5>
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Producto</th>
-                            <th>Compras</th>
-                            <th>Monto total</th>
-                            <th>Sobrecosto en MXN</th>
-                            <th>Sobrecosto en %</th>
-                            <th>Período</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {{#each data.top_products }}
-                          <tr>
-                            <td>
-                              <a href="{{url view="productos" _id=this.clave}}">
-                                {{ this.producto}}
-                              </a>
-                            </td>
-                            <td>
-                              {{ format_number this.cantidad }}
-                            </td>
-                            <td>
-                              {{ format_number this.monto_total }} MXN
-                            </td>
-                            <td>
+                      <div class="col-md-12 col-12">
+                        <h5 class="description-data-subname">{{_ "Productos principales" }}</h5>
+                        <table width="100%" class="table row-border">
+                          <thead>
+                            <tr>
+                              <th>Producto</th>
+                              <th>Compras</th>
+                              <th>Monto total</th>
+                              <th>Sobrecosto en MXN</th>
+                              <th>Sobrecosto en %</th>
+                              <th>Período</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each data.top_products }}
+                            <tr>
+                              <td>
+                                <a href="{{url view="productos" _id=this.clave}}">
+                                  {{ this.producto}}
+                                </a>
+                              </td>
+                              <td>
+                                {{ format_number this.cantidad }}
+                              </td>
+                              <td>
+                                {{ format_number this.monto_total }} MXN
+                              </td>
+                              <td>
 
-                              {{ format_number this.monto_total_sobrecosto }} MXN
-                            </td>
-                            <td>
+                                {{ format_number this.monto_total_sobrecosto }} MXN
+                              </td>
+                              <td>
 
-                              {{ format_percentage this.sobrecosto}}
-                            </td>
-                            <td>
+                                {{ format_percentage this.sobrecosto}}
+                              </td>
+                              <td>
 
-                              {{ moment this.primera_compra "Y"}}
-                              -
-                              {{ moment this.ultima_compra "Y" }}
-                            </td>                            
+                                {{ moment this.primera_compra "Y"}}
+                                -
+                                {{ moment this.ultima_compra "Y" }}
+                              </td>
 
-                            </td>
-                          </tr>
-                          {{/each}}
-                        </tbody>
-                      </table>
-                    {{/if}}
-                    <div class="contract-button">
-                        {{#ifCond type '==' 'persons'}}
-                          {{#ifCond role '==' 'contactPoint'}}
-                            <a href="{{ url view="buscador" collection="contracts" responsable=result.id tipo-entidad=classification }}" class="button-link {{role}}-button">
-                            
-                          {{else }}
-                            <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
-                          {{/ifCond }}
-                        {{else }}
-                          {{#ifCond result.classification "==" "company"}}
-                              <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
-                            {{else}}
-                            {{#ifCond role "==" "supplier"}}
+                              </td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                        </table>
+                        <div class="contract-button">
+                            {{#ifCond type '==' 'persons'}}
+                              {{#ifCond role '==' 'contactPoint'}}
+                                <a href="{{ url view="buscador" collection="contracts" responsable=result.id tipo-entidad=classification }}" class="button-link {{role}}-button">
+
+                              {{else }}
                                 <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
+                              {{/ifCond }}
                             {{else }}
-                                <a href="{{ url view="buscador" collection="contracts" dependencia=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
-                            {{/ifCond}}
-                          {{/ifCond}}
-                        {{/ifCond }}
-                        {{_ "Ver todos los {classification} de este {role}" role=(_ role) classification=(_ classification) }}</a>
-                    </div>
+                              {{#ifCond result.classification "==" "company"}}
+                                  <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
+                                {{else}}
+                                {{#ifCond role "==" "supplier"}}
+                                    <a href="{{ url view="buscador" collection="contracts" proveedor=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
+                                {{else }}
+                                    <a href="{{ url view="buscador" collection="contracts" dependencia=result.id tipo-entidad=classification}}" class="button-link {{role}}-button">
+                                {{/ifCond}}
+                              {{/ifCond}}
+                            {{/ifCond }}
+                            {{_ "Ver todos los {classification} de este {role}" role=(_ role) classification=(_ classification) }}</a>
+                        </div>
+                      </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
@@ -154,10 +164,10 @@
 {{/if}}
 
 <script>
-  
+
   tiza.contractTypePie({
-    target: "#chart-type-{{role}}-{{classification}}", 
-    type: "{{role}}_{{classification}}", 
+    target: "#chart-type-{{role}}-{{classification}}",
+    type: "{{role}}_{{classification}}",
     nameLabels: {
         "open": "{{_ "Licitación abierta" }}",
         "direct": "{{_ "Adjudicación Directa" }}",
@@ -166,18 +176,18 @@
         "": "{{_ "Sin información" }}"
     },
     procurementColors: tiza.procurementColors["{{role}}_{{classification}}"],
-    data: {{{j data.type }}} 
+    data: {{{j data.type }}}
   });
 
   tiza.yearlyContractsBar({
-    target: "#chart-year-{{role}}-{{classification}}", 
+    target: "#chart-year-{{role}}-{{classification}}",
     amountKeyName: "{{_ "Importe" }}",
     countKeyName: "{{_ "Cantidad" }}",
     barColors: {
         "{{_ "Importe" }}": tiza.barColors["{{role}}_{{classification}}"].amount,
         "{{_ "Cantidad" }}": tiza.barColors["{{role}}_{{classification}}"].count
     },
-    type: "{{role}}_{{classification}}", 
-    data: {{{j data.year }}} 
+    type: "{{role}}_{{classification}}",
+    data: {{{j data.year }}}
   });
 </script>

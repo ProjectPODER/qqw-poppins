@@ -23,13 +23,13 @@
         {{/ifCond}}
         {{/each}}
         {{/if}}
-        
+
         {{!-- Summaries --}}
         {{#ifCond (conf "products_active")  "==" "true"}}
           {{#if summaries.buyer_purchase.total.count }}
           <li>
             <a href="#summary-buyer_purchase" class="anchor">
-              <i class="fas fa-money-check-alt"></i> {{_ "Comprador"}}
+              <i class="fas fa-money-check-alt"></i> {{_ "Productos"}}
             </a>
           </li>
           {{/if}}
@@ -37,12 +37,37 @@
           {{#if summaries.supplier_purchase.total.count }}
           <li>
             <a href="#summary-supplier_purchase" class="anchor">
-              <i class="fas fa-dolly"></i> {{{_ "Proveedor"}}}
+              <i class="fas fa-dolly"></i> {{{_ "Productos"}}}
             </a>
           </li>
           {{/if}}
+          {{#ifCond result.classification "==" "institution" }}
+            <li>
+              <a href="#desabasto-reportado" class="anchor">
+                <i class="fas fa-dolly"></i> {{{_ "Desabasto"}}}
+              </a>
+            </li>
+          {{/ifCond}}
+          <li>
+            <a href="#reportar-desabasto" class="anchor">
+              <i class="fas fa-dolly"></i> {{{_ "Reportar"}}}
+            </a>
+          </li>
         {{/ifCond}}
-
+        {{!-- {{#if data.top_products }}
+          {{#ifCond result.classification "==" "institution" }}
+            <li>
+              <a href="#desabasto-reportado" class="anchor">
+                <i class="fas fa-dolly"></i> {{{_ "Desabasto"}}}
+              </a>
+            </li>
+          {{/ifCond}}
+          <li>
+            <a href="#reportar-desabasto" class="anchor">
+              <i class="fas fa-dolly"></i> {{{_ "Reportar"}}}
+            </a>
+          </li>
+        {{/if}} --}}
         {{#if summaries.buyer_contract.total.count }}
         <li>
           <a href="#summary-buyer_contract" class="anchor">
