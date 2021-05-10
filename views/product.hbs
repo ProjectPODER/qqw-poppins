@@ -217,7 +217,7 @@
         <div class="row flex">
           <div class="col-12">
             <p> {{{_ "Cada círculo representa una de las {cant_contratos} compras de {name} realizadas por el IMSS"
-            cant_contratos=(format_number result.contract_count) name=result.name }}}
+            cant_contratos=(format_number result.purchase_count.product) name=result.name }}}
             {{_ "entre los años {first_year} y {last_year}." first_year=(moment result.first_purchase_date "Y") last_year=(moment
             result.last_purchase_date "Y") }}
             </p>
@@ -491,7 +491,7 @@ function initSobrecosto() {
     .attr("text-anchor", "end")
     .call(g => g.select(".domain").remove())
     .call(g => g.append("text")
-      .attr("x", 5)
+      .attr("x", 15)
       .attr("y", margin.top )
       .attr("dy", "-.71em")
       .attr("fill", "currentColor")
@@ -505,7 +505,7 @@ function initSobrecosto() {
     .call(g => g.select(".domain").remove())
     .call(g => g.append("text")
       .attr("x", width - margin.right)
-      .attr("y", 23)
+      .attr("y", 15)
       .attr("fill", "currentColor")
       .attr("font-weight", "bold")
       .attr("text-anchor", "end")
@@ -599,7 +599,7 @@ function initSobrecosto() {
       .attr('x', xLabel - 5)
       .attr('y', d =>  yCircle - (r_bubble(d)) )
       .text( d =>  formatLegend(d/1000)  )
-      .style("font-size", 7)
+      .style("font-size", "7px")
       .attr('alignment-baseline', 'middle')
       .attr('text-anchor', 'end')
       .style("fill", "#4E4E4E");
@@ -612,7 +612,7 @@ function initSobrecosto() {
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
         .style("font-family", "sans-serif")
-        .style("font-size", 10)
+        .style("font-size", "10px")
         .style("fill", "#4E4E4E");
 
   const right_legend_line = 400
@@ -652,7 +652,7 @@ function initSobrecosto() {
       .attr("text-anchor", "left")
       .style("alignment-baseline", "middle")
       .style("font-family", "sans-serif")
-      .style("font-size", 10)
+      .style("font-size", "10px")
       .style("fill", "#4E4E4E");
 
 

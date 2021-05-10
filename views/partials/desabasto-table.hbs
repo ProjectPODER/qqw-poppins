@@ -29,9 +29,9 @@
         <div id="desabasto-empty" style="display: none;">
           <h4 class="text-darkblue text-center"><b>No existen reportes de desabasto</b></h4>
         </div>
-        <div id="desabasto-show" style="display: default;">
+        <div id="desabasto-show" style="display: none;">
           <h5 class="description-data-subname">Casos de desabasto</h5>
-          <fieldset>
+          {{!-- <fieldset>
             <input type="radio" id="desabasto-acumulado" name="desabasto" checked=checked>
             <label for="desabasto-acumulado">Acumulado</label>
             <input type="radio" id="desabasto-individual" name="desabasto">
@@ -42,7 +42,27 @@
             <label for="institucion-imss">IMSS</label>
             <input type="radio" id="institucion-todas" name="institucion">
             <label for="institucion-todas">Todas</label>
-          </fieldset>
+          </fieldset> --}}
+          <div class="form-check-inline">
+            <label class="form-check-label" for="desabasto-acumulado">
+              <input type="radio" id="desabasto-acumulado" name="desabasto" checked=checked>Acumulado
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label" for="desabasto-individual">
+              <input type="radio" id="desabasto-individual" name="desabasto">Individual
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label" for="institucion-imss">
+              <input type="radio" id="institucion-imss" name="institucion" checked=checked>IMSS
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label" for="institucion-todas">
+              <input type="radio" id="institucion-todas" name="institucion">Todas
+            </label>
+          </div>
 
           <svg id="grafica-desabasto"></svg>
 
