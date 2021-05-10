@@ -66,7 +66,6 @@
         $("#desabasto-empty").show();
         $("#desabasto-table").hide();
       }
-
       else {
         $("#desabasto-loading").hide();
         $("#desabasto-show").show();
@@ -98,7 +97,7 @@
 
     //let range_x = d4.extent(data, d=> d.created)
 
-    data = data.sort((a, b)=> a.id - b.id);
+    //data = data.sort((a, b)=> a.id - b.id);
 
     let accumulator = 0;
     let data_chart = data.map(item=>{
@@ -114,8 +113,8 @@
     //let max_x = d4.max(data_chart, d=> d.month) + 1
     let now = new Date()
     let max_x = (now.getYear() * 12 + now.getMonth() )
-    let range_x = [1428, max_x]
-    let ticks_x = max_x - 1428
+    let range_x = [1430, max_x]
+    let ticks_x = max_x - 1430
 
     var x = d4.scaleLinear()
       .domain(range_x)
@@ -139,15 +138,19 @@
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
 
-    let formatX = (e) => `${(e%12)+1}/${Math.floor(e/12)-100}`
+    let formatX = (e) => {
+      return e%3 
+        ? ''
+        : `${(e%12)+1}/${Math.floor(e/12)-100}`
+    }
     svg.append("g")
       .attr("transform", `translate(0,${height2})`)
       .call(d4.axisBottom(x).tickFormat(formatX).ticks(ticks_x))
         .selectAll("text")
-        .attr("transform", "rotate(70)")
-        .style("text-anchor", "start")
-        .attr("dx", "1em")
-        .attr("dy", "-.3em")
+        //.attr("transform", "rotate(70)")
+        //.style("text-anchor", "start")
+        //.attr("dx", "1em")
+        //.attr("dy", "-.3em")
 
 
     var bins = histogram(data_chart);
@@ -167,7 +170,7 @@
     let yAxis = (g) =>{
       g
         .attr("class", "y-axis")
-        .call(d4.axisLeft(y).ticks(max_y))
+        .call(d4.axisLeft(y).ticks(10))
     } 
 
     svg.append("g")
@@ -205,22 +208,24 @@
       .attr("class", "x label")
       .attr("text-anchor", "end")
       .attr("x", width2)
-      .attr("y", height2 + margin.bottom + 20)
+      .attr("font-size", "11px")
+      .attr("y", height2 + margin.bottom)
       .text("Mes del reporte");
 
     svg.append("text")
       .attr("class", "y label")
       .attr("text-anchor", "end")
       .attr("x", -25)
-      .attr("y", -margin.top)
+      .attr("y", -20)
       .attr("dy", "1em")
+      .attr("font-size", "11px")
       .attr("transform", "rotate(-90)")
       .text("Número de reportes");
 
 
 
     let data_cumul = [
-      { month_exact: 1428, y_cumulative: 0 }, 
+      { month_exact: 1430, y_cumulative: 0 }, 
       ...data_chart, 
       { month_exact: max_x, y_cumulative: data_chart.length }, 
     ]
