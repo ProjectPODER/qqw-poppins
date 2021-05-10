@@ -29,7 +29,7 @@
         <div id="desabasto-empty" style="display: none;">
           No existen reportes de desabasto...
         </div>
-        <div id="desabasto-show" style="display: none;">
+        <div id="desabasto-show" RICARDO style="display: default;">
           <svg id="grafica-desabasto"></svg>
 
         </div>
@@ -48,6 +48,7 @@
     else {
       campo = "clave";
       valor = "{{result.id}}";
+      //valor = "key";
     }
     getDesabasto(valor,campo)
   })
@@ -56,8 +57,8 @@
   function getDesabasto(clave) {
 
     console.log("Consultando reportes de desabasto", valor, campo)
-
-    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?"+valor+"=" + clave + "&format=json";
+    //RICARDO acá forcé "clave"
+    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?"+"clave"+"=" + clave + "&format=json";
     $.get(reports_url, function (data) {
       console.log("Respuesta reportes de desabasto", data);
       if (data.count == 0) {
@@ -82,14 +83,136 @@
 
     let svg = d4.select("#grafica-desabasto")
 
-    svg.attr("viewBox", [0, 0, width, height]);
+    //svg.attr("viewBox", [0, 0, width, height]);
 
-    svg.append("circle")
-      .attr("id", "circle2")
-      .attr("cx", width / 2)
-      .attr("cy", height / 2)
-      .attr("r", 40)
-      .attr("fill", "#ffb3a2")
+
+
+    //var vm = this
+
+    let color = d4.interpolateHsl(
+        d4.rgb('#607D8B').brighter(1.2), d4.rgb('#607D8B').darker(1) )
+
+    var margin = {top: 10, right: 10, bottom: 30, left: 25},
+      width2 = 600 ,
+      height2 = 220 ;
+
+    //let range_x = d4.extent(data, d=> d.created)
+    //let accumulator = 0;
+    let data_chart = data.map(item=>{
+      let date = new Date(item.created)
+      let month = date.getMonth() + (date.getYear() * 12)
+      return { ...item, ...{ month: month } }
+    })
+    //let range_x = d4.extent(data_chart, d=> d.month)
+    //let max_x = d4.max(data_chart, d=> d.month) + 1
+    let now = new Date()
+    let max_x = (now.getYear() * 12 + now.getMonth() )
+    let range_x = [1428, max_x]
+    let ticks_x = max_x - 1428
+
+    var x = d4.scaleLinear()
+      .domain(range_x)
+      .range([margin.left, width2 - margin.right]);
+
+    //const is_empty = d4.select("#histogram > svg > g").empty()
+    const is_empty = true
+
+
+    var histogram = d4.histogram()
+      .value(d => d.month )
+      //.value(d => d.created )
+      .domain(x.domain())
+      .thresholds(x.ticks(ticks_x));
+
+
+    svg
+      .attr("viewBox", [-20, 5, 
+          width2 + 0 + margin.right + margin.left, 
+          height2 + 10 + margin.bottom+margin.top])
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+
+    let formatX = (e) => `${(e%12)+1}/${Math.floor(e/12)-100}`
+    svg.append("g")
+      .attr("transform", `translate(0,${height2})`)
+      .call(d4.axisBottom(x).tickFormat(formatX).ticks(ticks_x))
+        .selectAll("text")
+        .attr("transform", "rotate(70)")
+        .style("text-anchor", "start")
+        .attr("dx", "1em")
+        .attr("dy", "-.3em")
+
+
+    var bins = histogram(data_chart);
+    //console.log(ises)
+    //console.log(bins)
+
+    const transition1 = svg.transition()
+      .duration(1500);
+    
+
+    var max_y = d4.max(bins, d => d.length + 2)
+    var y = d4.scaleLinear()
+      .domain([0, max_y])
+      .range([height2, margin.bottom])
+      
+    //let ticks_y = d3.max(bins, d=> d.length)
+    let yAxis = (g) =>{
+      g
+        .attr("class", "y-axis")
+        .call(d4.axisLeft(y).ticks(max_y))
+    } 
+
+    svg.append("g")
+      .attr("transform", d => `translate(${margin.left}, 0)`)
+      .call(yAxis)
+
+    var rects = svg.selectAll("rect")
+      .data(bins)
+      .enter()
+      //.filter(d=> d.length)    
+        .append('rect')
+        .attr("width", d => x(d.x1) - x(d.x0))
+        .attr("x", 1)
+        //.style("fill", (d,i)=> color((i)/10))//"#00b0ff")
+        .style("fill", "#00b0ff")
+        //.attr("transform", d => `translate(${x(d.x0)},${y(0)})`)
+        //.attr("transform", d => `translate(${x(d.x0)},${y(d.length)})`)
+        .attr("transform", d => `translate(${x(d.x0-0.5)}, ${y(d.length)})`)
+        .attr("height", d=> height2 - y(d.length));
+
+    var legends = svg.selectAll(".legend")
+      .data(bins)
+      .enter()
+        .append('text')
+        .attr("class", "legend")
+        .text(d=> d.length)
+        .style("text-anchor", "middle")
+        .style("fill", "grey")
+        .attr("opacity", d=> d.length ? 1 : 0)
+        //.attr("transform", d => `translate(${x(d.x0+.25)}, ${y(0)})`)
+        .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
+  
+    
+      svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width2)
+        .attr("y", height2 + margin.bottom + 20)
+        .text("Mes del reporte");
+
+      svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("x", -25)
+        .attr("y", -margin.top)
+        .attr("dy", "1em")
+        .attr("transform", "rotate(-90)")
+        .text("Número de reportes");
+  
+
+
 
 
     // Desabasto table
