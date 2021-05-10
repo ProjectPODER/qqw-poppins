@@ -76,12 +76,10 @@
     $("#desabasto-acumulado").click(function(){
       show_cummul = true
       initDesabasto(false, true);
-      cambiaPresentacion(true)
     })
     $("#desabasto-individual").click(function () {
       show_cummul = false
       initDesabasto(false, true);
-      cambiaPresentacion(false)
     })
     $("#institucion-imss").click(function () {
       only_imss = true
@@ -92,14 +90,6 @@
       initDesabasto(false);
     })
   })
-
-  function cambiaPresentacion(is_cumulative){
-    return
-    d4.selectAll('.cumulative_chart')
-      .attr("display", is_cumulative ? "default" : "none")
-    d4.selectAll('.bins_chart')
-      .attr("display", is_cumulative ? "none" : "default")
-  }
 
   function getDesabasto(campo, valor) {
 
@@ -345,8 +335,8 @@
             return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear()
           }
         },
-        { "data": "state.name" },
-        { "data": "institution.name" },
+        { "data": "state.short_name" },
+        { "data": "institution.public_name" },
         { "data": "hospital_name_raw", render: function (data) {
           if (data.length < 1) {
             return "(no reportado)"
