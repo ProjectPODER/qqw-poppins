@@ -56,7 +56,7 @@
         <div class="row flex">
           <div class="col-md-12 col-12">
             {{{_ "Este producto tuvo {cant_contratos} compras ({cant_unidades} unidades) por un total de <strong>{amount_contratos}</strong>"
-            cant_contratos=(format_number result.contract_count) cant_unidades=(format_number result.contract_quantity) amount_contratos=(format_amount result.contract_amount "MXN") }}}
+            cant_contratos=(format_number result.purchase_count.product) cant_unidades=(format_number result.purchase_quantity.product) amount_contratos=(format_amount result.purchase_amount.product "MXN") }}}
 
             {{_ "entre los años {first_year} y {last_year}" first_year=(moment result.first_purchase_date "Y") last_year=(moment result.last_purchase_date "Y") }}
 
@@ -359,7 +359,7 @@
     <div class="row">
       <div class="col-12 col-md-12">
         <h5>{{{_ "Hay {cant_contratos} compras en total de este medicamento."
-        cant_contratos=(format_number result.contract_count)}}}</h5>
+        cant_contratos=(format_number result.purchase_count.product)}}}</h5>
         <a class="btn btn-primary" href="{{url view="buscador" collection="contracts" tipo-entidad="purchase" producto=result.id }}">{{{_ "VER TODAS LAS COMPRAS"}}}</a>
       </div>
     </div>
