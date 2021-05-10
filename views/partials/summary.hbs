@@ -92,7 +92,7 @@
                               {{#each data.top_products }}
                               <tr>
                                 <td>
-                                  <a href="{{url view="productos" _id=this.clave}}">
+                                  <a href="{{url view="products/:id" _id=this.clave}}">
                                     {{ this.producto}}
                                   </a>
                                 </td>
