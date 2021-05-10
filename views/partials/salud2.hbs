@@ -20,14 +20,35 @@
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <style>
-    .sobrecosto-table {
-      width: 100%;
+    .text-right{
+      text-align: right;
     }
-
-    .sobrecosto-table th {
-      border-bottom: 1px solid black;
+    table {
       border-collapse: collapse;
     }
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    .table-responsive {
+      display: block;
+      width: 100%;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
   </style>
 </head>
 
@@ -357,114 +378,118 @@
       </div>
       <div class="medicine-container">
         <div class="medicine-title">
-          <div class="sobrecosto-table w-embed">
-            <table class="sobrecosto-table">
-              <tr>
-                <th>Clave IMSS</th>
-                <th>Medicamento</th>
-                <th>Precio de referencia OPS*</th>
-                <th>Precio ponderando del IMSS</th>
-                <th>Incremento</th>
-              </tr>
-              <tr>
-                <td>1000042730000</td>
-                <td>Abacavir 300 mg</td>
-                <td>113.50</td>
-                <td>542.89</td>
-                <td>378.30%</td>
-              </tr>
-              <tr>
-                <td>1000043710000</td>
-                <td>Abacavir + Lamivudina 600 + 300 mg/tab</td>
-                <td>221.28</td>
-                <td>1250.68</td>
-                <td>465.31%</td>
-              </tr>
-              <tr>
-                <td>1000042660000</td>
-                <td>Atazanavir (sulfato) 300 mg</td>
-                <td>408.81</td>
-                <td>2641.32</td>
-                <td>546.10%</td>
-              </tr>
-              <tr>
-                <td>1000042890000</td>
-                <td>Darunavir 600 mg</td>
-                <td>1442.85</td>
-                <td>4513.09</td>
-                <td>212.79%</td>
-              </tr>
-              <tr>
-                <td>1000043700000</td>
-                <td>Efavirenz 600 mg</td>
-                <td>72.14</td>
-                <td>219.98</td>
-                <td>204.92%</td>
-              </tr>
-              <tr>
-                <td>1000043960000</td>
-                <td>Emtricitabina+Tenofovir 300 + 200 mg</td>
-                <td>114.27</td>
-                <td>2060.88</td>
-                <td>1703.45%</td>
-              </tr>
-              <tr>
-                <td>1000052750000</td>
-                <td>Etravirina 100 mg</td>
-                <td>865.71</td>
-                <td>5429.27</td>
-                <td>527.15%</td>
-              </tr>
-              <tr>
-                <td>1000052820100</td>
-                <td>Lamivudina 150 mg</td>
-                <td>52.90</td>
-                <td>441.09</td>
-                <td>733.74%</td>
-              </tr>
-              <tr>
-                <td>1000052880000</td>
-                <td>Lopinavir + Ritonavir 200 mg + 50 mg</td>
-                <td>505.00</td>
-                <td>2052.02</td>
-                <td>306.34%</td>
-              </tr>
-              <tr>
-                <td>1000052960000</td>
-                <td>Nevirapina 200 mg</td>
-                <td>52.90</td>
-                <td>376.56</td>
-                <td>611.77%</td>
-              </tr>
-              <tr>
-                <td>1000052800000</td>
-                <td>Raltegravir (potásico) 400 mg</td>
-                <td>1334.73</td>
-                <td>3610.0</td>
-                <td>170.47%</td>
-              </tr>
-              <tr>
-                <td>1000052810100</td>
-                <td>Ritonavir 100 mg</td>
-                <td>180.45</td>
-                <td>347.96</td>
-                <td>92.83%</td>
-              </tr>
-              <tr>
-                <td>1000042770000</td>
-                <td>Tenofovir disoproxil fumarate 300 mg/tab</td>
-                <td>57.71</td>
-                <td>2000.12</td>
-                <td>3365.57%</td>
-              </tr>
-              <tr>
-                <td>1000042680000</td>
-                <td>Zidovudina + Lamivudina 300 mg + 150 mg</td>
-                <td>45.79</td>
-                <td>894.00</td>
-                <td>1852.52%</td>
-              </tr>
-            </table>
+          <div class="sobrecosto-table table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Clave IMSS</th>
+                    <th>Medicamento</th>
+                    <th>Precio de referencia OPS*</th>
+                    <th>Precio ponderando del IMSS</th>
+                    <th>Incremento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-right">1000042730000</td>
+                    <td>Abacavir 300 mg</td>
+                    <td class="text-right">113.50</td>
+                    <td class="text-right">542.89</td>
+                    <td class="text-right">378.30%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000043710000</td>
+                    <td>Abacavir + Lamivudina 600 + 300 mg/tab</td>
+                    <td class="text-right">221.28</td>
+                    <td class="text-right">1250.68</td>
+                    <td class="text-right">465.31%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000042660000</td>
+                    <td>Atazanavir (sulfato) 300 mg</td>
+                    <td class="text-right">408.81</td>
+                    <td class="text-right">2641.32</td>
+                    <td class="text-right">546.10%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000042890000</td>
+                    <td>Darunavir 600 mg</td>
+                    <td class="text-right">1442.85</td>
+                    <td class="text-right">4513.09</td>
+                    <td class="text-right">212.79%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000043700000</td>
+                    <td>Efavirenz 600 mg</td>
+                    <td class="text-right">72.14</td>
+                    <td class="text-right">219.98</td>
+                    <td class="text-right">204.92%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000043960000</td>
+                    <td>Emtricitabina+Tenofovir 300 + 200 mg</td>
+                    <td class="text-right">114.27</td>
+                    <td class="text-right">2060.88</td>
+                    <td class="text-right">1703.45%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000052750000</td>
+                    <td>Etravirina 100 mg</td>
+                    <td class="text-right">865.71</td>
+                    <td class="text-right">5429.27</td>
+                    <td class="text-right">527.15%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000052820100</td>
+                    <td>Lamivudina 150 mg</td>
+                    <td class="text-right">52.90</td>
+                    <td class="text-right">441.09</td>
+                    <td class="text-right">733.74%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000052880000</td>
+                    <td>Lopinavir + Ritonavir 200 mg + 50 mg</td>
+                    <td class="text-right">505.00</td>
+                    <td class="text-right">2052.02</td>
+                    <td class="text-right">306.34%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000052960000</td>
+                    <td>Nevirapina 200 mg</td>
+                    <td class="text-right">52.90</td>
+                    <td class="text-right">376.56</td>
+                    <td class="text-right">611.77%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000052800000</td>
+                    <td>Raltegravir (potásico) 400 mg</td>
+                    <td class="text-right">1334.73</td>
+                    <td class="text-right">3610.0</td>
+                    <td class="text-right">170.47%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000052810100</td>
+                    <td>Ritonavir 100 mg</td>
+                    <td class="text-right">180.45</td>
+                    <td class="text-right">347.96</td>
+                    <td class="text-right">92.83%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000042770000</td>
+                    <td>Tenofovir disoproxil fumarate 300 mg/tab</td>
+                    <td class="text-right">57.71</td>
+                    <td class="text-right">2000.12</td>
+                    <td class="text-right">3365.57%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-right">1000042680000</td>
+                    <td>Zidovudina + Lamivudina 300 mg + 150 mg</td>
+                    <td class="text-right">45.79</td>
+                    <td class="text-right">894.00</td>
+                    <td class="text-right">1852.52%</td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
         </div>
       </div>
