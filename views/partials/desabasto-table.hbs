@@ -97,11 +97,18 @@
       height2 = 220 ;
 
     //let range_x = d4.extent(data, d=> d.created)
-    //let accumulator = 0;
+
+    data = data.sort((a, b)=> a.id - b.id);
+
+    let accumulator = 0;
     let data_chart = data.map(item=>{
       let date = new Date(item.created)
       let month = date.getMonth() + (date.getYear() * 12)
-      return { ...item, ...{ month: month } }
+      let exact = date.getMonth() + (date.getYear() * 12) 
+        + ( date.getDay() / 31)
+      accumulator++
+      return { ...item, 
+        ...{ month: month, month_exact: exact, y_cumulative: accumulator } }
     })
     //let range_x = d4.extent(data_chart, d=> d.month)
     //let max_x = d4.max(data_chart, d=> d.month) + 1
@@ -123,7 +130,6 @@
       //.value(d => d.created )
       .domain(x.domain())
       .thresholds(x.ticks(ticks_x));
-
 
     svg
       .attr("viewBox", [-20, 5, 
@@ -157,7 +163,7 @@
       .domain([0, max_y])
       .range([height2, margin.bottom])
       
-    //let ticks_y = d3.max(bins, d=> d.length)
+    //let ticks_y = d4.max(bins, d=> d.length)
     let yAxis = (g) =>{
       g
         .attr("class", "y-axis")
@@ -195,25 +201,61 @@
         .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
   
     
-      svg.append("text")
-        .attr("class", "x label")
-        .attr("text-anchor", "end")
-        .attr("x", width2)
-        .attr("y", height2 + margin.bottom + 20)
-        .text("Mes del reporte");
+    svg.append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", width2)
+      .attr("y", height2 + margin.bottom + 20)
+      .text("Mes del reporte");
 
-      svg.append("text")
-        .attr("class", "y label")
-        .attr("text-anchor", "end")
-        .attr("x", -25)
-        .attr("y", -margin.top)
-        .attr("dy", "1em")
-        .attr("transform", "rotate(-90)")
-        .text("Número de reportes");
-  
-
+    svg.append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "end")
+      .attr("x", -25)
+      .attr("y", -margin.top)
+      .attr("dy", "1em")
+      .attr("transform", "rotate(-90)")
+      .text("Número de reportes");
 
 
+
+    let data_cumul = [
+      { month_exact: 1428, y_cumulative: 0 }, 
+      ...data_chart, 
+      { month_exact: max_x, y_cumulative: data_chart.length }, 
+    ]
+
+    var y_cumul = d4.scaleLinear()
+      .domain([0, data.length + 2])
+      .range([height2, margin.bottom])
+
+    let curve = d4.curveLinear;
+
+    let area = d4.area()
+      .curve(curve)
+      .x(d => x(d.month_exact))
+      .y0(y(0))
+      .y1(d => y_cumul(d.y_cumulative));
+
+    const path = svg.append("path")
+        .datum(data_cumul)
+        .attr("fill", "#8242a8")
+        .attr("opacity", "0.4")
+        .attr("d", area);
+
+
+    let yAxisCum = (g) =>{
+      g
+        .attr("class", "y-axis")
+        .call(d4.axisLeft(y_cumul).ticks(10))
+    } 
+
+    svg.append("g")
+      .attr("transform", d => `translate(${margin.left + 40}, 0)`)
+      .call(yAxisCum)
+
+
+      console.log(data_chart)
 
     // Desabasto table
     $('#desabasto-table').DataTable({
