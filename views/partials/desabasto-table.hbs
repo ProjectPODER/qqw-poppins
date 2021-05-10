@@ -75,6 +75,11 @@
 <script type="text/javascript">
 
   //Events
+
+  let only_imss = true
+  let show_cummul = true
+  let data_desabasto = undefined
+
   window.addEventListener('load', function () {
     if ("{{result.classification}}" == "institution") {
       campo = "institucion=imss&estado_nombre="
@@ -89,38 +94,34 @@
 
 
     $("#desabasto-acumulado").click(function(){
-      cambiaPresentacion("acumulado")
+      show_cummul = true
+      initDesabasto(false, true);
+      cambiaPresentacion(true)
     })
     $("#desabasto-individual").click(function () {
-      cambiaPresentacion("individual")
+      show_cummul = false
+      initDesabasto(false, true);
+      cambiaPresentacion(false)
     })
     $("#institucion-imss").click(function () {
-      cambiaInstitucion("imss")
+      only_imss = true
+      initDesabasto(false);
     })
     $("#institucion-todas").click(function () {
-      cambiaInstitucion("todas")
+      only_imss = false
+      initDesabasto(false);
     })
   })
 
-  function cambiaPresentacion(valor){
-    if(valor=="acumulado"){
-      console.log(valor);
-    } else {
-      console.log(valor);
-    }
-
+  function cambiaPresentacion(is_cumulative){
+    return
+    d4.selectAll('.cumulative_chart')
+      .attr("display", is_cumulative ? "default" : "none")
+    d4.selectAll('.bins_chart')
+      .attr("display", is_cumulative ? "none" : "default")
   }
 
-  function cambiaInstitucion(valor) {
-    if (valor == "imss") {
-      console.log(valor);
-    } else {
-      console.log(valor);
-    }
-
-  }
-
-  function getDesabasto(campo,valor) {
+  function getDesabasto(campo, valor) {
 
     console.log("Consultando reportes de desabasto", valor, campo)
     //RICARDO acá forcé "clave"
@@ -132,28 +133,25 @@
         $("#desabasto-empty").show();
         $("#desabasto-table").hide();
       }
-
       else {
         $("#desabasto-loading").hide();
         $("#desabasto-show").show();
         $("#desabasto-table").show();
-        initDesabasto(data.data);
+        data_desabasto = data.data
+        initDesabasto();
 
       }
     })
   }
-  function initDesabasto(data) {
+  function changeAxisY(only_imss=true, is_init=true) {
+
+  }
+  function initDesabasto(is_init=true, change_axis=false) {
 
     let width = 599;
     let height = 300;
 
     let svg = d4.select("#grafica-desabasto")
-
-    //svg.attr("viewBox", [0, 0, width, height]);
-
-
-
-    //var vm = this
 
     let color = d4.interpolateHsl(
         d4.rgb('#607D8B').brighter(1.2), d4.rgb('#607D8B').darker(1) )
@@ -164,14 +162,20 @@
 
     //let range_x = d4.extent(data, d=> d.created)
 
-    data = data.sort((a, b)=> a.id - b.id);
+    //data = data.sort((a, b)=> a.id - b.id);
 
     let accumulator = 0;
-    let data_chart = data.map(item=>{
+
+    let data_filtered = data_desabasto.filter(item=>
+       only_imss ? item.institution.code == 'IMSS' : true)
+  
+    const transition1 = svg.transition()
+      .duration(1500);
+
+    let data_chart = data_filtered.map(item=>{
       let date = new Date(item.created)
       let month = date.getMonth() + (date.getYear() * 12)
-      let exact = date.getMonth() + (date.getYear() * 12)
-        + ( date.getDay() / 31)
+      let exact = date.getMonth() + (date.getYear() * 12) + ( date.getDate() / 31)
       accumulator++
       return { ...item,
         ...{ month: month, month_exact: exact, y_cumulative: accumulator } }
@@ -180,16 +184,12 @@
     //let max_x = d4.max(data_chart, d=> d.month) + 1
     let now = new Date()
     let max_x = (now.getYear() * 12 + now.getMonth() )
-    let range_x = [1428, max_x]
-    let ticks_x = max_x - 1428
+    let range_x = [1430, max_x]
+    let ticks_x = max_x - 1430
 
     var x = d4.scaleLinear()
       .domain(range_x)
       .range([margin.left, width2 - margin.right]);
-
-    //const is_empty = d4.select("#histogram > svg > g").empty()
-    const is_empty = true
-
 
     var histogram = d4.histogram()
       .value(d => d.month )
@@ -201,99 +201,44 @@
       .attr("viewBox", [-20, 5,
           width2 + 0 + margin.right + margin.left,
           height2 + 10 + margin.bottom+margin.top])
-      .append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")");
 
-    let formatX = (e) => `${(e%12)+1}/${Math.floor(e/12)-100}`
-    svg.append("g")
-      .attr("transform", `translate(0,${height2})`)
-      .call(d4.axisBottom(x).tickFormat(formatX).ticks(ticks_x))
-        .selectAll("text")
-        .attr("transform", "rotate(70)")
-        .style("text-anchor", "start")
-        .attr("dx", "1em")
-        .attr("dy", "-.3em")
-
+    let formatX = (e) => {
+      return e%3 
+        ? ''
+        : `${(e%12)+1}/${Math.floor(e/12)-100}`
+    }
 
     var bins = histogram(data_chart);
-    //console.log(ises)
-    //console.log(bins)
-
-    const transition1 = svg.transition()
-      .duration(1500);
-
 
     var max_y = d4.max(bins, d => d.length + 2)
+
     var y = d4.scaleLinear()
-      .domain([0, max_y])
+      .domain([0, (show_cummul ? data_chart.length : max_y) + 2])
       .range([height2, margin.bottom])
+
 
     //let ticks_y = d4.max(bins, d=> d.length)
     let yAxis = (g) =>{
       g
         .attr("class", "y-axis")
-        .call(d4.axisLeft(y).ticks(max_y))
-    }
+        .call(d4.axisLeft(y).ticks(10))
+    } 
 
-    svg.append("g")
-      .attr("transform", d => `translate(${margin.left}, 0)`)
-      .call(yAxis)
-
-    var rects = svg.selectAll("rect")
+    var rects = svg
+      .selectAll("rect")
       .data(bins)
-      .enter()
-      //.filter(d=> d.length)
-        .append('rect')
-        .attr("width", d => x(d.x1) - x(d.x0))
-        .attr("x", 1)
-        //.style("fill", (d,i)=> color((i)/10))//"#00b0ff")
-        .style("fill", "#00b0ff")
-        //.attr("transform", d => `translate(${x(d.x0)},${y(0)})`)
-        //.attr("transform", d => `translate(${x(d.x0)},${y(d.length)})`)
-        .attr("transform", d => `translate(${x(d.x0-0.5)}, ${y(d.length)})`)
-        .attr("height", d=> height2 - y(d.length));
-
-    var legends = svg.selectAll(".legend")
+    
+    var legends = svg
+      .selectAll(".legend")
       .data(bins)
-      .enter()
-        .append('text')
-        .attr("class", "legend")
-        .text(d=> d.length)
-        .style("text-anchor", "middle")
-        .style("fill", "grey")
-        .attr("opacity", d=> d.length ? 1 : 0)
-        //.attr("transform", d => `translate(${x(d.x0+.25)}, ${y(0)})`)
-        .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
-
-
-    svg.append("text")
-      .attr("class", "x label")
-      .attr("text-anchor", "end")
-      .attr("x", width2)
-      .attr("y", height2 + margin.bottom + 20)
-      .text("Mes del reporte");
-
-    svg.append("text")
-      .attr("class", "y label")
-      .attr("text-anchor", "end")
-      .attr("x", -25)
-      .attr("y", -margin.top)
-      .attr("dy", "1em")
-      .attr("transform", "rotate(-90)")
-      .text("Número de reportes");
-
 
 
     let data_cumul = [
-      { month_exact: 1428, y_cumulative: 0 },
-      ...data_chart,
-      { month_exact: max_x, y_cumulative: data_chart.length },
+      { month_exact: 1430, y_cumulative: 0 }, 
+      ...data_chart, 
+      { month_exact: max_x, y_cumulative: data_chart.length }, 
     ]
 
-    var y_cumul = d4.scaleLinear()
-      .domain([0, data.length + 2])
-      .range([height2, margin.bottom])
 
     let curve = d4.curveLinear;
 
@@ -301,31 +246,118 @@
       .curve(curve)
       .x(d => x(d.month_exact))
       .y0(y(0))
-      .y1(d => y_cumul(d.y_cumulative));
+      .y1(d => y(d.y_cumulative));
 
-    const path = svg.append("path")
+    
+    //if (!change_axis){
+      svg.selectAll("#area_chart").remove()
+      const path = svg.append("path")
         .datum(data_cumul)
+        .attr("display", show_cummul ? "default" : "none")
+    //}
+  
+
+    if (is_init){
+      svg.append("g")
+        .attr("transform", `translate(0,${height2})`)
+        .call(d4.axisBottom(x).tickFormat(formatX).ticks(ticks_x))
+          .selectAll("text")
+
+      svg.append("g")
+        .attr("transform", d => `translate(${margin.left}, 0)`)
+        .call(yAxis)
+
+      rects
+        .enter()
+        //.filter(d=> d.length)
+          .append('rect')
+          .attr('class', 'bins_chart')
+          .attr("width", d => x(d.x1) - x(d.x0))
+          .attr("x", 1)
+          .style("fill", "#00b0ff")
+          .attr("display", show_cummul ? "none" : "default")
+          .attr("transform", d => `translate(${x(d.x0-0.5)}, ${y(d.length)})`)
+          .attr("height", d=> height2 - y(d.length));
+
+      legends
+        .enter()
+          .append('text')
+          .attr("class", "legend bins_chart")
+          .text(d=> d.length)
+          .style("text-anchor", "middle")
+          .style("fill", "grey")
+          .attr("opacity", d=> d.length ? 1 : 0)
+          .attr("display", show_cummul ? "none" : "default")
+          //.attr("transform", d => `translate(${x(d.x0+.25)}, ${y(0)})`)
+          .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
+      
+      path
+        .attr('class', 'cumulative_chart')
+        .attr('id', 'area_chart')
         .attr("fill", "#8242a8")
         .attr("opacity", "0.4")
         .attr("d", area);
 
+    }
+    else{
+      //rects.exit().remove()//
+      //rects.enter().append("rect")
+          //.attr("height", 0);
+      svg.selectAll(".y-axis").transition()
+        .duration(500)
+        .call(d4.axisLeft(y).ticks(10))
 
-    let yAxisCum = (g) =>{
-      g
-        .attr("class", "y-axis")
-        .call(d4.axisLeft(y_cumul).ticks(10))
+      path.transition()
+        .duration(500)
+        .attr('id', 'area_chart')
+        .attr('class', 'cumulative_chart')
+        .attr("fill", "#8242a8")
+        .attr("opacity", "0.4")
+        .attr("d", area);
+
+      rects.transition()
+        .duration(500)
+        .attr("display", show_cummul ? "none" : "default")
+        .attr("transform", d => 
+          `translate(${x(d.x0-0.5)}, ${y(d.length)})`
+        )
+        .attr("height", d=> height2 - y(d.length))
+
+      legends.transition()
+        .duration(500)
+        .text(d=> d.length)       
+        .attr("display", show_cummul ? "none" : "default")
+        .attr("opacity", d=> d.length ? 1 : 0)
+        //.attr("transform", d => `translate(${x(d.x0+.25)}, ${y(0)})`)
+        .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
+
+      
     }
 
-    svg.append("g")
-      .attr("transform", d => `translate(${margin.left + 40}, 0)`)
-      .call(yAxisCum)
+    if (is_init){
+      svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width2)
+        .attr("font-size", "11px")
+        .attr("y", height2 + margin.bottom)
+        .text("Mes del reporte");
 
+      svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("x", -25)
+        .attr("y", -20)
+        .attr("dy", "1em")
+        .attr("font-size", "11px")
+        .attr("transform", "rotate(-90)")
+        .text("Número de reportes");
+    }
+    else
+      return
 
-      console.log(data_chart)
-
-    // Desabasto table
     $('#desabasto-table').DataTable({
-      data: data,
+      data: data_desabasto,
       responsive: true,
       columns: [
         { "data": "created", render: function (data) {
