@@ -30,6 +30,20 @@
           <h4 class="text-darkblue text-center"><b>No existen reportes de desabasto</b></h4>
         </div>
         <div id="desabasto-show" RICARDO style="display: default;">
+          <h5>Casos de desabasto</h5>
+          <fieldset>
+            <input type="radio" id="desabasto-acumulado" name="desabasto" checked=checked>
+            <label for="desabasto-acumulado">Acumulado</label>
+            <input type="radio" id="desabasto-individual" name="desabasto">
+            <label for="desabasto-individual">Individual</label>
+          </fieldset>
+          <fieldset>
+            <input type="radio" id="institucion-imss" name="institucion" checked=checked>
+            <label for="institucion-imss">IMSS</label>
+            <input type="radio" id="institucion-todas" name="institucion">
+            <label for="institucion-todas">Todas</label>
+          </fieldset>
+
           <svg id="grafica-desabasto"></svg>
 
         </div>
@@ -51,8 +65,39 @@
       //valor = "key";
     }
     getDesabasto(valor,campo)
+
+
+    $("#desabasto-acumulado").click(function(){
+      cambiaPresentacion("acumulado")
+    })
+    $("#desabasto-individual").click(function () {
+      cambiaPresentacion("individual")
+    })
+    $("#institucion-imss").click(function () {
+      cambiaInstitucion("imss")
+    })
+    $("#institucion-todas").click(function () {
+      cambiaInstitucion("todas")
+    })
   })
 
+  function cambiaPresentacion(valor){
+    if(valor=="acumulado"){
+      console.log(valor);
+    } else {
+      console.log(valor);
+    }
+
+  }
+
+  function cambiaInstitucion(valor) {
+    if (valor == "imss") {
+      console.log(valor);
+    } else {
+      console.log(valor);
+    }
+
+  }
 
   function getDesabasto(clave) {
 
@@ -104,10 +149,10 @@
     let data_chart = data.map(item=>{
       let date = new Date(item.created)
       let month = date.getMonth() + (date.getYear() * 12)
-      let exact = date.getMonth() + (date.getYear() * 12) 
+      let exact = date.getMonth() + (date.getYear() * 12)
         + ( date.getDay() / 31)
       accumulator++
-      return { ...item, 
+      return { ...item,
         ...{ month: month, month_exact: exact, y_cumulative: accumulator } }
     })
     //let range_x = d4.extent(data_chart, d=> d.month)
@@ -132,8 +177,8 @@
       .thresholds(x.ticks(ticks_x));
 
     svg
-      .attr("viewBox", [-20, 5, 
-          width2 + 0 + margin.right + margin.left, 
+      .attr("viewBox", [-20, 5,
+          width2 + 0 + margin.right + margin.left,
           height2 + 10 + margin.bottom+margin.top])
       .append("g")
         .attr("transform",
@@ -156,19 +201,19 @@
 
     const transition1 = svg.transition()
       .duration(1500);
-    
+
 
     var max_y = d4.max(bins, d => d.length + 2)
     var y = d4.scaleLinear()
       .domain([0, max_y])
       .range([height2, margin.bottom])
-      
+
     //let ticks_y = d4.max(bins, d=> d.length)
     let yAxis = (g) =>{
       g
         .attr("class", "y-axis")
         .call(d4.axisLeft(y).ticks(max_y))
-    } 
+    }
 
     svg.append("g")
       .attr("transform", d => `translate(${margin.left}, 0)`)
@@ -177,7 +222,7 @@
     var rects = svg.selectAll("rect")
       .data(bins)
       .enter()
-      //.filter(d=> d.length)    
+      //.filter(d=> d.length)
         .append('rect')
         .attr("width", d => x(d.x1) - x(d.x0))
         .attr("x", 1)
@@ -199,8 +244,8 @@
         .attr("opacity", d=> d.length ? 1 : 0)
         //.attr("transform", d => `translate(${x(d.x0+.25)}, ${y(0)})`)
         .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
-  
-    
+
+
     svg.append("text")
       .attr("class", "x label")
       .attr("text-anchor", "end")
@@ -220,9 +265,9 @@
 
 
     let data_cumul = [
-      { month_exact: 1428, y_cumulative: 0 }, 
-      ...data_chart, 
-      { month_exact: max_x, y_cumulative: data_chart.length }, 
+      { month_exact: 1428, y_cumulative: 0 },
+      ...data_chart,
+      { month_exact: max_x, y_cumulative: data_chart.length },
     ]
 
     var y_cumul = d4.scaleLinear()
@@ -248,7 +293,7 @@
       g
         .attr("class", "y-axis")
         .call(d4.axisLeft(y_cumul).ticks(10))
-    } 
+    }
 
     svg.append("g")
       .attr("transform", d => `translate(${margin.left + 40}, 0)`)
