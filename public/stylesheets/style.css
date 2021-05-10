@@ -155,6 +155,11 @@ h6 {
   top: 10px;
   justify-content: center;
 }
+.notificacion-close {
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
 @media (max-width: 678px) {
   .notificacion {
     display: none;

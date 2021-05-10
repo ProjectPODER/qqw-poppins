@@ -480,3 +480,8 @@ $(document).ready(function () {
 
   });
 });
+
+// Notification close button
+$(".notificacion-close").on("click", function (event) {
+  $(".notificacion").fadeOut();
+});
