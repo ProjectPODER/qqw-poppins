@@ -81,8 +81,9 @@
   let data_desabasto = undefined
 
   window.addEventListener('load', function () {
+    console.log("HOLA DESABASTO")
     if ("{{result.classification}}" == "institution") {
-      campo = "validados=all&institucion=IMSS&estado_nombre="
+      campo = "validados=all&institucion=IMSS&estado_nombre"
       valor = "{{result.area.[0].name}}"
     }
     else {
