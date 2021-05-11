@@ -400,7 +400,6 @@ function initSobrecosto() {
     }
 
   let timeParse = d4.timeParse("%Y-%m-%d")
-  console.log(d4)
 
   if (!product_contracts_data) {
     console.error("initSobrecosto","No product contract data")
@@ -454,9 +453,9 @@ function initSobrecosto() {
       .domain([d4.min(data_diam, d=> d.precio_unitario), d4.quantile(sorted_price, 0.99)])
       .rangeRound([height - margin.bottom, margin.top])
   //let formatY  = d4.format(".0s")
-  let formatY = (e) => `${d4.format(".0s")(e)} MXN`
+  let formatY = (e) => `${d4.format(".2s")(e)} MXN`
 
-  let formatLegend  = d4.format(",.0f")
+  let formatLegend  = d4.format(",.2s")
   let y_overprice = d4.scaleSqrt()
     .domain([0, 0.9, 1.1, d4.quantile(sorted_overprice, 0.99)])
     .range([1, .6, .4, 0])
@@ -598,7 +597,7 @@ function initSobrecosto() {
     .append("text")
       .attr('x', xLabel - 5)
       .attr('y', d =>  yCircle - (r_bubble(d)) )
-      .text( d =>  formatLegend(d/1000)  )
+      .text( d =>  formatLegend(d)  )
       .style("font-size", "7px")
       .attr('alignment-baseline', 'middle')
       .attr('text-anchor', 'end')
