@@ -184,11 +184,10 @@
   </div>
 </section>
 
-
 {{#if data.top_products }}
-  {{#ifCond result.source.id "==" "comprasimss" }}
+  {{#if (filter_array result.source  "id" "comprasimss") }} 
     {{>desabasto-table}}
-  {{/ifCond}}
+  {{/if}}
 
   {{>desabasto-form}}
 {{/if}}
