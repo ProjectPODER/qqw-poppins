@@ -43,25 +43,35 @@
             <input type="radio" id="institucion-todas" name="institucion">
             <label for="institucion-todas">Todas</label>
           </fieldset> --}}
-          <div class="form-check-inline">
-            <label class="form-check-label" for="desabasto-acumulado">
-              <input type="radio" id="desabasto-acumulado" name="desabasto" checked=checked>Acumulado
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label" for="desabasto-individual">
-              <input type="radio" id="desabasto-individual" name="desabasto">Individual
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label" for="institucion-imss">
-              <input type="radio" id="institucion-imss" name="institucion" checked=checked>IMSS
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <label class="form-check-label" for="institucion-todas">
-              <input type="radio" id="institucion-todas" name="institucion">Todas
-            </label>
+          <div class="row flex">
+            <div class="col-md-4 col-12">
+              <p><b>Despliegue de información:</b></p>
+              <div class="form-check-inline">
+                <label class="form-check-label" for="desabasto-acumulado">
+                  <input type="radio" id="desabasto-acumulado" name="desabasto" checked=checked>Acumulado
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label" for="desabasto-individual">
+                  <input type="radio" id="desabasto-individual" name="desabasto">Mensual
+                </label>
+              </div>
+            </div>
+            {{#ifCond result.classification "!=" "institution" }}
+            <div class="col-md-4 col-12">
+              <p><b>Mostrar datos solo de:</b></p>
+              <div class="form-check-inline">
+                <label class="form-check-label" for="institucion-imss">
+                  <input type="radio" id="institucion-imss" name="institucion" checked=checked>IMSS
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label" for="institucion-todas">
+                  <input type="radio" id="institucion-todas" name="institucion">Todas
+                </label>
+              </div>
+            </div>
+            {{/ifCond}}
           </div>
 
           <svg id="grafica-desabasto"></svg>
@@ -81,7 +91,7 @@
   let data_desabasto = undefined
 
   window.addEventListener('load', function () {
-    console.log("HOLA DESABASTO")
+    {{!-- console.log("HOLA DESABASTO") --}}
     if ("{{result.classification}}" == "institution") {
       campo = "validados=all&institucion=IMSS&estado_nombre"
       valor = "{{result.area.[0].name}}"
@@ -195,7 +205,7 @@
           height2 + 10 + margin.bottom+margin.top])
 
     let formatX = (e) => {
-      return e%3 
+      return e%3
         ? ''
         : `${(e%12)+1}/${Math.floor(e/12)-100}`
     }
@@ -214,21 +224,21 @@
       g
         .attr("class", "y-axis")
         .call(d4.axisLeft(y).ticks(10))
-    } 
+    }
 
     var rects = svg
       .selectAll("rect")
       .data(bins)
-    
+
     var legends = svg
       .selectAll(".legend")
       .data(bins)
 
 
     let data_cumul = [
-      { month_exact: 1430, y_cumulative: 0 }, 
-      ...data_chart, 
-      { month_exact: max_x, y_cumulative: data_chart.length }, 
+      { month_exact: 1430, y_cumulative: 0 },
+      ...data_chart,
+      { month_exact: max_x, y_cumulative: data_chart.length },
     ]
 
 
@@ -240,14 +250,14 @@
       .y0(y(0))
       .y1(d => y(d.y_cumulative));
 
-    
+
     //if (!change_axis){
       svg.selectAll("#area_chart").remove()
       const path = svg.append("path")
         .datum(data_cumul)
         .attr("display", show_cummul ? "default" : "none")
     //}
-  
+
 
     if (is_init){
       svg.append("g")
@@ -282,7 +292,7 @@
           .attr("display", show_cummul ? "none" : "default")
           //.attr("transform", d => `translate(${x(d.x0+.25)}, ${y(0)})`)
           .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
-      
+
       path
         .attr('class', 'cumulative_chart')
         .attr('id', 'area_chart')
@@ -310,20 +320,20 @@
       rects.transition()
         .duration(500)
         .attr("display", show_cummul ? "none" : "default")
-        .attr("transform", d => 
+        .attr("transform", d =>
           `translate(${x(d.x0-0.5)}, ${y(d.length)})`
         )
         .attr("height", d=> height2 - y(d.length))
 
       legends.transition()
         .duration(500)
-        .text(d=> d.length)       
+        .text(d=> d.length)
         .attr("display", show_cummul ? "none" : "default")
         .attr("opacity", d=> d.length ? 1 : 0)
         //.attr("transform", d => `translate(${x(d.x0+.25)}, ${y(0)})`)
         .attr("transform", d => `translate(${x(d.x0)}, ${y(d.length+.2)})`)
 
-      
+
     }
 
     if (is_init){
