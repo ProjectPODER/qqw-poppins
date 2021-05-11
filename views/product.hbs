@@ -1,4 +1,6 @@
 <script src="/tiza/tiza.js"></script>
+<script src="../../javascripts/experiment.min.js"></script>
+
 
 {{> profile-header result=result }}
             <li>
@@ -559,10 +561,11 @@ function initSobrecosto() {
   const yCircle = 40
   const width_line = 100;
   const height_legend = 45;
+  const width_legend = 180;
 
   svg
     .append('rect')
-    .attr("width", "180")
+    .attr("width", width_legend)
     .attr("height", height_legend)
     .attr("transform", "translate(185, 0)")
     .style("fill", "#ffffff")
@@ -619,7 +622,7 @@ function initSobrecosto() {
   
   svg
     .append('rect')
-      .attr("width", 180)
+      .attr("width", width_legend)
       .attr("height", height_legend)
       .attr("transform", `translate(${right_legend_line}, 0)`)
       .style("fill", "#ffffff")
@@ -654,6 +657,151 @@ function initSobrecosto() {
       .style("font-size", "10px")
       .style("fill", "#4E4E4E");
 
+
+
+    let legend = ({
+        color,
+        title,
+        tickSize = 6,
+        width = 320, 
+        height = 44 + tickSize,
+        marginTop = 18,
+        marginRight = 0,
+        marginBottom = 16 + tickSize,
+        marginLeft = 0,
+        fontSize = 10,
+        ticks = width / 64,
+        tickFormat,
+        tickValues
+      } = {})=> {
+
+        //const svg = d6.select('#ResultsMap')
+        function buildRect(color, n=64){
+          //const interpolate = d6.interpolateCool
+          var grad = svg
+            .append("defs")
+              .append("linearGradient")
+              .attr("id", "gradient-0")
+          for (var i = 0; i < n+1; i++) {
+            var frac = (i)/n
+            grad.append("stop")
+              .attr("offset",  `${frac*100}%`)
+              .attr("stop-color", ()=>
+                //d6.rgb(interpolate(frac)).hex()
+                d6.rgb(color(frac)).hex()
+              )
+          }
+        }
+
+
+        let tickAdjust = g => g.selectAll(".tick line")
+          .attr("y1", marginTop + marginBottom - height);
+        let x;
+
+
+        // Sequential
+        if (color.interpolator) {
+          //console.log("Secuencial")
+          x = Object.assign(color.copy()
+              .interpolator(d6.interpolateRound(marginLeft, width - marginRight)),
+              {range() { return [marginLeft, width - marginRight]; }});
+
+          buildRect(color.interpolator())
+
+          svg.append('rect')
+              .attr("x", marginLeft)
+              .attr("y", marginTop)
+              .attr("width", width - marginLeft - marginRight)
+              .attr("height", height - marginTop - marginBottom)
+              .style('fill', 'url(#gradient-0)')
+
+          // scaleSequentialQuantile doesn’t implement ticks or tickFormat.
+          if (!x.ticks) {
+            //console.log("no x.thick")
+            if (tickValues === undefined) {
+              const n = Math.round(ticks + 1);
+              tickValues = d6.range(n).map(i => d6.quantile(color.domain(), i / (n - 1)));
+            }
+            if (typeof tickFormat !== "function") {
+              tickFormat = d6.format(tickFormat === undefined ? ",f" : tickFormat);
+            }
+          }
+        }
+
+
+        svg.append("g")
+          .attr("transform", `translate(0,${height - marginBottom})`)
+          .call(d6.axisBottom(x)
+            .ticks(ticks, typeof tickFormat === "string" ? tickFormat : undefined)
+            .tickFormat(typeof tickFormat === "function" ? tickFormat : undefined)
+            .tickSize(tickSize)
+            .tickValues(tickValues))
+          .attr("font-size", `${fontSize*.8}pt`)
+          .call(tickAdjust)
+          .call(g => g.select(".domain").remove())
+          .call(g => g.append("text")
+            .attr("x", marginLeft)
+            .attr("y", marginTop + marginBottom - height - 6)
+            .attr("fill", "currentColor")
+            .attr("text-anchor", "start")
+            //.attr("font-weight", "bold")
+            .attr("font-size", `${fontSize}pt`)
+            .text(title));
+
+        var my_ticks = d6.selectAll('.tick text')
+          .attr("opacity", function(d, i){
+            return d/color.domain()[1]  > .5 && !(i%2) ? 0 : 1
+          })
+      }
+
+      /*let colorCircles = d4.scaleSequential(interpolateTurbo)
+      //let colorCircles = d4.scaleSequential(d4.interpolateCool)
+        .domain([1,0])*/
+      //let colorCircles2 = d4.scaleSequential(interpolateTurbo)
+
+      console.log("d6", d6)
+      
+      //var x = d3.scaleLinear();
+      let max_overprice =  d4.quantile(sorted_overprice, 0.99)
+
+      let y_overprice2 = d4.scaleSqrt()
+        .domain([0, 0.9, 1.1, max_overprice])
+        .range([1, .6, .4, 0])
+      
+
+      var color_map = d6.scaleSequential([0, 2], d6.interpolateTurbo)
+      var color_map2 = d6.scaleSequential([0, .9, 1.1, max_overprice], d6.interpolateTurbo)
+      var color_map3 = d6.scaleSequential([0, .4, .6, 1], d6.interpolateTurbo)
+      var color_map4 = d6.scaleSequential([0, 1], d6.interpolateTurbo)
+      var color_map5 = d6.scaleSequential([1, .6, .4, 0], d6.interpolateTurbo)
+      var color_map6 = d6.scaleSequential([0, 0.4], d6.interpolateTurbo)
+
+      console.log("scale", d6.scaleSequentialSqrt([1, 0], color_map))
+      let domain = [1, 0]
+      //let domain2 = [0, 0.9, 1.1, d4.quantile(sorted_overprice, 0.99)]
+      //let domain2 = [0, d4.quantile(sorted_overprice, 0.99)]
+      console.log("max", max_overprice)
+      let domain2 = [0, max_overprice]
+      let domain3 = [0, 1]
+      let domain4 = [0, 1, max_overprice]
+      let domain5 = [max_overprice, 1.1, 0.9, 0]
+      let domain6 = [max_overprice, 0]
+      let domain7 = [0, 1, max_overprice]
+      let is_small = false
+      legend({
+        color: d6.scaleDivergingSqrt(domain4, d6.interpolateTurbo),
+        title: "Sobrecosto",
+        ticks: 8,
+        fontSize: is_small ? 14 : 7,
+        //marginLeft: is_small ? 20 : 600,
+        marginLeft: is_small ? 20 : 600,
+        marginRight: is_small ? 20 : 20,
+        marginTop: is_small ? 570 : 20,
+        height: is_small ? 615 : 50,
+        //width: is_small ? 400 : 870,
+        width: is_small ? 400 : 780,
+      })
+      return
 
 }
 
