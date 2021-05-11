@@ -464,15 +464,18 @@ function initSobrecosto() {
       .range([margin.left, width - margin.right])
   let formatX = d4.timeFormat("%m/%y")
 
-  let y = d4.scalePow().exponent(1 / 8)
+  //let y = d4.scalePow().exponent(1 / 8)
+  let y = d4.scaleLog()
       .domain([d4.min(data_diam, d=> d.precio_unitario), d4.quantile(sorted_price, 0.99)])
       .rangeRound([height - margin.bottom, margin.top])
   //let formatY  = d4.format(".0s")
   let formatY = (e) => `${d4.format(".2s")(e)} MXN`
 
+  let max_overprice =  Math.max(d4.quantile(sorted_overprice, 0.99), 2)
   let formatLegend  = d4.format(",.2s")
   let y_overprice = d4.scaleSqrt()
-    .domain([0, 0.9, 1.1, d4.quantile(sorted_overprice, 0.99)])
+    //.domain([0, 0.9, 1.1, max_overprice])
+    .domain([0, 0.99, 1.01, max_overprice])
     .range([1, .6, .4, 0])
 
   let min_radius = 12
@@ -501,7 +504,7 @@ function initSobrecosto() {
 
   let yAxis = g => g
     .attr("transform", `translate(${margin.left},0)`)
-    .call(d4.axisLeft(y).tickFormat(formatY).ticks(x_ticks))
+    .call(d4.axisLeft(y).tickFormat(formatY).ticks(8))
     .attr("text-anchor", "end")
     .call(g => g.select(".domain").remove())
     .call(g => g.append("text")
@@ -725,6 +728,7 @@ function initSobrecosto() {
             .attr("width", width - marginLeft - marginRight)
             .attr("height", height - marginTop - marginBottom)
             .style('fill', 'url(#gradient-0)')
+            .style('opacity', '0.65')
 
         // scaleSequentialQuantile doesn’t implement ticks or tickFormat.
         if (!x.ticks) {
@@ -765,7 +769,7 @@ function initSobrecosto() {
         })
     }
 
-    let max_overprice =  d4.quantile(sorted_overprice, 0.99)
+    
     let domain4 = [0, 1, max_overprice]
 
     svg
