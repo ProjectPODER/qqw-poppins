@@ -358,9 +358,13 @@
           }
         },
         { "data": "state.short_name" },
-        { "data": "institution.name" },
-        
-        { "data": "hospital_name_raw", render: function (data, type, row) {
+        { "data": "institution", render(data){
+          return data ? data.public_code : 'Sin institución'
+        }},
+        { "data": "clues", render(data, type, row){
+          return data ? data.name : row.hospital_name_raw || "(no reportado)"
+        }}
+        /*{ "data": "hospital_name_raw", render: function (data, type, row) {
           if (!data) {
             if (row.clues && row.clues.name) {
               {{!-- console.log("clues") --}}
@@ -374,7 +378,7 @@
 
             return data
           }
-        }}
+        }}*/
       ],
       language: datatablesLang,
       "order": [[0, 'desc']]
