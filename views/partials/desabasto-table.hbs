@@ -91,7 +91,6 @@
   let data_desabasto = undefined
 
   window.addEventListener('load', function () {
-    {{!-- console.log("HOLA DESABASTO") --}}
     if ("{{result.classification}}" == "institution") {
       campo = "validados=all&institucion=IMSS&estado_nombre"
       valor = "{{result.area.[0].name}}"
@@ -185,7 +184,7 @@
     //let range_x = d4.extent(data_chart, d=> d.month)
     //let max_x = d4.max(data_chart, d=> d.month) + 1
     let now = new Date()
-    let max_x = (now.getYear() * 12 + now.getMonth() )
+    let max_x = (now.getYear() * 12 + now.getMonth() + 1 )
     let range_x = [1430, max_x]
     let ticks_x = max_x - 1430
 
@@ -287,6 +286,7 @@
           .attr("class", "legend bins_chart")
           .text(d=> d.length)
           .style("text-anchor", "middle")
+          .style("font-size", "11px")
           .style("fill", "grey")
           .attr("opacity", d=> d.length ? 1 : 0)
           .attr("display", show_cummul ? "none" : "default")
@@ -296,7 +296,7 @@
       path
         .attr('class', 'cumulative_chart')
         .attr('id', 'area_chart')
-        .attr("fill", "#8242a8")
+        .attr("fill", "#2b00f7")
         .attr("opacity", "0.4")
         .attr("d", area);
 
@@ -313,7 +313,7 @@
         .duration(500)
         .attr('id', 'area_chart')
         .attr('class', 'cumulative_chart')
-        .attr("fill", "#8242a8")
+        .attr("fill", "#2b00f7")
         .attr("opacity", "0.4")
         .attr("d", area);
 
