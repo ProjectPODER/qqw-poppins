@@ -48,8 +48,7 @@ li {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 100vh;
-  min-height: 500px;
+  min-height: 100vh;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -203,7 +202,7 @@ li {
   font-weight: 800;
   text-align: left;
   text-decoration: none;
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 .news-text {
@@ -229,6 +228,30 @@ li {
 
 .news-img.img-2 {
   background-image: url('../images/68390880_101233211242153_7340457936201711616_n.png');
+}
+
+.news-img.img-1 {
+  background-image: url('../images/_ORIGINAL-PODER-MX---MEDICAMENTOS-IMSS-1300-x800-FULL.jpg');
+}
+
+.news-img.img-3 {
+  background-image: url('../images/_ORIGINAL-PODER-MX---AMLO-MEDICAMENTOS-VIH-1300-x800-FULL.jpg');
+}
+
+.news-img.img-4 {
+  background-image: url('../images/leucemia_Mesa-de-trabajo-1.jpg');
+}
+
+.news-img.img-5 {
+  background-image: url('../images/Portada-ZONADOCS.png');
+}
+
+.news-img.img-6 {
+  background-image: url('../images/nota-sobrecosto-imss.jpg');
+}
+
+.news-img.img-7 {
+  background-image: url('../images/nota-bajacalifornia.png');
 }
 
 .bg-gray {
@@ -295,7 +318,7 @@ li {
   text-align: center;
 }
 
-.div-block {
+.two-logos {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -322,8 +345,8 @@ li {
 }
 
 .logo-ocp {
-  width: 150px;
-  padding-top: 15px;
+  width: 130px;
+  padding-top: 0px;
 }
 
 .main-buttons {
@@ -443,8 +466,12 @@ li {
   background-color: #bf0000;
 }
 
+.btn-secondary.tabs {
+  text-align: center;
+}
+
 .btn-secondary.tabs.w--current {
-  background-color: #292424;
+  background-color: #900000;
 }
 
 .btn-news-container {
@@ -517,6 +544,11 @@ li {
   background-color: #392396;
   color: #ecf0f2;
   text-align: right;
+}
+
+.news-tag.opinion {
+  background-color: #ecf0f2;
+  color: #333;
 }
 
 .card-container {
@@ -699,6 +731,10 @@ li {
   text-align: center;
 }
 
+.luminate-logo {
+  width: 130px;
+}
+
 @media screen and (max-width: 991px) {
   .btn-primary.mg-1 {
     margin-bottom: 15px;
@@ -797,7 +833,7 @@ li {
     padding-left: 15px;
   }
 
-  .div-block {
+  .two-logos {
     padding-top: 0px;
     padding-bottom: 20px;
   }
@@ -883,7 +919,7 @@ li {
     padding-left: 10px;
   }
 
-  .div-block {
+  .two-logos {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-flex-direction: row;
@@ -913,6 +949,14 @@ li {
 
   .medicine-graph {
     width: 100%;
+  }
+
+  .tabs-menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -1905,3 +1949,4 @@ li {
     grid-row-end: 10;
   }
 }
+
