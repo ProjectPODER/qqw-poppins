@@ -62,11 +62,20 @@
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
+                {{#if (filter_array source  "id" "comprasimss") }} 
+                <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
+                  {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
+                    {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
+                    IMSS: {{parties.buyer.name}}
+                </a>
+                {{else}}
+
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.memberOf.id}}" title="{{_ "Comprador" }}: {{parties.buyer.memberOf.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
                     {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
                     {{parties.buyer.memberOf.name}}
                 </a>
+                {{/if}}
               </p>
             </div>
             <div class="col-lg-6 p-0">
