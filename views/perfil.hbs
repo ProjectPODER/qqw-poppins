@@ -41,29 +41,15 @@
             </a>
           </li>
           {{/if}}
-          {{#if data.top_products }}
-            {{#if (filter_array result.source  "id" "comprasimss") }} 
-              <li>
-                <a href="#desabasto-reportado" class="anchor">
-                  <i class="fas fa-dolly"></i> {{{_ "Desabasto"}}}
-                </a>
-              </li>
-            {{/if}}
-          {{/if}}
-          <li>
-            <a href="#reportar-desabasto" class="anchor">
-              <i class="fas fa-dolly"></i> {{{_ "Reportar"}}}
-            </a>
-          </li>
         {{/ifCond}}
-        {{#if data.top_products }}
-          {{#ifCond result.source.id "==" "comprasimss" }}
+        {{#if summaries.buyer_purchase.top_products }}
+          {{#if (filter_array result.source  "id" "comprasimss") }} 
             <li>
               <a href="#desabasto-reportado" class="anchor">
                 <i class="fas fa-dolly"></i> {{{_ "Desabasto"}}}
               </a>
             </li>
-          {{/ifCond}}
+          {{/if}}
 
           <li>
             <a href="#reportar-desabasto" class="anchor">
@@ -157,6 +143,7 @@
         {{/if}}
 {{>profile-header-end }}
 
+{{ j data.top_products }}
 
 <div class="first-profile-section">
   {{>sadico-banner }}
