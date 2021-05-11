@@ -206,8 +206,12 @@ body {
 .buyer-purchase-text,
 .buyer-purchase-text a,
 .supplier-purchase-text,
-.supplier-purchase-text a {
-  color: #f2b707 !important;
+.supplier-purchase-text a,
+.purchase-supplier-text,
+.purchase-supplier-text a,
+.purchase-buyer-text,
+.purchase-buyer-text a {
+  color: #564102 !important;
 }
 .text-darkgray {
   color: #5c5c5c !important;
@@ -2249,6 +2253,10 @@ input[type=submit].landing-search-inputtext {
 }
 .funder-button {
   background: #b6893e !important;
+}
+.purchase-button {
+  background: #f2b707 !important;
+  color: #333 !important;
 }
 .wrap,
 .wrap-contract {
