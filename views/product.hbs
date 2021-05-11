@@ -255,7 +255,7 @@
                   <th>{{{_ "SOBRECOSTO EN MXN"}}}</th>
                   <th>{{{_ "SOBRECOSTO EN %"}}}</th>
                   <th>{{{_ "CANTIDAD PERDIDA"}}}
-                    <a data-toggle="tooltip" data-placement="right" title="{{{_ " Cantidad perdida explicación"}}}">
+                    <a data-toggle="tooltip" data-placement="right" title="{{{_ "Cantidad de unidades que podrían comprarse con el sobrecosto."}}}">
                       <i class="fas fa-info-circle"></i>
                     </a>
                   </th>
@@ -265,7 +265,13 @@
               <tbody>
                 {{#each result.contracts_summaries.buyers }}
                 <tr>
-                  <td title="{{estado.buyer.name}}"><span style="display: inline-block;  max-width: 18em; text-overflow:ellipsis; white-space:nowrap; overflow:hidden">{{estado.buyer.name}}</span></td>
+                  <td title="{{estado.buyer.name}}">
+                    <span style="display: inline-block;  max-width: 18em; text-overflow:ellipsis; white-space:nowrap; overflow:hidden">
+                      <a href="{{url view="instituciones-publicas/:id" _id=estado.buyer.id}}">
+                      {{estado.buyer.name}}
+                      </a>
+                    </span>
+                  </td>
                   <td>{{estado.parties.buyer.address.region}}</td>
                   <td class="text-right">{{doc_count}}</td>
                   <td class="text-right" data-order="{{monto_total}}">{{format_number monto_total}} MXN</td>
@@ -337,11 +343,12 @@
                 {{#each result.contracts_summaries.suppliers }}
                 <tr>
                   <td>
-                    <a href=""><i class="fas fa-map-marked"></i> <a href="{{ url view="empresas" _id=key}}" title="">{{nombre.awards.suppliers.[0].name}}</a>
+                    <i class="fas fa-map-marked"></i> 
+                    <a href="{{ url view="empresas/:id" _id=nombre.awards.suppliers.[0].id}}" title="{{nombre.awards.suppliers.[0].name}}">{{nombre.awards.suppliers.[0].name}}</a>
                   </td>
                   <td class="text-right">{{format_number doc_count}}</td>
-                  <td class="text-right" data-order="{{monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
-                  <td class="text-right" data-order="{{sobrecosto}}">{{format_percentage sobrecosto }}</td>
+                  <td class="text-right" data-order="{{fix_number monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
+                  <td class="text-right" data-order="{{fix_number sobrecosto}}">{{format_percentage sobrecosto }}</td>
                   <td class="text-right" data-order="{{cantidad_perdida}}">{{format_number cantidad_perdida }}</td>
                   <td class="text-right" data-order="{{ultima_compra}}">{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
                 </tr>
