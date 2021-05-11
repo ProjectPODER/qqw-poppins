@@ -82,11 +82,11 @@
 
   window.addEventListener('load', function () {
     if ("{{result.classification}}" == "institution") {
-      campo = "institucion=imss&estado_nombre="
+      campo = "validados=all&institucion=IMSS&estado_nombre="
       valor = "{{result.area.[0].name}}"
     }
     else {
-      campo = "clave";
+      campo = "validados=all&clave";
       valor = "{{result.id}}";
       //valor = "key";
     }
@@ -114,8 +114,9 @@
   function getDesabasto(campo, valor) {
 
     console.log("Consultando reportes de desabasto", valor, campo)
-    //RICARDO acá forcé "clave"
-    let reports_url = "https://api.yeeko.org/api-rest/desabasto/reports/?"+campo+"=" + valor + "&format=json";
+    const base_api = 'https://api.yeeko.org/api-rest/desabasto'
+    const commons = '&supplies=false&format=json'
+    let reports_url = `${base_api}/reports/?${campo}=${valor}${commons}`;
     $.get(reports_url, function (data) {
       console.log("Respuesta reportes de desabasto", data);
       if (data.count == 0) {
@@ -157,7 +158,7 @@
     let accumulator = 0;
 
     let data_filtered = data_desabasto.filter(item=>
-       only_imss ? item.institution.code == 'IMSS' : true)
+      only_imss ? (item.institution && item.institution.code) == 'IMSS' : true )
   
     const transition1 = svg.transition()
       .duration(1500);
@@ -358,7 +359,7 @@
         { "data": "state.short_name" },
         { "data": "institution.public_name" },
         { "data": "hospital_name_raw", render: function (data) {
-          if (data.length < 1) {
+          if (data_desabasto.length < 1) {
             return "(no reportado)"
           } else {
             return data
