@@ -71,9 +71,9 @@ table {
         <a href="https://tinyurl.com/informetransparencia" target="_blank" class="btn-primary mg-1 w-button">Informe de CeroDesabasto</a>
         <a href="https://saluddineroycorrupcion.quienesquien.wiki/es/salud-estados" target="_blank" class="btn-primary mg-1 w-button">Compras por estado</a>
         <a href="https://www.quienesquien.wiki/es/buscador?collection=contracts&amp;name=&amp;tipo-entidad=purchase&amp;pais=&amp;estado=&amp;ciudad=&amp;fuente=&amp;size=&amp;sort-all=" target="_blank" class="btn-primary mg-1 w-button">Buscador de compras</a>
-        <a href="#sobrecosto" class="btn-primary mg-1 w-button">Cálculo del sobrecosto</a>
+        <a href="/es/salud#sobrecosto" class="btn-primary mg-1 w-button">Cálculo del sobrecosto</a>
       </div>
-      <a href="#introduccion" class="w-inline-block"><img src="images/chevron-down-solid.svg" loading="lazy" alt="" class="arrow-down"></a>
+      <a href="/es/salud#introduccion" class="w-inline-block"><img src="images/chevron-down-solid.svg" loading="lazy" alt="" class="arrow-down"></a>
     </div>
   </section>
   <section id="introduccion" class="section">
@@ -307,7 +307,7 @@ table {
       <p>El precio de referencia se calcula haciendo un promedio ponderado de todos los precios de una misma clave del IMSS en un mismo año. Esta fórmula tiene en cuenta las fluctuaciones de precio anual, se adapta a situaciones de escasez y permite calcular el sobreprecio de las más de 24 mil claves distintas que el IMSS ha comprado a lo largo del periodo analizado. El defecto de la fórmula es que en caso de que todas las compras tuvieran sobreprecio, el precio de referencia se dispara hacia arriba y esconde el sobrecosto.<br></p>
       <p>Comparando los precios de referencia calculados para este proyecto con los de la Organización Panamericana de la Salud (OPS) se observa un incremento promedio de casi 800% en el precio de referencia de 15 claves de medicamentos antirretrovirales. Es decir, si este patrón se replicara en todas las claves del IMSS, el sobrecosto sería de 147 mil millones de pesos.</p>
       <div class="btn-container">
-        <a href="#metodologia" class="btn-primary w-button">Si quieres conocer más, ve a la Metodología</a>
+        <a href="/es/salud#metodologia" class="btn-primary w-button">Si quieres conocer más, ve a la Metodología</a>
       </div>
       <div class="medicine-container">
         <div class="medicine-title">
@@ -585,7 +585,7 @@ table {
       </div>
       <p>Al respecto de modificaciones y/o eliminación de datos, informamos que los datos en posesión de PODER, así como aquellos que aparecen en las publicaciones QuiénEsQuién.Wiki o Salud, Dinero y Corrupción, han sido obtenidos de diversas fuentes de acceso al público, por lo que de conformidad con la fracción II del artículo 10 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, estos pueden tratados sin necesidad del consentimiento del titular. PODER no se responsabiliza de la exactitud o inexactitud de la información que se publique en su sitio web, al no ser la fuente originaria de la misma.</p>
       <h3>Sobrecosto</h3>
-      <p>En la sección “<a href="#sobrecosto">¿Cómo calculamos el sobrecosto?</a>” se explican las razones de la elección del cálculo de referencia y se compara con otras opciones existentes. Esta sección se centra en detalles técnicos del proceso del cálculo, que fueron:</p>
+      <p>En la sección “<a href="/es/salud#sobrecosto">¿Cómo calculamos el sobrecosto?</a>” se explican las razones de la elección del cálculo de referencia y se compara con otras opciones existentes. Esta sección se centra en detalles técnicos del proceso del cálculo, que fueron:</p>
       <ol role="list">
         <li>Identificación del año de la compra a través del operador “pr=” que aparece en la url de todas la compras del portal Compras IMSS. En algunos casos este operador pertenece a un año distinto que la fecha de la compra debido a la temporización de algunas compras consolidadas.</li>
         <li>Segmentamos por año y clave de producto, y dentro de este subconjunto se realiza un promedio del Precio Unitario (PU) ponderado por la Cantidad Comprada (CC). Este campo lo llamamos Promedio Ponderado Unitario Anual (PPUA).</li>
@@ -641,7 +641,7 @@ table {
       <p><strong>Dirección de proyecto:</strong> Eduard Martín-Borregón<br><strong>Coordinación de periodismo:</strong> Claudia Ocaranza<br><strong>Coordinación de tecnología:</strong> Martín Szyszlican<br><strong>Análisis y visualización de datos: </strong>Queletzú Aspra<br><strong>Desarrollo Back-End:</strong> Fernando Matzdorf<br><strong>Desarrollo Front-End: </strong>Marisol Carrillo <br><strong>Investigación y redacción: </strong>Ricardo Balderas<br><strong>Colaboración en análisis de datos: </strong>Celso Alan Villegas<br><strong>Investigación desabasto:</strong> Andrés Castañeda, Juan Mendez y equipo de Nosotrxs<br><strong>Gráficas de medicamentos en QuiénEsQuién.Wiki:</strong> Ricardo Sangines y equipo de Yeeko<br><strong>Periodistas aliades:</strong> Dulce Rodríguez de BI Noticias, Elizabeth Rosales de Newsweek Baja California, Alejandra Padilla de Serendipia, Ernesto Aroche de LadoB y Darwin Franco de ZonaDocs.<br><strong>Comunicación externa:</strong> María Fernanda Wray y Mariela Álvarez<br><strong>Ilustraciones: </strong>Dani Scharf<br><strong>Codirección Ejecutiva de PODER:</strong> Fernanda Hopenhaym y Elena Arengo<br><strong>Apoyo, cuidado e inspiración:</strong> Compañeres de PODER.</p>
       <p><strong>Agradecimientos:</strong> Este proyecto es producto de años de trabajo y ha sido retroalimentado por muchas personas, entre las cuales están Giulio Petrocco, Alba Florencia A. López Martín (EPD), Cesar Jeronimo Esquinca, Oscar Hernandez, Camila Salazar y José Antonio Garcia, además de todas aquellas personas que nos han guiado, asesorado o dado información en algún momento pero nos pidieron no nombrarlas para protegerlas.<br></p>
       <p>El código abierto es la base de nuestro desarrollo. Queremos agradecer a Diego Valle por la librería de r mxmaps con la que hicimos <a href="https://www.diegovalle.net/mxmaps/" target="_blank">el mapa hexagonal</a> de México, y animar a hacer una donación a algunos de los siguientes proyectos que están buscando financiación: <a href="https://opencollective.com/bootstrap" target="_blank">bootstrap</a>, <a href="https://opencollective.com/popperjs" target="_blank">popper</a>, <a href="https://github.com/sponsors/isaacs" target="_blank">glob</a>, <a href="https://github.com/sponsors/ljharb" target="_blank">has-symbols</a>, <a href="https://opencollective.com/eslint" target="_blank">eslint</a>, <a href="https://github.com/sponsors/sindresorhus" target="_blank">globals</a> y <a href="https://github.com/chalk/ansi-styles?sponsor=1" target="_blank">ansi-styles</a>.<br></p>
-      <p>Todo trabajo es una base del anterior, y no hubiéramos conseguido hacer este proyecto sin el apoyo que hemos recibido en otro momentos de Hivos.<br></p>
+      <p>Todo trabajo es una base del anterior, y no hubiéramos conseguido hacer este proyecto sin el apoyo que hemos recibido en otro momento de Hivos.<br></p>
     </div>
   </section>
   <section id="contacto" class="section bg-red">
