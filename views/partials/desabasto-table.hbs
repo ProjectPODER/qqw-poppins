@@ -352,10 +352,18 @@
       data: data_desabasto,
       responsive: true,
       columns: [
-        { "data": "created", render: function (data) {
+        { "data": {
+          _: function (data) {
+            let date = new Date(data.created)
+            return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear()
+          },
+          sort: "created",
+          render: function (data) {
             let date = new Date(data)
             return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear()
           }
+        } 
+        
         },
         { "data": "state.short_name" },
         { "data": "institution", render(data){
@@ -378,6 +386,7 @@
 
             return data
           }
+
         }}*/
       ],
       language: datatablesLang,
