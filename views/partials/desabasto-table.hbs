@@ -113,11 +113,11 @@
   })
 
   function getDesabasto(campo, valor) {
-
+    let real_valor = valor == 'México' ? '' : valor
     console.log("Consultando reportes de desabasto", valor, campo)
     const base_api = 'https://api.yeeko.org/api-rest/desabasto'
     const commons = '&supplies=false&format=json'
-    let reports_url = `${base_api}/reports/?${campo}=${valor}${commons}`;
+    let reports_url = `${base_api}/reports/?${campo}=${real_valor}${commons}`;
     $.get(reports_url, function (data) {
       console.log("Respuesta reportes de desabasto", data);
       if (data.count == 0) {
@@ -365,7 +365,10 @@
         } 
         
         },
-        { "data": "state.short_name" },
+        //{ "data": "state.short_name" },
+        { "data": "state", render(data, type, row){
+          return data ? data.short_name : 'Sin entidad'
+        }},
         { "data": "institution", render(data){
           return data ? data.public_code : 'Sin institución'
         }},
