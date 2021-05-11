@@ -53,7 +53,7 @@
                 <a href="{{url view="buscador" collection="contracts"}}">
                   <h3>
                     <strong>
-                      {{format_number stats.classification.contract.count}}
+                      {{format_number (math stats.classification.contract.count "+" stats.classification.purchase.count)}}
                     </strong>
                   </h3>
                   <h3 class="card-h3"><i class="fas fa-file-alt"></i> {{{_ "Contratos"}}}
