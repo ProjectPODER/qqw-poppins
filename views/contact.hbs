@@ -30,6 +30,7 @@
                   <textarea name="message" rows="10" id="message" maxlength="1000" class="form-control"></textarea>
                   <span class="help-block"></span>
                 </div>
+                <input type="hidden" name="referer" id="referer" value="{{{referer}}}">
                 <div class="mb-4">
                     <button id="send_email" type="submit" class="btn btn-primary contact-submit">{{_ "Enviar" }}</button>
                     <input id="send_email" type="hidden" name="contact_form" value="true">
