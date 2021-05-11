@@ -57,6 +57,7 @@
                 </label>
               </div>
             </div>
+            {{#ifCond result.classification "!=" "institution" }}
             <div class="col-md-4 col-12">
               <p><b>Mostrar datos solo de:</b></p>
               <div class="form-check-inline">
@@ -70,6 +71,7 @@
                 </label>
               </div>
             </div>
+            {{/ifCond}}
           </div>
 
           <svg id="grafica-desabasto"></svg>
@@ -89,7 +91,7 @@
   let data_desabasto = undefined
 
   window.addEventListener('load', function () {
-    console.log("HOLA DESABASTO")
+    {{!-- console.log("HOLA DESABASTO") --}}
     if ("{{result.classification}}" == "institution") {
       campo = "validados=all&institucion=IMSS&estado_nombre"
       valor = "{{result.area.[0].name}}"
