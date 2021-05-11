@@ -358,11 +358,20 @@
           }
         },
         { "data": "state.short_name" },
-        { "data": "institution.public_name" },
-        { "data": "hospital_name_raw", render: function (data) {
-          if (data_desabasto.length < 1) {
-            return "(no reportado)"
+        { "data": "institution.name" },
+        
+        { "data": "hospital_name_raw", render: function (data, type, row) {
+          if (!data) {
+            if (row.clues && row.clues.name) {
+              {{!-- console.log("clues") --}}
+              return row.clues.name
+            } else {
+              {{!-- console.log("no") --}}
+              return "(no reportado)"
+            }
           } else {
+              {{!-- console.log("original") --}}
+
             return data
           }
         }}

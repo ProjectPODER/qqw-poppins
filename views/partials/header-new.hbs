@@ -20,5 +20,8 @@
 {{#if (conf "notificacion_es") }}
 <div class="navbar bg-dark text-white fixed-top notificacion">
   {{{ conf "notificacion_es" }}}
+  <button type="button" class="close notificacion-close" aria-label="Close">
+    <span aria-hidden="true" class="text-white">×</span>
+  </button>
 </div>
 {{/if}}
