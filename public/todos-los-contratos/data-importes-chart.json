@@ -1,0 +1,156 @@
+[
+    {
+        "dataset": {
+            "label": "QuienEsQuien.Wiki",
+        },
+        "years": [
+            {
+                "year": 2012,
+                "criteria_score": {
+                    "total_score": 0.5,
+                    "transparencia": 0.2,
+                    "temporalidad": 0.6,
+                    "competitividad": 0.4,
+                    "trazabilidad": 0.4
+                }
+            },
+            {
+                "year": 2013,
+                "criteria_score": {
+                    "total_score": 0.1,
+                    "transparencia": 0.28,
+                    "temporalidad": 0.95,
+                    "competitividad": 0.25,
+                    "trazabilidad": 0.65
+                }
+            },
+            {
+                "year": 2014,
+                "criteria_score": {
+                    "total_score": 0.30,
+                    "transparencia": 0.87,
+                    "temporalidad": 0.32,
+                    "competitividad": 0.67,
+                    "trazabilidad": 0.40
+                }
+            },
+            {
+                "year": 2015,
+                "criteria_score": {
+                    "total_score": 0.73,
+                    "transparencia": 0.20,
+                    "temporalidad": 0.53,
+                    "competitividad": 0.49,
+                    "trazabilidad": 0.6
+                }
+            },
+            {
+                "year": 2016,
+                "criteria_score": {
+                    "total_score": 0.18,
+                    "transparencia": 0.85,
+                    "temporalidad": 0.62,
+                    "competitividad": 0.39,
+                    "trazabilidad": 0.40
+                }
+            },
+            {
+                "year": 2017,
+                "criteria_score": {
+                    "total_score": 0.32,
+                    "transparencia": 0.10,
+                    "temporalidad": 0.81,
+                    "competitividad": 0.90,
+                    "trazabilidad": 0.51
+                }
+            },
+            {
+                "year": 2018,
+                "criteria_score": {
+                    "total_score": 0.49,
+                    "transparencia": 0.19,
+                    "temporalidad": 0.30,
+                    "competitividad": 0.41,
+                    "trazabilidad": 0.91
+                }
+            },
+        ]
+    },
+    {
+        "dataset": {
+            "label": "Compranet 2.0",
+        },
+        "years": [
+            {
+                "year": 2012,
+                "criteria_score": {
+                    "total_score": 0.37,
+                    "transparencia": 0.10,
+                    "temporalidad": 0.68,
+                    "competitividad": 0.20,
+                    "trazabilidad": 0.86
+                }
+            },
+            {
+                "year": 2013,
+                "criteria_score": {
+                    "total_score": 0.30,
+                    "transparencia": 0.52,
+                    "temporalidad": 0.57,
+                    "competitividad": 0.74,
+                    "trazabilidad": 0.82
+                }
+            },
+            {
+                "year": 2014,
+                "criteria_score": {
+                    "total_score": 0.20,
+                    "transparencia": 0.93,
+                    "temporalidad": 0.35,
+                    "competitividad": 0.28,
+                    "trazabilidad": 0.50
+                }
+            },
+            {
+                "year": 2015,
+                "criteria_score": {
+                    "total_score": 0.64,
+                    "transparencia": 0.31,
+                    "temporalidad": 0.67,
+                    "competitividad": 0.86,
+                    "trazabilidad": 0.92
+                }
+            },
+            {
+                "year": 2016,
+                "criteria_score": {
+                    "total_score": 0.53,
+                    "transparencia": 0.72,
+                    "temporalidad": 0.16,
+                    "competitividad": 0.24,
+                    "trazabilidad": 0.85
+                }
+            },
+            {
+                "year": 2017,
+                "criteria_score": {
+                    "total_score": 0.29,
+                    "transparencia": 0.32,
+                    "temporalidad": 0.63,
+                    "competitividad": 0.69,
+                    "trazabilidad": 0.74
+                }
+            },
+            {
+                "year": 2018,
+                "criteria_score": {
+                    "total_score": 0.29,
+                    "transparencia": 0.45,
+                    "temporalidad": 0.63,
+                    "competitividad": 0.58,
+                    "trazabilidad": 0.63
+                }
+            },
+        ]
+    }
+]

@@ -1,0 +1,156 @@
+[
+    {
+        "dataset": {
+            "label": "QuienEsQuien.Wiki"
+        },
+        "years" :
+        [
+            {
+                "year" : 2002,
+                "criteria_score" : { "total_score" : 59.52 }
+            },
+            {
+                "year" : 2003,
+                "criteria_score" : { "total_score" : 51.19 }
+            },
+            {
+                "year" : 2004,
+                "criteria_score" : { "total_score" : 60.52 }
+            },
+            {
+                "year" : 2005,
+                "criteria_score" : { "total_score" : 84.52 }
+            },
+            {
+                "year" : 2006,
+                "criteria_score" : { "total_score" : 51.19 }
+            },
+            {
+                "year" : 2007,
+                "criteria_score" : { "total_score" : 60.71 }
+            },
+            {
+                "year" : 2008,
+                "criteria_score" : { "total_score" : 60.12 }
+            },
+            {
+                "year" : 2009,
+                "criteria_score" : { "total_score" : 59.76 }
+            },
+            {
+                "year" : 2010,
+                "criteria_score" : { "total_score" : 54.24 }
+            },
+            {
+                "year" : 2011,
+                "criteria_score" : { "total_score" : 57.30 }
+            },
+            {
+                "year" : 2012,
+                "criteria_score" : { "total_score" : 58.12 }
+            },
+            {
+                "year" : 2013,
+                "criteria_score" : { "total_score" : 58.49 }
+            },
+            {
+                "year" : 2014,
+                "criteria_score" : { "total_score" : 59.38 }
+            },
+            {
+                "year" : 2015,
+                "criteria_score" : { "total_score" : 57.98 }
+            },
+            {
+                "year" : 2016,
+                "criteria_score" : { "total_score" : 56.23 }
+            },
+            {
+                "year" : 2017,
+                "criteria_score" : { "total_score" : 56.53 }
+            },
+            {
+                "year" : 2018,
+                "criteria_score" : { "total_score" : 57.13 }
+            }
+        ]
+    },
+    {
+        "dataset": {
+            "label": "datos.gob.mx/contratacionesabiertas"
+        },
+        "years" :
+        [
+          {
+              "year" : 2002,
+              "criteria_score" : { "total_score" : 0 }
+          },
+            {
+                "year" : 2003,
+                "criteria_score" : { "total_score" : 19.64 }
+            },
+            {
+                "year" : 2004,
+                "criteria_score" : { "total_score" : 0 }
+            },
+            {
+                "year" : 2005,
+                "criteria_score" : { "total_score" : 0 }
+            },
+            {
+                "year" : 2006,
+                "criteria_score" : { "total_score" : 0 }
+            },
+            {
+                "year" : 2007,
+                "criteria_score" : { "total_score" : 0 }
+            },
+            {
+                "year" : 2008,
+                "criteria_score" : { "total_score" : 23.21 }
+            },
+            {
+                "year" : 2009,
+                "criteria_score" : { "total_score" : 0 }
+            },
+            {
+                "year" : 2010,
+                "criteria_score" : { "total_score" : 0 }
+            },
+          
+            {
+                "year" : 2011,
+                "criteria_score" : { "total_score" : 23.21 }
+            },
+            {
+                "year" : 2012,
+                "criteria_score" : { "total_score" : 25.77 }
+            },
+            {
+                "year" : 2013,
+                "criteria_score" : { "total_score" : 22.33 }
+            },
+            {
+                "year" : 2014,
+                "criteria_score" : { "total_score" : 24.04 }
+            },
+            {
+                "year" : 2015,
+                "criteria_score" : { "total_score" : 26.43 }
+            },
+            {
+                "year" : 2016,
+                "criteria_score" : { "total_score" : 30.50 }
+            },
+            {
+                "year" : 2017,
+                "criteria_score" : { "total_score" : 35.16 }
+            },
+            {
+                "year" : 2018,
+                "criteria_score" : { "total_score" : 36.82 }
+            }
+        ]
+
+    }
+]
