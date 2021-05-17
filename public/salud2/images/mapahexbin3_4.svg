@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   class="svglite"
+   width="576.00pt"
+   height="288.00pt"
+   viewBox="0 0 576.00 288.00"
+   version="1.1"
+   id="svg154"
+   sodipodi:docname="mapahexbin3_4.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata158">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     id="namedview156"
+     showgrid="false"
+     inkscape:zoom="1.1015625"
+     inkscape:cx="217.89559"
+     inkscape:cy="146.89222"
+     inkscape:window-x="1992"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g152" />
+  <defs
+     id="defs4">
+    <style
+       type="text/css"
+       id="style2"><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+  </defs>
+  <defs
+     id="defs11">
+    <clipPath
+       id="cpMC4wMHw1NzYuMDB8MC4wMHwyODguMDA=">
+      <rect
+         x="0.00"
+         y="0.00"
+         width="576.00"
+         height="288.00"
+         id="rect8" />
+    </clipPath>
+  </defs>
+  <g
+     clip-path="url(#cpMC4wMHw1NzYuMDB8MC4wMHwyODguMDA=)"
+     id="g13" />
+  <defs
+     id="defs18">
+    <clipPath
+       id="cpMTE2LjI4fDQ1OS43MnwxNy44NnwyODguMDA=">
+      <rect
+         x="116.28"
+         y="17.86"
+         width="343.45"
+         height="270.14"
+         id="rect15" />
+    </clipPath>
+  </defs>
+  <g
+     id="g1032">
+    <g
+       id="g148"
+       clip-path="url(#cpMTE2LjI4fDQ1OS43MnwxNy44NnwyODguMDA=)">
+      <polygon
+         id="polygon20"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="282.96,82.76 293.04,100.3 282.96,117.84 262.82,117.84 252.75,100.3 262.82,82.76 " />
+      <polygon
+         id="polygon22"
+         style="fill:#9788b2;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="162.1,47.68 172.17,65.22 162.1,82.76 141.96,82.76 131.89,65.22 141.96,47.68 " />
+      <polygon
+         id="polygon24"
+         style="fill:#3d348b;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="162.1,82.76 172.17,100.3 162.1,117.84 141.96,117.84 131.89,100.3 141.96,82.76 " />
+      <polygon
+         id="polygon26"
+         style="fill:#b79877;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="403.83,188.01 413.9,205.55 403.83,223.1 383.68,223.1 373.61,205.55 383.68,188.01 " />
+      <polygon
+         id="polygon28"
+         style="fill:#7678ed;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="282.96,47.68 293.04,65.22 282.96,82.76 262.82,82.76 252.75,65.22 262.82,47.68 " />
+      <polygon
+         id="polygon30"
+         style="fill:#7678ed;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="252.75,135.39 262.82,152.93 252.75,170.47 232.6,170.47 222.53,152.93 232.6,135.39 " />
+      <polygon
+         id="polygon32"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="343.4,223.1 353.47,240.64 343.4,258.18 323.25,258.18 313.18,240.64 323.25,223.1 " />
+      <polygon
+         id="polygon34"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="252.75,30.14 262.82,47.68 252.75,65.22 232.6,65.22 222.53,47.68 232.6,30.14 " />
+      <polygon
+         id="polygon36"
+         style="fill:#7678ed;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="313.18,170.47 323.25,188.01 313.18,205.55 293.04,205.55 282.96,188.01 293.04,170.47 " />
+      <polygon
+         id="polygon38"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="222.53,47.68 232.6,65.22 222.53,82.76 202.39,82.76 192.32,65.22 202.39,47.68 " />
+      <polygon
+         id="polygon40"
+         style="fill:#7678ed;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="282.96,117.84 293.04,135.39 282.96,152.93 262.82,152.93 252.75,135.39 262.82,117.84 " />
+      <polygon
+         id="polygon42"
+         style="fill:#9788b2;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="252.75,205.55 262.82,223.1 252.75,240.64 232.6,240.64 222.53,223.1 232.6,205.55 " />
+      <polygon
+         id="polygon44"
+         style="fill:#3d348b;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="343.4,152.93 353.47,170.47 343.4,188.01 323.25,188.01 313.18,170.47 323.25,152.93 " />
+      <polygon
+         id="polygon46"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="252.75,100.3 262.82,117.84 252.75,135.39 232.6,135.39 222.53,117.84 232.6,100.3 " />
+      <polygon
+         id="polygon48"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="282.96,152.93 293.04,170.47 282.96,188.01 262.82,188.01 252.75,170.47 262.82,152.93 " />
+      <polygon
+         id="polygon50"
+         style="fill:#b79877;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="252.75,170.47 262.82,188.01 252.75,205.55 232.6,205.55 222.53,188.01 232.6,170.47 " />
+      <polygon
+         id="polygon52"
+         style="fill:#3d348b;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="282.96,188.01 293.04,205.55 282.96,223.1 262.82,223.1 252.75,205.55 262.82,188.01 " />
+      <polygon
+         id="polygon54"
+         style="fill:#3d348b;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="222.53,82.76 232.6,100.3 222.53,117.84 202.39,117.84 192.32,100.3 202.39,82.76 " />
+      <polygon
+         id="polygon56"
+         style="fill:#d7a83c;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="313.18,65.22 323.25,82.76 313.18,100.3 293.04,100.3 282.96,82.76 293.04,65.22 " />
+      <polygon
+         id="polygon58"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="313.18,240.64 323.25,258.18 313.18,275.72 293.04,275.72 282.96,258.18 293.04,240.64 " />
+      <polygon
+         id="polygon60"
+         style="fill:#7678ed;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="313.18,205.55 323.25,223.1 313.18,240.64 293.04,240.64 282.96,223.1 293.04,205.55 " />
+      <polygon
+         id="polygon62"
+         style="fill:#9788b2;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="313.18,135.39 323.25,152.93 313.18,170.47 293.04,170.47 282.96,152.93 293.04,135.39 " />
+      <polygon
+         id="polygon64"
+         style="fill:#9788b2;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="434.04,205.55 444.11,223.1 434.04,240.64 413.9,240.64 403.83,223.1 413.9,205.55 " />
+      <polygon
+         id="polygon66"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="313.18,100.3 323.25,117.84 313.18,135.39 293.04,135.39 282.96,117.84 293.04,100.3 " />
+      <polygon
+         id="polygon68"
+         style="fill:#3d348b;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="192.32,65.22 202.39,82.76 192.32,100.3 172.17,100.3 162.1,82.76 172.17,65.22 " />
+      <polygon
+         id="polygon70"
+         style="fill:#9788b2;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="192.32,30.14 202.39,47.68 192.32,65.22 172.17,65.22 162.1,47.68 172.17,30.14 " />
+      <polygon
+         id="polygon72"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="373.61,205.55 383.68,223.1 373.61,240.64 353.47,240.64 343.4,223.1 353.47,205.55 " />
+      <polygon
+         id="polygon74"
+         style="fill:#d7a83c;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="343.4,82.76 353.47,100.3 343.4,117.84 323.25,117.84 313.18,100.3 323.25,82.76 " />
+      <polygon
+         id="polygon76"
+         style="fill:#d7a83c;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="343.4,188.01 353.47,205.55 343.4,223.1 323.25,223.1 313.18,205.55 323.25,188.01 " />
+      <polygon
+         id="polygon78"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="343.4,117.84 353.47,135.39 343.4,152.93 323.25,152.93 313.18,135.39 323.25,117.84 " />
+      <polygon
+         id="polygon80"
+         style="fill:#5a56bc;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="434.04,170.47 444.11,188.01 434.04,205.55 413.9,205.55 403.83,188.01 413.9,170.47 " />
+      <polygon
+         id="polygon82"
+         style="fill:#7678ed;stroke:#a9a9a9;stroke-width:0.43000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
+         points="252.75,65.22 262.82,82.76 252.75,100.3 232.6,100.3 222.53,82.76 232.6,65.22 " />
+      <text
+         id="text84"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="23.389999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="104.39"
+         x="152.03">BCS</text>
+      <text
+         id="text86"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="15.8"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="69.300003"
+         x="152.03">BC</text>
+      <text
+         id="text88"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="18.959999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="86.839996"
+         x="182.25">SIN</text>
+      <text
+         id="text90"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="24.65"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="51.759998"
+         x="182.25">SON</text>
+      <text
+         id="text92"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="23.389999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="104.39"
+         x="212.46001">NAY</text>
+      <text
+         id="text94"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="25.91"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="69.300003"
+         x="212.46001">DGO</text>
+      <text
+         id="text96"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="25.91"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="227.17999"
+         x="242.67999">GRO</text>
+      <text
+         id="text98"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="29.07"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="192.09"
+         x="242.67999">MICH</text>
+      <text
+         id="text100"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="23.389999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="157.00999"
+         x="242.67999">COL</text>
+      <text
+         id="text102"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="19.610001"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="121.93"
+         x="242.67999">JAL</text>
+      <text
+         id="text104"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="22.75"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="86.839996"
+         x="242.67999">ZAC</text>
+      <text
+         id="text106"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="27.809999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="51.759998"
+         x="242.67999">CHIH</text>
+      <text
+         id="text108"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="26.540001"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="209.64"
+         x="272.89001">MOR</text>
+      <text
+         id="text110"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="24.65"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="174.55"
+         x="272.89001">MEX</text>
+      <text
+         id="text112"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="24.65"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="139.47"
+         x="272.89001">GTO</text>
+      <text
+         id="text114"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="24.030001"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="104.39"
+         x="272.89001">AGS</text>
+      <text
+         id="text116"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="32.869999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="69.300003"
+         x="272.89001">COAH</text>
+      <text
+         id="text118"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="24.030001"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="262.26001"
+         x="303.10999">OAX</text>
+      <text
+         id="text120"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="23.389999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="227.17999"
+         x="303.10999">PUE</text>
+      <text
+         id="text122"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="33.490002"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="192.09"
+         x="303.10999">CDMX</text>
+      <text
+         id="text124"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="25.91"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="157.00999"
+         x="303.10999">QRO</text>
+      <text
+         id="text126"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="21.51"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="121.93"
+         x="303.10999">SLP</text>
+      <text
+         id="text128"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="14.54"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="86.839996"
+         x="303.10999">NL</text>
+      <text
+         id="text130"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="31.610001"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="244.72"
+         x="333.32001">CHPS</text>
+      <text
+         id="text132"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="28.450001"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="209.64"
+         x="333.32001">TLAX</text>
+      <text
+         id="text134"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="25.91"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="174.55"
+         x="333.32001">HGO</text>
+      <text
+         id="text136"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="23.389999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="139.47"
+         x="333.32001">VER</text>
+      <text
+         id="text138"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="24.01"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="104.39"
+         x="333.32001">TAM</text>
+      <text
+         id="text140"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="22.129999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="227.17999"
+         x="363.54001">TAB</text>
+      <text
+         id="text142"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="32.869999"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="209.64"
+         x="393.75">CAMP</text>
+      <text
+         id="text144"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="34.759998"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="227.17999"
+         x="423.97">QROO</text>
+      <text
+         id="text146"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="24.02"
+         style="font-size:11.38000011px;font-family:Arial;text-anchor:middle"
+         y="192.09"
+         x="423.97">YUC</text>
+    </g>
+    <g
+       transform="translate(24.826677)"
+       id="g152"
+       clip-path="url(#cpMC4wMHw1NzYuMDB8MC4wMHwyODguMDA=)">
+      <text
+         id="text150"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="293.31"
+         style="font-size:13.19999981px;font-family:Arial"
+         y="14.94"
+         x="116.28"
+         transform="translate(-0.07464462)">
+        <tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Montserrat;-inkscape-font-specification:'Montserrat Bold'"
+           id="tspan887">Monto pagado a sobrecosto en compras del IMSS</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
