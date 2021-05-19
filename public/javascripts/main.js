@@ -26,7 +26,7 @@ var qqw_suggest = new Bloodhound({
       });
       let autocomplete_parameters = input.data("autocomplete-parameters") || "";
       settings.url = settings.url.replace("%QUERY", query+autocomplete_parameters)
-      console.log(query, settings, autocomplete_parameters, input);
+      // console.log(query, settings, autocomplete_parameters, input);
       return(settings);
     },
     transform: function(response) {
@@ -131,7 +131,7 @@ get_classification = function(classification) {
 $(".qqw-home .twitter-typeahead").css("width","100%");
 
 $('.easy-search-input').bind('typeahead:select', function(ev, suggestion) {
-  console.log('Selection: ' + suggestion);
+  // console.log('Selection: ' + suggestion);
   $(".easy-search-input.landing-search-inputtext.tt-input").val(suggestion);
 });
 
@@ -222,7 +222,7 @@ $("#moreFilters").on("click", function() {
 })
 
 $(".filter-close").on("click", function (e) {
-  console.log(e)
+  // console.log(e)
   let htmlFieldName = $(e.target).data("htmlfieldname")
   $('#' + htmlFieldName + ',#' + htmlFieldName + '-min,#' +htmlFieldName+'-max').val('')[0].form.submit();
   e.stopPropagation()
@@ -251,7 +251,7 @@ $("#right-menu a").on('click', function(event) {
     $('html, body').animate({
       scrollTop: $(hash).offset().top - 150
     }, 800, function(){
-      console.log("scroll spy animate",$(hash).offset().top)
+      // console.log("scroll spy animate",$(hash).offset().top)
     });
   }  // End if
 });
@@ -410,12 +410,12 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
 });
 
 $(".advance-filters").on("submit", function() {
-  console.log("submit",gtag)
-  gtag('event', "search", {
-    'event_category': "engagement",
-    'event_label': "TEST Envió formulario",
-    'value': 1
-  });
+  // console.log("submit",gtag)
+  // gtag('event', "search", {
+  //   'event_category': "engagement",
+  //   'event_label': "TEST Envió formulario",
+  //   'value': 1
+  // });
 
 })
 
