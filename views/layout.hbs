@@ -20,10 +20,9 @@
     <!-- Control the behavior of search engine crawling and indexing -->
     <meta name="robots" content="index,follow"><!-- All Search Engines -->
     <meta name="googlebot" content="index,follow"><!-- Google Specific -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' {{api_domain}} https://cerodesabasto.org/ manualinvestigarcontrataciones.readthedocs.io; img-src *.rindecuentas.org  www.google-analytics.com buenacubera.projectpoder.org 'self'; font-src fonts.gstatic.com 'self'; style-src 'self' cdn.datatables.net 'unsafe-inline' fonts.googleapis.com; connect-src www.google-analytics.com {{api_domain}} https://cerodesabasto.org/ api.yeeko.org 'self';  script-src-elem www.google-analytics.com www.googletagmanager.com buenacubera.projectpoder.org cdn.datatables.net 'self' 'unsafe-inline'; script-src www.google-analytics.com www.googletagmanager.com cdn.datatables.net buenacubera.projectpoder.org ssl.google-analytics.com 'self' 'unsafe-inline' 'unsafe-eval';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' {{api_domain}} https://cerodesabasto.org/ manualinvestigarcontrataciones.readthedocs.io; img-src *.rindecuentas.org  www.google-analytics.com buenacubera.projectpoder.org 'self'; font-src fonts.gstatic.com 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; connect-src www.google-analytics.com {{api_domain}} https://cerodesabasto.org/ api.yeeko.org 'self';  script-src-elem www.google-analytics.com www.googletagmanager.com buenacubera.projectpoder.org 'self' 'unsafe-inline'; script-src www.google-analytics.com www.googletagmanager.com buenacubera.projectpoder.org ssl.google-analytics.com 'self' 'unsafe-inline' 'unsafe-eval';">
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css'>
     <link rel='stylesheet' href='/stylesheets/style.css'>
-    <link rel='stylesheet' href='/datatables-styles/jquery.dataTables.min.css'>
     <link rel="preload" href="/fonts/fa/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="true">
     <link rel="preload" href="/fonts/Montserrat/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin="true">
     <link rel="dns-prefetch" href="https://www.poderlatam.org">
@@ -62,7 +61,6 @@
     {{> footer-new}}
 
     <script src="/jQuery/jquery.min.js"></script>
-    <script src="/datatables/jquery.dataTables.min.js"></script>
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/javascripts/scrollspy.js"></script>
     <script src="/javascripts/typeahead.bundle.min.js"></script>
