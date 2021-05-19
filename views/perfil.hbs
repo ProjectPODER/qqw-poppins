@@ -25,23 +25,21 @@
         {{/if}}
 
         {{!-- Summaries --}}
-        {{#ifCond (conf "products_active")  "==" "true"}}
-          {{#if summaries.buyer_purchase.total.count }}
-          <li>
-            <a href="#summary-buyer_purchase" class="anchor">
-              <i class="fas fa-money-check-alt"></i> {{_ "Productos"}}
-            </a>
-          </li>
-          {{/if}}
+        {{#if summaries.buyer_purchase.total.count }}
+        <li>
+          <a href="#summary-buyer_purchase" class="anchor">
+            <i class="fas fa-money-check-alt"></i> {{_ "Productos"}}
+          </a>
+        </li>
+        {{/if}}
 
-          {{#if summaries.supplier_purchase.total.count }}
-          <li>
-            <a href="#summary-supplier_purchase" class="anchor">
-              <i class="fas fa-dolly"></i> {{{_ "Productos"}}}
-            </a>
-          </li>
-          {{/if}}
-        {{/ifCond}}
+        {{#if summaries.supplier_purchase.total.count }}
+        <li>
+          <a href="#summary-supplier_purchase" class="anchor">
+            <i class="fas fa-dolly"></i> {{{_ "Productos"}}}
+          </a>
+        </li>
+        {{/if}}
         {{#if summaries.buyer_purchase.top_products }}
           {{#if (filter_array result.source  "id" "comprasimss") }} 
             <li>
@@ -163,14 +161,12 @@
 
 
 {{!-- SUMMARIES --}}
-{{#ifCond (conf "products_active")  "==" "true"}}
-  {{#if summaries.buyer_purchase.total.count }}
-  {{>summary result=result role="buyer" classification="purchase" data=summaries.buyer_purchase }}
-  {{/if}}
-  {{#if summaries.supplier_purchase.total.count }}
-  {{>summary result=result role="supplier" classification="purchase" data=summaries.supplier_purchase }}
+{{#if summaries.buyer_purchase.total.count }}
+{{>summary result=result role="buyer" classification="purchase" data=summaries.buyer_purchase }}
 {{/if}}
-{{/ifCond}}
+{{#if summaries.supplier_purchase.total.count }}
+{{>summary result=result role="supplier" classification="purchase" data=summaries.supplier_purchase }}
+{{/if}}
 
 {{#if summaries.buyer_contract.total.count }}
 {{>summary result=result role="buyer" classification="contract" data=summaries.buyer_contract }}
