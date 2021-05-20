@@ -16,11 +16,10 @@
         <title>Todos los contratos</title>
         <link rel="icon" href="/todos-los-contratos/images/favicon1.png">
         <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Anton" rel="stylesheet">
-        <link rel="stylesheet" href="/todos-los-contratos/resources/semantic-ui/dist/semantic.css">
-        <link rel="stylesheet" href="/todos-los-contratos/resources/datatables.net-se/css/dataTables.semanticui.css">
+        <link rel="stylesheet" href="/todos-los-contratos/resources/semantic-ui/dist/semantic.min.css">
+        <link rel="stylesheet" href="/todos-los-contratos/resources/datatables.net-se/css/dataTables.semanticui.min.css">
         <link rel="stylesheet" href="/todos-los-contratos/resources/chartist/dist/chartist.min.css">
         <link rel="stylesheet" href="/todos-los-contratos/stylesheets/chartist-plugin-tooltip.css">
-        <link rel="stylesheet" href="/todos-los-contratos/resources/leaflet/dist/leaflet.css">
         <link rel="stylesheet" href="/todos-los-contratos/stylesheets/style.css">
     </head>
 
@@ -72,7 +71,7 @@
         <h2>Desde <a class="header-link" href="https://www.projectpoder.org/es/">PODER</a> hemos concentrado las principales fuentes de contratación abierta en <a class="header-link" href="https://quienesquien.wiki/">QuiénEsQuién.Wiki</a> y en <a class="header-link" href="https://todosloscontratos.mx/">TodosLosContratos.mx</a> evaluamos su desempeño. Nuestro objetivo final: facilitar la rendición de cuentas y la vigilancia ciudadana.</h2>
         <div class="content-buttons">
           <a class="big ui red button mb-1" href="#introduccion">¿Quién contrata bien en México?</a>
-          <a class="big ui red button mb-1" href="../docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank">¿Cómo mejorar las contrataciones?</a>
+          <a class="big ui red button mb-1" href="/todos-los-contratos/docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank">¿Cómo mejorar las contrataciones?</a>
           <a class="big ui red button mb-1" href="https://www.quienesquien.wiki/contratos" target="_blank">Ver el buscador de contratos</a>
         </div>
         <a class="down-icon" href="#down"><i class="chevron down icon"></i></a>
@@ -98,7 +97,7 @@
                 Tenemos
               </div>
               <div class="value">
-                {{format_number result.count-contracts.count }}
+                {{format_number toloco_result.count-contracts.count }}
               </div>
               <div class="label">
                 contratos
@@ -111,7 +110,7 @@
                 Con un valor total de:
               </div>
               <div class="value">
-                {{format_amount result.total-sum.total_amount }}
+                {{{format_amount toloco_result.total-sum.total_amount }}}
               </div>
               <div class="label">
                 pesos mexicanos
@@ -133,7 +132,7 @@
           <div class="sixteen wide mobile sixteen wide tablet five wide computer column center ptb-1">
             <div class="ui brown statistic">
               <div class="value">
-                {{ format_number result.count-companies }}
+                {{ format_number toloco_result.count-companies }}
               </div>
               <div class="label">
                 proveedores distintos participan en los contratos
@@ -143,7 +142,7 @@
           <div class="sixteen wide mobile sixteen wide tablet six wide computer column center ptb-1">
             <div class="ui grey statistic">
               <div class="value">
-                {{ format_number result.count-uc }}
+                {{ format_number toloco_result.count-uc }}
               </div>
               <div class="label">
                 Unidades Compradoras compraron bienes, servicios y obra pública
@@ -238,7 +237,7 @@
         <li>Confiabilidad: Una organización es tan confiable como el promedio de aquellas con las que se relaciona.</li>
       </ul>
 
-      {{!-- j result --}}
+      {{!-- j toloco_result --}}
       <div id="context1">
         <div class="ui three item menu" id="button-tabs">
           <a class="item active" data-tab="federales">Federales</a>
@@ -317,7 +316,7 @@
     <div class="ui vertical stripe secondary raised segment sixteen wide column">
       <div class="center">
         <h5>¿Cómo es un sistema de evaluación efectivo para la rendición de cuentas? </h5>
-        <a class="big ui labeled icon inverted red button" href="../docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank"><i class="download icon"></i> <span class="highlighted">Lee nuestro informe</span></a>
+        <a class="big ui labeled icon inverted red button" href="/todos-los-contratos/docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank"><i class="download icon"></i> <span class="highlighted">Lee nuestro informe</span></a>
       </div>
     </div>
   </div>
@@ -368,7 +367,7 @@
     <div class="ui center vertical segment sixteen wide column">
         <h5>Informe: Contrataciones abiertas para la rendición de cuentas. El caso de México</a>
  </h5>
-        <a class="big ui labeled center icon inverted red button" href="../docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank"><i class="download icon"></i> <span class="highlighted">Lee nuestro informe</span></a>
+        <a class="big ui labeled center icon inverted red button" href="/todos-los-contratos/docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank"><i class="download icon"></i> <span class="highlighted">Lee nuestro informe</span></a>
     </div>
 
 
@@ -394,7 +393,7 @@
           </div>
         </div>
         <div class="ui tab" data-tab="lista">
-          {{!-- >table-dependencias type="estados" --}}
+          {{!-- table-dependencias type="estados" --}}
         </div>
       </div>
     </div>
@@ -466,7 +465,7 @@
     <div class="ui vertical stripe secondary raised segment sixteen wide column">
       <div class="center">
         <h5>Contrataciones abiertas para la rendición de cuentas. El caso de México</h5>
-        <a class="big ui labeled icon inverted red button" href="../docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank"><i class="download icon"></i> <span class="highlighted">Ver Informe</span></a>
+        <a class="big ui labeled icon inverted red button" href="/todos-los-contratos/docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" target="_blank"><i class="download icon"></i> <span class="highlighted">Ver Informe</span></a>
       </div>
     </div>
   </div>
@@ -498,7 +497,7 @@
       <p><span class="article-letter">E</span>n los últimos años se ha abierto la discusión sobre la actualización y digitalización del sistema de contrataciones públicas en México. Esta discusión ha girado, en demasiadas ocasiones, en torno a la apertura de datos, la eficiencia gubernamental y el cumplimiento de estándares de datos. Si bien estos son pilares importantes, la rendición de cuentas ha quedado en un segundo plano, cuando, a nuestra forma de entender, ésta es fundamental para que el estado cumpla con su función democrática primaria: “garantizar los derechos de la ciudadanía”.</p>
        <p>El informe “Contrataciones abiertas para la rendición de cuentas. El caso de México.”, complementario a la web TodosLosContratos.mx, busca sentar bases para iniciar una discusión sobre la dirección hacia dónde debe caminar el nuevo sistema de contratación en el país, a partir del eje de la rendición de cuentas como herramienta para garantizar los derechos de todas y todos los mexicanos.</p>
        <div class="content-buttons mb-3">
-        <a class="big ui red button" href="../docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" download>Descargar el informe</a>
+        <a class="big ui red button" href="/todos-los-contratos/docs/Contrataciones-abiertas-para-la-rendicion-de-cuentas.pdf" download>Descargar el informe</a>
        </div>
     </div>
   </div>
@@ -655,13 +654,12 @@
             </div>
         </div>
         </div>
-        <script src="/todos-los-contratos/resources/jquery/dist/jquery.min.js"></script>
-        <script src="/todos-los-contratos/resources/semantic-ui/dist/semantic.js"></script>
+        <script src="/jQuery/jquery.min.js"></script>
+        <script src="/todos-los-contratos/resources/semantic-ui/dist/semantic.min.js"></script>
         <script src="/todos-los-contratos/javascripts/scrollspy.js"></script>
         <script src="/todos-los-contratos/javascripts/main.js"></script>
 
         <script src="/todos-los-contratos/resources/chart.js/dist/Chart.bundle.min.js"></script>
-        <script src="/todos-los-contratos/resources/leaflet/dist/leaflet.js"></script>
         <!-- <script src="javascripts/map.js"></script> -->
 
         <!-- Global site tag (gtag.js) - Google Analytics -->

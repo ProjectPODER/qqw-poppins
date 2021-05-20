@@ -1,4 +1,4 @@
-{{!-- j (get_concat_item result type "-top5") --}}
+{{!-- {{ j (toloco_get_concat_item toloco_result type "-top5") }} --}}
 <table class="ui table unstackable table-responsive" id="table-{{type}}-top5">
   <thead>
     <tr>
@@ -14,22 +14,22 @@
     </tr>
   </thead>
   <tbody>
-    {{#each (toloco_get_concat_item result type "-top5") }}
+    {{#each (toloco_get_concat_item toloco_result type "-top5") }}
     <tr>
-      <td class="td-number-right">{{#if (get_ranking flags.[0].ranking ../type)}}{{get_ranking flags.[0].ranking ../type}}{{else}}{{math @index "+" 1 }}{{/if}}</td>
+      <td class="td-number-right">{{#if (toloco_get_ranking flags.[0].ranking ../type)}}{{toloco_get_ranking flags.[0].ranking ../type}}{{else}}{{math @index "+" 1 }}{{/if}}</td>
       <td> <a href="https://www.quienesquien.wiki/instituciones-publicas/{{id}}" target="_blank">{{name}}</a></td>
       <td class="td-number">{{format_score flags.0.contract_categories.trans}}</td>
       <td class="td-number">{{format_score flags.0.contract_categories.temp}}</td>
       <td class="td-number">{{format_score flags.0.category_score.comp}}</td>
       <td class="td-number">{{format_score flags.0.category_score.traz}}</td>
       <td class="td-number">{{format_score flags.0.node_rules.conf}}</td>
-      <td class="td-number-right">{{format_amount contract_amount.buyer}}</td>
+      <td class="td-number-right">{{{format_amount contract_amount.buyer}}}</td>
       <td class="td-number">{{format_score flags.0.total_score}}</td>
     </tr>
     {{/each}}
   </tbody>
 </table>
-{{#if (toloco_get_concat_item result type "-bottom5") }}
+{{#if (toloco_get_concat_item toloco_result type "-bottom5") }}
 
 <div class="table-divider"></div>
 {{/if}}
@@ -47,9 +47,9 @@
     </tr>
   </thead>
   <tbody>
-    {{#each (toloco_get_concat_item result type "-bottom5") }}
+    {{#each (toloco_get_concat_item toloco_result type "-bottom5") }}
     <tr>
-      <td>{{get_ranking flags.[0].ranking ../type}}</td>
+      <td>{{toloco_get_ranking flags.[0].ranking ../type}}</td>
       <td> <a href="https://www.quienesquien.wiki/instituciones-publicas/{{id}}" target="_blank">{{name}}</a></td>
       <!-- <td class="td-number">{{format_score flags.0.contract_score.trans}}</td>
       <td class="td-number">{{format_score flags.0.contract_score.temp}}</td>

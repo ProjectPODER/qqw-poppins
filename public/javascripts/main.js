@@ -453,7 +453,7 @@ const datatablesLang = {
 }
 
 //States table
-$(document).ready(function () {
+$(window).on("load",function () {
   var table = $('#product-states').DataTable({
     responsive: true,
     language: datatablesLang,
