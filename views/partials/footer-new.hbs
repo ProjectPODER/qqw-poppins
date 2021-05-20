@@ -19,7 +19,18 @@
       </div>
     </div>
     <div class="pageStats">
-      {{pageStats}} {{lang}}
+      <a href="https://github.com/ProjectPODER/qqw-poppins/tree/{{package.commit}}">
+      QQW v{{package.version}}
+      {{package.commit_short}}
+      </a>
+      |
+      <a href="https://github.com/ProjectPODER/qqwapi-elastic/tree/{{sources.version.commit}}">
+      QQWAPI v{{ sources.version.version }}
+      {{sources.version.commit_short}}
+      </a>
+      <br> 
+      {{j (now) }} {{lang}}
+
     </div>
   </div>
 </footer>

@@ -123,12 +123,12 @@
 
   function getDesabasto(campo, valor) {
     let real_valor = valor == 'México' ? '' : valor
-    console.log("Consultando reportes de desabasto", valor, campo)
+    {{!-- console.log("Consultando reportes de desabasto", valor, campo) --}}
     const base_api = 'https://api.yeeko.org/api-rest/desabasto'
     const commons = '&supplies=false&format=json'
     let reports_url = `${base_api}/reports/?${campo}=${real_valor}${commons}`;
     $.get(reports_url, function (data) {
-      console.log("Respuesta reportes de desabasto", data);
+      {{!-- console.log("Respuesta reportes de desabasto", data); --}}
       if (data.count == 0) {
         $("#desabasto-loading").hide();
         $("#desabasto-empty").show();
@@ -139,6 +139,7 @@
         $("#desabasto-show").show();
         $("#desabasto-table").show();
         data_desabasto = data.data
+        
         initDesabasto();
 
       }

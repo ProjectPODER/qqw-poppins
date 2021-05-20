@@ -425,7 +425,7 @@ function initSobrecosto() {
     let droug = {}
 
     let hits = cleanJSON(product_contracts_data)
-    console.log("newHits",hits)
+    {{!-- console.log("newHits",hits) --}}
     droug.hits = hits.map(hit=>
       ({ ...hit,
         ...{ date: timeParse(hit.fecha_inicio),
@@ -781,8 +781,8 @@ function initSobrecosto() {
       .style("stroke-width", 1)
       .style("stroke", "#bfbfbf");
 
-    console.log(d4)
-    console.log(d6)
+    {{!-- console.log(d4)
+    console.log(d6) --}}
     let is_small = false
 
     legend({

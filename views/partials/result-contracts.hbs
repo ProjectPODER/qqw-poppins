@@ -1,46 +1,44 @@
-{{#ifCond (conf "products_active") "==" "true" }}
-    {{#if purchase_count}}
-        {{# if purchase_count.supplier }}
-            <p class="index-list-element purchase-supplier-text">
-                <a href="{{ url view="search" collection="contracts" classification="purchase" proveedor=id}}" title="Proveedor en {{format_number purchase_count.supplier}} contrato(s) por un total de {{{format_number purchase_amount.supplier}}}">
-                    {{{ get_classification_icon "purchase" undefined undefined }}}
-                    Proveedor en {{format_number purchase_count.supplier}} compra(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount purchase_amount.supplier}}}
-                    {{#if membership_name}} con {{membership_name}}{{/if}}
-                </a>
-            </p>
-        {{/if}}
-        {{# if purchase_count.buyer }}
-            <p class="index-list-element purchase-buyer-text">
-                <a href="{{ url view="search" collection="contracts" classification="purchase" dependencia=id}}" title="Comprador en {{format_number purchase_count.buyer}} contrato(s) por un total de {{format_number purchase_amount.buyer}}">
-                    {{{ get_classification_icon "purchase" undefined undefined }}}
-                    Comprador en {{format_number purchase_count.buyer}} compra(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount purchase_amount.buyer}}}
-                    {{#if membership_name}} con {{membership_name}}{{/if}}
-
-                </a>
-            </p>
-        {{/if}}
-        {{# if purchase_count.product }}
-            <p class="index-list-element purchase-buyer-text">
-                <a href="{{ url view="search" collection="contracts" classification="purchase" producto=id}}" title="Comprador en {{format_number purchase_count.product}} contrato(s) por un total de {{format_number purchase_amount.product}}">
-                    {{{ get_classification_icon "purchase" undefined undefined }}}
-                    {{format_number purchase_count.product}} compras ({{format_number purchase_quantity.product}} unidades)
-                    por un total de <i class="fas fa-dollar-sign"></i>{{format_amount purchase_amount.product "MXN"}} entre
-                    {{ moment first_purchase_date "Y" }}  y {{ moment last_purchase_date "Y" }}
-                </a>
-            </p>
-        {{/if}}
-        {{!-- {{# if purchase_count.area }}
-            <p class="index-list-element purchase-buyer-text">
-                <a href="{{ url view="search" collection="contracts" classification="purchase" dependencia=id}}" title="Comprador en {{format_number purchase_count.area}} contrato(s) por un total de {{format_number purchase_amount.area}}">
-                    {{{ get_classification_icon "purchase" undefined undefined }}}
-                    Comprador en {{format_number purchase_count.area}} compra(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount purchase_amount.area}}}
-                    {{#if membership_name}} con {{membership_name}}{{/if}}
-
-                </a>
-            </p>
-        {{/if}} --}}
+{{#if purchase_count}}
+    {{# if purchase_count.supplier }}
+        <p class="index-list-element purchase-supplier-text">
+            <a href="{{ url view="search" collection="contracts" classification="purchase" proveedor=id}}" title="Proveedor en {{format_number purchase_count.supplier}} contrato(s) por un total de {{{format_number purchase_amount.supplier}}}">
+                {{{ get_classification_icon "purchase" undefined undefined }}}
+                Proveedor en {{format_number purchase_count.supplier}} compra(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount purchase_amount.supplier}}}
+                {{#if membership_name}} con {{membership_name}}{{/if}}
+            </a>
+        </p>
     {{/if}}
-{{/ifCond}}
+    {{# if purchase_count.buyer }}
+        <p class="index-list-element purchase-buyer-text">
+            <a href="{{ url view="search" collection="contracts" classification="purchase" dependencia=id}}" title="Comprador en {{format_number purchase_count.buyer}} contrato(s) por un total de {{format_number purchase_amount.buyer}}">
+                {{{ get_classification_icon "purchase" undefined undefined }}}
+                Comprador en {{format_number purchase_count.buyer}} compra(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount purchase_amount.buyer}}}
+                {{#if membership_name}} con {{membership_name}}{{/if}}
+
+            </a>
+        </p>
+    {{/if}}
+    {{# if purchase_count.product }}
+        <p class="index-list-element purchase-buyer-text">
+            <a href="{{ url view="search" collection="contracts" classification="purchase" producto=id}}" title="Comprador en {{format_number purchase_count.product}} contrato(s) por un total de {{format_number purchase_amount.product}}">
+                {{{ get_classification_icon "purchase" undefined undefined }}}
+                {{format_number purchase_count.product}} compras ({{format_number purchase_quantity.product}} unidades)
+                por un total de <i class="fas fa-dollar-sign"></i>{{format_amount purchase_amount.product "MXN"}} entre
+                {{ moment first_purchase_date "Y" }}  y {{ moment last_purchase_date "Y" }}
+            </a>
+        </p>
+    {{/if}}
+    {{!-- {{# if purchase_count.area }}
+        <p class="index-list-element purchase-buyer-text">
+            <a href="{{ url view="search" collection="contracts" classification="purchase" dependencia=id}}" title="Comprador en {{format_number purchase_count.area}} contrato(s) por un total de {{format_number purchase_amount.area}}">
+                {{{ get_classification_icon "purchase" undefined undefined }}}
+                Comprador en {{format_number purchase_count.area}} compra(s) por un total de <i class="fas fa-dollar-sign"></i> {{{format_amount purchase_amount.area}}}
+                {{#if membership_name}} con {{membership_name}}{{/if}}
+
+            </a>
+        </p>
+    {{/if}} --}}
+{{/if}}
 
 {{#if contract_count }}
     {{# if contract_count.supplier }}
