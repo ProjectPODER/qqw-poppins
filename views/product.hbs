@@ -249,66 +249,64 @@
         <h4 class="description-data-subtitle">{{{_ "SOBRECOSTO POR INSTITUCIÓN"}}}</h4>
       </div>
       <div class="col-12 col-md-12">
-        <div class="row flex">
-          <div class="table-responsive">
-            <table width="100%" id="product-states" class="table row-border">
-              <thead>
-                <tr>
-                  <th>{{{_ "INSTITUCIÓN"}}}</th>
-                  <th>{{{_ "ESTADO"}}}</th>
-                  <th>{{{_ "CANTIDAD"}}}</th>
-                  <th>{{{_ "MONTO TOTAL"}}}</th>
-                  <th>{{{_ "SOBRECOSTO EN MXN"}}}</th>
-                  <th>{{{_ "SOBRECOSTO EN %"}}}</th>
-                  <th>{{{_ "CANTIDAD PERDIDA"}}}
-                    <a data-toggle="tooltip" data-placement="right" title="{{{_ "Cantidad de unidades que podrían comprarse con el sobrecosto."}}}">
-                      <i class="fas fa-info-circle"></i>
+        <div class="table-responsive">
+          <table width="100%" id="product-states" class="table row-border">
+            <thead>
+              <tr>
+                <th>{{{_ "INSTITUCIÓN"}}}</th>
+                <th>{{{_ "ESTADO"}}}</th>
+                <th>{{{_ "CANTIDAD"}}}</th>
+                <th>{{{_ "MONTO TOTAL"}}}</th>
+                <th>{{{_ "SOBRECOSTO EN MXN"}}}</th>
+                <th>{{{_ "SOBRECOSTO EN %"}}}</th>
+                <th>{{{_ "CANTIDAD PERDIDA"}}}
+                  <a data-toggle="tooltip" data-placement="right" title="{{{_ "Cantidad de unidades que podrían comprarse con el sobrecosto."}}}">
+                    <i class="fas fa-info-circle"></i>
+                  </a>
+                </th>
+                <th>{{{_ "ÚLTIMA COMPRA"}}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each result.contracts_summaries.buyers }}
+              <tr>
+                <td title="{{estado.buyer.name}}">
+                  <span style="display: inline-block;  max-width: 18em; text-overflow:ellipsis; white-space:nowrap; overflow:hidden">
+                    <a href="{{url view="instituciones-publicas/:id" _id=estado.buyer.id}}">
+                    {{estado.buyer.name}}
                     </a>
-                  </th>
-                  <th>{{{_ "ÚLTIMA COMPRA"}}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{#each result.contracts_summaries.buyers }}
-                <tr>
-                  <td title="{{estado.buyer.name}}">
-                    <span style="display: inline-block;  max-width: 18em; text-overflow:ellipsis; white-space:nowrap; overflow:hidden">
-                      <a href="{{url view="instituciones-publicas/:id" _id=estado.buyer.id}}">
-                      {{estado.buyer.name}}
-                      </a>
-                    </span>
-                  </td>
-                  <td>{{estado.parties.buyer.address.region}}</td>
-                  <td class="text-right">{{doc_count}}</td>
-                  <td class="text-right" data-order="{{monto_total}}">{{format_number monto_total}} MXN</td>
-                  <td class="text-right" data-order="{{monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
-                  <td class="text-right" data-order="{{sobrecosto}}">{{format_percentage sobrecosto }}</td>
-                  <td class="text-right" data-order="{{cantidad_perdida}}">{{format_number cantidad_perdida }}</td>
-                  <td class="text-right" data-order="{{ultima_compra}}">{{moment ultima_compra date lang="es" format="LL"}}</td>
-                </tr>
+                  </span>
+                </td>
+                <td>{{estado.parties.buyer.address.region}}</td>
+                <td class="text-right">{{doc_count}}</td>
+                <td class="text-right" data-order="{{monto_total}}">{{format_number monto_total}} MXN</td>
+                <td class="text-right" data-order="{{monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
+                <td class="text-right" data-order="{{sobrecosto}}">{{format_percentage sobrecosto }}</td>
+                <td class="text-right" data-order="{{cantidad_perdida}}">{{format_number cantidad_perdida }}</td>
+                <td class="text-right" data-order="{{ultima_compra}}">{{moment ultima_compra date lang="es" format="LL"}}</td>
+              </tr>
 {{!--
 "doc_count": 1,
 "estado": {
 
-    "parties": {
-        "buyer": {
-            "address": {
-                "region": "Jalisco"
-            }
-        }
-    },
-    "buyer": {
-        "name": "H. de Especialidades, \"Lic. Ignacio García Tellez\" Centro Médico Nacional de Occidente, Jalisco Umae Especialidades Jalisco"
-    }
+  "parties": {
+      "buyer": {
+          "address": {
+              "region": "Jalisco"
+          }
+      }
+  },
+  "buyer": {
+      "name": "H. de Especialidades, \"Lic. Ignacio García Tellez\" Centro Médico Nacional de Occidente, Jalisco Umae Especialidades Jalisco"
+  }
 
 },
 "monto_total": 8936.1201171875,
 "ultima_compra": 1514764800000,
 "sobrecosto": 0.14317765831947327                 --}}
-                {{/each}}
-              </tbody>
-            </table>
-          </div>
+              {{/each}}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -328,47 +326,45 @@
         <h4 class="description-data-subtitle">{{{_ "PROVEEDORES QUE LO HAN VENDIDO A SOBREPRECIO"}}}</h4>
       </div>
       <div class="col-12 col-md-12">
-        <div class="row flex">
-          <div class="table-responsive">
-            <table width="100%" id="product-suppliers" class="table row-border">
-              <thead>
-                <tr>
-                  <th>{{{_ "PROVEEDOR"}}}</th>
-                  <th>{{{_ "COMPRAS"}}}</th>
-                  <th>{{{_ "SOBRECOSTO EN MXN"}}}</th>
-                  <th>{{{_ "SOBRECOSTO EN %"}}}</th>
-                  <th>{{{_ "CANTIDAD PERDIDA"}}}
-                    <a data-toggle="tooltip" data-placement="right" title="{{{_ " Cantidad perdida explicación"}}}">
-                      <i class="fas fa-info-circle"></i>
-                    </a>
-                  </th>
-                  <th>{{{_ "PERIODO DE TIEMPO"}}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{#each result.contracts_summaries.suppliers }}
-                <tr>
-                  <td>
-                    {{#ifCond nombre.parties.suppliers.list.[0].details.type "==" "person"}}
-                      {{{get_classification_icon "persons" ["proveedor"] undefined }}}
-                      <a href="{{ url view="persons/:id" _id=nombre.parties.suppliers.list.[0].id}}" 
-                    {{else}}
-                      {{{get_classification_icon "companies" "profit" undefined }}}
-                      <a href="{{ url view="companies/:id" _id=nombre.parties.suppliers.list.[0].id}}"
-                    {{/ifCond}}
-                    title="{{nombre.parties.suppliers.list.[0].name}}">
-                    {{nombre.parties.suppliers.list.[0].name}}</a>
-                  </td>
-                  <td class="text-right">{{format_number doc_count}}</td>
-                  <td class="text-right" data-order="{{fix_number monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
-                  <td class="text-right" data-order="{{fix_number sobrecosto}}">{{format_percentage sobrecosto }}</td>
-                  <td class="text-right" data-order="{{cantidad_perdida}}">{{format_number cantidad_perdida }}</td>
-                  <td class="text-right" data-order="{{ultima_compra}}">{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
-                </tr>
-                {{/each}}
-              </tbody>
-            </table>
-          </div>
+        <div class="table-responsive">
+          <table width="100%" id="product-suppliers" class="table row-border">
+            <thead>
+              <tr>
+                <th>{{{_ "PROVEEDOR"}}}</th>
+                <th>{{{_ "COMPRAS"}}}</th>
+                <th>{{{_ "SOBRECOSTO EN MXN"}}}</th>
+                <th>{{{_ "SOBRECOSTO EN %"}}}</th>
+                <th>{{{_ "CANTIDAD PERDIDA"}}}
+                  <a data-toggle="tooltip" data-placement="right" title="{{{_ "Cantidad de unidades que podrían comprarse con el sobrecosto."}}}">
+                    <i class="fas fa-info-circle"></i>
+                  </a>
+                </th>
+                <th>{{{_ "PERIODO DE TIEMPO"}}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each result.contracts_summaries.suppliers }}
+              <tr>
+                <td>
+                  {{#ifCond nombre.parties.suppliers.list.[0].details.type "==" "person"}}
+                    {{{get_classification_icon "persons" ["proveedor"] undefined }}}
+                    <a href="{{ url view="persons/:id" _id=nombre.parties.suppliers.list.[0].id}}" 
+                  {{else}}
+                    {{{get_classification_icon "companies" "profit" undefined }}}
+                    <a href="{{ url view="companies/:id" _id=nombre.parties.suppliers.list.[0].id}}"
+                  {{/ifCond}}
+                  title="{{nombre.parties.suppliers.list.[0].name}}">
+                  {{nombre.parties.suppliers.list.[0].name}}</a>
+                </td>
+                <td class="text-right">{{format_number doc_count}}</td>
+                <td class="text-right" data-order="{{fix_number monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
+                <td class="text-right" data-order="{{fix_number sobrecosto}}">{{format_percentage sobrecosto }}</td>
+                <td class="text-right" data-order="{{cantidad_perdida}}">{{format_number cantidad_perdida }}</td>
+                <td class="text-right" data-order="{{ultima_compra}}">{{moment primera_compra "Y"}} - {{moment ultima_compra "Y"}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -376,7 +372,7 @@
 </section>
 {{/if}}
 {{!-- Contracts --}}
-<section class="profile text-center bg-white" id="all-contracts">
+<section class="profile text-center bg-white" id="compras">
   <div class="profile-content">
     <div class="row">
       <div class="col-12 col-md-12">
@@ -642,7 +638,7 @@ function initSobrecosto() {
 
   const right_legend_line = 400
   const height_line = 4;
-  
+
   svg
     .append('rect')
       .attr("width", width_legend)
@@ -686,7 +682,7 @@ function initSobrecosto() {
       color,
       title,
       tickSize = 6,
-      width = 320, 
+      width = 320,
       height = 44 + tickSize,
       marginTop = 18,
       marginRight = 0,
@@ -776,7 +772,7 @@ function initSobrecosto() {
         })
     }
 
-    
+
     let domain4 = [0, 1, max_overprice]
 
     svg
