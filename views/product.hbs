@@ -349,8 +349,15 @@
                 {{#each result.contracts_summaries.suppliers }}
                 <tr>
                   <td>
-                    <i class="fas fa-map-marked"></i> 
-                    <a href="{{ url view="empresas/:id" _id=nombre.awards.suppliers.[0].id}}" title="{{nombre.awards.suppliers.[0].name}}">{{nombre.awards.suppliers.[0].name}}</a>
+                    {{#ifCond nombre.parties.suppliers.list.[0].details.type "==" "person"}}
+                      {{{get_classification_icon "persons" ["proveedor"] undefined }}}
+                      <a href="{{ url view="persons/:id" _id=nombre.parties.suppliers.list.[0].id}}" 
+                    {{else}}
+                      {{{get_classification_icon "companies" "profit" undefined }}}
+                      <a href="{{ url view="companies/:id" _id=nombre.parties.suppliers.list.[0].id}}"
+                    {{/ifCond}}
+                    title="{{nombre.parties.suppliers.list.[0].name}}">
+                    {{nombre.parties.suppliers.list.[0].name}}</a>
                   </td>
                   <td class="text-right">{{format_number doc_count}}</td>
                   <td class="text-right" data-order="{{fix_number monto_total_sobrecosto}}">{{format_number monto_total_sobrecosto }} MXN</td>
