@@ -135,7 +135,7 @@
             <p class="js-title-data">{{{_ "Indicaciones"}}}</p>
             <p class="js-data">
               {{#each result.guideline.indicationsMxIMSS }}
-                <a href="{{url view="buscador" collection="products" producto-indicacion=this }}">{{this}}</a>
+                <a href="{{url view="buscador" collection="products" producto-indicacion=this }}">{{this}}</a>{{#if @last}}{{else}}, {{/if}}
               {{/each}}
             </p>
           </div>
@@ -348,7 +348,7 @@
                 <td>
                   {{#ifCond nombre.parties.suppliers.list.[0].details.type "==" "person"}}
                     {{{get_classification_icon "persons" ["proveedor"] undefined }}}
-                    <a href="{{ url view="persons/:id" _id=nombre.parties.suppliers.list.[0].id}}" 
+                    <a href="{{ url view="persons/:id" _id=nombre.parties.suppliers.list.[0].id}}"
                   {{else}}
                     {{{get_classification_icon "companies" "profit" undefined }}}
                     <a href="{{ url view="companies/:id" _id=nombre.parties.suppliers.list.[0].id}}"
