@@ -1242,7 +1242,7 @@ input[type=submit].landing-search-inputtext {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 10px 0 11px;
+  padding: 10px 0 14px;
 }
 .index-list-item p,
 .index-list-item span {
