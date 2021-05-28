@@ -20,38 +20,17 @@
     <!-- Control the behavior of search engine crawling and indexing -->
     <meta name="robots" content="index,follow"><!-- All Search Engines -->
     <meta name="googlebot" content="index,follow"><!-- Google Specific -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' {{api_domain}} https://cerodesabasto.org/ manualinvestigarcontrataciones.readthedocs.io; img-src *.rindecuentas.org  www.google-analytics.com buenacubera.projectpoder.org 'self'; font-src fonts.gstatic.com 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; connect-src www.google-analytics.com {{api_domain}} https://cerodesabasto.org/ api.yeeko.org 'self';  script-src-elem www.google-analytics.com www.googletagmanager.com buenacubera.projectpoder.org 'self' 'unsafe-inline'; script-src www.google-analytics.com www.googletagmanager.com buenacubera.projectpoder.org ssl.google-analytics.com 'self' 'unsafe-inline' 'unsafe-eval';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' {{api_domain}} https://cerodesabasto.org/ manualinvestigarcontrataciones.readthedocs.io; img-src *.rindecuentas.org  www.google-analytics.com 'self'; font-src fonts.gstatic.com 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; connect-src www.google-analytics.com {{api_domain}} https://cerodesabasto.org/ api.yeeko.org 'self';  script-src-elem www.google-analytics.com www.googletagmanager.com 'self' 'unsafe-inline'; script-src www.google-analytics.com www.googletagmanager.com ssl.google-analytics.com 'self' 'unsafe-inline' 'unsafe-eval';">
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css'>
     <link rel='stylesheet' href='/stylesheets/style.css'>
     <link rel="preload" href="/fonts/fa/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="true">
     <link rel="preload" href="/fonts/Montserrat/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin="true">
     <link rel="dns-prefetch" href="https://www.poderlatam.org">
-    <link rel="dns-prefetch" href="https://buenacubera.projectpoder.org">
     <meta name="referrer" content="same-origin">
     <script type="text/javascript">
       const AUTOCOMPLETE_URL = "{{autocomplete_url}}";
     </script>
 
-
-    <!-- Matomo -->
-    <script type="text/javascript">
-      var _paq = window._paq || [];
-      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-      _paq.push(["setCookieDomain", "*.www.quienesquien.wiki"]);
-      _paq.push(["setDomains", ["*.www.quienesquien.wiki","*.mujeresenlabolsa.quienesquien.wiki","*.quienesquien.wiki"]]);
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        var u="https://buenacubera.projectpoder.org/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '2']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-      })();
-    </script>
-    <noscript><p><img src="https://buenacubera.projectpoder.org/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-    <!-- End Matomo Code -->
   </head>
   <body class="{{#if home}}qqw-home{{/if}}" lang="{{lang}}" style="background-color: #F7F7F7;">
     {{> header-new}}

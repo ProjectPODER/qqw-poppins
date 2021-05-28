@@ -2500,6 +2500,7 @@ section.country-mujeres {
 .profile-memberships .profile-memberships-content .contract-button {
   margin-top: 1.5rem;
   height: 2em;
+  clear: both;
 }
 .profile-summary .profile-summary-content .index-list-title a,
 .profile-memberships .profile-summary-content .index-list-title a,
