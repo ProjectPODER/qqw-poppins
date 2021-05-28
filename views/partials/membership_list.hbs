@@ -6,14 +6,21 @@
             </div>
             <h4 class="description-data-subtitle">
               {{#ifCond this.memberships.length ">" 5}} <strong>{{this.memberships.length}}</strong>{{/ifCond}}
-              {{get_role_name this.role this.direction}} 
+              {{get_role_name this.role this.direction}}
             </h4>
           </div>
           <div class="col-12 col-m-12">
             <div class="profile-memberships-content">
               {{#each this.memberships}}
+              <div class="{{#ifCond @index ">" 4 }}memberships-hidden{{/ifCond}}">
                 {{>membership result=this directionality=this.direction}}
+              </div>
               {{/each}}
+              {{#ifCond this.memberships.length ">" 4 }}
+              <div class="text-center mt-5 mb-4">
+                <a class="memberships-list-toggle button-link">Ver la lista completa</a>
+              </div>
+              {{/ifCond}}
             </div>
           </div>
         </div>

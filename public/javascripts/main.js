@@ -484,6 +484,12 @@ $(document).ready(function () {
 });
 
 // Notification close button
-$(".notificacion-close").on("click", function (event) {
+$(".notificacion-close").on("click", function () {
   $(".notificacion").fadeOut();
 });
+
+// Hide Memberships list
+$('.memberships-list-toggle').on("click", function () {
+  $(".memberships-hidden").toggle();
+  $(this).text($(this).text() == 'Ver la lista completa' ? 'Ocultar la lista' : 'Ver la lista completa');
+})

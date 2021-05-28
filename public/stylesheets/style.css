@@ -262,13 +262,14 @@ input[type="email"] {
 }
 .button-link {
   background-color: #2b00f7;
-  color: #fff;
+  color: #fff !important;
   border: none;
   padding: 10px 12px;
   white-space: nowrap;
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
+  cursor: pointer;
 }
 .button-link:hover,
 .button-link:focus {
@@ -857,7 +858,8 @@ input[type=submit].landing-search-inputtext {
   }
 }
 .profile-list-hidden,
-.supplier-hidden {
+.supplier-hidden,
+.memberships-hidden {
   display: none;
 }
 .hilight {
@@ -1242,7 +1244,7 @@ input[type=submit].landing-search-inputtext {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 10px 0 11px;
+  padding: 10px 0 14px;
 }
 .index-list-item p,
 .index-list-item span {
@@ -2478,12 +2480,6 @@ section.country-mujeres {
 }
 .category-profile {
   padding: 1rem 1.5rem 0 0;
-}
-.profile-summary .profile-memberships-content,
-.profile-memberships .profile-memberships-content {
-  max-height: 500px;
-  overflow-y: auto;
-  padding-right: 1em;
 }
 .profile-summary .profile-summary-content,
 .profile-memberships .profile-summary-content,
