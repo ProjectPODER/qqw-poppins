@@ -2852,6 +2852,51 @@ section.country-mujeres {
 .nodesChart {
   transform: translate(0, 20px);
 }
+.bg-sadico {
+  background: #f6f1df !important;
+}
+.profile-banner .box-title-section {
+  background: rgba(225,174,90,0.333);
+}
+.profile-banner .box-title-icon {
+  color: #564102;
+  background: #f2b707;
+}
+.profile-banner .description-data-subtitle {
+  color: #564102;
+}
+.profile-banner .media {
+  padding-top: 1.2rem;
+}
+.profile-banner .sadico-logo img {
+  width: 250px;
+  margin: 0 2rem 0 0;
+}
+.profile-banner .banner-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.profile-banner .btn-sadico {
+  background-color: #f2b707;
+  color: #333;
+}
+.profile-banner .btn-banner {
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 20px;
+  -webkit-transition: background-color 200ms ease, -webkit-transform 200ms ease;
+  transition: background-color 200ms ease, -webkit-transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
+  font-weight: 700;
+  text-align: center;
+}
+.profile-banner .btn-banner:hover {
+  background-color: #e6ae07;
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
 .warning-data {
   border: 2px solid #db2828;
   padding-right: 15px;
@@ -2900,49 +2945,6 @@ section.country-mujeres {
 .related-products .index-list-title a {
   font-size: 1.1em;
   font-weight: normal;
-}
-.bg-sadico {
-  background: #f6f1df !important;
-}
-.bg-sadico .box-title-section {
-  background: rgba(225,174,90,0.333);
-}
-.bg-sadico .box-title-icon {
-  color: #564102;
-  background: #f2b707;
-}
-.bg-sadico .description-data-subtitle {
-  color: #564102;
-}
-.bg-sadico .media {
-  padding-top: 1.2rem;
-}
-.bg-sadico .sadico-logo img {
-  width: 250px;
-  margin: 0 2rem 0 0;
-}
-.bg-sadico .banner-text {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-.bg-sadico .btn-sadico {
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 20px;
-  background-color: #f2b707;
-  -webkit-transition: background-color 200ms ease, -webkit-transform 200ms ease;
-  transition: background-color 200ms ease, -webkit-transform 200ms ease;
-  transition: background-color 200ms ease, transform 200ms ease;
-  transition: background-color 200ms ease, transform 200ms ease, -webkit-transform 200ms ease;
-  color: #333;
-  font-weight: 700;
-  text-align: center;
-}
-.bg-sadico .btn-sadico:hover {
-  background-color: #e6ae07;
-  -webkit-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
 }
 @media (max-width: 1440px) {
   #product-profile .embed-responsive-customized::before {
