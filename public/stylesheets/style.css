@@ -2865,9 +2865,6 @@ section.country-mujeres {
 .profile-banner .description-data-subtitle {
   color: #564102;
 }
-.profile-banner .media {
-  padding-top: 1.2rem;
-}
 .profile-banner .sadico-logo img {
   width: 250px;
   margin: 0 2rem 0 0;
@@ -2896,6 +2893,15 @@ section.country-mujeres {
   -webkit-transform: scale(0.95);
   -ms-transform: scale(0.95);
   transform: scale(0.95);
+}
+#banner-buenaonda .bg-banner {
+  background: #e4f7f0 !important;
+}
+#banner-buenaonda .box-title-section {
+  background: #a8e6cf !important;
+}
+#banner-buenaonda .box-title-icon {
+  color: #eafc47;
 }
 .warning-data {
   border: 2px solid #db2828;
