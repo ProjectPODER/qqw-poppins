@@ -1,4 +1,5 @@
 <script src="/tiza/tiza.js"></script>
+
 {{>profile-header result=result }}
         {{!-- SHORT memberships --}}
         {{#if result.memberships.parent}}
@@ -184,7 +185,7 @@
 {{>summary result=result role="funder" classification="contract" data=summaries.funder }}
 {{/if}}
 
-
+{{!-- 
 {{#ifCond summaries.relation.nodes.length ">" 0}}
 <section class="profile" id="flujos-monetarios">
   <div class="profile-content">
@@ -210,7 +211,7 @@
   tiza.moneyFlow({target: "graph-container", data: {{{j summaries.relation}}} });
 
 </script>
-{{/ifCond }}
+{{/ifCond }} --}}
 
 
 {{!-- areas summaries --}}
