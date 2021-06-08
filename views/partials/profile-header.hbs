@@ -11,7 +11,7 @@
         {{#ifCond result.classification "==" "country" }}
           {{translate_area result.id }}
         {{else}}
-          {{ or result.name (or result.contracts.title result.contracts.[0].title) }}
+          {{ or result.name (or result.contracts.title result.tender.title) }}
         {{/ifCond}}
         {{!-- Area --}}
         {{#each result.area }}
