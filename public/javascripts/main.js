@@ -407,15 +407,34 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
   if (e.clickEvent) {
     e.preventDefault();
   }
+  console.log("open filter",e.relatedTarget.title)
+
+  gtag('event', "search", {
+    'event_category': "engagement",
+    'event_label': "Abrir filtro "+e.relatedTarget.title,
+    'value': 1
+  });
+
+});
+
+$('.filter-dropdown button').on('click', function (e) {
+  console.log("Aplicar filtro",e.target.innerText)
+
+  gtag('event', "search", {
+    'event_category': "engagement",
+    'event_label': "Aplicar filtro "+e.target.innerText,
+    'value': 1
+  });
+
 });
 
 $(".advance-filters").on("submit", function() {
   // console.log("submit",gtag)
-  // gtag('event', "search", {
-  //   'event_category': "engagement",
-  //   'event_label': "TEST Envió formulario",
-  //   'value': 1
-  // });
+  gtag('event', "search", {
+    'event_category': "engagement",
+    'event_label': "Aplicar filtros",
+    'value': 1
+  });
 
 })
 
