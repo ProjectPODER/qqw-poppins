@@ -500,19 +500,23 @@ const datatablesLang = {
 
 //States table
 $(window).on("load",function () {
-  var table = $('#product-states').DataTable({
-    responsive: true,
-    language: datatablesLang,
-    "order": [[3, 'desc']]
-  });
+  if ($('#product-states').length > 0) {
+
+    var table = $('#product-states').DataTable({
+      responsive: true,
+      language: datatablesLang,
+      "order": [[3, 'desc']]
+    });
+  }
 
 // Suppliers table
-  $('#product-suppliers').DataTable({
-    responsive: true,
-    language: datatablesLang,
-    "order": [[2, 'desc']]
-  });
-
+if ($('#product-suppliers').length > 0) {
+    $('#product-suppliers').DataTable({
+      responsive: true,
+      language: datatablesLang,
+      "order": [[2, 'desc']]
+    });
+  }
 });
 // End datatables
 
