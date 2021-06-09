@@ -407,22 +407,49 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
   if (e.clickEvent) {
     e.preventDefault();
   }
-  console.log("open filter",e.relatedTarget.title)
+});
+
+$('.filter-dropdown').on('show.bs.dropdown', function (e) {
+  console.log("Abrir filtro",e.relatedTarget.title)
 
   gtag('event', "search", {
     'event_category': "engagement",
-    'event_label': "Abrir filtro "+e.relatedTarget.title,
-    'value': 1
+    'event_label': "Filtros - Abrir "+e.relatedTarget.title,
+    'value': "horizontally"
   });
 
 });
 
 $('.filter-dropdown button').on('click', function (e) {
-  console.log("Aplicar filtro",e.target.innerText)
+  let filterName = $(e.target).parent().parent().find("h6").text();
+  console.log("Aplicar filtro",filterName)
 
   gtag('event', "search", {
     'event_category': "engagement",
-    'event_label': "Aplicar filtro "+e.target.innerText,
+    'event_label': "Filtros - Aplicar "+filterName,
+    'value': 1
+  });
+
+});
+
+$('.utilities-dropdown').on('show.bs.dropdown', function (e) {
+  console.log("Utilidades - Abrir",e.relatedTarget.title)
+
+  gtag('event', "search", {
+    'event_category': "engagement",
+    'event_label': "Utilidades - Abrir "+e.relatedTarget.title,
+    'value': "horizontally"
+  });
+
+});
+
+$('.utilities-dropdown .dropdown-menu button, .utilities-dropdown .dropdown-menu a').on('click', function (e) {
+  let filterName = $(e.target).text().trim() || $(e.target).attr("title") || $(e.target).parent().attr("title")
+  console.log("Utilidades - Usar",filterName)
+
+  gtag('event', "search", {
+    'event_category': "engagement",
+    'event_label': "Utilidades - Usar "+filterName,
     'value': 1
   });
 
