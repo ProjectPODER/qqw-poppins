@@ -410,19 +410,21 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
 });
 
 $('.filter-dropdown').on('show.bs.dropdown', function (e) {
-  console.log("Abrir filtro",e.relatedTarget.title)
+  let filterName = $(e.relatedTarget).title || $(e.relatedTarget).parents(".nav-item").find(".nav-link").attr("title")
+
+  console.log("Filtros - Abrir",filterName)
 
   gtag('event', "search", {
     'event_category': "engagement",
-    'event_label': "Filtros - Abrir "+e.relatedTarget.title,
-    'value': "horizontally"
+    'event_label': "Filtros - Abrir "+filterName,
+    'value': 1
   });
 
 });
 
 $('.filter-dropdown button').on('click', function (e) {
-  let filterName = $(e.target).parent().parent().find("h6").text();
-  console.log("Aplicar filtro",filterName)
+  let filterName = $(e.target).parent().parent().find("h6").text() || ("Valor: " + $(e.target).text().trim());
+  console.log("Filtros - Aplicar",filterName)
 
   gtag('event', "search", {
     'event_category': "engagement",
