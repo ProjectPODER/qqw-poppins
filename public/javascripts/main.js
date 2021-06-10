@@ -457,15 +457,15 @@ $('.utilities-dropdown .dropdown-menu button, .utilities-dropdown .dropdown-menu
 
 });
 
-$(".advance-filters").on("submit", function() {
-  // console.log("submit",gtag)
-  gtag('event', "search", {
-    'event_category': "engagement",
-    'event_label': "Aplicar filtros",
-    'value': 1
-  });
+// $(".advance-filters").on("submit", function() {
+//   // console.log("submit",gtag)
+//   gtag('event', "search", {
+//     'event_category': "engagement",
+//     'event_label': "Aplicar filtros",
+//     'value': 1
+//   });
 
-})
+// })
 
 //PRODUCT PAGE
 
