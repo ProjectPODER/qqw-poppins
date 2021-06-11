@@ -35,7 +35,7 @@
     "qqw": "github:projectpoder/node-qqw.git#v0.3.2",
     "rss-parser": "3.7.0",
     "stylus": "0.54.5",
-    "tiza": "github:projectpoder/tiza#0.2.2"
+    "tiza": "github:projectpoder/tiza#0.2.0"
   },
   "qqw": "file:../node-qqw"
 }
