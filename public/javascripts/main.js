@@ -410,7 +410,7 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
 });
 
 $('.filter-dropdown').on('show.bs.dropdown', function (e) {
-  let filterName = $(e.relatedTarget).title || $(e.relatedTarget).parents(".nav-item").find(".nav-link").attr("title")
+  let filterName = $(e.relatedTarget).attr("title") || $(e.relatedTarget).parents(".nav-item").find(".nav-link").attr("title")
 
   console.log("Filtros - Abrir",filterName)
 
@@ -423,7 +423,16 @@ $('.filter-dropdown').on('show.bs.dropdown', function (e) {
 });
 
 $('.filter-dropdown button').on('click', function (e) {
-  let filterName = $(e.target).parent().parent().find("h6").text() || ("Valor: " + $(e.target).text().trim());
+  // console.log(e.currentTarget);
+
+  let filterValue = $(e.currentTarget).text().trim() || $(e.currentTarget).attr("title");
+  let filterTitleElement = $(e.currentTarget).parent().parent().find("h6");
+  if (filterTitleElement.length == 1) {
+    filterName = filterTitleElement.text().trim()
+  }
+  else {
+    filterName = "Valor: "+filterValue;
+  }
   console.log("Filtros - Aplicar",filterName)
 
   gtag('event', "search", {

@@ -9,7 +9,7 @@
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
     {{else}}
       {{#with (filter_array filter.options "value" (or filter.value filter.default.value) ) }}
-        <button type="button" class="btn btn-light btn-sm ml-auto mb-2" onclick="$('#{{../filter.htmlFieldName}}').val('{{# ifCond value "==" "desc"  }}asc{{/ifCond}}')[0].form.submit();"><i class="fas {{ icon }}" title="{{../filter.fieldLabel}} - {{label}}"></i></button>
+        <button type="button" class="btn btn-light btn-sm ml-auto mb-2" onclick="$('#{{../filter.htmlFieldName}}').val('{{# ifCond value "==" "desc"  }}asc{{/ifCond}}')[0].form.submit();" title="{{../filter.fieldLabel}} - {{label}}"><i class="fas {{ icon }}"></i></button>
       {{/with}}
       <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
     {{/ifCond}}
@@ -21,8 +21,8 @@
       <div class="dropdown-menu">
         {{#each filter.options }}
           {{#ifCond (conf condition.variable) "==" condition.value }}
-            <button  onclick="$('#{{../filter.htmlFieldName}}').val('{{id}}')[0].form.submit();"  class="dropdown-item filter-dropdown-item" type="button">
-                {{label}} <i class="fas fa-info-circle text-darkgray" data-toggle="tooltip" data-placement="right" title="{{description}}"></i>
+            <button  onclick="$('#{{../filter.htmlFieldName}}').val('{{id}}')[0].form.submit();"  class="dropdown-item filter-dropdown-item" type="button"  title="{{description}}">
+                {{label}} <i class="fas fa-info-circle text-darkgray" data-toggle="tooltip" data-placement="right"></i>
             </button>
             <div class="dropdown-divider"></div>
           {{/ifCond}}
