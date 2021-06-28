@@ -1451,6 +1451,9 @@ input[type=submit].landing-search-inputtext {
     max-width: none;
     min-width: auto;
   }
+  .collection-title {
+    font-size: 1.5rem;
+  }
 }
 @media (min-width: 576px) {
   .filters .form-inline .form-control {
@@ -1477,6 +1480,10 @@ input[type=submit].landing-search-inputtext {
     max-width: none;
     min-width: auto;
   }
+  .error,
+  .results-list {
+    padding-top: 9rem;
+  }
 }
 @media screen and (max-width: 364px) {
   .filters .filter-selected.simple {
@@ -1493,6 +1500,16 @@ input[type=submit].landing-search-inputtext {
   }
   .filters .nav-link.dropdown-tools {
     padding: 0.5rem;
+  }
+  .filters .nav-item {
+    margin-bottom: 0;
+  }
+  .collection-title {
+    font-size: 1.2rem;
+  }
+  .error,
+  .results-list {
+    padding-top: 8rem;
   }
 }
 .social-share-icons a {
