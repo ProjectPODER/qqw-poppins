@@ -410,7 +410,7 @@ $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
 });
 
 $('.filter-dropdown').on('show.bs.dropdown', function (e) {
-  let filterName = $(e.relatedTarget).title || $(e.relatedTarget).parents(".nav-item").find(".nav-link").attr("title")
+  let filterName = $(e.relatedTarget).attr("title") || $(e.relatedTarget).parents(".nav-item").find(".nav-link").attr("title")
 
   console.log("Filtros - Abrir",filterName)
 
@@ -423,7 +423,16 @@ $('.filter-dropdown').on('show.bs.dropdown', function (e) {
 });
 
 $('.filter-dropdown button').on('click', function (e) {
-  let filterName = $(e.target).parent().parent().find("h6").text() || ("Valor: " + $(e.target).text().trim());
+  // console.log(e.currentTarget);
+
+  let filterValue = $(e.currentTarget).text().trim() || $(e.currentTarget).attr("title");
+  let filterTitleElement = $(e.currentTarget).parent().parent().find("h6");
+  if (filterTitleElement.length == 1) {
+    filterName = filterTitleElement.text().trim()
+  }
+  else {
+    filterName = "Valor: "+filterValue;
+  }
   console.log("Filtros - Aplicar",filterName)
 
   gtag('event', "search", {
@@ -433,6 +442,58 @@ $('.filter-dropdown button').on('click', function (e) {
   });
 
 });
+
+window.addEventListener("load",function() {
+  jQuery.extend (
+      jQuery.expr.pseudos.containsCI = function (a, i, m) {
+          //-- faster than jQuery(a).text()
+          var sText   = (a.textContent || a.innerText || ""); 
+          sText = sText.replace("é","e")
+                  .replace("á","a")        
+                  .replace("í","i")        
+                  .replace("ó","o")        
+                  .replace("ú","u")        
+                  .replace("ñ","n")        
+
+          var zRegExp = new RegExp (m[3], 'i');
+          return zRegExp.test (sText);
+      }
+  );                  
+})
+
+function updateFitlerList(e) {
+  let filterId = $(e.target).attr("id");
+  let filterElement = $('#'+filterId);
+
+  //If enter pressed, then submit with the value of the first button
+  if (e.keyCode==13) {
+    let firstVisibleButton = filterElement.parent().find('button:visible');
+    let firstVisibleValue = firstVisibleButton.attr("value");
+    console.log(firstVisibleButton,firstVisibleValue)
+    filterElement.val(firstVisibleValue)[0].form.submit()
+  }
+  //Exclude control codes except space
+  else if (e.keyCode > 32 || e.keyCode == 8) {
+    let filterValue = filterElement.val().trim();
+
+    //Since we're excecuting on keydown, value has not changed, so we need to make the change to the string
+    filterValue += String.fromCharCode(e.keyCode).toLocaleLowerCase()
+
+    //If it's space, then reduce string
+    if (e.keyCode == 8) {
+      filterValue = filterValue.substr(0,filterValue.length - 2)
+    }
+
+    //Show all buttons, then hide the ones that don't match
+    filterElement.parent().find('button')
+      .show() 
+      .not('button[value='+filterValue+']')
+      .not('button:containsCI('+filterValue+')')
+      .not("a.show_all_options")
+      .hide();                   
+  }                                 
+}
+
 
 $('.utilities-dropdown').on('show.bs.dropdown', function (e) {
   console.log("Utilidades - Abrir",e.relatedTarget.title)
