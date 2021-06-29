@@ -4,6 +4,7 @@
   {{/ifCond}}
 {{ else }}
 {{#if filter.applies }}
+  <!--  Filter item -->
   <li class="nav-item dropdown filter-element filter-dropdown {{#if filter.value }}active{{/if}} {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
     {{#ifCond filter.type "!=" "toggle"}}
       <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
@@ -30,6 +31,8 @@
       </div>
     {{else}}
       {{#ifCond filter.type "!=" "toggle" }}
+        <!--  Filter button -->
+
         <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}" data-toggle="dropdown">
           <p class="filter-selected"
           title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}">
@@ -47,15 +50,13 @@
           <button type="button" class="close ml-auto filter-close" data-htmlFieldName="{{filter.htmlFieldName}}">&times;</button>
           {{/if}}
         </div>
+
+        <!--  Filter dropdown menu -->
         <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
             <h6 class="ml-2 {{#ifCond filter.type "==" "minmax" }}text-center{{/ifCond}}"><strong>{{filter.fieldLabel}}</strong></h6>
             <p class="ml-2 {{#ifCond filter.htmlFieldName "==" "importe-contrato"}}text-center{{/ifCond}}">{{filter.guidanceText}}</p>
             <fieldset>
               {{# ifCond filter.type "==" "string" }}
-
-
-
-
                 <input type="text" class="form-control input-string {{#if filter.autocomplete_enabled}}easy-search-input-filter{{/if}}" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}" data-autocomplete-parameters="?collection={{collection}}&{{ filter.autocomplete_parameters }}">
                 <button type="submit" class="btn btn-light d-inline-block">{{_ "APLICAR"}}</button>
               {{/ifCond}}
@@ -64,10 +65,24 @@
                 <button type="submit" class="btn btn-light d-inline-block">{{_ "APLICAR"}}</button>
               {{/ifCond}}
               {{# ifCond filter.type "==" "select" }}
+              {{# ifCond (get_object_length filter.options) ">" 5 }}
+              Filtrar:
+              <input type="text" class="form-control input-string" onkeydown="updateFitlerList(event)" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
+
+              <hr>
+              {{/ifCond}}
                 {{#each filter.options}}
-                  <button class="btn btn-light mb-1 {{#ifCond @key "==" ../filter.value}}active{{/ifCond}}  " type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()">{{_ this}}</button>
+                  <button class="btn btn-light mb-1 {{#ifCond @key "==" ../filter.value}}active{{/ifCond}}" {{# ifCond @index ">" 25 }}style="display: none"{{/ifCond}} type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()" value="{{@key}}">{{_ this}}</button>
+
                 {{/each}}
-                <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}">
+                 {{# ifCond (get_object_length filter.options) ">" 25 }}
+                 <a href="#" class="show_all_options"  onclick="$('#{{filter.htmlFieldName}}').parent().find('button').show(); $(this).hide(); return false">
+
+                    ... Ver todas las {{  get_object_length filter.options }} opciones
+                 </a>
+                 {{/ifCond}}
+
+                {{!-- <input type="hidden" name="{{filter.htmlFieldName}}" id="{{filter.htmlFieldName}}" value="{{filter.value}}"> --}}
               {{/ifCond}}
               {{#ifCond filter.type "==" "minmax" }}
                 <div class="form-inline justify-content-center">
