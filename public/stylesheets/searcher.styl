@@ -7,6 +7,9 @@
     width 100%
     padding-top 0
     padding-bottom 0
+    -webkit-box-shadow: 0px 4px 10px -3px #d7d7d7;
+    -moz-box-shadow: 0px 4px 10px -3px #d7d7d7;
+    box-shadow: 0px 4px 10px -3px #d7d7d7;
     .collection-filter
         border: 1px solid #370bc2
         border-radius 3px
@@ -15,6 +18,9 @@
         margin-bottom: 4px !important
         a span
             font-weight: bold
+        &.show a, a:hover
+            background-color: #d4ccfd !important
+
     .nav-item
         margin-left 10px
         margin-bottom 10px
@@ -76,6 +82,7 @@
         width 100% !important
         background-color #e6e6e6
         padding 1rem
+
         // text-align center
     .filter-dropdown-item
         white-space normal
@@ -554,7 +561,11 @@
         flex-direction column
 
 @media screen and (max-width: 590px)
+    .emphasis-color-text
+        font-size: 0.8rem
     .filters
+        .filter-title
+            font-size: 0.7rem
         .filter-selected.simple
             font-size 0.8rem
             margin-top -4px

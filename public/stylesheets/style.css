@@ -105,6 +105,10 @@ h6 {
 .cobranding-logo img {
   height: 18px;
 }
+.navbar {
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
 .navbar img.logo-horizontal {
   width: 10rem;
 }
@@ -148,6 +152,9 @@ h6 {
 }
 .navbar-nav a:hover:after {
   width: 80%;
+}
+.navbar-brand {
+  margin-right: 0;
 }
 .notificacion {
   width: 40%;
@@ -235,7 +242,7 @@ body {
   color: #5c5c5c;
 }
 .bg-gray {
-  background-color: #f7f7f7;
+  background-color: #f6f6f6;
 }
 .bg-darkblue {
   background-color: #110046;
@@ -891,6 +898,9 @@ input[type=submit].landing-search-inputtext {
   width: 100%;
   padding-top: 0;
   padding-bottom: 0;
+  -webkit-box-shadow: 0px 4px 10px -3px #d7d7d7;
+  -moz-box-shadow: 0px 4px 10px -3px #d7d7d7;
+  box-shadow: 0px 4px 10px -3px #d7d7d7;
 }
 .filters .collection-filter {
   border: 1px solid #370bc2;
@@ -901,6 +911,10 @@ input[type=submit].landing-search-inputtext {
 }
 .filters .collection-filter a span {
   font-weight: bold;
+}
+.filters .collection-filter.show a,
+.filters .collection-filter a:hover {
+  background-color: #d4ccfd !important;
 }
 .filters .nav-item {
   margin-left: 10px;
@@ -1436,6 +1450,12 @@ input[type=submit].landing-search-inputtext {
   }
 }
 @media screen and (max-width: 590px) {
+  .emphasis-color-text {
+    font-size: 0.8rem;
+  }
+  .filters .filter-title {
+    font-size: 0.7rem;
+  }
   .filters .filter-selected.simple {
     font-size: 0.8rem;
     margin-top: -4px;
