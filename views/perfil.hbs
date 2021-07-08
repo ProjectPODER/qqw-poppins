@@ -100,15 +100,18 @@
         </li>
         {{/if}}
         {{!-- Flags --}}
-        {{#ifCond type '!=' 'companies'}}
         {{#if result.flags }}
+        {{#ifCond type '!=' 'companies'}}
+        {{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
+
         <li>
           <a href="#evaluacion" class="anchor evaluacion">
             <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
           </a>
         </li>
-        {{/if}}
         {{/ifCond}}
+        {{/ifCond}}
+        {{/if}}
         {{!-- LONG memberships --}}
         {{#if result.memberships.parent}}
         {{#each result.memberships.parent }}
@@ -266,8 +269,9 @@
 
 
 {{!-- FLAGS --}}
-{{#ifCond type '!=' 'companies'}}
 {{#if result.flags }}
+{{#ifCond type '!=' 'companies'}}
+{{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
 <section class="profile" id="evaluacion">
   <div class="profile-content">
     <div class="row">
@@ -363,8 +367,9 @@
     </div>
   </div>
 </section>
-{{/if}}
 {{/ifCond}}
+{{/ifCond}}
+{{/if}}
 
 
 {{!-- LONG memberships --}}
