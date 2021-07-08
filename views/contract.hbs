@@ -566,7 +566,12 @@
                 <i class="fas fa-info-circle"></i> {{{_ "Este contrato está {contractStatusMxIMSS}" contractStatusMxIMSS=items.contractStatusMxIMSS  }}}<br>
               {{/if}}
               {{#if status }}
-                <i class="fas fa-info-circle"></i> {{{_ "Este contrato está {statusMxCnet} ({status})" statusMxCnet=statusMxCnet status=status }}}<br>
+                <i class="fas fa-info-circle"></i> {{{_ "Este contrato está {statusMxCnet} ({status})" statusMxCnet=statusMxCnet status=status }}}
+                {{!-- {{#ifCond statusMxCnet "==" "Terminado" }}
+                . La Unidad Compradora canceló o rescindió el contratos antes de la fecha de expiración. 
+                {{/ifCond}} --}}
+                <br>
+                
               {{/if}}
               {{#if filedMxCnet }}
                 <i class="fas fa-info-circle"></i> {{{_ "Este contrato ha sido archivado" }}}<br>
