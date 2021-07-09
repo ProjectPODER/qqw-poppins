@@ -220,6 +220,9 @@ body {
 .purchase-buyer-text a {
   color: #564102 !important;
 }
+.text-gray {
+  color: #9b9b9b !important;
+}
 .text-darkgray {
   color: #5c5c5c !important;
 }
@@ -2609,6 +2612,22 @@ section.country-mujeres {
   margin: 1em 0 0em 0;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+}
+.memberships-list-toggle {
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  background-color: #fff;
+  border: 1px solid #2b00f7;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+.memberships-list td,
+.memberships-list th {
+  padding: 0 !important;
+}
+.memberships-list thead {
+  display: none;
 }
 .profile-news-container {
   background-color: #f7f7f7;

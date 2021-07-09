@@ -447,18 +447,18 @@ window.addEventListener("load",function() {
   jQuery.extend (
       jQuery.expr.pseudos.containsCI = function (a, i, m) {
           //-- faster than jQuery(a).text()
-          var sText   = (a.textContent || a.innerText || ""); 
+          var sText   = (a.textContent || a.innerText || "");
           sText = sText.replace("é","e")
-                  .replace("á","a")        
-                  .replace("í","i")        
-                  .replace("ó","o")        
-                  .replace("ú","u")        
-                  .replace("ñ","n")        
+                  .replace("á","a")
+                  .replace("í","i")
+                  .replace("ó","o")
+                  .replace("ú","u")
+                  .replace("ñ","n")
 
           var zRegExp = new RegExp (m[3], 'i');
           return zRegExp.test (sText);
       }
-  );                  
+  );
 })
 
 function updateFitlerList(e) {
@@ -486,12 +486,12 @@ function updateFitlerList(e) {
 
     //Show all buttons, then hide the ones that don't match
     filterElement.parent().find('button')
-      .show() 
+      .show()
       .not('button[value='+filterValue+']')
       .not('button:containsCI('+filterValue+')')
       .not("a.show_all_options")
-      .hide();                   
-  }                                 
+      .hide();
+  }
 }
 
 
@@ -580,7 +580,19 @@ if ($('#product-suppliers').length > 0) {
       "order": [[2, 'desc']]
     });
   }
+
+  if ($('.memberships-list').length > 0) {
+    $('.memberships-list').DataTable({
+      language: datatablesLang,
+      pageLength: 5,
+      lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]]
+    });
+
+    // $('thead').hide();
+  }
 });
+
+
 // End datatables
 
 // Load desabasto iframes
@@ -604,5 +616,8 @@ $(".notificacion-close").on("click", function () {
 // Hide Memberships list
 $('.memberships-list-toggle').on("click", function () {
   $(".memberships-hidden").toggle();
-  $(this).text($(this).text() == 'Ver la lista completa' ? 'Ocultar la lista' : 'Ver la lista completa');
+  $(this).text($(this).text() == 'Ocultar todos' ? 'Mostrar todos' : 'Ocultar todos');
+  $(".memberships-list-text").text(function (i, v) {
+    return v === 'Mostrando ' ? 'Mostrando  5 de ' : 'Mostrando '
+  });
 })
