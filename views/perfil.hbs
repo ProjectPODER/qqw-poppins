@@ -165,6 +165,10 @@
 
 
 {{!-- SUMMARIES --}}
+{{#if summaries.funder.total.count }}
+{{>summary result=result role="funder" classification="contract" data=summaries.funder }}
+{{/if}}
+
 {{#if summaries.buyer_purchase.total.count }}
 {{>summary result=result role="buyer" classification="purchase" data=summaries.buyer_purchase }}
 {{/if}}
@@ -182,10 +186,6 @@
 
 {{#if summaries.supplier_contract.total.count }}
 {{>summary result=result role="supplier" classification="contract" data=summaries.supplier_contract }}
-{{/if}}
-
-{{#if summaries.funder.total.count }}
-{{>summary result=result role="funder" classification="contract" data=summaries.funder }}
 {{/if}}
 
 {{!-- 
