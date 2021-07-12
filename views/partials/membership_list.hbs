@@ -11,16 +11,39 @@
           </div>
           <div class="col-12 col-m-12">
             <div class="profile-memberships-content">
-              {{#each this.memberships}}
+              {{!-- {{#each this.memberships}}
               <div class="{{#ifCond @index ">" 4 }}memberships-hidden{{/ifCond}}">
                 {{>membership result=this directionality=this.direction}}
               </div>
               {{/each}}
               {{#ifCond this.memberships.length ">" 4 }}
               <div class="text-center mt-5 mb-4">
-                <a class="memberships-list-toggle button-link">Ver la lista completa</a>
+                <div>
+                  <span class="memberships-list-text">Mostrando 5 de </span><span class="text-gray">{{this.memberships.length}}.</span>
+                </div>
+                <a class="memberships-list-toggle">Mostrar todos</a>
               </div>
-              {{/ifCond}}
+              {{/ifCond}} --}}
+
+              <div class="table-responsive">
+                <table width="100%" id="memberships-list" class="table memberships-list">
+                  <thead>
+                    <tr>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each this.memberships}}
+                    <tr>
+                      <td>
+                        {{>membership result=this directionality=this.direction}}
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+
             </div>
           </div>
         </div>

@@ -1,4 +1,6 @@
 .navbar
+  -ms-flex-wrap: nowrap
+  flex-wrap: nowrap
   img
     &.logo-horizontal
       width 10rem
@@ -40,6 +42,9 @@
       transition 0.35s
     &:hover:after
       width 80%
+
+.navbar-brand
+  margin-right: 0
 
 //Para acomodar la barra de  notificaciones, borrar cuando ya  no esté la barra
 .notificacion
