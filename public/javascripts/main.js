@@ -581,14 +581,13 @@ if ($('#product-suppliers').length > 0) {
     });
   }
 
+  // Memberships tables
   if ($('.memberships-list').length > 0) {
     $('.memberships-list').DataTable({
       language: datatablesLang,
       pageLength: 5,
-      lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]]
+      lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
     });
-
-    // $('thead').hide();
   }
 });
 
