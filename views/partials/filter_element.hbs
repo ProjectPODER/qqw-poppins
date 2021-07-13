@@ -34,6 +34,8 @@
         <!--  Filter button -->
 
         <div class="selection-filter-box {{#if filter.value }}with-value{{/if}}" data-toggle="dropdown">
+        {{!-- {{filter.applies}}
+        {{filter.value}} --}}
           <p class="filter-selected"
           title="{{#ifCond filter.type "==" "select" }}{{lookup filter.options filter.value}}{{else}}{{#if (or filter.value.min filter.value.max) }}{{filter.value.min}} a {{filter.value.max}}{{else}}{{or filter.value filter.default.label}}{{/if}}{{/ifCond}}">
             {{#ifCond filter.type "==" "select" }}
