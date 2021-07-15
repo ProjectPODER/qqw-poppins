@@ -7,7 +7,7 @@
   <!--  Filter item -->
   <li class="nav-item dropdown filter-element filter-dropdown {{#if filter.value }}active{{/if}} {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
     {{#ifCond filter.type "!=" "toggle"}}
-      <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,35" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
+      <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" data-reference="toggle" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
     {{else}}
       {{#with (filter_array filter.options "value" (or filter.value filter.default.value) ) }}
         <button type="button" class="btn btn-light btn-sm ml-auto mb-2" onclick="$('#{{../filter.htmlFieldName}}').val('{{# ifCond value "==" "desc"  }}asc{{/ifCond}}')[0].form.submit();" title="{{../filter.fieldLabel}} - {{label}}"><i class="fas {{ icon }}"></i></button>

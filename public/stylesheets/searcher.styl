@@ -30,13 +30,13 @@
     .sortDirection-filter
         min-width auto !important
     .dropdown-menu-morefilters
-        border 1px solid
+        border 1px solid rgba(0,0,0,.15)
         background-color #e6e6e6
         width calc(100% - 20px)
         position absolute
         left 5px
-        padding 11px 0 0
-        margin 0
+        padding 11px 10px 0
+        margin 8px 0 0
         max-height calc(100vh - 140px)
         overflow auto
         .selection-filter-box
@@ -54,6 +54,8 @@
                     margin-top -22px !important
         .filter-title
             font-weight: bold
+            border-bottom: none !important
+            justify-content: end;
 
         .dropdown-menu
             transform: none !important
@@ -71,6 +73,12 @@
             border-bottom 4px solid
             border-color white
             overflow hidden
+        .nav-link
+            padding: .5rem 0rem
+        p.ml-2
+            margin-left: 0 !important
+        input.input-string
+            margin-left: 0 !important
 
     .type-filter
         border-right 3px solid $main-color
@@ -79,7 +87,7 @@
         position static !important
     .filter-dropdown-menu
         margin-top 0px !important
-        width 100% !important
+        width calc(100% - 125px)!important
         background-color #e6e6e6
         padding 1rem
 

@@ -221,6 +221,12 @@ $("#moreFilters").on("click", function() {
   $(".dropdown-menu-morefilters").toggleClass("d-none");
 })
 
+// $('.dropdown-menu-morefilters').on('click', function (e) {
+//   $(this).next('ul').toggle();
+//   e.stopPropagation();
+//   e.preventDefault();
+// });
+
 $(".filter-close").on("click", function (e) {
   // console.log(e)
   let htmlFieldName = $(e.target).data("htmlfieldname")
@@ -403,11 +409,15 @@ $(window).scroll(function(e) {
 //       lengthChange: false,
 // } );
 
-$('.filter-dropdown').on('hide.bs.dropdown', function (e) {
-  if (e.clickEvent) {
-    e.preventDefault();
-  }
+$('.filter-dropdown-menu').on('click', function (e) {
+  e.stopPropagation();
 });
+
+// $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
+//   if (e.clickEvent) {
+//     e.preventDefault();
+//   }
+// });
 
 $('.filter-dropdown').on('show.bs.dropdown', function (e) {
   let filterName = $(e.relatedTarget).attr("title") || $(e.relatedTarget).parents(".nav-item").find(".nav-link").attr("title")
