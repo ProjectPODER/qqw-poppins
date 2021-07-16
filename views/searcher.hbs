@@ -9,11 +9,11 @@
                 {{> filter_element filter=this collection=../collection }}
               {{/each }}
               <li class="nav-item more-filters-dropdown d-none text-center">
-                <a class=" filter-title dropdown-tools nav-link" href="#" id="moreFilters" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class=" filter-title dropdown-tools nav-link" href="#" id="moreFilters" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
                   {{_ "Más filtros" }} <br>
                   <i class="fas fa-filter icon-tools"></i>
                 </a>
-                <ul class="dropdown-menu-morefilters d-none" aria-labelledby="moreFilters">
+                <ul class="dropdown-menu-morefilters dropdown-menu" aria-labelledby="moreFilters">
                   <li></li>
                 </ul>
               </li>
