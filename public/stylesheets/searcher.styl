@@ -75,7 +75,7 @@
             overflow hidden
         .nav-link
             padding: .5rem 0rem
-        p.ml-2
+        p.ml-2, fieldset.ml-2
             margin-left: 0 !important
         input.input-string
             margin-left: 0 !important
@@ -166,7 +166,7 @@
 
     input.input-string
         width 70%
-        margin-left 0.5rem
+        // margin-left 0.5rem
         margin-right 0.5rem
         display inline-block
     input.input-minmax
@@ -216,7 +216,12 @@
     //     width calc(100% - 400px)
     //     #filtersList
     //         // flex-wrap nowrap
-
+    .show_all_options
+        color: $blue
+        border-color: $blue
+        &:hover
+            background-color: $blue !important
+            color: #ffffff
 
 .selector-filter-type
     padding 4px 8px 2px
