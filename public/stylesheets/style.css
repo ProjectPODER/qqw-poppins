@@ -1139,6 +1139,9 @@ input[type=submit].landing-search-inputtext {
   background-color: #2b00f7 !important;
   color: #fff;
 }
+.filters .filter-line {
+  background-color: #cacaca;
+}
 .selector-filter-type {
   padding: 4px 8px 2px;
   font-weight: bold;

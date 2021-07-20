@@ -71,7 +71,7 @@
               Filtrar:
               <input type="text" class="form-control input-string" onkeydown="updateFitlerList(event)" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}">
 
-              <hr>
+              <hr class="filter-line">
               {{/ifCond}}
                 {{#each filter.options}}
                   <button class="btn btn-light mb-1 {{#ifCond @key "==" ../filter.value}}active{{/ifCond}}" {{# ifCond @index ">" 25 }}style="display: none"{{/ifCond}} type="button" onclick="$('#{{../filter.htmlFieldName}}').val('{{@key}}')[0].form.submit()" value="{{@key}}">{{_ this}}</button>
