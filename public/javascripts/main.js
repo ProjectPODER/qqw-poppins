@@ -216,10 +216,38 @@ jQuery(function() {
   });
 });
 
-$("#moreFilters").on("click", function() {
-  // console.log("moreFilters click");
-  $(".dropdown-menu-morefilters").toggleClass("d-none");
-})
+// $("#moreFilters").on("click", function() {
+//   // console.log("moreFilters click");
+//   $(".dropdown-menu-morefilters").toggleClass("d-none");
+// })
+
+// $('.dropdown-menu-morefilters').on('click', function (e) {
+//   $(this).next('ul').toggle();
+//   e.stopPropagation();
+//   e.preventDefault();
+// });
+
+$(function () {
+  // ------------------------------------------------------- //
+  // Multi Level dropdowns
+  // ------------------------------------------------------ //
+  $("ul.dropdown-menu [data-toggle='dropdown']").on("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $(this).siblings().toggleClass("show");
+
+
+    // if (!$(this).next().hasClass('show')) {
+    //   $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+    // }
+    // $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+    //   $('.dropdown-submenu .show').removeClass("show");
+    // });
+
+  });
+});
+
 
 $(".filter-close").on("click", function (e) {
   // console.log(e)
@@ -403,11 +431,15 @@ $(window).scroll(function(e) {
 //       lengthChange: false,
 // } );
 
-$('.filter-dropdown').on('hide.bs.dropdown', function (e) {
-  if (e.clickEvent) {
-    e.preventDefault();
-  }
+$('.filter-dropdown-menu').on('click', function (e) {
+  e.stopPropagation();
 });
+
+// $('.filter-dropdown').on('hide.bs.dropdown', function (e) {
+//   if (e.clickEvent) {
+//     e.preventDefault();
+//   }
+// });
 
 $('.filter-dropdown').on('show.bs.dropdown', function (e) {
   let filterName = $(e.relatedTarget).attr("title") || $(e.relatedTarget).parents(".nav-item").find(".nav-link").attr("title")
@@ -581,14 +613,13 @@ if ($('#product-suppliers').length > 0) {
     });
   }
 
+  // Memberships tables
   if ($('.memberships-list').length > 0) {
     $('.memberships-list').DataTable({
       language: datatablesLang,
       pageLength: 5,
-      lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]]
+      lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
     });
-
-    // $('thead').hide();
   }
 });
 

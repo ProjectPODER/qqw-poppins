@@ -5,26 +5,26 @@
               {{{get_role_icon this.role this.direction}}}
             </div>
             <h4 class="description-data-subtitle">
-              {{#ifCond this.memberships.length ">" 5}} <strong>{{this.memberships.length}}</strong>{{/ifCond}}
+              {{!-- {{#ifCond this.memberships.length ">" 5}} <strong>{{this.memberships.length}}</strong>{{/ifCond}} --}}
               {{get_role_name this.role this.direction}}
             </h4>
           </div>
           <div class="col-12 col-m-12">
             <div class="profile-memberships-content">
-              {{!-- {{#each this.memberships}}
-              <div class="{{#ifCond @index ">" 4 }}memberships-hidden{{/ifCond}}">
+              {{#ifCond this.memberships.length "<" 4 }}
+              {{#each this.memberships}}
+              <div>
                 {{>membership result=this directionality=this.direction}}
               </div>
               {{/each}}
-              {{#ifCond this.memberships.length ">" 4 }}
-              <div class="text-center mt-5 mb-4">
+              <div class="mt-2 mb-4">
                 <div>
-                  <span class="memberships-list-text">Mostrando 5 de </span><span class="text-gray">{{this.memberships.length}}.</span>
+                  <p class="memberships-list-text">Mostrando {{this.memberships.length}} elemento(s)</p>
                 </div>
-                <a class="memberships-list-toggle">Mostrar todos</a>
               </div>
-              {{/ifCond}} --}}
+              {{/ifCond}}
 
+              {{#ifCond this.memberships.length ">" 4 }}
               <div class="table-responsive">
                 <table width="100%" id="memberships-list" class="table memberships-list">
                   <thead>
@@ -43,7 +43,7 @@
                   </tbody>
                 </table>
               </div>
-
+              {{/ifCond}}
             </div>
           </div>
         </div>

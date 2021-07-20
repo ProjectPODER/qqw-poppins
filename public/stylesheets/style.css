@@ -930,13 +930,12 @@ input[type=submit].landing-search-inputtext {
   min-width: auto !important;
 }
 .filters .dropdown-menu-morefilters {
-  border: 1px solid;
+  border: 1px solid rgba(0,0,0,0.15);
   background-color: #e6e6e6;
-  width: calc(100% - 20px);
+  width: calc(100% - 125px);
   position: absolute;
   left: 5px;
-  padding: 11px 0 0;
-  margin: 0;
+  padding: 11px 10px 0;
   max-height: calc(100vh - 140px);
   overflow: auto;
 }
@@ -960,6 +959,8 @@ input[type=submit].landing-search-inputtext {
 }
 .filters .dropdown-menu-morefilters .filter-title {
   font-weight: bold;
+  border-bottom: none !important;
+  justify-content: end;
 }
 .filters .dropdown-menu-morefilters .dropdown-menu {
   transform: none !important;
@@ -980,6 +981,16 @@ input[type=submit].landing-search-inputtext {
   border-color: #fff;
   overflow: hidden;
 }
+.filters .dropdown-menu-morefilters .nav-link {
+  padding: 0.5rem 0rem;
+}
+.filters .dropdown-menu-morefilters p.ml-2,
+.filters .dropdown-menu-morefilters fieldset.ml-2 {
+  margin-left: 0 !important;
+}
+.filters .dropdown-menu-morefilters input.input-string {
+  margin-left: 0 !important;
+}
 .filters .type-filter {
   border-right: 3px solid #2d1c9d;
   margin-left: 0;
@@ -989,7 +1000,7 @@ input[type=submit].landing-search-inputtext {
 }
 .filters .filter-dropdown-menu {
   margin-top: 0px !important;
-  width: 100% !important;
+  width: calc(100% - 125px) !important;
   background-color: #e6e6e6;
   padding: 1rem;
 }
@@ -1078,7 +1089,6 @@ input[type=submit].landing-search-inputtext {
 }
 .filters input.input-string {
   width: 70%;
-  margin-left: 0.5rem;
   margin-right: 0.5rem;
   display: inline-block;
 }
@@ -1120,6 +1130,14 @@ input[type=submit].landing-search-inputtext {
 }
 .filters ul.filter-active-collection-products .filter-collection-products {
   display: block;
+}
+.filters .show_all_options {
+  color: #2b00f7;
+  border-color: #2b00f7;
+}
+.filters .show_all_options:hover {
+  background-color: #2b00f7 !important;
+  color: #fff;
 }
 .selector-filter-type {
   padding: 4px 8px 2px;

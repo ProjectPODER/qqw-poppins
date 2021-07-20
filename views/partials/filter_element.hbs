@@ -7,7 +7,7 @@
   <!--  Filter item -->
   <li class="nav-item dropdown filter-element filter-dropdown {{#if filter.value }}active{{/if}} {{filter.htmlFieldName}}-filter {{#each filter.collections}}filter-collection-{{this}} {{/each}}">
     {{#ifCond filter.type "!=" "toggle"}}
-      <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,35" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
+      <a class="nav-link dropdown-toggle filter-title" data-toggle="dropdown" href="#" data-offset="0,31" data-reference="toggle" title="{{filter.fieldLabel}}"><span>{{filter.fieldLabel}} </span><i class="fas fa-angle-down"></i></a>
     {{else}}
       {{#with (filter_array filter.options "value" (or filter.value filter.default.value) ) }}
         <button type="button" class="btn btn-light btn-sm ml-auto mb-2" onclick="$('#{{../filter.htmlFieldName}}').val('{{# ifCond value "==" "desc"  }}asc{{/ifCond}}')[0].form.submit();" title="{{../filter.fieldLabel}} - {{label}}"><i class="fas {{ icon }}"></i></button>
@@ -57,7 +57,7 @@
         <div class="dropdown-menu filter-dropdown-menu {{filter.align}}">
             <h6 class="ml-2 {{#ifCond filter.type "==" "minmax" }}text-center{{/ifCond}}"><strong>{{filter.fieldLabel}}</strong></h6>
             <p class="ml-2 {{#ifCond filter.htmlFieldName "==" "importe-contrato"}}text-center{{/ifCond}}">{{filter.guidanceText}}</p>
-            <fieldset>
+            <fieldset class="ml-2">
               {{# ifCond filter.type "==" "string" }}
                 <input type="text" class="form-control input-string {{#if filter.autocomplete_enabled}}easy-search-input-filter{{/if}}" placeholder="{{ filter.placeholder }}" id="{{ filter.htmlFieldName }}" name="{{ filter.htmlFieldName }}" value="{{filter.value}}" data-autocomplete-parameters="?collection={{collection}}&{{ filter.autocomplete_parameters }}">
                 <button type="submit" class="btn btn-light d-inline-block">{{_ "APLICAR"}}</button>
@@ -78,7 +78,7 @@
 
                 {{/each}}
                  {{# ifCond (get_object_length filter.options) ">" 25 }}
-                 <a href="#" class="show_all_options"  onclick="$('#{{filter.htmlFieldName}}').parent().find('button').show(); $(this).hide(); return false">
+                 <a href="#" class="show_all_options btn btn-outline-primary"  onclick="$('#{{filter.htmlFieldName}}').parent().find('button').show(); $(this).hide(); return false">
 
                     ... Ver todas las {{  get_object_length filter.options }} opciones
                  </a>
