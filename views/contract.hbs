@@ -567,9 +567,15 @@
               {{/if}}
               {{#if status }}
                 <i class="fas fa-info-circle"></i> {{{_ "Este contrato está {statusMxCnet} ({status})" statusMxCnet=statusMxCnet status=status }}}
-                {{!-- {{#ifCond statusMxCnet "==" "Terminado" }}
-                . La Unidad Compradora canceló o rescindió el contratos antes de la fecha de expiración. 
-                {{/ifCond}} --}}
+                {{#ifCond statusMxCnet "==" "Terminado" }}
+                . {{_ "La Unidad Compradora canceló o rescindió el contratos antes de la fecha de expiración."}}
+                {{/ifCond}}
+                {{#ifCond statusMxCnet "==" "Expirado" }}
+                . {{_ "Se cumplió el plazo de vigencia del contrato."}}
+                {{/ifCond}}
+                {{#ifCond statusMxCnet "==" "Activo" }}
+                . {{_ "Aún no se ha cumplido el plazo de vigencia del contrato."}}
+                {{/ifCond}}                
                 <br>
                 
               {{/if}}
