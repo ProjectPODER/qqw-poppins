@@ -45,6 +45,7 @@ let typeahead_suggestion = function(data){
 }
 
 let typeahead_suggestion_filter = function(data){
+  // console.log("typeahead_suggestion_filter",data);
   let text = data.name;
   let span = '<a style="display: block">' + text + '</a>';
   return span;
@@ -56,7 +57,7 @@ let typeadhead_config =   {
   minLength: 2
 };
 
-//Search
+//This is the autocomplete for home search
 $('.easy-search-input').typeahead(typeadhead_config,
   {
     name: 'qqw',
@@ -73,6 +74,7 @@ $('.easy-search-input').typeahead(typeadhead_config,
     }
   );
 
+//This is the autocomplete for filters
 $('.easy-search-input-filter').typeahead(typeadhead_config,
   {
     name: 'qqw',
