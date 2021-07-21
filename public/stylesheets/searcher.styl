@@ -223,6 +223,9 @@
             background-color: $blue !important
             color: #ffffff
 
+    .filter-line
+        background-color: #cacaca
+
 .selector-filter-type
     padding 4px 8px 2px
     font-weight bold
@@ -572,6 +575,9 @@
         -webkit-flex-direction column
         -ms-flex-direction column
         flex-direction column
+    .filters
+        .filter-dropdown-menu, .dropdown-menu-morefilters
+            width: calc(100% - 10px) !important
 
 @media screen and (max-width: 590px)
     .emphasis-color-text
