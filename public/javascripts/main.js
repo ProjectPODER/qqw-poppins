@@ -221,11 +221,6 @@ jQuery(function() {
 //   $(".dropdown-menu-morefilters").toggleClass("d-none");
 // })
 
-// $('.dropdown-menu-morefilters').on('click', function (e) {
-//   $(this).next('ul').toggle();
-//   e.stopPropagation();
-//   e.preventDefault();
-// });
 
 $(function () {
   // ------------------------------------------------------- //
