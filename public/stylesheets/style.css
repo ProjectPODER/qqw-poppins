@@ -992,6 +992,9 @@ input[type=submit].landing-search-inputtext {
 .filters .dropdown-menu-morefilters input.input-string {
   margin-left: 0 !important;
 }
+.filters .dropdown-menu-morefilters .tt-menu {
+  position: relative !important;
+}
 .filters .type-filter {
   border-right: 3px solid #2d1c9d;
   margin-left: 0;
@@ -3195,7 +3198,7 @@ section.country-mujeres {
 .apis-template .button-link-status-container .button-link-status {
   font-weight: normal;
   border: solid 1px #2b00f7;
-  color: #2b00f7;
+  color: #2b00f7 !important;
   background-color: transparent;
 }
 .apis-template .button-link-status-container .button-link-status:hover {
