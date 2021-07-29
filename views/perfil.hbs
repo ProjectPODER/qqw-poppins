@@ -100,15 +100,18 @@
         </li>
         {{/if}}
         {{!-- Flags --}}
-        {{#ifCond type '!=' 'companies'}}
         {{#if result.flags }}
+        {{#ifCond type '!=' 'companies'}}
+        {{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
+
         <li>
           <a href="#evaluacion" class="anchor evaluacion">
             <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
           </a>
         </li>
-        {{/if}}
         {{/ifCond}}
+        {{/ifCond}}
+        {{/if}}
         {{!-- LONG memberships --}}
         {{#if result.memberships.parent}}
         {{#each result.memberships.parent }}
@@ -162,6 +165,10 @@
 
 
 {{!-- SUMMARIES --}}
+{{#if summaries.funder.total.count }}
+{{>summary result=result role="funder" classification="contract" data=summaries.funder }}
+{{/if}}
+
 {{#if summaries.buyer_purchase.total.count }}
 {{>summary result=result role="buyer" classification="purchase" data=summaries.buyer_purchase }}
 {{/if}}
@@ -179,10 +186,6 @@
 
 {{#if summaries.supplier_contract.total.count }}
 {{>summary result=result role="supplier" classification="contract" data=summaries.supplier_contract }}
-{{/if}}
-
-{{#if summaries.funder.total.count }}
-{{>summary result=result role="funder" classification="contract" data=summaries.funder }}
 {{/if}}
 
 {{!-- 
@@ -266,8 +269,9 @@
 
 
 {{!-- FLAGS --}}
-{{#ifCond type '!=' 'companies'}}
 {{#if result.flags }}
+{{#ifCond type '!=' 'companies'}}
+{{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
 <section class="profile" id="evaluacion">
   <div class="profile-content">
     <div class="row">
@@ -363,8 +367,9 @@
     </div>
   </div>
 </section>
-{{/if}}
 {{/ifCond}}
+{{/ifCond}}
+{{/if}}
 
 
 {{!-- LONG memberships --}}

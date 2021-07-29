@@ -1,19 +1,13 @@
 <section class="profile-header">
   <div class="wrap bg-white" id="wrap">
     <div class="description-data-title">
-      <h3 title="{{ result.name}}" style="word-break: break-word;">
+      <div class="classification-country">
         {{{ get_classification_icon (or result.classification (or result.type "record")) result.subclassification result.govLevel}}}
-         {{!-- Type --}}
-        <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">
-            {{ get_classification_name type result.classification result.subclassification result.govLevel }}
-        </a>
-
-        {{#ifCond result.classification "==" "country" }}
-          {{translate_area result.id }}
-        {{else}}
-          {{ or result.name (or result.contracts.title result.tender.title) }}
-        {{/ifCond}}
-        {{!-- Area --}}
+      {{!-- Type --}}
+      <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">
+          {{ get_classification_name type result.classification result.subclassification result.govLevel }}
+      </a>
+      {{!-- Area --}}
         {{#each result.area }}
           {{#if id }}
             {{#ifCond @key "==" 0}}en{{else}},{{/ifCond}}
@@ -22,6 +16,22 @@
             </a>
           {{/if}}
         {{/each}}
+      </div>
+      <h3 title="{{ result.name}}" style="word-break: break-word;">
+        <span class="classification-icon" style="display: none;">{{{ get_classification_icon (or result.classification (or result.type "record")) result.subclassification
+        result.govLevel}}}</span>
+        {{#if result.area }}
+        {{#each result.area }}
+          {{#if id }}
+            <span class="flag-icon-title flag-icon flag-icon-{{id}}" style="display: none;"></span>
+          {{/if}}
+        {{/each}}
+        {{/if}}
+        {{#ifCond result.classification "==" "country" }}
+          {{translate_area result.id }}
+        {{else}}
+          {{ or result.name (or result.contracts.title result.tender.title) }}
+        {{/ifCond}}
       </h3>
     </div>
     <div class="right-box ml-auto filters">
