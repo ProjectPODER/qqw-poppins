@@ -407,6 +407,10 @@ $(window).scroll(function(e) {
     $(".first-contract-section").addClass("contract-margin");
     $("#mujeresenlabolsa").addClass("profile-margin");
     $("#variaciones").addClass("profile-margin");
+    $(".classification-icon").css("display", "inline-block");
+    $(".flag-icon-title").css("display", "inline-block");
+    $(".classification-country").css("display", "none");
+
   } else {
     $("#wrap").removeClass("fixed-title");
     // $("#wrap-contract").removeClass("fixed-title-contract");
@@ -415,6 +419,9 @@ $(window).scroll(function(e) {
     $(".first-contract-section").removeClass("contract-margin");
     $("#mujeresenlabolsa").removeClass("profile-margin");
     $("#variaciones").removeClass("profile-margin");
+    $(".classification-icon").css("display", "none");
+    $(".flag-icon-title").css("display", "none");
+    $(".classification-country").css("display", "block");
   }
 
 });
