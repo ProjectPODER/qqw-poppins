@@ -33,13 +33,13 @@
     .dropdown-menu-morefilters
         border 1px solid rgba(0,0,0,.15)
         background-color #e6e6e6
-        width calc(100% - 125px)
+        width calc(100% - 607px)
         position absolute
         left 5px
         padding 11px 10px 0
-        // margin 8px 0 0
-        max-height calc(100vh - 140px)
+        // max-height calc(100vh - 140px)
         overflow auto
+        margin-left: 109px
         .selection-filter-box
             max-width: none
             overflow visible
@@ -505,6 +505,12 @@
     .pagination-container
         .w-50
             width: 100% !important
+
+@media screen and (max-width: 1200px)
+    .filters
+        .dropdown-menu-morefilters
+            width 100%
+            margin-left: 0
 
 @media screen and (max-width: 991px)
     .filters
