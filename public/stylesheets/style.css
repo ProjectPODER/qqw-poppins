@@ -3438,24 +3438,30 @@ footer span {
 footer span:first-child {
   margin-top: 1rem;
 }
-footer a {
+footer a,
+footer span.footer-logo {
   color: #fff;
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
   transition: all 0.35s;
 }
 footer a:hover,
-footer a:focus {
+footer span.footer-logo:hover,
+footer a:focus,
+footer span.footer-logo:focus {
   color: #ccd;
   text-decoration: none;
 }
-footer a .logofooter-poder {
+footer a .logofooter-poder,
+footer span.footer-logo .logofooter-poder {
   width: 90px;
 }
-footer a .logofooter-ml {
+footer a .logofooter-ml,
+footer span.footer-logo .logofooter-ml {
   width: 55px;
 }
-footer a .logofooter-pl {
+footer a .logofooter-pl,
+footer span.footer-logo .logofooter-pl {
   width: 90px;
 }
 footer .text-link {
