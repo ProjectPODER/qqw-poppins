@@ -177,11 +177,13 @@
                 {{/each}}
             </div>
             {{/if}}
-            
+
           {{#if result.source}}
             <div class="col-md-4 col-12">
               <p class="js-title-data">{{{_ "Fuente(s)"}}}</p>
-              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a> <i class="fas fa-info-circle text-gray" title="{{{ get_source_description this.id }}}" data-placement="right"></i>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
+              <p class="js-data">{{#each result.source}} <a href="{{ url view="entidades-y-fuentes" _anchor=this.id }}">{{_ this.id}}</a>
+              <a data-toggle="tooltip" data-placement="bottom" title="{{{ get_source_description this.id }}}"><i class="fas fa-info-circle"></i>
+              </a>{{#if @last}}{{else}}, {{/if}}{{/each}}</p>
             </div>
 
             {{#with (cobranding result.source "data_name") }}
@@ -189,7 +191,7 @@
               <p class="js-title-data">{{{_ "Forman parte del proyecto"}}}</p>
               <p class="js-data">
               {{#each this }}
-                    <a href="{{data_url}}">{{data_name}}</a>{{#if @last}}{{else}}, {{/if}}  
+                    <a href="{{data_url}}">{{data_name}}</a>{{#if @last}}{{else}}, {{/if}}
               {{/each}}
               </p>
             </div>

@@ -173,6 +173,13 @@ var autocollapse = function (menu,maxHeight) {
           var children = $.merge($(menu +" > li.active").toArray(),nav.children(menu + ' > li:not(:last-child):not(.active)'))
           var count = children.length;
           let movingElement = $(children[count - 1]);
+
+          if (children.length == 1) {
+            $('.more-filters-dropdown span.mas-text').css('display', "none");
+          }
+          if (children.length == 2) {
+            $('.more-filters-dropdown span.mas-text').css('display', "inline");
+          }
           // console.log("autocollapse moving", autocollapse_moves, movingElement);
           movingElement.prependTo(menu + ' .dropdown-menu-morefilters');
           navHeight = nav.innerHeight();

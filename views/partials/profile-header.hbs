@@ -3,14 +3,15 @@
     <div class="description-data-title">
       <div class="classification-country">
         {{{ get_classification_icon (or result.classification (or result.type "record")) result.subclassification result.govLevel}}}
-      {{!-- Type --}}
-      <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">
-          {{ get_classification_name type result.classification result.subclassification result.govLevel }}
-      </a>
+        {{!-- Type --}}
+        <a href="{{url view="buscador" collection=type tipo-entidad=result.classification subtipo-entidad=result.subclassification}}">
+            {{ get_classification_name type result.classification result.subclassification result.govLevel }}
+        </a>
       {{!-- Area --}}
         {{#each result.area }}
           {{#if id }}
             {{#ifCond @key "==" 0}}en{{else}},{{/ifCond}}
+            <span class="flag-icon flag-icon-{{id}}"></span>
             <a href="{{url view="regiones/:id" _id=id}}">
               {{translate_area name}}
             </a>
