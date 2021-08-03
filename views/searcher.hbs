@@ -132,7 +132,10 @@
           {{#each result.summary.sources }}
             <li>
               <a title="Filtrar por {{_ @key}}" href="{{ url view="search" fuente=@key }}">{{_ @key}}</a>
-              <i class="fas fa-info-circle text-gray" title="{{{ get_source_description @key  }}}" data-placement="right"></i> : {{format_number this}}
+              {{!-- <i class="fas fa-info-circle text-gray" title="{{{ get_source_description @key  }}}" data-placement="right"></i> --}}
+
+              <a data-toggle="tooltip" data-placement="bottom" data-html="true" data-container="body" title="{{{ get_source_description @key  }}}"><i class="fas fa-info-circle text-gray"></i>
+              </a> : {{format_number this}}
             </li>
           {{/each}}
           </ul>
