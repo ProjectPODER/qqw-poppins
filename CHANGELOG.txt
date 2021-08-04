@@ -1,3 +1,27 @@
+2021-08-04: v1.2
+- Fix redirects
+- Fix tooltips
+- Remove links from footer
+- Add flags in profile titles 
+- Improve filters in mobile
+- Add dependent filters for geo
+- Add geo filters to contracts 
+- Add cannonical URLs to improve search positioning 
+- Improve order (ranking) of results in autocomplete 
+- Improve description of contract status for some sources 
+- Clarify license terms 
+- Update visualization library 
+- Fix order in profile summaries 
+- Hide evaluations for person suppliers (regression)
+- Add textbox to filter options in select style filters 
+- Fix feed images in home 
+- Change names for areas 
+- Improve page rendering time
+
+v1.1
+
+v1.0
+
 2020-04-01: v0.9.954
 - Fix line height for mujeres english
 - Mujeres: Update og url
