@@ -48,7 +48,7 @@
             </button>
         </div>
         <p style="font-size: 0.7rem;">
-            La url copiada o compartida es la página exacta actual, con los filtros que estén aplicados si estás en el buscador.
+            {{_ "La url copiada o compartida es la página exacta actual, con los filtros que estén aplicados si estás en el buscador."}}
         </p>
     </div>
 </li>
@@ -60,23 +60,19 @@
     <div class="dropdown-menu dropdown-menu-right filter-dropdown-menu-tools text-center">
         <p>{{_ "¿Qué deseas reportar?" }}</p>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportInfo">
-            {{_ "La información no es precisa" }}
+            {{_ "Información incorrecta" }}
         </button>
-        <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportBug">
-            {{_ "Algo no funciona" }}
-        </button>
-        <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportAdd">
-            {{_ "Tengo información adicional" }}
-        </button>
-        <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportUse">
-            {{_ "Quiero republicar esta información" }}
+        <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportCrime">
+            {{_ "Estafa o extorsión" }}
         </button>
         <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportAsk">
-            {{_ "Quiero información adicional" }}
+            {{_ "Quiero contactar a la empresa o persona" }}
         </button>
-        <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportOther">
-            {{_ "Otros temas" }}
+        <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportBug">
+            {{_ "Fallo en QQW" }}
         </button>
-
+        <button type="button" class="btn btn-primary w-100 mb-2" data-toggle="modal" data-target="#reportUse">
+            {{_ "Uso de datos de QQW" }}
+        </button>
     </div>
 </li>

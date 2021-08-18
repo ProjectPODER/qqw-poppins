@@ -9,17 +9,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{{_ "Puedes utilizar cualquier información en QuienEsQuien.wiki sin pedirnos autorización, siempre y cuando cumplas
-                    con los términos de nuestra licencia <a href='https://wiki.creativecommons.org/wiki/CCPlus' target='_blank'>CC+</a>.
-                    "}}}</p>
+                <p>{{{_ "La información de QuienEsQuien.wiki se puede reutilizar sin pedirn autorización, siempre y cuando nos cites como fuente y utilices la licencia <a href='{license}'>CC-BY-SA</a> para tus publicaciones." license=(url view="license")}}}</p>
                 <p>
 
-                {{_ "En resumen: citar la fuente y utilizar la misma licencia para tu contenido." }}
-                </p>
-                <p>
-
-                {{_ "Si quieres utilizar la información y no puedes cumplir con la licencia, por favor contactanos y cuéntanos sobre tu
-                proyecto." }}
+                {{_ "Si no puedes cumplir con estos requisitos, por favor contáctanos y cuéntanos sobre tu proyecto." }}
                 </p>
             </div>
             <div class="modal-footer">
@@ -44,36 +37,43 @@
             <div class="modal-body">
                 <p>
 
-                {{_ "La información recopilada en QuiénEsQuién.Wiki proviene de fuentes públicas y oficiales, como Compranet y la BMV, si encuentras que no es precisa o tiene errores, se trata de errores de las fuentes de origen, con las que no tenemos contacto. Sin embargo, agradecemos que nos informes sobre esto y lo documentaremos apropiadamente." }}
+                {{_ "La información recopilada en QuiénEsQuién.Wiki proviene de fuentes públicas y oficiales, como Compranet y la BMV, si encuentras que no es precisa o tiene errores, se trata de errores de las fuentes de origen." }}
                 </p>
                 <p>
 
-                {{_ "Si la información presentada sobre '{title}' no es correcta, por favor contáctanos reportando la información errónea y dónde podemos conseguir la información correcta." title=(or title.full title) }}
+                {{_ "Si la información presentada sobre '{title}' no es correcta, por favor contáctanos reportando la información errónea y dónde podemos conseguir la información correcta. Nos ofrecemos a acompañarte en el reclamo a las entidades correspondientes." title=(or title.full title) }}
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
-                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Correcciones a {title}" title=(or title.full title)) }}">{{_ "Contáctanos" }}</a>
+                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Solicito apoyo por errores en {title}" title=(or title.full title)) }}">{{_ "Solicitar acompañamiento" }}</a>
             </div>
         </div>
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="reportAdd" tabindex="-1" role="dialog" aria-labelledby="reportAddLabel" aria-hidden="true">
+<div class="modal fade" id="reportCrime" tabindex="-1" role="dialog" aria-labelledby="reportCrimeLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportAddLabel">{{_ "Aportar información" }}</h5>
+                <h5 class="modal-title" id="reportCrimeLabel">{{_ "Soy víctima de una estafa o extorsión" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-              {{_ "Agradecemos todos los aportes. Si tienes información adicional sobre '{title}' y quieres que esta le llegue al área de periodismo de PODER, por favor contáctanos." title=(or title.full title) }}
+                <p>
+
+                    {{{_ "Lamentablemente es una práctica muy común que las empresas y personas no cumplan con sus compromisos al proveer bienes o servicios, en caso de incumplimiento en México puedes dirigirte a la <a href='https://www.gob.mx/profeco/es/articulos/proceso-y-requisitos-de-quejas-y-denuncias?idiom=es'>Profeco</a> y presentar una queja o denuncia según corresponda, en caso de ser víctima de fraude cibernético te invitamos a leer este instructivo de la <a href='https://www.gob.mx/profeco/articulos/campana-nacional-antifraude-cibernetico-260577?idiom=esRecomendaciones'>Campaña Nacional Antifraude Cibernético</a>."}}}
+                </p>
+                <p>
+
+                    {{{_ "Si eres víctima de extorsión, toma fotos de pantalla de los mensajes recibidos y dirígete al ministerio público para solicitar protección, o bien, llama al número 088 para recibir orientación para presentar la denuncia correspondiente. <a href='https://www.gob.mx/sspc/es/articulos/no-seas-victima-de-engano-telefonico?idiom=es'>Recomendaciones para denunciar extorsión telefónica</a> . Si los extorsionadores han mencionado explícitamente a QuienEsQuien.wiki en sus mensajes, por favor envíanos una copia de los mensajes."}}}
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Aporte de información sobre {title}" title=(or title.full title)) }}">{{ _ "Contáctanos" }}</a>
+                <a type="button" class="btn btn-primary" href="{{ url view="contacto" subject=(_ "Extorsión basada en QQW {title}" title=(or title.full title)) }}">{{ _ "Reportar extorsión" }}</a>
             </div>
         </div>
     </div>
@@ -83,22 +83,18 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reportAskLabel">{{_ "Solicitar información adicional" }}</h5>
+                <h5 class="modal-title" id="reportAskLabel">{{_ "No es posible contactar" }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <p>
-                    {{_ "La información que encuentras en el perfil de cada persona o empresa proviene de diferentes fuentes públicas y oficiales, que al mismo tiempo están documentadas en nuestro portal. Nosotros no somos una dependencia de gobierno ni empresa que realice actividades de compra. Tampoco tenemos contacto con las personas o empresas mencionadas en estos perfiles." }}
-                </p>
-                <p>
-                    {{_ "Si tu duda no ha sido resuelta con esta respuesta, te invitamos a que nos contactes y haremos nuestro mejor esfuerzo para responderte." }}
+                    {{_ "Si deseas solicitar cotizaciones, ofrecer tus servicios, reclamar a empresas o contactar a personas, te recomendamos buscar el sitio web oficial o utilizar otro medio de contacto. QuienEsQuien.wiki no es un sitio de anuncios ni tiene contacto con las empresas y personas mencionadas en el sitio." }}
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
-                <a type="button" class="btn btn-primary" href="{{url view="contacto" subject=(_ "Solicito información de {title}" title=(or title.full title)) }}">{{_ "Contáctanos" }}</a>
             </div>
         </div>
     </div>
@@ -115,69 +111,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                    {{_ "Agradecemos mucho que te tomes el tiempo de reportarnos errores y proponernos mejoras, por favor llena este formulario." }}
+                    {{{_ "Agradecemos mucho que te tomes el tiempo de reportarnos errores y proponernos mejoras, por favor contáctanos con tus ideas o carga un issue en nuestro <a href='https://github.com/projectpoder/qqw-poppins'>repositorio de GitHub</a>." }}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
-                <a type="button" class="btn btn-primary" href="{{url view="contacto" subject=(_ "Errores en {share_url}" share_url=share_url) }}">{{_ "Contáctanos" }}</a>
+                <a type="button" class="btn btn-primary" href="{{url view="contacto" subject=(_ "Errores en {share_url}" share_url=share_url) }}">{{_ "Reportar fallo" }}</a>
             </div>
         </div>
     </div>
 </div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="reportOther" tabindex="-1" role="dialog" aria-labelledby="reportOtherLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="reportOtherLabel">{{_ "Otros temas" }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-              {{_ "Si lo que preguntas o solicitas no tiene relación con el trabajo de PODER ni los datos en QuiénEsQuién.Wiki, no vamos a podemos resolver tu cuestión. Si aún quieres contactarnos, por favor presiona el botón azul."}}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{_ "Cerrar" }}</button>
-                <a type="button" class="btn btn-primary" href="{{url view="contacto" subject=(_ "Otros temas") }}">{{_ "Contáctanos" }}</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-        {{!-- <p class="addinfo-note">
-            Nota: Este mensaje <strong>no llegará a los titulares</strong> de esta empresa o institución pública.<br> Los mensajes son revisados por el equipo de QuiénEsQuién.Wiki únicamente si se comparten datos o solicitudes de ayuda, por favor no envié ofertas u otro tipo de mensajes.
-        </p>
-
-        <form action="" class="addinfo-form">
-            <div class="form-group">
-                <label>SI TIENES INFORMACIÓN PARA APORTAR A ESTA PERSONA, AGRÉGALA AQUÍ.</label>
-                <textarea id="message_info" class="form-control" rows="6" placeholder="ESCRIBE LOS DATOS QUE DESEAS APORTAR"></textarea>
-            </div>
-            <div class="form-group">
-                <label>FUENTE</label>
-                <input id="source_info" class="form-control" type="text" placeholder="AGREGA LA FUENTE DE INFORMACIÓN">
-            </div>
-            <div class="form-group">
-                <label>EMAIL</label>
-                <input id="email_info" class="form-control" type="email" placeholder="AGREGA TU EMAIL">
-            </div>
-            <div class="mt-2">
-                <button id="send_info_email" type="submit" class="button-link">ENVIAR</button>
-            </div>
-        </form>
-        <div id="thanks-column_info" style="display: none;">
-            <h3>Información enviada</h3>
-            <p>Gracias por aportar información.</p>
-        </div>
-
-        <div class="addinfo-box">
-            <h4>SI DESEAS ENVIAR DATOS DE FORMA ANÓNIMA, USA EL BUZÓN DE <a href="https://www.projectpoder.org/es/">PODER</a> EN</h4>
-            <img src="../../images/mexicoleaks-negro.png" alt="Mexicoleaks Logo" class="addinfo-box-logo img-fluid">
-            <p>Una plataforma de filtración de datos anónima y segura que verifica la información proporcionada.</p>
-            <div class="mt-2 mb-1">
-                <a href="https://mexicoleaks.mx/enviar-para.php?r=poder" class="button-link" target="_blank">ACCEDER</a>
-            </div>
-        </div> --}}
