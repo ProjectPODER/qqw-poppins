@@ -114,6 +114,65 @@
           </div>
         {{/ifCond}}
 
+        {{!-- BANDERAS --}}
+        {{#ifCond result.type "==" "contract_flags" }}
+        {{#with contracts}}
+          <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
+            <div class="col-lg-6 p-0">
+              <p class="index-list-element">
+                {{#if (filter_array source  "id" "comprasimss") }}
+                <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
+                  {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
+                    {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
+                    IMSS: {{parties.buyer.name}}
+                </a>
+                {{else}}
+
+                <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.memberOf.id}}" title="{{_ "Comprador" }}: {{parties.buyer.memberOf.name}}">
+                  {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
+                    {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
+                    {{parties.buyer.memberOf.name}}
+                </a>
+                {{/if}}
+              </p>
+            </div>
+            <div class="col-lg-6 p-0">
+              <p class="index-list-element">
+                {{#with parties.suppliers.list.[0] }}
+                  <a href="{{ url view=(get_type_url details.type) _id=id }}" title="{{_ "Proveedor:" }} {{name}}">
+                      {{{get_classification_icon details.type details.classification details.govLevel }}}
+                      {{ name }}
+                  </a>
+                {{/with}}
+                {{#ifCond parties.suppliers.list.length ">" 1 }}
+                  {{_ "(y {sc} mas)" sc=(math parties.suppliers.list.length "-" 1 ) }}
+                {{/ifCond}}
+              </p>
+            </div>
+          </div>
+          <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
+            <div class="col-lg-4 p-0 text-right">
+              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.contracts.value.amount result.contracts.value.currency}}">
+                <i class="fas fa-dollar-sign"></i>
+                  {{format_amount result.contracts.value.amount result.contracts.value.currency}}
+              </p>
+            </div>
+            <div class="col-lg-4 p-0">
+              <p class="index-list-element" title="{{_ "Fecha" }}: {{moment result.contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.contracts.period.endDate date lang="es" format="L"}}">
+                <i class="fas fa-calendar-alt"></i>
+                  {{moment result.contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.contracts.period.endDate date lang="es" format="L"}}
+              </p>
+            </div>
+            <div class="col-lg-4 p-0">
+              <p class="index-list-element" title="{{_ "Tipo de procedimiento"}}: {{result.tender.procurementMethodDetails}}">
+                <i class="fas fa-clipboard-list"></i>
+                  {{result.tender.procurementMethodDetails}}
+              </p>
+            </div>
+          </div>
+        {{/with}}
+        {{/ifCond}}
+
         {{#ifCond result.type "==" "organizations"}}
 
           {{!-- EMPRESAS --}}
