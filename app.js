@@ -57,6 +57,10 @@ function initApp(appLocals) {
   };
 
   app.use("/", express.static(path.join(__dirname, 'public'), staticOptions));
+  
+  if (appLocals.general.extra_static_path) {
+    app.use("/extra", express.static(path.join(__dirname, appLocals.general.extra_static_path[0].staging), staticOptions));
+  }
 
   // Bootstrap 4 and libraries
   app.use('/jQuery', express.static(__dirname + '/node_modules/jquery/dist/',staticOptions));
