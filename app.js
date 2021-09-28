@@ -20,14 +20,16 @@ function initApp(appLocals) {
   // console.log("appLocals buscadores",appLocals.buscadores);
   // console.log("appLocals notas",appLocals.notas);
 
+  
   // handlebars setup
-  app.engine('.hbs', hbs({
+    app.engine('.hbs', hbs({
     extname: 'hbs',
     defaultLayout: 'layout',
-    layoutsDir: path.join(__dirname, 'views'),
+    layoutsDir: path.join(__dirname, appLocals.general.views[0].staging),
     partialsDir  : [
         //  path to your partials
         path.join(__dirname, 'views/partials'),
+        path.join(__dirname, appLocals.general.partials[0].staging),
     ],
     helpers: helpers,
   }));
@@ -46,7 +48,7 @@ function initApp(appLocals) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(stylus.middleware(path.join(__dirname, 'public')));
+  app.use(stylus.middleware(path.join(__dirname, appLocals.general.style_path[0].staging)));
 
   const staticOptions = {
     index:false,
