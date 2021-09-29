@@ -326,43 +326,8 @@
           </div>
       </div>
       <div class="col-12 col-md-12 text-center">
-          <button class="btn button-link" onclick="$('#profile-send-info').toggle()">{{{_ "Solicitar informe detallado"}}}</button>
+          <a class="btn button-link" href="{{ url view="search" collection="contract_flags" id=result.id }}">{{{_ "Ver todas las evaluaciones"}}}</a>
       </div>
-      </div>
-    </div>
-    <div class="row" style="display: none" id="profile-send-info">
-      <div  class="col-md-12 col-12">
-        <div  class="">
-          <h5 class="description-data-subname">{{{_ "Solicitar más información"}}}</h5>
-          <p>{{{_ "Con el objetivo de que las dependencias y las Unidades Compradoras puedan mejorar la calidad de los datos de contrataciones destacamos las tres banderas que dieron un resultado más bajo y como pueden mejorar. Para tener la lista completa contáctanos a través del formulario."}}} </p>
-          <form class="sendinfo-form mt-2">
-            <fieldset>
-              <div class="form-group" data-required="true">
-                <label for="name" class="control-label"><b>{{{_ "Nombre"}}}</b></label>
-                <input type="text" name="name" id="name" maxlength="50" class="form-control">
-                <span class="help-block"></span>
-              </div>
-              <div class="form-group">
-                <label for="institution" class="control-label"><b>{{{_ "Institución"}}}</b></label>
-                <input type="text" name="subject" id="institution" class="form-control">
-                <span class="help-block"></span>
-              </div>
-              <div class="form-group" data-required="true">
-                <label for="email" class="control-label"><b>{{{_ "Correo electrónico"}}}</b></label>
-                <input id="email" type="email" name="contact-email" class="form-control">
-                <span class="help-block"></span>
-              </div>
-            </fieldset>
-            <input id="uc_id_message" type="hidden" name="message" value="{{result.id}}">
-            <div class="text-center">
-                <button id="send_info_uc" type="submit" class="btn button-link contact-submit">{{_ "Enviar"}}</button>
-            </div>
-          </form>
-          <div id="thanks-column" style="display: none;" class="mt-2">
-            <h4>{{{_ "Mensaje enviado"}}}</h4>
-            <p>{{{_ "Muchas gracias, pronto le enviaremos la información correspondiente."}}}</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
