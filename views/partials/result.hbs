@@ -7,7 +7,7 @@
             {{#ifCond result.classification "==" "country" }}
               {{translate_area result.id }}
             {{else}}
-              {{or result.name result.contracts.title}}
+              {{or result.name (or result.contracts.title result.contracts.[0].contracts.title)}}
             {{/ifCond}}
             {{#if result.memberOf.name }}
               <span style="font-size: 0.7em;">
@@ -130,8 +130,9 @@
         {{/ifCond}}
 
         {{!-- BANDERAS --}}
-        {{#ifCond result.type "==" "contract_flags" }}
-        {{#with contracts}}
+        {{#ifCond result.type "==" "contract" }}
+        {{#with result.contracts.[0]}}
+        
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
@@ -167,25 +168,26 @@
           </div>
           <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
             <div class="col-lg-4 p-0 text-right">
-              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.contracts.value.amount result.contracts.value.currency}}">
+              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount contracts.value.amount contracts.value.currency}}">
                 <i class="fas fa-dollar-sign"></i>
-                  {{format_amount result.contracts.value.amount result.contracts.value.currency}}
+                  {{format_amount contracts.value.amount contracts.value.currency}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{_ "Fecha" }}: {{moment result.contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.contracts.period.endDate date lang="es" format="L"}}">
+              <p class="index-list-element" title="{{_ "Fecha" }}: {{moment contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment contracts.period.endDate date lang="es" format="L"}}">
                 <i class="fas fa-calendar-alt"></i>
-                  {{moment result.contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment result.contracts.period.endDate date lang="es" format="L"}}
+                  {{moment contracts.period.startDate date lang="es" format="L"}} {{_ "al" }} {{moment contracts.period.endDate date lang="es" format="L"}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
-              <p class="index-list-element" title="{{_ "Tipo de procedimiento"}}: {{result.tender.procurementMethodDetails}}">
+              <p class="index-list-element" title="{{_ "Tipo de procedimiento"}}: {{tender.procurementMethodDetails}}">
                 <i class="fas fa-clipboard-list"></i>
-                  {{result.tender.procurementMethodDetails}}
+                  {{tender.procurementMethodDetails}}
               </p>
             </div>
           </div>
         {{/with}}
+        {{j result.contract_score }}
         {{/ifCond}}
 
         {{#ifCond result.type "==" "organizations"}}

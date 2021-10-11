@@ -270,8 +270,7 @@
 
 {{!-- FLAGS --}}
 {{#if result.flags }}
-{{#ifCond type '!=' 'companies'}}
-{{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
+{{#each result.flags }}
 <section class="profile" id="evaluacion">
   <div class="profile-content">
     <div class="row">
@@ -285,7 +284,7 @@
         <div class="row">
           <div class="col-md-12 col-12 text-center">
             <h4 class="amount-data">
-              {{{_ "Puntaje total:"}}} {{ format_score result.flags.0.total_score }}
+              {{{_ "Puntaje total:"}}} {{ format_score total_score }}
             </h4>
           </div>
           <div class="col-12 col-md-12">
@@ -293,7 +292,7 @@
           </div>
         </div>
         <div class="col-12-col-md-12">
-          {{#each (get_party_categories result.flags.[0]) }}
+          {{#each (get_party_categories this) }}
           <div class="flags_graph_bar">
             <div class="flag_name">
                {{#with (flag_name @key) }}
@@ -315,7 +314,7 @@
           </div>
           {{/each}}
           <div class="col-12 col-md-12 mt-60">
-            {{# each (flag_recommendations result.flags flag_count) }}
+            {{# each (flag_recommendations this flag_count) }}
             <div class="col-12 col-md-6 category-profile">
               <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
               <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
@@ -332,8 +331,7 @@
     </div>
   </div>
 </section>
-{{/ifCond}}
-{{/ifCond}}
+{{/each}}
 {{/if}}
 
 
