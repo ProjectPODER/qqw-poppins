@@ -52,6 +52,7 @@
           {{/if}}
           <div class="col-m-12 col-12 link-lf-contracts pb-3">
               <p class="js-title-data">{{{_ "Unidad compradora"}}}</p>
+      
               <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."}}}">
                 {{{ get_classification_icon result.parties.buyer.details.type result.parties.buyer.details.classification result.parties.buyer.details.govLevel}}}
               </a>
@@ -59,13 +60,22 @@
 
 
               {{#with result.parties.buyer }}
+              {{#if result.parties.buyer.memberOf.name }}
                 perteneciente a
                 <a data-toggle="tooltip" data-placement="right" title="Nombre de la Dependencia, Entidad Federativa o Municipio que realiza la contratación.">
                 {{{ get_classification_icon details.type "dependencia" details.govLevel}}}
                 </a>
                 <a href="{{url view="institutions/:id" _id=memberOf.id}}">{{memberOf.name}}</a>
+                {{/if}}
               {{/with}}
               {{#if result.parties.buyer.details.govLevel }} {{{_ "de nivel"}}} {{ get_govlevel_name result.parties.buyer.details.govLevel }}{{/if}}
+              {{#if result.parties.buyer.address.countryName }}
+                  {{ _ "en" }}
+                  <a href="{{url view="regiones/:id" _id=(get_country_id result.parties.buyer.address.countryName)}}">
+                    <span class="flag-icon flag-icon-{{get_country_id result.parties.buyer.address.countryName}}" title="{{result.parties.buyer.address.countryName}}"></span>
+                  {{result.parties.buyer.address.countryName}}
+                  </a>        
+              {{/if}}
 
 
 
@@ -82,6 +92,14 @@
                 </a>
 
                 {{#if additionalIdentifiers}}({{#with additionalIdentifiers}}{{scheme}}: {{id}}{{#if @last}}{{else}}, {{/if}}{{/with}}){{/if}}
+                {{#if address.countryName}}
+                  {{ _ "de" }}
+                  <a href="{{url view="regiones/:id" _id=(get_country_id address.countryName)}}">
+                    <span class="flag-icon flag-icon-{{get_country_id address.countryName}}" title="{{address.countryName}}"></span>
+                    {{address.countryName}}
+                  </a>            
+                {{/if}}
+
                 <br>
             {{/each}}
           </div>
@@ -243,6 +261,7 @@
     </div>
     <div class="col-12 col-m-12">
       <div class="row flex">
+        {{#if result.parties.buyer.memberOf.name }}
         <div class="col-m-6 col-6 link-lf-contracts pb-3">
             <p class="js-title-data">
               {{{_ "Dependencia" }}}
@@ -255,6 +274,7 @@
               </a>
             </p>
         </div>
+        {{/if}}
         {{#if result.parties.buyer.details.govLevel }}
         <div class="col-m-3 col-3 link-lf-contracts pb-3">
             <p class="js-title-data">{{{_ "Nivel de gobierno" }}} <a data-toggle="tooltip" data-placement="right" title="{{{_ "Si la unidad compradora pertenece al nivel municipal, estatal o federal" }}}"><i class="fas fa-info-circle"></i></a></p>

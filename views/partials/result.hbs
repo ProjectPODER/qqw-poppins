@@ -62,6 +62,10 @@
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
+                <a href="{{url view="regiones/:id" _id=(get_country_id parties.buyer.address.countryName)}}">
+                  <span class="flag-icon flag-icon-{{get_country_id parties.buyer.address.countryName}}" title="{{parties.buyer.address.countryName}}">{{parties.buyer.address.countryName}}</span>
+                </a>
+
                 {{#if (filter_array source  "id" "comprasimss") }}
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
@@ -69,18 +73,29 @@
                     IMSS: {{parties.buyer.name}}
                 </a>
                 {{else}}
+                {{#if result.buyer.memberOf.name }}
 
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.memberOf.id}}" title="{{_ "Comprador" }}: {{parties.buyer.memberOf.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
                     {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
                     {{parties.buyer.memberOf.name}}
                 </a>
+                {{else}}
+                <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
+                  {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
+                    {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
+                    {{parties.buyer.name}} 
+                </a>
+                {{/if}}
                 {{/if}}
               </p>
             </div>
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
                 {{#with parties.suppliers.list.[0] }}
+                  <a href="{{url view="regiones/:id" _id=(get_country_id address.countryName)}}">
+                    <span class="flag-icon flag-icon-{{get_country_id address.countryName}}" title="{{address.countryName}}">{{address.countryName}}</span>
+                  </a>
                   <a href="{{ url view=(get_type_url details.type) _id=id }}" title="{{_ "Proveedor:" }} {{name}}">
                       {{{get_classification_icon details.type details.classification details.govLevel }}}
                       {{ name }}

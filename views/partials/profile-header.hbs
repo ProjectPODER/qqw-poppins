@@ -11,9 +11,12 @@
         {{#each result.area }}
           {{#if id }}
             {{#ifCond @key "==" 0}}en{{else}},{{/ifCond}}
-            <span class="flag-icon flag-icon-{{id}}"></span>
+
+            {{#ifCond this.classification "==" "country" }}
+              <span class="flag-icon flag-icon-{{id}}"></span>
+            {{/ifCond}}
             <a href="{{url view="regiones/:id" _id=id}}">
-              {{translate_area name}}
+              {{translate_area name lang}}
             </a>
           {{/if}}
         {{/each}}
