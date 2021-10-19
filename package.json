@@ -15,8 +15,8 @@
     "async-error-catcher": "1.2.0",
     "bootstrap": "^4.4.1",
     "cookie-parser": "~1.4.4",
-    "datatables.net": "^1.10.24",
-    "datatables.net-dt": "^1.10.24",
+    "datatables.net": "^1.11.3",
+    "datatables.net-dt": "^1.11.3",
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "dotenv-expand": "5.1.0",
@@ -39,7 +39,7 @@
     "qqw": "github:projectpoder/node-qqw.git#v0.3.2",
     "rss-parser": "3.7.0",
     "stylus": "0.54.8",
-    "tiza": "github:projectpoder/tiza#0.2.4"
+    "tiza": "github:projectpoder/tiza#0.2.5"
   },
   "tiza": "github:projectpoder/tiza#0.2.0",
   "qqw": "file:../node-qqw"
