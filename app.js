@@ -48,7 +48,18 @@ function initApp(appLocals) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(stylus.middleware(path.join(__dirname, appLocals.general.style_path[0].staging)));
+
+  console.log("stylus path",appLocals.general.style_path[0].staging);
+  app.use(stylus.middleware(
+    {
+      "serve": true,
+      "dest": path.join(__dirname, appLocals.general.extra_static_path[0].staging), 
+      "src": path.join(__dirname, appLocals.general.style_path[0].staging),
+      "force": true,
+      "linenos": true,
+    }
+
+  ));
 
   const staticOptions = {
     index:false,
