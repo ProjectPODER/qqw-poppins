@@ -42,7 +42,7 @@
         </li>
         {{/if}}
         {{#if summaries.buyer_purchase.top_products }}
-          {{#if (filter_array result.source  "id" "comprasimss") }} 
+          {{#if (filter_array result.source  "id" "comprasimss") }}
             <li>
               <a href="#desabasto-reportado" class="anchor">
                 <i class="fas fa-dolly"></i> {{{_ "Desabasto"}}}
@@ -104,11 +104,11 @@
         {{#ifCond type '!=' 'companies'}}
         {{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
 
-        <li>
+        {{!-- <li>
           <a href="#evaluacion" class="anchor evaluacion">
             <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
           </a>
-        </li>
+        </li> --}}
         {{/ifCond}}
         {{/ifCond}}
         {{/if}}
@@ -188,7 +188,7 @@
 {{>summary result=result role="supplier" classification="contract" data=summaries.supplier_contract }}
 {{/if}}
 
-{{!-- 
+{{!--
 {{#ifCond summaries.relation.nodes.length ">" 0}}
 <section class="profile" id="flujos-monetarios">
   <div class="profile-content">
@@ -269,7 +269,7 @@
 
 
 {{!-- FLAGS --}}
-{{#if result.flags }}
+{{!-- {{#if result.flags }}
 {{#each result.flags }}
 <section class="profile" id="evaluacion">
   <div class="profile-content">
@@ -332,7 +332,8 @@
   </div>
 </section>
 {{/each}}
-{{/if}}
+{{/if}} --}}
+{{>banner-evaluaciones}}
 
 
 {{!-- LONG memberships --}}

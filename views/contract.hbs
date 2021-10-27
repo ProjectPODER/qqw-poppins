@@ -2,9 +2,9 @@
           <li>
               <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> {{{_ "Resumen"}}}</a>
           </li>
-          <li>
+          {{!-- <li>
               <a class="anchor" href="#calidad"><i class="fas fa-file-signature"></i> {{{_ "Calidad"}}}</a>
-          </li>
+          </li> --}}
           <li>
               <a class="anchor" href="#planeacion"><i class="fas fa-caret-square-right"></i> {{{_ "Planeación"}}}</a>
           </li>
@@ -52,7 +52,7 @@
           {{/if}}
           <div class="col-m-12 col-12 link-lf-contracts pb-3">
               <p class="js-title-data">{{{_ "Unidad compradora"}}}</p>
-      
+
               <a data-toggle="tooltip" data-placement="right" title="{{{_ "El área  de  las dependencias o entidades que ha sido  registrada y autorizada para realizar operaciones y llevar a cabo procedimientos de contratación en CompraNet."}}}">
                 {{{ get_classification_icon result.parties.buyer.details.type result.parties.buyer.details.classification result.parties.buyer.details.govLevel}}}
               </a>
@@ -74,7 +74,7 @@
                   <a href="{{url view="regiones/:id" _id=(get_country_id result.parties.buyer.address.countryName)}}">
                     <span class="flag-icon flag-icon-{{get_country_id result.parties.buyer.address.countryName}}" title="{{result.parties.buyer.address.countryName}}"></span>
                   {{result.parties.buyer.address.countryName}}
-                  </a>        
+                  </a>
               {{/if}}
 
 
@@ -97,7 +97,7 @@
                   <a href="{{url view="regiones/:id" _id=(get_country_id address.countryName)}}">
                     <span class="flag-icon flag-icon-{{get_country_id address.countryName}}" title="{{address.countryName}}"></span>
                     {{address.countryName}}
-                  </a>            
+                  </a>
                 {{/if}}
 
                 <br>
@@ -139,7 +139,7 @@
   </div>
 </section>
 
-<section class="profile row" id="calidad">
+{{!-- <section class="profile row" id="calidad">
   <div class="profile-content">
     <div class="row">
       <div class="box-title-section">
@@ -182,7 +182,6 @@
                 <h4 class="description-data-subname" id="contract_problemas_destacados">{{{_ "PROBLEMAS DESTACADOS"}}}</h4>
                 <ul class="party_flags_recommendations_list">
                   {{# each this.rules}}
-                  {{!-- {{j this }} --}}
                       <li class="party_flags_recommendations_item">{{#with (contract_recommendations name) }}{{ contract_string }}{{/with}}</li>
                   {{/each}}
                 </ul>
@@ -197,10 +196,12 @@
       </div>
     </div>
   </div>
-</section>
+</section> --}}
+{{>banner-evaluaciones-contrato}}
+
 <section class="profile row" id="planeacion">
   <div class="profile-content">
-    <div class="row">  
+    <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
           <i class="fas fa-caret-square-right"></i>
@@ -252,7 +253,7 @@
 </section>
 <section class="profile row" id="convocatoria">
   <div class="profile-content">
-    <div class="row">  
+    <div class="row">
     <div class="box-title-section">
       <div class="box-title-icon">
         <i class="fas fa-envelope"></i>
@@ -397,7 +398,7 @@
 </section>
 <section class="profile row" id="adjudicaciones">
   <div class="profile-content">
-    <div class="row">  
+    <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
           <i class="fas fa-gavel"></i>
@@ -460,7 +461,7 @@
           {{#if result.contracts.items.unit.value.amountOverpriceMxIMSS }}
           <div class="col-m-6 col-6 pb-3">
               <p class="js-title-data">{{{_ "Sobrecosto estimado" }}}</p>
-              <p class="js-data mb-1" >{{{format_amount result.contracts.items.unit.value.amountOverpriceMxIMSS result.awards.value.currency}}} 
+              <p class="js-data mb-1" >{{{format_amount result.contracts.items.unit.value.amountOverpriceMxIMSS result.awards.value.currency}}}
                 ({{format_percentage result.contracts.items.unit.value.percentageOverpriceMxIMSS}})</p>
           </div>
           {{/if}}
@@ -509,7 +510,7 @@
                 {{!-- {{ j hidden_claves }} --}}
                 <div class="col-m-12 col-12">
                     <p class="js-title-data">{{{_ "Nombre" }}}</p>
-                    <p class="js-data"><a 
+                    <p class="js-data"><a
                     {{#ifCond (indexOf id (hidden_claves)) "==" -1 }}
                     href="{{url view="products/:id" _id=(or classification.id id) }}"
                     {{/ifCond}}
@@ -562,7 +563,7 @@
 
 
             {{/with}}
-            
+
             {{#if ../result.awards.documents.list.length }}
             <div class="col-12 pb-3">
               <p class="js-title-data">{{{_ "Documentos oficiales" }}}</p>
@@ -595,9 +596,9 @@
                 {{/ifCond}}
                 {{#ifCond statusMxCnet "==" "Activo" }}
                 . {{_ "Aún no se ha cumplido el plazo de vigencia del contrato."}}
-                {{/ifCond}}                
+                {{/ifCond}}
                 <br>
-                
+
               {{/if}}
               {{#if filedMxCnet }}
                 <i class="fas fa-info-circle"></i> {{{_ "Este contrato ha sido archivado" }}}<br>
@@ -622,7 +623,7 @@
 
 <section class="profile row" id="implementacion">
   <div class="profile-content">
-    <div class="row">  
+    <div class="row">
       <div class="box-title-section">
         <div class="box-title-icon">
           <i class="fas fa-truck-moving"></i>
