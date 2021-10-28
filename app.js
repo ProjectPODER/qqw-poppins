@@ -56,7 +56,7 @@ function initApp(appLocals) {
       "dest": (appLocals.general.extra_static_path) ? path.join(__dirname, appLocals.general.extra_static_path[0].staging): "public", 
       "src": path.join(__dirname, appLocals.general.style_path[0].staging),
       "force": true,
-      "linenos": true,
+      "linenos": false,
     }
 
   ));
