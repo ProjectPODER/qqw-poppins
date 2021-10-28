@@ -4,11 +4,7 @@
         <a href="{{url view=(get_type_url (or result.type result.details.type) result.classification) _id=result.id }}">
           <p class="text-overflow" title="{{or result.name result.contracts.title}}">
             {{{ get_classification_icon (or result.classification (or result.type result.details.type)) result.subclassification result.govLevel}}}
-            {{#ifCond result.classification "==" "country" }}
-              {{translate_area result.id }}
-            {{else}}
-              {{or result.name (or result.contracts.title result.contracts.[0].contracts.title)}}
-            {{/ifCond}}
+            {{or result.name (or result.contracts.title result.contracts.[0].contracts.title)}}
             {{#if result.memberOf.name }}
               <span style="font-size: 0.7em;">
                 (
@@ -37,6 +33,7 @@
               </div>
             </div>
             <div class="right-elements col-lg-4 col-md-4 col-md-4 col-sm-4 col-4">
+            
               {{#if area }}
               <div class="col-lg-3 p-0">
                 <p class="index-list-element">

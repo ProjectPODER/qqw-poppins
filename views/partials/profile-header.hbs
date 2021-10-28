@@ -31,11 +31,7 @@
           {{/if}}
         {{/each}}
         {{/if}}
-        {{#ifCond result.classification "==" "country" }}
-          {{translate_area result.id }}
-        {{else}}
-          {{ or result.name (or result.contracts.title result.tender.title) }}
-        {{/ifCond}}
+        {{ or result.name (or result.contracts.title result.tender.title) }}
       </h3>
     </div>
     <div class="right-box ml-auto filters">
