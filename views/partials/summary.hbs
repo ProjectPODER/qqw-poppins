@@ -33,6 +33,12 @@
             {{_ "Resúmen de actividad como {role} de {classification} " role=(_ role) classification=(_ classification)}}
             {{/ifCond}}
           {{/ifCond}}
+          {{#ifCond role "==" "contactPoint"}}
+            {{_ "Resúmen de actividad como {role} de {classification} " role=(_ role) classification=(_ classification)}}
+          {{/ifCond}}
+          {{#ifCond role "==" "funder"}}
+            {{_ "Resúmen de actividad como {role} de {classification} " role=(_ role) classification=(_ classification)}}
+          {{/ifCond}}
         </h4>
       </div>
       <div  class="col-md-12 col-12">
