@@ -2666,6 +2666,29 @@ section.country-mujeres {
 .memberships-list thead {
   display: none;
 }
+#evaluacion .nav-pills .nav-link.active,
+#evaluacion .nav-pills .show>.nav-link {
+  color: #fff !important;
+  background-color: #2b00f7 !important;
+}
+#evaluacion .card-link {
+  color: #333;
+}
+#evaluacion .card-link:hover {
+  color: #2b00f7;
+}
+#evaluacion .card-header:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f078";
+  float: right;
+  transition: all 0.5s;
+}
+.icon-h4 {
+  width: 1.5rem;
+  margin-top: -5px;
+  margin-right: 5px;
+}
 .profile-news-container {
   background-color: #f7f7f7;
   padding: 1.5rem;

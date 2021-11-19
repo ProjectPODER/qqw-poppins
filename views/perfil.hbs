@@ -72,14 +72,14 @@
         {{/if}}
         {{#if summaries.funder.total.count }}
         <li>
-          <a href="#summary-funder_contract" class="anchor">
+          <a href="#summary-funder" class="anchor">
             <i class="fas fa-donate"></i> {{{_ "Financiación"}}}
           </a>
         </li>
         {{/if}}
         {{#if summaries.contactPoint.total.count }}
         <li>
-          <a href="#summary-contactPoint_contract" class="anchor">
+          <a href="#summary-contactPoint" class="anchor">
             {{!-- {{{get_role_icon this.role this.directionality}}} {{get_role_name this.role this.directionality}} --}}
             <i class="fas fa-shopping-cart"></i>{{_ "Punto de contacto"}}
           </a>
@@ -269,7 +269,7 @@
 
 
 {{!-- FLAGS --}}
-{{!-- {{#if result.flags }}
+{{#if result.flags }}
 {{#each result.flags }}
 <section class="profile" id="evaluacion">
   <div class="profile-content">
@@ -314,7 +314,7 @@
           </div>
           {{/each}}
           <div class="col-12 col-md-12 mt-60">
-            {{# each (flag_recommendations this flag_count) }}
+            {{#each (flag_recommendations this flag_count) }}
             <div class="col-12 col-md-6 category-profile">
               <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
               <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
@@ -324,15 +324,99 @@
             {{/each}}
           </div>
       </div>
-      <div class="col-12 col-md-12 text-center">
+      <div class="col-12 col-md-12 text-center mb-5">
           <a class="btn button-link" href="{{ url view="search" collection="contract_flags" id=result.id }}">{{{_ "Ver todas las evaluaciones"}}}</a>
       </div>
+
+      <div class="col-12 col-md-12">
+        <!-- Tab links-->
+        <ul class="nav nav-pills justify-content-center mb-4" id="datasettabs">
+          <li class="nav-item">
+            <a class="nav-link dataset-link" data-toggle="pill" href="#cr-dataset">
+              <i class="fas fa-user-friends"></i> {{{_ "Dataset Costa Rica"}}}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link dataset-link" data-toggle="pill" href="#mx-dataset">
+              <i class="fas fa-user-md"></i> {{{_ "Dataset México"}}}
+            </a>
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane fade" id="cr-dataset">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h4 class="text-darkblue mb-3"><img class="icon-h4" src="/images/icons/wave-triangle.svg" alt="">Ranking: 5
+                </h4>
+                <div class="row align-items-end">
+                  <div class="col-12 col-md-6">
+                    <label for="dataset-year">{{{_ "Mostrar datos por año:"}}}</label>
+                    <select class="form-control" id="dataset-year">
+                      <option>Todos</option>
+                      <option>2020</option>
+                      <option>2019</option>
+                      <option>2018</option>
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-6 text-right">
+                    <h5 class="text-darkblue">{{{_ "Puntaje total:"}}} {{ format_score total_score }}</h5>
+                  </div>
+                </div>
+                <div>
+                  <svg></svg>
+                </div>
+                <p>Texto explicando que el problema es diferente para contratos y perfiles.</p>
+                <div class="mt-5">
+                  <a class="button-link" href="">Ver todas las evaluaciones</a>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div id="accordion">
+                  {{#each (get_party_categories this) }}
+                  <div class="card">
+                      <a class="card-link" data-toggle="collapse" href="#collapse{{@key}}">
+                        <div class="card-header">
+                            {{#with (flag_name @key) }}
+                            {{name}}:
+                            {{!-- <a data-toggle="tooltip" data-placement="right" title="{{info}}">
+                              <i class="fas fa-info-circle"></i>
+                            </a> --}}
+                            {{/with}}
+                            {{format_score this}}
+                        </div>
+                      </a>
+                    <div id="collapse{{@key}}" class="collapse {{#if @first}}show{{else}}{{/if}}" data-parent="#accordion">
+                      <div class="card-body">
+                        {{!-- {{#each (../flag_recommendations this flag_count) }}
+                        <div>
+                          <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
+                          <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
+                          <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
+                          <p><b>{{{_ "Recomendación"}}}:</b> {{uc_string}}</p>
+                        </div>
+                        {{/each}} --}}
+                      </div>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="mx-dataset">
+
+          </div>
+        </div>
+      </div>
+
+
       </div>
     </div>
   </div>
 </section>
 {{/each}}
-{{/if}} --}}
+{{/if}}
 {{>banner-evaluaciones}}
 
 

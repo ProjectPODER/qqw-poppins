@@ -508,7 +508,30 @@ section
 .memberships-list thead
   display: none
 
+#evaluacion
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link
+    color: #fff !important
+    background-color: $blue !important
 
+  .card-link
+    color: #333;
+  .card-link:hover
+    color: $blue
+  .card-header:before
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f078";
+    float: right;
+    transition: all 0.5s;
+  // .card-link.collapsed .card-header:before
+  //   -webkit-transform: rotate(180deg);
+  //   -moz-transform: rotate(180deg);
+  //   transform: rotate(180deg);
+
+.icon-h4
+  width: 1.5rem;
+  margin-top: -5px;
+  margin-right: 5px;
 
 // News
 .profile-news-container
