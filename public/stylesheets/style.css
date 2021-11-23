@@ -2689,6 +2689,24 @@ section.country-mujeres {
   margin-top: -5px;
   margin-right: 5px;
 }
+.circles {
+  display: inline-flex;
+  position: relative;
+}
+.circle-with-text {
+  background: rgba(255,155,33,0.2);
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 2px solid #ff9b21;
+  text-align: center;
+  margin: 0 5px;
+  font-size: 15px;
+  padding: 15px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
 .profile-news-container {
   background-color: #f7f7f7;
   padding: 1.5rem;
