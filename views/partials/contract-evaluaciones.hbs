@@ -1,0 +1,122 @@
+{{!-- FLAGS --}}
+{{#if result.flags }}
+<script src="/tiza/tiza.js"></script>
+
+<section class="profile" id="calidad">
+  <div class="profile-content">
+    <div class="row">
+      <div class="box-title-section">
+        <div class="box-title-icon">
+          <i class="fas fa-file-signature"></i>
+        </div>
+        <h4 class="description-data-subtitle">{{{_ "EVALUACIÓN Y RECOMENDACIONES"}}}</h4>
+      </div>
+      <div class="col-md-12 col-12">
+        <div class="row">
+
+          <div class="col-12 col-md-12">
+            <p>{{{_ "A partir de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la
+              calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la
+              puntuación final el sistema también tiene en cuenta la puntuación de las dependencias con quién se
+              relaciona de forma indirecta. La metodología puede consultarse en <a
+                href='https://www.TodosLosContratos.mx/#metodologia'>TodosLosContratos.mx</a>"}}}.</p>
+          </div>
+        </div>
+
+        {{#each result.flags }}
+        <div class="col-12 col-md-12">
+        {{#ifCond ruleset_id "==" "cr-sicop" }}
+          <div class="row">
+            <div class="col-12 col-md-12 col-sm-12 col-lg-6">
+
+              <div class="row align-items-end">
+                <div class="col-12 col-md-12">
+                  <h5 class="text-darkblue">{{{_ "Puntaje total:"}}} {{ format_score contract_score.total_score }}</h5>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <div class="category-color"></div><span> Puntajes de cada categoría </span>
+                </div>
+                <div>
+                  <div class="limit-color"></div><span> Límites de cada categoría</span>
+                </div>
+                <div id="radarchart"></div>
+                <script>
+                  var radarData = {total: {{j contract_score }} }
+                   {{!-- {{#each years }}
+                   radarData["{{year}}"] = {{j (get_party_categories this) }}
+                    {{/each}} --}}
+                  tiza.radarChart({target: "#radarchart", data: radarData.total});
+                </script>
+              </div>
+              <p>Texto explicando que el problema es diferente para contratos y perfiles.</p>
+
+            </div>
+            <div class="col-12 col-md-12 col-sm-12 col-lg-6">
+              <div id="accordion">
+                {{#each contract_score }}
+                {{#ifCond @key "!=" "total_score"}}
+                <div class="card">
+                  <a class="card-link" data-toggle="collapse" href="#collapse{{@key}}">
+                    <div class="card-header">
+                      {{#with (flag_name @key) }}
+                      <i class="fas {{icon}}"></i> {{name}}:
+                      {{!-- <a data-toggle="tooltip" data-placement="right" title="{{info}}">
+                        <i class="fas fa-info-circle"></i>
+                      </a> --}}
+                      {{/with}}
+                      <span class="circles">
+                        <span class="circle-with-text">
+                          {{format_score this}}
+                        </span>
+                      </span>
+                    </div>
+                  </a>
+                  <div id="collapse{{@key}}" class="collapse {{#ifCond @key "==" "trans"}}show{{else}}{{/ifCond}}" data-parent="#accordion">
+                    <div class="card-body">
+
+                      {{#each (contract_flag_recommendations ../this @key) }}
+                      <div class="flag-recomendations-box">
+                        <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
+                        <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
+                        <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
+                        <p><b>{{{_ "Recomendación"}}}:</b> {{#ifCond score ">" 0.9}}{{reconocimiento_uc}}{{else}} {{uc_string}}{{/ifCond}}</p>
+                      </div>
+                      {{/each}}
+
+                    </div>
+                  </div>
+                </div>
+                {{/ifCond}}
+                {{/each}}
+              </div>
+            </div>
+          </div>
+
+          {{else }}
+          <div class="col-md-12 col-12">
+            <div class="row" style="background: transparent">
+              <div class="offset-md-2 col-md-8 col-sm-12">
+                <p>
+                  Estamos actualizando el sistema. El <b>1 de diciembre de 2021</b> publicaremos la evaluaciones actualizadas de
+                  México y el nuevo sistema de Costa Rica basado en el sistema de evaluación de contratación pública "Groucho" que
+                  puede <a href="https://github.com/ProjectPODER/groucho">consultarse aquí</a>.
+
+                </p>
+
+              </div>
+            </div>
+          </div>
+          {{/ifCond}}
+
+        </div>
+
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{{/if}}

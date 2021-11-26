@@ -2,9 +2,13 @@
           <li>
               <a class="anchor" href="#datosgenerales"><i class="fas fa-file"></i> {{{_ "Resumen"}}}</a>
           </li>
-          {{!-- <li>
+
+          {{#if result.flags }}
+          <li>
               <a class="anchor" href="#calidad"><i class="fas fa-file-signature"></i> {{{_ "Calidad"}}}</a>
-          </li> --}}
+          </li>
+          {{/if}}
+
           <li>
               <a class="anchor" href="#planeacion"><i class="fas fa-caret-square-right"></i> {{{_ "Planeación"}}}</a>
           </li>
@@ -197,7 +201,12 @@
     </div>
   </div>
 </section> --}}
-{{>banner-evaluaciones-contrato}}
+{{!-- {{>banner-evaluaciones-contrato}} --}}
+{{#if result.flags }}
+  {{>contract-evaluaciones}}
+{{else}}
+  {{>banner-evaluaciones-contrato}}
+{{/if}}
 
 <section class="profile row" id="planeacion">
   <div class="profile-content">

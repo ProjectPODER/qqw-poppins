@@ -1,6 +1,4 @@
 <script src="/tiza/tiza.js"></script>
-<!-- D3.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
 {{>profile-header result=result }}
         {{!-- SHORT memberships --}}
@@ -106,11 +104,14 @@
         {{#ifCond type '!=' 'companies'}}
         {{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
 
-        {{!-- <li>
+        {{#if result.flags }}
+        <li>
           <a href="#evaluacion" class="anchor evaluacion">
             <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
           </a>
-        </li> --}}
+        </li>
+        {{/if}}
+
         {{/ifCond}}
         {{/ifCond}}
         {{/if}}
@@ -271,7 +272,7 @@
 
 
 {{!-- FLAGS --}}
-{{#if result.flags }}
+{{!-- {{#if result.flags }}
 {{#each result.flags }}
 <section class="profile" id="evaluacion">
   <div class="profile-content">
@@ -330,168 +331,18 @@
           <a class="btn button-link" href="{{ url view="search" collection="contract_flags" id=result.id }}">{{{_ "Ver todas las evaluaciones"}}}</a>
       </div>
 
-      <div class="col-12 col-md-12">
-        <!-- Tab links-->
-        <ul class="nav nav-pills justify-content-center mb-4" id="datasettabs">
-          <li class="nav-item">
-            <a class="nav-link dataset-link" data-toggle="pill" href="#cr-dataset">
-              <i class="fas fa-user-friends"></i> {{{_ "Dataset Costa Rica"}}}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link dataset-link" data-toggle="pill" href="#mx-dataset">
-              <i class="fas fa-user-md"></i> {{{_ "Dataset México"}}}
-            </a>
-          </li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div class="tab-pane fade" id="cr-dataset">
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <h4 class="text-darkblue mb-3"><img class="icon-h4" src="/images/icons/wave-triangle.svg" alt="">Ranking: 5
-                </h4>
-                <div class="row align-items-end">
-                  <div class="col-12 col-md-6">
-                    <label for="dataset-year">{{{_ "Mostrar datos por año:"}}}</label>
-                    <select class="form-control" id="dataset-year">
-                      <option>Todos</option>
-                      <option>2020</option>
-                      <option>2019</option>
-                      <option>2018</option>
-                    </select>
-                  </div>
-                  <div class="col-12 col-md-6 text-right">
-                    <h5 class="text-darkblue">{{{_ "Puntaje total:"}}} {{ format_score total_score }}</h5>
-                  </div>
-                </div>
-                <div>
-                  <div class="radarChart"></div>
-                  <script src="/javascripts/radarChart.js"></script>
-                  <script>
-
-                    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
-
-                    //////////////////////////////////////////////////////////////
-                    //////////////////////// Set-Up //////////////////////////////
-                    //////////////////////////////////////////////////////////////
-
-                    var margin = { top: 100, right: 100, bottom: 100, left: 100 },
-                      width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-                      height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
-
-                    //////////////////////////////////////////////////////////////
-                    ////////////////////////// Data //////////////////////////////
-                    //////////////////////////////////////////////////////////////
-
-                    var data = [
-                      [//iPhone
-                        { axis: "Battery Life", value: 0.22 },
-                        { axis: "Brand", value: 0.28 },
-                        { axis: "Contract Cost", value: 0.29 },
-                        { axis: "Design And Quality", value: 0.17 },
-                        { axis: "Have Internet Connectivity", value: 0.22 },
-                        { axis: "Large Screen", value: 0.02 },
-                        { axis: "Price Of Device", value: 0.21 },
-                        { axis: "To Be A Smartphone", value: 0.50 }
-                      ], [//Samsung
-                        { axis: "Battery Life", value: 0.27 },
-                        { axis: "Brand", value: 0.16 },
-                        { axis: "Contract Cost", value: 0.35 },
-                        { axis: "Design And Quality", value: 0.13 },
-                        { axis: "Have Internet Connectivity", value: 0.20 },
-                        { axis: "Large Screen", value: 0.13 },
-                        { axis: "Price Of Device", value: 0.35 },
-                        { axis: "To Be A Smartphone", value: 0.38 }
-                      ], [//Nokia Smartphone
-                        { axis: "Battery Life", value: 0.26 },
-                        { axis: "Brand", value: 0.10 },
-                        { axis: "Contract Cost", value: 0.30 },
-                        { axis: "Design And Quality", value: 0.14 },
-                        { axis: "Have Internet Connectivity", value: 0.22 },
-                        { axis: "Large Screen", value: 0.04 },
-                        { axis: "Price Of Device", value: 0.41 },
-                        { axis: "To Be A Smartphone", value: 0.30 }
-                      ]
-                    ];
-                    //////////////////////////////////////////////////////////////
-                    //////////////////// Draw the Chart //////////////////////////
-                    //////////////////////////////////////////////////////////////
-
-                    var color = d3.scale.ordinal()
-                      .range(["#EDC951", "#CC333F", "#00A0B0"]);
-
-                    var radarChartOptions = {
-                      w: width,
-                      h: height,
-                      margin: margin,
-                      maxValue: 0.5,
-                      levels: 5,
-                      roundStrokes: true,
-                      color: color
-                    };
-                    //Call function to draw the Radar chart
-                    RadarChart(".radarChart", data, radarChartOptions);
-                  </script>
-                </div>
-                <p>Texto explicando que el problema es diferente para contratos y perfiles.</p>
-                <div class="mt-5">
-                  <a class="button-link" href="">Ver todas las evaluaciones</a>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div id="accordion">
-                  {{#each (get_party_categories this) }}
-                  <div class="card">
-                      <a class="card-link" data-toggle="collapse" href="#collapse{{@key}}">
-                        <div class="card-header">
-                            {{#with (flag_name @key) }}
-                            {{name}}:
-                            {{!-- <a data-toggle="tooltip" data-placement="right" title="{{info}}">
-                              <i class="fas fa-info-circle"></i>
-                            </a> --}}
-                            {{/with}}
-                            <span class="circles">
-                              <span class="circle-with-text">
-                                {{format_score this}}
-                              </span>
-                            </span>
-                        </div>
-                      </a>
-                    <div id="collapse{{@key}}" class="collapse {{#if @first}}show{{else}}{{/if}}" data-parent="#accordion">
-                      <div class="card-body">
-                        {{!-- {{#each (../flag_recommendations this flag_count) }}
-                        <div>
-                          <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
-                          <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
-                          <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
-                          <p><b>{{{_ "Recomendación"}}}:</b> {{uc_string}}</p>
-                        </div>
-                        {{/each}} --}}
-                        Info
-                      </div>
-                    </div>
-                  </div>
-                  {{/each}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="mx-dataset">
-
-          </div>
-        </div>
-      </div>
-
-
       </div>
     </div>
   </div>
 </section>
 {{/each}}
+{{/if}} --}}
+{{!-- {{>banner-evaluaciones}} --}}
+{{#if result.flags }}
+  {{>uc-evaluaciones}}
+{{else}}
+  {{>banner-evaluaciones}}
 {{/if}}
-{{>banner-evaluaciones}}
-
 
 {{!-- LONG memberships --}}
 {{#each result.memberships.parent }}
