@@ -43,6 +43,7 @@
                 <div id="radarchart"></div>
                 <script>
                   var radarData = {total: {{j contract_score }} }
+                  delete radarData.total.total_score;
                    {{!-- {{#each years }}
                    radarData["{{year}}"] = {{j (get_party_categories this) }}
                     {{/each}} --}}
