@@ -106,9 +106,9 @@
           </div>
           <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
             <div class="col-lg-4 p-0 text-right">
-              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.contracts.value.amount result.contracts.value.currency}}">
+              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.contracts.value.amount result.contracts.value.currency  result.contracts.originalValue.amount result.contracts.originalValue.currency result.contracts.originalValue.exchangeRate}}">
                 <i class="fas fa-dollar-sign"></i>
-                  {{format_amount result.contracts.value.amount result.contracts.value.currency}}
+                  {{format_amount result.contracts.value.amount result.contracts.value.currency  result.contracts.originalValue.amount result.contracts.originalValue.currency result.contracts.originalValue.exchangeRate}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
