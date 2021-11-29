@@ -42,7 +42,7 @@
         <div class="row flex">
           <div class="col-m-6 col-6 contract-total-amount pb-3">
             <p class="js-title-data">{{{_ "Importe total"}}}</p>
-            <p class="js-data">{{{format_amount result.contracts.value.amount result.contracts.value.currency}}}</p>
+            <p class="js-data">{{{format_amount result.contracts.value.amount result.contracts.value.currency result.contracts.originalValue.amount result.contracts.originalValue.currency result.contracts.originalValue.exchangeRate}}}</p>
           </div>
           <div class="col-6 pb-3">
               <p class="js-title-data">{{{_ "Período de contrato(s)"}}}</p>
@@ -246,7 +246,7 @@
             {{# if result.planning.budget.budgetBreakdown.amount.amount }}
             <div class="col-m-12 col-12 mb-2">
               <span class="js-title-data">{{{_ "Importe"}}}: </span>
-              <span class="js-data">          {{{ format_amount result.planning.budget.budgetBreakdown.amount.amount  result.planning.budget.budgetBreakdown.amount.currency }}}
+              <span class="js-data">          {{{ format_amount result.planning.budget.budgetBreakdown.amount.amount  result.planning.budget.budgetBreakdown.amount.currency result.planning.budget.budgetBreakdown.originalAmount.amount  result.planning.budget.budgetBreakdown.originalAmount.currency result.planning.budget.budgetBreakdown.originalAmount.exchangeRate   }}}
               </span>
             </div>
             {{/if}}
@@ -457,7 +457,7 @@
           {{#if result.awards.value }}
           <div class="col-m-6 col-6 pb-3">
               <p class="js-title-data">{{{_ "Monto" }}}</p>
-              <p class="js-data mb-1" >{{{format_amount result.awards.value.amount result.awards.value.currency}}}</p>
+              <p class="js-data mb-1" >{{{format_amount result.awards.value.amount result.awards.value.currency  result.awards.originalValue.amount result.awards.originalValue.currency  result.awards.originalValue.exchangeRate }}}</p>
           </div>
           {{/if}}
           {{#if result.contracts.items.unit.value.amountCalculatedMxIMSS }}
