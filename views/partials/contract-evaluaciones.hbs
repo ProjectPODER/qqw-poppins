@@ -50,8 +50,7 @@
                   tiza.radarChart({target: "#radarchart", data: radarData.total});
                 </script>
               </div>
-              <p>Esta gráfica ilustra el promedio de los puntajes para cada una de las
-              categorías evaluadas a nivel contrato. Los puntajes en color verde
+              <p class="mt-4">Esta gráfica ilustra el promedio de los puntajes para cada una de las categorías evaluadas a nivel contrato. Los puntajes en color verde
               ilustran el promedio de todos los contratos en el mismo año y el morado el
               de este contrato en particular.</p>
 
@@ -84,7 +83,7 @@
                         <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
                         <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
                         <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
-                        <p><b>{{{_ "Recomendación"}}}:</b> {{#ifCond score ">" 0.9}}{{reconocimiento_uc}}{{else}} {{uc_string}}{{/ifCond}}</p>
+                        <p><b>{{{_ "Recomendación"}}}:</b> {{#ifCond score ">" 0.9}}{{reconocimiento_contract}}{{else}} {{contract_string}}{{/ifCond}}</p>
                       </div>
                       {{/each}}
 
@@ -102,17 +101,16 @@
             <div class="row" style="background: transparent">
               <div class="offset-md-2 col-md-8 col-sm-12">
                 <p>
-                  Estamos actualizando el sistema. El <b>1 de diciembre de 2021</b> publicaremos la evaluaciones actualizadas de
-                  México y el nuevo sistema de Costa Rica basado en el sistema de evaluación de contratación pública "Groucho" que
-                  puede <a href="https://github.com/ProjectPODER/groucho">consultarse aquí</a>.
-
+                  Este contrato no ha sido evaluado.
                 </p>
 
               </div>
             </div>
           </div>
           {{/ifCond}}
-
+          {{#ifCond ruleset_id "==" "flagsMX-2021" }}
+            <p>Estamos actualizando el sistema.</p>
+          {{/ifCond}}
         </div>
 
         {{/each}}

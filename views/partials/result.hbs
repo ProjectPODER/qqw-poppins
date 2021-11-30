@@ -33,7 +33,7 @@
               </div>
             </div>
             <div class="right-elements col-lg-4 col-md-4 col-md-4 col-sm-4 col-4">
-            
+
               {{#if area }}
               <div class="col-lg-3 p-0">
                 <p class="index-list-element">
@@ -81,7 +81,7 @@
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
                     {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
-                    {{parties.buyer.name}} 
+                    {{parties.buyer.name}}
                 </a>
                 {{/if}}
                 {{/if}}
@@ -106,9 +106,9 @@
           </div>
           <div class="right-elements col-lg-5 col-md-5 col-md-5 col-sm-5 col-5">
             <div class="col-lg-4 p-0 text-right">
-              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.contracts.value.amount result.contracts.value.currency  result.contracts.originalValue.amount result.contracts.originalValue.currency result.contracts.originalValue.exchangeRate}}">
+              <p class="index-list-element" title="{{_ "Monto" }}: {{format_amount result.contracts.value.amount result.contracts.value.currency}}">
                 <i class="fas fa-dollar-sign"></i>
-                  {{format_amount result.contracts.value.amount result.contracts.value.currency  result.contracts.originalValue.amount result.contracts.originalValue.currency result.contracts.originalValue.exchangeRate}}
+                  {{format_amount result.contracts.value.amount result.contracts.value.currency}}
               </p>
             </div>
             <div class="col-lg-4 p-0">
@@ -129,7 +129,7 @@
         {{!-- BANDERAS --}}
         {{#ifCond result.type "==" "contract" }}
         {{#with result.contracts.[0]}}
-        
+
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
@@ -227,7 +227,7 @@
               </div>
           {{/ifCond}}
         {{/ifCond}}
-        
+
         {{!-- AREAS --}}
         {{#ifCond result.type "==" "areas" }}
           <div class="left-elements col-lg-4 col-md-6 col-sm-6 col-6">
