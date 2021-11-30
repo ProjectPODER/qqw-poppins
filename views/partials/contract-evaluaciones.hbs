@@ -1,6 +1,20 @@
 {{!-- FLAGS --}}
 {{#if result.flags }}
 <script src="/tiza/tiza.js"></script>
+<script>
+  function colorized(id, value) {
+      if (value > 0.80) {
+        color = "color-green"
+      }
+      else if (value <= 0.80 && value > 0.33) {
+        color = "color-yellow"
+      }
+      else if (value <= 0.33) {
+        color = "color-red"
+      }
+      $(id).removeClass().addClass(["circle-with-text", color]);
+    }
+</script>
 
 <section class="profile" id="calidad">
   <div class="profile-content">
@@ -66,21 +80,31 @@
                       </a> --}}
                       {{/with}}
                       <span class="circles">
-                        <span class="circle-with-text">
+                        <span class="circle-with-text" id="circle{{@index}}">
                           {{format_score this}}
                         </span>
                       </span>
                     </div>
                   </a>
+                  <script type="text/javascript">
+
+                      window.addEventListener('load', function () {
+                        colorized("#circle{{@index}}", {{ this}});
+
+                    });
+                  </script>
                   <div id="collapse{{@key}}" class="collapse {{#ifCond @key "==" "trans"}}show{{else}}{{/ifCond}}" data-parent="#accordion">
                     <div class="card-body">
 
                       {{#each (contract_flag_recommendations ../this @key) }}
                       <div class="flag-recomendations-box">
-                        <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
                         <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
                         <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
-                        <p><b>{{{_ "Recomendación"}}}:</b> {{#ifCond score ">" 0.8}}{{reconocimiento_contract}}{{else}} {{contract_string}}{{/ifCond}}</p>
+                        {{#ifCond score ">" 0.8}}
+                          <p><b>{{{_ "Reconocimiento"}}}:</b> {{reconocimiento_contract}}</p>
+                        {{else}}
+                          <p><b>{{{_ "Recomendación"}}}:</b> {{contract_string}}</p>
+                        {{/ifCond}}
                       </div>
                       {{/each}}
 

@@ -2,20 +2,16 @@
 {{#if result.flags }}
 <script>
   function colorized(id, value) {
-    if (value > 0.75) {
-      color = "color-1"
+    if (value > 0.80) {
+      color = "color-green"
     }
-    else if (value <= 0.75 && value > 0.50) {
-      color = "color-2"
+    else if (value <= 0.80 && value > 0.33) {
+      color = "color-yellow"
     }
-    else if (value <= 0.50 && value > 0.25) {
-      color = "color-3"
-    }
-    else if (value <= 0.25) {
-      color = "color-4"
+    else if (value <= 0.33) {
+      color = "color-red"
     }
     $(id).removeClass().addClass(["circle-with-text", color]);
-
   }
 
   function yearsChange(e) {
@@ -44,7 +40,7 @@
 
           <div class="col-12 col-md-12">
             <p>{{{_ "A partir de más de 25 pruebas algorítmicas, que agrupamos en cinco grandes categorías, determinamos la calidad de los datos de contratación que introduce cada dependencia y unidad compradora. Para la puntuación final el sistema también
-            tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede <a href='https://github.com/ProjectPODER/groucho'>consultarse aquí</a>"}}}.</p>
+            tiene en cuenta la puntuación de las dependencias con quién se relaciona de forma indirecta. La metodología puede <a href='https://github.com/ProjectPODER/groucho#readme'>consultarse aquí</a>"}}}.</p>
           </div>
         </div>
 
@@ -137,10 +133,13 @@
 
                       {{#each (flag_recommendations ../this @key) }}
                       <div class="flag-recomendations-box">
-                        <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
                         <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
                         <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
-                        <p><b>{{{_ "Recomendación"}}}:</b> {{#ifCond score ">" 0.8}}{{reconocimiento_uc}}{{else}} {{uc_string}}{{/ifCond}}</p>
+                        {{#ifCond score ">" 0.8}}
+                          <p><b>{{{_ "Reconocimiento"}}}:</b> {{reconocimiento_uc}}</p>
+                        {{else}}
+                          <p><b>{{{_ "Recomendación"}}}:</b> {{uc_string}}</p>
+                        {{/ifCond}}
                       </div>
                       {{/each}}
 
