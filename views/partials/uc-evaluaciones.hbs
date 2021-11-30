@@ -94,10 +94,8 @@
 
               </div>
               <p>Esta gráfica ilustra el promedio de los puntajes para cada una de las
-              categorías evaluadas. Los puntajes en color verde ilustran el promedio
-              de todos las entidades y el morado el de esta entidad en particular. Es
-              importante recalcar que este cálculo se hace contemplando todos los años
-              que esta entidad tiene registros en el SICOP.</p>
+              categorías evaluadas. Los valores en color verde ilustran el máximo
+              de todas las entidades para cada categoría y en violeta el puntaje de esta entidad en particular. Están disponibles todos los años para los que esta entidad tiene contratos. El puntaje total se calcula promediando los años para los que esta entidad tiene contratos.</p>
               <div class="mt-5">
                 <a class="btn button-link" href="{{ url view="search" collection="contract_flags" id=../result.id }}">{{{_ "Ver todas las
                   evaluaciones"}}}</a>
@@ -142,7 +140,7 @@
                         <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
                         <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
                         <p><b>{{{_ "Puntaje"}}}:</b> {{format_score score }}</p>
-                        <p><b>{{{_ "Recomendación"}}}:</b> {{#ifCond score ">" 0.9}}{{reconocimiento_uc}}{{else}} {{uc_string}}{{/ifCond}}</p>
+                        <p><b>{{{_ "Recomendación"}}}:</b> {{#ifCond score ">" 0.8}}{{reconocimiento_uc}}{{else}} {{uc_string}}{{/ifCond}}</p>
                       </div>
                       {{/each}}
 
