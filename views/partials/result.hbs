@@ -184,7 +184,28 @@
             </div>
           </div>
         {{/with}}
-        {{j result.contract_score }}
+          <div class="col-lg-12 mt-2">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-md-8 col-sm-6 col-6">
+                <span class="mr-2">Evaluaciones: </span>
+                {{#each result.contract_score}}
+                {{#ifCond @key "!=" "total_score"}}
+                {{#with (flag_name @key) }}
+                <span class="mr-3">
+                  <i class="fas {{icon}}"></i> {{name}}:
+                  {{/with}}
+                  {{format_score this}}
+                </span>
+                {{/ifCond}}
+                {{/each}}
+                {{!-- {{j result.contract_score}} --}}
+              </div>
+              <div class="col-lg-4 col-md-4 col-md-4 col-sm-6 col-6 text-right">
+                <p class="search-totalscore mr-3" title="{{ format_score result.contract_score.total_score }} cumplimiento de banderas"><i class="fas fa-certificate"></i> {{ format_score result.contract_score.total_score }} cumplimiento de banderas</p>
+              </div>
+            </div>
+
+          </div>
         {{/ifCond}}
 
         {{#ifCond result.type "==" "organizations"}}

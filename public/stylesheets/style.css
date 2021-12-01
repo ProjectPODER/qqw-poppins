@@ -1222,7 +1222,8 @@ input[type=submit].landing-search-inputtext {
   align-items: start;
   font-size: 0.9em;
 }
-.index-list-elements p {
+.index-list-elements p,
+.index-list-elements span {
   color: #9b9b9b;
 }
 .index-list-elements a p {
@@ -1378,6 +1379,10 @@ input[type=submit].landing-search-inputtext {
   display: inline-block;
   text-align: center;
   width: 100%;
+}
+.search-totalscore {
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 @media screen and (max-width: 1270px) {
   .index-list-elements .right-elements .area-shareholder {

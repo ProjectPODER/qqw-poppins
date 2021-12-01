@@ -41,6 +41,6 @@
     "stylus": "0.54.8",
     "tiza": "github:projectpoder/tiza#0.2.6"
   },
-  "tiza": "github:projectpoder/tiza#0.2.0",
+  "tiza": "file:../tiza",
   "qqw": "file:../node-qqw"
 }
