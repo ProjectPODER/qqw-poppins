@@ -72,14 +72,14 @@
         {{/if}}
         {{#if summaries.funder.total.count }}
         <li>
-          <a href="#summary-funder_contract" class="anchor">
+          <a href="#summary-funder" class="anchor">
             <i class="fas fa-donate"></i> {{{_ "Financiación"}}}
           </a>
         </li>
         {{/if}}
         {{#if summaries.contactPoint.total.count }}
         <li>
-          <a href="#summary-contactPoint_contract" class="anchor">
+          <a href="#summary-contactPoint" class="anchor">
             {{!-- {{{get_role_icon this.role this.directionality}}} {{get_role_name this.role this.directionality}} --}}
             <i class="fas fa-shopping-cart"></i>{{_ "Punto de contacto"}}
           </a>
@@ -104,11 +104,14 @@
         {{#ifCond type '!=' 'companies'}}
         {{#ifCond (indexOf  'proveedor' result.classification) "==" -1 }}
 
-        {{!-- <li>
+        {{#if result.flags }}
+        <li>
           <a href="#evaluacion" class="anchor evaluacion">
             <i class="fas fa-file-signature"></i> {{{_ "Evaluación"}}}
           </a>
-        </li> --}}
+        </li>
+        {{/if}}
+
         {{/ifCond}}
         {{/ifCond}}
         {{/if}}
@@ -314,7 +317,7 @@
           </div>
           {{/each}}
           <div class="col-12 col-md-12 mt-60">
-            {{# each (flag_recommendations this flag_count) }}
+            {{#each (flag_recommendations this flag_count) }}
             <div class="col-12 col-md-6 category-profile">
               <p><b>{{{_ "Categoría"}}}:</b> {{category}}</p>
               <p><b>{{{_ "Problema"}}}:</b> {{description}}</p>
@@ -324,17 +327,22 @@
             {{/each}}
           </div>
       </div>
-      <div class="col-12 col-md-12 text-center">
+      <div class="col-12 col-md-12 text-center mb-5">
           <a class="btn button-link" href="{{ url view="search" collection="contract_flags" id=result.id }}">{{{_ "Ver todas las evaluaciones"}}}</a>
       </div>
+
       </div>
     </div>
   </div>
 </section>
 {{/each}}
 {{/if}} --}}
-{{>banner-evaluaciones}}
-
+{{!-- {{>banner-evaluaciones}} --}}
+{{#if result.flags }}
+  {{>uc-evaluaciones}}
+{{else}}
+  {{>banner-evaluaciones}}
+{{/if}}
 
 {{!-- LONG memberships --}}
 {{#each result.memberships.parent }}

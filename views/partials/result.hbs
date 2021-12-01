@@ -33,7 +33,7 @@
               </div>
             </div>
             <div class="right-elements col-lg-4 col-md-4 col-md-4 col-sm-4 col-4">
-            
+
               {{#if area }}
               <div class="col-lg-3 p-0">
                 <p class="index-list-element">
@@ -81,7 +81,7 @@
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
                     {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
-                    {{parties.buyer.name}} 
+                    {{parties.buyer.name}}
                 </a>
                 {{/if}}
                 {{/if}}
@@ -127,12 +127,16 @@
         {{/ifCond}}
 
         {{!-- BANDERAS --}}
-        {{#ifCond result.type "==" "contract" }}
+        {{#ifCond result.type "==" "contract_flags" }}
         {{#with result.contracts.[0]}}
-        
+
           <div class="left-elements col-lg-7 col-md-7 col-md-7 col-sm-7 col-7">
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
+                <a href="{{url view="regiones/:id" _id=(get_country_id parties.buyer.address.countryName)}}">
+                  <span class="flag-icon flag-icon-{{get_country_id parties.buyer.address.countryName}}" title="{{parties.buyer.address.countryName}}">{{parties.buyer.address.countryName}}</span>
+                </a>
+
                 {{#if (filter_array source  "id" "comprasimss") }}
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
@@ -140,18 +144,29 @@
                     IMSS: {{parties.buyer.name}}
                 </a>
                 {{else}}
+                {{#if result.buyer.memberOf.name }}
 
                 <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.memberOf.id}}" title="{{_ "Comprador" }}: {{parties.buyer.memberOf.name}}">
                   {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
                     {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
                     {{parties.buyer.memberOf.name}}
                 </a>
+                {{else}}
+                <a href="{{ url view=(get_type_url parties.buyer.details.type) _id=parties.buyer.id}}" title="{{_ "Comprador" }}: {{parties.buyer.name}}">
+                  {{{get_classification_icon parties.buyer.details.type parties.buyer.details.classification parties.buyer.details.subclassification parties.buyer.details.govLevel }}}
+                    {{!-- {{{hilight [] parties.buyer.memberOf.name}}} --}}
+                    {{parties.buyer.name}}
+                </a>
+                {{/if}}
                 {{/if}}
               </p>
             </div>
             <div class="col-lg-6 p-0">
               <p class="index-list-element">
                 {{#with parties.suppliers.list.[0] }}
+                  <a href="{{url view="regiones/:id" _id=(get_country_id address.countryName)}}">
+                    <span class="flag-icon flag-icon-{{get_country_id address.countryName}}" title="{{address.countryName}}">{{address.countryName}}</span>
+                  </a>
                   <a href="{{ url view=(get_type_url details.type) _id=id }}" title="{{_ "Proveedor:" }} {{name}}">
                       {{{get_classification_icon details.type details.classification details.govLevel }}}
                       {{ name }}
@@ -184,7 +199,28 @@
             </div>
           </div>
         {{/with}}
-        {{j result.contract_score }}
+          <div class="col-lg-12 mt-2">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-md-8 col-sm-6 col-6">
+                <span class="mr-2 bg-flags p-2">Evaluaciones: </span>
+                {{#each result.contract_score}}
+                {{#ifCond @key "!=" "total_score"}}
+                {{#with (flag_name @key) }}
+                <span class="mr-3 flags-categories-searcher">
+                  <i class="fas {{icon}}"></i> {{name}}:
+                  {{/with}}
+                  {{format_score this}}
+                </span>
+                {{/ifCond}}
+                {{/each}}
+                {{!-- {{j result.contract_score}} --}}
+              </div>
+              <div class="col-lg-4 col-md-4 col-md-4 col-sm-6 col-6 text-right">
+                <p class="search-totalscore mr-3" title="Puntaje total: {{ format_score result.contract_score.total_score }}"><i class="fas fa-certificate"></i> Puntaje total: {{ format_score result.contract_score.total_score }}</p>
+              </div>
+            </div>
+
+          </div>
         {{/ifCond}}
 
         {{#ifCond result.type "==" "organizations"}}
@@ -227,7 +263,7 @@
               </div>
           {{/ifCond}}
         {{/ifCond}}
-        
+
         {{!-- AREAS --}}
         {{#ifCond result.type "==" "areas" }}
           <div class="left-elements col-lg-4 col-md-6 col-sm-6 col-6">

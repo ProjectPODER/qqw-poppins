@@ -508,7 +508,76 @@ section
 .memberships-list thead
   display: none
 
+#evaluacion, #calidad
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link
+    color: #fff !important
+    background-color: $blue !important
 
+  .card-body
+    height: 500px;
+    overflow-y: scroll;
+  .card-link
+    color: #333;
+  .card-link:hover
+    color: $blue
+  .card-header:before
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f078";
+    float: right;
+    transition: all 0.5s;
+  // .card-link.collapsed .card-header:before
+  //   -webkit-transform: rotate(180deg);
+  //   -moz-transform: rotate(180deg);
+  //   transform: rotate(180deg);
+
+.icon-h4
+  width: 1.5rem;
+  margin-top: -5px;
+  margin-right: 5px;
+
+.circles
+  display: inline-flex;
+  position relative
+
+.circle-with-text
+  background: rgba(91,91,91, 0.2);
+  border: 2px solid rgb(91,91,91)
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-align: center;
+  margin: 0 5px;
+  font-size: 15px;
+  padding: 15px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+
+.color-green
+  background: rgba(11,255,1, 0.2)
+  border: 2px solid rgb(11,255,1)
+.color-yellow
+  background: rgba(253,254,2, 0.2)
+  border: 2px solid rgb(230,201,0)
+.color-red
+  background: rgba(254,0,0, 0.2)
+  border: 2px solid rgb(254,0,0)
+
+
+.flag-recomendations-box
+  border: 1px solid rgba(0,0,0,.125);
+  padding: 1rem 1rem 0
+  margin-bottom: 1rem
+
+.category-color, .limit-color
+  width: 30px
+  height: 14px
+  display: inline-block
+.limit-color
+  background: #36ACA9
+.category-color
+  background: #6929C4
 
 // News
 .profile-news-container

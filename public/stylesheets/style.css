@@ -1222,7 +1222,8 @@ input[type=submit].landing-search-inputtext {
   align-items: start;
   font-size: 0.9em;
 }
-.index-list-elements p {
+.index-list-elements p,
+.index-list-elements span {
   color: #9b9b9b;
 }
 .index-list-elements a p {
@@ -1378,6 +1379,19 @@ input[type=submit].landing-search-inputtext {
   display: inline-block;
   text-align: center;
   width: 100%;
+}
+.search-totalscore {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #5a5a5a !important;
+  display: inline-block;
+}
+.bg-flags {
+  background-color: #e7fdd4;
+  color: #5a5a5a !important;
+}
+.flags-categories-searcher {
+  color: #5a5a5a !important;
 }
 @media screen and (max-width: 1270px) {
   .index-list-elements .right-elements .area-shareholder {
@@ -2665,6 +2679,86 @@ section.country-mujeres {
 }
 .memberships-list thead {
   display: none;
+}
+#evaluacion .nav-pills .nav-link.active,
+#calidad .nav-pills .nav-link.active,
+#evaluacion .nav-pills .show>.nav-link,
+#calidad .nav-pills .show>.nav-link {
+  color: #fff !important;
+  background-color: #2b00f7 !important;
+}
+#evaluacion .card-body,
+#calidad .card-body {
+  height: 500px;
+  overflow-y: scroll;
+}
+#evaluacion .card-link,
+#calidad .card-link {
+  color: #333;
+}
+#evaluacion .card-link:hover,
+#calidad .card-link:hover {
+  color: #2b00f7;
+}
+#evaluacion .card-header:before,
+#calidad .card-header:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f078";
+  float: right;
+  transition: all 0.5s;
+}
+.icon-h4 {
+  width: 1.5rem;
+  margin-top: -5px;
+  margin-right: 5px;
+}
+.circles {
+  display: inline-flex;
+  position: relative;
+}
+.circle-with-text {
+  background: rgba(91,91,91,0.2);
+  border: 2px solid #5b5b5b;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-align: center;
+  margin: 0 5px;
+  font-size: 15px;
+  padding: 15px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
+.color-green {
+  background: rgba(11,255,1,0.2);
+  border: 2px solid #0bff01;
+}
+.color-yellow {
+  background: rgba(253,254,2,0.2);
+  border: 2px solid #e6c900;
+}
+.color-red {
+  background: rgba(254,0,0,0.2);
+  border: 2px solid #fe0000;
+}
+.flag-recomendations-box {
+  border: 1px solid rgba(0,0,0,0.125);
+  padding: 1rem 1rem 0;
+  margin-bottom: 1rem;
+}
+.category-color,
+.limit-color {
+  width: 30px;
+  height: 14px;
+  display: inline-block;
+}
+.limit-color {
+  background: #36aca9;
+}
+.category-color {
+  background: #6929c4;
 }
 .profile-news-container {
   background-color: #f7f7f7;
