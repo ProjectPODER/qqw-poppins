@@ -202,11 +202,11 @@
           <div class="col-lg-12 mt-2">
             <div class="row">
               <div class="col-lg-8 col-md-8 col-md-8 col-sm-6 col-6">
-                <span class="mr-2 bg-gray p-2">Evaluaciones: </span>
+                <span class="mr-2 bg-flags p-2">Evaluaciones: </span>
                 {{#each result.contract_score}}
                 {{#ifCond @key "!=" "total_score"}}
                 {{#with (flag_name @key) }}
-                <span class="mr-3">
+                <span class="mr-3 flags-categories-searcher">
                   <i class="fas {{icon}}"></i> {{name}}:
                   {{/with}}
                   {{format_score this}}

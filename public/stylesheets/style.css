@@ -1383,6 +1383,15 @@ input[type=submit].landing-search-inputtext {
 .search-totalscore {
   font-size: 1.1rem;
   font-weight: bold;
+  color: #5a5a5a !important;
+  display: inline-block;
+}
+.bg-flags {
+  background-color: #e7fdd4;
+  color: #5a5a5a !important;
+}
+.flags-categories-searcher {
+  color: #5a5a5a !important;
 }
 @media screen and (max-width: 1270px) {
   .index-list-elements .right-elements .area-shareholder {
