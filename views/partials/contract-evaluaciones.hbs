@@ -58,7 +58,16 @@
                    {{!-- {{#each years }}
                    radarData["{{year}}"] = {{j (get_party_categories this) }}
                     {{/each}} --}}
-                  tiza.radarChart({target: "#radarchart", data: radarData.total});
+                  tiza.radarChart({
+                    target: "#radarchart", 
+                    data: radarData.total,
+                    max: {
+                      "max_trans": 1,
+                      "max_traz": 1,
+                      "max_comp": 1,
+                      "max_temp": 1
+                    }
+                  });
                 </script>
               </div>
               <p class="mt-4">Esta gráfica ilustra el promedio de los puntajes para cada una de las categorías evaluadas a nivel contrato. Los valores en color verde
