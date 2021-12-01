@@ -338,11 +338,15 @@
 {{/each}}
 {{/if}} --}}
 {{!-- {{>banner-evaluaciones}} --}}
-{{#if result.flags }}
-  {{>uc-evaluaciones}}
+
+{{#ifCond result.classification '==' 'country'}}
 {{else}}
-  {{>banner-evaluaciones}}
-{{/if}}
+{{#if result.flags }}
+    {{>uc-evaluaciones}}
+  {{else}}
+    {{>banner-evaluaciones}}
+  {{/if}}
+{{/ifCond}}
 
 {{!-- LONG memberships --}}
 {{#each result.memberships.parent }}

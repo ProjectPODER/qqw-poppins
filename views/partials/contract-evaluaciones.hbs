@@ -23,7 +23,7 @@
         <div class="box-title-icon">
           <i class="fas fa-file-signature"></i>
         </div>
-        <h4 class="description-data-subtitle">{{{_ "EVALUACIÓN Y RECOMENDACIONES"}}}</h4>
+        <h4 class="description-data-subtitle">{{{_ "CALIDAD DEL CONTRATO"}}}</h4>
       </div>
       <div class="col-md-12 col-12">
         <div class="row">
@@ -59,7 +59,7 @@
                    radarData["{{year}}"] = {{j (get_party_categories this) }}
                     {{/each}} --}}
                   tiza.radarChart({
-                    target: "#radarchart", 
+                    target: "#radarchart",
                     data: radarData.total,
                     max: {
                       "max_trans": 1,
